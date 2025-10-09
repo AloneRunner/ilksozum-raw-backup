@@ -1,0 +1,1255 @@
+
+import { ActivityType, ActivityCategory, ImageMetadata, ConceptRound, Word, Story, ScreenState, ConceptOption, ActivityStats, MemoryGameRound, SudokuRound, SudokuItem, NumberSequencingRound } from '../types.ts';
+import { storyData } from './staticData.ts';
+import { imageData } from './database/imageData.ts';
+import { 
+    sensesData,
+    bigSmallData, longShortData, thinThickData, wideNarrowData, oldNewData, youngOldData, hardSoftData, cleanDirtyData, wetDryData, openClosedData, straightCurvedData, aliveLifelessData, bitterSweetData, heavyLightData, hotColdData, roughSmoothData, brokenIntactData, messyCleanData, tazeBayatData, kirisikDuzgunData, sivriKutData, parlakMatData, tembelCaliskanData, seffafOpakData, dikenliPuruzsuzData, dugumCozukData, hungryFullData, derinSigData, kalabalikTenhaData, tersDuzData,
+    numberSequencingData, fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData,
+    onUnderData, belowAboveData, besideOppositeData, inFrontOfBehindData, insideOutsideData, betweenData, leftRightData, nearFarData, highLowData,
+    beforeAfterData, dayNightData, fastSlowData,
+    whatDoesntBelongData, functionalMatchingData, causeEffectData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
+} from './database/activities/index.ts';
+import { CONCEPT_ACTIVITIES, LETTER_SOUND_ACTIVITIES, REASONING_ACTIVITIES, LETTER_GROUPS, OBJECT_RECOGNITION_ACTIVITIES, ALL_SUB_ACHIEVEMENTS } from '../constants.ts';
+import { shuffleArray, getValueFromLocalStorage } from '../utils.ts';
+import { getCurrentLanguage } from '../i18n/index.ts';
+
+
+// --- UTILITY FUNCTIONS ---
+const getRandomItems = <T,>(arr: T[], n: number): T[] => {
+    if (!arr || arr.length === 0) return [];
+    return shuffleArray(arr).slice(0, n);
+};
+
+// A map to define the primary image ID for words with multiple visuals.
+const mainVisualMap: { [word: string]: number } = {
+    // Ana Görsel Listesi - Tam Güncellenmiş
+    'araba': 1,
+    'kutu': 5,
+    'ağaç': 10,
+    'tişört': 13,
+    'kedi': 16,
+    'pizza': 23,
+    'vazo': 34,
+    'kitap': 37,
+    'kapı': 39,
+    'köpek': 47,
+    'ayakkabı': 59,
+    'dondurma': 63,
+    'pantolon': 79,
+    'pencere': 82,
+    'gözlük': 93,
+    'havuç': 98,
+    'aslan': 100,
+    'tren': 106,
+    'bisiklet': 110,
+    'yumurta': 113,
+    'portakal': 115,
+    'saat': 118,
+    'kalem': 121,
+    'bardak': 124,
+    'masa': 134,
+    'yastık': 137,
+    'merdiven': 143,
+    'çorap': 147,
+    'tabak': 153,
+    'top': 156,
+    'şemsiye': 158,
+    'robot': 177,
+    'hazine_sandığı': 201,
+    'roket': 204,
+    'gömlek': 255,
+    'musluk': 304,
+    'etek': 269,
+    'terlik': 308,
+    'çiçek': 309,
+    'sandalye': 319,
+    'dolap': 339,
+    'armut': 365,
+    'paten': 382,
+    'sincap': 417,
+    'saksı': 432,
+    'halı': 439,
+    'kavanoz': 447,
+    'sepet': 449,
+    'kurdele': 517,
+    'havlu': 523,
+    'ev': 533,
+    'fırça': 539,
+    'mum': 540,
+    'zarf': 600,
+    'yatak': 606,
+    'gemi': 621,
+    'limon': 703,
+    'şişe': 814,
+    'sandalet': 848,
+    // Eski değerler (henüz güncellenmemiş)
+    'çocuk': 500,
+    'maymun': 277,
+    'bebek': 579,
+    'üzüm': 88,
+    'çilek': 171,
+    'kuş': 73,
+    'elma': 43,
+    // — Hayvanlar —
+    'ahtapot': 358,
+    'arı': 273,
+    'at': 290,
+    'ağustos böceği': 348,
+    'ayı': 276,
+    'balık': 400,
+    'balina': 491,
+    'baykuş': 103,
+    'civciv': 376,
+    'deve': 909,
+    'dinozor': 178,
+    'eşek': 865,
+    'fare': 29,
+    'fil': 28,
+    'fok balığı': 293,
+    'gergedan': 908,
+    'geyik': 416,
+    'hamster': 861,
+    'horoz': 102,
+    'inek': 291,
+    'kaplan': 862,
+    'kaplumbağa': 42,
+    'karınca': 349,
+    'kelebek': 274,
+    'kirpi': 418,
+    'kirpi balığı': 694,
+    'koala': 681,
+    'koyun': 460,
+    'kunduz': 680,
+    'kurbağa': 275,
+    'kuzu': 462,
+    'ördek': 26,
+    'panda': 320,
+    'papağan': 32,
+    'penguen': 232,
+    'salyangoz': 222,
+    'solucan': 150,
+    'tavuk': 377,
+    'tavşan': 41,
+    'tembel hayvan': 684,
+    'tilki': 415,
+    'tırtıl': 445,
+    'uğur böceği': 92,
+    'yılan': 323,
+    'yunus': 763,
+    'zebra': 866,
+    'zürafa': 101,
+    // — Meyveler —
+    'ananas': 279,
+    'erik': 641,
+    'greyfurt': 637,
+    'karpuz': 170,
+    'kavun': 295,
+    'kivi': 649,
+    'kiraz': 278,
+    'mandalina': 419,
+    'muz': 114,
+    'nar': 498,
+    'şeftali': 333,
+    'vişne': 294,
+    'zeytin': 119,
+    // — Sebzeler —
+    'biber': 227,
+    'brokoli': 311,
+    'domates': 128,
+    'enginar': 695,
+    'ıspanak': 420,
+    'kabak': 803,
+    'karnabahar': 648,
+    'lahana': 334,
+    'marul': 129,
+    'mısır': 853,
+    'patates': 802,
+    'patlıcan': 280,
+    'pırasa': 421,
+    'roka': 704,
+    'salatalık': 116,
+    'soğan': 75,
+    'turp': 636,
+    'zencefil': 640,
+    // — Yiyecekler —
+    'ayran': 813,
+    'bal': 228,
+    'bisküvi': 330,
+    'cips': 804,
+    'çay': 791,
+    'çikolata': 297,
+    'ekmek': 112,
+    'gazoz': 793,
+    'hamburger': 809,
+    'jelibon': 806,
+    'kahve': 635,
+    'köfte': 808,
+    'kraker': 805,
+    'kuruyemiş': 807,
+    'mantı': 812,
+    'makarna': 267,
+    'meyve suyu': 811,
+    'milkshake': 645,
+    'pasta': 78,
+    'peynir': 50,
+    'reçel': 639,
+    'salata': 332,
+    'simit': 296,
+    'sirke': 638,
+    'sosis': 312,
+    'sosisli sandviç': 366,
+    'sucuk': 860,
+    'süt': 801,
+    'şurup': 241,
+    'tereyağı': 810,
+    'yoğurt': 792,
+    // — Giysiler —
+    'atkı': 271,
+    'bere': 336,
+    'bot': 307,
+    'ceket': 270,
+    'elbise': 268,
+    'eldiven': 272,
+    'kask': 206,
+    'kazak': 335,
+    'kravat': 576,
+    'papyon': 577,
+    'pijama': 54,
+    'şapka': 111,
+    'şort': 80,
+    // — Ev, Mutfak ve Banyo Eşyaları —
+    'anahtar': 142,
+    'ayna': 148,
+    'balkon': 868,
+    'bank': 430,
+    'battaniye': 816,
+    'bıçak': 262,
+    'biberon': 371,
+    'bulaşık makinesi': 301,
+    'buzdolabı': 251,
+    'çamaşır makinesi': 169,
+    'çaydanlık': 356,
+    'çatal': 126,
+    'diş fırçası': 441,
+    'diş macunu': 425,
+    'elbise dolabı': 339,
+    'fırın': 302,
+    'ıslak mendil': 855,
+    'jakuzi': 95,
+    'kase': 700,
+    'kaşık': 125,
+    'kitaplık': 287,
+    'koltuk': 548,
+    'klima': 708,
+    'küvet': 424,
+    'lamba': 575,
+    'lavabo': 423,
+    'lazımlık': 798,
+    'lif': 874,
+    'mandal': 398,
+    'mikser': 367,
+    'paspas': 341,
+    'priz': 340,
+    'radyo': 436,
+    'raf': 610,
+    'sabun': 209,
+    'sifon': 799,
+    'sıvı sabun': 794,
+    'soba': 250,
+    'sürahi': 350,
+    'şampuan': 426,
+    'şömine': 384,
+    'tava': 264,
+    'tencere': 671,
+    'tuvalet': 422,
+    'tuvalet kağıdı': 815,
+    'ütü': 305,
+    'valiz': 31,
+    'vantilatör': 89,
+    // — Oyuncaklar —
+    'balon': 130,
+    'düdük': 427,
+    'kaykay': 383,
+    'kürek': 369,
+    'misket': 762,
+    'oyuncak ayı': 276,
+    'oyuncak bebek': 109,
+    'pilates topu': 362,
+    'satranç': 510,
+    'uçurtma': 135,
+    'yapboz': 480,
+    // — Taşıtlar —
+    'ambulans': 257,
+    'denizaltı': 337,
+    'helikopter': 162,
+    'itfaiye aracı': 256,
+    'kamyon': 288,
+    'motosiklet': 259,
+    'okul otobüsü': 105,
+    'polis arabası': 258,
+    'sandal': 493,
+    'sıcak hava balonu': 538,
+    'traktör': 289,
+    'uçak': 107,
+    'vinç': 338,
+    'yelkenli': 375,
+    // — Vücut Bölümleri —
+    'göz': 564,
+    'el': 285,
+    'saç': 662,
+    'kulak': 490,
+    'burun': 556,
+    // — Meslekler —
+    'doktor': 324,
+    'polis': 325,
+    'aşçı': 326,
+    'itfaiyeci': 327,
+    'öğretmen': 84,
+    // — Bitkiler —
+    'kaktüs': 281,
+    'çim': 434,
+    'pamuk': 27,
+    // — Binalar ve Yerler —
+    'okul': 497,
+    'hastane': 852,
+    'plaj': 858,
+    'orman': 242,
+    // — Müzik Aletleri —
+    'davul': 72,
+    'gitar': 180,
+    'keman': 208,
+    'flüt': 328,
+    // — Tamir Aletleri —
+    'çekiç': 496,
+    'pense': 344,
+    'tornavida': 217,
+    // — Doğa Olayları —
+    'yağmur': 52,
+    'gökkuşağı': 159,
+    'kar': 405,
+    'rüzgar': 406,
+    'şimşek': 407,
+    // — Uzay —
+    'gezegen': 205,
+    'güneş': 237,
+    'ay': 238,
+    'yıldız': 239,
+    'göktaşı': 408,
+    'teleskop': 379,
+};
+
+const YES_NO_ALLOWED_IDS = new Set([
+    1, 5, 13, 16, 23, 26, 28, 29, 34, 36, 41, 42, 43, 61, 73, 79, 80, 82, 92, 93, 98, 100, 101, 102, 103, 107, 110, 111, 112, 113, 114, 115, 116, 118, 121, 125, 126, 128, 137, 142, 144, 156, 158, 162, 167, 170, 171, 177, 201, 207, 209, 235, 236, 237, 251, 252, 256, 257, 258, 273, 274, 275, 277, 288, 290, 291, 296, 301, 302, 304, 319, 320, 323, 358, 365, 376, 419, 432, 439, 449, 462, 533, 539, 548, 606, 621, 671, 703, 814, 848
+]);
+
+
+const getBannedImageIds = (): Set<number> => {
+    return getValueFromLocalStorage<number[]>('bannedImageIds_v1', []).reduce((set, id) => set.add(id), new Set<number>());
+};
+
+const CONCRETE_CATEGORIES_FOR_LETTER_GAMES = [
+  'hayvan', 'meyve', 'sebze', 'taşıt', 'giysi', 'mutfak', 'banyo', 'ev_esya', 
+  'muzik_aleti', 'tamir_aleti', 'oyuncak', 'yiyecek', 'bitki', 'doğal nesne', 'doğal yapı', 'olay',
+  'insan', 'vücut', 'yapı', 'bina', 'malzeme', 'profession', 'yer', 'uzay', 'doğa olayı', 'nesne'
+];
+
+export const getActivityCategory = (activity: ActivityType | string): ActivityCategory | null => {
+    const activityInfo = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(activity));
+    return activityInfo?.category || null;
+}
+
+export const getActivityUiConfig = (activityType: ActivityType | null): {
+    backScreen: ScreenState;
+    backButtonText: string;
+} => {
+    if (activityType === null) return {
+        backScreen: ScreenState.MainMenu,
+        backButtonText: "Etkinlik Menüsüne Dön",
+    };
+
+    if (activityType === ActivityType.Syllabification) {
+        return {
+            backScreen: ScreenState.GroupSelection,
+            backButtonText: "Grup Seçimine Dön",
+        };
+    }
+    if (LETTER_SOUND_ACTIVITIES.includes(activityType)) {
+        return {
+            backScreen: ScreenState.LetterSelection,
+            backButtonText: "Harf Seçimine Dön",
+        };
+    }
+    if (CONCEPT_ACTIVITIES.includes(activityType)) {
+        return {
+            backScreen: ScreenState.ConceptActivitiesMenu,
+            backButtonText: "Kavram Menüsüne Dön",
+        };
+    }
+    if (REASONING_ACTIVITIES.includes(activityType)) {
+        return {
+            backScreen: ScreenState.ReasoningActivitiesMenu,
+            backButtonText: "Oyun Menüsüne Dön",
+        };
+    }
+    if (OBJECT_RECOGNITION_ACTIVITIES.includes(activityType)) {
+        return {
+            backScreen: ScreenState.ObjectCategoriesMenu,
+            backButtonText: "Nesne Menüsüne Dön",
+        };
+    }
+
+    return {
+        backScreen: ScreenState.MainMenu,
+        backButtonText: "Etkinlik Menüsüne Dön",
+    };
+}
+
+
+// --- LETTER & SYLLABLE DATA FETCHERS ---
+export const fetchWordsForLetter = async (letter: string, count?: number): Promise<Word[]> => {
+  const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+  const bannedIds = getBannedImageIds();
+  
+  const availableWords = imageData.filter(item => {
+    const isBanned = bannedIds.has(item.id);
+    const hasLetters = item.tags.letters;
+    const isConcrete = CONCRETE_CATEGORIES_FOR_LETTER_GAMES.includes(item.tags.category);
+    
+    // Kullanıcı geri bildirimine göre kafa karıştırıcı konumsal görüntüleri harf oyunlarından çıkarın.
+    // "aile" (family) için istisna, çünkü net bir tek kavramdır.
+    const isConfusingPositionalImage = !!item.tags.position && item.word.toLocaleLowerCase('tr-TR') !== 'aile';
+
+    return !isBanned && hasLetters && isConcrete && !isConfusingPositionalImage;
+  });
+  
+    const uniqueWordMap = new Map<string, ImageMetadata>();
+    
+    for (const item of availableWords) {
+        const key = item.word.toLocaleLowerCase('tr-TR');
+        const mainVisualId = mainVisualMap[key];
+        if (mainVisualId === item.id) {
+            uniqueWordMap.set(key, item);
+        }
+    }
+    
+    for (const item of shuffleArray(availableWords)) {
+        const key = item.word.toLocaleLowerCase('tr-TR');
+        if (!uniqueWordMap.has(key)) {
+            uniqueWordMap.set(key, item);
+        }
+    }
+
+  const allWords = Array.from(uniqueWordMap.values());
+  const selectedWords = count ? getRandomItems(allWords, count * 3) : allWords; // Fetch more for options
+
+  return selectedWords.map(item => ({
+    id: item.id,
+    word: item.word,
+    imageUrl: item.imageUrl,
+    audioKeys: item.audioKeys,
+    hasLetter: item.word.toLocaleUpperCase('tr-TR').includes(upperCaseLetter),
+    activityType: ActivityType.FindTheLetter, // Placeholder, will be set in fetchLetterActivityData
+  }));
+};
+
+export const createLetterPresenceRounds = async (letter: string, count?: number): Promise<Word[]> => {
+    const allWords = await fetchWordsForLetter(letter);
+    const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+
+    const wordsWithLetter = shuffleArray(allWords.filter(w => w.hasLetter));
+    const wordsWithoutLetter = shuffleArray(allWords.filter(w => !w.hasLetter));
+    
+    const numRounds = count || 8;
+    const numEach = Math.floor(numRounds / 2);
+
+    if (wordsWithLetter.length < numEach || wordsWithoutLetter.length < numEach) {
+        return [];
+    }
+
+    const selectedWithLetter = wordsWithLetter.slice(0, numEach).map(word => ({
+        ...word,
+        questionText: `Bu görselde '${upperCaseLetter}' sesi var mı?`,
+        questionAudioKey: 'q_does_this_have_sound',
+        isCorrectAnswer: true,
+        activityType: ActivityType.SoundPresence,
+    }));
+
+    const selectedWithoutLetter = wordsWithoutLetter.slice(0, numEach).map(word => ({
+        ...word,
+        questionText: `Bu görselde '${upperCaseLetter}' sesi var mı?`,
+        questionAudioKey: 'q_does_this_have_sound',
+        isCorrectAnswer: false,
+        activityType: ActivityType.SoundPresence,
+    }));
+
+    return shuffleArray([...selectedWithLetter, ...selectedWithoutLetter]);
+};
+
+
+export const fetchStoriesForLetter = async (letter: string): Promise<Story[]> => {
+    const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+    return storyData[upperCaseLetter] || [];
+};
+
+const allSyllables = imageData.flatMap(item => item.tags.syllables || []);
+const distractorSyllablePool = [...new Set(allSyllables)];
+
+export const fetchSyllableWordsForGroup = async (groupNumber: number, count?: number): Promise<Word[]> => {
+    const groupIndex = groupNumber - 1;
+    if (groupIndex < 0 || groupIndex >= LETTER_GROUPS.length) return [];
+
+    const lettersInGroup = LETTER_GROUPS.slice(0, groupIndex + 1).flatMap(g => g.letters);
+    const bannedIds = getBannedImageIds();
+
+    const potentialItems = imageData.filter(item =>
+        !bannedIds.has(item.id) &&
+        item.tags.letters &&
+        item.tags.letters.every(letter => lettersInGroup.includes(letter)) &&
+        !item.word.includes(' ') &&
+        item.tags.syllables && item.tags.syllables.length > 1 && item.tags.syllables.length <= 4
+    );
+
+    const uniqueItemMap = new Map<string, ImageMetadata>();
+    for (const item of shuffleArray(potentialItems)) {
+        const key = item.word.toLocaleLowerCase('tr-TR');
+        if (!uniqueItemMap.has(key)) {
+            uniqueItemMap.set(key, item);
+        }
+    }
+    const uniqueItems = Array.from(uniqueItemMap.values());
+    
+    const numToFetch = count || 8;
+    const selectedItems = getRandomItems(uniqueItems, numToFetch);
+
+    const validWords: Word[] = selectedItems.map(item => {
+        const syllables = item.tags.syllables!;
+        return {
+            id: item.id,
+            word: item.word,
+            imageUrl: item.imageUrl,
+            audioKeys: item.audioKeys,
+            syllables: syllables,
+            distractorSyllables: getRandomItems(distractorSyllablePool.filter(d => !syllables.includes(d)), 4 - syllables.length),
+            activityType: ActivityType.Syllabification,
+        };
+    });
+
+    return validWords;
+};
+
+
+// --- OBJECT RECOGNITION ---
+export const createObjectChoiceRounds = async (categoryId: string, count?: number): Promise<ConceptRound[]> => {
+    // If language is not Turkish, use curated static sets similar to concept rounds
+    const lang = getCurrentLanguage();
+    if (lang !== 'tr') {
+        try {
+            if (categoryId === 'hayvan') {
+                const { enAnimalsData } = await import('./database/activities/objects/enAnimalsData.ts');
+                return shuffleArray(enAnimalsData).slice(0, count || 8);
+            }
+            if (categoryId === 'meyve') {
+                const { enFruitsData } = await import('./database/activities/objects/enFruitsData.ts');
+                return shuffleArray(enFruitsData).slice(0, count || 8);
+            }
+            if (categoryId === 'sebze') {
+                const { enVegetablesData } = await import('./database/activities/objects/enVegetablesData.ts');
+                return shuffleArray(enVegetablesData).slice(0, count || 8);
+            }
+            if (categoryId === 'ulasim') {
+                const { enVehiclesData } = await import('./database/activities/objects/enVehiclesData.ts');
+                return shuffleArray(enVehiclesData).slice(0, count || 8);
+            }
+            if (categoryId === 'giysi') {
+                const { enClothesData } = await import('./database/activities/objects/enClothesData.ts');
+                return shuffleArray(enClothesData).slice(0, count || 8);
+            }
+            if (categoryId === 'mutfak') {
+                const { enKitchenData } = await import('./database/activities/objects/enKitchenData.ts');
+                return shuffleArray(enKitchenData).slice(0, count || 8);
+            }
+            if (categoryId === 'ev_esya') {
+                const { enHouseholdData } = await import('./database/activities/objects/enHouseholdData.ts');
+                return shuffleArray(enHouseholdData).slice(0, count || 8);
+            }
+            if (categoryId === 'oyuncak') {
+                const { enToysData } = await import('./database/activities/objects/enToysData.ts');
+                return shuffleArray(enToysData).slice(0, count || 8);
+            }
+            if (categoryId === 'yiyecek') {
+                const { enFoodsData } = await import('./database/activities/objects/enFoodsData.ts');
+                return shuffleArray(enFoodsData).slice(0, count || 8);
+            }
+            if (categoryId === 'profession') {
+                const { enProfessionsData } = await import('./database/activities/objects/enProfessionsData.ts');
+                return shuffleArray(enProfessionsData).slice(0, count || 8);
+            }
+            if (categoryId === 'okul_esya') {
+                const { enSchoolItemsData } = await import('./database/activities/objects/enSchoolItemsData.ts');
+                return shuffleArray(enSchoolItemsData).slice(0, count || 8);
+            }
+            if (categoryId === 'ev') {
+                const { enHomeData } = await import('./database/activities/objects/enHomeData.ts');
+                return shuffleArray(enHomeData).slice(0, count || 8);
+            }
+            if (categoryId === 'insan') {
+                const { enPeopleData } = await import('./database/activities/objects/enPeopleData.ts');
+                return shuffleArray(enPeopleData).slice(0, count || 8);
+            }
+            if (categoryId === 'doğal yapı') {
+                const { enNaturalStructuresData } = await import('./database/activities/objects/enNaturalStructuresData.ts');
+                return shuffleArray(enNaturalStructuresData).slice(0, count || 8);
+            }
+            if (categoryId === 'doğal nesne') {
+                const { enNaturalObjectsData } = await import('./database/activities/objects/enNaturalObjectsData.ts');
+                return shuffleArray(enNaturalObjectsData).slice(0, count || 8);
+            }
+            if (categoryId === 'eglence') {
+                const { enEntertainmentData } = await import('./database/activities/objects/enEntertainmentData.ts');
+                return shuffleArray(enEntertainmentData).slice(0, count || 8);
+            }
+            if (categoryId === 'vücut') {
+                const { enBodyPartsData } = await import('./database/activities/objects/enBodyPartsData.ts');
+                return shuffleArray(enBodyPartsData).slice(0, count || 8);
+            }
+            if (categoryId === 'bitki') {
+                const { enPlantsData } = await import('./database/activities/objects/enPlantsData.ts');
+                return shuffleArray(enPlantsData).slice(0, count || 8);
+            }
+            if (categoryId === 'doğa olayı') {
+                const { enNaturalEventsData } = await import('./database/activities/objects/enNaturalEventsData.ts');
+                return shuffleArray(enNaturalEventsData).slice(0, count || 8);
+            }
+            if (categoryId === 'uzay') {
+                const { enSpaceData } = await import('./database/activities/objects/enSpaceData.ts');
+                return shuffleArray(enSpaceData).slice(0, count || 8);
+            }
+            if (categoryId === 'tamir_aleti') {
+                const { enToolsData } = await import('./database/activities/objects/enToolsData.ts');
+                return shuffleArray(enToolsData).slice(0, count || 8);
+            }
+            if (categoryId === 'muzik_aleti') {
+                const { enMusicalInstrumentsData } = await import('./database/activities/objects/enMusicalInstrumentsData.ts');
+                return shuffleArray(enMusicalInstrumentsData).slice(0, count || 8);
+            }
+            if (categoryId === 'bina') {
+                const { enBuildingsData } = await import('./database/activities/objects/enBuildingsData.ts');
+                return shuffleArray(enBuildingsData).slice(0, count || 8);
+            }
+            if (categoryId === 'yer') {
+                const { enPlacesData } = await import('./database/activities/objects/enPlacesData.ts');
+                return shuffleArray(enPlacesData).slice(0, count || 8);
+            }
+        } catch (e) {
+            console.warn('Curated EN dataset not found for category', categoryId, e);
+        }
+        // If no curated dataset exists yet, fall back to dynamic Turkish generator for now
+    }
+    const MAX_QUESTIONS_PER_ROUND = count || 8;
+    const bannedIds = getBannedImageIds();
+    
+    const itemsInCategory = imageData.filter(item =>
+        !bannedIds.has(item.id) && item.tags.category === categoryId
+    );
+
+    if (itemsInCategory.length < 4) return [];
+
+    const uniqueWords = [...new Set(itemsInCategory.map(item => item.word))];
+    const questionWords = shuffleArray(uniqueWords).slice(0, MAX_QUESTIONS_PER_ROUND);
+
+    const rounds: ConceptRound[] = [];
+
+    for (const word of questionWords) {
+        let correctItem: ImageMetadata | undefined;
+        
+        const mainVisualId = mainVisualMap[word.toLowerCase()];
+        console.log(`DEBUG: word="${word}", normalized="${word.toLowerCase()}", mainVisualId=${mainVisualId}`);
+        if (mainVisualId) {
+            correctItem = itemsInCategory.find(item => item.id === mainVisualId);
+            console.log(`DEBUG: Found correctItem with ID ${correctItem?.id} for word "${word}"`);
+        }
+        
+        if (!correctItem) {
+            const possibleItems = itemsInCategory.filter(item => item.word === word);
+            
+            const undesirableStates = new Set(['kırık', 'kirli', 'ıslak', 'eski', 'bayat', 'dağınık', 'kırışık', 'üzgün', 'kızgın', 'korkmuş', 'hasta', 'yorgun', 'solgun', 'çürük', 'ters']);
+            
+            const preferredItems = possibleItems.filter(item => {
+                const itemTags = [
+                    item.tags.quality,
+                    item.tags.state,
+                    item.tags.condition,
+                    item.tags.emotion,
+                ].flat().filter(Boolean);
+
+                return !itemTags.some(tag => undesirableStates.has(tag as string));
+            });
+
+            if (preferredItems.length > 0) {
+                correctItem = getRandomItems(preferredItems, 1)[0];
+            } else {
+                correctItem = getRandomItems(possibleItems, 1)[0];
+            }
+        }
+
+        if (!correctItem) continue;
+
+        // Helper function to check word conflicts
+        const hasWordConflict = (word1: string, word2: string): boolean => {
+            // Normalize Turkish characters for better matching
+            const normalize = (str: string) => str.toLowerCase()
+                .replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ş/g, 's')
+                .replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u');
+            
+            const w1Normalized = normalize(word1);
+            const w2Normalized = normalize(word2);
+            
+            // Direct substring check
+            if (w1Normalized.includes(w2Normalized) || w2Normalized.includes(w1Normalized)) {
+                return true;
+            }
+            
+            // Split and check word parts
+            const w1Parts = w1Normalized.split(' ');
+            const w2Parts = w2Normalized.split(' ');
+            
+            // Check if any word parts overlap (e.g., "bardak" vs "su bardagi")
+            return w1Parts.some(part => 
+                w2Parts.some(part2 => {
+                    if (part.length < 3 || part2.length < 3) return false; // Skip short words like "su"
+                    return part.includes(part2) || part2.includes(part) ||
+                           (Math.abs(part.length - part2.length) <= 2 && 
+                            part.substring(0, Math.min(part.length - 1, part2.length - 1)) === 
+                            part2.substring(0, Math.min(part.length - 1, part2.length - 1)));
+                })
+            );
+        };
+
+        let distractorPool: ImageMetadata[] = [];
+        
+        if (['meyve', 'sebze', 'yiyecek'].includes(categoryId)) {
+            distractorPool = imageData.filter(item =>
+                !bannedIds.has(item.id) &&
+                ['meyve', 'sebze', 'yiyecek'].includes(item.tags.category) &&
+                item.word !== correctItem.word &&
+                !hasWordConflict(item.word, correctItem.word)
+            );
+        } else {
+            distractorPool = itemsInCategory.filter(item => 
+                item.word !== correctItem.word &&
+                !hasWordConflict(item.word, correctItem.word)
+            );
+        }
+
+        if (distractorPool.length < 3) {
+            // Fallback: Get distractors from different categories to ensure variety
+            distractorPool = imageData.filter(item =>
+                !bannedIds.has(item.id) && 
+                item.word !== correctItem.word &&
+                !hasWordConflict(item.word, correctItem.word) &&
+                item.tags.category !== correctItem.tags.category // Different category for variety
+            );
+            
+            // If still not enough, relax category restriction but keep word conflict filter
+            if (distractorPool.length < 3) {
+                distractorPool = imageData.filter(item =>
+                    !bannedIds.has(item.id) && 
+                    item.word !== correctItem.word &&
+                    !hasWordConflict(item.word, correctItem.word)
+                );
+            }
+        }
+
+        const distractors = getRandomItems(distractorPool, 3);
+        if (distractors.length < 3) continue;
+
+        const options = shuffleArray([
+            {
+                id: correctItem.id, word: correctItem.word, audioKey: correctItem.audioKeys.default,
+                spokenText: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true,
+            },
+            ...distractors.map(d => ({
+                id: d.id, word: d.word, audioKey: d.audioKeys.default,
+                spokenText: d.word, imageUrl: d.imageUrl, isCorrect: false,
+            }))
+        ]);
+        
+        rounds.push({
+            id: correctItem.id, question: `${correctItem.word} hangisi?`,
+            questionAudioKey: 'question_which_is_it', options: options,
+            activityType: ActivityType.ObjectRecognition,
+        });
+    }
+    return rounds;
+};
+
+// --- DYNAMIC CONCEPT ACTIVITY GENERATORS ---
+
+// Helper to create a ConceptOption from ImageMetadata
+const createOption = (image: ImageMetadata, isCorrect: boolean, spokenText: string): ConceptOption => ({
+    id: image.id,
+    word: image.word,
+    imageUrl: image.imageUrl,
+    audioKey: image.audioKeys.default,
+    spokenText: spokenText,
+    isCorrect,
+});
+
+const createYesNoRounds = (count: number = 8): Word[] => {
+    const bannedIds = getBannedImageIds();
+    
+    // Filter the pool based on the user's list of IDs
+    const yesNoPool = imageData.filter(item => 
+        !bannedIds.has(item.id) && YES_NO_ALLOWED_IDS.has(item.id)
+    );
+
+    const uniqueWordMap = new Map<string, ImageMetadata>();
+    for (const item of shuffleArray(yesNoPool)) {
+        if (!uniqueWordMap.has(item.word.toLocaleLowerCase('tr-TR'))) {
+            uniqueWordMap.set(item.word.toLocaleLowerCase('tr-TR'), item);
+        }
+    }
+    const uniquePool = Array.from(uniqueWordMap.values());
+    
+    const rounds: Word[] = [];
+    const usedIds = new Set<number>();
+    const numYes = Math.ceil(count / 2);
+    let attempts = 0;
+
+    // "Yes" rounds
+    while (rounds.length < numYes && attempts < 50) {
+        attempts++;
+        const item = getRandomItems(uniquePool, 1)[0];
+        if (item && !usedIds.has(item.id)) {
+            usedIds.add(item.id);
+            rounds.push({
+                id: item.id, word: item.word, imageUrl: item.imageUrl, audioKeys: item.audioKeys,
+                questionText: `Bu bir ${item.word} mı?`, isCorrectAnswer: true, activityType: ActivityType.YesNo
+            });
+        }
+    }
+    
+    // "No" rounds
+    while (rounds.length < count && attempts < 100) {
+        attempts++;
+        const shownItem = getRandomItems(uniquePool, 1)[0];
+        if (!shownItem || usedIds.has(shownItem.id)) {
+            continue;
+        }
+
+        // New logic: Find a distractor from the same category first.
+        let distractorPool = uniquePool.filter(
+            item => item.tags.category === shownItem.tags.category && item.word !== shownItem.word
+        );
+
+        // Fallback: If no distractors in the same category, use any other item.
+        if (distractorPool.length === 0) {
+            distractorPool = uniquePool.filter(
+                item => item.word !== shownItem.word
+            );
+        }
+        
+        if (distractorPool.length > 0) {
+            const questionItem = getRandomItems(distractorPool, 1)[0];
+            usedIds.add(shownItem.id);
+            rounds.push({
+                id: shownItem.id, word: shownItem.word, imageUrl: shownItem.imageUrl, audioKeys: shownItem.audioKeys,
+                questionText: `Bu bir ${questionItem.word} mı?`, isCorrectAnswer: false, activityType: ActivityType.YesNo
+            });
+        }
+    }
+
+    return shuffleArray(rounds);
+};
+
+const createColorsRounds = (count: number = 8): ConceptRound[] => {
+    const bannedIds = getBannedImageIds();
+    const availableItems = imageData.filter(item => !bannedIds.has(item.id) && item.tags.color);
+    
+    const allColors = [...new Set(availableItems.flatMap(item => item.tags.color || []))];
+    const rounds: ConceptRound[] = [];
+    
+    for (let i = 0; i < count; i++) {
+        const targetColor = getRandomItems(allColors, 1)[0];
+        
+        const correctItems = availableItems.filter(item => (Array.isArray(item.tags.color) ? item.tags.color.includes(targetColor) : item.tags.color === targetColor));
+        let distractorItems = availableItems.filter(item => !(Array.isArray(item.tags.color) ? item.tags.color.includes(targetColor) : item.tags.color === targetColor));
+
+        if (targetColor === 'çok renkli') {
+            const multiColoredWords = new Set(['papağan', 'gökkuşağı']);
+            const correctItemForMulti = correctItems.find(item => multiColoredWords.has(item.word));
+            if(correctItemForMulti) {
+                distractorItems = distractorItems.filter(item => !multiColoredWords.has(item.word));
+            }
+        }
+
+        const correctItem = getRandomItems(correctItems, 1)[0];
+        const distractorItem = getRandomItems(distractorItems.filter(d => d.word !== correctItem?.word), 1)[0];
+
+        if (correctItem && distractorItem) {
+            const options: ConceptOption[] = shuffleArray([
+                { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: correctItem.word },
+                { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: distractorItem.word },
+            ]);
+            rounds.push({ id: correctItem.id + i, question: `${targetColor} olan hangisi?`, questionAudioKey: "q_which_is_color", activityType: ActivityType.Colors, options });
+        }
+    }
+    return rounds;
+};
+
+const createShapesRounds = (count: number = 8): ConceptRound[] => {
+    const bannedIds = getBannedImageIds();
+    const shapePool = imageData.filter(item => !bannedIds.has(item.id) && item.tags.shape);
+
+    const allShapes = [...new Set(shapePool.flatMap(item => item.tags.shape || []))].filter(s => ['daire', 'kare', 'üçgen', 'dikdörtgen', 'yıldız', 'oval'].includes(s));
+    const rounds: ConceptRound[] = [];
+    let attempts = 0;
+
+    while (rounds.length < count && attempts < 50) {
+        attempts++;
+        const targetShape = getRandomItems(allShapes, 1)[0];
+        if (!targetShape) continue;
+
+        const correctItems = shapePool.filter(item => Array.isArray(item.tags.shape) ? item.tags.shape.includes(targetShape) : item.tags.shape === targetShape);
+        
+        const distractorItems = shapePool.filter(item => {
+            if (!item.tags.shape) return false;
+            const itemShapes = Array.isArray(item.tags.shape) ? item.tags.shape : [item.tags.shape];
+            return itemShapes.some(s => allShapes.includes(s)) && !itemShapes.includes(targetShape);
+        });
+        
+        const correctItem = getRandomItems(correctItems, 1)[0];
+        const distractorItem = getRandomItems(distractorItems.filter(d => d.word !== correctItem?.word), 1)[0];
+        
+        if (correctItem && distractorItem) {
+            const options: ConceptOption[] = shuffleArray([
+                { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: correctItem.word },
+                { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: distractorItem.word },
+            ]);
+             rounds.push({ id: correctItem.id + rounds.length, question: `${targetShape} olan hangisi?`, questionAudioKey: "q_which_is_shape", activityType: ActivityType.Shapes, options });
+        }
+    }
+    return rounds;
+};
+
+const createEmotionsRounds = (count: number = 8): ConceptRound[] => {
+    const bannedIds = getBannedImageIds();
+    const emotionItems = imageData.filter(item => !bannedIds.has(item.id) && item.tags.emotion);
+
+    const characters = new Map<string, ImageMetadata[]>();
+    for (const item of emotionItems) {
+        if (!characters.has(item.word)) {
+            characters.set(item.word, []);
+        }
+        characters.get(item.word)!.push(item);
+    }
+    
+    const validCharacterGroups = Array.from(characters.values()).filter(group => group.length >= 2);
+    if (validCharacterGroups.length === 0) return [];
+    
+    const rounds: ConceptRound[] = [];
+    let attempts = 0;
+
+    while (rounds.length < count && attempts < 50) {
+        attempts++;
+        const characterGroup = getRandomItems(validCharacterGroups, 1)[0];
+        const [correctItem, distractorItem] = getRandomItems(characterGroup, 2);
+
+        if (!correctItem || !distractorItem || !correctItem.tags.emotion || !distractorItem.tags.emotion) continue;
+
+        const targetEmotion = Array.isArray(correctItem.tags.emotion) ? correctItem.tags.emotion[0] : correctItem.tags.emotion;
+        
+        if (rounds.some(r => r.options.some(o => o.id === correctItem.id))) {
+            continue;
+        }
+
+        const options: ConceptOption[] = shuffleArray([
+            { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: correctItem.word },
+            { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: distractorItem.word },
+        ]);
+
+        const capitalizedEmotion = targetEmotion.charAt(0).toLocaleUpperCase('tr-TR') + targetEmotion.slice(1);
+
+        rounds.push({ 
+            id: correctItem.id + distractorItem.id + rounds.length,
+            question: `${capitalizedEmotion} olan hangisi?`, 
+            questionAudioKey: "q_which_is_emotion", 
+            activityType: ActivityType.Emotions, 
+            options 
+        });
+    }
+
+    return rounds;
+};
+
+// New dynamic generator for Visual "What Doesn't Belong" (3 same, 1 different)
+const createVisualWhatDoesntBelongRounds = (count: number): ConceptRound[] => {
+    const bannedIds = getBannedImageIds();
+    const pool = imageData.filter(item => !bannedIds.has(item.id));
+    const rounds: ConceptRound[] = [];
+    const usedCorrectIds = new Set<number>();
+
+    let attempts = 0;
+    while (rounds.length < count && attempts < 50) {
+        attempts++;
+        
+        let correctItem = getRandomItems(pool.filter(p => !usedCorrectIds.has(p.id)), 1)[0];
+        if (!correctItem) continue;
+        usedCorrectIds.add(correctItem.id);
+
+        const distractorPool = pool.filter(p => p.id !== correctItem!.id);
+        let distractorItem = getRandomItems(distractorPool, 1)[0];
+        if (!distractorItem) continue;
+
+        const options: ConceptOption[] = shuffleArray([
+            createOption(correctItem, true, correctItem.word),
+            createOption(distractorItem, false, distractorItem.word),
+            createOption(distractorItem, false, distractorItem.word),
+            createOption(distractorItem, false, distractorItem.word)
+        ]);
+
+        rounds.push({
+            id: correctItem.id + distractorItem.id + rounds.length,
+            question: "Hangisi farklı?",
+            questionAudioKey: "q_which_is_different",
+            activityType: ActivityType.WhatDoesntBelong,
+            options
+        });
+    }
+    return rounds;
+};
+
+
+// --- NEW, SIMPLIFIED MAIN DATA FETCHER ---
+const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
+    [ActivityType.Senses]: sensesData,
+    [ActivityType.BigSmall]: bigSmallData,
+    [ActivityType.LongShort]: longShortData,
+    [ActivityType.ThinThick]: thinThickData,
+    [ActivityType.WideNarrow]: wideNarrowData,
+    [ActivityType.OldNew]: oldNewData,
+    [ActivityType.YoungOld]: youngOldData,
+    [ActivityType.HardSoft]: hardSoftData,
+    [ActivityType.CleanDirty]: cleanDirtyData,
+    [ActivityType.WetDry]: wetDryData,
+    [ActivityType.OpenClosed]: openClosedData,
+    [ActivityType.StraightCurved]: straightCurvedData,
+    [ActivityType.AliveLifeless]: aliveLifelessData,
+    [ActivityType.BitterSweet]: bitterSweetData,
+    [ActivityType.HeavyLight]: heavyLightData,
+    [ActivityType.HotCold]: hotColdData,
+    [ActivityType.RoughSmooth]: roughSmoothData,
+    [ActivityType.BrokenIntact]: brokenIntactData,
+    [ActivityType.MessyClean]: messyCleanData,
+    [ActivityType.TazeBayat]: tazeBayatData,
+    [ActivityType.KirisikDuzgun]: kirisikDuzgunData,
+    [ActivityType.SivriKut]: sivriKutData,
+    [ActivityType.ParlakMat]: parlakMatData,
+    [ActivityType.TembelCaliskan]: tembelCaliskanData,
+    [ActivityType.SeffafOpak]: seffafOpakData,
+    [ActivityType.DikenliPuruzsuz]: dikenliPuruzsuzData,
+    [ActivityType.DugumCozuk]: dugumCozukData,
+    [ActivityType.HungryFull]: hungryFullData,
+    [ActivityType.DerinSig]: derinSigData,
+    [ActivityType.KalabalikTenha]: kalabalikTenhaData,
+    [ActivityType.TersDuz]: tersDuzData,
+    [ActivityType.FewMuch]: fewMuchData,
+    [ActivityType.HalfQuarterWhole]: halfQuarterWholeData,
+    [ActivityType.FullEmpty]: fullEmptyData,
+    [ActivityType.OddEven]: oddEvenData,
+    [ActivityType.OnUnder]: onUnderData,
+    [ActivityType.BelowAbove]: belowAboveData,
+    [ActivityType.BesideOpposite]: besideOppositeData,
+    [ActivityType.InFrontOfBehind]: inFrontOfBehindData,
+    [ActivityType.InsideOutside]: insideOutsideData,
+    [ActivityType.Between]: betweenData,
+    [ActivityType.LeftRight]: leftRightData,
+    [ActivityType.NearFar]: nearFarData,
+    [ActivityType.HighLow]: highLowData,
+    [ActivityType.BeforeAfter]: beforeAfterData,
+    [ActivityType.DayNight]: dayNightData,
+    [ActivityType.FastSlow]: fastSlowData,
+    // WhatDoesntBelong is now handled dynamically
+    [ActivityType.FunctionalMatching]: functionalMatchingData,
+    [ActivityType.CauseEffect]: causeEffectData,
+    [ActivityType.SequencingStories]: sequencingStoryData,
+    [ActivityType.PatternCompletion]: patternCompletionData,
+    [ActivityType.DragAndDropCounting]: dragAndDropCountingData,
+    [ActivityType.DragAndDropPositioning]: dragAndDropPositioningData,
+};
+
+export const fetchConceptActivityData = async (activity: ActivityType, activityStats: Record<string, ActivityStats>, count?: number): Promise<any[]> => {
+    const MAX_QUESTIONS_STATIC = count || 8;
+    const NUM_ROUNDS_DYNAMIC = count || 4; 
+
+    // Dynamic Generators
+    if (activity === ActivityType.YesNo) return createYesNoRounds(MAX_QUESTIONS_STATIC);
+    if (activity === ActivityType.Colors) return createColorsRounds(MAX_QUESTIONS_STATIC);
+    if (activity === ActivityType.Shapes) return createShapesRounds(MAX_QUESTIONS_STATIC);
+    if (activity === ActivityType.Emotions) return createEmotionsRounds(MAX_QUESTIONS_STATIC);
+    
+    if (activity === ActivityType.WhatDoesntBelong) {
+        const visualRoundsCount = Math.floor(MAX_QUESTIONS_STATIC / 2);
+        const categoryRoundsCount = MAX_QUESTIONS_STATIC - visualRoundsCount;
+
+        const visualRounds = createVisualWhatDoesntBelongRounds(visualRoundsCount);
+        const categoryRounds = getRandomItems(whatDoesntBelongData, categoryRoundsCount).map(round => ({
+            ...round,
+            options: shuffleArray(round.options),
+            activityType: activity,
+        }));
+
+        return shuffleArray([...visualRounds, ...categoryRounds]);
+    }
+
+
+    if (activity === ActivityType.Sudoku) {
+        const stats = activityStats[String(ActivityType.Sudoku)] || { completions: 0 };
+        const completions = stats.completions || 0;
+        const unknowns = Math.min(4, Math.floor(completions / 2) + 1);
+        
+        const rounds: SudokuRound[] = [];
+        const shuffledSolutions = shuffleArray(sudokuData);
+
+        for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) {
+            const solution = shuffledSolutions[i % shuffledSolutions.length];
+            const puzzleGrid: (SudokuItem | null)[] = [...solution.solutionGrid];
+            const indices = shuffleArray(Array.from({ length: 9 }, (_, k) => k));
+            
+            for (let j = 0; j < unknowns; j++) {
+                puzzleGrid[indices[j]] = null;
+            }
+
+            rounds.push({
+                ...solution,
+                id: solution.id + i * 100,
+                puzzleGrid: puzzleGrid,
+                activityType: ActivityType.Sudoku,
+            });
+        }
+        return rounds;
+    }
+
+    if (activity === ActivityType.MemoryCards) {
+        const stats = activityStats[String(ActivityType.MemoryCards)] || { completions: 0 };
+        const completions = stats.completions || 0;
+        const numPairs = Math.min(5, Math.floor(completions / 2) + 2);
+
+        const rounds: MemoryGameRound[] = [];
+        for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) {
+             const boardCards = getRandomItems(memoryCardPool, numPairs);
+             rounds.push({
+                id: i,
+                boardCards: boardCards,
+                activityType: ActivityType.MemoryCards,
+             });
+        }
+        return rounds;
+    }
+    
+    if (activity === ActivityType.NumberSequencing) {
+        const stats = activityStats[String(ActivityType.NumberSequencing)] || { completions: 0 };
+        const completions = stats.completions || 0;
+        
+        const allRounds = shuffleArray(numberSequencingData);
+        const easyRounds = allRounds.filter(r => r.difficulty === 'easy');
+        const mediumRounds = allRounds.filter(r => r.difficulty === 'medium');
+        const hardRounds = allRounds.filter(r => r.difficulty === 'hard');
+
+        let selectedRounds: NumberSequencingRound[] = [];
+        
+        if (completions < 2) {
+            selectedRounds = [...getRandomItems(easyRounds, 6), ...getRandomItems(mediumRounds, 2)];
+        } else if (completions < 5) {
+            selectedRounds = [...getRandomItems(easyRounds, 3), ...getRandomItems(mediumRounds, 3), ...getRandomItems(hardRounds, 2)];
+        } else {
+            selectedRounds = [...getRandomItems(easyRounds, 2), ...getRandomItems(mediumRounds, 3), ...getRandomItems(hardRounds, 3)];
+        }
+        
+        return shuffleArray(selectedRounds).map(r => ({ ...r, activityType: ActivityType.NumberSequencing }));
+    }
+
+    const rawData = staticActivityDataMap[activity];
+    if (!rawData) return [];
+
+    if (rawData.length > 0 && rawData[0]?.options?.length === 2) {
+        const shuffledData = shuffleArray(rawData);
+        const uniquePairRounds: ConceptRound[] = [];
+        const seenPairs = new Set<string>();
+
+        for (const round of shuffledData) {
+            if (uniquePairRounds.length >= MAX_QUESTIONS_STATIC) break;
+
+            const optionIds = (round.options as ConceptOption[]).map(opt => opt.id).sort((a, b) => a - b);
+            const pairKey = optionIds.join('-');
+
+            if (!seenPairs.has(pairKey)) {
+                seenPairs.add(pairKey);
+                uniquePairRounds.push({
+                    ...round,
+                    options: shuffleArray(round.options),
+                    activityType: activity,
+                });
+            }
+        }
+        return uniquePairRounds;
+    }
+
+    let processedRounds: any[] = [];
+
+    if (rawData.length > 0 && rawData[0]?.options) {
+        processedRounds = rawData.map(round => ({
+            ...round,
+            options: shuffleArray(round.options),
+            activityType: activity,
+        }));
+    } else {
+        processedRounds = rawData.map(round => ({...round, activityType: activity}));
+    }
+    
+    return getRandomItems(processedRounds, MAX_QUESTIONS_STATIC);
+};
+
+export const fetchLetterActivityData = async (activity: ActivityType, letter: string, count?: number): Promise<any[]> => {
+    try {
+        if (activity === ActivityType.EmbeddedStory) {
+            return await fetchStoriesForLetter(letter);
+        }
+        if (activity === ActivityType.FindTheLetterInGrid) {
+            return [{ id: 0, word: 'grid', imageUrl: '', audioKeys: { default: '' }, activityType: activity }];
+        }
+        if (activity === ActivityType.SoundPresence) {
+             return await createLetterPresenceRounds(letter, count);
+        }
+        
+        const fetchedWords = await fetchWordsForLetter(letter, count);
+        
+        if (activity === ActivityType.FindTheLetter) {
+            const wordsWithLetter = fetchedWords.filter(w => w.hasLetter && w.word.replace(/\s/g, '').length <= 7);
+            return getRandomItems(wordsWithLetter, count || 8).map(w => ({ ...w, activityType: activity }));
+        }
+
+        if (activity === ActivityType.FindTheSoundInImage) {
+            const correctWords = fetchedWords.filter(w => w.hasLetter);
+            const distractorPool = fetchedWords.filter(w => !w.hasLetter);
+            
+            const numRounds = Math.min(correctWords.length, Math.floor(distractorPool.length / 2), count || 8);
+            if (numRounds < 1) return [];
+
+            const rounds: Word[] = [];
+            for (let i = 0; i < numRounds; i++) {
+                const correctWord = correctWords[i];
+                const distractors = [distractorPool[i * 2], distractorPool[i * 2 + 1]];
+                const options = [correctWord, ...distractors].sort(() => Math.random() - 0.5);
+                rounds.push({ ...correctWord, options, activityType: activity });
+            }
+            return rounds;
+        }
+
+        return [];
+    } catch(error) {
+        console.error("İçerik yüklenirken hata:", error);
+        return [];
+    }
+};

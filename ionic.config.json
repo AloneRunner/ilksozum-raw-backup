@@ -1,0 +1,8 @@
+
+{
+  "name": "ilk-sozum-egitici-kartlar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

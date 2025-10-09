@@ -1,0 +1,33 @@
+
+{
+  "name": "İlk Sözüm: Eğitici Kartlar",
+  "short_name": "İlk Sözüm",
+  "id": "com.omer.sesogrenme.cocuklarim",
+  "description": "Çocuklar için kelimeleri, kavramları ve sesleri öğreten interaktif eğitici kartlar.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f0f9ff",
+  "theme_color": "#38bdf8",
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

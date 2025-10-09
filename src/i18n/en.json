@@ -1,0 +1,46 @@
+{
+  "app": {
+    "printPreview": "Print Preview",
+    "savePdf": "Save PDF",
+    "print": "Print",
+    "back": "Go back",
+    "developing": "Under development",
+    "pdfSavedInfo": "PDF saved. Check your Documents folder or use the share menu.",
+    "pdfSaveError": "An error occurred while saving the PDF. Please try again.",
+    "pdfCreateError": "An error occurred while creating the PDF. Please try again.",
+    "pdfJobName": "My First Words Cards",
+    "shareTitle": "PDF Saved",
+    "shareText": "The PDF file was saved. Would you like to share it?",
+    "shareDialogTitle": "Share PDF"
+  },
+  "choice": {
+    "readQuestion": "Speak the question",
+    "matchPrompt": "Which one matches this?",
+    "label": "Label",
+    "hint": "Hint",
+    "showLabel": "Show labels",
+    "hideLabel": "Hide labels",
+    "showHint": "Show hint",
+    "hideHint": "Hide hint",
+    "banImageAria": "Don't show this image again",
+    "learnColors": "Learn colors",
+    "learnShapes": "Learn shapes",
+    "learnEmotions": "Learn emotions"
+  },
+  "feedback": {
+    "correctPrefix": "Yes, this is",
+    "wrongPrefix": "No, this is",
+    "rightPrefix": "Correct, this is"
+  },
+  "settings": {
+    "language": "Language",
+    "languageSubtitle": "Interface and speech language",
+    "languageNote": "Letter activities are currently Turkish-only."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objects",
+      "subtitle": "Curated object sets for non‑Turkish languages"
+    }
+  }
+}

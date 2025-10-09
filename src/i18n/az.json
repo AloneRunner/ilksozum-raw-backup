@@ -1,0 +1,44 @@
+{
+  "app": {
+    "printPreview": "Çap ön baxışı",
+    "savePdf": "PDF-i yadda saxla",
+    "print": "Çap et",
+    "back": "Geri qayıt",
+    "pdfSavedInfo": "PDF saxlanıldı. Sənədlər qovluğunu yoxlayın və ya Paylaş menyusundan istifadə edin.",
+    "pdfSaveError": "PDF saxlanılarkən xəta baş verdi. Yenidən cəhd edin.",
+    "pdfCreateError": "PDF yaradılarkən xəta baş verdi. Yenidən cəhd edin.",
+    "pdfJobName": "İlk Sözlər Kartları",
+    "shareTitle": "PDF saxlanıldı",
+    "shareText": "PDF faylı saxlanıldı. Paylaşmaq istəyirsiniz?",
+    "shareDialogTitle": "PDF paylaş"
+  },
+  "choice": {
+    "readQuestion": "Sualı səsləndir",
+    "matchPrompt": "Hansısı buna uyğundur?",
+    "label": "Yarlıq",
+    "hint": "İpucu",
+    "showLabel": "Yarlıqları göstər",
+    "hideLabel": "Yarlıqları gizlət",
+    "showHint": "İpucunu göstər",
+    "hideHint": "İpucunu gizlət",
+    "banImageAria": "Bu şəkli bir daha göstərmə",
+    "learnColors": "Rəngləri öyrən",
+    "learnShapes": "Formaları öyrən",
+    "learnEmotions": "Hissləri öyrən"
+  },
+  "feedback": {
+    "correctPrefix": "Bəli, bu",
+    "wrongPrefix": "Xeyr, bu"
+  },
+  "settings": {
+    "language": "Dil",
+    "languageSubtitle": "İnterfeys və səs dili",
+    "languageNote": "Hərf fəaliyyətləri hələlik yalnız türk dilindədir."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Əşyalar",
+      "subtitle": "Türk dili xaricində dillər üçün sabit sual‑cavab dəstləri"
+    }
+  }
+}

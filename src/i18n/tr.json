@@ -1,0 +1,46 @@
+{
+  "app": {
+    "printPreview": "Baskı Önizleme",
+    "savePdf": "PDF Kaydet",
+    "print": "Yazdır",
+    "back": "Geri dön",
+    "developing": "Geliştiriliyor",
+    "pdfSavedInfo": "PDF kaydedildi. Cihazınızın Belgeler klasörünü kontrol edin veya paylaşım menüsünü kullanın.",
+    "pdfSaveError": "PDF kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "pdfCreateError": "PDF oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.",
+    "pdfJobName": "İlk Sözüm Kartları",
+    "shareTitle": "PDF Kaydedildi",
+    "shareText": "PDF dosyası kaydedildi. Paylaşmak ister misiniz?",
+    "shareDialogTitle": "PDF Paylaş"
+  },
+  "choice": {
+    "readQuestion": "Soruyu seslendir",
+    "matchPrompt": "Buna uygun olan hangisi?",
+    "label": "Etiket",
+    "hint": "İpucu",
+    "showLabel": "Etiketleri göster",
+    "hideLabel": "Etiketleri gizle",
+    "showHint": "İpucu göster",
+    "hideHint": "İpucunu gizle",
+    "banImageAria": "Bu görseli bir daha gösterme",
+    "learnColors": "Renkleri öğren",
+    "learnShapes": "Şekilleri öğren",
+    "learnEmotions": "Duyguları öğren"
+  },
+  "feedback": {
+    "correctPrefix": "Evet, bu",
+    "wrongPrefix": "Hayır, bu",
+    "rightPrefix": "Doğru, bu"
+  },
+  "settings": {
+    "language": "Dil",
+    "languageSubtitle": "Arayüz ve konuşma dili",
+    "languageNote": "Harf etkinlikleri şimdilik yalnızca Türkçe."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Nesneler",
+      "subtitle": "Türkçe dışındaki diller için sabit nesne setleri"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "444004633987",
+    "project_id": "okuma-ve-sesleri-ogreniyorum",
+    "storage_bucket": "okuma-ve-sesleri-ogreniyorum.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444004633987:android:adb4e20f90a33388f83ab6",
+        "android_client_info": {
+          "package_name": "com.omer.sesogrenme.cocuklarim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiB8BvINK6rfYsRs_hNyWAFjf9PP7G4Xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

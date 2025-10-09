@@ -1,0 +1,44 @@
+{
+  "app": {
+    "printPreview": "Aperçu avant impression",
+    "savePdf": "Enregistrer en PDF",
+    "print": "Imprimer",
+    "back": "Revenir",
+    "pdfSavedInfo": "PDF enregistré. Consultez votre dossier Documents ou utilisez le menu Partager.",
+    "pdfSaveError": "Une erreur s’est produite lors de l’enregistrement du PDF. Veuillez réessayer.",
+    "pdfCreateError": "Une erreur s’est produite lors de la création du PDF. Veuillez réessayer.",
+    "pdfJobName": "Cartes Mes Premiers Mots",
+    "shareTitle": "PDF enregistré",
+    "shareText": "Le fichier PDF a été enregistré. Voulez-vous le partager ?",
+    "shareDialogTitle": "Partager le PDF"
+  },
+  "choice": {
+    "readQuestion": "Lire la question",
+    "matchPrompt": "Lequel correspond à ceci ?",
+    "label": "Étiquette",
+    "hint": "Indice",
+    "showLabel": "Afficher les étiquettes",
+    "hideLabel": "Masquer les étiquettes",
+    "showHint": "Afficher l’indice",
+    "hideHint": "Masquer l’indice",
+    "banImageAria": "Ne plus afficher cette image",
+    "learnColors": "Apprendre les couleurs",
+    "learnShapes": "Apprendre les formes",
+    "learnEmotions": "Apprendre les émotions"
+  },
+  "feedback": {
+    "correctPrefix": "Oui, c’est",
+    "wrongPrefix": "Non, c’est"
+  },
+  "settings": {
+    "language": "Langue",
+    "languageSubtitle": "Langue de l’interface et de la synthèse vocale",
+    "languageNote": "Les activités sur les lettres sont pour l’instant uniquement en turc."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objets",
+      "subtitle": "Jeux de questions sur des objets (fixes) pour les langues hors turc"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "app": {
+    "printPreview": "Afdrukvoorbeeld",
+    "savePdf": "PDF opslaan",
+    "print": "Afdrukken",
+    "back": "Terug",
+    "pdfSavedInfo": "PDF opgeslagen. Kijk in je map Documenten of gebruik het deelmenu.",
+    "pdfSaveError": "Er is een fout opgetreden bij het opslaan van de PDF. Probeer het opnieuw.",
+    "pdfCreateError": "Er is een fout opgetreden bij het maken van de PDF. Probeer het opnieuw.",
+    "pdfJobName": "Mijn Eerste Woorden-kaarten",
+    "shareTitle": "PDF opgeslagen",
+    "shareText": "Het PDF-bestand is opgeslagen. Wil je het delen?",
+    "shareDialogTitle": "PDF delen"
+  },
+  "choice": {
+    "readQuestion": "Vraag voorlezen",
+    "matchPrompt": "Welke past hierbij?",
+    "label": "Label",
+    "hint": "Tip",
+    "showLabel": "Labels tonen",
+    "hideLabel": "Labels verbergen",
+    "showHint": "Tip tonen",
+    "hideHint": "Tip verbergen",
+    "banImageAria": "Deze afbeelding niet meer tonen",
+    "learnColors": "Kleuren leren",
+    "learnShapes": "Vormen leren",
+    "learnEmotions": "Emoties leren"
+  },
+  "feedback": {
+    "correctPrefix": "Ja, dit is",
+    "wrongPrefix": "Nee, dit is"
+  },
+  "settings": {
+    "language": "Taal",
+    "languageSubtitle": "Taal van interface en spraak",
+    "languageNote": "Letteractiviteiten zijn voorlopig alleen in het Turks."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objecten",
+      "subtitle": "Vaste objectvragen voor niet‑Turkse talen"
+    }
+  }
+}

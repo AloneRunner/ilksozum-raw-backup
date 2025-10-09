@@ -1,0 +1,44 @@
+{
+  "app": {
+    "printPreview": "Druckvorschau",
+    "savePdf": "PDF speichern",
+    "print": "Drucken",
+    "back": "Zurück",
+    "pdfSavedInfo": "PDF gespeichert. Öffne deinen Ordner Dokumente oder nutze das Teilen-Menü.",
+    "pdfSaveError": "Beim Speichern der PDF ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+    "pdfCreateError": "Beim Erstellen der PDF ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+    "pdfJobName": "Meine Erste Wörter Karten",
+    "shareTitle": "PDF gespeichert",
+    "shareText": "Die PDF-Datei wurde gespeichert. Möchtest du sie teilen?",
+    "shareDialogTitle": "PDF teilen"
+  },
+  "choice": {
+    "readQuestion": "Frage vorlesen",
+    "matchPrompt": "Welche passt hierzu?",
+    "label": "Beschriftung",
+    "hint": "Hinweis",
+    "showLabel": "Beschriftungen anzeigen",
+    "hideLabel": "Beschriftungen ausblenden",
+    "showHint": "Hinweis anzeigen",
+    "hideHint": "Hinweis ausblenden",
+    "banImageAria": "Dieses Bild nicht mehr anzeigen",
+    "learnColors": "Farben lernen",
+    "learnShapes": "Formen lernen",
+    "learnEmotions": "Gefühle lernen"
+  },
+  "feedback": {
+    "correctPrefix": "Ja, das ist",
+    "wrongPrefix": "Nein, das ist"
+  },
+  "settings": {
+    "language": "Sprache",
+    "languageSubtitle": "Sprache der Oberfläche und Sprachausgabe",
+    "languageNote": "Buchstaben-Aktivitäten sind derzeit nur auf Türkisch verfügbar."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Gegenstände",
+      "subtitle": "Kuratiertes Fragen‑Set zu Gegenständen für Nicht‑Türkisch Sprachen"
+    }
+  }
+}

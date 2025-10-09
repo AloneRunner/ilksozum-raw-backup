@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Poppins', sans-serif;
+    touch-action: pan-y; /* Prevent horizontal scroll on mobile */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+/* Responsive base font size */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+@media (max-width: 380px) {
+    html {
+      font-size: 14px;
+    }
+}
+
+/* Custom Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in-up-toast {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+}
+.animate-fade-in-up-toast {
+    animation: fade-in-up-toast 0.4s ease-out forwards;
+}
+
+@keyframes pop-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+.animate-pop-in {
+    animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.text-shadow-soft {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations for speed learning screen */
+@keyframes move-fast {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100vw); }
+}
+.animate-move-fast {
+  animation: move-fast 2s linear infinite;
+}
+
+@keyframes move-slow {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100vw); }
+}
+.animate-move-slow {
+  animation: move-slow 6s linear infinite;
+}
+
+
+/* Utility for delaying animations */
+.animation-delay-200 {
+    animation-delay: 200ms;
+}
+
+/* Print specific styles */
+@media print {
+  /* Hide elements that shouldn't be printed */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset body and root for printing to avoid layout issues */
+  body, #root, #root > div {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+  
+  /* Ensure the print area is visible and takes up space */
+  #print-area {
+    position: static !important;
+  }
+  
+  .page-container {
+    /* This forces a page break after each page container */
+    page-break-after: always;
+    break-after: page;
+  }
+  .page-container:last-of-type {
+    /* Prevents adding an extra blank page at the end */
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .printable-card-wrapper {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  /* Force printing of background colors and images */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* Hint Animations for Big/Small Activity */
+@keyframes pulse-grow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.animate-pulse-grow {
+  animation: pulse-grow 0.7s ease-in-out;
+}
+
+@keyframes pulse-shrink {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+}
+.animate-pulse-shrink {
+  animation: pulse-shrink 0.7s ease-in-out;
+}

@@ -1,0 +1,85 @@
+# BENZER KELİME GRUPLARI ANALİZİ
+
+## Temel Mantık:
+- Ana görseller: Nesne ve harf etkinlikleri için kullanılacak (temiz, standart)
+- Varyant görseller: Kavram etkinlikleri için (kırık, eski, dağınık, vs.)
+
+## Bardak Grupları:
+1. bardak (ID: ?)
+2. su bardağı (ID: ?)
+
+## Düdüklü Tencere:
+- düdüklü tencere (ID: 298) ✓ MEVCUT
+
+## Analiz Edilen Benzer Gruplar:
+
+### Araba Ailesi:
+- araba (ana)
+- polis arabası (varyant)
+- itfaiye arabası (varyant)
+- okul otobüsü (varyant)
+
+### Ev Ailesi:
+- ev (ana)
+- eski ev (varyant - kırık)
+- yeni ev (varyant)
+
+### Monitor Ailesi:
+- monitor (ana - sağlam)
+- monitor (varyant - kırık)
+
+### Gözlük Ailesi:
+- gözlük (ana)
+- gözlük (varyant - kırık)
+
+### Vazo Ailesi:
+- vazo (ana)
+- vazo (varyant - kırık)
+
+### Mutfak Eşyaları:
+- kaşık (ana)
+- çatal (ana)
+- bıçak (ana)
+- düdüklü tencere (ana) ✓
+
+### Kapı Ailesi:
+- kapı (geniş)
+- kapı (dar)
+
+### Pencere Ailesi:
+- pencere (açık)
+- pencere (kapalı)
+- pencere (temiz)
+- pencere (kirli)
+
+### Mum Ailesi:
+- mum (kalın)
+- mum (ince)
+
+### Kutu Ailesi:
+- kutu (derin)
+- kutu (sığ)
+
+### Kumbara Ailesi:
+- kumbara (dolu)
+- kumbara (boş)
+
+### Oda Ailesi:
+- oda (toplu)
+- oda (dağınık)
+
+### İp/Halat Ailesi:
+- halat (kalın)
+- ip (ince)
+
+### Yol Ailesi:
+- yol (ıslak)
+- yol (kuru)
+- yol (pürüzlü)
+- yol (pürüzsüz)
+
+## ÖNERĠ SİSTEMİ:
+1. Her grubun EN STANDART halini "ana görsel" olarak işaretle
+2. Diğerlerini "kavram görseli" olarak kategorize et
+3. Nesne ve harf etkinliklerde sadece ana görselleri kullan
+4. Kavram etkinliklerinde varyantları kullan
