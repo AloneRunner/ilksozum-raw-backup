@@ -22,16 +22,16 @@ const GroupSelectionScreen: React.FC<GroupSelectionScreenProps> = ({ onSelectGro
   ];
 
   return (
-    <div className="flex flex-col items-center justify-start h-full max-w-lg mx-auto p-4 animate-fade-in">
-      <div className="w-full flex justify-between items-center mb-4 flex-shrink-0">
+    <div className="flex flex-col items-center justify-start h-full max-w-lg landscape:max-w-4xl mx-auto p-4 landscape:p-3 animate-fade-in">
+      <div className="w-full flex justify-between items-center mb-3 landscape:mb-2 flex-shrink-0">
          <button onClick={onBack} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label="Geri dön">
-            <ArrowLeftIcon className="w-8 h-8 text-sky-700" />
+            <ArrowLeftIcon className="w-7 h-7 landscape:w-6 landscape:h-6 text-sky-700" />
           </button>
-          <h1 className="text-3xl sm:text-4xl font-black text-sky-800">Heceleme</h1>
-          <div className="w-12"></div>
+          <h1 className="text-xl sm:text-2xl landscape:text-lg font-black text-sky-800">Heceleme</h1>
+          <div className="w-11 landscape:w-10"></div>
       </div>
       
-      <p className="text-center text-slate-600 mb-8 text-lg flex-shrink-0">
+      <p className="text-center text-slate-600 mb-5 landscape:mb-3 text-base landscape:text-sm flex-shrink-0">
         Öğrendiğin harfleri içeren grubu seç ve kelimeleri hecelemeye başla!
       </p>
 

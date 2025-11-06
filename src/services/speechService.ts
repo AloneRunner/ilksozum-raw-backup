@@ -108,9 +108,10 @@ export const speak = async (textToSpeak: string, overrideLang?: string): Promise
 
 /**
  * Plays a sound effect from an MP3 file, if not muted.
- * @param {'correct' | 'incorrect' | 'finish'} effect - The name of the effect.
+ * @param {'correct' | 'incorrect' | 'finish' | 'softincorrect'} effect - The name of the effect.
+ * @param options Optional settings such as volume (0.0 - 1.0)
  */
-export const playEffect = (effect: 'correct' | 'incorrect' | 'finish'): Promise<void> => {
+export const playEffect = (effect: 'correct' | 'incorrect' | 'finish' | 'softincorrect', options?: { volume?: number }): Promise<void> => {
   return new Promise((resolve) => {
     if (isMuted) {
       return resolve();
@@ -120,6 +121,9 @@ export const playEffect = (effect: 'correct' | 'incorrect' | 'finish'): Promise<
 
     const audioSrc = `/audio/${effect}.mp3`;
     const audio = new Audio(audioSrc);
+        if (typeof options?.volume === 'number') {
+            audio.volume = Math.max(0, Math.min(1, options.volume));
+        }
     currentEffect = audio;
 
     audio.play().catch(error => {

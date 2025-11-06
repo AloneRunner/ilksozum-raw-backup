@@ -5,9 +5,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 301,
     "word": "bulaşık makinesi",
     "imageUrl": "/images/301.png",
-    "audioKeys": { "default": "bulasik_makinesi" },
+    "audioKeys": { "default": "bulaşık makinesi" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["şekiller"],
       "shape": "dikdörtgen",
       "color": "gri",
@@ -21,9 +21,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "fırın",
     "imageUrl": "/images/302.png",
     "audioKeys": { "default": "fırın", "concept": "sıcak" },
-    "pairGroupId": "sicak-soguk-esya-2",
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["sıcak-soğuk"],
       "temperature": "sıcak",
       "lifeform": "cansız",
@@ -36,9 +35,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "musluk",
     "imageUrl": "/images/303.png",
     "audioKeys": { "default": "musluk", "concept": "açık" },
-    "pairGroupId": "acik-kapali-musluk-1",
     "tags": {
-      "category": "none",
+      "category": "Ev Eşyaları",
       "concept": ["açık-kapalı"],
       "state": "açık",
       "lifeform": "cansız",
@@ -51,9 +49,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "musluk",
     "imageUrl": "/images/304.png",
     "audioKeys": { "default": "musluk", "concept": "kapalı" },
-    "pairGroupId": "acik-kapali-musluk-1",
     "tags": {
-      "category": "ev_esya",
+      "category": "none",
       "concept": ["açık-kapalı"],
       "state": "kapalı",
       "lifeform": "cansız",
@@ -66,15 +63,14 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "ütü",
     "imageUrl": "/images/305.png",
     "audioKeys": { "default": "ütü", "concept": "sıcak" },
-    "pairGroupId": "sicak-soguk-esya-1",
     "tags": {
-      "syllables": ["ü", "tü"],
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["sıcak-soğuk", "duyular"],
-      "lifeform": "cansız",
-      "letters": ["Ü", "T", "Ü"],
       "temperature": "sıcak",
-      "sense": "dokunma"
+      "sense": "dokunma",
+      "lifeform": "cansız",
+      "syllables": ["ü", "tü"],
+      "letters": ["Ü", "T", "Ü"]
     }
   },
   {
@@ -82,26 +78,24 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "çivi",
     "imageUrl": "/images/306.png",
     "audioKeys": { "default": "çivi", "concept": "ince" },
-    "pairGroupId": "ince-kalin-alet-1",
     "tags": {
-      "syllables": ["çi", "vi"],
-      "category": "tamir_aleti",
-      "concept": ["ince-kalın"],
+      "category": "Aletler",
+      "concept": ["ince-kalın", "sivri-küt"],
+      "thickness": "ince",
+      "quality": "sivri",
       "lifeform": "cansız",
-      "letters": ["Ç", "İ", "V", "İ"],
-      "thickness": "ince"
+      "syllables": ["çi", "vi"],
+      "letters": ["Ç", "İ", "V", "İ"]
     }
   },
-    {
+  {
     "id": 307,
     "word": "bot",
     "imageUrl": "/images/307.png",
-    "audioKeys": { "default": "bot", "concept": "mat" },
-    "pairGroupId": "parlak-mat-ayakkabi-1",
+    "audioKeys": { "default": "bot" },
     "tags": {
-      "category": "giysi",
-      "concept": ["parlak-mat"],
-      "texture": "mat",
+      "category": "Giysiler & Aksesuarlar",
+      "concept": ["renkler"],
       "color": "kahverengi",
       "lifeform": "cansız",
       "syllables": ["bot"],
@@ -112,9 +106,11 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 308,
     "word": "terlik",
     "imageUrl": "/images/308.png",
-    "audioKeys": { "default": "terlik" },
+    "audioKeys": { "default": "terlik", "concept": "mat" },
     "tags": {
-      "category": "giysi",
+      "category": "Giysiler & Aksesuarlar",
+      "concept": ["parlak-mat"],
+      "texture": "mat",
       "lifeform": "cansız",
       "syllables": ["ter", "lik"],
       "letters": ["T", "E", "R", "L", "İ", "K"]
@@ -125,10 +121,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "gül",
     "imageUrl": "/images/309.png",
     "audioKeys": { "default": "gül", "concept": "pürüzsüz" },
-    "pairGroupId": ["dikenli-puruzsuz-bitki-1", "taze-bayat-bitki-1"],
     "tags": {
-      "category": "bitki",
-      "concept": ["dikenli-pürüzsüz", "taze-bayat"],
+      "category": "Bitkiler",
+      "concept": ["dikenli-pürüzsüz", "taze-bayat", "renkler"],
       "texture": "pürüzsüz",
       "quality": "taze",
       "color": "kırmızı",
@@ -142,9 +137,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "akvaryum",
     "imageUrl": "/images/310.png",
     "audioKeys": { "default": "akvaryum", "concept": "şeffaf" },
-    "pairGroupId": "seffaf-opak-nesne-2",
     "tags": {
-      "category": "nesne",
+      "category": "Ev Eşyaları", 
       "concept": ["içinde-dışında", "şeffaf-opak"],
       "quality": "şeffaf",
       "lifeform": "cansız",
@@ -158,7 +152,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/311.png",
     "audioKeys": { "default": "brokoli" },
     "tags": {
-      "category": "sebze",
+      "category": "Sebzeler",
+      "concept": ["renkler"],
       "color": "yeşil",
       "lifeform": "canlı",
       "syllables": ["bro", "ko", "li"],
@@ -171,7 +166,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/312.png",
     "audioKeys": { "default": "sosis" },
     "tags": {
-      "category": "yiyecek",
+      "category": "Diğer Yiyecekler",
       "lifeform": "cansız",
       "syllables": ["so", "sis"],
       "letters": ["S", "O", "S", "İ", "S"]
@@ -183,7 +178,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/313.png",
     "audioKeys": { "default": "kraliçe" },
     "tags": {
-      "category": "insan",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["kra", "li", "çe"],
       "letters": ["K", "R", "A", "L", "İ", "Ç", "E"]
@@ -195,7 +190,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/314.png",
     "audioKeys": { "default": "kral" },
     "tags": {
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["kral"],
       "letters": ["K", "R", "A", "L"]
@@ -207,7 +202,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/315.png",
     "audioKeys": { "default": "mikroskop" },
     "tags": {
-      "category": "nesne",
+      "category": "Ev Eşyaları",
       "concept": ["renkler", "duyular"],
       "sense": "görme",
       "color": "çok renkli",
@@ -221,10 +216,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "tohum",
     "imageUrl": "/images/316.png",
     "audioKeys": { "default": "tohum", "concept": "önce" },
-    "pairGroupId": "islak-kuru-toprak-1",
     "tags": {
       "sequence": { "group": "tohum-bitki", "order": 1 },
-      "category": "bitki",
+      "category": "Bitkiler",
       "concept": ["önce-sonra", "ıslak-kuru"],
       "state": ["önce", "kuru"],
       "lifeform": "canlı",
@@ -237,16 +231,15 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "filiz",
     "imageUrl": "/images/317.png",
     "audioKeys": { "default": "filiz", "concept": "genç" },
-    "pairGroupId": "yasli-genc-bitki-1",
     "tags": {
-      "syllables": ["fi", "liz"],
       "sequence": { "group": "tohum-bitki", "order": 2 },
-      "category": "bitki",
+      "category": "Bitkiler",
       "concept": ["yaşlı-genç", "önce-sonra"],
-      "lifeform": "canlı",
-      "letters": ["F", "İ", "L", "İ", "Z"],
       "age": "genç",
-      "state": "sonra"
+      "state": "sonra",
+      "lifeform": "canlı",
+      "syllables": ["fi", "liz"],
+      "letters": ["F", "İ", "L", "İ", "Z"]
     }
   },
   {
@@ -254,7 +247,6 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "sandalye",
     "imageUrl": "/images/318.png",
     "audioKeys": { "default": "sandalye", "concept": "eski" },
-    "pairGroupId": ["eski-yeni-sandalye-1", "saglam-kirik-sandalye-1"],
     "tags": {
       "category": "none",
       "concept": ["eski-yeni", "sağlam-kırık"],
@@ -270,9 +262,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "sandalye",
     "imageUrl": "/images/319.png",
     "audioKeys": { "default": "sandalye", "concept": "yeni" },
-    "pairGroupId": ["eski-yeni-sandalye-1", "saglam-kirik-sandalye-1"],
     "tags": {
-      "category": "ev_esya",
+      "category": "none",
       "concept": ["eski-yeni", "sağlam-kırık"],
       "condition": "yeni",
       "quality": "sağlam",
@@ -286,9 +277,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "panda",
     "imageUrl": "/images/320.png",
     "audioKeys": { "default": "panda", "concept": "tembel" },
-    "pairGroupId": "tembel-caliskan-hayvan-2",
     "tags": {
-      "category": "hayvan",
+      "category": "Hayvanlar",
       "concept": ["renkler", "tembel-çalışkan"],
       "quality": "tembel",
       "color": "siyah",
@@ -303,7 +293,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/321.png",
     "audioKeys": { "default": "tavuk" },
     "tags": {
-      "category": "hayvan",
+      "category": "Hayvanlar",
       "concept": ["renkler"],
       "color": "beyaz",
       "lifeform": "canlı",
@@ -316,9 +306,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "kayak",
     "imageUrl": "/images/322.png",
     "audioKeys": { "default": "kayak", "concept": "tek" },
-    "pairGroupId": "tek-cift-kayak-1",
     "tags": {
-      "category": "nesne",
+      "category": "none",
       "concept": ["tek-çift"],
       "quantity_type": "tek",
       "lifeform": "cansız",
@@ -331,10 +320,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "yılan",
     "imageUrl": "/images/323.png",
     "audioKeys": { "default": "yılan", "concept": "eğri" },
-    "pairGroupId": ["uzun-kisa-hayvan-3", "duz-egri-hayvan-1"],
     "tags": {
-      "category": "hayvan",
-      "concept": ["düz-eğri", "uzun-kısa"],
+      "category": "none",
+      "concept": ["düz-eğri", "uzun-kısa", "şekiller"],
       "shape": "eğri",
       "length": "uzun",
       "lifeform": "canlı",
@@ -348,9 +336,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/324.png",
     "audioKeys": { "default": "doktor" },
     "tags": {
-      "syllables": ["dok", "tor"],
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
+      "syllables": ["dok", "tor"],
       "letters": ["D", "O", "K", "T", "O", "R"]
     }
   },
@@ -360,7 +348,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/325.png",
     "audioKeys": { "default": "polis" },
     "tags": {
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["po", "lis"],
       "letters": ["P", "O", "L", "İ", "S"]
@@ -372,7 +360,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/326.png",
     "audioKeys": { "default": "aşçı" },
     "tags": {
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["aş", "çı"],
       "letters": ["A", "Ş", "Ç", "I"]
@@ -384,7 +372,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/327.png",
     "audioKeys": { "default": "itfaiyeci" },
     "tags": {
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["it", "fa", "i", "ye", "ci"],
       "letters": ["İ", "T", "F", "A", "İ", "Y", "E", "C", "İ"]
@@ -396,7 +384,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/328.png",
     "audioKeys": { "default": "flüt" },
     "tags": {
-      "category": "muzik_aleti",
+      "category": "Müzik Aletleri",
       "lifeform": "cansız",
       "syllables": ["flüt"],
       "letters": ["F", "L", "Ü", "T"]
@@ -408,7 +396,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/329.png",
     "audioKeys": { "default": "marakas" },
     "tags": {
-      "category": "muzik_aleti",
+      "category": "Müzik Aletleri",
+      "concept": ["renkler"],
       "color": "çok renkli",
       "lifeform": "cansız",
       "syllables": ["ma", "ra", "kas"],
@@ -420,9 +409,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "bisküvi",
     "imageUrl": "/images/330.png",
     "audioKeys": { "default": "bisküvi", "concept": "tatlı" },
-    "pairGroupId": "aci-tatli-yiyecek-3",
     "tags": {
-      "category": "yiyecek",
+      "category": "Diğer Yiyecekler",
       "concept": ["şekiller", "acı-tatlı"],
       "shape": "kare",
       "taste": "tatlı",
@@ -436,9 +424,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "limonata",
     "imageUrl": "/images/331.png",
     "audioKeys": { "default": "limonata", "concept": "soğuk" },
-    "pairGroupId": "sicak-soguk-yiyecek-2",
     "tags": {
-      "category": "yiyecek",
+      "category": "İçecekler",
       "concept": ["sıcak-soğuk"],
       "temperature": "soğuk",
       "lifeform": "cansız",
@@ -451,9 +438,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "salata",
     "imageUrl": "/images/332.png",
     "audioKeys": { "default": "salata", "concept": "dolu" },
-    "pairGroupId": ["dolu-bos-kase-1", "taze-bayat-sebze-1"],
     "tags": {
-      "category": "yiyecek",
+      "category": "Diğer Yiyecekler",
       "concept": ["dolu-boş", "taze-bayat"],
       "fullness": "dolu",
       "quality": "taze",
@@ -468,7 +454,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/333.png",
     "audioKeys": { "default": "şeftali" },
     "tags": {
-      "category": "meyve",
+      "category": "Meyveler",
       "concept": ["şekiller"],
       "shape": "daire",
       "lifeform": "canlı",
@@ -482,7 +468,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/334.png",
     "audioKeys": { "default": "lahana" },
     "tags": {
-      "category": "sebze",
+      "category": "Sebzeler",
+      "concept": ["renkler"],
       "color": "yeşil",
       "lifeform": "canlı",
       "syllables": ["la", "ha", "na"],
@@ -495,7 +482,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/335.png",
     "audioKeys": { "default": "kazak" },
     "tags": {
-      "category": "giysi",
+      "category": "Giysiler & Aksesuarlar",
+      "concept": ["renkler"],
       "color": "kırmızı",
       "lifeform": "cansız",
       "syllables": ["ka", "zak"],
@@ -507,10 +495,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "bere",
     "imageUrl": "/images/336.png",
     "audioKeys": { "default": "bere", "concept": "yumuşak" },
-    "pairGroupId": "sert-yumusak-giysi-1",
     "tags": {
-      "category": "giysi",
-      "concept": ["sert-yumuşak"],
+      "category": "Giysiler & Aksesuarlar",
+      "concept": ["sert-yumuşak", "renkler"],
       "texture": "yumuşak",
       "color": "mavi",
       "lifeform": "cansız",
@@ -524,7 +511,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/337.png",
     "audioKeys": { "default": "denizaltı" },
     "tags": {
-      "category": "taşıt",
+      "category": "Taşıtlar",
+      "concept": ["renkler"],
       "color": "sarı",
       "lifeform": "cansız",
       "syllables": ["de", "ni", "zal", "tı"],
@@ -537,7 +525,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/338.png",
     "audioKeys": { "default": "vinç" },
     "tags": {
-      "category": "taşıt",
+      "category": "Taşıtlar",
+      "concept": ["renkler"],
       "color": "sarı",
       "lifeform": "cansız",
       "syllables": ["vinç"],
@@ -548,10 +537,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 339,
     "word": "elbise dolabı",
     "imageUrl": "/images/339.png",
-    "audioKeys": { "default": "elbise_dolabi", "concept": "kapalı" },
-    "pairGroupId": "acik-kapali-dolap-1",
+    "audioKeys": { "default": "elbise dolabı", "concept": "kapalı" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["açık-kapalı", "şekiller"],
       "state": "kapalı",
       "shape": "dikdörtgen",
@@ -567,7 +555,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/340.png",
     "audioKeys": { "default": "priz" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["şekiller"],
       "shape": "kare",
       "color": "beyaz",
@@ -582,8 +570,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/341.png",
     "audioKeys": { "default": "paspas" },
     "tags": {
-      "category": "ev_esya",
-      "concept": ["şekiller"],
+      "category": "Ev Eşyaları",
+      "concept": ["şekiller", "renkler"],
       "shape": "dikdörtgen",
       "color": "gri",
       "lifeform": "cansız",
@@ -596,9 +584,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "göl",
     "imageUrl": "/images/342.png",
     "audioKeys": { "default": "göl", "concept": "sığ" },
-    "pairGroupId": "derin-sig-doga-1",
     "tags": {
-      "category": "doğal yapı",
+      "category": "Doğal Yapılar & Uzay",
       "concept": ["derin-sığ"],
       "depth": "sığ",
       "lifeform": "cansız",
@@ -611,10 +598,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "nehir",
     "imageUrl": "/images/343.png",
     "audioKeys": { "default": "nehir", "concept": "geniş" },
-    "pairGroupId": ["genis-dar-doga-1", "duz-egri-doga-1"],
     "tags": {
-      "category": "doğal yapı",
-      "concept": ["geniş-dar", "düz-eğri"],
+      "category": "Doğal Yapılar & Uzay",
+      "concept": ["geniş-dar", "düz-eğri", "şekiller"],
       "width": "geniş",
       "shape": "eğri",
       "lifeform": "cansız",
@@ -628,7 +614,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/344.png",
     "audioKeys": { "default": "pense" },
     "tags": {
-      "category": "tamir_aleti",
+      "category": "Aletler",
       "lifeform": "cansız",
       "syllables": ["pen", "se"],
       "letters": ["P", "E", "N", "S", "E"]
@@ -639,9 +625,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "yüzük",
     "imageUrl": "/images/345.png",
     "audioKeys": { "default": "yüzük", "concept": "parlak" },
-    "pairGroupId": "parlak-mat-nesne-2",
     "tags": {
-      "category": "nesne",
+      "category": "Giysiler & Aksesuarlar",
       "concept": ["parlak-mat"],
       "texture": "parlak",
       "lifeform": "cansız",
@@ -654,9 +639,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "gül dalı",
     "imageUrl": "/images/346.png",
     "audioKeys": { "default": "gül dalı", "concept": "dikenli" },
-    "pairGroupId": ["dikenli-puruzsuz-bitki-1", "sivri-kut-bitki-1"],
     "tags": {
-      "category": "bitki",
+      "category": "Bitkiler",
       "concept": ["dikenli-pürüzsüz", "sivri-küt"],
       "texture": "dikenli",
       "quality": "sivri",
@@ -670,16 +654,15 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "taş",
     "imageUrl": "/images/347.png",
     "audioKeys": { "default": "taş", "concept": "sert" },
-    "pairGroupId": ["sert-yumusak-nesne-1", "parlak-mat-nesne-6", "agir-hafif-nesne-1"],
     "tags": {
-      "syllables": ["taş"],
-      "category": "doğal nesne",
+      "category": "Doğal Yapılar & Uzay",
       "concept": ["sert-yumuşak", "parlak-mat", "duyular", "ağır-hafif"],
-      "lifeform": "cansız",
-      "letters": ["T", "A", "Ş"],
       "texture": ["sert", "mat"],
       "sense": "dokunma",
-      "weight": "ağır"
+      "weight": "ağır",
+      "lifeform": "cansız",
+      "syllables": ["taş"],
+      "letters": ["T", "A", "Ş"]
     }
   },
   {
@@ -687,9 +670,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "ağustos böceği",
     "imageUrl": "/images/348.png",
     "audioKeys": { "default": "ağustos böceği", "concept": "tembel" },
-    "pairGroupId": "tembel-caliskan-hayvan-1",
     "tags": {
-      "category": "hayvan",
+      "category": "none",
       "concept": ["tembel-çalışkan"],
       "quality": "tembel",
       "lifeform": "canlı",
@@ -702,9 +684,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "karınca",
     "imageUrl": "/images/349.png",
     "audioKeys": { "default": "karınca", "concept": "çalışkan" },
-    "pairGroupId": "tembel-caliskan-hayvan-1",
     "tags": {
-      "category": "hayvan",
+      "category": "none",
       "concept": ["tembel-çalışkan"],
       "quality": "çalışkan",
       "lifeform": "canlı",
@@ -718,7 +699,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/350.png",
     "audioKeys": { "default": "sürahi", "concept": "dolu" },
     "tags": {
-      "category": "nesne",
+      "category": "none",
       "concept": ["dolu-boş", "şeffaf-opak"],
       "fullness": "dolu",
       "quality": "şeffaf",
@@ -731,10 +712,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 351,
     "word": "kahve kupası",
     "imageUrl": "/images/351.png",
-    "audioKeys": { "default": "kahve_kupası", "concept": "sıcak" },
-    "pairGroupId": "sicak-soguk-icecek-1",
+    "audioKeys": { "default": "kahve kupası", "concept": "sıcak" },
     "tags": {
-      "category": "ev_esya",
+      "category": "none",
       "concept": ["sıcak-soğuk"],
       "temperature": "sıcak",
       "lifeform": "cansız",
@@ -747,12 +727,11 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "masa",
     "imageUrl": "/images/352.png",
     "audioKeys": { "default": "masa", "concept": "toplu" },
-    "pairGroupId": ["daginik-toplu-masa-1", "kalabalik-tenha-yer-1"],
     "tags": {
-      "category": "none",
+      "category": "Ev Eşyaları",
       "concept": ["dağınık-toplu", "kalabalık-tenha"],
       "state": "toplu",
-      "density": "tenhâ",
+      "density": "tenha",
       "lifeform": "cansız",
       "syllables": ["ma", "sa"],
       "letters": ["M", "A", "S", "A"]
@@ -762,9 +741,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 353,
     "word": "bilgisayar faresi",
     "imageUrl": "/images/353.png",
-    "audioKeys": { "default": "bilgisayar_faresi" },
+    "audioKeys": { "default": "bilgisayar faresi" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "lifeform": "cansız",
       "syllables": ["bil", "gi", "sa", "yar", "fa", "re", "si"],
       "letters": ["B", "İ", "L", "G", "İ", "S", "A", "Y", "A", "R", "F", "A", "R", "E", "S", "İ"]
@@ -776,7 +755,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/354.png",
     "audioKeys": { "default": "klavye" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "lifeform": "cansız",
       "syllables": ["klav", "ye"],
       "letters": ["K", "L", "A", "V", "Y", "E"]
@@ -788,7 +767,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/355.png",
     "audioKeys": { "default": "kulaklık" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "lifeform": "cansız",
       "syllables": ["ku", "lak", "lık"],
       "letters": ["K", "U", "L", "A", "K", "L", "I", "K"]
@@ -799,9 +778,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "çaydanlık",
     "imageUrl": "/images/356.png",
     "audioKeys": { "default": "çaydanlık", "concept": "parlak" },
-    "pairGroupId": "parlak-mat-mutfak-1",
     "tags": {
-      "category": "ev_esya",
+      "category": "Mutfak Gereçleri",
       "concept": ["parlak-mat"],
       "texture": "parlak",
       "lifeform": "cansız",
@@ -815,7 +793,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/357.png",
     "audioKeys": { "default": "ıstakoz" },
     "tags": {
-      "category": "hayvan",
+      "category": "Hayvanlar",
+      "concept": ["renkler"],
       "color": "kırmızı",
       "lifeform": "canlı",
       "syllables": ["ıs", "ta", "koz"],
@@ -828,7 +807,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/358.png",
     "audioKeys": { "default": "ahtapot" },
     "tags": {
-      "category": "hayvan",
+      "category": "Hayvanlar",
+      "concept": ["renkler"],
       "color": "mor",
       "lifeform": "canlı",
       "syllables": ["ah", "ta", "pot"],
@@ -839,13 +819,11 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 359,
     "word": "deniz yıldızı",
     "imageUrl": "/images/359.png",
-    "audioKeys": { "default": "deniz_yildizi", "concept": "pürüzsüz" },
-    "pairGroupId": "dikenli-puruzsuz-doga-1",
+    "audioKeys": { "default": "deniz yıldızı" },
     "tags": {
-      "category": "hayvan",
-      "concept": ["şekiller", "dikenli-pürüzsüz"],
+      "category": "Hayvanlar",
+      "concept": ["şekiller", "renkler"],
       "shape": "yıldız",
-      "texture": "pürüzsüz",
       "color": "turuncu",
       "lifeform": "canlı",
       "syllables": ["de", "niz", "yıl", "dı", "zı"],
@@ -858,7 +836,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/360.png",
     "audioKeys": { "default": "jöle" },
     "tags": {
-      "category": "yiyecek",
+      "category": "Diğer Yiyecekler",
+      "concept": ["renkler"],
       "color": "kırmızı",
       "lifeform": "cansız",
       "syllables": ["jö", "le"],
@@ -871,7 +850,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/361.png",
     "audioKeys": { "default": "vantilatör" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "lifeform": "cansız",
       "syllables": ["van", "ti", "la", "tör"],
       "letters": ["V", "A", "N", "T", "İ", "L", "A", "T", "Ö", "R"]
@@ -881,13 +860,13 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 362,
     "word": "pilates topu",
     "imageUrl": "/images/362.png",
-    "audioKeys": { "default": "pilates_topu", "concept": "büyük" },
-    "pairGroupId": "buyuk-kucuk-top-1",
+    "audioKeys": { "default": "pilates topu", "concept": "büyük" },
     "tags": {
-      "category": "none",
-      "concept": ["büyük-küçük"],
+      "category": "Oyuncaklar", // Updated based on previous discussion
+      "concept": ["büyük-küçük", "renkler", "şekiller"],
       "size": "büyük",
       "color": "pembe",
+      "shape": "daire",
       "lifeform": "cansız",
       "syllables": ["pi", "la", "tes", "to", "pu"],
       "letters": ["P", "İ", "L", "A", "T", "E", "S", "T", "O", "P", "U"]
@@ -898,10 +877,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "misketler",
     "imageUrl": "/images/363.png",
     "audioKeys": { "default": "misketler", "concept": "çok" },
-    "pairGroupId": "az-cok-misket-1",
     "tags": {
-      "category": "oyuncak",
-      "concept": ["az-çok"],
+      "category": "Oyuncaklar",
+      "concept": ["az-çok", "renkler"],
       "quantity": "çok",
       "color": "çok renkli",
       "lifeform": "cansız",
@@ -915,7 +893,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/364.png",
     "audioKeys": { "default": "saksafon" },
     "tags": {
-      "category": "muzik_aleti",
+      "category": "Müzik Aletleri",
       "concept": ["duyular"],
       "sense": "ses",
       "lifeform": "cansız",
@@ -928,10 +906,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "armut",
     "imageUrl": "/images/365.png",
     "audioKeys": { "default": "armut", "concept": "pürüzsüz" },
-    "pairGroupId": "puruzlu-puruzsuz-meyve-3",
     "tags": {
-      "category": "meyve",
-      "concept": ["pürüzlü-pürüzsüz"],
+      "category": "Meyveler",
+      "concept": ["pürüzlü-pürüzsüz", "renkler"],
       "texture": "pürüzsüz",
       "color": "yeşil",
       "lifeform": "canlı",
@@ -943,9 +920,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 366,
     "word": "sosisli sandviç",
     "imageUrl": "/images/366.png",
-    "audioKeys": { "default": "sosisli_sandviç" },
+    "audioKeys": { "default": "sosisli sandviç" },
     "tags": {
-      "category": "yiyecek",
+      "category": "Diğer Yiyecekler",
       "lifeform": "cansız",
       "syllables": ["so", "sis", "li", "sand", "viç"],
       "letters": ["S", "O", "S", "İ", "S", "L", "İ", "S", "A", "N", "D", "V", "İ", "Ç"]
@@ -957,7 +934,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/367.png",
     "audioKeys": { "default": "mikser" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Mutfak Gereçleri",
       "lifeform": "cansız",
       "syllables": ["mik", "ser"],
       "letters": ["M", "İ", "K", "S", "E", "R"]
@@ -969,7 +946,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/368.png",
     "audioKeys": { "default": "pusula" },
     "tags": {
-      "category": "nesne",
+      "category": "Aletler",
       "concept": ["şekiller"],
       "shape": "daire",
       "lifeform": "cansız",
@@ -983,7 +960,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/369.png",
     "audioKeys": { "default": "kürek" },
     "tags": {
-      "category": "oyuncak",
+      "category": "Oyuncaklar",
+      "concept": ["renkler"],
       "color": "kırmızı",
       "lifeform": "cansız",
       "syllables": ["kü", "rek"],
@@ -995,10 +973,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "kask",
     "imageUrl": "/images/370.png",
     "audioKeys": { "default": "kask", "concept": "sert" },
-    "pairGroupId": "sert-yumusak-giysi-1",
     "tags": {
-      "category": "nesne",
-      "concept": ["sert-yumuşak"],
+      "category": "none",
+      "concept": ["sert-yumuşak", "renkler"],
       "texture": "sert",
       "color": "mavi",
       "lifeform": "cansız",
@@ -1011,9 +988,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "biberon",
     "imageUrl": "/images/371.png",
     "audioKeys": { "default": "biberon", "concept": "dolu" },
-    "pairGroupId": "dolu-bos-biberon-1",
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["dolu-boş"],
       "fullness": "dolu",
       "lifeform": "cansız",
@@ -1026,9 +1002,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "makas",
     "imageUrl": "/images/372.png",
     "audioKeys": { "default": "makas", "concept": "küt" },
-    "pairGroupId": "sivri-kut-alet-1",
     "tags": {
-      "category": "tamir_aleti",
+      "category": "none",
       "concept": ["sivri-küt"],
       "quality": "küt",
       "lifeform": "cansız",
@@ -1042,8 +1017,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/373.png",
     "audioKeys": { "default": "lale" },
     "tags": {
-      "category": "bitki",
+      "category": "none",
       "concept": ["renkler"],
+      "color": "kırmızı",
       "lifeform": "canlı",
       "syllables": ["la", "le"],
       "letters": ["L", "A", "L", "E"]
@@ -1055,7 +1031,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/374.png",
     "audioKeys": { "default": "menekşe" },
     "tags": {
-      "category": "bitki",
+      "category": "Bitkiler",
       "concept": ["renkler"],
       "color": "mor",
       "lifeform": "canlı",
@@ -1069,7 +1045,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/375.png",
     "audioKeys": { "default": "yelkenli" },
     "tags": {
-      "category": "taşıt",
+      "category": "Taşıtlar",
       "lifeform": "cansız",
       "syllables": ["yel", "ken", "li"],
       "letters": ["Y", "E", "L", "K", "E", "N", "L", "İ"]
@@ -1080,33 +1056,31 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "civciv",
     "imageUrl": "/images/376.png",
     "audioKeys": { "default": "civciv", "concept": "genç" },
-    "pairGroupId": "yasli-genc-hayvan-1",
     "tags": {
       "sequence": { "group": "yumurta-civciv", "order": 2 },
-      "syllables": ["civ", "civ"],
-      "category": "hayvan",
+      "category": "Hayvanlar",
       "concept": ["önce-sonra", "yaşlı-genç"],
       "state": "sonra",
       "age": "genç",
       "lifeform": "canlı",
+      "syllables": ["civ", "civ"],
       "letters": ["C", "İ", "V", "C", "İ", "V"]
     }
   },
   {
     "id": 377,
-    "word": "tavuk",
+    "word": "horoz",
     "imageUrl": "/images/377.png",
-    "audioKeys": { "default": "tavuk", "concept": "yaşlı" },
-    "pairGroupId": "yasli-genc-hayvan-1",
+    "audioKeys": { "default": "horoz", "concept": "yaşlı" },
     "tags": {
       "sequence": { "group": "yumurta-civciv", "order": 3 },
-      "syllables": ["ta", "vuk"],
-      "category": "hayvan",
+      "category": "none",
       "concept": ["yaşlı-genç", "önce-sonra"],
       "age": "yaşlı",
       "state": "sonra",
       "lifeform": "canlı",
-      "letters": ["T", "A", "V", "U", "K"]
+      "syllables": ["ho", "roz"],
+      "letters": ["H", "O", "R", "O", "Z"]
     }
   },
   {
@@ -1115,7 +1089,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/378.png",
     "audioKeys": { "default": "çocuk" },
     "tags": {
-      "category": "insan",
+      "category": "none",
       "lifeform": "canlı",
       "syllables": ["ço", "cuk"],
       "letters": ["Ç", "O", "C", "U", "K"]
@@ -1127,12 +1101,12 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/379.png",
     "audioKeys": { "default": "teleskop" },
     "tags": {
-      "syllables": ["te", "les", "kop"],
-      "category": "uzay",
+      "category": "Doğal Yapılar & Uzay",
       "concept": ["duyular"],
+      "sense": "görme",
       "lifeform": "cansız",
-      "letters": ["T", "E", "L", "E", "S", "K", "O", "P"],
-      "sense": "görme"
+      "syllables": ["te", "les", "kop"],
+      "letters": ["T", "E", "L", "E", "S", "K", "O", "P"]
     }
   },
   {
@@ -1141,7 +1115,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/380.png",
     "audioKeys": { "default": "astronot" },
     "tags": {
-      "category": "insan",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["as", "tro", "not"],
       "letters": ["A", "S", "T", "R", "O", "N", "O", "T"]
@@ -1151,9 +1125,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 381,
     "word": "uzay mekiği",
     "imageUrl": "/images/381.png",
-    "audioKeys": { "default": "uzay_mekiği" },
+    "audioKeys": { "default": "uzay mekiği" },
     "tags": {
-      "category": "uzay",
+      "category": "Taşıtlar",
       "lifeform": "cansız",
       "syllables": ["u", "zay", "me", "ki", "ği"],
       "letters": ["U", "Z", "A", "Y", "M", "E", "K", "İ", "Ğ", "İ"]
@@ -1164,9 +1138,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "patenler",
     "imageUrl": "/images/382.png",
     "audioKeys": { "default": "patenler", "concept": "çift" },
-    "pairGroupId": "tek-cift-paten-1",
     "tags": {
-      "category": "nesne",
+      "category": "none",
       "concept": ["tek-çift"],
       "quantity_type": "çift",
       "lifeform": "cansız",
@@ -1180,7 +1153,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/383.png",
     "audioKeys": { "default": "kaykay" },
     "tags": {
-      "category": "oyuncak",
+      "category": "Oyuncaklar",
       "lifeform": "cansız",
       "syllables": ["kay", "kay"],
       "letters": ["K", "A", "Y", "K", "A", "Y"]
@@ -1191,9 +1164,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "şömine",
     "imageUrl": "/images/384.png",
     "audioKeys": { "default": "şömine", "concept": "sıcak" },
-    "pairGroupId": "sicak-soguk-esya-3",
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "concept": ["sıcak-soğuk"],
       "temperature": "sıcak",
       "lifeform": "cansız",
@@ -1206,9 +1178,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "vantilatör",
     "imageUrl": "/images/385.png",
     "audioKeys": { "default": "vantilatör", "concept": "soğuk" },
-    "pairGroupId": "sicak-soguk-esya-3",
     "tags": {
-      "category": "ev_esya",
+      "category": "none",
       "concept": ["sıcak-soğuk"],
       "temperature": "soğuk",
       "lifeform": "cansız",
@@ -1222,7 +1193,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/386.png",
     "audioKeys": { "default": "hemşire" },
     "tags": {
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["hem", "şi", "re"],
       "letters": ["H", "E", "M", "Ş", "İ", "R", "E"]
@@ -1234,7 +1205,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/387.png",
     "audioKeys": { "default": "pilot" },
     "tags": {
-      "category": "profession",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["pi", "lot"],
       "letters": ["P", "İ", "L", "O", "T"]
@@ -1245,9 +1216,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "çiftçi",
     "imageUrl": "/images/388.png",
     "audioKeys": { "default": "çiftçi", "concept": "çalışkan" },
-    "pairGroupId": "tembel-caliskan-insan-1",
     "tags": {
-      "category": "profession",
+      "category": "none",
       "concept": ["tembel-çalışkan"],
       "quality": "çalışkan",
       "lifeform": "canlı",
@@ -1260,7 +1230,6 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "kavanoz",
     "imageUrl": "/images/389.png",
     "audioKeys": { "default": "kavanoz", "concept": "az" },
-    "pairGroupId": "az-cok-misket-1",
     "tags": {
       "category": "none",
       "concept": ["az-çok"],
@@ -1275,7 +1244,6 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "kavanoz",
     "imageUrl": "/images/390.png",
     "audioKeys": { "default": "kavanoz", "concept": "çok" },
-    "pairGroupId": "az-cok-misket-1",
     "tags": {
       "category": "none",
       "concept": ["az-çok"],
@@ -1290,9 +1258,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "çocuk",
     "imageUrl": "/images/391.png",
     "audioKeys": { "default": "çocuk", "concept": "yüksek" },
-    "pairGroupId": "yuksek-alcak-insan-1",
     "tags": {
-      "category": "insan",
+      "category": "none",
       "concept": ["yüksek-alçak"],
       "height": "yüksek",
       "lifeform": "canlı",
@@ -1305,9 +1272,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "çocuk",
     "imageUrl": "/images/392.png",
     "audioKeys": { "default": "çocuk", "concept": "yüksek" },
-    "pairGroupId": "yuksek-alcak-salincak-1",
     "tags": {
-      "category": "insan",
+      "category": "none",
       "concept": ["yüksek-alçak"],
       "height": "yüksek",
       "lifeform": "canlı",
@@ -1320,9 +1286,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "salıncak",
     "imageUrl": "/images/393.png",
     "audioKeys": { "default": "salıncak", "concept": "alçak" },
-    "pairGroupId": "yuksek-alcak-salincak-1",
     "tags": {
-      "category": "oyuncak",
+      "category": "Oyuncaklar",
       "concept": ["yüksek-alçak"],
       "height": "alçak",
       "lifeform": "cansız",
@@ -1335,9 +1300,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "insan",
     "imageUrl": "/images/394.png",
     "audioKeys": { "default": "insan", "concept": "içinde" },
-    "pairGroupId": "icinde-disinda-cadir-1",
     "tags": {
-      "category": "insan",
+      "category": "none",
       "concept": ["içinde-dışında"],
       "position": "içinde",
       "lifeform": "canlı",
@@ -1350,9 +1314,8 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "insan",
     "imageUrl": "/images/395.png",
     "audioKeys": { "default": "insan", "concept": "dışında" },
-    "pairGroupId": "icinde-disinda-cadir-1",
     "tags": {
-      "category": "insan",
+      "category": "none",
       "concept": ["içinde-dışında"],
       "position": "dışında",
       "lifeform": "canlı",
@@ -1365,7 +1328,6 @@ export const imageData_301_400: ImageMetadata[] = [
     "word": "zarf",
     "imageUrl": "/images/396.png",
     "audioKeys": { "default": "zarf", "concept": "açık" },
-    "pairGroupId": "acik-kapali-zarf-1",
     "tags": {
       "category": "none",
       "concept": ["açık-kapalı"],
@@ -1381,7 +1343,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/397.png",
     "audioKeys": { "default": "pul" },
     "tags": {
-      "category": "nesne",
+      "category": "Okul & Ofis Gereçleri", 
       "concept": ["şekiller"],
       "shape": "kare",
       "lifeform": "cansız",
@@ -1395,7 +1357,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/398.png",
     "audioKeys": { "default": "mandal" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "lifeform": "cansız",
       "syllables": ["man", "dal"],
       "letters": ["M", "A", "N", "D", "A", "L"]
@@ -1407,7 +1369,7 @@ export const imageData_301_400: ImageMetadata[] = [
     "imageUrl": "/images/399.png",
     "audioKeys": { "default": "fıskiye" },
     "tags": {
-      "category": "ev_esya",
+      "category": "Ev Eşyaları",
       "lifeform": "cansız",
       "syllables": ["fıs", "ki", "ye"],
       "letters": ["F", "I", "S", "K", "İ", "Y", "E"]
@@ -1417,12 +1379,9 @@ export const imageData_301_400: ImageMetadata[] = [
     "id": 400,
     "word": "olta",
     "imageUrl": "/images/400.png",
-    "audioKeys": { "default": "olta", "concept": "pürüzsüz" },
-    "pairGroupId": "dikenli-puruzsuz-balik-1",
+    "audioKeys": { "default": "olta" },
     "tags": {
-      "category": "nesne",
-      "concept": ["içinde-dışında", "dikenli-pürüzsüz"],
-      "texture": "pürüzsüz",
+      "category": "Aletler",
       "lifeform": "cansız",
       "syllables": ["ol", "ta"],
       "letters": ["O", "L", "T", "A"]

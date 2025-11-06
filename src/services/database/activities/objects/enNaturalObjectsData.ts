@@ -7,7 +7,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
   {
     id: 1911,
     question: 'Which one is the stone?',
-    questionAudioKey: 'q_which_is_stone',
+    questionAudioKey: 'q_which_is_stone_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 347, word: 'taş', imageUrl: '/images/347.png', isCorrect: true, audioKey: 'taş', spokenText: 'stone' },
@@ -31,7 +31,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
   {
     id: 1913,
     question: 'Which one is the leaf?',
-    questionAudioKey: 'q_which_is_leaf',
+    questionAudioKey: 'q_which_is_leaf_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 117, word: 'yaprak', imageUrl: '/images/117.png', isCorrect: true, audioKey: 'yaprak', spokenText: 'leaf' },
@@ -43,7 +43,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
   {
     id: 1914,
     question: 'Which one is the ice?',
-    questionAudioKey: 'q_which_is_ice',
+    questionAudioKey: 'q_which_is_ice_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 141, word: 'buz', imageUrl: '/images/141.png', isCorrect: true, audioKey: 'buz', spokenText: 'ice' },
@@ -67,7 +67,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
   {
     id: 1916,
     question: 'Which one is the tree trunk?',
-    questionAudioKey: 'q_which_is_tree_trunk',
+    questionAudioKey: 'q_which_is_tree_trunk_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 537, word: 'ağaç gövdesi', imageUrl: '/images/537.png', isCorrect: true, audioKey: 'ağaç_gövdesi', spokenText: 'tree trunk' },
@@ -79,7 +79,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
   {
     id: 1917,
     question: 'Which one is the feather?',
-    questionAudioKey: 'q_which_is_feather',
+    questionAudioKey: 'q_which_is_feather_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 139, word: 'tüy', imageUrl: '/images/139.png', isCorrect: true, audioKey: 'tüy', spokenText: 'feather' },
@@ -91,7 +91,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
 	{
 		id: 1918,
 		question: 'Which one is the snow?',
-		questionAudioKey: 'q_which_is_snow',
+		questionAudioKey: 'q_which_is_snow_person',
 		activityType: ActivityType.ObjectRecognition,
 		options: [
 			{ id: 405, word: 'kar', imageUrl: '/images/405.png', isCorrect: true, audioKey: 'kar', spokenText: 'snow' },
@@ -103,7 +103,7 @@ export const enNaturalObjectsData: ConceptRound[] = [
 	{
 		id: 1919,
 		question: 'Which one is the waterfall?',
-		questionAudioKey: 'q_which_is_waterfall',
+		questionAudioKey: 'q_which_is_waterfall_person',
 		activityType: ActivityType.ObjectRecognition,
 		options: [
 			{ id: 216, word: 'şelale', imageUrl: '/images/216.png', isCorrect: true, audioKey: 'şelale', spokenText: 'waterfall' },

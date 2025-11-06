@@ -6,6 +6,7 @@ import RetryIcon from './icons/RetryIcon.tsx';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import HomeIcon from './icons/HomeIcon.tsx';
 import { playEffect, speak } from '../services/speechService.ts';
+import { t } from '../i18n/index.ts';
 import { ActivityType } from '../types.ts';
 import { getActivityUiConfig } from '../services/contentService.ts';
 import useWindowSize from '../hooks/useWindowSize.ts';
@@ -26,11 +27,11 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({ score, total, onGoT
     const { width, height } = useWindowSize();
     const isLandscape = width !== undefined && height !== undefined ? width > height : false;
     
-    let message = "Harika iş çıkardın!";
+    let message = t('completion.msg.high', 'Harika iş çıkardın!');
     if (percentage < 50) {
-        message = "Tekrar denemeye ne dersin?";
+        message = t('completion.msg.low', 'Tekrar denemeye ne dersin?');
     } else if (percentage < 100) {
-        message = "Çok iyi gidiyorsun!";
+        message = t('completion.msg.mid', 'Çok iyi gidiyorsun!');
     }
 
     useEffect(() => {
@@ -54,7 +55,7 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({ score, total, onGoT
                     {/* Left: Trophy, message, stars, score */}
                     <div className="flex flex-col items-center justify-center px-2">
                         <TrophyIcon className="w-24 h-24 sm:w-32 sm:h-32 text-yellow-400 mb-3 animate-pop-in" />
-                        <h1 className="text-3xl font-black text-sky-800 mb-1 animate-pop-in animation-delay-200">Tebrikler!</h1>
+                        <h1 className="text-3xl font-black text-sky-800 mb-1 animate-pop-in animation-delay-200">{t('completion.heading', 'Tebrikler!')}</h1>
                         <p className="text-lg text-slate-600 mb-4 animate-pop-in animation-delay-200">{message}</p>
                         <div className="flex justify-center items-end space-x-2 sm:space-x-3 mb-4 animate-pop-in animation-delay-200">
                             {[...Array(total)].map((_, i) => (
@@ -75,7 +76,7 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({ score, total, onGoT
                             className="w-full flex items-center justify-center gap-3 bg-green-500 text-white font-bold py-4 px-4 rounded-2xl shadow-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
                         >
                             <RetryIcon className="w-7 h-7"/>
-                            <span className="text-lg">Tekrar Oyna</span>
+                            <span className="text-lg">{t('completion.restart', 'Tekrar Oyna')}</span>
                         </button>
                         <button
                             onClick={onGoBack}
@@ -89,14 +90,14 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({ score, total, onGoT
                             className="w-full flex items-center justify-center gap-3 bg-slate-500 text-white font-bold py-4 px-4 rounded-2xl shadow-lg hover:bg-slate-600 transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-slate-300"
                         >
                             <HomeIcon className="w-7 h-7"/>
-                            <span className="text-lg">Ana Menü</span>
+                            <span className="text-lg">{t('completion.home', 'Ana Menü')}</span>
                         </button>
                     </div>
                 </div>
             ) : (
                 <div className="bg-white/80 backdrop-blur-md p-6 sm:p-10 rounded-3xl shadow-2xl max-w-lg w-full">
                     <TrophyIcon className="w-24 h-24 sm:w-32 sm:h-32 text-yellow-400 mx-auto mb-4 animate-pop-in" />
-                    <h1 className="text-3xl sm:text-5xl font-black text-sky-800 mb-2 animate-pop-in animation-delay-200">Tebrikler!</h1>
+                    <h1 className="text-3xl sm:text-5xl font-black text-sky-800 mb-2 animate-pop-in animation-delay-200">{t('completion.heading', 'Tebrikler!')}</h1>
                     <p className="text-lg sm:text-2xl text-slate-600 mb-6 animate-pop-in animation-delay-200">{message}</p>
                     <div className="flex justify-center items-end space-x-2 sm:space-x-4 mb-8 animate-pop-in animation-delay-200">
                         {[...Array(total)].map((_, i) => (
@@ -114,7 +115,7 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({ score, total, onGoT
                             className="w-full flex items-center justify-center gap-2 bg-green-500 text-white font-bold py-3 sm:py-4 px-4 rounded-xl shadow-lg hover:bg-green-600 transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
                         >
                             <RetryIcon className="w-6 h-6 sm:w-7 sm:h-7"/>
-                            <span>Tekrar Oyna</span>
+                            <span>{t('completion.restart', 'Tekrar Oyna')}</span>
                         </button>
                         <button
                             onClick={onGoBack}
@@ -128,7 +129,7 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({ score, total, onGoT
                             className="sm:col-span-2 w-full flex items-center justify-center gap-2 bg-slate-500 text-white font-bold py-3 sm:py-4 px-4 rounded-xl shadow-lg hover:bg-slate-600 transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-slate-300"
                         >
                             <HomeIcon className="w-6 h-6 sm:w-7 sm:h-7"/>
-                            <span>Ana Menü</span>
+                            <span>{t('completion.home', 'Ana Menü')}</span>
                         </button>
                     </div>
                 </div>

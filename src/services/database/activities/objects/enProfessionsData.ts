@@ -7,7 +7,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1701,
     question: 'Which one is the doctor?',
-    questionAudioKey: 'q_which_is_doctor',
+    questionAudioKey: 'q_which_is_doctor_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 324, word: 'doktor', imageUrl: '/images/324.png', isCorrect: true, audioKey: 'doktor', spokenText: 'doctor' },
@@ -31,7 +31,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1703,
     question: 'Which one is the firefighter?',
-    questionAudioKey: 'q_which_is_firefighter',
+    questionAudioKey: 'q_which_is_firefighter_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 327, word: 'itfaiyeci', imageUrl: '/images/327.png', isCorrect: true, audioKey: 'itfaiyeci', spokenText: 'firefighter' },
@@ -43,7 +43,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1704,
     question: 'Which one is the chef?',
-    questionAudioKey: 'q_which_is_chef',
+    questionAudioKey: 'q_which_is_chef_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 326, word: 'aşçı', imageUrl: '/images/326.png', isCorrect: true, audioKey: 'aşçı', spokenText: 'chef' },
@@ -55,7 +55,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1705,
     question: 'Which one is the nurse?',
-    questionAudioKey: 'q_which_is_nurse',
+    questionAudioKey: 'q_which_is_nurse_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 386, word: 'hemşire', imageUrl: '/images/386.png', isCorrect: true, audioKey: 'hemşire', spokenText: 'nurse' },
@@ -67,7 +67,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1706,
     question: 'Which one is the pilot?',
-    questionAudioKey: 'q_which_is_pilot',
+    questionAudioKey: 'q_which_is_pilot_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 387, word: 'pilot', imageUrl: '/images/387.png', isCorrect: true, audioKey: 'pilot', spokenText: 'pilot' },
@@ -79,7 +79,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1707,
     question: 'Which one is the farmer?',
-    questionAudioKey: 'q_which_is_farmer',
+    questionAudioKey: 'q_which_is_farmer_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 388, word: 'çiftçi', imageUrl: '/images/388.png', isCorrect: true, audioKey: 'çiftçi', spokenText: 'farmer' },
@@ -91,7 +91,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1708,
     question: 'Which one is the postman?',
-    questionAudioKey: 'q_which_is_postman',
+    questionAudioKey: 'q_which_is_postman_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 834, word: 'postacı', imageUrl: '/images/834.png', isCorrect: true, audioKey: 'postacı', spokenText: 'postman' },
@@ -103,7 +103,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1709,
     question: 'Which one is the barber?',
-    questionAudioKey: 'q_which_is_barber',
+    questionAudioKey: 'q_which_is_barber_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 835, word: 'berber', imageUrl: '/images/835.png', isCorrect: true, audioKey: 'berber', spokenText: 'barber' },
@@ -115,7 +115,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1710,
     question: 'Which one is the teacher?',
-    questionAudioKey: 'q_which_is_teacher',
+    questionAudioKey: 'q_which_is_teacher_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 84, word: 'öğretmen', imageUrl: '/images/84.png', isCorrect: true, audioKey: 'öğretmen', spokenText: 'teacher' },
@@ -127,7 +127,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1711,
     question: 'Which one is the waiter?',
-    questionAudioKey: 'q_which_is_waiter',
+    questionAudioKey: 'q_which_is_waiter_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 878, word: 'garson', imageUrl: '/images/878.png', isCorrect: true, audioKey: 'garson', spokenText: 'waiter' },
@@ -139,7 +139,7 @@ export const enProfessionsData: ConceptRound[] = [
   {
     id: 1712,
     question: 'Which one is the astronaut?',
-    questionAudioKey: 'q_which_is_astronaut',
+    questionAudioKey: 'q_which_is_astronaut_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 380, word: 'astronot', imageUrl: '/images/380.png', isCorrect: true, audioKey: 'astronot', spokenText: 'astronaut' },

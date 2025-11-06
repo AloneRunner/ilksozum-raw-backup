@@ -7,6 +7,8 @@ import { imageData } from '../services/database/imageData.ts';
 import CheckCircleIcon from './icons/CheckCircleIcon.tsx';
 import BasketIcon from './icons/BasketIcon.tsx';
 import CrownIcon from './icons/CrownIcon.tsx';
+import { getCurrentLanguage, t } from '../i18n/index.ts';
+import { translateLabel } from '../utils/translate.ts';
 
 interface CommunicationCardDetailScreenProps {
   categoryTitle: string;
@@ -23,6 +25,8 @@ interface CommunicationCardDetailScreenProps {
 }
 
 const DetailCard: React.FC<{ card: CommunicationCard; onClick: () => void; isInPrintPool: boolean; isPrintMode: boolean; }> = ({ card, onClick, isInPrintPool, isPrintMode }) => {
+    const lang = getCurrentLanguage();
+    const displayText = lang === 'tr' ? card.text : translateLabel(card.text, lang);
     
     if (card.imageId) {
         const image = imageData.find(img => img.id === card.imageId);
@@ -31,9 +35,9 @@ const DetailCard: React.FC<{ card: CommunicationCard; onClick: () => void; isInP
                 onClick={onClick}
                 className="relative w-full h-full aspect-square flex flex-col items-center justify-end text-center bg-white p-2 sm:p-2 rounded-2xl shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300 overflow-hidden group"
             >
-                <img src={image?.imageUrl || '/images/placeholder.png'} alt={card.text} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"/>
+                <img src={image?.imageUrl || '/images/placeholder.png'} alt={displayText} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <h2 className="relative text-sm sm:text-base font-bold text-white z-10">{card.text}</h2>
+                <h2 className="relative text-sm sm:text-base font-bold text-white z-10">{displayText}</h2>
                  {isPrintMode && isInPrintPool && (
                     <div className="absolute inset-0 bg-sky-500/70 flex items-center justify-center rounded-2xl animate-pop-in">
                         <CheckCircleIcon className="w-1/2 h-1/2 text-white"/>
@@ -50,7 +54,7 @@ const DetailCard: React.FC<{ card: CommunicationCard; onClick: () => void; isInP
             className="relative w-full h-full flex flex-col items-center justify-center text-center bg-white p-2 sm:p-4 rounded-2xl shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300"
         >
             {Icon && <Icon className="w-12 h-12 sm:w-16 sm:h-16 text-sky-600 mb-2" />}
-            <h2 className="text-sm sm:text-base font-bold text-slate-700">{card.text}</h2>
+            <h2 className="text-sm sm:text-base font-bold text-slate-700">{displayText}</h2>
              {isPrintMode && isInPrintPool && (
                 <div className="absolute inset-0 bg-sky-500/70 flex items-center justify-center rounded-2xl animate-pop-in">
                     <CheckCircleIcon className="w-1/2 h-1/2 text-white"/>
@@ -74,7 +78,8 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
   printPool,
   onTogglePrintPool,
 }) => {
-  const [isPrintMode, setIsPrintMode] = useState(false);
+    const [isPrintMode, setIsPrintMode] = useState(false);
+    const lang = getCurrentLanguage();
   const printPoolIds = React.useMemo(() => new Set(printPool.map(c => c.id)), [printPool]);
 
   const handleTogglePrintMode = () => {
@@ -93,13 +98,18 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
 
   return (
     <div className="flex flex-col items-center h-full w-full max-w-5xl mx-auto p-4 animate-fade-in">
-        <div className="w-full flex items-center mb-4 relative">
-            <button onClick={onBack} className="absolute left-0 p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={'Kategorilere dön'}>
-                 <ArrowLeftIcon className="w-8 h-8 text-amber-700" />
+        <div className="w-full flex items-center mb-3 landscape:mb-2 relative">
+          <button onClick={onBack} className="absolute left-0 p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={t('app.back', 'Geri dön')}>
+                 <ArrowLeftIcon className="w-7 h-7 text-amber-700" />
             </button>
-            <h1 className="flex-1 text-center text-3xl sm:text-4xl font-black text-amber-800">
-                {categoryTitle}
-            </h1>
+                        <h1 className="flex-1 text-center text-xl sm:text-2xl landscape:text-lg font-black text-amber-800">
+                                {(() => {
+                                    const lang = getCurrentLanguage();
+                                    if (lang === 'tr') return categoryTitle;
+                                    // Try category id mapping if available via t(); else translate label
+                                    return t(`communication.categories.${(cards[0] as any)?.categoryId || ''}`, categoryTitle);
+                                })()}
+                        </h1>
         </div>
 
         <>
@@ -110,20 +120,21 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
                         {sentence.map((card, index) => {
                             const image = card.imageId ? imageData.find(i => i.id === card.imageId) : null;
                             const Icon = card.icon;
+                            const text = lang === 'tr' ? card.text : translateLabel(card.text, lang);
                             return (
                                 <div key={`${card.id}-${index}`} className="flex-shrink-0 flex flex-col items-center text-center w-20 h-full bg-sky-100 p-1 rounded-lg">
                                     {image ? 
-                                        <img src={image.imageUrl} alt={card.text} className="w-12 h-12 object-cover rounded-md"/>
+                                        <img src={image.imageUrl} alt={text} className="w-12 h-12 object-cover rounded-md"/>
                                         : Icon && <Icon className="w-8 h-8 text-sky-700" />
                                     }
-                                    <span className="text-xs font-semibold text-slate-600 truncate w-full mt-1">{card.text}</span>
+                                    <span className="text-xs font-semibold text-slate-600 truncate w-full mt-1">{text}</span>
                                 </div>
                             )
                         })}
                     </div>
                 ) : (
                     <p className="text-slate-500 text-center w-full">
-                        {isPrintMode ? 'Sepete eklemek için kartlara dokunun.' : 'Cümle oluşturmak için kartlara dokunun.'}
+                        {isPrintMode ? t('communication.printHint', 'Sepete eklemek için kartlara dokunun.') : t('communication.composeHint', 'Cümle oluşturmak için kartlara dokunun.')}
                     </p>
                 )}
             </div>
@@ -133,10 +144,10 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
                  <button
                     onClick={handleTogglePrintMode}
                     className={`flex items-center gap-2 font-bold py-3 px-4 rounded-full shadow-sm transition-colors text-white ${!isPremium ? 'bg-slate-400 cursor-not-allowed' : isPrintMode ? 'bg-rose-500 hover:bg-rose-600' : 'bg-sky-500 hover:bg-sky-600'}`}
-                    aria-label={isPrintMode ? 'Kart seçimini bitir' : 'Yazdırmak için kart seç'}
+                    aria-label={isPrintMode ? t('communication.finishSelectionAria', 'Kart seçimini bitir') : t('communication.selectForPrintAria', 'Yazdırmak için kart seç')}
                 >
                     <BasketIcon className="w-6 h-6" />
-                    <span>{isPrintMode ? 'Seçimi Bitir' : 'Sepete Ekle'}</span>
+                    <span>{isPrintMode ? t('communication.finishSelection', 'Seçimi Bitir') : t('communication.addToBasket', 'Sepete Ekle')}</span>
                     {!isPremium && <CrownIcon className="w-5 h-5 ml-1" />}
                 </button>
                 <div className="flex gap-2">
@@ -144,7 +155,7 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
                         onClick={onClearSentence}
                         disabled={sentence.length === 0 || isPrintMode}
                         className="p-3 bg-red-100 rounded-full shadow-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-red-200 transition-colors"
-                        aria-label="Cümleyi temizle"
+                        aria-label={t('communication.clearSentenceAria', 'Cümleyi temizle')}
                     >
                         <XCircleIcon className="w-7 h-7 text-red-600" />
                     </button>
@@ -152,7 +163,7 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
                         onClick={onSpeakSentence}
                         disabled={sentence.length === 0 || isPrintMode}
                         className="p-3 bg-green-100 rounded-full shadow-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-green-200 transition-colors"
-                        aria-label="Cümleyi seslendir"
+                        aria-label={t('communication.speakSentenceAria', 'Cümleyi seslendir')}
                     >
                         <SpeakerIcon className="w-7 h-7 text-green-600" />
                     </button>

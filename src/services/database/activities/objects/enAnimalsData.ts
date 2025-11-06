@@ -7,7 +7,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1001,
     question: 'Which one is the cat?',
-    questionAudioKey: 'q_which_is_cat',
+    questionAudioKey: 'q_which_is_cat_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 16, word: 'kedi', imageUrl: '/images/16.png', isCorrect: true, audioKey: 'kedi', spokenText: 'cat' },
@@ -31,7 +31,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1003,
     question: 'Which one is the lion?',
-    questionAudioKey: 'q_which_is_lion',
+    questionAudioKey: 'q_which_is_lion_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 100, word: 'aslan', imageUrl: '/images/100.png', isCorrect: true, audioKey: 'aslan', spokenText: 'lion' },
@@ -43,7 +43,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1004,
     question: 'Which one is the elephant?',
-    questionAudioKey: 'q_which_is_elephant',
+    questionAudioKey: 'q_which_is_elephant_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 28, word: 'fil', imageUrl: '/images/28.png', isCorrect: true, audioKey: 'fil', spokenText: 'elephant' },
@@ -55,7 +55,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1005,
     question: 'Which one is the fish?',
-    questionAudioKey: 'q_which_is_fish',
+    questionAudioKey: 'q_which_is_fish_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 400, word: 'balık', imageUrl: '/images/400.png', isCorrect: true, audioKey: 'balık', spokenText: 'fish' },
@@ -67,7 +67,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1006,
     question: 'Which one is the bird?',
-    questionAudioKey: 'q_which_is_bird',
+    questionAudioKey: 'q_which_is_bird_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 73, word: 'kuş', imageUrl: '/images/73.png', isCorrect: true, audioKey: 'kuş', spokenText: 'bird' },
@@ -79,7 +79,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1007,
     question: 'Which one is the rabbit?',
-    questionAudioKey: 'q_which_is_rabbit',
+    questionAudioKey: 'q_which_is_rabbit_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 41, word: 'tavşan', imageUrl: '/images/41.png', isCorrect: true, audioKey: 'tavşan', spokenText: 'rabbit' },
@@ -91,7 +91,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1008,
     question: 'Which one is the giraffe?',
-    questionAudioKey: 'q_which_is_giraffe',
+    questionAudioKey: 'q_which_is_giraffe_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 101, word: 'zürafa', imageUrl: '/images/101.png', isCorrect: true, audioKey: 'zürafa', spokenText: 'giraffe' },
@@ -103,7 +103,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1009,
     question: 'Which one is the butterfly?',
-    questionAudioKey: 'q_which_is_butterfly',
+    questionAudioKey: 'q_which_is_butterfly_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 274, word: 'kelebek', imageUrl: '/images/274.png', isCorrect: true, audioKey: 'kelebek', spokenText: 'butterfly' },
@@ -115,7 +115,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1010,
     question: 'Which one is the bee?',
-    questionAudioKey: 'q_which_is_bee',
+    questionAudioKey: 'q_which_is_bee_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 273, word: 'arı', imageUrl: '/images/273.png', isCorrect: true, audioKey: 'arı', spokenText: 'bee' },
@@ -127,7 +127,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1011,
     question: 'Which one is the duck?',
-    questionAudioKey: 'q_which_is_duck',
+    questionAudioKey: 'q_which_is_duck_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 26, word: 'ördek', imageUrl: '/images/26.png', isCorrect: true, audioKey: 'ördek', spokenText: 'duck' },
@@ -139,7 +139,7 @@ export const enAnimalsData: ConceptRound[] = [
   {
     id: 1012,
     question: 'Which one is the turtle?',
-    questionAudioKey: 'q_which_is_turtle',
+    questionAudioKey: 'q_which_is_turtle_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 42, word: 'kaplumbağa', imageUrl: '/images/42.png', isCorrect: true, audioKey: 'kaplumbağa', spokenText: 'turtle' },

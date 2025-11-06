@@ -7,7 +7,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1891,
     question: 'Which one is the teacher?',
-    questionAudioKey: 'q_which_is_teacher',
+    questionAudioKey: 'q_which_is_teacher_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 84, word: 'öğretmen', imageUrl: '/images/84.png', isCorrect: true, audioKey: 'öğretmen', spokenText: 'teacher' },
@@ -31,7 +31,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1893,
     question: 'Which one is the baby?',
-    questionAudioKey: 'q_which_is_baby',
+    questionAudioKey: 'q_which_is_baby_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 579, word: 'bebek', imageUrl: '/images/579.png', isCorrect: true, audioKey: 'bebek', spokenText: 'baby' },
@@ -43,7 +43,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1894,
     question: 'Which one is the family?',
-    questionAudioKey: 'q_which_is_family',
+    questionAudioKey: 'q_which_is_family_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 477, word: 'aile', imageUrl: '/images/477.png', isCorrect: true, audioKey: 'aile', spokenText: 'family' },
@@ -55,7 +55,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1895,
     question: 'Which one is the grandmother?',
-    questionAudioKey: 'q_which_is_grandmother',
+    questionAudioKey: 'q_which_is_grandmother_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 701, word: 'nine', imageUrl: '/images/701.png', isCorrect: true, audioKey: 'nine', spokenText: 'grandmother' },
@@ -67,7 +67,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1896,
     question: 'Which one is the grandfather?',
-    questionAudioKey: 'q_which_is_grandfather',
+    questionAudioKey: 'q_which_is_grandfather_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 578, word: 'dede', imageUrl: '/images/578.png', isCorrect: true, audioKey: 'dede', spokenText: 'grandfather' },
@@ -79,7 +79,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1897,
     question: 'Which one is the king?',
-    questionAudioKey: 'q_which_is_king',
+    questionAudioKey: 'q_which_is_king_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 314, word: 'kral', imageUrl: '/images/314.png', isCorrect: true, audioKey: 'kral', spokenText: 'king' },
@@ -91,7 +91,7 @@ export const enPeopleData: ConceptRound[] = [
   {
     id: 1898,
     question: 'Which one is the queen?',
-    questionAudioKey: 'q_which_is_queen',
+    questionAudioKey: 'q_which_is_queen_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 313, word: 'kraliçe', imageUrl: '/images/313.png', isCorrect: true, audioKey: 'kraliçe', spokenText: 'queen' },

@@ -1,13 +1,15 @@
+import { getCurrentLanguage } from '../i18n/index.ts';
 
-export const policyTitle = "Gizlilik Politikası";
+const trPolicyTitle = "Gizlilik Politikası";
+const enPolicyTitle = "Privacy Policy";
 
-export const policySections = [
+const trSections = [
     {
         title: "1. Giriş",
-        content: `<strong>Uygulama Adı:</strong> İlk Sözüm: Eğitici Kartlar<br>
+        content: `<strong>Uygulama Adı:</strong> İlk Sözüm: Otizm & Okul Öncesi<br>
                   <strong>Geliştirici:</strong> Ozarik<br>
                   <strong>Son Güncelleme:</strong> 27 Temmuz 2024<br><br>
-                  "İlk Sözüm: Eğitici Kartlar" ("Uygulama") olarak, kullanıcılarımızın ve özellikle çocuklarımızın gizliliğini korumaya büyük önem veriyoruz. Bu gizlilik politikası, uygulamamızın hangi verileri nasıl kullandığını şeffaf bir şekilde açıklamaktadır.`
+                  "İlk Sözüm: Otizm & Okul Öncesi" ("Uygulama") olarak, kullanıcılarımızın ve özellikle çocuklarımızın gizliliğini korumaya büyük önem veriyoruz. Bu gizlilik politikası, uygulamamızın hangi verileri nasıl kullandığını şeffaf bir şekilde açıklamaktadır.`
     },
     {
         title: "2. Toplanan Veriler ve Cihaz Üzerinde Saklama",
@@ -31,3 +33,37 @@ export const policySections = [
                   E-posta: <a href="mailto:kaanozarik@gmail.com" class="text-sky-600 hover:underline">kaanozarik@gmail.com</a>`
     }
 ];
+
+const enSections = [
+    {
+        title: "1. Introduction",
+        content: `<strong>App Name:</strong> My First Words: Learning Cards<br>
+                  <strong>Developer:</strong> Ozarik<br>
+                  <strong>Last Update:</strong> July 27, 2024<br><br>
+                  We care deeply about the privacy of our users, especially children. This policy explains clearly which data the app uses and how.`
+    },
+    {
+        title: "2. Data Collected and On-Device Storage",
+        content: `Our app does not collect or store any <strong>personally identifiable information</strong> (such as name, email address, location, photos, etc.). Your game progress, settings, and premium status are stored <em>only on your device</em>, are not sent to our servers, and are not shared with third parties.`
+    },
+    {
+        title: "3. Monetization (Ads and In-App Purchases)",
+        content: `We use <strong>Google AdMob</strong> to show ads in the free version. You can also make a one-time purchase on <strong>Google Play Store</strong> to remove ads.
+        <ul>
+            <li class="mt-2"><strong>Google AdMob:</strong> To show non-personalized ads, Google AdMob may collect non-personal data (for example, the Advertising ID). For more information, please review <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">Google's Ads Policy</a>.</li>
+            <li class="mt-2"><strong>Google Play Store:</strong> Purchases are managed directly and securely by Google. Your payment information is not shared with us.</li>
+        </ul>`
+    },
+    {
+        title: "4. Children's Privacy and Families Policy",
+        content: `This app is designed especially for children under the age of 13 and fully complies with Google Play Families Policy requirements. Ads are shown in accordance with the "Designed for Families" program. We do not knowingly collect any personal information from children.`
+    },
+    {
+        title: "5. Contact",
+        content: `If you have any questions about our privacy policy or your parental rights, please contact us:<br>
+                  Email: <a href="mailto:kaanozarik@gmail.com" class="text-sky-600 hover:underline">kaanozarik@gmail.com</a>`
+    }
+];
+
+export const policyTitle = getCurrentLanguage() === 'tr' ? trPolicyTitle : enPolicyTitle;
+export const policySections = getCurrentLanguage() === 'tr' ? trSections : enSections;

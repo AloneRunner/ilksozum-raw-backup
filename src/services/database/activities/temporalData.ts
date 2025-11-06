@@ -2,7 +2,7 @@ import { ConceptRound, ActivityType } from '../../../types.ts';
 
 export const beforeAfterData: ConceptRound[] = [
     // 1. Dondurma
-    { id: 1, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before", activityType: ActivityType.BeforeAfter, options: [
+    { id: 1, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before_person", activityType: ActivityType.BeforeAfter, options: [
         { id: 63, word: "dondurma", imageUrl: "/images/63.png", isCorrect: true, audioKey: "dondurma", spokenText: "bütün dondurma" },
         { id: 64, word: "dondurma", imageUrl: "/images/64.png", isCorrect: false, audioKey: "erimiş_dondurma", spokenText: "erimiş dondurma" }
     ]},
@@ -87,7 +87,7 @@ export const dayNightData: ConceptRound[] = [
       { id: 12, word: "manzara", imageUrl: "/images/12.gif", isCorrect: true, audioKey: "manzara", spokenText: "gece manzarası" }
     ]},
     // 3. Gökyüzü
-    { id: 5, question: "Gündüz olan hangisi?", questionAudioKey: "q_which_is_day", activityType: ActivityType.DayNight, options: [
+    { id: 5, question: "Gündüz olan hangisi?", questionAudioKey: "q_which_is_day_person", activityType: ActivityType.DayNight, options: [
       { id: 604, word: "gökyüzü", imageUrl: "/images/604.png", isCorrect: true, audioKey: "gökyüzü", spokenText: "gündüz" },
       { id: 603, word: "gökyüzü", imageUrl: "/images/603.png", isCorrect: false, audioKey: "gökyüzü", spokenText: "gece" }
     ]},

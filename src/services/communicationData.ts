@@ -35,7 +35,7 @@ const createManualCard = (id: string, text: string, imageId?: number): Communica
 };
 
 export const communicationCategories: CommunicationCategory[] = [
-  // 1. Temel İhtiyaçlar (Mavi)
+  // 0. Temel İhtiyaçlar (Mavi)
   {
     id: 'ihtiyaclar',
     title: 'Temel İhtiyaçlar',
@@ -52,7 +52,7 @@ export const communicationCategories: CommunicationCategory[] = [
       { id: 'sebzeler', title: 'Sebzeler', imageId: 128, cards: [
           createCardFromImage(128, 'Domates'), createCardFromImage(116, 'Salatalık'), createCardFromImage(98, 'Havuç'),
           createCardFromImage(802, 'Patates'), createCardFromImage(75, 'Soğan'), createCardFromImage(787, 'Yeşil Biber'),
-          createCardFromImage(334, 'Lahana'), createCardFromImage(420, 'Ispanak'), createCardFromImage(803, 'Kabak'),
+          createCardFromImage(334, 'Lahana'), createCardFromImage(420, 'ıspanak'), createCardFromImage(803, 'Kabak'),
           createCardFromImage(311, 'Brokoli'), createCardFromImage(280, 'Patlıcan'), createCardFromImage(129, 'Marul'),
           createCardFromImage(853, 'Mısır'),
       ]},
@@ -189,11 +189,11 @@ export const communicationCategories: CommunicationCategory[] = [
         createCardFromImage(84, 'Öğretmen'), createCardFromImage(831, 'Öğrenci'), createCardFromImage(838, 'Arkadaş'), 
         createCardFromImage(832, 'Müdür'), createCardFromImage(836, 'Okul hizmetlisi'), createManualCard('servis_soforu', 'Servis şoförü', 105),
       ]},
-      { id: 'meslekler', title: 'Meslekler', imageId: 324, cards: [
+        { id: 'meslekler', title: 'Meslekler', imageId: 324, cards: [
         createCardFromImage(324, 'Doktor'), createCardFromImage(386, 'Hemşire'), createCardFromImage(839, 'Polis'), 
-        createCardFromImage(840, 'İtfaiyeci'), createCardFromImage(725, 'Aşçı'), createCardFromImage(387, 'Pilot'),
+  createCardFromImage(840, 'İtfaiyeci'), createCardFromImage(387, 'Pilot'),
         createCardFromImage(380, 'Astronot'), createCardFromImage(679, 'İnşaat işçisi'), createCardFromImage(834, 'Postacı'),
-        createCardFromImage(837, 'Çiftçi'), createCardFromImage(835, 'Berber'), createCardFromImage(879, 'Manav'),
+        createCardFromImage(837, 'Çiftçi'), createCardFromImage(835, 'Berber'), createCardFromImage(879, 'Market'),
         createManualCard('veteriner', 'Veteriner', 324),
         createCardFromImage(877, 'Kasiyer'), createCardFromImage(878, 'Garson'),
       ]}
@@ -265,14 +265,14 @@ export const communicationCategories: CommunicationCategory[] = [
             createCardFromImage(740, 'Balık'), createCardFromImage(861, 'Hamster'), createCardFromImage(41, 'Tavşan'),
         ]},
         { id: 'ciftlik', title: 'Çiftlik Hayvanları', imageId: 291, cards: [
-            createCardFromImage(291, 'İnek'), createCardFromImage(377, 'Tavuk'), createCardFromImage(102, 'Horoz'),
+            createCardFromImage(291, 'İnek'), createCardFromImage(377, 'Horoz'), createCardFromImage(102, 'Horoz'),
             createCardFromImage(290, 'At'), createCardFromImage(460, 'Koyun'), createCardFromImage(461, 'Keçi'),
             createCardFromImage(26, 'Ördek'), createCardFromImage(865, 'Eşek'),
         ]},
         { id: 'vahsi', title: 'Vahşi Hayvanlar', imageId: 100, cards: [
             createCardFromImage(100, 'Aslan'), createCardFromImage(28,  'Fil'), createCardFromImage(101, 'Zürafa'),
             createCardFromImage(277, 'Maymun'), createCardFromImage(415, 'Tilki'), createCardFromImage(320, 'Panda'),
-            createCardFromImage(323, 'Yılan'), createCardFromImage(862, 'Kaplan'), createManualCard('ayi', 'Ayı', 320),
+            createCardFromImage(323, 'Yılan'), createCardFromImage(862, 'Kaplan'), createManualCard('ayi', 'Ayı', 916),
             createCardFromImage(866, 'Zebra'),
         ]}
     ]

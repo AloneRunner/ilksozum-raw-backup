@@ -1,0 +1,113 @@
+import { ConceptRound, ActivityType } from '../../../../types';
+
+export const roughSmoothData: ConceptRound[] = [
+    // 1. Ananas vs Elma
+    { id: 1, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 279, word: "ananas", imageUrl: "/images/279.png", isCorrect: true, audioKey: "ananas", spokenText: "pürüzlü ananas" },
+        { id: 43, word: "elma", imageUrl: "/images/43.png", isCorrect: false, audioKey: "elma", spokenText: "pürüzsüz elma" }
+    ]},
+    { id: 2, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 279, word: "ananas", imageUrl: "/images/279.png", isCorrect: false, audioKey: "ananas", spokenText: "pürüzlü ananas" },
+        { id: 43, word: "elma", imageUrl: "/images/43.png", isCorrect: true, audioKey: "elma", spokenText: "pürüzsüz elma" }
+    ]},
+
+    // 2. Tuğla vs Misket
+    { id: 3, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 136, word: "tuğla", imageUrl: "/images/136.png", isCorrect: true, audioKey: "tuğla", spokenText: "pürüzlü tuğla" },
+        { id: 762, word: "misket", imageUrl: "/images/762.png", isCorrect: false, audioKey: "misket", spokenText: "pürüzsüz misket" }
+    ]},
+    { id: 4, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 136, word: "tuğla", imageUrl: "/images/136.png", isCorrect: false, audioKey: "tuğla", spokenText: "pürüzlü tuğla" },
+        { id: 762, word: "misket", imageUrl: "/images/762.png", isCorrect: true, audioKey: "misket", spokenText: "pürüzsüz misket" }
+    ]},
+
+    // 3. Ceviz vs Yumurta
+    { id: 5, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 650, word: "ceviz", imageUrl: "/images/650.png", isCorrect: true, audioKey: "ceviz", spokenText: "pürüzlü ceviz" },
+        { id: 113, word: "yumurta", imageUrl: "/images/113.png", isCorrect: false, audioKey: "yumurta", spokenText: "pürüzsüz yumurta" }
+    ]},
+    { id: 6, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 650, word: "ceviz", imageUrl: "/images/650.png", isCorrect: false, audioKey: "ceviz", spokenText: "pürüzlü ceviz" },
+        { id: 113, word: "yumurta", imageUrl: "/images/113.png", isCorrect: true, audioKey: "yumurta", spokenText: "pürüzsüz yumurta" }
+    ]},
+
+    // 4. Karnabahar vs Patlıcan
+    { id: 7, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 648, word: "karnabahar", imageUrl: "/images/648.png", isCorrect: true, audioKey: "karnabahar", spokenText: "pürüzlü karnabahar" },
+        { id: 280, word: "patlıcan", imageUrl: "/images/280.png", isCorrect: false, audioKey: "patlıcan", spokenText: "pürüzsüz patlıcan" }
+    ]},
+    { id: 8, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 648, word: "karnabahar", imageUrl: "/images/648.png", isCorrect: false, audioKey: "karnabahar", spokenText: "pürüzlü karnabahar" },
+        { id: 280, word: "patlıcan", imageUrl: "/images/280.png", isCorrect: true, audioKey: "patlıcan", spokenText: "pürüzsüz patlıcan" }
+    ]},
+
+    // 5. Kirpi vs Yunus
+    { id: 9, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 418, word: "kirpi", imageUrl: "/images/418.png", isCorrect: true, audioKey: "kirpi", spokenText: "pürüzlü kirpi" },
+        { id: 763, word: "yunus", imageUrl: "/images/763.png", isCorrect: false, audioKey: "yunus", spokenText: "pürüzsüz yunus" }
+    ]},
+    { id: 10, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 418, word: "kirpi", imageUrl: "/images/418.png", isCorrect: false, audioKey: "kirpi", spokenText: "pürüzlü kirpi" },
+        { id: 763, word: "yunus", imageUrl: "/images/763.png", isCorrect: true, audioKey: "yunus", spokenText: "pürüzsüz yunus" }
+    ]},
+
+    // 6. Ağaç Gövdesi vs Taş
+    { id: 11, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 537, word: "ağaç gövdesi", imageUrl: "/images/537.png", isCorrect: true, audioKey: "ağaç_gövdesi", spokenText: "pürüzlü ağaç gövdesi" },
+        { id: 347, word: "taş", imageUrl: "/images/347.png", isCorrect: false, audioKey: "taş", spokenText: "pürüzsüz taş" }
+    ]},
+    { id: 12, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 537, word: "ağaç gövdesi", imageUrl: "/images/537.png", isCorrect: false, audioKey: "ağaç_gövdesi", spokenText: "pürüzlü ağaç gövdesi" },
+        { id: 347, word: "taş", imageUrl: "/images/347.png", isCorrect: true, audioKey: "taş", spokenText: "pürüzsüz taş" }
+    ]},
+
+    // 7. Portakal vs Armut
+    { id: 13, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 168, word: "portakal", imageUrl: "/images/168.png", isCorrect: true, audioKey: "portakal", spokenText: "pürüzlü portakal" },
+        { id: 365, word: "armut", imageUrl: "/images/365.png", isCorrect: false, audioKey: "armut", spokenText: "pürüzsüz armut" }
+    ]},
+    { id: 14, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 168, word: "portakal", imageUrl: "/images/168.png", isCorrect: false, audioKey: "portakal", spokenText: "pürüzlü portakal" },
+        { id: 365, word: "armut", imageUrl: "/images/365.png", isCorrect: true, audioKey: "armut", spokenText: "pürüzsüz armut" }
+    ]},
+
+    // 8. Deniz Kestanesi vs Deniz Yıldızı
+    { id: 15, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 692, word: "deniz kestanesi", imageUrl: "/images/692.png", isCorrect: true, audioKey: "deniz_kestanesi", spokenText: "pürüzlü deniz kestanesi" },
+        { id: 359, word: "deniz yıldızı", imageUrl: "/images/359.png", isCorrect: false, audioKey: "deniz_yıldızı", spokenText: "pürüzsüz deniz yıldızı" }
+    ]},
+    { id: 16, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 692, word: "deniz kestanesi", imageUrl: "/images/692.png", isCorrect: false, audioKey: "deniz_kestanesi", spokenText: "pürüzlü deniz kestanesi" },
+        { id: 359, word: "deniz yıldızı", imageUrl: "/images/359.png", isCorrect: true, audioKey: "deniz_yıldızı", spokenText: "pürüzsüz deniz yıldızı" }
+    ]},
+
+    // 9. Kivi vs Domates
+    { id: 17, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 649, word: "kivi", imageUrl: "/images/649.png", isCorrect: true, audioKey: "kivi", spokenText: "pürüzlü kivi" },
+        { id: 128, word: "domates", imageUrl: "/images/128.png", isCorrect: false, audioKey: "domates", spokenText: "pürüzsüz domates" }
+    ]},
+    { id: 18, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 649, word: "kivi", imageUrl: "/images/649.png", isCorrect: false, audioKey: "kivi", spokenText: "pürüzlü kivi" },
+        { id: 128, word: "domates", imageUrl: "/images/128.png", isCorrect: true, audioKey: "domates", spokenText: "pürüzsüz domates" }
+    ]},
+
+    // 10. Ekmek vs Peynir
+    { id: 19, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 112, word: "ekmek", imageUrl: "/images/112.png", isCorrect: true, audioKey: "ekmek", spokenText: "pürüzlü ekmek" },
+        { id: 50, word: "peynir", imageUrl: "/images/50.png", isCorrect: false, audioKey: "peynir", spokenText: "pürüzsüz peynir" }
+    ]},
+    { id: 20, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 112, word: "ekmek", imageUrl: "/images/112.png", isCorrect: false, audioKey: "ekmek", spokenText: "pürüzlü ekmek" },
+        { id: 50, word: "peynir", imageUrl: "/images/50.png", isCorrect: true, audioKey: "peynir", spokenText: "pürüzsüz peynir" }
+    ]},
+
+    // 11. Kaldırım vs Yol
+    { id: 21, question: "Pürüzlü olan hangisi?", questionAudioKey: "q_which_is_rough", activityType: ActivityType.RoughSmooth, options: [
+        { id: 891, word: "kaldırım", imageUrl: "/images/891.png", isCorrect: true, audioKey: "kaldırım", spokenText: "pürüzlü kaldırım" },
+        { id: 890, word: "yol", imageUrl: "/images/890.png", isCorrect: false, audioKey: "yol", spokenText: "pürüzsüz yol" }
+    ]},
+    { id: 22, question: "Pürüzsüz olan hangisi?", questionAudioKey: "q_which_is_smooth", activityType: ActivityType.RoughSmooth, options: [
+        { id: 891, word: "kaldırım", imageUrl: "/images/891.png", isCorrect: false, audioKey: "kaldırım", spokenText: "pürüzlü kaldırım" },
+        { id: 890, word: "yol", imageUrl: "/images/890.png", isCorrect: true, audioKey: "yol", spokenText: "pürüzsüz yol" }
+    ]},
+];

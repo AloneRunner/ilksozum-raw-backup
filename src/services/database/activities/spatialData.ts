@@ -26,7 +26,7 @@ const directionPairs = [
     { leftId: 1, rightId: 28 },    // araba vs fil
     { leftId: 26, rightId: 41 },   // ördek vs tavşan
     { leftId: 106, rightId: 73 },  // tren vs kuş
-    { leftId: 763, rightId: 42 },  // yunus vs kaplumbağa
+    { leftId: 42, rightId: 763 },  // kaplumbağa vs yunus (düzeltildi: kaplumbağa sola bakıyor)
     { leftId: 145, rightId: 257 }, // çita vs ambulans
     { leftId: 107, rightId: 377 }, // uçak vs tavuk
     { leftId: 277, rightId: 59 },  // maymun vs ayakkabı
@@ -43,23 +43,23 @@ export const leftRightData: ConceptRound[] = directionPairs.flatMap((pair, index
 
     const roundForLeft: ConceptRound = {
         id: (index * 2) + 1,
-        question: "Sola dönük olan hangisi?",
+        question: "Sola bakan hangisi?",
         questionAudioKey: "q_which_faces_left",
         activityType: ActivityType.LeftRight,
         options: [
-            createOption(leftImage, true, leftImage.word),
-            createOption(rightImage, false, rightImage.word),
+            createOption(leftImage, true, `sola bakan ${leftImage.word}`),
+            createOption(rightImage, false, `sağa bakan ${rightImage.word}`),
         ]
     };
 
     const roundForRight: ConceptRound = {
         id: (index * 2) + 2,
-        question: "Sağa dönük olan hangisi?",
+        question: "Sağa bakan hangisi?",
         questionAudioKey: "q_which_faces_right",
         activityType: ActivityType.LeftRight,
         options: [
-            createOption(leftImage, false, leftImage.word),
-            createOption(rightImage, true, rightImage.word),
+            createOption(leftImage, false, `sola bakan ${leftImage.word}`),
+            createOption(rightImage, true, `sağa bakan ${rightImage.word}`),
         ]
     };
 
@@ -69,7 +69,7 @@ export const leftRightData: ConceptRound[] = directionPairs.flatMap((pair, index
 
 export const onUnderData: ConceptRound[] = [
     // 1. Top - Masa
-    { id: 1, question: "Masanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, options: [
+    { id: 1, question: "Masanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on_person", activityType: ActivityType.OnUnder, options: [
         { id: 20, word: "top", imageUrl: "/images/20.png", isCorrect: true, audioKey: "üstünde", spokenText: "masanın üstündeki top" },
         { id: 21, word: "top", imageUrl: "/images/21.png", isCorrect: false, audioKey: "altında", spokenText: "masanın altındaki top" }
     ]},
@@ -86,15 +86,15 @@ export const onUnderData: ConceptRound[] = [
         { id: 160, word: "kedi", imageUrl: "/images/160.png", isCorrect: false, audioKey: "üstünde", spokenText: "sandalyenin üstündeki kedi" },
         { id: 91, word: "kedi", imageUrl: "/images/91.png", isCorrect: true, audioKey: "altında", spokenText: "sandalyenin altındaki kedi" }
     ]},
-    // 3. Kiraz - Pasta
-    { id: 5, question: "Pastanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, options: [
-        { id: 486, word: "pasta dilimi", imageUrl: "/images/486.png", isCorrect: true, audioKey: "üstünde", spokenText: "pastanın üstündeki kiraz" },
-        { id: 183, word: "kiraz", imageUrl: "/images/183.png", isCorrect: false, audioKey: "altında", spokenText: "pastanın altındaki kiraz" }
-    ]},
-    { id: 6, question: "Pastanın altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, options: [
-        { id: 486, word: "pasta dilimi", imageUrl: "/images/486.png", isCorrect: false, audioKey: "üstünde", spokenText: "pastanın üstündeki kiraz" },
-        { id: 183, word: "kiraz", imageUrl: "/images/183.png", isCorrect: true, audioKey: "altında", spokenText: "pastanın altındaki kiraz" }
-    ]},
+    // 3. Kiraz - Pasta (fixed: both options use 'kiraz' as the object, matching image, word, and spokenText)
+        { id: 5, question: "Pastanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, options: [
+            { id: 486, word: "kiraz", imageUrl: "/images/486.png", isCorrect: true, audioKey: "üstünde", spokenText: "pastanın üstündeki kiraz" },
+            { id: 183, word: "kiraz", imageUrl: "/images/183.png", isCorrect: false, audioKey: "altında", spokenText: "pastanın altındaki kiraz" }
+        ]},
+        { id: 6, question: "Pastanın altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, options: [
+            { id: 486, word: "kiraz", imageUrl: "/images/486.png", isCorrect: false, audioKey: "üstünde", spokenText: "pastanın üstündeki kiraz" },
+            { id: 183, word: "kiraz", imageUrl: "/images/183.png", isCorrect: true, audioKey: "altında", spokenText: "pastanın altındaki kiraz" }
+        ]},
     // 4. Top - Merdiven
     { id: 7, question: "Merdivenin üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, options: [
         { id: 172, word: "top", imageUrl: "/images/172.png", isCorrect: true, audioKey: "üstünde", spokenText: "merdivenin üstündeki top" },
@@ -299,14 +299,15 @@ export const inFrontOfBehindData: ConceptRound[] = [
         { id: 484, word: "adam", imageUrl: "/images/484.png", isCorrect: true, audioKey: "adam", spokenText: "kapının arkasındaki adam" }
     ]},
     // 6. Kalkan - Asker
-    { id: 11, question: "Askerin önündeki hangisi?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
-        { id: 716, word: "kalkan", imageUrl: "/images/716.png", isCorrect: true, audioKey: "kalkan", spokenText: "askerin önündeki kalkan" },
-        { id: 717, word: "asker", imageUrl: "/images/717.png", isCorrect: false, audioKey: "asker", spokenText: "kalkanın arkasındaki asker" }
-    ]},
-    { id: 12, question: "Kalkanın arkasındaki hangisi?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
-        { id: 716, word: "kalkan", imageUrl: "/images/716.png", isCorrect: false, audioKey: "kalkan", spokenText: "askerin önündeki kalkan" },
-        { id: 717, word: "asker", imageUrl: "/images/717.png", isCorrect: true, audioKey: "asker", spokenText: "kalkanın arkasındaki asker" }
-    ]},
+        // 6. Kalkan - Asker (clarified: ask about the shield explicitly)
+        { id: 11, question: "Hangi kalkan askerin arkasında?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+            { id: 717, word: "kalkan", imageUrl: "/images/717.png", isCorrect: true, audioKey: "kalkan", spokenText: "askerin arkasındaki kalkan" },
+            { id: 716, word: "kalkan", imageUrl: "/images/716.png", isCorrect: false, audioKey: "kalkan", spokenText: "askerin önündeki kalkan" }
+        ]},
+        { id: 12, question: "Hangi kalkan askerin önünde?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+            { id: 717, word: "kalkan", imageUrl: "/images/717.png", isCorrect: false, audioKey: "kalkan", spokenText: "askerin arkasındaki kalkan" },
+            { id: 716, word: "kalkan", imageUrl: "/images/716.png", isCorrect: true, audioKey: "kalkan", spokenText: "askerin önündeki kalkan" }
+        ]},
 ];
 
 export const insideOutsideData: ConceptRound[] = [
@@ -434,7 +435,7 @@ export const nearFarData: ConceptRound[] = [
 ];
 
 export const highLowData: ConceptRound[] = [
-    // 1. Dağ vs Tepe
+    // 1. Dağ vs Tepe - boyut karşılaştırması
     { id: 1, question: "Hangisi daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
         { id: 195, word: "dağ", imageUrl: "/images/195.png", isCorrect: true, audioKey: "dağ", spokenText: "yüksek dağ" },
         { id: 196, word: "tepe", imageUrl: "/images/196.png", isCorrect: false, audioKey: "tepe", spokenText: "alçak tepe" }
@@ -443,53 +444,57 @@ export const highLowData: ConceptRound[] = [
         { id: 195, word: "dağ", imageUrl: "/images/195.png", isCorrect: false, audioKey: "dağ", spokenText: "yüksek dağ" },
         { id: 196, word: "tepe", imageUrl: "/images/196.png", isCorrect: true, audioKey: "tepe", spokenText: "alçak tepe" }
     ]},
-    // 2. Trambolin
-    { id: 3, question: "Daha yüksekte olan hangisi?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
-        { id: 391, word: "çocuk", imageUrl: "/images/391.png", isCorrect: true, audioKey: "çocuk", spokenText: "yüksekteki çocuk" },
-        { id: 495, word: "tabure", imageUrl: "/images/495.png", isCorrect: false, audioKey: "tabure", spokenText: "alçaktaki tabure" }
+    // 2. Trambolin - konum karşılaştırması
+    { id: 3, question: "Yukarıda olan hangisi?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
+        { id: 391, word: "çocuk", imageUrl: "/images/391.png", isCorrect: true, audioKey: "çocuk", spokenText: "yukarıdaki çocuk" },
+        { id: 495, word: "tabure", imageUrl: "/images/495.png", isCorrect: false, audioKey: "tabure", spokenText: "aşağıdaki tabure" }
     ]},
-    // 3. Salıncak
-    { id: 4, question: "Daha yüksekte olan hangisi?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
-        { id: 392, word: "çocuk", imageUrl: "/images/392.png", isCorrect: true, audioKey: "çocuk", spokenText: "yüksekteki çocuk" },
-        { id: 393, word: "salıncak", imageUrl: "/images/393.png", isCorrect: false, audioKey: "salıncak", spokenText: "alçaktaki salıncak" }
+    { id: 4, question: "Aşağıda olan hangisi?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
+        { id: 391, word: "çocuk", imageUrl: "/images/391.png", isCorrect: false, audioKey: "çocuk", spokenText: "yukarıdaki çocuk" },
+        { id: 495, word: "tabure", imageUrl: "/images/495.png", isCorrect: true, audioKey: "tabure", spokenText: "aşağıdaki tabure" }
     ]},
-    { id: 5, question: "Daha alçakta olan hangisi?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
-        { id: 392, word: "çocuk", imageUrl: "/images/392.png", isCorrect: false, audioKey: "çocuk", spokenText: "yüksekteki çocuk" },
-        { id: 393, word: "salıncak", imageUrl: "/images/393.png", isCorrect: true, audioKey: "salıncak", spokenText: "alçaktaki salıncak" }
+    // 3. Salıncak - konum karşılaştırması
+    { id: 5, question: "Üstte olan hangisi?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
+        { id: 392, word: "çocuk", imageUrl: "/images/392.png", isCorrect: true, audioKey: "çocuk", spokenText: "üstteki çocuk" },
+        { id: 393, word: "salıncak", imageUrl: "/images/393.png", isCorrect: false, audioKey: "salıncak", spokenText: "alttaki salıncak" }
     ]},
-    // 4. Raf
-    { id: 6, question: "Yüksek raftaki hangisi?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
-        { id: 611, word: "kitaplar", imageUrl: "/images/611.png", isCorrect: true, audioKey: "kitaplar", spokenText: "yüksekteki kitaplar" },
-        { id: 610, word: "kitaplar", imageUrl: "/images/610.png", isCorrect: false, audioKey: "kitaplar", spokenText: "alçaktaki kitaplar" }
+    { id: 6, question: "Altta olan hangisi?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
+        { id: 392, word: "çocuk", imageUrl: "/images/392.png", isCorrect: false, audioKey: "çocuk", spokenText: "üstteki çocuk" },
+        { id: 393, word: "salıncak", imageUrl: "/images/393.png", isCorrect: true, audioKey: "salıncak", spokenText: "alttaki salıncak" }
     ]},
-    { id: 7, question: "Alçak raftaki hangisi?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
-        { id: 611, word: "kitaplar", imageUrl: "/images/611.png", isCorrect: false, audioKey: "kitaplar", spokenText: "yüksekteki kitaplar" },
-        { id: 610, word: "kitaplar", imageUrl: "/images/610.png", isCorrect: true, audioKey: "kitaplar", spokenText: "alçaktaki kitaplar" }
+    // 4. Raf - raf konumu
+    { id: 7, question: "Üst raftaki hangisi?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
+        { id: 611, word: "kitaplar", imageUrl: "/images/611.png", isCorrect: true, audioKey: "kitaplar", spokenText: "üst raftaki kitaplar" },
+        { id: 610, word: "kitaplar", imageUrl: "/images/610.png", isCorrect: false, audioKey: "kitaplar", spokenText: "alt raftaki kitaplar" }
     ]},
-    // 5. Gökdelen vs Ev
-    { id: 8, question: "Hangisi daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
+    { id: 8, question: "Alt raftaki hangisi?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
+        { id: 611, word: "kitaplar", imageUrl: "/images/611.png", isCorrect: false, audioKey: "kitaplar", spokenText: "üst raftaki kitaplar" },
+        { id: 610, word: "kitaplar", imageUrl: "/images/610.png", isCorrect: true, audioKey: "kitaplar", spokenText: "alt raftaki kitaplar" }
+    ]},
+    // 5. Gökdelen vs Ev - boyut karşılaştırması
+    { id: 9, question: "Hangi bina daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
         { id: 612, word: "gökdelen", imageUrl: "/images/612.png", isCorrect: true, audioKey: "gökdelen", spokenText: "yüksek gökdelen" },
         { id: 571, word: "ev", imageUrl: "/images/571.png", isCorrect: false, audioKey: "ev", spokenText: "alçak ev" }
     ]},
-    { id: 9, question: "Hangisi daha alçak?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
+    { id: 10, question: "Hangi bina daha alçak?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
         { id: 612, word: "gökdelen", imageUrl: "/images/612.png", isCorrect: false, audioKey: "gökdelen", spokenText: "yüksek gökdelen" },
         { id: 571, word: "ev", imageUrl: "/images/571.png", isCorrect: true, audioKey: "ev", spokenText: "alçak ev" }
     ]},
-    // 6. Kitaplık
-    { id: 10, question: "Hangisi daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
+    // 6. Kitaplık - boyut karşılaştırması
+    { id: 11, question: "Hangi dolap daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
         { id: 614, word: "kitaplık", imageUrl: "/images/614.png", isCorrect: true, audioKey: "kitaplık", spokenText: "yüksek kitaplık" },
         { id: 613, word: "kitaplık", imageUrl: "/images/613.png", isCorrect: false, audioKey: "kitaplık", spokenText: "alçak kitaplık" }
     ]},
-    { id: 11, question: "Hangisi daha alçak?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
+    { id: 12, question: "Hangi dolap daha alçak?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
         { id: 614, word: "kitaplık", imageUrl: "/images/614.png", isCorrect: false, audioKey: "kitaplık", spokenText: "yüksek kitaplık" },
         { id: 613, word: "kitaplık", imageUrl: "/images/613.png", isCorrect: true, audioKey: "kitaplık", spokenText: "alçak kitaplık" }
     ]},
-    // 7. Tümsek vs Çukur
-    { id: 12, question: "Hangisi daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
+    // 7. Tümsek vs Çukur - arazi şekli karşılaştırması
+    { id: 13, question: "Hangi yer daha yüksek?", questionAudioKey: "q_which_is_higher", activityType: ActivityType.HighLow, options: [
         { id: 729, word: "tümsek", imageUrl: "/images/729.png", isCorrect: true, audioKey: "tümsek", spokenText: "yüksek tümsek" },
         { id: 728, word: "çukur", imageUrl: "/images/728.png", isCorrect: false, audioKey: "çukur", spokenText: "alçak çukur" }
     ]},
-    { id: 13, question: "Hangisi daha alçak?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
+    { id: 14, question: "Hangi yer daha alçak?", questionAudioKey: "q_which_is_lower", activityType: ActivityType.HighLow, options: [
         { id: 729, word: "tümsek", imageUrl: "/images/729.png", isCorrect: false, audioKey: "tümsek", spokenText: "yüksek tümsek" },
         { id: 728, word: "çukur", imageUrl: "/images/728.png", isCorrect: true, audioKey: "çukur", spokenText: "alçak çukur" }
     ]},

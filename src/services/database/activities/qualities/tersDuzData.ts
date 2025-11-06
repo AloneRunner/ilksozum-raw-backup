@@ -1,29 +1,73 @@
 import { ConceptRound, ActivityType } from '../../../../types';
 
 export const tersDuzData: ConceptRound[] = [
-    // Terlik
-    { id: 1, question: "Düzgün olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
-        { id: 720, word: "terlik", imageUrl: "/images/720.png", isCorrect: true, audioKey: "terlik", spokenText: "terlik" },
+    // 1. Terlik
+    { id: 1, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 720, word: "terlik", imageUrl: "/images/720.png", isCorrect: true, audioKey: "terlik", spokenText: "düzgün terlik" },
         { id: 721, word: "terlik", imageUrl: "/images/721.png", isCorrect: false, audioKey: "terlik", spokenText: "ters terlik" }
     ]},
-    // Kaplumbağa
-    { id: 2, question: "Düzgün duran hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
-        { id: 42, word: "kaplumbağa", imageUrl: "/images/42.png", isCorrect: true, audioKey: "kaplumbağa", spokenText: "kaplumbağa" },
+    { id: 2, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 720, word: "terlik", imageUrl: "/images/720.png", isCorrect: false, audioKey: "terlik", spokenText: "düzgün terlik" },
+        { id: 721, word: "terlik", imageUrl: "/images/721.png", isCorrect: true, audioKey: "terlik", spokenText: "ters terlik" }
+    ]},
+
+    // 2. Kaplumbağa
+    { id: 3, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 42, word: "kaplumbağa", imageUrl: "/images/42.png", isCorrect: true, audioKey: "kaplumbağa", spokenText: "düzgün kaplumbağa" }, // .png kullanıldı
         { id: 722, word: "kaplumbağa", imageUrl: "/images/722.png", isCorrect: false, audioKey: "kaplumbağa", spokenText: "ters kaplumbağa" }
     ]},
-    // Saat
-    { id: 3, question: "Düzgün duran hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
-        { id: 844, word: "saat", imageUrl: "/images/844.png", isCorrect: true, audioKey: "saat", spokenText: "saat" },
+    { id: 4, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 42, word: "kaplumbağa", imageUrl: "/images/42.png", isCorrect: false, audioKey: "kaplumbağa", spokenText: "düzgün kaplumbağa" },
+        { id: 722, word: "kaplumbağa", imageUrl: "/images/722.png", isCorrect: true, audioKey: "kaplumbağa", spokenText: "ters kaplumbağa" }
+    ]},
+
+    // 3. Saat
+    { id: 5, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 844, word: "saat", imageUrl: "/images/844.png", isCorrect: true, audioKey: "saat", spokenText: "düzgün saat" },
         { id: 843, word: "saat", imageUrl: "/images/843.png", isCorrect: false, audioKey: "saat", spokenText: "ters saat" }
     ]},
-    // Ayakkabı
-    { id: 4, question: "Düzgün giyilmiş olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
-        { id: 846, word: "ayakkabı", imageUrl: "/images/846.png", isCorrect: true, audioKey: "ayakkabı", spokenText: "ayakkabı" },
+    { id: 6, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 844, word: "saat", imageUrl: "/images/844.png", isCorrect: false, audioKey: "saat", spokenText: "düzgün saat" },
+        { id: 843, word: "saat", imageUrl: "/images/843.png", isCorrect: true, audioKey: "saat", spokenText: "ters saat" }
+    ]},
+
+    // 4. Ayakkabı
+    { id: 7, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 846, word: "ayakkabı", imageUrl: "/images/846.png", isCorrect: true, audioKey: "ayakkabı", spokenText: "düzgün ayakkabı" },
         { id: 845, word: "ayakkabı", imageUrl: "/images/845.png", isCorrect: false, audioKey: "ayakkabı", spokenText: "ters ayakkabı" }
     ]},
-    // Sandalet
-    { id: 5, question: "Düzgün olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
-        { id: 848, word: "sandalet", imageUrl: "/images/848.png", isCorrect: true, audioKey: "sandalet", spokenText: "sandalet" },
+    { id: 8, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 846, word: "ayakkabı", imageUrl: "/images/846.png", isCorrect: false, audioKey: "ayakkabı", spokenText: "düzgün ayakkabı" },
+        { id: 845, word: "ayakkabı", imageUrl: "/images/845.png", isCorrect: true, audioKey: "ayakkabı", spokenText: "ters ayakkabı" }
+    ]},
+
+    // 5. Sandalet
+    { id: 9, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 848, word: "sandalet", imageUrl: "/images/848.png", isCorrect: true, audioKey: "sandalet", spokenText: "düzgün sandalet" },
         { id: 847, word: "sandalet", imageUrl: "/images/847.png", isCorrect: false, audioKey: "sandalet", spokenText: "ters sandalet" }
+    ]},
+    { id: 10, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 848, word: "sandalet", imageUrl: "/images/848.png", isCorrect: false, audioKey: "sandalet", spokenText: "düzgün sandalet" },
+        { id: 847, word: "sandalet", imageUrl: "/images/847.png", isCorrect: true, audioKey: "sandalet", spokenText: "ters sandalet" }
+    ]},
+
+    // 6. Şemsiye
+    { id: 11, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 158, word: "şemsiye", imageUrl: "/images/158.png", isCorrect: true, audioKey: "şemsiye", spokenText: "düzgün şemsiye" }, // Kapalı şemsiye
+        { id: 157, word: "şemsiye", imageUrl: "/images/157.png", isCorrect: false, audioKey: "şemsiye", spokenText: "ters şemsiye" } // Ters dönmüş açık şemsiye
+    ]},
+    { id: 12, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 158, word: "şemsiye", imageUrl: "/images/158.png", isCorrect: false, audioKey: "şemsiye", spokenText: "düzgün şemsiye" },
+        { id: 157, word: "şemsiye", imageUrl: "/images/157.png", isCorrect: true, audioKey: "şemsiye", spokenText: "ters şemsiye" }
+    ]},
+
+    // 7. Fincan/Kupa
+    { id: 13, question: "Düz olan hangisi?", questionAudioKey: "q_which_is_upright", activityType: ActivityType.TersDuz, options: [
+        { id: 140, word: "kupa", imageUrl: "/images/140.png", isCorrect: true, audioKey: "kupa", spokenText: "düzgün kupa" }, // Kahve kupası
+        { id: 842, word: "fincan", imageUrl: "/images/842.png", isCorrect: false, audioKey: "fincan", spokenText: "ters fincan" }
+    ]},
+    { id: 14, question: "Ters olan hangisi?", questionAudioKey: "q_which_is_upsidedown", activityType: ActivityType.TersDuz, options: [
+        { id: 140, word: "kupa", imageUrl: "/images/140.png", isCorrect: false, audioKey: "kupa", spokenText: "düzgün kupa" },
+        { id: 842, word: "fincan", imageUrl: "/images/842.png", isCorrect: true, audioKey: "fincan", spokenText: "ters fincan" }
     ]},
 ];

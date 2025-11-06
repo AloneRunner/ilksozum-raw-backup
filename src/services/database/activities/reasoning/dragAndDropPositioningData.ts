@@ -1,0 +1,9 @@
+import { DragAndDropPositioningRound, ActivityType } from '../../../../types.ts';
+
+export const dragAndDropPositioningData: DragAndDropPositioningRound[] = [
+    { id: 1, question: 'Topu kutunun içine koy.', questionAudioKey: 'q_put_ball_in_box', itemToDrag: {id: 156, word: 'top', imageUrl: '/images/156.png', audioKeys: {default: 'top'}, tags: {category:''}}, correctZone: 'içinde', activityType: ActivityType.DragAndDropPositioning },
+    { id: 2, question: 'Kalemi masanın üstüne koy.', questionAudioKey: 'q_put_pen_on_table', itemToDrag: {id: 121, word: 'kalem', imageUrl: '/images/121.png', audioKeys: {default: 'kalem'}, tags: {category:''}}, correctZone: 'üstünde', activityType: ActivityType.DragAndDropPositioning },
+    { id: 3, question: 'Elmayı kutunun soluna koy.', questionAudioKey: 'q_put_apple_left_of_box', itemToDrag: { id: 43, word: 'elma', imageUrl: '/images/43.png', audioKeys: { default: 'elma' }, tags: {category:''}}, correctZone: 'solunda', activityType: ActivityType.DragAndDropPositioning },
+    { id: 4, question: 'Kitabı kutunun sağına koy.', questionAudioKey: 'q_put_book_right_of_box', itemToDrag: { id: 37, word: 'kitap', imageUrl: '/images/37.png', audioKeys: { default: 'kitap' }, tags: {category:''}}, correctZone: 'sağında', activityType: ActivityType.DragAndDropPositioning },
+    { id: 5, question: 'Ayakkabıyı kutunun altına koy.', questionAudioKey: 'q_put_shoe_under_box', itemToDrag: { id: 59, word: 'ayakkabı', imageUrl: '/images/59.png', audioKeys: { default: 'ayakkabı' }, tags: {category:''}}, correctZone: 'altında', activityType: ActivityType.DragAndDropPositioning }
+];

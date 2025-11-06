@@ -20,11 +20,11 @@ export const wetDryData: ConceptRound[] = [
         { id: 237, word: "güneş", imageUrl: "/images/237.png", isCorrect: true, audioKey: "güneş", spokenText: "güneş" }
     ]},
     // Islak Köpek (522) - Kuru Köpek (521)
-    { id: 5, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet", activityType: ActivityType.WetDry, options: [
+    { id: 5, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet_person", activityType: ActivityType.WetDry, options: [
         { id: 522, word: "köpek", imageUrl: "/images/522.gif", isCorrect: true, audioKey: "köpek", spokenText: "ıslak köpek" },
         { id: 521, word: "köpek", imageUrl: "/images/521.gif", isCorrect: false, audioKey: "köpek", spokenText: "kuru köpek" }
     ]},
-    { id: 6, question: "Kuru olan hangisi?", questionAudioKey: "q_which_is_dry", activityType: ActivityType.WetDry, options: [
+    { id: 6, question: "Kuru olan hangisi?", questionAudioKey: "q_which_is_dry_person", activityType: ActivityType.WetDry, options: [
         { id: 522, word: "köpek", imageUrl: "/images/522.gif", isCorrect: false, audioKey: "köpek", spokenText: "ıslak köpek" },
         { id: 521, word: "köpek", imageUrl: "/images/521.gif", isCorrect: true, audioKey: "köpek", spokenText: "kuru köpek" }
     ]},
@@ -56,7 +56,7 @@ export const wetDryData: ConceptRound[] = [
         { id: 13, word: "tişört", imageUrl: "/images/13.png", isCorrect: true, audioKey: "tişört", spokenText: "kuru tişört" }
     ]},
     // Islak Yol (599) - Kuru Yol (530)
-    { id: 13, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet", activityType: ActivityType.WetDry, options: [
+    { id: 13, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet_person", activityType: ActivityType.WetDry, options: [
         { id: 599, word: "otoyol", imageUrl: "/images/599.png", isCorrect: true, audioKey: "otoyol", spokenText: "ıslak yol" },
         { id: 530, word: "otoyol", imageUrl: "/images/530.png", isCorrect: false, audioKey: "otoyol", spokenText: "kuru yol" }
     ]},
@@ -101,21 +101,21 @@ export const wetDryData: ConceptRound[] = [
         { id: 539, word: "fırça", imageUrl: "/images/539.png", isCorrect: true, audioKey: "fırça", spokenText: "kuru fırça" }
     ]},
     // Kirli/Islak Köpek (522) - Temiz/Kuru Köpek (521)
-    { id: 23, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet", activityType: ActivityType.WetDry, options: [
+    { id: 23, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet_person", activityType: ActivityType.WetDry, options: [
         { id: 522, word: "köpek", imageUrl: "/images/522.gif", isCorrect: true, audioKey: "köpek", spokenText: "ıslak köpek" },
         { id: 521, word: "köpek", imageUrl: "/images/521.gif", isCorrect: false, audioKey: "köpek", spokenText: "kuru köpek" }
     ]},
-    { id: 24, question: "Kuru olan hangisi?", questionAudioKey: "q_which_is_dry", activityType: ActivityType.WetDry, options: [
+    { id: 24, question: "Kuru olan hangisi?", questionAudioKey: "q_which_is_dry_person", activityType: ActivityType.WetDry, options: [
         { id: 522, word: "köpek", imageUrl: "/images/522.gif", isCorrect: false, audioKey: "köpek", spokenText: "ıslak köpek" },
         { id: 521, word: "köpek", imageUrl: "/images/521.gif", isCorrect: true, audioKey: "köpek", spokenText: "kuru köpek" }
     ]},
      // Islak Banyo Yapan Çocuk (875) - Kuru Havlu (523)
-    { id: 25, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet", activityType: ActivityType.WetDry, options: [
-        { id: 875, word: "banyo yapan çocuk", imageUrl: "/images/875.png", isCorrect: true, audioKey: "banyo_yapan_çocuk", spokenText: "ıslak" },
-        { id: 523, word: "havlu", imageUrl: "/images/523.png", isCorrect: false, audioKey: "havlu", spokenText: "kuru" }
+    { id: 25, question: "Islak olan hangisi?", questionAudioKey: "q_which_is_wet_person", activityType: ActivityType.WetDry, options: [
+        { id: 875, word: "banyo yapan çocuk", imageUrl: "/images/875.png", isCorrect: true, audioKey: "banyo_yapan_çocuk", spokenText: "ıslak banyo yapan çocuk" },
+        { id: 523, word: "havlu", imageUrl: "/images/523.png", isCorrect: false, audioKey: "havlu", spokenText: "kuru havlu" }
     ]},
-    { id: 26, question: "Kuru olan hangisi?", questionAudioKey: "q_which_is_dry", activityType: ActivityType.WetDry, options: [
-        { id: 875, word: "banyo yapan çocuk", imageUrl: "/images/875.png", isCorrect: false, audioKey: "banyo_yapan_çocuk", spokenText: "ıslak" },
-        { id: 523, word: "havlu", imageUrl: "/images/523.png", isCorrect: true, audioKey: "havlu", spokenText: "kuru" }
+    { id: 26, question: "Kuru olan hangisi?", questionAudioKey: "q_which_is_dry_person", activityType: ActivityType.WetDry, options: [
+        { id: 875, word: "banyo yapan çocuk", imageUrl: "/images/875.png", isCorrect: false, audioKey: "banyo_yapan_çocuk", spokenText: "ıslak banyo yapan çocuk" },
+        { id: 523, word: "havlu", imageUrl: "/images/523.png", isCorrect: true, audioKey: "havlu", spokenText: "kuru havlu" }
     ]},
 ];

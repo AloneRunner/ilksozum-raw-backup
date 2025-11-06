@@ -74,9 +74,27 @@ self.addEventListener('fetch', (event) => {
 
             const responseToCache = networkResponse.clone();
 
-            caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, responseToCache);
-            });
+            // Only attempt to cache http(s) requests. Some requests may come from
+            // chrome-extension:// or other unsupported schemes which will throw
+            // when passed to Cache.put. Skip those and swallow cache errors.
+            try {
+              const reqUrl = new URL(event.request.url);
+              if (reqUrl.protocol === 'http:' || reqUrl.protocol === 'https:') {
+                caches.open(CACHE_NAME).then((cache) => {
+                  cache.put(event.request, responseToCache).catch((err) => {
+                    console.warn('[Service Worker] cache.put failed, skipping:', err);
+                  });
+                }).catch(err => {
+                  console.warn('[Service Worker] open cache failed:', err);
+                });
+              } else {
+                // Non-http(s) scheme — skip caching.
+                // This avoids errors like: Request scheme 'chrome-extension' is unsupported
+              }
+            } catch (err) {
+              // If URL parsing fails or cache operations throw synchronously, ignore.
+              console.warn('[Service Worker] Skipping cache for request:', event.request.url, err);
+            }
             
             return networkResponse;
         });

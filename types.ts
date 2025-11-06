@@ -83,7 +83,6 @@ export enum ActivityType {
   TersDuz,
   
   // === Kavram Etkinlikleri > Miktar & Sayılar ===
-  NumberSequencing,
   FewMuch,
   HalfQuarterWhole,
   FullEmpty,
@@ -213,17 +212,6 @@ export interface ConceptRound {
     options: ConceptOption[];
     activityType: ActivityType; // Pass activity type for context
     questionItem?: ImageMetadata; // For games like FunctionalMatching
-}
-
-export interface NumberSequencingRound {
-    id: number;
-    question: string;
-    questionAudioKey: string;
-    numbers: (number | null)[]; // The sequence with a blank
-    answer: number; // The correct number for the blank
-    options: number[]; // Options to choose from
-    difficulty: 'easy' | 'medium' | 'hard';
-    activityType?: ActivityType;
 }
 
 // === Sudoku Game Types ===

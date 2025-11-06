@@ -98,14 +98,14 @@ const LearningCard: React.FC<LearningCardProps> = ({
             
             {/* Header */}
             <div className="w-full flex justify-between items-center mb-2 sm:mb-4">
-                <button onClick={onBack} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label="Geri dön">
-                    <ArrowLeftIcon className="w-7 h-7 sm:w-8 sm:h-8 text-sky-700" />
+                <button onClick={onBack} className="p-1.5 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label="Geri dön">
+                    <ArrowLeftIcon className="w-6 h-6 sm:w-7 sm:h-7 text-sky-700" />
                 </button>
-                <div className="text-base sm:text-lg font-bold text-sky-800">
-                    {currentCard} / {totalCards}
+                <div className="text-sm font-bold text-sky-800 drop-shadow-md">
+                    {currentCard}/{totalCards}
                 </div>
-                <button onClick={onToggleWordLabel} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={isWordLabelVisible ? 'Kelimeyi gizle' : 'Kelimeyi göster'}>
-                    {isWordLabelVisible ? <EyeSlashIcon className="w-7 h-7 sm:w-8 sm:h-8 text-sky-700" /> : <EyeIcon className="w-7 h-7 sm:w-8 sm:h-8 text-sky-700" />}
+                <button onClick={onToggleWordLabel} className="p-1.5 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={isWordLabelVisible ? 'Kelimeyi gizle' : 'Kelimeyi göster'}>
+                    {isWordLabelVisible ? <EyeSlashIcon className="w-6 h-6 sm:w-7 sm:h-7 text-sky-700" /> : <EyeIcon className="w-6 h-6 sm:w-7 sm:h-7 text-sky-700" />}
                 </button>
             </div>
 
@@ -113,8 +113,8 @@ const LearningCard: React.FC<LearningCardProps> = ({
             <div className="flex-grow w-full flex flex-col landscape:flex-row items-center justify-center gap-4">
                 {/* Left Side: Title and Image */}
                 <div className="w-full landscape:w-2/5 flex flex-col items-center">
-                    <h1 className="text-lg sm:text-xl font-bold text-center text-sky-800 mb-2">
-                        <span className="text-red-500 font-black text-xl sm:text-2xl">{`"${upperCaseLetter}"`}</span> sesini bul
+                    <h1 className="text-base sm:text-lg font-bold text-center text-sky-800 mb-2 drop-shadow-md">
+                        <span className="text-red-500 font-black text-lg sm:text-xl">{`"${upperCaseLetter}"`}</span> sesini bul
                     </h1>
                     <Card
                         imageUrl={word.imageUrl}

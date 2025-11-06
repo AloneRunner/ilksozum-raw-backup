@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">İlk Sözüm: Eğitici Kartlar</string>
-    <string name="title_activity_main">İlk Sözüm: Eğitici Kartlar</string>
+    <string name="app_name">İlk Sözüm: Otizm &amp; Okul Öncesi</string>
+    <string name="title_activity_main">İlk Sözüm: Otizm &amp; Okul Öncesi</string>
     <string name="package_name">com.omer.sesogrenme.cocuklarim</string>
     <string name="custom_url_scheme">com.omer.sesogrenme.cocuklarim</string>
 </resources>

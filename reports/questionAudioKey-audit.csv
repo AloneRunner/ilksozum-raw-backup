@@ -1,0 +1,354 @@
+questionAudioKey,collision,distinctVisibleQuestions,files
+q_which_sense_see,false,Hangisiyle görürüz?,src\services\database\activities\basicConceptsData.ts
+q_which_sense_hear,false,Hangisiyle duyarız?,src\services\database\activities\basicConceptsData.ts
+q_which_sense_smell,false,Hangisiyle koku alırız?,src\services\database\activities\basicConceptsData.ts
+q_which_sense_taste,false,Hangisiyle tat alırız?,src\services\database\activities\basicConceptsData.ts
+q_which_sense_touch,false,Hangisiyle dokunuruz?,src\services\database\activities\basicConceptsData.ts
+q_which_organ_smell_this,false,Bunu hangisiyle koklarız?,src\services\database\activities\basicConceptsData.ts
+q_which_organ_hear_this,false,Bunu hangisiyle duyarız?,src\services\database\activities\basicConceptsData.ts
+q_which_organ_taste_this,false,Bunu hangisiyle tadarız?,src\services\database\activities\basicConceptsData.ts
+q_which_organ_touch_this,false,Bunu hangisiyle hissederiz?,src\services\database\activities\basicConceptsData.ts
+q_which_organ_see_this,false,Bunu hangisiyle görürüz?,src\services\database\activities\basicConceptsData.ts
+q_which_smells_good,false,Hangisi genellikle güzel kokar?,src\services\database\activities\basicConceptsData.ts
+q_which_makes_sound,false,Hangisi ses çıkarır?,src\services\database\activities\basicConceptsData.ts
+q_which_helps_see_better,false,Daha iyi görmek için hangisini kullanırız?,src\services\database\activities\basicConceptsData.ts
+q_which_can_hurt_touch,false,Hangisine dokunmak canımızı acıtabilir?,src\services\database\activities\basicConceptsData.ts
+q_which_is_sour,true,"Ekşi olan hangisi? | Hangisinin tadı genellikle ekşidir?","src\services\database\activities\basicConceptsData.ts | src\services\database\activities\qualities\bitterSweetData.ts"
+q_which_is_cat,false,Which one is the cat?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_dog,false,Which one is the dog?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_lion,false,Which one is the lion?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_elephant,false,Which one is the elephant?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_fish,false,Which one is the fish?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_bird,false,Which one is the bird?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_rabbit,false,Which one is the rabbit?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_giraffe,false,Which one is the giraffe?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_butterfly,false,Which one is the butterfly?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_bee,false,Which one is the bee?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_duck,false,Which one is the duck?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_turtle,false,Which one is the turtle?,src\services\database\activities\objects\enAnimalsData.ts
+q_which_is_eye,false,Which one is the eye?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_nose,false,Which one is the nose?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_ear,false,Which one is the ear?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_hand,false,Which one is the hand?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_foot,false,Which one is the foot?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_hair,false,Which one is the hair?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_mouth,false,Which one is the mouth?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_tongue,false,Which one is the tongue?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_arm,false,Which one is the arm?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_leg,false,Which one is the leg?,src\services\database\activities\objects\enBodyPartsData.ts
+q_which_is_hospital,false,Which one is the hospital?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_school,false,Which one is the school?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_house,false,Which one is the house?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_castle,false,Which one is the castle?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_skyscraper,false,Which one is the skyscraper?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_restaurant,false,Which one is the restaurant?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_cinema,false,Which one is the cinema?,"src\services\database\activities\objects\enBuildingsData.ts | src\services\database\activities\objects\enEntertainmentData.ts"
+q_which_is_mosque,false,Which one is the mosque?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_shopping_mall,false,Which one is the shopping mall?,src\services\database\activities\objects\enBuildingsData.ts
+q_which_is_shirt,false,Which one is the shirt?,"src\services\database\activities\objects\enClothesAccessoriesData.ts | src\services\database\activities\objects\enClothesData.ts"
+q_which_is_pants,false,Which one is the pants?,src\services\database\activities\objects\enClothesAccessoriesData.ts
+q_which_is_tshirt,false,Which one is the t-shirt?,"src\services\database\activities\objects\enClothesAccessoriesData.ts | src\services\database\activities\objects\enClothesData.ts"
+q_which_is_shoes,false,Which one is the shoes?,src\services\database\activities\objects\enClothesAccessoriesData.ts
+q_which_are_socks,false,Which one are the socks?,src\services\database\activities\objects\enClothesData.ts
+q_which_are_shoes,false,Which one are the shoes?,src\services\database\activities\objects\enClothesData.ts
+q_which_are_pants,false,Which one are the pants?,src\services\database\activities\objects\enClothesData.ts
+q_which_is_dress,false,Which one is the dress?,src\services\database\activities\objects\enClothesData.ts
+q_which_is_skirt,false,Which one is the skirt?,src\services\database\activities\objects\enClothesData.ts
+q_which_is_hat,false,Which one is the hat?,src\services\database\activities\objects\enClothesData.ts
+q_which_is_scarf,false,Which one is the scarf?,src\services\database\activities\objects\enClothesData.ts
+q_which_are_gloves,false,Which one are the gloves?,src\services\database\activities\objects\enClothesData.ts
+q_which_are_pajamas,false,Which one are the pajamas?,src\services\database\activities\objects\enClothesData.ts
+q_which_is_jacket,false,Which one is the jacket?,src\services\database\activities\objects\enClothesData.ts
+q_which_is_book,false,Which one is the book?,"src\services\database\activities\objects\enEntertainmentData.ts | src\services\database\activities\objects\enSchoolItemsData.ts | src\services\database\activities\objects\enSchoolOfficeData.ts"
+q_which_is_guitar,false,Which one is the guitar?,"src\services\database\activities\objects\enEntertainmentData.ts | src\services\database\activities\objects\enMusicalInstrumentsData.ts"
+q_which_is_television,false,Which one is the television?,src\services\database\activities\objects\enEntertainmentData.ts
+q_which_is_radio,false,Which one is the radio?,src\services\database\activities\objects\enEntertainmentData.ts
+q_which_is_drum,false,Which one is the drum?,"src\services\database\activities\objects\enEntertainmentData.ts | src\services\database\activities\objects\enMusicalInstrumentsData.ts"
+q_which_is_chess,false,Which one is chess?,src\services\database\activities\objects\enEntertainmentData.ts
+q_which_is_kite,false,Which one is the kite?,"src\services\database\activities\objects\enEntertainmentData.ts | src\services\database\activities\objects\enToysData.ts"
+q_which_is_violin,false,Which one is the violin?,"src\services\database\activities\objects\enEntertainmentData.ts | src\services\database\activities\objects\enMusicalInstrumentsData.ts"
+q_which_is_magazine,false,Which one is the magazine?,src\services\database\activities\objects\enEntertainmentData.ts
+q_which_is_pizza,false,Which one is the pizza?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_ice_cream,false,Which one is the ice cream?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_milk,false,Which one is the milk?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_yogurt,false,Which one is the yogurt?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_bread,false,Which one is the bread?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_hamburger,false,Which one is the hamburger?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_juice,false,Which one is the juice?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_chips,false,Which one are the chips?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_cheese,false,Which one is the cheese?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_pasta,false,Which one is the pasta?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_salad,false,Which one is the salad?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_bagel,false,Which one is the bagel?,src\services\database\activities\objects\enFoodsData.ts
+q_which_is_apple,false,Which one is the apple?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_banana,false,Which one is the banana?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_orange,false,Which one is the orange?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_strawberry,false,Which one is the strawberry?,src\services\database\activities\objects\enFruitsData.ts
+q_which_are_grapes,false,Which one are the grapes?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_watermelon,false,Which one is the watermelon?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_lemon,false,Which one is the lemon?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_pear,false,Which one is the pear?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_cherry,false,Which one is the cherry?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_pineapple,false,Which one is the pineapple?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_melon,false,Which one is the melon?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_peach,false,Which one is the peach?,src\services\database\activities\objects\enFruitsData.ts
+q_which_is_balcony,false,Which one is the balcony?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_living_room,false,Which one is the living room?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_door,false,Which one is the door?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_window,false,Which one is the window?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_stairs,false,Which one is the stairs?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_carpet,false,Which one is the carpet?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_fireplace,false,Which one is the fireplace?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_vase,false,Which one is the vase?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_blanket,false,Which one is the blanket?,src\services\database\activities\objects\enHomeData.ts
+q_which_is_sofa,false,Which one is the sofa?,"src\services\database\activities\objects\enHomeData.ts | src\services\database\activities\objects\enHouseholdData.ts"
+q_which_is_table,false,Which one is the table?,"src\services\database\activities\objects\enHouseholdData.ts | src\services\database\activities\objects\enHouseholdItemsData.ts"
+q_which_is_chair,false,Which one is the chair?,"src\services\database\activities\objects\enHouseholdData.ts | src\services\database\activities\objects\enHouseholdItemsData.ts"
+q_which_is_bed,false,Which one is the bed?,"src\services\database\activities\objects\enHouseholdData.ts | src\services\database\activities\objects\enHouseholdItemsData.ts"
+q_which_is_mirror,false,Which one is the mirror?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_key,false,Which one is the key?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_pillow,false,Which one is the pillow?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_clock,false,Which one is the clock?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_bookshelf,false,Which one is the bookshelf?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_wardrobe,false,Which one is the wardrobe?,"src\services\database\activities\objects\enHouseholdData.ts | src\services\database\activities\objects\enHouseholdItemsData.ts"
+q_which_is_refrigerator,false,Which one is the refrigerator?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_lamp,false,Which one is the lamp?,src\services\database\activities\objects\enHouseholdData.ts
+q_which_is_glass,false,Which one is the glass?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_spoon,false,Which one is the spoon?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_fork,false,Which one is the fork?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_knife,false,Which one is the knife?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_pan,false,Which one is the pan?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_pot,false,Which one is the pot?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_plate,false,Which one is the plate?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_bowl,false,Which one is the bowl?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_teapot,false,Which one is the teapot?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_pitcher,false,Which one is the pitcher?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_bottle,false,Which one is the bottle?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_oven,false,Which one is the oven?,src\services\database\activities\objects\enKitchenData.ts
+q_which_is_flute,false,Which one is the flute?,src\services\database\activities\objects\enMusicalInstrumentsData.ts
+q_which_is_microphone,false,Which one is the microphone?,src\services\database\activities\objects\enMusicalInstrumentsData.ts
+q_which_is_saxophone,false,Which one is the saxophone?,src\services\database\activities\objects\enMusicalInstrumentsData.ts
+q_which_is_tambourine,false,Which one is the tambourine?,src\services\database\activities\objects\enMusicalInstrumentsData.ts
+q_which_are_cymbals,false,Which one are the cymbals?,src\services\database\activities\objects\enMusicalInstrumentsData.ts
+q_which_is_rainbow,false,Which one is the rainbow?,src\services\database\activities\objects\enNaturalEventsData.ts
+q_which_is_rain,false,Which one is the rain?,src\services\database\activities\objects\enNaturalEventsData.ts
+q_which_is_snow,false,Which one is the snow?,"src\services\database\activities\objects\enNaturalEventsData.ts | src\services\database\activities\objects\enNaturalObjectsData.ts"
+q_which_is_lightning,false,Which one is the lightning?,src\services\database\activities\objects\enNaturalEventsData.ts
+q_which_is_wind,false,Which one is the wind?,src\services\database\activities\objects\enNaturalEventsData.ts
+q_which_is_stone,false,Which one is the stone?,src\services\database\activities\objects\enNaturalObjectsData.ts
+q_which_is_branch,false,Which one is the branch?,src\services\database\activities\objects\enNaturalObjectsData.ts
+q_which_is_leaf,false,Which one is the leaf?,"src\services\database\activities\objects\enNaturalObjectsData.ts | src\services\database\activities\objects\enPlantsData.ts"
+q_which_is_ice,false,Which one is the ice?,src\services\database\activities\objects\enNaturalObjectsData.ts
+q_which_is_water,false,Which one is the water?,src\services\database\activities\objects\enNaturalObjectsData.ts
+q_which_is_tree_trunk,false,Which one is the tree trunk?,src\services\database\activities\objects\enNaturalObjectsData.ts
+q_which_is_feather,false,Which one is the feather?,src\services\database\activities\objects\enNaturalObjectsData.ts
+q_which_is_waterfall,false,Which one is the waterfall?,"src\services\database\activities\objects\enNaturalObjectsData.ts | src\services\database\activities\objects\enNaturalStructuresData.ts"
+q_which_is_mountain,false,Which one is the mountain?,src\services\database\activities\objects\enNaturalStructuresData.ts
+q_which_is_forest,false,Which one is the forest?,"src\services\database\activities\objects\enNaturalStructuresData.ts | src\services\database\activities\objects\enPlacesData.ts"
+q_which_is_desert,false,Which one is the desert?,"src\services\database\activities\objects\enNaturalStructuresData.ts | src\services\database\activities\objects\enPlacesData.ts"
+q_which_is_river,false,Which one is the river?,src\services\database\activities\objects\enNaturalStructuresData.ts
+q_which_is_lake,false,Which one is the lake?,src\services\database\activities\objects\enNaturalStructuresData.ts
+q_which_is_iceberg,false,Which one is the iceberg?,src\services\database\activities\objects\enNaturalStructuresData.ts
+q_which_is_volcano,false,Which one is the volcano?,src\services\database\activities\objects\enNaturalStructuresData.ts
+q_which_is_teacher,false,Which one is the teacher?,"src\services\database\activities\objects\enPeopleData.ts | src\services\database\activities\objects\enProfessionsData.ts"
+q_which_is_child,false,Which one is the child?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_baby,false,Which one is the baby?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_family,false,Which one is the family?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_grandmother,false,Which one is the grandmother?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_grandfather,false,Which one is the grandfather?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_king,false,Which one is the king?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_queen,false,Which one is the queen?,src\services\database\activities\objects\enPeopleData.ts
+q_which_is_beach,false,Which one is the beach?,src\services\database\activities\objects\enPlacesData.ts
+q_which_is_playground,false,Which one is the playground?,src\services\database\activities\objects\enPlacesData.ts
+q_which_is_bus_stop,false,Which one is the bus stop?,src\services\database\activities\objects\enPlacesData.ts
+q_which_is_road,false,Which one is the road?,src\services\database\activities\objects\enPlacesData.ts
+q_which_is_tree,false,Which one is the tree?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_flower,false,Which one is the flower?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_cactus,false,Which one is the cactus?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_grass,false,Which one is the grass?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_cotton,false,Which one is the cotton?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_tulip,false,Which one is the tulip?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_daisy,false,Which one is the daisy?,src\services\database\activities\objects\enPlantsData.ts
+q_which_is_doctor,false,Which one is the doctor?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_police,false,Which one is the police officer?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_firefighter,false,Which one is the firefighter?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_chef,false,Which one is the chef?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_nurse,false,Which one is the nurse?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_pilot,false,Which one is the pilot?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_farmer,false,Which one is the farmer?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_postman,false,Which one is the postman?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_barber,false,Which one is the barber?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_waiter,false,Which one is the waiter?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_astronaut,false,Which one is the astronaut?,src\services\database\activities\objects\enProfessionsData.ts
+q_which_is_pencil,false,Which one is the pencil?,"src\services\database\activities\objects\enSchoolItemsData.ts | src\services\database\activities\objects\enSchoolOfficeData.ts"
+q_which_is_eraser,false,Which one is the eraser?,"src\services\database\activities\objects\enSchoolItemsData.ts | src\services\database\activities\objects\enSchoolOfficeData.ts"
+q_which_is_ruler,false,Which one is the ruler?,src\services\database\activities\objects\enSchoolItemsData.ts
+q_which_is_scissors,false,Which one is the scissors?,src\services\database\activities\objects\enSchoolItemsData.ts
+q_which_is_backpack,false,Which one is the backpack?,src\services\database\activities\objects\enSchoolItemsData.ts
+q_which_is_glue,false,Which one is the glue?,src\services\database\activities\objects\enSchoolItemsData.ts
+q_which_is_notebook,false,Which one is the notebook?,"src\services\database\activities\objects\enSchoolItemsData.ts | src\services\database\activities\objects\enSchoolOfficeData.ts"
+q_which_is_planet,false,Which one is the planet?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_sun,false,Which one is the sun?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_moon,false,Which one is the moon?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_star,false,Which one is the star?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_rocket,false,Which one is the rocket?,"src\services\database\activities\objects\enSpaceData.ts | src\services\database\activities\objects\enVehiclesData.ts"
+q_which_is_space_shuttle,false,Which one is the space shuttle?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_telescope,false,Which one is the telescope?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_meteor,false,Which one is the meteor?,src\services\database\activities\objects\enSpaceData.ts
+q_which_is_hammer,false,Which one is the hammer?,src\services\database\activities\objects\enToolsData.ts
+q_which_are_pliers,false,Which one are the pliers?,src\services\database\activities\objects\enToolsData.ts
+q_which_is_screwdriver,false,Which one is the screwdriver?,src\services\database\activities\objects\enToolsData.ts
+q_which_are_scissors,false,Which one are the scissors?,src\services\database\activities\objects\enToolsData.ts
+q_which_is_nail,false,Which one is the nail?,src\services\database\activities\objects\enToolsData.ts
+q_which_is_screw,false,Which one is the screw?,src\services\database\activities\objects\enToolsData.ts
+q_which_is_ball,false,Which one is the ball?,src\services\database\activities\objects\enToysData.ts
+q_which_is_balloon,false,Which one is the balloon?,src\services\database\activities\objects\enToysData.ts
+q_which_is_teddy_bear,false,Which one is the teddy bear?,src\services\database\activities\objects\enToysData.ts
+q_which_is_puzzle,false,Which one is the puzzle?,src\services\database\activities\objects\enToysData.ts
+q_which_is_doll,false,Which one is the doll?,src\services\database\activities\objects\enToysData.ts
+q_which_is_marbles,false,Which one are the marbles?,src\services\database\activities\objects\enToysData.ts
+q_which_is_chess_pieces,false,Which one are the chess pieces?,src\services\database\activities\objects\enToysData.ts
+q_which_is_shovel,false,Which one is the shovel?,src\services\database\activities\objects\enToysData.ts
+q_which_is_robot,false,Which one is the robot?,src\services\database\activities\objects\enToysData.ts
+q_which_is_skateboard,false,Which one is the skateboard?,src\services\database\activities\objects\enToysData.ts
+q_which_are_roller_skates,false,Which one are the roller skates?,src\services\database\activities\objects\enToysData.ts
+q_which_is_tomato,false,Which one is the tomato?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_cucumber,false,Which one is the cucumber?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_potato,false,Which one is the potato?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_onion,false,Which one is the onion?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_pepper,false,Which one is the pepper?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_lettuce,false,Which one is the lettuce?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_carrot,false,Which one is the carrot?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_eggplant,false,Which one is the eggplant?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_corn,false,Which one is the corn?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_broccoli,false,Which one is the broccoli?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_cauliflower,false,Which one is the cauliflower?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_cabbage,false,Which one is the cabbage?,src\services\database\activities\objects\enVegetablesData.ts
+q_which_is_car,false,Which one is the car?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_train,false,Which one is the train?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_bicycle,false,Which one is the bicycle?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_ship,false,Which one is the ship?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_airplane,false,Which one is the airplane?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_truck,false,Which one is the truck?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_school_bus,false,Which one is the school bus?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_fire_truck,false,Which one is the fire truck?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_ambulance,false,Which one is the ambulance?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_police_car,false,Which one is the police car?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_helicopter,false,Which one is the helicopter?,src\services\database\activities\objects\enVehiclesData.ts
+q_which_is_alive,false,Canlı olan hangisi?,src\services\database\activities\qualities\aliveLifelessData.ts
+q_which_is_lifeless,false,Cansız olan hangisi?,src\services\database\activities\qualities\aliveLifelessData.ts
+q_which_is_big,false,Büyük olan hangisi?,src\services\database\activities\qualities\bigSmallData.ts
+q_which_is_small,false,Küçük olan hangisi?,src\services\database\activities\qualities\bigSmallData.ts
+q_which_is_bitter,false,Acı olan hangisi?,src\services\database\activities\qualities\bitterSweetData.ts
+q_which_is_sweet,false,Tatlı olan hangisi?,src\services\database\activities\qualities\bitterSweetData.ts
+q_which_is_intact,false,Sağlam olan hangisi?,"src\services\database\activities\qualities\brokenIntactData.ts | src\services\database\activities\qualities\tazeBayatData.ts"
+q_which_is_broken,false,Kırık olan hangisi?,"src\services\database\activities\qualities\brokenIntactData.ts | src\services\database\activities\qualities\tazeBayatData.ts"
+q_which_is_clean,false,Temiz olan hangisi?,src\services\database\activities\qualities\cleanDirtyData.ts
+q_which_is_dirty,false,Kirli olan hangisi?,src\services\database\activities\qualities\cleanDirtyData.ts
+q_which_is_deep,false,Derin olan hangisi?,src\services\database\activities\qualities\derinSigData.ts
+q_which_is_shallow,false,Sığ olan hangisi?,src\services\database\activities\qualities\derinSigData.ts
+q_which_is_thorny,false,Dikenli olan hangisi?,src\services\database\activities\qualities\dikenliPuruzsuzData.ts
+q_which_is_smooth,true,"Düzgün olan hangisi? | Pürüzsüz olan hangisi?","src\services\database\activities\qualities\dikenliPuruzsuzData.ts | src\services\database\activities\qualities\kirisikDuzgunData.ts | src\services\database\activities\qualities\roughSmoothData.ts"
+q_which_is_knotted,false,Düğüm olan hangisi?,src\services\database\activities\qualities\dugumCozukData.ts
+q_which_is_untied,false,Çözük olan hangisi?,src\services\database\activities\qualities\dugumCozukData.ts
+q_which_is_hard,false,Sert olan hangisi?,src\services\database\activities\qualities\hardSoftData.ts
+q_which_is_soft,false,Yumuşak olan hangisi?,src\services\database\activities\qualities\hardSoftData.ts
+q_which_is_heavy,false,Ağır olan hangisi?,src\services\database\activities\qualities\heavyLightData.ts
+q_which_is_light,false,Hafif olan hangisi?,src\services\database\activities\qualities\heavyLightData.ts
+q_which_is_hot,false,Sıcak olan hangisi?,src\services\database\activities\qualities\hotColdData.ts
+q_which_is_cold,false,Soğuk olan hangisi?,src\services\database\activities\qualities\hotColdData.ts
+q_which_is_hungry,false,Aç olan hangisi?,src\services\database\activities\qualities\hungryFullData.ts
+q_which_is_satiated,false,Tok olan hangisi?,src\services\database\activities\qualities\hungryFullData.ts
+q_which_is_crowded,false,Kalabalık olan hangisi?,src\services\database\activities\qualities\kalabalikTenhaData.ts
+q_which_is_sparse,false,Tenha olan hangisi?,src\services\database\activities\qualities\kalabalikTenhaData.ts
+q_which_is_wrinkled,false,Kırışık olan hangisi?,src\services\database\activities\qualities\kirisikDuzgunData.ts
+q_which_is_long,false,Uzun olan hangisi?,src\services\database\activities\qualities\longShortData.ts
+q_which_is_short,false,Kısa olan hangisi?,src\services\database\activities\qualities\longShortData.ts
+q_which_is_messy,false,Dağınık olan hangisi?,src\services\database\activities\qualities\messyCleanData.ts
+q_which_is_tidy,false,Toplu olan hangisi?,src\services\database\activities\qualities\messyCleanData.ts
+q_which_is_noisy,false,Gürültülü olan hangisi?,src\services\database\activities\qualities\noisyQuietData.ts
+q_which_is_quiet,false,Sessiz olan hangisi?,src\services\database\activities\qualities\noisyQuietData.ts
+q_which_is_old,true,"Eski olan hangisi? | Yaşlı olan hangisi?","src\services\database\activities\qualities\oldNewData.ts | src\services\database\activities\qualities\youngOldData.ts"
+q_which_is_new,false,Yeni olan hangisi?,src\services\database\activities\qualities\oldNewData.ts
+q_which_is_open,false,Açık olan hangisi?,src\services\database\activities\qualities\openClosedData.ts
+q_which_is_closed,false,Kapalı olan hangisi?,src\services\database\activities\qualities\openClosedData.ts
+q_which_is_shiny,false,Parlak olan hangisi?,src\services\database\activities\qualities\parlakMatData.ts
+q_which_is_matte,false,Mat olan hangisi?,src\services\database\activities\qualities\parlakMatData.ts
+q_which_is_rough,false,Pürüzlü olan hangisi?,src\services\database\activities\qualities\roughSmoothData.ts
+q_which_is_transparent,false,Şeffaf olan hangisi?,src\services\database\activities\qualities\seffafOpakData.ts
+q_which_is_opaque,false,Opak olan hangisi?,src\services\database\activities\qualities\seffafOpakData.ts
+q_which_is_pointed,false,Sivri olan hangisi?,src\services\database\activities\qualities\sivriKutData.ts
+q_which_is_blunt,false,Küt olan hangisi?,src\services\database\activities\qualities\sivriKutData.ts
+q_which_is_straight,false,Düz olan hangisi?,src\services\database\activities\qualities\straightCurvedData.ts
+q_which_is_curved,false,Eğri olan hangisi?,src\services\database\activities\qualities\straightCurvedData.ts
+q_which_is_fresh,false,Taze olan hangisi?,src\services\database\activities\qualities\tazeBayatData.ts
+q_which_is_stale,false,Bayat olan hangisi?,src\services\database\activities\qualities\tazeBayatData.ts
+q_which_is_lazy,false,Tembel olan hangisi?,src\services\database\activities\qualities\tembelCaliskanData.ts
+q_which_is_hardworking,false,Çalışkan olan hangisi?,src\services\database\activities\qualities\tembelCaliskanData.ts
+q_which_is_upright,false,Hangisi düz?,src\services\database\activities\qualities\tersDuzData.ts
+q_which_is_upsidedown,false,Hangisi ters?,src\services\database\activities\qualities\tersDuzData.ts
+q_which_is_thick,false,Kalın olan hangisi?,src\services\database\activities\qualities\thinThickData.ts
+q_which_is_thin,false,İnce olan hangisi?,src\services\database\activities\qualities\thinThickData.ts
+q_which_is_wet,false,Islak olan hangisi?,src\services\database\activities\qualities\wetDryData.ts
+q_which_is_dry,false,Kuru olan hangisi?,src\services\database\activities\qualities\wetDryData.ts
+q_which_is_wide,false,Geniş olan hangisi?,src\services\database\activities\qualities\wideNarrowData.ts
+q_which_is_narrow,false,Dar olan hangisi?,src\services\database\activities\qualities\wideNarrowData.ts
+q_which_is_young,false,Genç olan hangisi?,src\services\database\activities\qualities\youngOldData.ts
+q_which_is_few,false,Az olan hangisi?,src\services\database\activities\quantities\fewMuchData.ts
+q_which_is_much,false,Çok olan hangisi?,src\services\database\activities\quantities\fewMuchData.ts
+q_which_is_full,false,Dolu olan hangisi?,src\services\database\activities\quantities\fullEmptyData.ts
+q_which_is_empty,false,Boş olan hangisi?,src\services\database\activities\quantities\fullEmptyData.ts
+q_which_is_whole,false,Bütün olan hangisi?,src\services\database\activities\quantities\halfQuarterWholeData.ts
+q_which_is_half,false,Yarım olan hangisi?,src\services\database\activities\quantities\halfQuarterWholeData.ts
+q_which_is_quarter,false,Çeyrek olan hangisi?,src\services\database\activities\quantities\halfQuarterWholeData.ts
+q_which_is_slice,false,Dilim olan hangisi?,src\services\database\activities\quantities\halfQuarterWholeData.ts
+q_which_is_odd,false,Tek olan hangisi?,src\services\database\activities\quantities\oddEvenData.ts
+q_which_is_even,false,Çift olan hangisi?,src\services\database\activities\quantities\oddEvenData.ts
+q_which_is_different,false,Hangisi farklı?,src\services\database\activities\reasoningData.ts
+q_what_hammer_nail_with,false,Çiviyi neyle çakarız?,src\services\database\activities\reasoningData.ts
+q_what_brush_teeth_with,false,Dişlerimizi neyle fırçalarız?,src\services\database\activities\reasoningData.ts
+q_what_after_socks,false,Çoraptan sonra ne giyeriz?,src\services\database\activities\reasoningData.ts
+q_where_use_pillow,false,Yastığı nerede kullanırız?,src\services\database\activities\reasoningData.ts
+q_what_eat_soup_with,false,Çorbayı ne ile içeriz?,src\services\database\activities\reasoningData.ts
+q_what_color_picture_with,false,Resmi ne ile boyarız?,src\services\database\activities\reasoningData.ts
+q_what_write_paper_with,false,Kağıda ne ile yazarız?,src\services\database\activities\reasoningData.ts
+q_what_open_door_with,false,Kapıyı ne ile açarız?,src\services\database\activities\reasoningData.ts
+q_what_eat_pasta_with,false,Makarnayı ne ile yeriz?,src\services\database\activities\reasoningData.ts
+q_where_put_money,false,Parayı nereye koyarız?,src\services\database\activities\reasoningData.ts
+q_what_is_the_result,false,Bunun sonucu ne olur?,src\services\database\activities\reasoningData.ts
+q_what_is_the_cause,false,Bunun nedeni ne olabilir?,src\services\database\activities\reasoningData.ts
+q_what_is_needed_to_be_clean,false,Temiz olmak için ne gerekir?,src\services\database\activities\reasoningData.ts
+q_what_if_you_drop_this,false,Bunu düşürürsen ne olur?,src\services\database\activities\reasoningData.ts
+q_what_do_you_wear_when_this_happens,false,Bu olduğunda ne giyersin?,src\services\database\activities\reasoningData.ts
+<missing>,false,,src\services\database\activities\reasoningData.ts
+q_what_is_next,false,Sıradaki hangisi?,src\services\database\activities\reasoningData.ts
+q_place_the_missing,false,Eksik olanı yerleştir.,src\services\database\activities\reasoningData.ts
+q_put_3_apples,false,Sepete 3 elma koy.,src\services\database\activities\reasoningData.ts
+q_put_5_balls,false,Kutuya 5 top koy.,src\services\database\activities\reasoningData.ts
+q_put_4_fish,false,Akvaryuma 4 balık koy.,src\services\database\activities\reasoningData.ts
+q_put_2_cookies,false,Tabağa 2 kurabiye koy.,src\services\database\activities\reasoningData.ts
+q_put_ball_in_box,false,Topu kutunun içine koy.,src\services\database\activities\reasoningData.ts
+q_put_book_on_table,false,Kitabı masanın üstüne koy.,src\services\database\activities\reasoningData.ts
+q_which_faces_left,false,Sola bakan hangisi?,src\services\database\activities\spatialData.ts
+q_which_faces_right,false,Sağa bakan hangisi?,src\services\database\activities\spatialData.ts
+q_which_is_on,true,"Bulutun üstünde olan hangisi? | Kafanın üstünde olan hangisi? | Masanın üstünde olan hangisi? | Merdivenin üstünde olan hangisi? | Pastanın üstünde olan hangisi? | Sandalyenin üstünde olan hangisi? | Yatağın üstünde olan hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_under,true,"Bulutun altında olan hangisi? | Masanın altında olan hangisi? | Merdivenin altında olan hangisi? | Pastanın altında olan hangisi? | Sandalyenin altında olan hangisi? | Yatağın altında olan hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_above,false,Yukarıda olan hangisi?,src\services\database\activities\spatialData.ts
+q_which_is_below,false,Aşağıda olan hangisi?,src\services\database\activities\spatialData.ts
+q_which_are_beside,true,"Yan yana duranlar hangisi? | Yan yana olanlar hangisi?",src\services\database\activities\spatialData.ts
+q_which_are_opposite,true,"Karşılıklı duranlar hangisi? | Karşılıklı olanlar hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_in_front,true,"Ağacın önündeki hangisi? | Evin önündeki hangisi? | Hangi kalkan askerin önünde? | Kapının önündeki hangisi? | Kulübenin önündeki hangisi? | Sandalyenin önündeki hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_behind,true,"Ağacın arkasındaki hangisi? | Evin arkasındaki hangisi? | Hangi kalkan askerin arkasında? | Kapının arkasındaki hangisi? | Kulübenin arkasındaki hangisi? | Sandalyenin arkasındaki hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_inside,true,"Kalemliğin içindeki hangisi? | Kulübenin içindeki hangisi? | Otobüsün içindeki hangisi? | Sepetin içindeki hangisi? | Çadırın içindeki hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_outside,true,"Kalemliğin dışındaki hangisi? | Kulübenin dışındaki hangisi? | Otobüsün dışındaki hangisi? | Sepetin dışındaki hangisi? | Çadırın dışındaki hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_between,true,"Annesiyle babasının arasında olan hangisi? | Binaların arasında olan hangisi? | Blokların arasında olan hangisi? | Ekmeklerin arasında olan hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_near,true,"Hangi adam daha yakın? | Hangi ay daha yakın? | Hangi ev daha yakın? | Hangi gemi daha yakın? | Hangi kuşlar daha yakın? | Hangi uçak daha yakın?",src\services\database\activities\spatialData.ts
+q_which_is_far,true,"Hangi adam daha uzak? | Hangi ay daha uzak? | Hangi ev daha uzak? | Hangi gemi daha uzak? | Hangi kuşlar daha uzak? | Hangi uçak daha uzak?",src\services\database\activities\spatialData.ts
+q_which_is_higher,true,"Hangi bina daha yüksek? | Hangi dolap daha yüksek? | Hangi yer daha yüksek? | Hangisi daha yüksek? | Yukarıda olan hangisi? | Üst raftaki hangisi? | Üstte olan hangisi?",src\services\database\activities\spatialData.ts
+q_which_is_lower,true,"Alt raftaki hangisi? | Altta olan hangisi? | Aşağıda olan hangisi? | Hangi bina daha alçak? | Hangi dolap daha alçak? | Hangi yer daha alçak? | Hangisi daha alçak?",src\services\database\activities\spatialData.ts
+q_which_is_before,false,Önce hangisi olur?,src\services\database\activities\temporalData.ts
+q_which_is_after,false,Sonra hangisi olur?,src\services\database\activities\temporalData.ts
+q_which_is_day,false,Gündüz olan hangisi?,src\services\database\activities\temporalData.ts
+q_which_is_night,false,Gece olan hangisi?,src\services\database\activities\temporalData.ts
+q_which_is_fast,false,Hızlı olan hangisi?,src\services\database\activities\temporalData.ts
+q_which_is_slow,false,Yavaş olan hangisi?,src\services\database\activities\temporalData.ts

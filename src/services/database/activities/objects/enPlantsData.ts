@@ -7,7 +7,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1811,
     question: 'Which one is the tree?',
-    questionAudioKey: 'q_which_is_tree',
+    questionAudioKey: 'q_which_is_tree_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 10, word: 'ağaç', imageUrl: '/images/10.png', isCorrect: true, audioKey: 'ağaç', spokenText: 'tree' },
@@ -31,7 +31,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1813,
     question: 'Which one is the cactus?',
-    questionAudioKey: 'q_which_is_cactus',
+    questionAudioKey: 'q_which_is_cactus_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 281, word: 'kaktüs', imageUrl: '/images/281.png', isCorrect: true, audioKey: 'kaktüs', spokenText: 'cactus' },
@@ -43,7 +43,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1814,
     question: 'Which one is the grass?',
-    questionAudioKey: 'q_which_is_grass',
+    questionAudioKey: 'q_which_is_grass_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 434, word: 'çim', imageUrl: '/images/434.png', isCorrect: true, audioKey: 'çim', spokenText: 'grass' },
@@ -55,7 +55,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1815,
     question: 'Which one is the leaf?',
-    questionAudioKey: 'q_which_is_leaf',
+    questionAudioKey: 'q_which_is_leaf_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 117, word: 'yaprak', imageUrl: '/images/117.png', isCorrect: true, audioKey: 'yaprak', spokenText: 'leaf' },
@@ -67,7 +67,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1816,
     question: 'Which one is the cotton?',
-    questionAudioKey: 'q_which_is_cotton',
+    questionAudioKey: 'q_which_is_cotton_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 27, word: 'pamuk', imageUrl: '/images/27.png', isCorrect: true, audioKey: 'pamuk', spokenText: 'cotton' },
@@ -79,7 +79,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1817,
     question: 'Which one is the tulip?',
-    questionAudioKey: 'q_which_is_tulip',
+    questionAudioKey: 'q_which_is_tulip_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 57, word: 'lale', imageUrl: '/images/57.png', isCorrect: true, audioKey: 'lale', spokenText: 'tulip' },
@@ -91,7 +91,7 @@ export const enPlantsData: ConceptRound[] = [
   {
     id: 1818,
     question: 'Which one is the daisy?',
-    questionAudioKey: 'q_which_is_daisy',
+    questionAudioKey: 'q_which_is_daisy_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 76, word: 'papatya', imageUrl: '/images/76.png', isCorrect: true, audioKey: 'papatya', spokenText: 'daisy' },

@@ -2,6 +2,8 @@
 import { useState, useCallback } from 'react';
 import { CommunicationCard, CommunicationCategory, CommunicationSubCategory } from '../types.ts';
 import { speak } from '../services/speechService.ts';
+import { getCurrentLanguage } from '../i18n/index.ts';
+import { translateLabel } from '../utils/translate.ts';
 import { communicationCategories } from '../services/communicationData.ts';
 
 export const useCommunication = () => {
@@ -11,11 +13,16 @@ export const useCommunication = () => {
 
     const handleCardClick = useCallback((card: CommunicationCard) => {
         setSentence(prev => [...prev, card]);
-        speak(card.text);
+        const lang = getCurrentLanguage();
+        const spoken = lang === 'tr' ? card.text : translateLabel(card.text, lang);
+        speak(spoken);
     }, []);
 
     const handleSpeakSentence = useCallback(() => {
-        const textToSpeak = sentence.map(card => card.text).join(' ');
+        const lang = getCurrentLanguage();
+        const textToSpeak = sentence
+            .map(card => (lang === 'tr' ? card.text : translateLabel(card.text, lang)))
+            .join(' ');
         if (textToSpeak) speak(textToSpeak);
     }, [sentence]);
 

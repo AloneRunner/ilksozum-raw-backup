@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-11-02",
+    "source": "Hybrid synthesis from Copilot, Gemini, ChatGPT + manual curation",
+    "principles": [
+      "Concrete to abstract progression",
+      "10-15 min sessions, 5-7 activities per level",
+      "Spaced repetition with strategic revisits",
+      "No LetterSound activities (language-agnostic focus)",
+      "No FineMotor activities (not in current Program Mode scope)",
+      "Object categories rotate across levels for vocabulary breadth"
+    ],
+    "notes": [
+      "Levels 1-4: Foundation (basic concepts, simple reasoning)",
+      "Levels 5-8: Expansion (complex concepts, functional reasoning)",
+      "Levels 9-12: Mastery (relative concepts, abstract reasoning)"
+    ]
+  },
+  "levels": [
+    {
+      "level": 1,
+      "theme": "Foundation Start — Concrete & Quick Wins",
+      "activities": [
+        { "id": "Colors", "note": "Warm-up: concrete visual discrimination, fast success" },
+        { "id": "YesNo", "note": "Decision-making structure, high engagement" },
+        { "id": "BigSmall", "note": "Core size concept, foundation for all dimensional concepts" },
+        { "id": "WhatDoesntBelong", "note": "Reasoning: basic visual categorization and attention" },
+        { "id": "meyveler", "note": "Objects: daily life category, high familiarity" }
+      ]
+    },
+    {
+      "level": 2,
+      "theme": "Foundation Build — Shapes & Quantity",
+      "activities": [
+        { "id": "Shapes", "note": "Geometric perception, visual sorting" },
+        { "id": "FullEmpty", "note": "Container concept, concrete quantity awareness" },
+        { "id": "MemoryCards", "note": "Reasoning: visual short-term memory, pair matching" },
+        { "id": "hayvanlar", "note": "Objects: high-interest category for sustained attention" },
+        { "id": "Colors", "note": "Revisit: consolidate with more color variations" }
+      ]
+    },
+    {
+      "level": 3,
+      "theme": "Foundation Expand — Spatial & Emotional",
+      "activities": [
+        { "id": "OnUnder", "note": "Core spatial relationship, concrete positioning" },
+        { "id": "InsideOutside", "note": "Container logic extended to space" },
+        { "id": "Emotions", "note": "Social-emotional learning, facial recognition" },
+        { "id": "YesNo", "note": "Revisit: reinforce decision-making with new contexts" },
+        { "id": "ev_esyalari", "note": "Objects: functional daily vocabulary" }
+      ]
+    },
+    {
+      "level": 4,
+      "theme": "Expansion Start — Dimensional Depth",
+      "activities": [
+        { "id": "LongShort", "note": "Size family extension (prerequisite: BigSmall)" },
+        { "id": "FewMuch", "note": "Quantity concept, pre-counting awareness" },
+        { "id": "DragAndDropPositioning", "note": "Reasoning: apply spatial instructions (prerequisite: OnUnder)" },
+        { "id": "oyuncaklar", "note": "Objects: high-motivation category" },
+        { "id": "Colors", "note": "Revisit: consolidate with more complex color variations" }
+      ]
+    },
+    {
+      "level": 5,
+      "theme": "Expansion Build — Multi-Spatial & Sensory",
+      "activities": [
+        { "id": "BelowAbove", "note": "Vertical spatial axis (prerequisite: OnUnder)" },
+        { "id": "InFrontOfBehind", "note": "Front/back relationship, sequence awareness" },
+        { "id": "HotCold", "note": "Sensory contrast, safety awareness" },
+        { "id": "FunctionalMatching", "note": "Reasoning: object-function pairing, daily life application" },
+        { "id": "giysiler_aksesuarlar", "note": "Objects: self-care and daily routine vocabulary" }
+      ]
+    },
+    {
+      "level": 6,
+      "theme": "Expansion Deepen — Abstract Properties",
+      "activities": [
+        { "id": "ThinThick", "note": "Size family: thickness dimension (prerequisite: BigSmall)" },
+        { "id": "WideNarrow", "note": "Size family: width dimension (prerequisite: BigSmall)" },
+        { "id": "CleanDirty", "note": "Hygiene and order concept, concrete visual" },
+        { "id": "WhatDoesntBelong", "note": "Reasoning: basic categorization, attention to details" },
+        { "id": "vucudun_bolumleri", "note": "Objects: body awareness, self-concept" }
+      ]
+    },
+    {
+      "level": 7,
+      "theme": "Mastery Start — Relative Concepts Intro",
+      "activities": [
+        { "id": "NearFar", "note": "Distance concept, relative positioning" },
+        { "id": "RelativeBigSmall", "note": "Relative: comparative size in context (prerequisite: BigSmall)" },
+        { "id": "CauseEffect", "note": "Reasoning: event relationships, predictive thinking" },
+        { "id": "WetDry", "note": "Sensory state, daily experience" },
+        { "id": "tasitlar", "note": "Objects: vehicles, movement theme" }
+      ]
+    },
+    {
+      "level": 8,
+      "theme": "Mastery Build — Temporal & Sensory Mix",
+      "activities": [
+        { "id": "DayNight", "note": "Basic time concept, daily rhythm" },
+        { "id": "HardSoft", "note": "Tactile property discrimination" },
+        { "id": "SequencingStories", "note": "Reasoning: event ordering (prerequisite: BeforeAfter implicit)" },
+        { "id": "DragAndDropCounting", "note": "Reasoning: one-to-one correspondence, pre-math" },
+        { "id": "icecekler", "note": "Objects: beverages, daily routine" }
+      ]
+    },
+    {
+      "level": 9,
+      "theme": "Mastery Expand — Advanced Spatial & Pattern Recognition",
+      "activities": [
+        { "id": "BeforeAfter", "note": "Temporal order, abstract time concept" },
+        { "id": "Between", "note": "Multi-object spatial relationship (prerequisite: OnUnder)" },
+        { "id": "RelativeFewMuch", "note": "Relative: comparative quantity (prerequisite: FewMuch)" },
+        { "id": "PatternCompletion", "note": "Reasoning: advanced patterns (AAB, ABC sequences)" },
+        { "id": "aile_uyeleri", "note": "Objects: family members, social bonds" }
+      ]
+    },
+    {
+      "level": 10,
+      "theme": "Mastery Deepen — Part-Whole & Advanced Categorization",
+      "activities": [
+        { "id": "HalfQuarterWhole", "note": "Part-whole relationship, pre-fraction (prerequisite: FullEmpty)" },
+        { "id": "AliveLifeless", "note": "Biological classification, abstract category" },
+        { "id": "WhatDoesntBelong", "note": "Reasoning: advanced categorization with abstract sets" },
+        { "id": "FunctionalMatching", "note": "Reasoning: revisit with more complex object-function pairs" },
+        { "id": "meslekler", "note": "Objects: occupations, social roles" }
+      ]
+    },
+    {
+      "level": 11,
+      "theme": "Mastery Refine — Advanced Relative & Memory Challenge",
+      "activities": [
+        { "id": "LeftRight", "note": "Orientation, body awareness (challenging)" },
+        { "id": "RelativeLongShort", "note": "Relative: comparative length (prerequisite: LongShort)" },
+        { "id": "HighLow", "note": "Vertical position comparison" },
+        { "id": "MemoryCards", "note": "Reasoning: expanded memory game with more pairs" },
+        { "id": "mutfak_gerecleri", "note": "Objects: kitchen items, specific subcategory" }
+      ]
+    },
+    {
+      "level": 12,
+      "theme": "Mastery Peak — Complex Logic & Abstract Reasoning",
+      "activities": [
+        { "id": "Sudoku", "note": "Reasoning: visual-spatial logic, constraint-based (prerequisite: PatternCompletion)" },
+        { "id": "RelativeNearFar", "note": "Relative: comparative distance (prerequisite: NearFar)" },
+        { "id": "OddEven", "note": "Number parity, post-counting abstraction" },
+        { "id": "SequencingStories", "note": "Reasoning: complex event chains, cause-effect sequencing" },
+        { "id": "muzik_aletleri", "note": "Objects: musical instruments, cultural/interest-based" }
+      ]
+    }
+  ],
+  "activityPool": {
+    "note": "Activities used across levels with strategic distribution",
+    "byDomain": {
+      "Concept": [
+        "YesNo", "Colors", "Shapes", "Emotions", "BigSmall", "LongShort", "ThinThick", "WideNarrow",
+        "HardSoft", "CleanDirty", "WetDry", "HotCold", "AliveLifeless", "FullEmpty", "FewMuch",
+        "HalfQuarterWhole", "OnUnder", "BelowAbove", "InFrontOfBehind", "InsideOutside", "Between",
+        "LeftRight", "NearFar", "HighLow", "BeforeAfter", "DayNight", "Senses", "OddEven"
+      ],
+      "Reasoning": [
+        "WhatDoesntBelong", "FunctionalMatching", "CauseEffect", "SequencingStories",
+        "PatternCompletion", "Sudoku", "MemoryCards", "DragAndDropCounting", "DragAndDropPositioning"
+      ],
+      "Objects": [
+        "meyveler", "hayvanlar", "ev_esyalari", "oyuncaklar", "giysiler_aksesuarlar",
+        "vucudun_bolumleri", "tasitlar", "icecekler", "aile_uyeleri", "meslekler",
+        "mutfak_gerecleri", "muzik_aletleri"
+      ],
+      "Relative": [
+        "RelativeBigSmall", "RelativeLongShort", "RelativeFewMuch", "RelativeNearFar"
+      ]
+    },
+    "excluded": {
+      "LetterSound": ["Syllabification", "FindTheLetterInGrid", "FindTheSoundInImage", "EmbeddedStory", "SoundPresence", "FindTheLetter"],
+      "FineMotor": ["LineTracing", "ShapeColoring", "RhythmFollowing"],
+      "UnusedObjects": ["sebzeler", "diger_yiyecekler", "bitkiler", "okul_ofis_gerecleri", "mekanlar_odalar", "dogal_yapilar_uzay", "aletler"],
+      "UnusedConcepts": ["OldNew", "OpenClosed", "StraightCurved", "BitterSweet", "HeavyLight", "RoughSmooth", "BrokenIntact", "MessyClean", "TazeBayat", "KirisikDuzgun", "SivriKut", "ParlakMat", "TembelCaliskan", "SeffafOpak", "DikenliPuruzsuz", "DerinSig", "KalabalikTenha", "DugumCozuk", "HungryFull", "YoungOld", "TersDuz", "BesideOpposite", "FastSlow"],
+      "UnusedRelative": ["RelativeWideNarrow", "RelativeThinThick", "RelativeHighLow"]
+    }
+  },
+  "progressionRules": {
+    "activityCount": "5-7 per level for 10-15 min sessions",
+    "conceptProgression": "1-3 concepts per level, increasing abstraction",
+    "reasoningProgression": "1-2 reasoning activities per level, increasing complexity",
+    "objectProgression": "1 object category per level, rotating to build vocabulary breadth",
+    "relativeIntro": "Level 7+ only, after base concept mastery",
+    "revisitStrategy": "Key activities (WhatDoesntBelong, PatternCompletion, MemoryCards, Colors) revisited for consolidation",
+    "difficultySlope": "Gentle 1-6, moderate 7-9, steep 10-12"
+  }
+}

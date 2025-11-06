@@ -7,7 +7,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1801,
     question: 'Which one is the eye?',
-    questionAudioKey: 'q_which_is_eye',
+    questionAudioKey: 'q_which_is_eye_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 564, word: 'göz', imageUrl: '/images/564.png', isCorrect: true, audioKey: 'göz', spokenText: 'eye' },
@@ -31,7 +31,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1803,
     question: 'Which one is the ear?',
-    questionAudioKey: 'q_which_is_ear',
+    questionAudioKey: 'q_which_is_ear_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 490, word: 'kulak', imageUrl: '/images/490.png', isCorrect: true, audioKey: 'kulak', spokenText: 'ear' },
@@ -43,7 +43,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1804,
     question: 'Which one is the hand?',
-    questionAudioKey: 'q_which_is_hand',
+    questionAudioKey: 'q_which_is_hand_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 285, word: 'el', imageUrl: '/images/285.png', isCorrect: true, audioKey: 'el', spokenText: 'hand' },
@@ -55,7 +55,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1805,
     question: 'Which one is the foot?',
-    questionAudioKey: 'q_which_is_foot',
+    questionAudioKey: 'q_which_is_foot_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 561, word: 'ayak', imageUrl: '/images/561.png', isCorrect: true, audioKey: 'ayak', spokenText: 'foot' },
@@ -67,7 +67,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1806,
     question: 'Which one is the hair?',
-    questionAudioKey: 'q_which_is_hair',
+    questionAudioKey: 'q_which_is_hair_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 662, word: 'saç', imageUrl: '/images/662.png', isCorrect: true, audioKey: 'saç', spokenText: 'hair' },
@@ -79,7 +79,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1807,
     question: 'Which one is the mouth?',
-    questionAudioKey: 'q_which_is_mouth',
+    questionAudioKey: 'q_which_is_mouth_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 557, word: 'dudak', imageUrl: '/images/557.png', isCorrect: true, audioKey: 'dudak', spokenText: 'mouth' },
@@ -91,7 +91,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1808,
     question: 'Which one is the tongue?',
-    questionAudioKey: 'q_which_is_tongue',
+    questionAudioKey: 'q_which_is_tongue_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 558, word: 'dil', imageUrl: '/images/558.png', isCorrect: true, audioKey: 'dil', spokenText: 'tongue' },
@@ -103,7 +103,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1809,
     question: 'Which one is the arm?',
-    questionAudioKey: 'q_which_is_arm',
+    questionAudioKey: 'q_which_is_arm_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 560, word: 'kol', imageUrl: '/images/560.png', isCorrect: true, audioKey: 'kol', spokenText: 'arm' },
@@ -115,7 +115,7 @@ export const enBodyPartsData: ConceptRound[] = [
   {
     id: 1810,
     question: 'Which one is the leg?',
-    questionAudioKey: 'q_which_is_leg',
+    questionAudioKey: 'q_which_is_leg_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 562, word: 'bacak', imageUrl: '/images/562.png', isCorrect: true, audioKey: 'bacak', spokenText: 'leg' },

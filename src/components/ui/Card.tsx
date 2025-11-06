@@ -2,6 +2,7 @@
 import CheckIcon from '../icons/CheckIcon.tsx';
 import { getCurrentLanguage } from '../../i18n/index.ts';
 import { translateLabel } from '../../utils/translate.ts';
+import { useAppContext } from '../../contexts/AppContext.ts';
 
 interface CardProps {
     imageUrl: string;
@@ -36,9 +37,34 @@ const Card: React.FC<CardProps> = ({
     isFlippable = false,
     isLetterActivity = false,
 }) => {
+    const { settings } = useAppContext();
     const currentLang = getCurrentLanguage();
     const resolvedWord = word ? (currentLang === 'tr' ? word : translateLabel(word, currentLang)) : undefined;
     const labelSizeClass = isLetterActivity ? 'text-4xl sm:text-5xl' : 'text-2xl sm:text-3xl';
+
+    // Tema bazlı etiket renkleri
+    const getLabelColors = () => {
+        const themeColors: Record<string, { bg: string; text: string; border: string }> = {
+            simple: { bg: 'bg-purple-100/90 backdrop-blur-sm border border-purple-300/50', text: 'text-purple-900', border: 'border-purple-300/50' },
+            gunes: { bg: 'bg-gradient-to-br from-yellow-200/95 via-amber-200/90 to-orange-200/85 backdrop-blur-sm border border-yellow-400/60', text: 'text-orange-900 font-bold', border: 'border-yellow-400/60' },
+            tilki: { bg: 'bg-green-100/90 backdrop-blur-sm border border-green-300/50', text: 'text-green-900', border: 'border-green-300/50' },
+            ay: { bg: 'bg-indigo-100/90 backdrop-blur-sm border border-indigo-300/50', text: 'text-indigo-900', border: 'border-indigo-300/50' },
+            geceorman: { bg: 'bg-indigo-200/90 backdrop-blur-sm border border-indigo-400/50', text: 'text-indigo-900', border: 'border-indigo-400/50' },
+            yagmur: { bg: 'bg-slate-100/90 backdrop-blur-sm border border-slate-300/50', text: 'text-slate-900', border: 'border-slate-300/50' },
+            kus: { bg: 'bg-sky-100/90 backdrop-blur-sm border border-sky-300/50', text: 'text-sky-900', border: 'border-sky-300/50' },
+            tilki2: { bg: 'bg-lime-100/90 backdrop-blur-sm border border-lime-300/50', text: 'text-lime-900', border: 'border-lime-300/50' },
+            kedi: { bg: 'bg-green-100/90 backdrop-blur-sm border border-green-300/50', text: 'text-green-900', border: 'border-green-300/50' },
+            kar: { bg: 'bg-sky-50/90 backdrop-blur-sm border border-sky-200/50', text: 'text-sky-900', border: 'border-sky-200/50' },
+            gunbatimi: { bg: 'bg-orange-100/90 backdrop-blur-sm border border-orange-300/50', text: 'text-orange-900', border: 'border-orange-300/50' },
+            ay2: { bg: 'bg-indigo-100/90 backdrop-blur-sm border border-indigo-300/50', text: 'text-indigo-900', border: 'border-indigo-300/50' },
+            zurafa: { bg: 'bg-cyan-100/90 backdrop-blur-sm border border-cyan-300/50', text: 'text-cyan-900', border: 'border-cyan-300/50' },
+            geometri: { bg: 'bg-rose-100/90 backdrop-blur-sm border border-rose-300/50', text: 'text-rose-900', border: 'border-rose-300/50' },
+            deneme: { bg: 'bg-gradient-to-br from-purple-200/95 via-pink-200/90 to-red-200/85 backdrop-blur-sm border border-purple-400/60', text: 'text-purple-900 font-bold', border: 'border-purple-400/60' },
+        };
+        return themeColors[settings.theme] || { bg: 'bg-black/60 backdrop-blur-sm', text: 'text-white', border: '' };
+    };
+
+    const labelColors = getLabelColors();
 
     if (!isFlippable) {
         const simpleCardClasses = [
@@ -73,11 +99,11 @@ const Card: React.FC<CardProps> = ({
 
                 {resolvedWord && (
                     <div
-                        className={`absolute bottom-0 left-0 right-0 p-2 sm:p-3 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+                        className={`absolute bottom-0 left-0 right-0 p-2 sm:p-3 ${labelColors.bg} transition-opacity duration-300 ${
                             isRevealed ? 'opacity-100' : 'opacity-0'
                         }`}
                     >
-                        <p className={`text-white text-center font-black truncate ${labelSizeClass}`}>{resolvedWord}</p>
+                        <p className={`${labelColors.text} text-center font-black truncate ${labelSizeClass}`}>{resolvedWord}</p>
                     </div>
                 )}
 
@@ -125,11 +151,11 @@ const Card: React.FC<CardProps> = ({
                     />
                     {resolvedWord && (
                         <div
-                            className={`absolute bottom-0 left-0 right-0 p-2 sm:p-3 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+                            className={`absolute bottom-0 left-0 right-0 p-2 sm:p-3 ${labelColors.bg} transition-opacity duration-300 ${
                                 isRevealed ? 'opacity-100' : 'opacity-0'
                             }`}
                         >
-                            <p className={`text-white text-center font-black truncate ${labelSizeClass}`}>{resolvedWord}</p>
+                            <p className={`${labelColors.text} text-center font-black truncate ${labelSizeClass}`}>{resolvedWord}</p>
                         </div>
                     )}
                 </div>

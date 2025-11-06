@@ -5,6 +5,7 @@ import SpeakerIcon from './icons/SpeakerIcon.tsx';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import HomeIcon from './icons/HomeIcon.tsx';
 import { useAutoSpeak } from '../hooks/useAutoSpeak.ts';
+import { t } from '../i18n/index.ts';
 
 interface StoryScreenProps {
     stories: Story[];
@@ -60,13 +61,13 @@ const StoryScreen: React.FC<StoryScreenProps> = ({ stories, letter, onBack, onGo
         <div className="flex flex-col items-center justify-between h-full w-full max-w-2xl mx-auto p-4 animate-fade-in">
              {/* Header */}
             <div className="w-full flex justify-between items-center mb-4">
-                <button onClick={onBack} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label="Geri dön">
+                <button onClick={onBack} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={t('app.back', 'Go back')}>
                     <ArrowLeftIcon className="w-8 h-8 text-sky-700" />
                 </button>
                  <h1 className="text-2xl sm:text-3xl font-bold text-center text-sky-800">
-                    Hikaye Zamanı
+                    {t('activities.letter.embeddedStory', 'Story Time')}
                 </h1>
-                <button onClick={onGoToMenu} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label="Ana menüye dön">
+                <button onClick={onGoToMenu} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={t('completion.home', 'Main Menu')}>
                     <HomeIcon className="w-8 h-8 text-sky-700" />
                 </button>
             </div>
@@ -76,7 +77,7 @@ const StoryScreen: React.FC<StoryScreenProps> = ({ stories, letter, onBack, onGo
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-sky-800 flex-grow">
                         {highlightLetter(currentStory.title, letter)}
                     </h2>
-                     <button onClick={handleSpeak} className="p-2 bg-sky-100 rounded-full hover:bg-sky-200 transition-colors flex-shrink-0 ml-4" aria-label="Hikayeyi seslendir">
+                     <button onClick={handleSpeak} className="p-2 bg-sky-100 rounded-full hover:bg-sky-200 transition-colors flex-shrink-0 ml-4" aria-label={t('story.readStory', 'Read the story')}>
                         <SpeakerIcon className="w-7 h-7 text-sky-600" />
                     </button>
                 </div>
@@ -91,7 +92,7 @@ const StoryScreen: React.FC<StoryScreenProps> = ({ stories, letter, onBack, onGo
                     className="bg-white text-sky-600 font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-sky-100 transition-all disabled:opacity-50"
                     disabled={stories.length <= 1}
                 >
-                    Önceki
+                    {t('common.previous', 'Previous')}
                 </button>
                 <span className="font-bold text-sky-800">
                     {currentStoryIndex + 1} / {stories.length}
@@ -101,7 +102,7 @@ const StoryScreen: React.FC<StoryScreenProps> = ({ stories, letter, onBack, onGo
                     className="bg-white text-sky-600 font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-sky-100 transition-all disabled:opacity-50"
                     disabled={stories.length <= 1}
                 >
-                    Sonraki
+                    {t('common.next', 'Next')}
                 </button>
             </div>
         </div>

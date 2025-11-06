@@ -17,16 +17,31 @@ import HouseIconSimple from './icons/HouseIconSimple.tsx';
 import LightBulbIcon from './icons/LightBulbIcon.tsx';
 import useWindowSize from '../hooks/useWindowSize.ts';
 import { t, getCurrentLanguage } from '../i18n/index.ts';
-import { translateLabel } from '../utils/translate.ts';
+import { translateLabel, getSpeechLocale, translateQuestion } from '../utils/translate.ts';
+import { useAppContext } from '../contexts/AppContext.ts';
+import { getFriendlyCategoryLabelByImageId, getFriendlyCategoryLabelSingularFromRaw } from '../utils/groupLabels.ts';
+import { imageData } from '../services/database/imageData.ts';
+
+// Helper to get category from imageData by id
+const getCategoryById = (id: number): string | null => {
+    const item = imageData.find(img => img.id === id);
+    return item?.tags?.category || null;
+};
+
+// Helper function to get localized concept word for TTS
+const getLocalizedConcept = (turkishWord: string): string => {
+    const currentLang = getCurrentLanguage();
+    return currentLang === 'tr' ? turkishWord : translateLabel(turkishWord, currentLang);
+};
 
 // Localized question strings keyed by questionAudioKey; fallback to roundData.question when missing
 const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
     tr: {
         // Senses
-        q_which_sense_see: 'Hangisiyle g?r?r?z?',
-        q_which_sense_hear: 'Hangisiyle duyar?z?',
-        q_which_sense_smell: 'Hangisiyle koku al?r?z?',
-        q_which_sense_taste: 'Hangisiyle tat al?r?z?',
+        q_which_sense_see: 'Hangisiyle görürüz?',
+        q_which_sense_hear: 'Hangisiyle duyarız?',
+        q_which_sense_smell: 'Hangisiyle koku alırız?',
+        q_which_sense_taste: 'Hangisiyle tat alırız?',
         q_which_sense_touch: 'Hangisiyle dokunuruz?',
         // Qualities
 
@@ -37,8 +52,6 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
         q_which_is_thin: 'İnce olan hangisi?',
         q_which_is_thick: 'Kalın olan hangisi?',
         q_which_is_wide: 'Geniş olan hangisi?',
-            'upright': 'upside down', 'upside down': 'upright', 'shiny': 'matte', 'matte': 'shiny', 'wrinkled': 'smooth',
-            'deep': 'shallow', 'shallow': 'deep', 'crowded': 'sparse', 'sparse': 'crowded',
         q_which_is_narrow: 'Dar olan hangisi?',
         q_which_is_hard: 'Sert olan hangisi?',
         q_which_is_soft: 'Yumuşak olan hangisi?',
@@ -71,6 +84,22 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
         q_which_is_light: 'Hafif olan hangisi?',
         q_which_is_hot: 'Sıcak olan hangisi?',
         q_which_is_cold: 'Soğuk olan hangisi?',
+            q_which_is_hungry: 'Aç olan hangisi?',
+            // For objects (containers) we use 'dolu' — keep the generic key as object-focused
+            q_which_is_full: 'Dolu olan hangisi?',
+            // For living/animated subjects (hungry/full as in 'tok') we add a distinct key
+            q_which_is_satiated: 'Tok olan hangisi?',
+            q_which_is_knotted: 'Düğümlü olan hangisi?',
+            q_which_is_untied: 'Çözük olan hangisi?',
+            q_which_is_upsidedown: 'Ters olan hangisi?',
+            q_which_is_few: 'Az olan hangisi?',
+            q_which_is_much: 'Çok olan hangisi?',
+            q_which_is_whole: 'Bütün olan hangisi?',
+            q_which_is_half: 'Yarım olan hangisi?',
+            q_which_is_quarter: 'Çeyrek olan hangisi?',
+            q_which_is_slice: 'Dilim olan hangisi?',
+            q_which_is_odd: 'Tek olan hangisi?',
+            q_which_is_even: 'Çift olan hangisi?',
     q_which_is_loud: 'Gürültülü olan hangisi?',
     q_which_is_noisy: 'Gürültülü olan hangisi?',
         q_which_is_quiet: 'Sessiz olan hangisi?',
@@ -86,7 +115,7 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
     q_which_is_stale: 'Bayat olan hangisi?',
     q_which_is_lazy: 'Tembel olan hangisi?',
     q_which_is_hardworking: 'Çalışkan olan hangisi?',
-    q_which_is_upright: 'Düzgün olan hangisi?',
+    q_which_is_upright: 'Düz olan hangisi?',
         // Temporal
         q_which_is_before: 'Önce hangisi olur?',
         q_which_is_after: 'Sonra hangisi olur?',
@@ -159,6 +188,20 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
         q_which_is_light: 'Which one is light?',
         q_which_is_hot: 'Which one is hot?',
         q_which_is_cold: 'Which one is cold?',
+    q_which_is_hungry: 'Which one is hungry?',
+    q_which_is_full: 'Which one is full?',
+    q_which_is_satiated: 'Which one is full?',
+    q_which_is_knotted: 'Which one is knotted?',
+    q_which_is_untied: 'Which one is untied?',
+    q_which_is_upsidedown: 'Which one is upside down?',
+    q_which_is_few: 'Which one has few?',
+    q_which_is_much: 'Which one has many?',
+    q_which_is_whole: 'Which one is whole?',
+    q_which_is_half: 'Which one is half?',
+    q_which_is_quarter: 'Which one is a quarter?',
+    q_which_is_slice: 'Which one is a slice?',
+    q_which_is_odd: 'Which one is odd?',
+    q_which_is_even: 'Which one is even?',
     q_which_is_loud: 'Which one is noisy?',
     q_which_is_noisy: 'Which one is noisy?',
         q_which_is_quiet: 'Which one is quiet?',
@@ -211,6 +254,53 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
 function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof getCurrentLanguage>): string {
     const key = roundData.questionAudioKey;
     if (!key) return roundData.question;
+    // Per-round override for Cause & Effect questions via i18n (reasoning.causeEffect.rounds.{id}.question)
+    if (roundData.activityType === ActivityType.CauseEffect) {
+        const perRoundKey = `reasoning.causeEffect.rounds.${roundData.id}.question`;
+        const perRound = t(perRoundKey);
+        if (perRound && perRound !== perRoundKey) return perRound;
+    }
+    // Per-round override for 5W1H questions via i18n (reasoning.fiveWOneH.rounds.{id}.question)
+    if (roundData.activityType === ActivityType.FiveWOneH) {
+        const perRoundKey = `reasoning.fiveWOneH.rounds.${roundData.id}.question`;
+        const perRound = t(perRoundKey);
+        if (perRound && perRound !== perRoundKey) return perRound;
+    }
+    // Objects: always build a dynamic question that includes the noun (better UX and matches DE old behavior)
+    if (key === 'q_which_is_object') {
+        const correct = roundData.options?.find(o => o.isCorrect);
+        // Prefer already-localized spokenText; fall back to translating TR word
+        const target = correct?.spokenText || (correct ? translateLabel(correct.word, lang) : undefined);
+        if (target) {
+            if (lang === 'tr') return `${target} hangisi?`;
+            if (lang === 'de') return `Welche ist ${target}?`;
+            if (lang === 'fr') return `Lequel est ${target} ?`;
+            if (lang === 'nl') return `Welke is ${target}?`;
+            return `Which one is ${target}?`;
+        }
+        // If we don't have a correct option for some reason, fall back to provided question or i18n below
+    }
+    
+    // Try to get question from i18n first
+    const i18nKey = `questions.${key}`;
+    const translatedQuestion = t(i18nKey);
+        if (translatedQuestion !== i18nKey) {
+        // Special handling for dynamic questions with placeholders
+        if (key === 'q_which_is_color' || key === 'q_which_is_shape' || key === 'q_which_is_emotion') {
+            const extractTargetFromQuestion = (q?: string) => {
+                if (!q) return '';
+                const normalized = q.trim();
+                const suffix = ' olan hangisi?';
+                return normalized.endsWith(suffix) ? normalized.slice(0, -suffix.length).trim() : normalized;
+            };
+            const targetTr = extractTargetFromQuestion(roundData.question);
+            const targetLocalized = translateLabel(targetTr, lang);
+            return translatedQuestion.replace('{color}', targetLocalized).replace('{shape}', targetLocalized);
+        }
+        return translatedQuestion;
+    }
+    
+    // Fallback to hardcoded questions for Turkish
     if (lang === 'tr') {
         // Special-case: In Turkish, "old" is "eski" for objects (OldNew) and "yaşlı" for age (YoungOld)
         if (key === 'q_which_is_old') {
@@ -218,52 +308,62 @@ function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof g
                 ? 'Eski olan hangisi?'
                 : 'Yaşlı olan hangisi?';
         }
-        // Prefer the dynamic Turkish question when it already contains the target (e.g., "kırmızı olan hangisi?")
         return QUESTION_TEXTS.tr[key] || roundData.question;
     }
-    // For English, reconstruct dynamic questions for Colors/Shapes/Emotions using the Turkish target from the question
-    const extractTargetFromQuestion = (q?: string) => {
-        if (!q) return '';
-        // Expect pattern: "<target> olan hangisi?"
-        const normalized = q.trim();
-        const suffix = ' olan hangisi?';
-        let target = normalized.endsWith(suffix)
-            ? normalized.slice(0, -suffix.length)
-            : normalized;
-        return target.trim();
+    // If no i18n key was found and language is not Turkish, try phrase-based translation
+    const translated = translateQuestion(roundData.question, lang);
+    if (translated && translated !== roundData.question) return translated;
+    // Fallback to original question if no translation found
+    // Defensive dedupe: sometimes question text already contains the templated prefix
+    const dedupe = (q: string) => {
+        if (!q) return q;
+        if (String(lang) === 'tr') {
+            // remove duplicated 'hangisi' occurrences like 'Hangisi hangisi?'
+            return q.replace(/(hangisi\s+){2,}/i, 'hangisi ').trim();
+        }
+        // English: collapse repeated leading 'Which one is' occurrences
+        return q.replace(/^(Which one is\s+)+/i, 'Which one is ').trim();
     };
+    return dedupe(roundData.question);
+}
 
-    if (key === 'q_which_is_color' || key === 'q_which_is_shape' || key === 'q_which_is_emotion') {
-        const targetTr = extractTargetFromQuestion(roundData.question);
-        const targetEn = translateLabel(targetTr, 'en');
-        return `Which one is ${targetEn}?`;
+// Prefer per-round explanatory TTS if provided in data; else fall back to localized question.
+function getQuestionTtsText(roundData: ConceptRound, lang: ReturnType<typeof getCurrentLanguage>): string {
+    const speechAny = roundData.speech as any;
+    const override: string | undefined = speechAny?.[lang]?.question;
+    if (override && override.trim().length > 0) return override.trim();
+    const q = getLocalizedQuestion(roundData, lang);
+    if (roundData.activityType === ActivityType.FiveWOneH) {
+        if (lang === 'tr') return `Soru: ${q}. Doğru resmi seç.`;
+        if (lang === 'en') return `Question: ${q}. Choose the correct picture.`;
     }
-    if (key === 'q_which_is_different') {
-        return QUESTION_TEXTS.en[key] || 'Which one is different?';
-    }
-    return QUESTION_TEXTS.en[key] || roundData.question;
+    return q;
 }
 
 function getConceptFromQuestionKey(roundData: ConceptRound, lang: ReturnType<typeof getCurrentLanguage>): string | undefined {
     const key = roundData.questionAudioKey;
     if (!key) return undefined;
+    // Special cases where the Turkish target token is embedded in the question string
     if (key === 'q_which_is_color' || key === 'q_which_is_shape' || key === 'q_which_is_emotion') {
-        // Derive the target token from Turkish question "<target> olan hangisi?" and translate if needed
         const extractTargetFromQuestion = (q?: string) => {
             if (!q) return '';
             const normalized = q.trim();
             const suffix = ' olan hangisi?';
-            let target = normalized.endsWith(suffix)
+            const target = normalized.endsWith(suffix)
                 ? normalized.slice(0, -suffix.length)
                 : normalized;
             return target.trim();
         };
         const targetTr = extractTargetFromQuestion(roundData.question);
-        return lang === 'tr' ? targetTr.toLocaleLowerCase('tr-TR') : translateLabel(targetTr, 'en').toLocaleLowerCase('en-US');
+        const lowerTr = targetTr.toLocaleLowerCase('tr-TR');
+        if (lang === 'tr') return lowerTr;
+        const translated = translateLabel(lowerTr, lang);
+        const locale = getSpeechLocale(lang as any);
+        return translated.toLocaleLowerCase(locale);
     }
-    // Map question keys to the core concept word for speech feedback
+    // Map question keys to the core Turkish concept word for speech feedback
     const mapTr: Record<string, string> = {
-        q_which_sense_see: 'g?z',
+        q_which_sense_see: 'göz',
         q_which_sense_hear: 'kulak',
         q_which_sense_smell: 'burun',
         q_which_sense_taste: 'dil',
@@ -294,10 +394,10 @@ function getConceptFromQuestionKey(roundData: ConceptRound, lang: ReturnType<typ
         q_which_is_wrinkled: 'kırışık',
         q_which_is_pointed: 'sivri',
         q_which_is_blunt: 'küt',
-    q_which_is_alive: 'canlı',
-    q_which_is_lifeless: 'cansız',
-    q_which_is_intact: 'sağlam',
-    q_which_is_broken: 'kırık',
+        q_which_is_alive: 'canlı',
+        q_which_is_lifeless: 'cansız',
+        q_which_is_intact: 'sağlam',
+        q_which_is_broken: 'kırık',
         // q_which_is_old is handled contextually below for TR
         q_which_is_new: 'yeni',
         q_which_is_young: 'genç',
@@ -305,142 +405,120 @@ function getConceptFromQuestionKey(roundData: ConceptRound, lang: ReturnType<typ
         q_which_is_light: 'hafif',
         q_which_is_hot: 'sıcak',
         q_which_is_cold: 'soğuk',
-    q_which_is_loud: 'gürültülü',
-    q_which_is_noisy: 'gürültülü',
+    q_which_is_hungry: 'aç',
+    // map the object-focused full -> 'dolu'
+    q_which_is_full: 'dolu',
+    // map the person/animal-focused full (satiated) key to 'tok'
+    q_which_is_satiated: 'tok',
+    q_which_is_knotted: 'düğüm',
+    q_which_is_untied: 'çözük',
+    q_which_is_upsidedown: 'ters',
+    q_which_is_few: 'az',
+    q_which_is_much: 'çok',
+    q_which_is_whole: 'bütün',
+    q_which_is_half: 'yarım',
+    q_which_is_quarter: 'çeyrek',
+    q_which_is_slice: 'dilim',
+    q_which_is_odd: 'tek',
+    q_which_is_even: 'çift',
+        q_which_is_loud: 'gürültülü',
+        q_which_is_noisy: 'gürültülü',
         q_which_is_quiet: 'sessiz',
-    q_which_is_deep: 'derin',
-    q_which_is_shallow: 'sığ',
-    q_which_is_crowded: 'kalabalık',
-    q_which_is_sparse: 'tenha',
-    q_which_is_shiny: 'parlak',
-    q_which_is_matte: 'mat',
-    q_which_is_transparent: 'şeffaf',
-    q_which_is_opaque: 'opak',
-    q_which_is_fresh: 'taze',
-    q_which_is_stale: 'bayat',
-    q_which_is_lazy: 'tembel',
-    q_which_is_hardworking: 'çalışkan',
-    q_which_is_upright: 'düzgün',
+        q_which_is_deep: 'derin',
+        q_which_is_shallow: 'sığ',
+        q_which_is_crowded: 'kalabalık',
+        q_which_is_sparse: 'tenha',
+        q_which_is_shiny: 'parlak',
+        q_which_is_matte: 'mat',
+        q_which_is_transparent: 'şeffaf',
+        q_which_is_opaque: 'opak',
+        q_which_is_fresh: 'taze',
+        q_which_is_stale: 'bayat',
+        q_which_is_lazy: 'tembel',
+        q_which_is_hardworking: 'çalışkan',
+        q_which_is_upright: 'düz',
         q_which_is_before: 'önce',
         q_which_is_after: 'sonra',
         q_which_is_day: 'gündüz',
         q_which_is_night: 'gece',
         q_which_is_fast: 'hızlı',
         q_which_is_slow: 'yavaş',
-    q_which_is_above: 'yukarıda',
-    q_which_is_below: 'aşağıda',
-    q_which_is_on: 'üstünde',
-    q_which_is_under: 'altında',
-    q_which_are_beside: 'yan yana',
-    q_which_are_opposite: 'karşılıklı',
-    q_which_is_in_front: 'önünde',
-    q_which_is_behind: 'arkasında',
-    q_which_is_inside: 'içinde',
-    q_which_is_outside: 'dışında',
-    q_which_is_between: 'arasında',
-    q_which_is_near: 'yakın',
-    q_which_is_far: 'uzak',
-    q_which_is_higher: 'yüksek',
-    q_which_is_lower: 'alçak',
+        q_which_is_above: 'yukarıda',
+        q_which_is_below: 'aşağıda',
+        q_which_is_on: 'üstünde',
+        q_which_is_under: 'altında',
+        q_which_are_beside: 'yan yana',
+        q_which_are_opposite: 'karşılıklı',
+        q_which_is_in_front: 'önünde',
+        q_which_is_behind: 'arkasında',
+        q_which_is_inside: 'içinde',
+        q_which_is_outside: 'dışında',
+        q_which_is_between: 'arasında',
+        q_which_is_near: 'yakın',
+        q_which_is_far: 'uzak',
+        q_which_is_higher: 'yüksek',
+        q_which_is_lower: 'alçak',
         q_which_faces_left: 'sola bakan',
         q_which_faces_right: 'sağa bakan',
     };
-    const mapEn: Record<string, string> = {
-        q_which_sense_see: 'eye',
-        q_which_sense_hear: 'ear',
-        q_which_sense_smell: 'nose',
-        q_which_sense_taste: 'tongue',
-        q_which_sense_touch: 'hand',
-        q_which_is_big: 'big',
-        q_which_is_small: 'small',
-        q_which_is_long: 'long',
-        q_which_is_short: 'short',
-        q_which_is_thin: 'thin',
-        q_which_is_thick: 'thick',
-        q_which_is_wide: 'wide',
-        q_which_is_narrow: 'narrow',
-        q_which_is_hard: 'hard',
-        q_which_is_soft: 'soft',
-        q_which_is_clean: 'clean',
-        q_which_is_dirty: 'dirty',
-        q_which_is_messy: 'messy',
-        q_which_is_tidy: 'tidy',
-        q_which_is_wet: 'wet',
-        q_which_is_dry: 'dry',
-        q_which_is_open: 'open',
-        q_which_is_closed: 'closed',
-        q_which_is_straight: 'straight',
-        q_which_is_curved: 'curved',
-        q_which_is_rough: 'rough',
-        q_which_is_smooth: 'smooth',
-        q_which_is_thorny: 'thorny',
-        q_which_is_wrinkled: 'wrinkled',
-        q_which_is_pointed: 'pointed',
-        q_which_is_blunt: 'blunt',
-    q_which_is_alive: 'alive',
-    q_which_is_lifeless: 'lifeless',
-    q_which_is_intact: 'intact',
-    q_which_is_broken: 'broken',
-        q_which_is_old: 'old',
-        q_which_is_new: 'new',
-        q_which_is_young: 'young',
-        q_which_is_heavy: 'heavy',
-        q_which_is_light: 'light',
-        q_which_is_hot: 'hot',
-        q_which_is_cold: 'cold',
-    q_which_is_loud: 'noisy',
-    q_which_is_noisy: 'noisy',
-        q_which_is_quiet: 'quiet',
-    q_which_is_deep: 'deep',
-    q_which_is_shallow: 'shallow',
-    q_which_is_crowded: 'crowded',
-    q_which_is_sparse: 'sparse',
-    q_which_is_shiny: 'shiny',
-    q_which_is_matte: 'matte',
-    q_which_is_transparent: 'transparent',
-    q_which_is_opaque: 'opaque',
-    q_which_is_fresh: 'fresh',
-    q_which_is_stale: 'stale',
-    q_which_is_lazy: 'lazy',
-    q_which_is_hardworking: 'hardworking',
-    q_which_is_upright: 'upright',
-        q_which_is_before: 'before',
-        q_which_is_after: 'after',
-        q_which_is_day: 'day',
-        q_which_is_night: 'night',
-        q_which_is_fast: 'fast',
-        q_which_is_slow: 'slow',
-    q_which_is_above: 'above',
-    q_which_is_below: 'below',
-    q_which_is_on: 'on',
-    q_which_is_under: 'under',
-    q_which_are_beside: 'side by side',
-    q_which_are_opposite: 'opposite',
-    q_which_is_in_front: 'in front',
-    q_which_is_behind: 'behind',
-    q_which_is_inside: 'inside',
-    q_which_is_outside: 'outside',
-    q_which_is_between: 'between',
-    q_which_is_near: 'near',
-    q_which_is_far: 'far',
-    q_which_is_higher: 'higher',
-    q_which_is_lower: 'lower',
-        q_which_faces_left: 'faces left',
-        q_which_faces_right: 'faces right',
-    };
-    if (lang === 'tr') {
-        if (key === 'q_which_is_old') {
-            // Contextual concept word in Turkish
-            return roundData.activityType === ActivityType.OldNew ? 'eski' : 'yaşlı';
-        }
-        return mapTr[key];
-    }
-    return mapEn[key];
+    const conceptTr = key === 'q_which_is_old'
+        ? (roundData.activityType === ActivityType.OldNew ? 'eski' : 'yaşlı')
+        : mapTr[key];
+    if (!conceptTr) return undefined;
+    if (lang === 'tr') return conceptTr.toLocaleLowerCase('tr-TR');
+    const translated = translateLabel(conceptTr, lang);
+    const locale = getSpeechLocale(lang as any);
+    return translated.toLocaleLowerCase(locale);
 }
 
-// translateLabel moved to ../utils/translate.ts and imported above
+// --- Turkish TTS helpers -------------------------------------------------
+const TR_DETERMINERS = ['bu', 'şu', 'o', 'bunlar', 'şunlar', 'onlar'];
 
-// Helper Icon Components (moved from inside InteractiveConceptHelper)
+function stripLeadingDeterminer(base: string, lang: ReturnType<typeof getCurrentLanguage>) {
+    if (!base) return base;
+    if (lang !== 'tr') return base;
+    const trimmed = base.trim();
+    const lower = trimmed.toLocaleLowerCase('tr-TR');
+    for (const d of TR_DETERMINERS) {
+        if (lower.startsWith(d + ' ')) {
+            return trimmed.slice(d.length).trim();
+        }
+    }
+    return trimmed;
+}
+
+const TR_PRENOMINAL_ADJ = new Set(['çift', 'tek']);
+
+function mergeWithConceptTR(prefixedBase: string, base: string, concept?: string) {
+    if (!concept) return prefixedBase;
+    const locale = 'tr-TR';
+    const baseNorm = (base || '').toLocaleLowerCase(locale).trim();
+    if (!baseNorm) return `${prefixedBase} ${concept}`.trim();
+    const parts = baseNorm.split(/\s+/);
+    const first = parts[0];
+    // If the base starts with a prenominal adjective like 'çift' or 'tek', try to insert it before the noun
+    if (TR_PRENOMINAL_ADJ.has(first) && parts.length > 1) {
+        const adj = first;
+        const rest = parts.slice(1).join(' ');
+        const pb = prefixedBase.trim();
+        const pbLower = pb.toLocaleLowerCase(locale);
+        // If prefixed base already ends with the noun (rest) or the concept token, replace appropriately
+        if (rest && pbLower.endsWith(rest)) {
+            const prefixPart = pb.slice(0, pb.length - rest.length).trim();
+            return `${prefixPart} ${adj} ${rest}`.replace(/\s+/g, ' ').trim();
+        }
+        if (pbLower.endsWith(concept)) {
+            const prefixPart = pb.slice(0, pb.length - concept.length).trim();
+            return `${prefixPart} ${adj} ${concept}`.replace(/\s+/g, ' ').trim();
+        }
+        return `${pb} ${adj} ${rest}`.replace(/\s+/g, ' ').trim();
+    }
+    // Default: append the concept if not present
+    const pbTrim = prefixedBase.trim();
+    if (pbTrim.endsWith(concept)) return pbTrim;
+    return `${pbTrim} ${concept}`.trim();
+}
+
 const AppleCoreIcon: React.FC<{ className?: string }> = ({ className }) => <svg viewBox="0 0 100 100" className={className}><path d="M 50 80 C 40 70, 40 50, 50 40 C 60 50, 60 70, 50 80 Z" fill="#fef2f2" /><path d="M63.8,4.2c-2.6-2.1-6.1-2.6-9.1-1.2c-3,1.4-5,4.3-5.2,7.6" fill="#4d7c0f"/></svg>;
 const CarIcon: React.FC<{ className?: string }> = ({ className }) => <svg viewBox="0 0 100 50" className={className}><path d="M95,30 H85 L80,20 H30 L25,30 H5 a5,5 0 0,0 0,10 H15 a10,10 0 0,0 20,0 H75 a10,10 0 0,0 20,0 H95 a5,5 0 0,0 0,-10 Z" stroke="black" strokeWidth="2" /></svg>;
 const SunIcon: React.FC<{ className?: string }> = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>;
@@ -533,7 +611,7 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                     { spoken: 'siyah', colorClass: 'bg-black' },
                     { spoken: 'beyaz', colorClass: 'bg-white border-2 border-slate-200' },
                 ];
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-5 gap-2"> {colors.map(({ spoken, colorClass }) => ( <button key={spoken} onClick={() => speak(spoken)} className={`w-8 h-8 sm-landscape:w-6 sm-landscape:h-6 aspect-square rounded-xl shadow-md ${colorClass} transition transform hover:scale-110`} aria-label={spoken} /> ))} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnColors')}</p> </div> </div> );
+                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-5 gap-2"> {colors.map(({ spoken, colorClass }) => { const label = getCurrentLanguage() === 'tr' ? spoken : translateLabel(spoken, getCurrentLanguage()); const say = getCurrentLanguage() === 'tr' ? spoken : label; return ( <button key={spoken} onClick={() => speak(say)} className={`w-8 h-8 sm-landscape:w-6 sm-landscape:h-6 aspect-square rounded-xl shadow-md ${colorClass} transition transform hover:scale-110`} aria-label={label} /> ); })} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnColors')}</p> </div> </div> );
             }
             case ActivityType.Shapes: {
                  const shapes = [
@@ -544,7 +622,7 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                     { spoken: 'yıldız', path: 'M 50,10 L 61,40 L 95,40 L 67,60 L 78,90 L 50,70 L 22,90 L 33,60 L 5,40 L 39,40 Z' },
                     { spoken: 'oval', path: 'M 50,50 m -40,0 a 40,25 0 1,1 80,0 a 40,25 0 1,1 -80,0' }
                  ];
-              return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-3 gap-2"> {shapes.map(({ spoken, path }) => ( <button key={spoken} onClick={() => speak(spoken)} className="w-12 h-12 sm-landscape:w-10 sm-landscape:h-10 aspect-square rounded-xl shadow-md bg-indigo-400 p-2 sm-landscape:p-1 transition transform hover:scale-110" aria-label={spoken}><svg viewBox="0 0 100 100" className="w-full h-full"><path d={path} fill="white" /></svg></button> ))} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnShapes')}</p> </div> </div> );
+              return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-3 gap-2"> {shapes.map(({ spoken, path }) => { const label = getCurrentLanguage() === 'tr' ? spoken : translateLabel(spoken, getCurrentLanguage()); const say = getCurrentLanguage() === 'tr' ? spoken : label; return ( <button key={spoken} onClick={() => speak(say)} className="w-12 h-12 sm-landscape:w-10 sm-landscape:h-10 aspect-square rounded-xl shadow-md bg-indigo-400 p-2 sm-landscape:p-1 transition transform hover:scale-110" aria-label={label}><svg viewBox="0 0 100 100" className="w-full h-full"><path d={path} fill="white" /></svg></button> ); })} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnShapes')}</p> </div> </div> );
             }
             case ActivityType.Emotions: {
                 const emotions = [
@@ -554,44 +632,65 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                     { spoken: 'şaşkın', color: '#a78bfa', svg: <svg viewBox="0 0 100 100"><circle cx="35" cy="45" r="8" fill="black" /><circle cx="65" cy="45" r="8" fill="black" /><ellipse cx="50" cy="75" rx="15" ry="10" fill="black"/></svg> },
                     { spoken: 'korkmuş', color: '#4ade80', svg: <svg viewBox="0 0 100 100"><circle cx="35" cy="45" r="6" fill="black" /><circle cx="65" cy="45" r="6" fill="black" /><path d="M30 75 Q 40 65, 50 75 T 70 75" stroke="black" strokeWidth="5" fill="none" strokeLinecap="round" /></svg> },
                 ];
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-3 sm:grid-cols-5 gap-2"> {emotions.map(({ spoken, color, svg }) => ( <button key={spoken} onClick={() => speak(spoken)} className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8 aspect-square rounded-full shadow-md p-1 transition transform hover:scale-110" style={{ backgroundColor: color }} aria-label={spoken}> {svg} </button> ))} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnEmotions')}</p> </div> </div> );
+                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-3 sm:grid-cols-5 gap-2"> {emotions.map(({ spoken, color, svg }) => { const label = getCurrentLanguage() === 'tr' ? spoken : translateLabel(spoken, getCurrentLanguage()); const say = getCurrentLanguage() === 'tr' ? spoken : label; return ( <button key={spoken} onClick={() => speak(say)} className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8 aspect-square rounded-full shadow-md p-1 transition transform hover:scale-110" style={{ backgroundColor: color }} aria-label={label}> {svg} </button> ); })} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnEmotions')}</p> </div> </div> );
             }
-            case ActivityType.BigSmall:
+            case ActivityType.BigSmall: {
+                const bigText = getCurrentLanguage() === 'tr' ? 'büyük' : translateLabel('büyük', getCurrentLanguage());
+                const smallText = getCurrentLanguage() === 'tr' ? 'küçük' : translateLabel('küçük', getCurrentLanguage());
+                const changeSizeText = getCurrentLanguage() === 'tr' ? 'Boyutu Değiştir' : t('concepts.changeSize') || 'Change Size';
+                
                 return (
                     <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8">
                         <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl">
                             <div className="w-24 h-24 bg-lime-500 rounded-full transition-transform duration-300" style={{ transform: `scale(${scale})` }}></div>
                         </div>
                         <div className="flex flex-col justify-center items-center gap-4 mt-4 sm-landscape:mt-0 sm-landscape:gap-2">
-                            <p className="font-semibold text-lg sm-landscape:text-base text-slate-700 mb-2 sm-landscape:mb-1">Boyutu Değiştir</p>
-                            <button onClick={() => { setScale(s => Math.min(2, s + 0.25)); speak('büyük'); }} className={`${baseButtonClasses} bg-green-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale >= 2}>
+                            <p className="font-semibold text-lg sm-landscape:text-base text-slate-700 mb-2 sm-landscape:mb-1">{changeSizeText}</p>
+                            <button onClick={() => { setScale(s => Math.min(2, s + 0.25)); speak(bigText); }} className={`${baseButtonClasses} bg-green-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale >= 2}>
                                 <PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" />
-                                <span className="text-xl font-bold sm-landscape:text-lg">Büyük</span>
+                                <span className="text-xl font-bold sm-landscape:text-lg">{bigText.charAt(0).toUpperCase() + bigText.slice(1)}</span>
                             </button>
-                            <button onClick={() => { setScale(s => Math.max(0.5, s - 0.25)); speak('küçük'); }} className={`${baseButtonClasses} bg-red-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale <= 0.5}>
+                            <button onClick={() => { setScale(s => Math.max(0.5, s - 0.25)); speak(smallText); }} className={`${baseButtonClasses} bg-red-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale <= 0.5}>
                                 <MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" />
-                                <span className="text-xl font-bold sm-landscape:text-lg">Küçük</span>
+                                <span className="text-xl font-bold sm-landscape:text-lg">{smallText.charAt(0).toUpperCase() + smallText.slice(1)}</span>
                             </button>
                         </div>
                     </div>
                 );
-            case ActivityType.LongShort:
-                 return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-6 bg-lime-500 rounded-full transition-all duration-300" style={{ height: `${length}rem` }}></div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center items-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setLength(l => Math.max(2, l - 2)); speak('kısa'); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`} disabled={length <= 2}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setLength(l => Math.min(8, l + 2)); speak('uzun'); }} className={`${baseButtonClasses} bg-green-500 sm-landscape:w-32`} disabled={length >= 8}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
-            case ActivityType.ThinThick:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="h-24 bg-lime-500 rounded-md transition-all duration-300" style={{ width: `${thickness}rem` }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setThickness(t => Math.max(1, t - 1.5)); speak('ince'); }} className={`${baseButtonClasses} bg-red-500`} disabled={thickness <= 1}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setThickness(t => Math.min(7, t + 1.5)); speak('kalın'); }} className={`${baseButtonClasses} bg-green-500`} disabled={thickness >= 7}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
-            case ActivityType.WideNarrow:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="h-24 bg-lime-500 rounded-md transition-all duration-300" style={{ width: `${width}rem` }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setWidth(w => Math.max(3, w - 3)); speak('dar'); }} className={`${baseButtonClasses} bg-red-500`} disabled={width <= 3}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setWidth(w => Math.min(15, w + 3)); speak('geniş'); }} className={`${baseButtonClasses} bg-green-500`} disabled={width >= 15}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
-            case ActivityType.HeavyLight:
+            }
+            case ActivityType.LongShort: {
+                const longText = getCurrentLanguage() === 'tr' ? 'uzun' : translateLabel('uzun', getCurrentLanguage());
+                const shortText = getCurrentLanguage() === 'tr' ? 'kısa' : translateLabel('kısa', getCurrentLanguage());
+                
+                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-6 bg-lime-500 rounded-full transition-all duration-300" style={{ height: `${length}rem` }}></div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center items-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setLength(l => Math.max(2, l - 2)); speak(shortText); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`} disabled={length <= 2}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setLength(l => Math.min(8, l + 2)); speak(longText); }} className={`${baseButtonClasses} bg-green-500 sm-landscape:w-32`} disabled={length >= 8}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
+            }
+            case ActivityType.ThinThick: {
+                const thinText = getLocalizedConcept('ince');
+                const thickText = getLocalizedConcept('kalın');
+                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="h-24 bg-lime-500 rounded-md transition-all duration-300" style={{ width: `${thickness}rem` }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setThickness(t => Math.max(1, t - 1.5)); speak(thinText); }} className={`${baseButtonClasses} bg-red-500`} disabled={thickness <= 1}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setThickness(t => Math.min(7, t + 1.5)); speak(thickText); }} className={`${baseButtonClasses} bg-green-500`} disabled={thickness >= 7}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+            }
+            case ActivityType.WideNarrow: {
+                const narrowText = getLocalizedConcept('dar');
+                const wideText = getLocalizedConcept('geniş');
+                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="h-24 bg-lime-500 rounded-md transition-all duration-300" style={{ width: `${width}rem` }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setWidth(w => Math.max(3, w - 3)); speak(narrowText); }} className={`${baseButtonClasses} bg-red-500`} disabled={width <= 3}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setWidth(w => Math.min(15, w + 3)); speak(wideText); }} className={`${baseButtonClasses} bg-green-500`} disabled={width >= 15}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+            }
+            case ActivityType.HeavyLight: {
                 const translateY = (weight - 0.2) * 20;
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="relative w-24 h-24"> <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-4 bg-lime-800/30 rounded-full" style={{ transform: `translateX(-50%) scale(${1 + weight/2}, ${0.5 + weight/4})`, opacity: weight * 0.8 }} /> <div className="absolute inset-0 bg-amber-600 border-4 border-amber-800 rounded-lg transition-transform duration-300" style={{ transform: `translateY(${translateY}px)` }}></div> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setWeight(w => Math.max(0.2, w - 0.2)); speak('hafif'); }} className={`${baseButtonClasses} bg-red-500`} disabled={weight <= 0.2}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setWeight(w => Math.min(1.0, w + 0.2)); speak('ağır'); }} className={`${baseButtonClasses} bg-green-500`} disabled={weight >= 1.0}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+                const lightText = getLocalizedConcept('hafif');
+                const heavyText = getLocalizedConcept('ağır');
+                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="relative w-24 h-24"> <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-4 bg-lime-800/30 rounded-full" style={{ transform: `translateX(-50%) scale(${1 + weight/2}, ${0.5 + weight/4})`, opacity: weight * 0.8 }} /> <div className="absolute inset-0 bg-amber-600 border-4 border-amber-800 rounded-lg transition-transform duration-300" style={{ transform: `translateY(${translateY}px)` }}></div> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setWeight(w => Math.max(0.2, w - 0.2)); speak(lightText); }} className={`${baseButtonClasses} bg-red-500`} disabled={weight <= 0.2}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setWeight(w => Math.min(1.0, w + 0.2)); speak(heavyText); }} className={`${baseButtonClasses} bg-green-500`} disabled={weight >= 1.0}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+            }
             case ActivityType.DerinSig:
                 return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-32 h-32 bg-sky-200 border-4 border-sky-400 overflow-hidden rounded-lg"> <div className="absolute bottom-0 left-0 right-0 bg-blue-500 transition-all duration-300" style={{ height: `${depth}%` }} /> </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setDepth(d => Math.min(90, d + 15)); speak('derin'); }} className={`${baseButtonClasses} bg-green-500 text-sm sm-landscape:w-32`} disabled={depth >= 90}>Derinleştir</button> <button onClick={() => { setDepth(d => Math.max(10, d - 15)); speak('sığ'); }} className={`${baseButtonClasses} bg-red-500 text-sm sm-landscape:w-32`} disabled={depth <= 10}>Sığlaştır</button> </div> </div> );
             case ActivityType.KalabalikTenha:
                  const addPerson = () => { if (people.length < MAX_PEOPLE) { const wasCrowded = people.length > 3; const newCount = people.length + 1; setPeople(p => [...p, { id: Date.now(), x: Math.random() * 80 + 10, y: Math.random() * 40 + 50 }]); if(newCount > 3 && !wasCrowded) speak('kalabalık'); }};
                  const removePerson = () => { if (people.length > 0) { const wasCrowded = people.length > 3; const newCount = people.length - 1; setPeople(p => p.slice(0, -1)); if(newCount <= 3 && wasCrowded) speak('tenha'); }};
                  return ( <div className="w-full text-center"> <div className="h-40 flex items-end justify-center rounded-lg bg-slate-300/50 relative overflow-hidden"> {people.map(p => ( <PersonIcon key={p.id} className="absolute w-12 h-12 text-blue-600 transition-all animate-pop-in" style={{ left: `${p.x}%`, top: `${p.y}%`, transform: 'translate(-50%, -50%)' }} /> ))} </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={removePerson} className={`${baseButtonClasses} bg-red-500`} disabled={people.length === 0}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={addPerson} className={`${baseButtonClasses} bg-green-500`} disabled={people.length >= MAX_PEOPLE}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
-            case ActivityType.HardSoft:
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-24 h-24 bg-lime-500 transition-all duration-300" style={{ borderRadius: isHard ? '8px' : '50%', transform: isHard ? 'scale(1)' : 'scale(1.1, 0.9)' }}></div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsHard(false); speak('yumuşak'); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setIsHard(true); speak('sert'); }} className={`${baseButtonClasses} bg-green-500 sm-landscape:w-32`}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
+            case ActivityType.HardSoft: {
+                const softText = getLocalizedConcept('yumuşak');
+                const hardText = getLocalizedConcept('sert');
+                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-24 h-24 bg-lime-500 transition-all duration-300" style={{ borderRadius: isHard ? '8px' : '50%', transform: isHard ? 'scale(1)' : 'scale(1.1, 0.9)' }}></div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsHard(false); speak(softText); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setIsHard(true); speak(hardText); }} className={`${baseButtonClasses} bg-green-500 sm-landscape:w-32`}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
+            }
             case ActivityType.RoughSmooth:
                  return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className={`w-24 h-24 rounded-full transition-all duration-300 ${isRough ? 'bg-lime-700' : 'bg-lime-500'}`} style={{ backgroundImage: isRough ? 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)' : 'none', backgroundSize: '5px 5px' }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsRough(false); speak('pürüzsüz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsRough(true); speak('pürüzlü'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             case ActivityType.DikenliPuruzsuz:
@@ -689,12 +788,21 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                  return ( <div className="w-full text-center"> <div className="h-40 flex items-center justify-center relative w-full"> <div className="w-16 h-16 bg-blue-500 rounded-full absolute transition-all duration-300" style={{ bottom: highLowPos === 'high' ? '8rem' : '1rem' }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setHighLowPos('low'); speak('alçak'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Alçalt</button> <button onClick={() => { setHighLowPos('high'); speak('yüksek'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Yükselt</button> </div> </div> );
             case ActivityType.BeforeAfter:
                  return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-28 h-28"> { isAfter ? <AppleCoreIcon className="w-full h-full text-red-600 animate-pop-in"/> : <AppleIcon className="w-full h-full text-red-600 animate-pop-in"/> } </div> </div> <div className="flex justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsAfter(prev => !prev); speak(isAfter ? 'önce' : 'sonra'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4 sm-landscape:w-32`}>{isAfter ? 'Önce' : 'Sonra'}</button> </div> </div> );
-            case ActivityType.DayNight:
-                 return ( <div className="w-full text-center"> <div className={`h-32 flex items-center justify-center relative rounded-lg overflow-hidden transition-colors duration-500 ${isDay ? 'bg-sky-400' : 'bg-slate-800'}`}> <div className={`absolute w-16 h-16 rounded-full transition-all duration-500 ${isDay ? 'bg-yellow-300' : 'bg-slate-200'}`} style={{ transform: `translateY(${isDay ? '0' : '-100%'})`, opacity: isDay ? 1: 0.5 }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsDay(false); speak('gece'); }} className={`${baseButtonClasses} bg-slate-700 text-sm px-4`}>Gece</button> <button onClick={() => { setIsDay(true); speak('gündüz'); }} className={`${baseButtonClasses} bg-sky-400 text-sm px-4`}>Gündüz</button> </div> </div> );
-            case ActivityType.FastSlow:
-                 return ( <div className="w-full text-center space-y-4"> <div className="relative h-20 w-full bg-slate-300 rounded-lg overflow-hidden"> <p className="font-bold text-sky-700 absolute top-1/2 -translate-y-1/2 left-4 z-10">Hızlı</p> <div onClick={() => speak('hızlı')} className="absolute w-24 h-20 top-0 left-0 animate-move-fast"><CarIcon className="w-full h-full fill-green-500" /></div> </div> <div className="relative h-20 w-full bg-slate-300 rounded-lg overflow-hidden"> <p className="font-bold text-sky-700 absolute top-1/2 -translate-y-1/2 left-4 z-10">Yavaş</p> <div onClick={() => speak('yavaş')} className="absolute w-24 h-20 top-0 left-0 animate-move-slow"><CarIcon className="w-full h-full fill-red-500" /></div> </div> </div> );
-            case ActivityType.HotCold:
-                 return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-32 h-32"> <div className={`w-full h-full transition-opacity duration-300 ${isHot ? 'opacity-100' : 'opacity-0'}`}> <SunIcon className="w-full h-full text-red-500" /> </div> <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${!isHot ? 'opacity-100' : 'opacity-0'}`}> <SnowflakeIcon className="w-full h-full text-blue-400" /> </div> </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsHot(false); speak('soğuk'); }} className={`${baseButtonClasses} bg-blue-500 sm-landscape:w-32`}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setIsHot(true); speak('sıcak'); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
+            case ActivityType.DayNight: {
+                const nightText = getLocalizedConcept('gece');
+                const dayText = getLocalizedConcept('gündüz');
+                return ( <div className="w-full text-center"> <div className={`h-32 flex items-center justify-center relative rounded-lg overflow-hidden transition-colors duration-500 ${isDay ? 'bg-sky-400' : 'bg-slate-800'}`}> <div className={`absolute w-16 h-16 rounded-full transition-all duration-500 ${isDay ? 'bg-yellow-300' : 'bg-slate-200'}`} style={{ transform: `translateY(${isDay ? '0' : '-100%'})`, opacity: isDay ? 1: 0.5 }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsDay(false); speak(nightText); }} className={`${baseButtonClasses} bg-slate-700 text-sm px-4`}>{nightText.charAt(0).toUpperCase() + nightText.slice(1)}</button> <button onClick={() => { setIsDay(true); speak(dayText); }} className={`${baseButtonClasses} bg-sky-400 text-sm px-4`}>{dayText.charAt(0).toUpperCase() + dayText.slice(1)}</button> </div> </div> );
+            }
+            case ActivityType.FastSlow: {
+                const fastText = getLocalizedConcept('hızlı');
+                const slowText = getLocalizedConcept('yavaş');
+                return ( <div className="w-full text-center space-y-4"> <div className="relative h-20 w-full bg-slate-300 rounded-lg overflow-hidden"> <p className="font-bold text-sky-700 absolute top-1/2 -translate-y-1/2 left-4 z-10">{fastText.charAt(0).toUpperCase() + fastText.slice(1)}</p> <div onClick={() => speak(fastText)} className="absolute w-24 h-20 top-0 left-0 animate-move-fast"><CarIcon className="w-full h-full fill-green-500" /></div> </div> <div className="relative h-20 w-full bg-slate-300 rounded-lg overflow-hidden"> <p className="font-bold text-sky-700 absolute top-1/2 -translate-y-1/2 left-4 z-10">{slowText.charAt(0).toUpperCase() + slowText.slice(1)}</p> <div onClick={() => speak(slowText)} className="absolute w-24 h-20 top-0 left-0 animate-move-slow"><CarIcon className="w-full h-full fill-red-500" /></div> </div> </div> );
+            }
+            case ActivityType.HotCold: {
+                const coldText = getLocalizedConcept('soğuk');
+                const hotText = getLocalizedConcept('sıcak');
+                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-32 h-32"> <div className={`w-full h-full transition-opacity duration-300 ${isHot ? 'opacity-100' : 'opacity-0'}`}> <SunIcon className="w-full h-full text-red-500" /> </div> <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${!isHot ? 'opacity-100' : 'opacity-0'}`}> <SnowflakeIcon className="w-full h-full text-blue-400" /> </div> </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsHot(false); speak(coldText); }} className={`${baseButtonClasses} bg-blue-500 sm-landscape:w-32`}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setIsHot(true); speak(hotText); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
+            }
             case ActivityType.ParlakMat:
                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className={`relative w-24 h-24 bg-lime-500 rounded-full overflow-hidden`}> <div className={`absolute -top-4 -left-4 w-16 h-16 bg-white/50 rounded-full transition-opacity duration-300 ${isShiny ? 'opacity-100' : 'opacity-0'}`} style={{ filter: 'blur(10px)', transform: 'rotate(-45deg)' }}/> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsShiny(false); speak('mat'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Mat</button> <button onClick={() => { setIsShiny(true); speak('parlak'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Parlak</button> </div> </div> );
             case ActivityType.SeffafOpak:
@@ -716,7 +824,7 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
 };
 
 
-type ConceptThemeColor = 'teal' | 'lime' | 'rose' | 'indigo' | 'purple' | 'amber' | 'cyan' | 'sky' | 'pink' | 'orange';
+type ConceptThemeColor = 'teal' | 'lime' | 'rose' | 'indigo' | 'purple' | 'amber' | 'cyan' | 'sky' | 'pink' | 'orange' | 'emerald';
 
 interface ConceptChoiceScreenProps {
     roundData: ConceptRound;
@@ -734,29 +842,33 @@ interface ConceptChoiceScreenProps {
 }
 
 const getOppositesMap = (lang: ReturnType<typeof getCurrentLanguage>): { [key: string]: string } => {
-    if (lang === 'en') {
-        return {
-            'big': 'small', 'small': 'big', 'long': 'short', 'short': 'long', 'thin': 'thick', 'thick': 'thin',
-            'wide': 'narrow', 'narrow': 'wide', 'old': 'new', 'new': 'old', 'hard': 'soft', 'soft': 'hard',
-            'clean': 'dirty', 'dirty': 'clean', 'wet': 'dry', 'dry': 'wet', 'open': 'closed', 'closed': 'open',
-            'straight': 'curved', 'curved': 'straight', 'alive': 'lifeless', 'lifeless': 'alive',
-            'bitter': 'sweet', 'sweet': 'bitter', 'heavy': 'light', 'light': 'heavy', 'hot': 'cold', 'cold': 'hot',
-            'rough': 'smooth', 'smooth': 'rough', 'intact': 'broken', 'broken': 'intact', 'messy': 'tidy', 'tidy': 'messy',
-            'fresh': 'stale', 'stale': 'fresh', 'knotted': 'unknotted', 'unknotted': 'knotted', 'hungry': 'full', 'full': 'hungry',
-            'lazy': 'hardworking', 'hardworking': 'lazy', 'transparent': 'opaque', 'opaque': 'transparent',
-            'shiny': 'matte', 'matte': 'shiny', 'upright': 'upside down', 'upside down': 'upright', 'wrinkled': 'smooth',
-            'inside': 'outside', 'outside': 'inside', 'day': 'night', 'night': 'day', 'fast': 'slow', 'slow': 'fast',
-            'few': 'many', 'many': 'few', 'empty': 'full', 'above': 'below', 'below': 'above', 'left': 'right', 'right': 'left',
-            'near': 'far', 'far': 'near', 'high': 'low', 'low': 'high', 'before': 'after', 'after': 'before', 'label': 'no label'
-        };
+    // Base pairs in Turkish
+    const pairsTr: Array<[string, string]> = [
+        ['büyük','küçük'], ['uzun','kısa'], ['ince','kalın'], ['geniş','dar'], ['eski','yeni'], ['sert','yumuşak'],
+        ['temiz','kirli'], ['ıslak','kuru'], ['açık','kapalı'], ['düz','eğri'], ['canlı','cansız'], ['acı','tatlı'],
+        ['ağır','hafif'], ['sıcak','soğuk'], ['pürüzlü','pürüzsüz'], ['sağlam','kırık'], ['dağınık','toplu'], ['taze','bayat'],
+        ['kırışık','pürüzsüz'], ['düzgün','ters'], ['sivri','küt'], ['parlak','mat'], ['tembel','çalışkan'], ['şeffaf','opak'],
+        ['dikenli','pürüzsüz'], ['düğüm','çözük'], ['aç','tok'], ['yaşlı','genç'], ['az','çok'], ['dolu','boş'],
+        ['üstünde','altında'], ['aşağıda','yukarıda'], ['yanında','karşısında'], ['önünde','arkada'], ['içinde','dışında'],
+        ['gündüz','gece'], ['hızlı','yavaş'], ['yakın','uzak'], ['yüksek','alçak'], ['önce','sonra']
+    ];
+    const map: { [k: string]: string } = {};
+    const locale = getSpeechLocale(lang as any);
+    if (lang === 'tr') {
+        for (const [a,b] of pairsTr) {
+            map[a.toLocaleLowerCase('tr-TR')] = b.toLocaleLowerCase('tr-TR');
+            map[b.toLocaleLowerCase('tr-TR')] = a.toLocaleLowerCase('tr-TR');
+        }
+        return map;
     }
-    // Turkish default
-    return {
-        'büyük': 'küçük', 'küçük': 'büyük', 'uzun': 'kısa', 'kısa': 'uzun', 'ince': 'kalın', 'kalın': 'ince', 'geniş': 'dar', 'dar': 'geniş', 'eski': 'yeni', 'yeni': 'eski', 'sert': 'yumuşak', 'yumuşak': 'sert', 'temiz': 'kirli', 'kirli': 'temiz', 'ıslak': 'kuru', 'kuru': 'ıslak', 'açık': 'kapalı', 'kapalı': 'açık', 'düz': 'eğri', 'eğri': 'düz', 'canlı': 'cansız', 'cansız': 'canlı', 'acı': 'tatlı', 'tatlı': 'acı', 'ekşi': 'tatlı', 'ağır': 'hafif', 'hafif': 'ağır', 'sıcak': 'soğuk', 'soğuk': 'sıcak', 'pürüzlü': 'pürüzsüz', 'pürüzsüz': 'pürüzlü', 'sağlam': 'kırık', 'kırık': 'sağlam', 'dağınık': 'toplu', 'toplu': 'dağınık', 'taze': 'bayat', 'bayat': 'taze', 'kırışık': 'pürüzsüz', 'düzgün': 'ters', 'ters': 'düzgün', 'sivri': 'küt', 'küt': 'sivri', 'parlak': 'mat', 'mat': 'parlak', 'tembel': 'çalışkan', 'çalışkan': 'tembel', 'şeffaf': 'opak', 'opak': 'şeffaf', 'dikenli': 'pürüzsüz', 'düğüm': 'çözük', 'çözük': 'düğüm', 'aç': 'tok', 'tok': 'aç', 'yaşlı': 'genç', 'genç': 'yaşlı', 'az': 'çok', 'çok': 'az', 'dolu': 'boş', 'boş': 'dolu', 'üstünde': 'altında', 'altında': 'üstünde', 'aşağıda': 'yukarıda', 'yukarıda': 'aşağıda', 'yanında': 'karşısında', 'karşısında': 'yanında', 'önünde': 'arkada', 'arkada': 'önünde', 'içinde': 'dışında', 'dışında': 'içinde', 'gündüz': 'gece', 'gece': 'gündüz', 'hızlı': 'yavaş', 'yavaş': 'hızlı'
-    };
+    for (const [a,b] of pairsTr) {
+        const A = translateLabel(a, lang);
+        const B = translateLabel(b, lang);
+        map[A.toLocaleLowerCase(locale)] = B.toLocaleLowerCase(locale);
+        map[B.toLocaleLowerCase(locale)] = A.toLocaleLowerCase(locale);
+    }
+    return map;
 };
-const langForOpposites = getCurrentLanguage();
-const oppositeConcepts = langForOpposites === 'tr' ? getOppositesMap('tr') : getOppositesMap('en');
 
 const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     roundData, onAdvance, currentCard, totalCards, onBack, themeColor, isAutoSpeakEnabled,
@@ -766,6 +878,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     const [isWrong, setIsWrong] = useState<number | null>(null);
     const [isCorrect, setIsCorrect] = useState(false);
     const [mistakeMade, setMistakeMade] = useState(false);
+    const [disabledOptionIds, setDisabledOptionIds] = useState<Set<number>>(new Set());
     const [isHelperVisible, setIsHelperVisible] = useState(false);
     const [hintAnimation, setHintAnimation] = useState<{ id: number, type: 'grow' | 'shrink' } | null>(null);
     const cardRef = useRef<HTMLDivElement>(null);
@@ -781,9 +894,11 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     const isConceptLandscape = landscapeOptimizedActivities.includes(roundData.activityType) && isLandscape;
 
     const currentLang = getCurrentLanguage();
+    const oppositeConcepts = getOppositesMap(currentLang);
     const localizedQuestion = getLocalizedQuestion(roundData, currentLang);
+    const questionForSpeech = getQuestionTtsText(roundData, currentLang);
 
-    useAutoSpeak(localizedQuestion, isAutoSpeakEnabled, roundData.id);
+    useAutoSpeak(questionForSpeech, isAutoSpeakEnabled, roundData.id);
 
     const themeClasses = {
         teal: { text: 'text-teal-800', accent: 'text-teal-600', bg: 'bg-teal-100', hoverBg: 'hover:bg-teal-200', ring: 'focus:ring-teal-300' },
@@ -796,8 +911,29 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
         sky: { text: 'text-sky-800', accent: 'text-sky-600', bg: 'bg-sky-100', hoverBg: 'hover:bg-sky-200', ring: 'focus:ring-sky-300' },
         pink: { text: 'text-pink-800', accent: 'text-pink-600', bg: 'bg-pink-100', hoverBg: 'hover:bg-pink-200', ring: 'focus:ring-pink-300' },
         orange: { text: 'text-orange-800', accent: 'text-orange-600', bg: 'bg-orange-100', hoverBg: 'hover:bg-orange-200', ring: 'focus:ring-orange-300' },
+        emerald: { text: 'text-emerald-800', accent: 'text-emerald-600', bg: 'bg-emerald-100', hoverBg: 'hover:bg-emerald-200', ring: 'focus:ring-emerald-300' },
     };
     const currentTheme = themeClasses[themeColor];
+
+    const { settings } = useAppContext();
+    let effectiveTheme = currentTheme;
+    if (settings.theme === 'kedi') {
+        effectiveTheme = {
+            text: 'text-white',
+            accent: 'text-orange-400',
+            bg: 'bg-orange-500',
+            hoverBg: 'hover:bg-orange-600',
+            ring: 'focus:ring-orange-300'
+        };
+    } else if (settings.theme === 'zurafa') {
+        effectiveTheme = {
+            text: 'text-white',
+            accent: 'text-cyan-400',
+            bg: 'bg-cyan-500',
+            hoverBg: 'hover:bg-cyan-600',
+            ring: 'focus:ring-cyan-300'
+        };
+    }
 
     useEffect(() => {
         setSelectedId(null);
@@ -806,6 +942,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
         setMistakeMade(false);
         setIsHelperVisible(false);
         setHintAnimation(null);
+        setDisabledOptionIds(new Set());
     }, [roundData]);
     
      useEffect(() => {
@@ -815,10 +952,18 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     }, [roundData.id]);
 
     const handleCardClick = async (optionId: number, isOptionCorrect: boolean, spokenText: string) => {
+        // Helper: interpolate template tokens like {item}, {category}
+        const interpolate = (tpl: string, vars: Record<string, string>) => tpl.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? `{${k}}`));
+        // Helper: get per-round speech block for current language, with base-locale fallback (e.g., 'tr-TR' -> 'tr')
+        const getSpeechBlock = () => {
+            const s = (roundData.speech as any) || null;
+            if (!s) return null;
+            return s[currentLang] || s[currentLang?.split('-')[0]] || null;
+        };
         if (isCorrect) return;
         setSelectedId(optionId);
         
-    const locale = currentLang === 'tr' ? 'tr-TR' : 'en-US';
+    const locale = getSpeechLocale(currentLang);
     const conceptFromKey = getConceptFromQuestionKey(roundData, currentLang);
     const questionConcept = (conceptFromKey || localizedQuestion.split(' ')[0]).toLocaleLowerCase(locale).trim();
 
@@ -827,35 +972,267 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
             return !baseText.toLocaleLowerCase('tr-TR').includes(concept.toLocaleLowerCase('tr-TR'));
         };
 
+        const buildSpeechWithPrefix = (prefix: string, base: string) => {
+            const trimmedBase = (base || '').trim();
+            if (!trimmedBase) return prefix;
+
+            const normalize = (text: string) =>
+                text
+                    .normalize('NFD')
+                    .replace(/\p{Diacritic}/gu, '')
+                    .replace(/[^\p{L}\p{N}]+/gu, '')
+                    .toLocaleLowerCase(locale);
+
+            const normalizedPrefix = normalize(prefix);
+            const normalizedBase = normalize(trimmedBase);
+
+            if (normalizedBase.startsWith(normalizedPrefix)) {
+                return trimmedBase;
+            }
+
+            return `${prefix} ${trimmedBase}`.replace(/\s+/g, ' ').trim();
+        };
+
         if (isOptionCorrect) {
             setIsCorrect(true);
             if (isFastTransitionEnabled) {
                 await playEffect('correct');
             } else {
-                let speech = `${t('feedback.correctPrefix')} ${spokenText}`;
-                const isDescriptiveActivity = oppositeConcepts[questionConcept] || 
+                // Cause & Effect: prefer per-round i18n feedback if available
+                if (roundData.activityType === ActivityType.CauseEffect) {
+                    const fbKey = `activityFeedback.causeEffect.${roundData.id}.correct`;
+                    const genericKey = 'activityFeedback.causeEffect.correct';
+                    const msg = t(fbKey, t(genericKey, t('feedback.rightPrefix')));
+                    await speak(msg, getSpeechLocale(currentLang));
+                    setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
+                    return;
+                }
+                    // FiveWOneH: prefer per-round i18n feedback if available
+                    if (roundData.activityType === ActivityType.FiveWOneH) {
+                        const questionKey = roundData.questionAudioKey || `q_${roundData.id}`;
+                        const fbKey = `activityFeedback.fiveWOneH.${questionKey}.correct`;
+                        const genericKey = 'activityFeedback.fiveWOneH.correct';
+                        const msg = t(fbKey, t(genericKey, t('feedback.rightPrefix')));
+                        await speak(msg, getSpeechLocale(currentLang));
+                        setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
+                        return;
+                    }
+                const correctPrefix = t('feedback.correctPrefix');
+                // For Turkish, strip leading determiners from base before composing speech to avoid "bu bu ..."
+                const rawBase = spokenText;
+                const base = stripLeadingDeterminer(rawBase, currentLang);
+                let speech = buildSpeechWithPrefix(correctPrefix, base);
+                const isDescriptiveActivity = oppositeConcepts[questionConcept] ||
                                             [ActivityType.Colors, ActivityType.Shapes, ActivityType.Emotions]
                                             .includes(roundData.activityType);
-                                            
-                if (isDescriptiveActivity && shouldAppend(spokenText, questionConcept)) {
-                    speech += ` ${questionConcept}`;
+
+                if (isDescriptiveActivity && shouldAppend(base, questionConcept)) {
+                    if (currentLang === 'tr') {
+                        speech = mergeWithConceptTR(speech, base, questionConcept);
+                    } else {
+                        speech += ` ${questionConcept}`;
+                    }
                 }
-                await speak(`${speech}.`, currentLang === 'tr' ? 'tr-TR' : 'en-US');
+                // Build optional, clearer explanation for certain activities (without using raw category tags)
+                let explanation = '';
+                // Helper: interpolate template tokens
+                const interpolate = (tpl: string, vars: Record<string, string>) => tpl.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? `{${k}}`));
+                if (roundData.activityType === ActivityType.WhatDoesntBelong) {
+                    const correctOpt = roundData.options.find(o => o.id === optionId);
+                    const wrongOpts = roundData.options.filter(o => !o.isCorrect);
+                    const uniqWrongIds = Array.from(new Set(wrongOpts.map(o => o.id)));
+                    const localize = (w: string) => currentLang === 'tr' ? w : translateLabel(w, currentLang);
+                    
+                    // Check per-round speech override FIRST (before any category logic)
+                    const speechOverride = (getSpeechBlock()?.correct) as string | undefined;
+                    if (speechOverride && correctOpt) {
+                        const itemName = localize(correctOpt.word);
+                        const final = interpolate(speechOverride, {
+                            item: itemName,
+                            category: '',
+                            correctCategory: '',
+                            others: '',
+                        });
+                        await speak(final.trim(), getSpeechLocale(currentLang));
+                        setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
+                        return;
+                    }
+                    
+                    if (uniqWrongIds.length === 1 && wrongOpts.length >= 2) {
+                        // Visual round: three identical distractors
+                        const w = localize(wrongOpts[0]?.word || '');
+                        if (currentLang === 'tr') explanation = ` Diğerleri aynı resim: ${w}.`;
+                        else explanation = ` The others are the same picture: ${w}.`;
+                    } else if (wrongOpts.length > 0 && correctOpt) {
+                        // YENİ FORMAT: "Evet, {item} bir {kategori}; diğerleri {diğerKategori}"
+                        const correctCategoryRaw = getCategoryById(correctOpt.id);
+                        const wrongCategoryRaw = roundData.othersGroupLabel || getCategoryById(wrongOpts[0]?.id);
+                        // Child-friendly, singular group labels
+                        const correctCatSing = getFriendlyCategoryLabelSingularFromRaw(correctCategoryRaw, currentLang) || (correctCategoryRaw ? localize(correctCategoryRaw) : null);
+                        const wrongCatSing = getFriendlyCategoryLabelSingularFromRaw(wrongCategoryRaw || null, currentLang) || (wrongCategoryRaw ? localize(wrongCategoryRaw) : null);
+                        
+                        if (correctCatSing && wrongCatSing && correctCategoryRaw !== 'none' && wrongCategoryRaw !== 'none') {
+                            const itemName = localize(correctOpt.word);
+                            const correctCat = correctCatSing;
+                            const wrongCat = wrongCatSing;
+                            
+                            if (currentLang === 'tr') {
+                                explanation = ` ${itemName} bir ${correctCat}; diğerleri ${wrongCat}.`;
+                            } else {
+                                explanation = ` ${itemName} is a ${correctCat}; the others are ${wrongCat}.`;
+                            }
+                        } else {
+                            // Fallback: sadece grup etiketini kullan
+                            const explicitGroup = roundData.othersGroupLabel ? localize(roundData.othersGroupLabel) : null;
+                            if (explicitGroup) {
+                                const c = localize(correctOpt.word);
+                                if (currentLang === 'tr') explanation = ` ${c} farklı; diğerleri ${explicitGroup}.`;
+                                else explanation = ` ${c} is different; the others are ${explicitGroup}.`;
+                            } else {
+                                // Try a friendly group label if all wrongs share the same friendly category
+                                const friendlyLabels = wrongOpts.map(o => getFriendlyCategoryLabelByImageId(o.id, currentLang)).filter(Boolean) as string[];
+                                const allSameFriendly = friendlyLabels.length === wrongOpts.length && friendlyLabels.every(l => l === friendlyLabels[0]);
+                                if (allSameFriendly) {
+                                    const grp = friendlyLabels[0];
+                                    const c = localize(correctOpt.word);
+                                    if (currentLang === 'tr') explanation = ` ${c} farklı; diğerleri ${grp}.`;
+                                    else explanation = ` ${c} is different; the others are ${grp}.`;
+                                } else {
+                                // List other items as a simple, comprehensible contrast
+                                const list = wrongOpts.map(o => localize(o.word)).join(', ');
+                                const c = localize(correctOpt.word);
+                                if (currentLang === 'tr') explanation = ` ${c} farklı; diğerleri ${list}.`;
+                                else explanation = ` ${c} is different; the others are ${list}.`;
+                                }
+                            }
+                        }
+                    }
+                } else if (roundData.activityType === ActivityType.FunctionalMatching) {
+                    const q = roundData.questionItem;
+                    const localize = (w: string) => currentLang === 'tr' ? w : translateLabel(w, currentLang);
+                    if (q) {
+                        const ans = localize(spokenText);
+                        const qw = localize(q.word);
+                        // Tiny special-phrase dictionary for clearer TR explanations
+                        const trKey = `${qw.toLocaleLowerCase('tr-TR')}|${ans.toLocaleLowerCase('tr-TR')}`;
+                        const SPECIAL_TR: Record<string, string> = {
+                            'çivi|çekiç': 'Çiviyi çekiçle çakarız.',
+                            'çorba|kaşık': 'Çorbayı kaşıkla içeriz.',
+                            'kapı|anahtar': 'Kapıyı anahtarla açarız.',
+                            'resim|fırça': 'Resmi fırçayla boyarız.',
+                            'kağıt|kalem': 'Kağıda kalemle yazarız.',
+                        };
+                        // Speech override support for FunctionalMatching (correct)
+                        const fmOverride = (getSpeechBlock()?.correct) as string | undefined;
+                        if (fmOverride) {
+                            const final = interpolate(fmOverride, {
+                                item: ans,
+                                question: qw,
+                                category: '',
+                                correctCategory: '',
+                                others: '',
+                            });
+                            await speak(final.trim(), getSpeechLocale(currentLang));
+                            setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
+                            return;
+                        }
+                        if (currentLang === 'tr' && SPECIAL_TR[trKey]) {
+                            explanation = ` ${SPECIAL_TR[trKey]}`;
+                        } else {
+                            if (currentLang === 'tr') explanation = ` ${qw} ile ${ans} birlikte kullanılır.`;
+                            else explanation = ` ${qw} is used together with ${ans}.`;
+                        }
+                    }
+                }
+
+                // If WhatDoesntBelong, prefer 'Evet, ...' phrasing and avoid default 'Doğru' prefix
+                const full = (roundData.activityType === ActivityType.WhatDoesntBelong && explanation)
+                    ? `${currentLang === 'tr' ? 'Evet,' : 'Yes,'}${explanation}`.trim()
+                    : `${speech}.${explanation}`.trim();
+                await speak(full, getSpeechLocale(currentLang));
             }
             setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
         } else {
             setMistakeMade(true);
             setIsWrong(optionId);
+            // Errorless learning: hide wrong option after a mistake
+            if (settings.isErrorlessModeEnabled) {
+                setDisabledOptionIds(prev => new Set(prev).add(optionId));
+            }
             if (isFastTransitionEnabled) {
                 await playEffect('incorrect');
             } else {
-                const oppositeConcept = oppositeConcepts[questionConcept];
-                let speech = `${t('feedback.wrongPrefix')} ${spokenText}`;
-                
-                if (shouldAppend(spokenText, oppositeConcept)) {
-                    speech += ` ${oppositeConcept}`;
+                // Cause & Effect: prefer per-round i18n feedback if available
+                if (roundData.activityType === ActivityType.CauseEffect) {
+                    const fbKey = `activityFeedback.causeEffect.${roundData.id}.wrong`;
+                    const genericKey = 'activityFeedback.causeEffect.wrong';
+                    const msg = t(fbKey, t(genericKey, t('feedback.wrongPrefix')));
+                    await speak(msg, getSpeechLocale(currentLang));
+                    setTimeout(() => {
+                        setIsWrong(null);
+                        setSelectedId(null);
+                    }, 800);
+                    return;
                 }
-                await speak(`${speech}.`, currentLang === 'tr' ? 'tr-TR' : 'en-US');
+                // FiveWOneH: prefer per-round i18n feedback if available
+                if (roundData.activityType === ActivityType.FiveWOneH) {
+                    const questionKey = roundData.questionAudioKey || `q_${roundData.id}`;
+                    const fbKey = `activityFeedback.fiveWOneH.${questionKey}.wrong`;
+                    const genericKey = 'activityFeedback.fiveWOneH.wrong';
+                    const msg = t(fbKey, t(genericKey, t('feedback.wrongPrefix')));
+                    await speak(msg, getSpeechLocale(currentLang));
+                    setTimeout(() => {
+                        setIsWrong(null);
+                        setSelectedId(null);
+                    }, 800);
+                    return;
+                }
+                // Yanlış cevap için kategori bazlı açıklama
+                if (roundData.activityType === ActivityType.WhatDoesntBelong) {
+                    const localize = (w: string) => currentLang === 'tr' ? w : translateLabel(w, currentLang);
+                    const itemName = localize(spokenText);
+                    
+                    // Speech override support for wrong selection - check FIRST
+                    const wrongTpl = (getSpeechBlock()?.wrong) as string | undefined;
+                    if (wrongTpl) {
+                        const final = interpolate(wrongTpl, { item: itemName, category: '', correctCategory: '', others: '' });
+                        await speak(final.trim(), getSpeechLocale(currentLang));
+                    } else {
+                        // Fallback: kategori bazlı açıklama
+                        const wrongCategory = getCategoryById(optionId);
+                        if (wrongCategory && wrongCategory !== 'none') {
+                            const categorySing = getFriendlyCategoryLabelSingularFromRaw(wrongCategory, currentLang) || localize(wrongCategory);
+                            if (currentLang === 'tr') {
+                                await speak(`Hayır, ${itemName} bir ${categorySing}.`, getSpeechLocale(currentLang));
+                            } else {
+                                await speak(`No, ${itemName} is a ${categorySing}.`, getSpeechLocale(currentLang));
+                            }
+                        } else {
+                            // Fallback: genel yanlış mesajı
+                            const wrongPrefix = t('feedback.wrongPrefix');
+                            const rawBase = spokenText;
+                            const base = stripLeadingDeterminer(rawBase, currentLang);
+                            const speech = buildSpeechWithPrefix(wrongPrefix, base);
+                            await speak(`${speech}.`, getSpeechLocale(currentLang));
+                        }
+                    }
+                } else {
+                    // Diğer etkinlikler için mevcut mantık
+                    const oppositeConcept = oppositeConcepts[questionConcept];
+                    const wrongPrefix = t('feedback.wrongPrefix');
+                    const rawBase = spokenText;
+                    const base = stripLeadingDeterminer(rawBase, currentLang);
+                    let speech = buildSpeechWithPrefix(wrongPrefix, base);
+
+                    if (shouldAppend(base, oppositeConcept)) {
+                        if (currentLang === 'tr') {
+                            speech = mergeWithConceptTR(speech, base, oppositeConcept);
+                        } else {
+                            speech += ` ${oppositeConcept}`;
+                        }
+                    }
+                    await speak(`${speech}.`, getSpeechLocale(currentLang));
+                }
             }
             setTimeout(() => {
                 setIsWrong(null);
@@ -866,7 +1243,8 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     
     const handleSpeak = (e: React.MouseEvent) => {
         e.stopPropagation();
-        speak(localizedQuestion, currentLang === 'tr' ? 'tr-TR' : 'en-US');
+        const toSpeak = getQuestionTtsText(roundData, currentLang);
+        speak(toSpeak, getSpeechLocale(currentLang));
     };
 
     const handleBan = (e: React.MouseEvent, id: number) => {
@@ -898,20 +1276,26 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
         }
     };
 
-    const gridColsClass = roundData.options.length === 2 ? 'grid-cols-2' :
-                          roundData.options.length === 3 ? 'grid-cols-3 sm-landscape:grid-cols-3' :
-                          roundData.options.length === 4 ? 'grid-cols-2 sm-landscape:grid-cols-4' : 
+    // Derive display options with errorless mode (hide only wrong-picked options)
+    // Child Mode DOES NOT change option count for Odd One Out to preserve majority logic.
+    const displayOptions = React.useMemo(() => {
+        return roundData.options.filter(o => !disabledOptionIds.has(o.id));
+    }, [roundData, disabledOptionIds]);
+
+    const gridColsClass = displayOptions.length === 2 ? 'grid-cols-2' :
+                          displayOptions.length === 3 ? 'grid-cols-3 sm-landscape:grid-cols-3' :
+                          displayOptions.length === 4 ? 'grid-cols-2 sm-landscape:grid-cols-4' : 
                           'grid-cols-2 sm-landscape:grid-cols-4';
 
     const renderHeader = () => (
-         <div className="w-full flex justify-between items-center mb-2 sm:mb-4 p-2 bg-white/50 backdrop-blur-sm rounded-full">
-            <button onClick={onBack} className="p-2 rounded-full hover:bg-white/50 transition-colors" aria-label={t('app.back')}>
-                <ArrowLeftIcon className={`w-8 h-8 ${currentTheme.accent}`} />
+         <div className="w-full flex justify-between items-center mb-2 sm:mb-4 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full">
+            <button onClick={onBack} className="p-1.5 rounded-full hover:bg-white/50 transition-colors" aria-label={t('app.back')}>
+                <ArrowLeftIcon className={`w-7 h-7 ${effectiveTheme.accent}`} />
             </button>
-            <div className={`text-lg font-bold ${currentTheme.text}`}>
-                {currentCard} / {totalCards}
+            <div className={`text-sm font-bold ${effectiveTheme.text} drop-shadow-md`}>
+                {currentCard}/{totalCards}
             </div>
-            <div className="w-12 h-12" />
+            <div className="w-10 h-10" />
         </div>
     );
     
@@ -922,7 +1306,6 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
             : translateLabel(roundData.questionItem.word, currentLang);
         return (
             <div className="mb-4 text-center">
-                 <p className={`${currentTheme.text} text-lg sm-landscape:text-base font-semibold mb-2 landscape:text-base`}>{t('choice.matchPrompt')}</p>
                  <div className="w-32 h-32 sm-landscape:w-24 sm-landscape:h-24 mx-auto">
                     <Card
                         imageUrl={roundData.questionItem.imageUrl}
@@ -939,13 +1322,13 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     // re-declare currentLang already defined above for broader scope usage
     const optionsGrid = (
         <div className={`w-full grid ${gridColsClass} gap-3 sm:gap-4 sm-landscape:gap-2`}>
-            {roundData.options.map((option) => {
+            {displayOptions.map((option, index) => {
                 const sourceWord = option.spokenText || option.word;
                 const displayWord = currentLang === 'tr' ? option.word : translateLabel(sourceWord, currentLang);
                 const spokenWord = currentLang === 'tr' ? sourceWord : displayWord;
                 return (
                     <Card
-                        key={option.id}
+                        key={`${option.id}-${index}`}
                         imageUrl={option.imageUrl}
                         word={displayWord}
                         isRevealed={isCorrect || isWordLabelVisible}
@@ -995,25 +1378,47 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
              aria-live="polite">
                 
                 {/* Header */}
-                <div className="w-full flex justify-between items-center p-2 bg-white/70 backdrop-blur-sm rounded-full absolute top-2 left-1/2 -translate-x-1/2 z-20 max-w-lg shadow-lg">
-                    <button onClick={onBack} className="p-2 rounded-full hover:bg-white/70 transition-colors" aria-label="Geri dön">
-                        <ArrowLeftIcon className={`w-8 h-8 ${currentTheme.accent}`} />
+                <div className="w-full flex justify-between items-center px-2 py-1 bg-white/70 backdrop-blur-sm rounded-full absolute top-1 left-1/2 -translate-x-1/2 z-20 max-w-xs shadow-md">
+                    <button onClick={onBack} className="p-1 rounded-full hover:bg-white/70 transition-colors" aria-label="Geri dön">
+                        <ArrowLeftIcon className={`w-6 h-6 ${effectiveTheme.accent}`} />
                     </button>
-                    <div className={`text-lg font-bold ${currentTheme.text}`}>{currentCard} / {totalCards}</div>
-                    <div className="w-12 h-12" />
+                    <div className={`text-xs font-bold ${effectiveTheme.text} drop-shadow-md`}>{currentCard}/{totalCards}</div>
+                    <div className="w-8 h-8" />
                 </div>
 
                 {/* Question */}
-                <h1 className={`text-3xl font-bold text-center ${currentTheme.text} flex items-center justify-center gap-4 absolute top-20 left-1/2 -translate-x-1/2 z-20`}>
-                    {localizedQuestion}
-                    <button onClick={handleSpeak} className={`p-2 ${currentTheme.bg} rounded-full ${currentTheme.hoverBg} transition-colors`} aria-label={t('choice.readQuestion')}>
-                        <SpeakerIcon className={`w-7 h-7 ${currentTheme.accent}`} />
+                <h1 className={`text-xl font-bold text-center ${effectiveTheme.text} flex items-center justify-center gap-3 absolute top-12 left-1/2 -translate-x-1/2 z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
+                    {settings.theme === 'kedi' ? '🐱 ' : settings.theme === 'zurafa' ? '🦒🌸 ' : ''}{localizedQuestion}
+                    <button onClick={handleSpeak} className={`p-1.5 ${effectiveTheme.bg} rounded-full ${effectiveTheme.hoverBg} transition-colors`} aria-label={t('choice.readQuestion')}>
+                        <SpeakerIcon className={`w-5 h-5 ${effectiveTheme.accent}`} />
                     </button>
                 </h1>
 
+                {/* Landscape: small centered question image (match mobile behavior) */}
+                {roundData.questionItem && (
+                    (() => {
+                        const questionItemWord = currentLang === 'tr'
+                            ? roundData.questionItem!.word
+                            : translateLabel(roundData.questionItem!.word, currentLang);
+                        return (
+                            <div className="absolute top-28 left-1/2 -translate-x-1/2 z-20">
+                                <div className="w-32 h-32 sm-landscape:w-24 sm-landscape:h-24 mx-auto">
+                                    <Card
+                                        imageUrl={roundData.questionItem.imageUrl}
+                                        word={questionItemWord}
+                                        onClick={() => speak(questionItemWord)}
+                                        isRevealed={isWordLabelVisible}
+                                        className="aspect-square"
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })()
+                )}
+
                 {/* Options */}
                 <div className="flex-grow flex flex-row items-stretch justify-center w-full h-full">
-                    {roundData.options.map((option) => {
+                    {roundData.options.map((option, index) => {
                         const isOptionCorrect = isCorrect && selectedId === option.id;
                         const isOptionWrong = isWrong === option.id;
                         const hintClass = hintAnimation?.id === option.id 
@@ -1034,7 +1439,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
 
                         return (
                             <div
-                                key={option.id}
+                                key={`${option.id}-${index}`}
                                 onClick={() => handleCardClick(option.id, option.isCorrect, hintSpokenWord)}
                                 className={`w-1/2 h-full flex items-center justify-center p-4 cursor-pointer transition-all duration-300 relative overflow-hidden ${hintClass} ${isOptionWrong ? 'animate-shake' : ''}`}
                                 style={{ 
@@ -1072,9 +1477,9 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
 
                 {/* Footer Controls */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center gap-4 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
-                    <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? currentTheme.bg : 'bg-white/50 hover:bg-white/70'} border border-slate-300/50`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
-                        {isWordLabelVisible ? <EyeSlashIcon className={`w-6 h-6 ${currentTheme.accent}`} /> : <EyeIcon className={`w-6 h-6 ${currentTheme.accent}`} />}
-                        <span className={`text-xs font-bold ${currentTheme.text} mt-1`}>{t('choice.label')}</span>
+                    <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? effectiveTheme.bg : 'bg-white/50 hover:bg-white/70'} border border-slate-300/50`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
+                        {isWordLabelVisible ? <EyeSlashIcon className={`w-6 h-6 ${effectiveTheme.accent}`} /> : <EyeIcon className={`w-6 h-6 ${effectiveTheme.accent}`} />}
+                        <span className={`text-xs font-bold ${effectiveTheme.text} mt-1`}>{t('choice.label')}</span>
                     </button>
                     <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center bg-amber-100 hover:bg-amber-200 border border-amber-300`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
                         <LightBulbIcon className={`w-6 h-6 text-amber-600`} />
@@ -1097,10 +1502,10 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
             <div className="flex-grow w-full flex flex-col items-center justify-center p-4 sm:p-6 sm-landscape:p-2 bg-white/60 backdrop-blur-lg rounded-3xl shadow-xl overflow-y-auto">
                 <div className="w-full flex flex-col landscape:flex-row landscape:items-start landscape:justify-center landscape:gap-6">
                     <div className="w-full flex flex-col items-center justify-start landscape:justify-center landscape:w-7/12 landscape:max-w-md">
-                        <h1 className={`text-2xl sm:text-3xl font-bold text-center ${currentTheme.text} mb-4 flex items-center gap-4 landscape:text-2xl sm-landscape:text-lg`}>
-                            {localizedQuestion}
-                            <button onClick={handleSpeak} className={`p-2 ${currentTheme.bg} rounded-full ${currentTheme.hoverBg} transition-colors`} aria-label={t('choice.readQuestion')}>
-                                <SpeakerIcon className={`w-7 h-7 ${currentTheme.accent}`} />
+                        <h1 className={`text-xl sm:text-2xl font-bold text-center ${effectiveTheme.text} mb-4 flex items-center gap-3 landscape:text-lg sm-landscape:text-base drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
+                            {settings.theme === 'kedi' ? '🐱 ' : settings.theme === 'zurafa' ? '🦒🌸 ' : ''}{localizedQuestion}
+                            <button onClick={handleSpeak} className={`p-2 ${effectiveTheme.bg} rounded-full ${effectiveTheme.hoverBg} transition-colors`} aria-label={t('choice.readQuestion')}>
+                                <SpeakerIcon className={`w-6 h-6 sm-landscape:w-5 sm-landscape:h-5 ${effectiveTheme.accent}`} />
                             </button>
                         </h1>
                         {renderQuestionItem()}
@@ -1126,14 +1531,14 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                     </div>
 
                     <div className="flex justify-center items-center gap-4">
-                        <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? currentTheme.bg : 'bg-white/50 border border-slate-300/50'}`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
-                            {isWordLabelVisible ? <EyeSlashIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${currentTheme.accent}`} /> : <EyeIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${currentTheme.accent}`} />}
-                            <span className={`text-xs sm-landscape:text-[10px] font-bold ${currentTheme.text} mt-1`}>{t('choice.label')}</span>
+                        <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? effectiveTheme.bg : 'bg-white/50 border border-slate-300/50'}`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
+                            {isWordLabelVisible ? <EyeSlashIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} /> : <EyeIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} />}
+                            <span className={`text-xs sm-landscape:text-[10px] font-bold ${effectiveTheme.text} mt-1`}>{t('choice.label')}</span>
                         </button>
                         {supportedHelpers.includes(roundData.activityType) && (
-                            <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isHelperVisible ? currentTheme.bg : 'bg-white/50 border border-slate-300/50'}`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
-                                <LightBulbIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${currentTheme.accent}`} />
-                                <span className={`text-xs sm-landscape:text-[10px] font-bold ${currentTheme.text} mt-1`}>{t('choice.hint')}</span>
+                            <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isHelperVisible ? effectiveTheme.bg : 'bg-white/50 border border-slate-300/50'}`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
+                                <LightBulbIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} />
+                                <span className={`text-xs sm-landscape:text-[10px] font-bold ${effectiveTheme.text} mt-1`}>{t('choice.hint')}</span>
                             </button>
                         )}
                     </div>
@@ -1144,3 +1549,5 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
 };
 
 export default React.memo(ConceptChoiceScreen);
+
+

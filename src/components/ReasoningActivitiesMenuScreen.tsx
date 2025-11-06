@@ -2,8 +2,6 @@ import React from 'react';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import { ActivityType, ActivityStats } from '../types.ts';
 import SameDifferentIcon from './icons/SameDifferentIcon.tsx';
-import LinkIcon from './icons/LinkIcon.tsx';
-import CauseEffectIcon from './icons/CauseEffectIcon.tsx';
 import SequencingIcon from './icons/SequencingIcon.tsx';
 import PatternIcon from './icons/PatternIcon.tsx';
 import SudokuIcon from './icons/SudokuIcon.tsx';
@@ -27,15 +25,13 @@ const ReasoningActivitiesMenuScreen: React.FC<ReasoningActivitiesMenuScreenProps
   const lang = getCurrentLanguage();
   const isTr = lang === 'tr';
   const activities = [
-    { type: ActivityType.WhatDoesntBelong, icon: SameDifferentIcon, title: isTr ? 'Hangisi Farklı?' : "Odd One Out", subtitle: isTr ? 'Gruba uymayanı bul' : 'Find what does not belong', color: 'rose' as const },
-    { type: ActivityType.FunctionalMatching, icon: LinkIcon, title: isTr ? 'İşlevsel Eşleştirme' : 'Functional Matching', subtitle: isTr ? 'Nesneleri görevlerine göre eşle' : 'Match items by function', color: 'amber' as const },
-    { type: ActivityType.CauseEffect, icon: CauseEffectIcon, title: isTr ? 'Neden - Sonuç' : 'Cause and Effect', subtitle: isTr ? 'Olaylar arasındaki ilişkiyi bul' : 'Find relations between events', color: 'orange' as const },
-    { type: ActivityType.SequencingStories, icon: SequencingIcon, title: isTr ? 'Olay Sıralama' : 'Story Sequencing', subtitle: isTr ? 'Hikayeyi doğru sıraya diz' : 'Put the story in order', color: 'purple' as const },
-    { type: ActivityType.PatternCompletion, icon: PatternIcon, title: isTr ? 'Örüntü Tamamlama' : 'Pattern Completion', subtitle: isTr ? 'Sıradaki şekli tahmin et' : 'Predict the next shape', color: 'cyan' as const },
-    { type: ActivityType.Sudoku, icon: SudokuIcon, title: isTr ? 'Görsel Sudoku' : 'Picture Sudoku', subtitle: isTr ? 'Eksik parçayı tamamla' : 'Complete the missing piece', color: 'teal' as const },
-    { type: ActivityType.MemoryCards, icon: MemoryCardsIcon, title: isTr ? 'Hafıza Kartları' : 'Memory Cards', subtitle: isTr ? 'Kartların eşini bul' : 'Find matching cards', color: 'sky' as const },
-    { type: ActivityType.DragAndDropCounting, icon: MoveIcon, title: isTr ? 'Nesneleri Taşı' : 'Move Objects', subtitle: isTr ? 'İstenen sayıda nesneyi taşı' : 'Move the requested number of items', color: 'lime' as const },
-    { type: ActivityType.DragAndDropPositioning, icon: PositioningIcon, title: isTr ? 'Topu Yerleştir' : 'Place the Ball', subtitle: isTr ? 'Nesneyi doğru konuma yerleştir' : 'Place the item in the right spot', color: 'indigo' as const },
+    { type: ActivityType.WhatDoesntBelong, icon: SameDifferentIcon, title: t('reasoning.activities.whatDoesntBelong.title', isTr ? 'Hangisi Farklı?' : 'Odd One Out'), subtitle: t('reasoning.activities.whatDoesntBelong.subtitle', isTr ? 'Gruba uymayanı bul' : 'Find what does not belong'), color: 'rose' as const },
+    { type: ActivityType.SequencingStories, icon: SequencingIcon, title: t('reasoning.activities.sequencingStories.title', isTr ? 'Olay Sıralama' : 'Story Sequencing'), subtitle: t('reasoning.activities.sequencingStories.subtitle', isTr ? 'Hikayeyi doğru sıraya diz' : 'Put the story in order'), color: 'purple' as const },
+    { type: ActivityType.PatternCompletion, icon: PatternIcon, title: t('reasoning.activities.patternCompletion.title', isTr ? 'Örüntü Tamamlama' : 'Pattern Completion'), subtitle: t('reasoning.activities.patternCompletion.subtitle', isTr ? 'Sıradaki şekli tahmin et' : 'Predict the next shape'), color: 'cyan' as const },
+    { type: ActivityType.Sudoku, icon: SudokuIcon, title: t('reasoning.activities.sudoku.title', isTr ? 'Görsel Sudoku' : 'Picture Sudoku'), subtitle: t('reasoning.activities.sudoku.subtitle', isTr ? 'Eksik parçayı tamamla' : 'Complete the missing piece'), color: 'teal' as const },
+    { type: ActivityType.MemoryCards, icon: MemoryCardsIcon, title: t('reasoning.activities.memoryCards.title', isTr ? 'Hafıza Kartları' : 'Memory Cards'), subtitle: t('reasoning.activities.memoryCards.subtitle', isTr ? 'Kartların eşini bul' : 'Find matching cards'), color: 'sky' as const },
+    { type: ActivityType.DragAndDropCounting, icon: MoveIcon, title: t('reasoning.activities.dragAndDropCounting.title', isTr ? 'Nesneleri Taşı' : 'Move Objects'), subtitle: t('reasoning.activities.dragAndDropCounting.subtitle', isTr ? 'İstenen sayıda nesneyi taşı' : 'Move the requested number of items'), color: 'lime' as const },
+  { type: ActivityType.DragAndDropPositioning, icon: PositioningIcon, title: t('reasoning.activities.dragAndDropPositioning.title', isTr ? 'Topu Yerleştir' : 'Place the Ball'), subtitle: t('reasoning.activities.dragAndDropPositioning.subtitle', isTr ? 'Nesneyi doğru konuma yerleştir' : 'Place the item in the right spot'), color: 'indigo' as const },
   ];
   const isThemed = theme !== 'simple';
   const titleColorClass = isThemed ? 'text-white text-shadow-soft' : 'text-indigo-800';
@@ -52,7 +48,7 @@ const ReasoningActivitiesMenuScreen: React.FC<ReasoningActivitiesMenuScreenProps
           <ArrowLeftIcon className={`w-8 h-8 sm-landscape:w-7 sm-landscape:h-7 ${iconColorClass}`} />
         </button>
         <h1 className={`flex-1 text-center text-3xl sm:text-4xl sm-landscape:text-2xl font-black ${titleColorClass}`}>
-          {isTr ? 'Akıl Oyunları' : 'Reasoning Games'}
+          {t('reasoning.title', isTr ? 'Akıl Oyunları' : 'Reasoning Games')}
         </h1>
       </div>
       

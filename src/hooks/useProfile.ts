@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Profile, ActivityStats, ActivityCategory } from '../types.ts';
+import { Profile, ActivityStats, ActivityCategory, ParentOverride } from '../types.ts';
 import { useLocalStorage } from './useLocalStorage.ts';
 import { getValueFromLocalStorage } from '../utils.ts';
 import { ALL_SUB_ACHIEVEMENTS } from '../constants.ts';
@@ -19,6 +19,7 @@ export const useProfile = ({ showToast }: UseProfileProps) => {
     const [activeProfile, setActiveProfile] = useState<Profile | null>(null);
     const [activityStats, setActivityStats] = useState<Record<string, ActivityStats>>({});
     const [enabledActivities, setEnabledActivities] = useState<string[]>([]);
+    const [parentOverrides, setParentOverrides] = useState<ParentOverride[]>([]);
 
     useEffect(() => {
         let profilesList = getValueFromLocalStorage<Profile[]>('profiles_v1', []);
@@ -40,9 +41,15 @@ export const useProfile = ({ showToast }: UseProfileProps) => {
         if (currentProfile) {
             setActiveProfile(currentProfile);
             const profileStats = getValueFromLocalStorage(`activityStats_profile_${currentProfile.id}`, {});
-            const profileEnabledActivities = getValueFromLocalStorage(`enabledActivities_profile_${currentProfile.id}`, initializeEnabledActivities());
+            let profileEnabledActivities = getValueFromLocalStorage(`enabledActivities_profile_${currentProfile.id}`, initializeEnabledActivities());
+            const profileOverrides = getValueFromLocalStorage<ParentOverride[]>(`parentOverrides_profile_${currentProfile.id}`, []);
+            // If stored value is an empty array (or falsy), treat as all activities enabled to avoid accidentally locking activities
+            if (!Array.isArray(profileEnabledActivities) || profileEnabledActivities.length === 0) {
+                profileEnabledActivities = initializeEnabledActivities();
+            }
             setActivityStats(profileStats);
             setEnabledActivities(profileEnabledActivities);
+            setParentOverrides(profileOverrides);
         }
     }, [profiles]); // Depends on profiles to re-init if profiles list is empty
 
@@ -51,19 +58,25 @@ export const useProfile = ({ showToast }: UseProfileProps) => {
             try {
                 window.localStorage.setItem(`activityStats_profile_${activeProfile.id}`, JSON.stringify(activityStats));
                 window.localStorage.setItem(`enabledActivities_profile_${activeProfile.id}`, JSON.stringify(enabledActivities));
+                window.localStorage.setItem(`parentOverrides_profile_${activeProfile.id}`, JSON.stringify(parentOverrides));
             } catch (error) {
                 console.error('Failed to save profile data:', error);
             }
         }
-    }, [activityStats, enabledActivities, activeProfile]);
+    }, [activityStats, enabledActivities, parentOverrides, activeProfile]);
 
     const enabledActivitiesSet = useMemo(() => new Set(enabledActivities), [enabledActivities]);
 
     const handleSelectProfile = useCallback((profile: Profile) => {
         const profileStats = getValueFromLocalStorage(`activityStats_profile_${profile.id}`, {});
-        const profileEnabledActivities = getValueFromLocalStorage(`enabledActivities_profile_${profile.id}`, initializeEnabledActivities());
+        let profileEnabledActivities = getValueFromLocalStorage(`enabledActivities_profile_${profile.id}`, initializeEnabledActivities());
+        const profileOverrides = getValueFromLocalStorage<ParentOverride[]>(`parentOverrides_profile_${profile.id}`, []);
+        if (!Array.isArray(profileEnabledActivities) || profileEnabledActivities.length === 0) {
+            profileEnabledActivities = initializeEnabledActivities();
+        }
         setActivityStats(profileStats);
         setEnabledActivities(profileEnabledActivities);
+        setParentOverrides(profileOverrides);
         setActiveProfile(profile);
         setActiveProfileId(profile.id);
     }, [setActiveProfileId]);
@@ -110,17 +123,50 @@ export const useProfile = ({ showToast }: UseProfileProps) => {
         });
     }, []);
 
+    // Parent Override (Joker Hakkı) functions
+    const handleAddParentOverride = useCallback((activityId: string, durationHours: number = 24, reason?: string) => {
+        const expiresAt = Date.now() + (durationHours * 60 * 60 * 1000);
+        const newOverride: ParentOverride = { activityId, expiresAt, reason };
+        setParentOverrides(prev => {
+            // Remove any existing override for this activity
+            const filtered = prev.filter(o => o.activityId !== activityId);
+            return [...filtered, newOverride];
+        });
+        showToast(`"${activityId}" geçici olarak açıldı (${durationHours} saat)`, 'info');
+    }, [showToast]);
+
+    const handleRemoveParentOverride = useCallback((activityId: string) => {
+        setParentOverrides(prev => prev.filter(o => o.activityId !== activityId));
+        showToast(`"${activityId}" için joker kaldırıldı`, 'info');
+    }, [showToast]);
+
+    const handleClearExpiredOverrides = useCallback(() => {
+        const now = Date.now();
+        setParentOverrides(prev => prev.filter(o => o.expiresAt > now));
+    }, []);
+
+    // Clean up expired overrides on mount and periodically
+    useEffect(() => {
+        handleClearExpiredOverrides();
+        const interval = setInterval(handleClearExpiredOverrides, 60000); // Every minute
+        return () => clearInterval(interval);
+    }, [handleClearExpiredOverrides]);
+
     return {
         profiles,
         activeProfile,
         activityStats,
         setActivityStats,
         enabledActivitiesSet,
+        parentOverrides,
         handleSelectProfile,
         handleCreateProfile,
         handleResetProgress,
         updateActivityAttempt,
         handleToggleActivityEnabled,
         handleToggleCategoryEnabled,
+        handleAddParentOverride,
+        handleRemoveParentOverride,
+        handleClearExpiredOverrides,
     };
 };

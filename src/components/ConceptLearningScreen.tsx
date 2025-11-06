@@ -43,16 +43,67 @@ const ConceptLearningScreen: React.FC<ConceptLearningScreenProps> = ({
     const baseWord = (word as { spokenText?: string }).spokenText ?? word.word;
     const displayWord = currentLang === 'tr' ? baseWord : translateLabel(baseWord, currentLang);
 
-    // Build localized question for Yes/No; use provided text for TR, reconstruct EN
-    const trQuestion = word.questionText || word.word;
-    const buildEnQuestion = () => {
-        // Extract noun from TR question: "Bu bir <word> mı?" -> <word>
-        const match = trQuestion.match(/Bu bir (.+?) m[ıiuü]?\?/i);
-        const trWord = match ? match[1] : word.word;
-        const enWord = translateLabel(trWord, 'en');
-        return `Is this ${withIndefiniteArticle(enWord)}?`;
+    // Build localized question for Yes/No.
+    // For Turkish: normalize and reconstruct the canonical question using vowel harmony
+    // so the question particle (mi/mı/mu/mü) is correct for TTS and display.
+    const trQuestionRaw = word.questionText || word.word;
+
+    // Helper: find last vowel in a Turkish word (returns lower-cased vowel)
+    const lastVowelOf = (w: string): string | null => {
+        if (!w) return null;
+        const s = w.normalize('NFC').toLocaleLowerCase('tr-TR');
+        for (let i = s.length - 1; i >= 0; i--) {
+            const ch = s[i];
+            if ('aeıioöuü'.includes(ch)) return ch;
+        }
+        return null;
     };
-    const localizedQuestion = currentLang === 'tr' ? trQuestion : buildEnQuestion();
+
+    const getTurkishQuestionParticle = (w: string): string => {
+        const v = lastVowelOf(w);
+        if (!v) return 'mi';
+        // back/unrounded: a, ı -> 'mı'
+        if (['a', 'ı'].includes(v)) return 'mı';
+        // front/unrounded: e, i -> 'mi'
+        if (['e', 'i'].includes(v)) return 'mi';
+        // back/rounded: o, u -> 'mu'
+        if (['o', 'u'].includes(v)) return 'mu';
+        // front/rounded: ö, ü -> 'mü'
+        return 'mü';
+    };
+
+    // Safely extract the noun from Turkish question like "Bu bir <noun> mı?"
+    const extractTrWordFromQuestion = (q: string, fallback: string): string => {
+        if (!q) return fallback;
+        let s = q.trim();
+        const prefix = 'Bu bir ';
+        if (s.startsWith(prefix)) s = s.slice(prefix.length).trim();
+        if (s.endsWith('?')) s = s.slice(0, -1).trim();
+        // remove trailing particle if present (space + m[ıiuü])
+        s = s.replace(/\s+m[ıiuü]\s*$/u, '').trim();
+        return s || fallback;
+    };
+
+    const trWord = extractTrWordFromQuestion(trQuestionRaw, word.word);
+    const canonicalTrQuestion = `Bu bir ${trWord} ${getTurkishQuestionParticle(trWord)}?`;
+
+    const buildLocalizedQuestion = () => {
+        const target = translateLabel(trWord, currentLang);
+        switch (currentLang) {
+            case 'de':
+                return `Ist das ${target}?`;
+            case 'fr':
+                return `Est-ce ${target} ?`;
+            case 'nl':
+                return `Is dit ${target}?`;
+            case 'en':
+                return `Is this ${withIndefiniteArticle(target)}?`;
+            default:
+                return `Is this ${target}?`;
+        }
+    };
+
+    const localizedQuestion = currentLang === 'tr' ? canonicalTrQuestion : buildLocalizedQuestion();
     useAutoSpeak(localizedQuestion, isAutoSpeakEnabled, word.id);
 
     const isCorrect = answer !== null && ((answer === 'yes' && word.isCorrectAnswer) || (answer === 'no' && !word.isCorrectAnswer));

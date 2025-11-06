@@ -3,7 +3,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.omer.sesogrenme.cocuklarim',
-  appName: 'İlk Sözüm: Eğitici Kartlar',
+  appName: 'İlk Sözüm: Otizm & Okul Öncesi',
   webDir: 'dist',
   server: {
     androidScheme: 'https',

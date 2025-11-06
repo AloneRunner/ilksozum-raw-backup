@@ -1,5 +1,5 @@
 
-import React, { Suspense, useMemo, useEffect } from 'react';
+import React, { Suspense, useMemo, useEffect, useState } from 'react';
 import { applyDocumentLanguage, getCurrentLanguage } from './i18n/index.ts';
 import { setSpeechLanguage } from './services/speechService.ts';
 import { AppContext, IAppContext } from './contexts/AppContext.ts';
@@ -14,12 +14,37 @@ import BottomNavBar from './components/BottomNavBar.tsx';
 import { AppRouter } from './components/navigation/AppRouter.tsx';
 import BasketIcon from './components/icons/BasketIcon.tsx';
 import VideoBackground from './components/VideoBackground.tsx';
+import PrivacyConsentModal from './components/PrivacyConsentModal.tsx';
 
 export default function App(): React.ReactNode {
   const appCore = useAppCore();
   const { settings, profile, navigation, print, toast } = appCore;
 
-  const background = getScreenBackground(settings.theme);
+  const [isLandscape, setIsLandscape] = useState<boolean>(() => window.innerWidth > window.innerHeight);
+
+  useEffect(() => {
+    const onResize = () => {
+      const landscape = window.innerWidth > window.innerHeight;
+      setIsLandscape(landscape);
+    };
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize as any);
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize as any);
+    };
+  }, []);
+
+  const background = getScreenBackground(settings.theme, isLandscape);
+
+  // Privacy consent state
+  const [showConsent, setShowConsent] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('privacy_consent_v1') !== 'accepted';
+    } catch {
+      return true;
+    }
+  });
 
   useEffect(() => {
     // Ensure <html lang> reflects current language
@@ -27,6 +52,18 @@ export default function App(): React.ReactNode {
     // Update speech language
     setSpeechLanguage(getCurrentLanguage());
   }, [settings.language]);
+
+  // Keep consent shown until accepted; don't show over the policy screen
+  useEffect(() => {
+    const accepted = (() => {
+      try { return localStorage.getItem('privacy_consent_v1') === 'accepted'; } catch { return false; }
+    })();
+    if (appCore.screenState === ScreenState.PrivacyPolicy) {
+      setShowConsent(false);
+      return;
+    }
+    if (!accepted) setShowConsent(true);
+  }, [appCore.screenState]);
 
   const showNavBar = useMemo(() => 
     profile.activeProfile && [ScreenState.MainMenu, ScreenState.Achievements, ScreenState.CommunicationMenu].includes(appCore.screenState)
@@ -38,10 +75,10 @@ export default function App(): React.ReactNode {
 
   return (
     <AppContext.Provider value={appCore as IAppContext}>
-      <div className={`relative w-screen h-screen overflow-hidden transition-colors duration-500 ${background.type === 'gradient' ? background.value : ''} flex flex-col`}>
-        {background.type === 'video' && <VideoBackground src={background.value} />}
+      <div className={`relative w-screen h-screen transition-colors duration-500 ${background.type === 'gradient' ? background.value : ''} flex flex-col`}>
+        {background.type === 'video' && <VideoBackground key={background.value} src={background.value} />}
         <Suspense fallback={<div className="flex items-center justify-center h-full"><Spinner /></div>}>
-          <div className={`w-full flex-grow min-h-0 ${!settings.isPremium ? 'pt-16' : ''} ${showNavBar ? 'pb-20 landscape:pb-0 landscape:pl-20' : ''}`}>
+          <div className={`w-full flex-grow min-h-0 overflow-y-auto overflow-x-hidden ${!settings.isPremium ? 'pt-16' : ''} ${showNavBar ? 'pb-20 landscape:pb-0 landscape:pl-20' : ''}`}>
              <AppRouter />
           </div>
           {showNavBar && (
@@ -49,6 +86,8 @@ export default function App(): React.ReactNode {
               activeTab={navigation.activeTab} 
               onSelectTab={(tab: Tab) => navigation.setActiveTab(tab)}
               onSelectSettings={() => appCore.setScreenState(ScreenState.Settings)}
+              isPremium={settings.isPremium}
+              themeKey={settings.theme}
             />
           )}
         </Suspense>
@@ -71,6 +110,18 @@ export default function App(): React.ReactNode {
         )}
         {!settings.isPremium && <BannerAd />}
         {toast.toast && <Toast message={toast.toast.message} type={toast.toast.type} />}
+        {showConsent && (
+          <PrivacyConsentModal
+            onAccept={() => {
+              try { localStorage.setItem('privacy_consent_v1', 'accepted'); } catch {}
+              setShowConsent(false);
+            }}
+            onViewPolicy={() => {
+              appCore.setPreviousScreen(appCore.screenState);
+              appCore.setScreenState(ScreenState.PrivacyPolicy);
+            }}
+          />
+        )}
       </div>
     </AppContext.Provider>
   );

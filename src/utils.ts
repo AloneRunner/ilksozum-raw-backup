@@ -11,7 +11,19 @@ export const shuffleArray = <T,>(array: T[]): T[] => {
 export function getValueFromLocalStorage<T>(key: string, defaultValue: T): T {
     try {
         const item = window.localStorage.getItem(key);
-        return item ? JSON.parse(item) : defaultValue;
+        if (!item) return defaultValue;
+        try {
+            return JSON.parse(item);
+        } catch (parseErr) {
+            // Some values may be stored as plain strings (e.g. "en").
+            // If defaultValue is a string (or typeof T is string), return raw item.
+            if (typeof defaultValue === 'string') {
+                return item as unknown as T;
+            }
+            // Fallback: return defaultValue when parsing fails for non-string defaults
+            console.warn(`LocalStorage key “${key}” contains non-JSON value; returning default.`);
+            return defaultValue;
+        }
     } catch (error) {
         console.error(`Error reading localStorage key “${key}”:`, error);
         return defaultValue;

@@ -3,6 +3,8 @@ import BookOpenIcon from './components/icons/BookOpenIcon.tsx';
 import LightBulbIcon from './components/icons/LightBulbIcon.tsx';
 import BrainIcon from './components/icons/BrainIcon.tsx';
 import ObjectsIcon from './components/icons/ObjectsIcon.tsx';
+import HandIcon from './components/icons/HandIcon.tsx';
+import FiveWOneHIcon from './components/icons/FiveWOneHIcon.tsx';
 
 
 export const LETTER_SOUND_ACTIVITIES = [ActivityType.Syllabification, ActivityType.FindTheLetterInGrid, ActivityType.FindTheSoundInImage, ActivityType.EmbeddedStory, ActivityType.SoundPresence, ActivityType.FindTheLetter];
@@ -42,7 +44,6 @@ export const CONCEPT_ACTIVITIES = [
     ActivityType.HungryFull,
     ActivityType.YoungOld,
     ActivityType.TersDuz,
-    ActivityType.NumberSequencing,
     ActivityType.FewMuch, 
     ActivityType.HalfQuarterWhole,
     ActivityType.FullEmpty,
@@ -70,8 +71,6 @@ export const CONCEPT_ACTIVITIES = [
 
 export const REASONING_ACTIVITIES = [
     ActivityType.WhatDoesntBelong, 
-    ActivityType.FunctionalMatching, 
-    ActivityType.CauseEffect, 
     ActivityType.SequencingStories,
     ActivityType.PatternCompletion, 
     ActivityType.Sudoku, 
@@ -144,31 +143,36 @@ export const MAIN_IMAGE_IDS: Record<string, number> = {
 };
 
 export const OBJECT_CATEGORIES = [
-    { id: 'hayvan', title: 'Hayvanlar', imageId: 16, disabled: false }, // Kedi,
-    { id: 'meyve', title: 'Meyveler', imageId: 24, disabled: false }, // Elma
-  { id: 'sebze', title: 'Sebzeler', imageId: 98, disabled: false }, // Havuç
-    { id: 'yiyecek', title: 'Yiyecekler', imageId: 21, disabled: false }, // Donut
-    { id: 'giysi', title: 'Giysiler', imageId: 31, disabled: false }, // Elbise
-  { id: 'vücut', title: 'Vücudumuz', imageId: 285, disabled: false }, // Updated from 417
-  { id: 'mutfak', title: 'Mutfak Eşyaları', imageId: 124, disabled: false }, // Updated: Bardak
-    { id: 'ev', title: 'Ev', imageId: 167, disabled: false }, // Havlu
-  { id: 'ev_esya', title: 'Ev Eşyaları', imageId: 134, disabled: false }, // Masa
-  { id: 'oyuncak', title: 'Oyuncaklar', imageId: 156, disabled: false }, // Top
-    { id: 'ulasim', title: 'Ulaşım', imageId: 5, disabled: false }, // Araba
-  { id: 'muzik_aleti', title: 'Müzik Aletleri', imageId: 180, disabled: false },
-  { id: 'tamir_aleti', title: 'Tamir Aletleri', imageId: 539, disabled: false }, // Fırça
-    { id: 'eglence', title: 'Eğlence', imageId: 37, disabled: false }, // Kitap
-  { id: 'okul_esya', title: 'Okul Eşyaları', imageId: 37, disabled: false }, // Kitap
-  { id: 'profession', title: 'Meslekler', imageId: 324, disabled: false },
-  { id: 'insan', title: 'İnsanlar', imageId: 476, disabled: false },
-  { id: 'bitki', title: 'Bitkiler', imageId: 10, disabled: false }, // Ağaç
-  { id: 'doğal yapı', title: 'Doğal Yapılar', imageId: 195, disabled: false },
-  { id: 'doğal nesne', title: 'Doğal Nesneler', imageId: 347, disabled: false }, // Updated from 195
-  { id: 'doğa olayı', title: 'Doğa Olayları', imageId: 159, disabled: false },
-  { id: 'yer', title: 'Yerler', imageId: 505, disabled: false },
-  { id: 'bina', title: 'Binalar', imageId: 212, disabled: false },
-  { id: 'uzay', title: 'Uzay', imageId: 205, disabled: false },
+  // Canonical categories (ordered as specified by the user)
+  { id: 'meyveler', title: 'Meyveler', imageId: 24, disabled: false },
+  { id: 'sebzeler', title: 'Sebzeler', imageId: 98, disabled: false },
+  { id: 'icecekler', title: 'İçecekler', imageId: 801, disabled: false },
+  { id: 'diger_yiyecekler', title: 'Diğer Yiyecekler', imageId: 23, disabled: false },
+  { id: 'ev_esyalari', title: 'Ev Eşyaları', imageId: 134, disabled: false },
+  { id: 'oyuncaklar', title: 'Oyuncaklar', imageId: 156, disabled: false },
+  { id: 'giysiler_aksesuarlar', title: 'Giysiler & Aksesuarlar', imageId: 31, disabled: false },
+  { id: 'mutfak_gerecleri', title: 'Mutfak Gereçleri', imageId: 124, disabled: false },
+  { id: 'tasitlar', title: 'Taşıtlar', imageId: 1, disabled: false },
+  { id: 'hayvanlar', title: 'Hayvanlar', imageId: 16, disabled: false },
+  { id: 'aile_uyeleri', title: 'Aile Üyeleri', imageId: 711, disabled: false },
+  { id: 'bitkiler', title: 'Bitkiler', imageId: 10, disabled: false },
+  { id: 'okul_ofis_gerecleri', title: 'Okul & Ofis Gereçleri', imageId: 36, disabled: false },
+  // NOTE: this ID was updated to match normalized category ids used across imageData and i18n
+  { id: 'vucudun_bolumleri', title: 'Vücudun Bölümleri', imageId: 285, disabled: false },
+  { id: 'meslekler', title: 'Meslekler', imageId: 324, disabled: false },
+  { id: 'mekanlar_odalar', title: 'Mekanlar & Odalar', imageId: 505, disabled: false },
+  { id: 'dogal_yapilar_uzay', title: 'Doğal Yapılar & Uzay', imageId: 195, disabled: false },
+  // { id: 'ev_insaat', title: 'Ev & Yapı İnşaat Aşamaları', imageId: 999, disabled: true }, // removed per user note
+  { id: 'aletler', title: 'Aletler', imageId: 539, disabled: false },
+  { id: 'muzik_aletleri', title: 'Müzik Aletleri', imageId: 180, disabled: false },
 ];
+
+// Canonical order for object categories used by the Intl/EN curated view.
+// Keep this derived from OBJECT_CATEGORIES so it stays in sync if categories change.
+export const OBJECTS_INTL_ORDER: string[] = OBJECT_CATEGORIES.flatMap(c => {
+  const subs = (c as any).subcategories || [];
+  return [c.id, ...subs.map((s: any) => s.id)];
+});
 
 export const LETTER_GROUPS = [
   { name: '1. Grup', letters: 'ANETİL'.split('') },
@@ -202,6 +206,24 @@ export const ACHIEVEMENTS: Achievement[] = [
     name: 'Akıl Oyunları',
     icon: BrainIcon,
     color: 'indigo',
+  },
+  {
+    id: ActivityCategory.FiveWOneH,
+    name: '5N1K',
+    icon: FiveWOneHIcon,
+    color: 'emerald',
+  },
+  {
+    id: ActivityCategory.FineMotor,
+    name: 'İnce Motor',
+    icon: HandIcon,
+    color: 'pink',
+  },
+  {
+    id: ActivityCategory.RelativeComparison,
+    name: 'Göreceli Karşılaştırma',
+    icon: LightBulbIcon, // Use same icon for now
+    color: 'purple',
   },
 ];
 
@@ -257,7 +279,6 @@ export const ALL_SUB_ACHIEVEMENTS: SubAchievement[] = [
   { id: ActivityType.HungryFull, name: "Aç / Tok", category: ActivityCategory.Concept },
   { id: ActivityType.YoungOld, name: "Yaşlı / Genç", category: ActivityCategory.Concept },
   { id: ActivityType.TersDuz, name: "Ters / Düz", category: ActivityCategory.Concept },
-  { id: ActivityType.NumberSequencing, name: "Sayı Sıralama", category: ActivityCategory.Concept },
   { id: ActivityType.FewMuch, name: "Az / Çok", category: ActivityCategory.Concept },
   { id: ActivityType.HalfQuarterWhole, name: "Bütün / Yarım / Çeyrek", category: ActivityCategory.Concept },
   { id: ActivityType.FullEmpty, name: "Dolu / Boş", category: ActivityCategory.Concept },
@@ -278,14 +299,33 @@ export const ALL_SUB_ACHIEVEMENTS: SubAchievement[] = [
 
   // Reasoning Activities
   { id: ActivityType.WhatDoesntBelong, name: "Hangisi Farklı?", category: ActivityCategory.Reasoning },
-  { id: ActivityType.FunctionalMatching, name: "İşlevsel Eşleştirme", category: ActivityCategory.Reasoning },
-  { id: ActivityType.CauseEffect, name: "Neden - Sonuç", category: ActivityCategory.Reasoning },
+  { id: ActivityType.FiveWOneH, name: "5N1K", category: ActivityCategory.FiveWOneH },
   { id: ActivityType.SequencingStories, name: "Sıralama", category: ActivityCategory.Reasoning },
   { id: ActivityType.PatternCompletion, name: "Örüntü Tamamlama", category: ActivityCategory.Reasoning },
   { id: ActivityType.Sudoku, name: "Sudoku", category: ActivityCategory.Reasoning },
   { id: ActivityType.MemoryCards, name: "Hafıza Kartları", category: ActivityCategory.Reasoning },
   { id: ActivityType.DragAndDropCounting, name: "Nesneleri Taşı", category: ActivityCategory.Reasoning },
   { id: ActivityType.DragAndDropPositioning, name: "Topu Yerleştir", category: ActivityCategory.Reasoning },
+  // Fine motor activities (make them manageable in Activity Management)
+  { id: ActivityType.LineTracing, name: "Çizgi Takip", category: ActivityCategory.FineMotor },
+  { id: ActivityType.ShapeColoring, name: "Şekil Boyama", category: ActivityCategory.FineMotor },
+  { id: ActivityType.RhythmFollowing, name: "Ritim Takip", category: ActivityCategory.FineMotor },
+  // Relative Comparison activities
+  { id: ActivityType.RelativeBigSmall, name: "Büyük / Küçük", category: ActivityCategory.RelativeComparison },
+  { id: ActivityType.RelativeWideNarrow, name: "Geniş / Dar", category: ActivityCategory.RelativeComparison },
+  { id: ActivityType.RelativeThinThick, name: "İnce / Kalın", category: ActivityCategory.RelativeComparison },
+  { id: ActivityType.RelativeFewMuch, name: "Az / Çok", category: ActivityCategory.RelativeComparison },
+  { id: ActivityType.RelativeLongShort, name: "Uzun / Kısa", category: ActivityCategory.RelativeComparison },
+  { id: ActivityType.RelativeNearFar, name: "Yakın / Uzak", category: ActivityCategory.RelativeComparison },
+  { id: ActivityType.RelativeHighLow, name: "Yüksek / Alçak", category: ActivityCategory.RelativeComparison },
+  
+  // 5N1K Sub-categories (for detailed tracking)
+  { id: 'FiveWOneH_Who', name: '5N1K - Kim?', category: ActivityCategory.FiveWOneH },
+  { id: 'FiveWOneH_What', name: '5N1K - Ne?', category: ActivityCategory.FiveWOneH },
+  { id: 'FiveWOneH_Where', name: '5N1K - Nerede?', category: ActivityCategory.FiveWOneH },
+  { id: 'FiveWOneH_When', name: '5N1K - Ne Zaman?', category: ActivityCategory.FiveWOneH },
+  { id: 'FiveWOneH_Why', name: '5N1K - Neden?', category: ActivityCategory.FiveWOneH },
+  { id: 'FiveWOneH_How', name: '5N1K - Nasıl?', category: ActivityCategory.FiveWOneH },
 ];
 
 export const ACTIVITY_DEPENDENCIES: Partial<Record<ActivityType, ActivityType>> = {
@@ -298,7 +338,6 @@ export const ACTIVITY_DEPENDENCIES: Partial<Record<ActivityType, ActivityType>> 
 
     // More complex quantity concepts depend on simpler ones
     [ActivityType.HalfQuarterWhole]: ActivityType.FullEmpty,
-    [ActivityType.OddEven]: ActivityType.NumberSequencing,
 
     // More complex spatial concepts
     [ActivityType.Between]: ActivityType.OnUnder,
@@ -308,6 +347,7 @@ export const ACTIVITY_DEPENDENCIES: Partial<Record<ActivityType, ActivityType>> 
     // Reasoning
     [ActivityType.FunctionalMatching]: ActivityType.WhatDoesntBelong,
     [ActivityType.CauseEffect]: ActivityType.WhatDoesntBelong,
+    [ActivityType.FiveWOneH]: ActivityType.WhatDoesntBelong,
     [ActivityType.SequencingStories]: ActivityType.BeforeAfter,
     [ActivityType.PatternCompletion]: ActivityType.Shapes,
 };

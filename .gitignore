@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Archive and generated outputs (moved to archive/cleanup-YYYYMMDD)
+/archive/
+/android/**/build/
+/android/app/**/build/
+/capacitor-cordova-android-plugins/**/build/
+/backup/
+/i18n_exports/
+/i18n_reports/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

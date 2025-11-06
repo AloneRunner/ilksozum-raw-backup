@@ -17,7 +17,6 @@ export enum ScreenState {
   CommunicationDetail,
   ObjectCategoriesMenu,
   LetterActivitiesMenu, 
-  BodyPainScreen,
   CommunicationSubCategory,
   ProfileSelection,
   ParentReport,
@@ -27,6 +26,11 @@ export enum ScreenState {
   PrintPool,
   PrintSelectionDetail,
   ObjectCategoriesIntlMenu,
+  FineMotorMenu,
+  RelativeComparisonMenu,
+  RelativeComparisonActivitiesMenu,
+  ProgramIntro,
+  FiveWOneHMenu,
 
 }
 
@@ -59,6 +63,10 @@ export enum ActivityType {
   LongShort,
   ThinThick,
   WideNarrow,
+  LineTracing,      // Çizgi Takip Etkinliği
+  ShapeColoring,    // Şekil Boyama
+  RhythmFollowing,  // Ritim Takip
+
   OldNew,
   HardSoft,
   CleanDirty,
@@ -87,7 +95,6 @@ export enum ActivityType {
   TersDuz,
   
   // === Kavram Etkinlikleri > Miktar & Sayılar ===
-  NumberSequencing,
   FewMuch,
   HalfQuarterWhole,
   FullEmpty,
@@ -103,6 +110,15 @@ export enum ActivityType {
   LeftRight,
   NearFar, 
   HighLow, 
+
+  // === Göreceli Karşılaştırma Etkinlikleri (Experimental) ===
+  RelativeBigSmall,
+  RelativeWideNarrow,
+  RelativeThinThick,
+  RelativeFewMuch,
+  RelativeLongShort,
+  RelativeNearFar,
+  RelativeHighLow,
 
   // === Kavram Etkinlikleri > Zaman Kavramları ===
   BeforeAfter,
@@ -120,18 +136,18 @@ export enum ActivityType {
   Professions,
 
   // === Akıl Yürütme Etkinlikleri ===
-  Sudoku, // Tablo Eşleştirme (Görseli kopyalama)
-  MemoryCards, // Hafıza Kartları (Ezberleyip eşleştirme)
-  PatternCompletion, // Örüntü Tamalama
   WhatDoesntBelong,
-  FunctionalMatching, // İşlevsel Eşleştirme (e.g., key-lock)
-  CauseEffect, // Neden-Sonuç İlişkisi
-  SequencingStories, // Sıralama Hikayeleri
-  DragAndDropCounting, // Sürükle Bırak Sayma (YENİ)
-  DragAndDropPositioning, // Sürükle Bırak Konum (YENİ)
-
-  // === Nesneleri Tanıyalım ===
-  ObjectRecognition, // Generic type for object recognition tests
+  FunctionalMatching,
+  CauseEffect,
+  SequencingStories,
+  PatternCompletion,
+  Sudoku,
+  MemoryCards,
+  DragAndDropCounting,
+  DragAndDropPositioning,
+  ObjectRecognition,
+  // === 5N1K (Who/What/Where/When/Why/How) ===
+  FiveWOneH,
 }
 
 export enum ActivityCategory {
@@ -139,6 +155,9 @@ export enum ActivityCategory {
   Concept = 'Concept',
   Reasoning = 'Reasoning',
   Objects = 'Objects', // New category for achievements
+  FineMotor = 'FineMotor', // Fine motor skills category
+  RelativeComparison = 'RelativeComparison', // Experimental relative comparison
+  FiveWOneH = 'FiveWOneH', // 5N1K (Who/What/Where/When/Why/How)
 }
 
 export interface Profile {
@@ -151,6 +170,7 @@ export interface AttemptRecord {
     timestamp: number;
     score: number;
     total: number;
+  mode?: 'program' | 'free';
 }
 
 export interface ActivityStats {
@@ -217,17 +237,22 @@ export interface ConceptRound {
     options: ConceptOption[];
     activityType: ActivityType; // Pass activity type for context
     questionItem?: ImageMetadata; // For games like FunctionalMatching
-}
-
-export interface NumberSequencingRound {
-    id: number;
-    question: string;
-    questionAudioKey: string;
-    numbers: (number | null)[]; // The sequence with a blank
-    answer: number; // The correct number for the blank
-    options: number[]; // Options to choose from
-    difficulty: 'easy' | 'medium' | 'hard';
-    activityType?: ActivityType;
+  // Optional, child-friendly label for the shared group of the wrong options in Odd One Out rounds (TR-first)
+  // Example: 'meyveler', 'hayvanlar', 'taşıtlar', 'mutfak gereçleri'
+  othersGroupLabel?: string;
+  // Optional per-round speech overrides, localized by language code (e.g., 'tr', 'en').
+  // Supports simple templating with tokens: {item}, {category}, {others}, {correctCategory}.
+  // - {item}: localized selected item's name
+  // - {category}: localized singular category for the selected item
+  // - {others}: localized singular category for the group of the other items (Odd One Out)
+  // - {correctCategory}: localized singular category for the correct item (if different from {category})
+  speech?: {
+    [locale: string]: {
+      question?: string;   // Optional TTS text for the question
+      correct?: string;    // TTS to speak when the user selects the correct option
+      wrong?: string;      // TTS to speak when the user selects a wrong option
+    }
+  };
 }
 
 // === Sudoku Game Types ===
@@ -295,6 +320,9 @@ export interface SequencingStoryRound {
   activityType?: ActivityType;
 }
 
+// === Number Sequencing ===
+// NumberSequencing intentionally removed
+
 // === Drag and Drop Counting Game Types ===
 export interface DragAndDropCountingRound {
   id: number;
@@ -339,7 +367,7 @@ export interface ImageMetadata {
     time?: 'gündüz' | 'gece' | 'sabah' | 'öğle' | 'akşam';
     speed?: 'hızlı' | 'yavaş';
     quality?: ('güzel' | 'solgun' | 'taze' | 'çürük' | 'temiz' | 'kirli' | 'sağlam' | 'kırık' | 'bayat' | 'kırışık' | 'düzgün' | 'sivri' | 'küt' | 'tembel' | 'çalışkan' | 'şeffaf' | 'opak' | 'ters') | ('güzel' | 'solgun' | 'taze' | 'çürük' | 'temiz' | 'kirli' | 'sağlam' | 'kırık' | 'bayat' | 'kırışık' | 'düzgün' | 'sivri' | 'küt' | 'tembel' | 'çalışkan' | 'şeffaf' | 'opak' | 'ters')[];
-    emotion?: 'mutlu' | 'üzgün' | 'kızgın' | 'şaşkın' | 'korkmuş' | 'hasta' | 'yorgun' | 'uykulu' | 'heyecanlı' | 'rahat' | 'gururlu' | 'neşeli' | 'utanmış' | 'sıkılmış' | 'sevgi dolu';
+  emotion?: 'mutlu' | 'üzgün' | 'kızgın' | 'şaşkın' | 'korkmuş' | 'hasta' | 'yorgun' | 'uykulu' | 'heyecanlı' | 'rahat' | 'sakin' | 'gururlu' | 'neşeli' | 'utanmış' | 'sıkılmış' | 'sevgi dolu';
     quantity?: 'az' | 'çok';
     fraction?: 'bütün' | 'yarım' | 'çeyrek';
     fullness?: 'boş' | 'dolu';
@@ -359,7 +387,7 @@ export interface ImageMetadata {
     weight?: 'ağır' | 'hafif';
     quantity_type?: 'tek' | 'çift';
     height?: 'yüksek' | 'alçak';
-    density?: 'kalabalik' | 'tenhâ';
+  density?: 'kalabalik' | 'tenha';
     depth?: 'derin' | 'sığ';
     distance?: 'yakın' | 'uzak';
     relation?: 'aynı' | 'farklı';
@@ -405,3 +433,72 @@ export interface CommunicationCategory {
 export type StoryData = {
     [key: string]: Story[];
 };
+
+// === UNIT-BASED PROGRAM MODE TYPES ===
+
+/**
+ * Mastery pool type determines which mastery rule applies to an activity
+ * WIDE: Activities with many questions (>20), require 80% success in last 15 attempts
+ * NARROW: Activities with few questions (3-5), require 100% in last 2 perfect sessions
+ */
+export enum MasteryPoolType {
+  WIDE = 'WIDE',
+  NARROW = 'NARROW'
+}
+
+/**
+ * Mastery rule configuration for an activity
+ */
+export interface MasteryRule {
+  poolType: MasteryPoolType;
+  /** For WIDE pool: minimum success rate (0.8 = 80%) in last N attempts */
+  masteryThreshold?: number;
+  /** For WIDE pool: number of recent attempts to consider (default: 15) */
+  recentAttemptsWindow?: number;
+  /** For NARROW pool: number of consecutive perfect sessions required (default: 2) */
+  perfectSessionsRequired?: number;
+}
+
+/**
+ * Prerequisite rule for unlocking an activity
+ * Can be a single activity ID or a complex expression with AND/OR logic
+ */
+export type PrerequisiteRule = 
+  | ActivityType 
+  | string // For object category names like "hayvanlar"
+  | { type: 'AND'; conditions: PrerequisiteRule[] }
+  | { type: 'OR'; conditions: PrerequisiteRule[] }
+  | { type: 'MIN_CATEGORIES'; count: number; category: 'object' };
+
+/**
+ * Metadata for a single activity in the program mode system
+ */
+export interface ActivityMetadata {
+  activityId: ActivityType | string;
+  activityName: string;
+  unitNumber: number;
+  prerequisite: PrerequisiteRule | null; // null means "Yok (Kilitsiz)"
+  masteryRule: MasteryRule;
+}
+
+/**
+ * Unit definition with activities and progression rules
+ */
+export interface UnitDefinition {
+  unitNumber: number;
+  unitName: string;
+  activities: (ActivityType | string)[]; // Activity IDs in this unit
+  /** Percentage of unit activities that must be mastered before next unit unlocks (0.8 = 80%) */
+  completionThreshold: number;
+  /** Units that must be completed before this unit unlocks */
+  prerequisiteUnits: number[];
+}
+
+/**
+ * Parent override (Joker Hakkı) - temporarily unlock any activity for motivation
+ */
+export interface ParentOverride {
+  activityId: ActivityType | string;
+  expiresAt: number; // timestamp
+  reason?: string;
+}

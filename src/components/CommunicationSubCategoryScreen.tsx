@@ -30,7 +30,7 @@ const SubCategoryButton: React.FC<{
     >
       {image && <img src={image.imageUrl} alt={subCategory.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 opacity-50 group-hover:opacity-70" />}
       <div className="absolute inset-0 bg-black/30"></div>
-      <h2 className="relative z-10 text-lg font-bold text-center p-2">{subCategory.title}</h2>
+      <h2 className="relative z-10 text-lg font-bold text-center p-2">{(() => { const lang = getCurrentLanguage(); return lang === 'tr' ? subCategory.title : t(`communication.subcategories.${(subCategory as any).id}`, subCategory.title); })()}</h2>
     </button>
   );
 };
@@ -38,25 +38,14 @@ const SubCategoryButton: React.FC<{
 const CommunicationSubCategoryScreen: React.FC<CommunicationSubCategoryScreenProps> = ({ category, onSelectSubCategory, onBack }) => {
   const lang = getCurrentLanguage();
   const isTr = lang === 'tr';
-  const enTitles: Record<string, string> = {
-    ihtiyaclar: 'Basic Needs',
-    eylemler: 'Actions',
-    duygular: 'Feelings',
-    kisiler: 'People',
-    yerler: 'Places',
-    esyalar: 'Objects',
-    hayvanlar: 'Animals',
-    tasitlar: 'Vehicles',
-    pain: 'Pain',
-  };
-  const displayedCategoryTitle = isTr ? category.title : (enTitles[(category as any).id] || category.title);
+  const displayedCategoryTitle = isTr ? category.title : t(`communication.categories.${(category as any).id}`, category.title);
   return (
     <div className="flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in">
-      <div className="w-full flex items-center mb-8 relative">
+      <div className="w-full flex items-center mb-5 landscape:mb-3 relative">
         <button onClick={onBack} className="absolute left-0 p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={t('app.back', 'Go back')}>
-          <ArrowLeftIcon className="w-8 h-8 text-amber-700" />
+          <ArrowLeftIcon className="w-7 h-7 text-amber-700" />
         </button>
-        <h1 className="flex-1 text-center text-3xl sm:text-4xl font-black text-amber-800">
+        <h1 className="flex-1 text-center text-xl sm:text-2xl landscape:text-lg font-black text-amber-800">
           {displayedCategoryTitle}
         </h1>
       </div>

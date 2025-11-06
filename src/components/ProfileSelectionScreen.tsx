@@ -8,6 +8,7 @@ import DogIcon from './icons/avatars/DogIcon.tsx';
 import FoxIcon from './icons/avatars/FoxIcon.tsx';
 import PandaIcon from './icons/avatars/PandaIcon.tsx';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
+import { useAppContext } from '../contexts/AppContext.ts';
 
 interface ProfileSelectionScreenProps {
   profiles: Profile[];
@@ -34,6 +35,8 @@ const ProfileSelectionScreen: React.FC<ProfileSelectionScreenProps> = ({ profile
     const [isCreating, setIsCreating] = useState(false);
     const [newName, setNewName] = useState('');
     const [selectedAvatar, setSelectedAvatar] = useState('dog');
+    const { settings } = useAppContext();
+    const isThemed = settings.theme !== 'simple';
 
     const handleCreate = () => {
         if (newName.trim()) {
@@ -54,7 +57,7 @@ const ProfileSelectionScreen: React.FC<ProfileSelectionScreenProps> = ({ profile
                 <div className="w-24 h-24 bg-sky-100 rounded-full flex items-center justify-center">
                     <Avatar className="w-20 h-20 text-sky-600"/>
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 truncate">{profile.name}</h3>
+                <h3 className={`text-xl font-bold ${isThemed ? 'text-white text-shadow-soft' : 'text-slate-700'} truncate`}>{profile.name}</h3>
             </button>
         )
     };
@@ -62,7 +65,7 @@ const ProfileSelectionScreen: React.FC<ProfileSelectionScreenProps> = ({ profile
     if (isCreating) {
         return (
             <div className="flex flex-col items-center justify-center h-full max-w-md mx-auto p-4 animate-fade-in">
-                <h2 className="text-3xl font-bold text-slate-800 mb-6">Yeni Profil Oluştur</h2>
+                <h2 className={`text-3xl font-bold ${isThemed ? 'text-white text-shadow-soft' : 'text-slate-700'} mb-6`}>Yeni Profil Oluştur</h2>
                 <div className="w-full bg-white/80 p-6 rounded-2xl shadow-xl space-y-4">
                     <input
                         type="text"
@@ -116,7 +119,7 @@ const ProfileSelectionScreen: React.FC<ProfileSelectionScreenProps> = ({ profile
                 >
                     <ArrowLeftIcon className="w-8 h-8 text-slate-700" />
                 </button>
-                <h1 className="flex-1 text-center text-3xl sm:text-4xl font-black text-slate-800">
+                <h1 className={`flex-1 text-center text-3xl sm:text-4xl font-black ${isThemed ? 'text-white text-shadow-soft' : 'text-slate-700'}`}>
                     Profilleri Yönet
                 </h1>
             </div>

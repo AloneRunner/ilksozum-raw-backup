@@ -8,7 +8,8 @@ import { useCommunication } from './useCommunication.ts';
 import { usePrint } from './usePrint.ts';
 import { ScreenState, Tab, ActivityType, ActivityCategory } from '../types.ts';
 import { getActivityUiConfig, fetchLetterActivityData } from '../services/contentService.ts';
-import { initializeAds } from '../services/monetizationService.ts';
+import { t } from '../i18n';
+import { initializeAds, initializeRevenueCat } from '../services/monetizationService.ts';
 import { setMutedState } from '../services/speechService.ts';
 
 export const useAppCore = () => {
@@ -49,6 +50,7 @@ export const useAppCore = () => {
         showToast,
         handleGoToMenu,
         enabledActivitiesSet: profile.enabledActivitiesSet,
+        activeProfileId: profile.activeProfile?.id || null,
     });
     
     const setActiveTab = (tab: Tab) => {
@@ -59,7 +61,11 @@ export const useAppCore = () => {
                 setScreenState(ScreenState.CommunicationMenu);
                 break;
             case Tab.Rewards:
-                setScreenState(ScreenState.Achievements);
+                if (!settings.isPremium) {
+                    showPremiumToast();
+                    return;
+                }
+                setScreenState(ScreenState.ParentReport);
                 break;
             case Tab.Activities:
             default:
@@ -79,6 +85,7 @@ export const useAppCore = () => {
     // --- Effects ---
     useEffect(() => { setMutedState(settings.isMuted); }, [settings.isMuted]);
     useEffect(() => { initializeAds(); }, []);
+    useEffect(() => { initializeRevenueCat(profile.activeProfile?.id); }, [profile.activeProfile?.id]);
     
     useEffect(() => {
         // This effect runs when profile is loaded or changes.
@@ -116,7 +123,7 @@ export const useAppCore = () => {
                 if(communication.selectedCommCategory?.subCategories) setScreenState(ScreenState.CommunicationSubCategory);
                 else setScreenState(ScreenState.CommunicationMenu);
                 break;
-            case ScreenState.CommunicationSubCategory: case ScreenState.BodyPainScreen: setScreenState(ScreenState.CommunicationMenu); break;
+            case ScreenState.CommunicationSubCategory: setScreenState(ScreenState.CommunicationMenu); break;
             case ScreenState.ParentReport: setScreenState(ScreenState.Achievements); break;
             case ScreenState.ProfileSelection:
                 if(profile.profiles.length > 0) setScreenState(ScreenState.MainMenu);
@@ -136,7 +143,7 @@ export const useAppCore = () => {
             if (activity.activityData.length > 0 && activity.currentIndex >= activity.activityData.length) {
                 setScreenState(ScreenState.Finished);
             } else if (activity.activityData.length === 0) {
-                showToast("Bu etkinlik için gösterilecek başka görsel kalmadı.", 'info');
+                showToast(t('app.noMoreImagesForActivity', 'There are no more images to show for this activity.'), 'info');
                 handleGoToMenu();
             }
         }
@@ -144,7 +151,7 @@ export const useAppCore = () => {
 
     const handleStartActivityWithLetter = async (letter: string) => {
         if (!activity.selectedActivityForLetter) {
-            showToast("Etkinlik seçimi bulunamadı.");
+            showToast(t('app.noActivitySelected', 'No activity selected.'));
             handleGoToMenu();
             return;
         }
@@ -161,7 +168,7 @@ export const useAppCore = () => {
         try {
             const data = await fetchLetterActivityData(activity.selectedActivityForLetter, letter);
             if (data.length === 0) {
-                showToast(`'${letter}' harfi için bu etkinlik oluşturulamadı.`);
+                showToast(t('letters.couldNotCreateForLetter', `Could not create this activity for the letter '${letter}'.`).replace('{letter}', letter));
                 setScreenState(ScreenState.LetterSelection);
                 return;
             }
@@ -171,14 +178,14 @@ export const useAppCore = () => {
             setScreenState(ScreenState.Playing);
         } catch (error) {
             console.error('Letter activity data fetch error:', error);
-            showToast("Etkinlik yüklenirken bir hata oluştu.");
+            showToast(t('app.activityLoadError', 'An error occurred while loading the activity.'));
             setScreenState(ScreenState.LetterSelection);
         }
     };
 
     const handleRestartActivity = useCallback(async () => {
         if (activity.isRandomMode) {
-            showToast("Mevcut rastgele etkinlik yeniden başlatılıyor...", "info", 2000);
+            showToast(t('app.randomActivityRestarting', 'Restarting current random activity...'), "info", 2000);
             const currentActivity = activity.randomModeQueue[activity.currentRandomActivityIndex];
             if (currentActivity) {
                 const { success, data, type } = await activity.startSpecificRandomActivity(currentActivity);
@@ -198,7 +205,7 @@ export const useAppCore = () => {
             handleStartActivityWithLetter(activity.selectedLetter);
         } else if (activity.activityType === ActivityType.Syllabification && activity.selectedGroup !== null) {
             // Syllabification activity restart
-            showToast("Hece etkinliği yeniden başlatılıyor...", "info", 2000);
+            showToast(t('letters.syllableRestarting', 'Restarting syllable activity...'), "info", 2000);
             try {
                 const { fetchSyllableWordsForGroup } = await import('../services/contentService.ts');
                 const data = await fetchSyllableWordsForGroup(activity.selectedGroup);
@@ -208,17 +215,17 @@ export const useAppCore = () => {
                     activity.setScore(0);
                     setScreenState(ScreenState.Playing);
                 } else {
-                    showToast("Bu etkinlik için içerik bulunamadı.");
+                    showToast(t('app.noContentForActivity', 'No content found for this activity.'));
                     handleGoToMenu();
                 }
             } catch (error) {
                 console.error('Syllable data fetch error:', error);
-                showToast("Etkinlik yüklenirken bir hata oluştu.");
+                showToast(t('app.activityLoadError', 'An error occurred while loading the activity.'));
                 handleGoToMenu();
             }
         } else if (activity.activityType === ActivityType.ObjectRecognition && activity.selectedObjectCategory) {
             // Object recognition activity restart
-            showToast("Nesne etkinliği yeniden başlatılıyor...", "info", 2000);
+            showToast(t('objects.activityRestarting', 'Restarting object activity...'), "info", 2000);
             try {
                 const { createObjectChoiceRounds } = await import('../services/contentService.ts');
                 const data = await createObjectChoiceRounds(activity.selectedObjectCategory.id);
@@ -228,17 +235,17 @@ export const useAppCore = () => {
                     activity.setScore(0);
                     setScreenState(ScreenState.Playing);
                 } else {
-                    showToast("Bu kategori için nesne etkinliği oluşturulamadı.");
+                    showToast(t('objects.noTestForCategory', 'Could not create a test for this category.'));
                     handleGoToMenu();
                 }
             } catch (error) {
                 console.error('Object activity data fetch error:', error);
-                showToast("Etkinlik yüklenirken bir hata oluştu.");
+                showToast(t('app.activityLoadError', 'An error occurred while loading the activity.'));
                 handleGoToMenu();
             }
         } else if (activity.activityType !== null) {
             // Concept/Reasoning activity restart
-            showToast("Etkinlik yeniden başlatılıyor...", "info", 2000);
+            showToast(t('app.activityRestarting', 'Restarting activity...'), "info", 2000);
             try {
                 const { fetchConceptActivityData } = await import('../services/contentService.ts');
                 const data = await fetchConceptActivityData(activity.activityType, profile.activityStats);
@@ -248,7 +255,7 @@ export const useAppCore = () => {
                     activity.setScore(0);
                     setScreenState(ScreenState.Playing);
                 } else {
-                    showToast("Bu etkinlik için içerik bulunamadı.");
+                    showToast(t('app.noContentForActivity', 'No content found for this activity.'));
                     handleGoToMenu();
                 }
             } catch (error) {

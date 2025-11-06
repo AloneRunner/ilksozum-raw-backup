@@ -1,8 +1,8 @@
 import { ConceptRound, ActivityType } from '../../../../types';
 
 export const noisyQuietData: ConceptRound[] = [
-    // Kükreyen Aslan (199) - Uyuyan Aslan (200)
-    { id: 1, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
+    // 1. Aslan (Kükreyen vs Uyuyan)
+    { id: 1, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy_person", activityType: ActivityType.NoisyQuiet, options: [
         { id: 199, word: "kükreyen aslan", imageUrl: "/images/199.png", isCorrect: true, audioKey: "kükreyen_aslan", spokenText: "gürültülü aslan" },
         { id: 200, word: "uyuyan aslan", imageUrl: "/images/200.png", isCorrect: false, audioKey: "uyuyan_aslan", spokenText: "sessiz aslan" }
     ]},
@@ -10,7 +10,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 199, word: "kükreyen aslan", imageUrl: "/images/199.png", isCorrect: false, audioKey: "kükreyen_aslan", spokenText: "gürültülü aslan" },
         { id: 200, word: "uyuyan aslan", imageUrl: "/images/200.png", isCorrect: true, audioKey: "uyuyan_aslan", spokenText: "sessiz aslan" }
     ]},
-    // Davul (72) - Yastık (137)
+
+    // 2. Davul vs Yastık
     { id: 3, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 72, word: "davul", imageUrl: "/images/72.png", isCorrect: true, audioKey: "davul", spokenText: "gürültülü davul" },
         { id: 137, word: "yastık", imageUrl: "/images/137.png", isCorrect: false, audioKey: "yastık", spokenText: "sessiz yastık" }
@@ -19,7 +20,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 72, word: "davul", imageUrl: "/images/72.png", isCorrect: false, audioKey: "davul", spokenText: "gürültülü davul" },
         { id: 137, word: "yastık", imageUrl: "/images/137.png", isCorrect: true, audioKey: "yastık", spokenText: "sessiz yastık" }
     ]},
-    // Şimşek (407) - Tüy (139)
+
+    // 3. Şimşek vs Tüy
     { id: 5, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 407, word: "şimşek", imageUrl: "/images/407.png", isCorrect: true, audioKey: "şimşek", spokenText: "gürültülü şimşek" },
         { id: 139, word: "tüy", imageUrl: "/images/139.png", isCorrect: false, audioKey: "tüy", spokenText: "sessiz tüy" }
@@ -28,7 +30,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 407, word: "şimşek", imageUrl: "/images/407.png", isCorrect: false, audioKey: "şimşek", spokenText: "gürültülü şimşek" },
         { id: 139, word: "tüy", imageUrl: "/images/139.png", isCorrect: true, audioKey: "tüy", spokenText: "sessiz tüy" }
     ]},
-    // Traktör (289) - Kelebek (274)
+
+    // 4. Traktör vs Kelebek
     { id: 7, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 289, word: "traktör", imageUrl: "/images/289.png", isCorrect: true, audioKey: "traktör", spokenText: "gürültülü traktör" },
         { id: 274, word: "kelebek", imageUrl: "/images/274.png", isCorrect: false, audioKey: "kelebek", spokenText: "sessiz kelebek" }
@@ -37,7 +40,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 289, word: "traktör", imageUrl: "/images/289.png", isCorrect: false, audioKey: "traktör", spokenText: "gürültülü traktör" },
         { id: 274, word: "kelebek", imageUrl: "/images/274.png", isCorrect: true, audioKey: "kelebek", spokenText: "sessiz kelebek" }
     ]},
-    // Tren (106) - Yaprak (117)
+
+    // 5. Tren vs Yaprak
     { id: 9, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 106, word: "tren", imageUrl: "/images/106.png", isCorrect: true, audioKey: "tren", spokenText: "gürültülü tren" },
         { id: 117, word: "yaprak", imageUrl: "/images/117.png", isCorrect: false, audioKey: "yaprak", spokenText: "sessiz yaprak" }
@@ -46,7 +50,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 106, word: "tren", imageUrl: "/images/106.png", isCorrect: false, audioKey: "tren", spokenText: "gürültülü tren" },
         { id: 117, word: "yaprak", imageUrl: "/images/117.png", isCorrect: true, audioKey: "yaprak", spokenText: "sessiz yaprak" }
     ]},
-    // Kamyon (288) - Tüy (139)
+
+    // 6. Kamyon vs Tüy
     { id: 11, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 288, word: "kamyon", imageUrl: "/images/288.png", isCorrect: true, audioKey: "kamyon", spokenText: "gürültülü kamyon" },
         { id: 139, word: "tüy", imageUrl: "/images/139.png", isCorrect: false, audioKey: "tüy", spokenText: "sessiz tüy" }
@@ -55,7 +60,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 288, word: "kamyon", imageUrl: "/images/288.png", isCorrect: false, audioKey: "kamyon", spokenText: "gürültülü kamyon" },
         { id: 139, word: "tüy", imageUrl: "/images/139.png", isCorrect: true, audioKey: "tüy", spokenText: "sessiz tüy" }
     ]},
-    // Roket (204) - Yastık (137)
+
+    // 7. Roket vs Yastık
     { id: 13, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 204, word: "roket", imageUrl: "/images/204.gif", isCorrect: true, audioKey: "roket", spokenText: "gürültülü roket" },
         { id: 137, word: "yastık", imageUrl: "/images/137.png", isCorrect: false, audioKey: "yastık", spokenText: "sessiz yastık" }
@@ -64,7 +70,8 @@ export const noisyQuietData: ConceptRound[] = [
         { id: 204, word: "roket", imageUrl: "/images/204.gif", isCorrect: false, audioKey: "roket", spokenText: "gürültülü roket" },
         { id: 137, word: "yastık", imageUrl: "/images/137.png", isCorrect: true, audioKey: "yastık", spokenText: "sessiz yastık" }
     ]},
-    // Davul (72) - Kitap (37)
+
+    // 8. Davul vs Kitap
     { id: 15, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
         { id: 72, word: "davul", imageUrl: "/images/72.png", isCorrect: true, audioKey: "davul", spokenText: "gürültülü davul" },
         { id: 37, word: "kitap", imageUrl: "/images/37.png", isCorrect: false, audioKey: "kitap", spokenText: "sessiz kitap" }
@@ -72,5 +79,26 @@ export const noisyQuietData: ConceptRound[] = [
     { id: 16, question: "Sessiz olan hangisi?", questionAudioKey: "q_which_is_quiet", activityType: ActivityType.NoisyQuiet, options: [
         { id: 72, word: "davul", imageUrl: "/images/72.png", isCorrect: false, audioKey: "davul", spokenText: "gürültülü davul" },
         { id: 37, word: "kitap", imageUrl: "/images/37.png", isCorrect: true, audioKey: "kitap", spokenText: "sessiz kitap" }
+    ]},
+
+    // --- YENİ EKLENEN SORULAR ---
+    // 9. Gitar vs Fırça
+    { id: 17, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
+        { id: 180, word: "gitar", imageUrl: "/images/180.png", isCorrect: true, audioKey: "gitar", spokenText: "gürültülü gitar" },
+        { id: 539, word: "fırça", imageUrl: "/images/539.png", isCorrect: false, audioKey: "fırça", spokenText: "sessiz fırça" }
+    ]},
+    { id: 18, question: "Sessiz olan hangisi?", questionAudioKey: "q_which_is_quiet", activityType: ActivityType.NoisyQuiet, options: [
+        { id: 180, word: "gitar", imageUrl: "/images/180.png", isCorrect: false, audioKey: "gitar", spokenText: "gürültülü gitar" },
+        { id: 539, word: "fırça", imageUrl: "/images/539.png", isCorrect: true, audioKey: "fırça", spokenText: "sessiz fırça" }
+    ]},
+
+    // 10. Düdük vs Pamuk
+    { id: 19, question: "Gürültülü olan hangisi?", questionAudioKey: "q_which_is_noisy", activityType: ActivityType.NoisyQuiet, options: [
+        { id: 427, word: "düdük", imageUrl: "/images/427.png", isCorrect: true, audioKey: "düdük", spokenText: "gürültülü düdük" },
+        { id: 27, word: "pamuk", imageUrl: "/images/27.png", isCorrect: false, audioKey: "pamuk", spokenText: "sessiz pamuk" }
+    ]},
+    { id: 20, question: "Sessiz olan hangisi?", questionAudioKey: "q_which_is_quiet", activityType: ActivityType.NoisyQuiet, options: [
+        { id: 427, word: "düdük", imageUrl: "/images/427.png", isCorrect: false, audioKey: "düdük", spokenText: "gürültülü düdük" },
+        { id: 27, word: "pamuk", imageUrl: "/images/27.png", isCorrect: true, audioKey: "pamuk", spokenText: "sessiz pamuk" }
     ]},
 ];

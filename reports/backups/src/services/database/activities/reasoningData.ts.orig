@@ -1,0 +1,447 @@
+import { PatternRound, SudokuRound, SequencingStoryRound, DragAndDropCountingRound, DragAndDropPositioningRound, ConceptRound, ActivityType, MemoryCard } from '../../../types.ts';
+
+export const whatDoesntBelongData: ConceptRound[] = [
+    // 1. Meyveler vs Taşıt
+    { id: 1, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 43, word: "elma", imageUrl: "/images/43.png", isCorrect: false, audioKey: "elma", spokenText: "elma" },
+        { id: 114, word: "muz", imageUrl: "/images/114.png", isCorrect: false, audioKey: "muz", spokenText: "muz" },
+        { id: 1, word: "araba", imageUrl: "/images/1.png", isCorrect: true, audioKey: "araba", spokenText: "araba" },
+        { id: 171, word: "çilek", imageUrl: "/images/171.png", isCorrect: false, audioKey: "çilek", spokenText: "çilek" }
+    ]},
+    // 2. Hayvanlar vs Giysi
+    { id: 2, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 100, word: "aslan", imageUrl: "/images/100.png", isCorrect: false, audioKey: "aslan", spokenText: "aslan" },
+        { id: 13, word: "tişört", imageUrl: "/images/13.png", isCorrect: true, audioKey: "tişört", spokenText: "tişört" },
+        { id: 28, word: "fil", imageUrl: "/images/28.png", isCorrect: false, audioKey: "fil", spokenText: "fil" },
+        { id: 41, word: "tavşan", imageUrl: "/images/41.png", isCorrect: false, audioKey: "tavşan", spokenText: "tavşan" }
+    ]},
+    // 3. Taşıtlar vs Giysi
+    { id: 3, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 107, word: "uçak", imageUrl: "/images/107.png", isCorrect: false, audioKey: "uçak", spokenText: "uçak" },
+        { id: 106, word: "tren", imageUrl: "/images/106.png", isCorrect: false, audioKey: "tren", spokenText: "tren" },
+        { id: 79, word: "pantolon", imageUrl: "/images/79.png", isCorrect: true, audioKey: "pantolon", spokenText: "pantolon" },
+        { id: 105, word: "okul otobüsü", imageUrl: "/images/105.png", isCorrect: false, audioKey: "okul_otobüsü", spokenText: "okul otobüsü" }
+    ]},
+    // 4. Müzik Aletleri vs Oyuncak
+    { id: 4, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 72, word: "davul", imageUrl: "/images/72.png", isCorrect: false, audioKey: "davul", spokenText: "davul" },
+        { id: 180, word: "gitar", imageUrl: "/images/180.png", isCorrect: false, audioKey: "gitar", spokenText: "gitar" },
+        { id: 208, word: "keman", imageUrl: "/images/208.png", isCorrect: false, audioKey: "keman", spokenText: "keman" },
+        { id: 276, word: "oyuncak ayı", imageUrl: "/images/276.png", isCorrect: true, audioKey: "oyuncak_ayı", spokenText: "oyuncak ayı" }
+    ]},
+    // 5. Sebzeler vs Meyve
+    { id: 5, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 98, word: "havuç", imageUrl: "/images/98.png", isCorrect: false, audioKey: "havuç", spokenText: "havuç" },
+        { id: 311, word: "brokoli", imageUrl: "/images/311.png", isCorrect: false, audioKey: "brokoli", spokenText: "brokoli" },
+        { id: 116, word: "salatalık", imageUrl: "/images/116.png", isCorrect: false, audioKey: "salatalık", spokenText: "salatalık" },
+        { id: 115, word: "portakal", imageUrl: "/images/115.png", isCorrect: true, audioKey: "portakal", spokenText: "portakal" }
+    ]},
+    // 6. Şekiller vs Doğal Nesne
+    { id: 6, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 65, word: "daire", imageUrl: "/images/65.png", isCorrect: false, audioKey: "daire", spokenText: "daire" },
+        { id: 66, word: "küp", imageUrl: "/images/66.png", isCorrect: false, audioKey: "küp", spokenText: "küp" },
+        { id: 67, word: "üçgen", imageUrl: "/images/67.png", isCorrect: false, audioKey: "üçgen", spokenText: "üçgen" },
+        { id: 237, word: "güneş", imageUrl: "/images/237.png", isCorrect: true, audioKey: "güneş", spokenText: "güneş" }
+    ]},
+    // 7. Meslekler vs Çocuk
+    { id: 7, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 324, word: "doktor", imageUrl: "/images/324.png", isCorrect: false, audioKey: "doktor", spokenText: "doktor" },
+        { id: 325, word: "polis", imageUrl: "/images/325.png", isCorrect: false, audioKey: "polis", spokenText: "polis" },
+        { id: 500, word: "çocuk", imageUrl: "/images/500.png", isCorrect: true, audioKey: "çocuk", spokenText: "çocuk" },
+        { id: 327, word: "itfaiyeci", imageUrl: "/images/327.png", isCorrect: false, audioKey: "itfaiyeci", spokenText: "itfaiyeci" }
+    ]},
+    // 8. Mobilyalar vs İp
+    { id: 8, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 134, word: "masa", imageUrl: "/images/134.png", isCorrect: false, audioKey: "masa", spokenText: "masa" },
+        { id: 251, word: "buzdolabı", imageUrl: "/images/251.png", isCorrect: false, audioKey: "buzdolabı", spokenText: "buzdolabı" },
+        { id: 319, word: "sandalye", imageUrl: "/images/319.png", isCorrect: false, audioKey: "sandalye", spokenText: "sandalye" },
+        { id: 224, word: "ip", imageUrl: "/images/224.png", isCorrect: true, audioKey: "ip", spokenText: "ip" }
+    ]},
+    // 9. Banyo Eşyaları vs Mutfak Eşyası
+    { id: 9, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 209, word: "sabun", imageUrl: "/images/209.png", isCorrect: false, audioKey: "sabun", spokenText: "sabun" },
+        { id: 167, word: "sünger", imageUrl: "/images/167.png", isCorrect: false, audioKey: "sünger", spokenText: "sünger" },
+        { id: 422, word: "tuvalet", imageUrl: "/images/422.png", isCorrect: false, audioKey: "tuvalet", spokenText: "tuvalet" },
+        { id: 125, word: "kaşık", imageUrl: "/images/125.png", isCorrect: true, audioKey: "kaşık", spokenText: "kaşık" }
+    ]},
+    // 10. Canlılar vs Cansız
+    { id: 10, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 275, word: "kurbağa", imageUrl: "/images/275.png", isCorrect: false, audioKey: "kurbağa", spokenText: "kurbağa" },
+        { id: 324, word: "doktor", imageUrl: "/images/324.png", isCorrect: false, audioKey: "doktor", spokenText: "doktor" },
+        { id: 281, word: "kaktüs", imageUrl: "/images/281.png", isCorrect: false, audioKey: "kaktüs", spokenText: "kaktüs" },
+        { id: 301, word: "bulaşık makinesi", imageUrl: "/images/301.png", isCorrect: true, audioKey: "bulaşık_makinesi", spokenText: "bulaşık makinesi" }
+    ]},
+    // 11. Mutfak Eşyaları vs Tamir Aleti (YENİ EKLENDİ)
+    { id: 11, question: "Hangisi farklı?", questionAudioKey: "q_which_is_different", activityType: ActivityType.WhatDoesntBelong, options: [
+        { id: 125, word: "kaşık", imageUrl: "/images/125.png", isCorrect: false, audioKey: "kaşık", spokenText: "kaşık" },
+        { id: 126, word: "çatal", imageUrl: "/images/126.png", isCorrect: false, audioKey: "çatal", spokenText: "çatal" },
+        { id: 262, word: "bıçak", imageUrl: "/images/262.png", isCorrect: false, audioKey: "bıçak", spokenText: "bıçak" },
+        { id: 496, word: "çekiç", imageUrl: "/images/496.png", isCorrect: true, audioKey: "çekiç", spokenText: "çekiç" }
+    ]},
+];
+
+export const functionalMatchingData: ConceptRound[] = [
+    { id: 1, question: "Çiviyi neyle çakarız?", questionAudioKey: "q_what_hammer_nail_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 306, word: "çivi", imageUrl: "/images/306.png", audioKeys: { default: "çivi" }, tags: { category: "" } },
+        options: [
+            { id: 77, word: "çekiç", imageUrl: "/images/77.png", isCorrect: true, audioKey: "çekiç", spokenText: "çekiç" },
+            { id: 535, word: "silgi", imageUrl: "/images/535.png", isCorrect: false, audioKey: "silgi", spokenText: "silgi" }
+        ]
+    },
+    { id: 2, question: "Dişlerimizi neyle fırçalarız?", questionAudioKey: "q_what_brush_teeth_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 441, word: "diş fırçası", imageUrl: "/images/441.png", audioKeys: { default: "diş_fırçası" }, tags: { category: "" } },
+        options: [
+            { id: 209, word: "sabun", imageUrl: "/images/209.png", isCorrect: false, audioKey: "sabun", spokenText: "sabun" },
+            { id: 425, word: "diş macunu", imageUrl: "/images/425.png", isCorrect: true, audioKey: "diş_macunu", spokenText: "diş macunu" }
+        ]
+    },
+    { id: 3, question: "Çoraptan sonra ne giyeriz?", questionAudioKey: "q_what_after_socks", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 147, word: "çoraplar", imageUrl: "/images/147.png", audioKeys: { default: "çoraplar" }, tags: { category: "" } },
+        options: [
+            { id: 59, word: "ayakkabı", imageUrl: "/images/59.png", isCorrect: true, audioKey: "ayakkabı", spokenText: "ayakkabı" },
+            { id: 111, word: "şapka", imageUrl: "/images/111.png", isCorrect: false, audioKey: "şapka", spokenText: "şapka" }
+        ]
+    },
+    { id: 4, question: "Yastığı nerede kullanırız?", questionAudioKey: "q_where_use_pillow", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 137, word: "yastık", imageUrl: "/images/137.png", audioKeys: { default: "yastık" }, tags: { category: "" } },
+        options: [
+            { id: 606, word: "yatak", imageUrl: "/images/606.png", isCorrect: true, audioKey: "yatak", spokenText: "yatak" },
+            { id: 549, word: "koltuk", imageUrl: "/images/549.png", isCorrect: false, audioKey: "koltuk", spokenText: "koltuk" }
+        ]
+    },
+    { id: 5, question: "Çorbayı ne ile içeriz?", questionAudioKey: "q_what_eat_soup_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 266, word: "çorba", imageUrl: "/images/266.png", audioKeys: { default: "çorba" }, tags: { category: "" } },
+        options: [
+            { id: 125, word: "kaşık", imageUrl: "/images/125.png", isCorrect: true, audioKey: "kaşık", spokenText: "kaşık" },
+            { id: 296, word: "simit", imageUrl: "/images/296.png", isCorrect: false, audioKey: "simit", spokenText: "simit" }
+        ]
+    },
+    { id: 6, question: "Resmi ne ile boyarız?", questionAudioKey: "q_what_color_picture_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 402, word: "boyama", imageUrl: "/images/402.png", audioKeys: { default: "boyama" }, tags: { category: "" } },
+        options: [
+            { id: 51, word: "fırça", imageUrl: "/images/51.png", isCorrect: true, audioKey: "fırça", spokenText: "fırça" },
+            { id: 37, word: "kitap", imageUrl: "/images/37.png", isCorrect: false, audioKey: "kitap", spokenText: "kitap" }
+        ]
+    },
+    { id: 7, question: "Kağıda ne ile yazarız?", questionAudioKey: "q_what_write_paper_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 642, word: "kağıt", imageUrl: "/images/642.png", audioKeys: { default: "kağıt" }, tags: { category: "" } },
+        options: [
+            { id: 535, word: "silgi", imageUrl: "/images/535.png", isCorrect: false, audioKey: "silgi", spokenText: "silgi" },
+            { id: 121, word: "kalem", imageUrl: "/images/121.png", isCorrect: true, audioKey: "kalem", spokenText: "kalem" }
+        ]
+    },
+        { id: 8, question: "Kapıyı ne ile açarız?", questionAudioKey: "q_what_open_door_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 903, word: "kapı", imageUrl: "/images/903.png", audioKeys: { default: "kapı" }, tags: { category: "" } },
+        options: [
+            // Use the correct key visual (id: 142)
+            { id: 142, word: "anahtar", imageUrl: "/images/142.png", isCorrect: true, audioKey: "anahtar", spokenText: "anahtar" },
+            { id: 144, word: "makas", imageUrl: "/images/144.png", isCorrect: false, audioKey: "makas", spokenText: "makas" }
+        ]
+    },
+    { id: 9, question: "Makarnayı ne ile yeriz?", questionAudioKey: "q_what_eat_pasta_with", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 267, word: "makarna", imageUrl: "/images/267.png", audioKeys: { default: "makarna" }, tags: { category: "" } },
+        options: [
+            // Use the correct fork visual (id: 126)
+            { id: 126, word: "çatal", imageUrl: "/images/126.png", isCorrect: true, audioKey: "çatal", spokenText: "çatal" },
+            { id: 125, word: "kaşık", imageUrl: "/images/125.png", isCorrect: false, audioKey: "kaşık", spokenText: "kaşık" }
+        ]
+    },
+    { id: 10, question: "Parayı nereye koyarız?", questionAudioKey: "q_where_put_money", activityType: ActivityType.FunctionalMatching,
+        questionItem: { id: 248, word: "para", imageUrl: "/images/248.png", audioKeys: { default: "para" }, tags: { category: "" } },
+        options: [
+            { id: 184, word: "kumbara", imageUrl: "/images/184.png", isCorrect: true, audioKey: "kumbara", spokenText: "kumbara" },
+            { id: 207, word: "çanta", imageUrl: "/images/207.png", isCorrect: false, audioKey: "çanta", spokenText: "çanta" }
+        ]
+    },
+];
+
+export const causeEffectData: ConceptRound[] = [
+    { id: 1, question: "Bunun sonucu ne olur?", questionAudioKey: "q_what_is_the_result", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 52, word: "yağmur", imageUrl: "/images/52.png", audioKeys: { default: "yağmur" }, tags: { category: "" } },
+        options: [
+            { id: 157, word: "şemsiye", imageUrl: "/images/157.png", isCorrect: true, audioKey: "şemsiye", spokenText: "şemsiye açılır" },
+            { id: 686, word: "güneş gözlüğü", imageUrl: "/images/686.png", isCorrect: false, audioKey: "güneş_gözlüğü", spokenText: "güneş gözlüğü takılır" }
+        ]
+    },
+    { id: 2, question: "Bunun nedeni ne olabilir?", questionAudioKey: "q_what_is_the_cause", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 64, word: "dondurma", imageUrl: "/images/64.png", audioKeys: { default: "dondurma" }, tags: { category: "" } },
+        options: [
+            { id: 237, word: "güneş", imageUrl: "/images/237.png", isCorrect: true, audioKey: "güneş", spokenText: "güneş" },
+            { id: 405, word: "kar", imageUrl: "/images/405.png", isCorrect: false, audioKey: "kar", spokenText: "kar" }
+        ]
+    },
+    { id: 3, question: "Bunun sonucu ne olur?", questionAudioKey: "q_what_is_the_result", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 316, word: "tohum", imageUrl: "/images/316.png", audioKeys: { default: "tohum" }, tags: { category: "" } },
+        options: [
+            { id: 163, word: "bitki", imageUrl: "/images/163.png", isCorrect: true, audioKey: "bitki", spokenText: "bitki büyür" },
+            { id: 537, word: "kütük", imageUrl: "/images/537.png", isCorrect: false, audioKey: "ağaç_gövdesi", spokenText: "ağaç kesilir" }
+        ]
+    },
+    { id: 4, question: "Temiz olmak için ne gerekir?", questionAudioKey: "q_what_is_needed_to_be_clean", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 590, word: "el", imageUrl: "/images/590.png", audioKeys: { default: "temiz_el" }, tags: { category: "" } },
+        options: [
+            { id: 591, word: "el", imageUrl: "/images/591.png", isCorrect: false, audioKey: "kirli_el", spokenText: "kirli el" },
+            { id: 209, word: "sabun", imageUrl: "/images/209.png", isCorrect: true, audioKey: "sabun", spokenText: "sabun" }
+        ]
+    },
+    { id: 5, question: "Bunu düşürürsen ne olur?", questionAudioKey: "q_what_if_you_drop_this", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 113, word: "yumurta", imageUrl: "/images/113.png", audioKeys: { default: "yumurta" }, tags: { category: "" } },
+        options: [
+            { id: 77, word: "yumurta", imageUrl: "/images/77.png", isCorrect: true, audioKey: "kırık_yumurta", spokenText: "yumurta kırılır" },
+            { id: 376, word: "civciv", imageUrl: "/images/376.png", isCorrect: false, audioKey: "civciv", spokenText: "civciv çıkar" }
+        ]
+    },
+    { id: 6, question: "Bunun nedeni ne olabilir?", questionAudioKey: "q_what_is_the_cause", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 707, word: "ateş", imageUrl: "/images/707.png", audioKeys: { default: "ateş" }, tags: { category: "" } },
+        options: [
+            { id: 537, word: "ağaç gövdesi", imageUrl: "/images/537.png", isCorrect: true, audioKey: "ağaç_gövdesi", spokenText: "odun" },
+            { id: 347, word: "taş", imageUrl: "/images/347.png", isCorrect: false, audioKey: "taş", spokenText: "taş" }
+        ]
+    },
+    { id: 7, question: "Bunun sonucu ne olur?", questionAudioKey: "q_what_is_the_result", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 496, word: "çekiç", imageUrl: "/images/496.png", audioKeys: { default: "çekiç" }, tags: { category: "" } },
+        options: [
+            { id: 651, word: "kırık vazo", imageUrl: "/images/651.png", isCorrect: true, audioKey: "kırık_vazo", spokenText: "vazo kırılır" },
+            { id: 35, word: "dolu vazo", imageUrl: "/images/35.png", isCorrect: false, audioKey: "dolu_vazo", spokenText: "vazo dolar" }
+        ]
+    },
+    { id: 8, question: "Bu olduğunda ne giyersin?", questionAudioKey: "q_what_do_you_wear_when_this_happens", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 405, word: "kar", imageUrl: "/images/405.png", audioKeys: { default: "kar" }, tags: { category: "" } },
+        options: [
+            { id: 336, word: "bere", imageUrl: "/images/336.png", isCorrect: true, audioKey: "bere", spokenText: "bere" },
+            { id: 80, word: "şort", imageUrl: "/images/80.png", isCorrect: false, audioKey: "şort", spokenText: "şort" }
+        ]
+    },
+    { id: 9, question: "Bunun sonucu ne olur?", questionAudioKey: "q_what_is_the_result", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 752, word: "bebek", imageUrl: "/images/752.png", audioKeys: { default: "bebek_aç" }, tags: { category: "" } },
+        options: [
+            { id: 371, word: "biberon", imageUrl: "/images/371.png", isCorrect: true, audioKey: "biberon_dolu", spokenText: "bebek süt içer" },
+            { id: 177, word: "robot", imageUrl: "/images/177.png", isCorrect: false, audioKey: "robot", spokenText: "bebek oyuncakla oynar" }
+        ]
+    },
+    { id: 10, question: "Bunun nedeni ne olabilir?", questionAudioKey: "q_what_is_the_cause", activityType: ActivityType.CauseEffect,
+        questionItem: { id: 255, word: "gömlek", imageUrl: "/images/255.png", audioKeys: { default: "gomlek_duzgun" }, tags: { category: "" } },
+        options: [
+            { id: 305, word: "ütü", imageUrl: "/images/305.png", isCorrect: true, audioKey: "ütü", spokenText: "ütü" },
+            { id: 144, word: "makas", imageUrl: "/images/144.png", isCorrect: false, audioKey: "makas", spokenText: "makas" }
+        ]
+    },
+];
+
+export const sequencingStoryData: SequencingStoryRound[] = [
+    {
+        "id": 1,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 113, "word": "sağlam yumurta", "imageUrl": "/images/113.png", "audioKey": "sağlam_yumurta" },
+            { "id": 77, "word": "kırık yumurta", "imageUrl": "/images/77.png", "audioKey": "kırık_yumurta" },
+            { "id": 376, "word": "civciv", "imageUrl": "/images/376.png", "audioKey": "civciv" },
+            { "id": 377, "word": "horoz", "imageUrl": "/images/377.png", "audioKey": "horoz" }
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 445, "word": "tırtıl", "imageUrl": "/images/445.png", "audioKey": "tırtıl" },
+            { "id": 274, "word": "kelebek", "imageUrl": "/images/274.png", "audioKey": "kelebek" }
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 316, "word": "tohum", "imageUrl": "/images/316.png", "audioKey": "tohum" },
+            { "id": 317, "word": "filiz", "imageUrl": "/images/317.png", "audioKey": "filiz" },
+            { "id": 163, word: "çiçekli bitki", "imageUrl": "/images/163.png", "audioKey": "çiçekli_bitki" }
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 624, "word": "sandviç malzemeleri", "imageUrl": "/images/624.png", "audioKey": "sandviç_malzemeleri" },
+            { "id": 623, "word": "hazır sandviç", "imageUrl": "/images/623.png", "audioKey": "hazır_sandviç" }
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 402, "word": "boş kağıt ve boya", "imageUrl": "/images/402.png", "audioKey": "boş_kağıt_ve_boya" },
+            { "id": 401, "word": "yapılmış resim", "imageUrl": "/images/401.png", "audioKey": "yapılmış_resim" }
+        ]
+    },
+    {
+        "id": 6,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 588, "word": "hamur", "imageUrl": "/images/588.png", "audioKey": "hamur" },
+            { "id": 112, "word": "pişmiş ekmek", "imageUrl": "/images/112.png", "audioKey": "pişmiş_ekmek" }
+        ]
+    },
+    {
+        "id": 7,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 591, "word": "kirli el", "imageUrl": "/images/591.png", "audioKey": "kirli_el" },
+            { "id": 590, "word": "temiz el", "imageUrl": "/images/590.png", "audioKey": "temiz_el" }
+        ]
+    },
+    {
+        "id": 8,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+            { "id": 229, "word": "dağınık oda", "imageUrl": "/images/229.png", "audioKey": "dağınık_oda" },
+            { "id": 230, "word": "toplu oda", "imageUrl": "/images/230.png", "audioKey": "toplu_oda" }
+        ]
+    },
+    {
+        "id": 9,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+             { "id": 583, "word": "iribaş", "imageUrl": "/images/583.png", "audioKey": "iribaş" },
+            { "id": 275, "word": "kurbağa", "imageUrl": "/images/275.png", "audioKey": "kurbağa" }
+        ]
+    },
+    {
+        "id": 10,
+        "question": "Olayları doğru sıraya diz.",
+        "questionAudioKey": "q_order_events",
+        "activityType": ActivityType.SequencingStories,
+        "items": [
+             { "id": 481, "word": "dağınık yapboz", "imageUrl": "/images/481.png", "audioKey": "dağınık_yapboz" },
+             { "id": 480, "word": "tamamlanmış yapboz", "imageUrl": "/images/480.png", "audioKey": "tamamlanmış_yapboz" }
+        ]
+    }
+];
+
+export const patternCompletionData: PatternRound[] = [
+    {
+        id: 1, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 43, word: "elma", imageUrl: "/images/43.png"}, { id: 114, word: "muz", imageUrl: "/images/114.png"}, { id: 43, word: "elma", imageUrl: "/images/43.png"} ],
+        options: [ { id: 114, word: "muz", imageUrl: "/images/114.png"}, { id: 43, word: "elma", imageUrl: "/images/43.png"} ],
+        answer: { id: 114, word: "muz", imageUrl: "/images/114.png"}
+    },
+    {
+        id: 2, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 1, word: "araba", imageUrl: "/images/1.png"}, { id: 1, word: "araba", imageUrl: "/images/1.png"}, { id: 110, word: "bisiklet", imageUrl: "/images/110.png"} ],
+        options: [ { id: 1, word: "araba", imageUrl: "/images/1.png"}, { id: 110, word: "bisiklet", imageUrl: "/images/110.png"} ],
+        answer: { id: 110, word: "bisiklet", imageUrl: "/images/110.png"}
+    },
+    {
+        id: 3, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 580, word: "kedi", imageUrl: "/images/580.png"}, { id: 582, word: "köpek", imageUrl: "/images/582.png"}, { id: 73, word: "kuş", imageUrl: "/images/73.png"}, { id: 580, word: "kedi", imageUrl: "/images/580.png"} ],
+        options: [ { id: 582, word: "köpek", imageUrl: "/images/582.png"}, { id: 73, word: "kuş", imageUrl: "/images/73.png"} ],
+        answer: { id: 582, word: "köpek", imageUrl: "/images/582.png"}
+    },
+    {
+        id: 4, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 65, word: "daire", imageUrl: "/images/65.png"}, { id: 67, word: "üçgen", imageUrl: "/images/67.png"}, { id: 66, word: "kare", imageUrl: "/images/66.png"} ],
+        options: [ { id: 65, word: "daire", imageUrl: "/images/65.png"}, { id: 67, word: "üçgen", imageUrl: "/images/67.png"} ],
+        answer: { id: 65, word: "daire", imageUrl: "/images/65.png"}
+    },
+    {
+        id: 5, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 237, word: "güneş", imageUrl: "/images/237.png"}, { id: 238, word: "ay", imageUrl: "/images/238.png"}, { id: 237, word: "güneş", imageUrl: "/images/237.png"} ],
+        options: [ { id: 237, word: "güneş", imageUrl: "/images/237.png"}, { id: 238, word: "ay", imageUrl: "/images/238.png"} ],
+        answer: { id: 238, word: "ay", imageUrl: "/images/238.png"}
+    },
+    {
+        id: 6, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 79, word: "pantolon", imageUrl: "/images/79.png"}, { id: 13, word: "tişört", imageUrl: "/images/13.png"}, { id: 79, word: "pantolon", imageUrl: "/images/79.png"} ],
+        options: [ { id: 13, word: "tişört", imageUrl: "/images/13.png"}, { id: 79, word: "pantolon", imageUrl: "/images/79.png"} ],
+        answer: { id: 13, word: "tişört", imageUrl: "/images/13.png"}
+    },
+    {
+        id: 7, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 125, word: "kaşık", imageUrl: "/images/125.png"}, { id: 126, word: "çatal", imageUrl: "/images/126.png"}, { id: 262, word: "bıçak", imageUrl: "/images/262.png"} ],
+        options: [ { id: 125, word: "kaşık", imageUrl: "/images/125.png"}, { id: 262, word: "bıçak", imageUrl: "/images/262.png"} ],
+        answer: { id: 125, word: "kaşık", imageUrl: "/images/125.png"}
+    },
+     {
+        id: 8, question: "Sıradaki hangisi?", questionAudioKey: "q_what_is_next", activityType: ActivityType.PatternCompletion,
+        pattern: [ { id: 157, word: "şemsiye", imageUrl: "/images/157.png"}, { id: 52, word: "yağmur", imageUrl: "/images/52.png"}, { id: 157, word: "şemsiye", imageUrl: "/images/157.png"} ],
+        options: [ { id: 52, word: "yağmur", imageUrl: "/images/52.png"}, { id: 157, word: "şemsiye", imageUrl: "/images/157.png"} ],
+        answer: { id: 52, word: "yağmur", imageUrl: "/images/52.png"}
+    }
+];
+
+export const sudokuData: Omit<SudokuRound, 'puzzleGrid'>[] = [
+    {
+        id: 1, questionText: "Eksik olanı yerleştir.", questionAudioKey: "q_place_the_missing", activityType: ActivityType.Sudoku,
+        itemPool: [ {id: 43, word: 'elma', imageUrl: '/images/43.png'}, {id: 1, word: 'araba', imageUrl: '/images/1.png'}, {id: 156, word: 'top', imageUrl: '/images/156.png'} ],
+        solutionGrid: [
+            {id: 43, word: 'elma', imageUrl: '/images/43.png'}, {id: 1, word: 'araba', imageUrl: '/images/1.png'}, {id: 156, word: 'top', imageUrl: '/images/156.png'},
+            {id: 156, word: 'top', imageUrl: '/images/156.png'}, {id: 43, word: 'elma', imageUrl: '/images/43.png'}, {id: 1, word: 'araba', imageUrl: '/images/1.png'},
+            {id: 1, word: 'araba', imageUrl: '/images/1.png'}, {id: 156, word: 'top', imageUrl: '/images/156.png'}, {id: 43, word: 'elma', imageUrl: '/images/43.png'},
+        ],
+    },
+    {
+        id: 2, questionText: "Eksik olanı yerleştir.", questionAudioKey: "q_place_the_missing", activityType: ActivityType.Sudoku,
+        itemPool: [ {id: 580, word: 'kedi', imageUrl: '/images/580.png'}, {id: 582, word: 'köpek', imageUrl: '/images/582.png'}, {id: 73, word: 'kuş', imageUrl: '/images/73.png'} ],
+        solutionGrid: [
+            {id: 580, word: 'kedi', imageUrl: '/images/580.png'}, {id: 582, word: 'köpek', imageUrl: '/images/582.png'}, {id: 73, word: 'kuş', imageUrl: '/images/73.png'},
+            {id: 73, word: 'kuş', imageUrl: '/images/73.png'}, {id: 580, word: 'kedi', imageUrl: '/images/580.png'}, {id: 582, word: 'köpek', imageUrl: '/images/582.png'},
+            {id: 582, word: 'köpek', imageUrl: '/images/582.png'}, {id: 73, word: 'kuş', imageUrl: '/images/73.png'}, {id: 580, word: 'kedi', imageUrl: '/images/580.png'},
+        ],
+    },
+    {
+        id: 3, questionText: "Eksik olanı yerleştir.", questionAudioKey: "q_place_the_missing", activityType: ActivityType.Sudoku,
+        itemPool: [ {id: 65, word: 'daire', imageUrl: '/images/65.png'}, {id: 67, word: 'üçgen', imageUrl: '/images/67.png'}, {id: 66, word: 'kare', imageUrl: '/images/66.png'} ],
+        solutionGrid: [
+            {id: 65, word: 'daire', imageUrl: '/images/65.png'}, {id: 67, word: 'üçgen', imageUrl: '/images/67.png'}, {id: 66, word: 'kare', imageUrl: '/images/66.png'},
+            {id: 66, word: 'kare', imageUrl: '/images/66.png'}, {id: 65, word: 'daire', imageUrl: '/images/65.png'}, {id: 67, word: 'üçgen', imageUrl: '/images/67.png'},
+            {id: 67, word: 'üçgen', imageUrl: '/images/67.png'}, {id: 66, word: 'kare', imageUrl: '/images/66.png'}, {id: 65, word: 'daire', imageUrl: '/images/65.png'},
+        ],
+    }
+];
+
+export const memoryCardPool: MemoryCard[] = [
+    {id: 43, word: 'elma', imageUrl: '/images/43.png', audioKey: 'elma'}, 
+    {id: 1, word: 'araba', imageUrl: '/images/1.png', audioKey: 'araba'}, 
+    {id: 100, word: 'aslan', imageUrl: '/images/100.png', audioKey: 'aslan'},
+    {id: 107, word: 'uçak', imageUrl: '/images/107.png', audioKey: 'uçak'}, 
+    {id: 106, word: 'tren', imageUrl: '/images/106.png', audioKey: 'tren'}, 
+    {id: 110, word: 'bisiklet', imageUrl: '/images/110.png', audioKey: 'bisiklet'}, 
+    {id: 492, word: 'gemi', imageUrl: '/images/492.png', audioKey: 'gemi'},
+    {id: 65, word: 'daire', imageUrl: '/images/65.png', audioKey: 'daire'}, 
+    {id: 66, word: 'kare', imageUrl: '/images/66.png', audioKey: 'kare'}, 
+    {id: 67, word: 'üçgen', imageUrl: '/images/67.png', audioKey: 'üçgen'}, 
+    {id: 68, word: 'dikdörtgen', imageUrl: '/images/68.png', audioKey: 'dikdörtgen'}, 
+    {id: 69, word: 'yıldız', imageUrl: '/images/69.png', audioKey: 'yıldız'}
+];
+
+
+export const dragAndDropCountingData: DragAndDropCountingRound[] = [
+    { id: 1, question: "Sepete 3 elma koy.", questionAudioKey: "q_put_3_apples", itemToDrag: {id: 43, word: 'elma', imageUrl: '/images/43.png', audioKeys: {default: 'elma'}, tags: {category:''}}, targetCount: 3, activityType: ActivityType.DragAndDropCounting },
+    { id: 2, question: "Kutuya 5 top koy.", questionAudioKey: "q_put_5_balls", itemToDrag: {id: 156, word: 'top', imageUrl: '/images/156.png', audioKeys: {default: 'top'}, tags: {category:''}}, targetCount: 5, activityType: ActivityType.DragAndDropCounting },
+    { id: 3, question: "Akvaryuma 4 balık koy.", questionAudioKey: "q_put_4_fish", itemToDrag: {id: 740, word: 'balık', imageUrl: '/images/740.png', audioKeys: {default: 'balık'}, tags: {category:''}}, targetCount: 4, activityType: ActivityType.DragAndDropCounting },
+    { id: 4, question: "Tabağa 2 kurabiye koy.", questionAudioKey: "q_put_2_cookies", itemToDrag: {id: 330, word: 'bisküvi', imageUrl: '/images/330.png', audioKeys: {default: 'bisküvi'}, tags: {category:''}}, targetCount: 2, activityType: ActivityType.DragAndDropCounting }
+];
+
+export const dragAndDropPositioningData: DragAndDropPositioningRound[] = [
+    { id: 1, question: "Topu kutunun içine koy.", questionAudioKey: "q_put_ball_in_box", itemToDrag: {id: 156, word: 'top', imageUrl: '/images/156.png', audioKeys: {default: 'top'}, tags: {category:''}}, correctZone: 'içinde', activityType: ActivityType.DragAndDropPositioning },
+    { id: 2, question: "Kitabı masanın üstüne koy.", questionAudioKey: "q_put_book_on_table", itemToDrag: {id: 37, word: 'kitap', imageUrl: '/images/37.png', audioKeys: {default: 'kitap'}, tags: {category:''}}, correctZone: 'üstünde', activityType: ActivityType.DragAndDropPositioning },
+    { id: 3, "question": "Arabayı evin soluna koy.", "questionAudioKey": "q_put_car_left_of_house", "itemToDrag": { "id": 2, "word": "araba", "imageUrl": "/images/2.png", "audioKeys": { "default": "araba" }, tags: {category:''}}, "correctZone": "solunda", activityType: ActivityType.DragAndDropPositioning },
+    { id: 4, "question": "Elmayı sepetin sağına koy.", "questionAudioKey": "q_put_apple_right_of_basket", "itemToDrag": { "id": 43, "word": "elma", "imageUrl": "/images/43.png", "audioKeys": { "default": "elma" }, tags: {category:''}}, "correctZone": "sağında", activityType: ActivityType.DragAndDropPositioning },
+    { id: 5, "question": "Ayakkabıyı yatağın altına koy.", "questionAudioKey": "q_put_shoe_under_bed", "itemToDrag": { "id": 59, "word": "ayakkabı", "imageUrl": "/images/59.png", "audioKeys": { "default": "ayakkabı" }, tags: {category:''}}, "correctZone": "altında", activityType: ActivityType.DragAndDropPositioning }
+];

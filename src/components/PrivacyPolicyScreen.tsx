@@ -2,12 +2,15 @@
 import React from 'react';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import { policyTitle, policySections } from '../services/privacyContent.ts';
+import { useAppContext } from '../contexts/AppContext.ts';
 
 interface PrivacyPolicyScreenProps {
   onBack: () => void;
 }
 
 const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({ onBack }) => {
+  const { settings } = useAppContext();
+  const isThemed = settings.theme !== 'simple';
   return (
     <div className="flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in">
         <div className="w-full flex items-center mb-6 relative">
@@ -18,7 +21,7 @@ const PrivacyPolicyScreen: React.FC<PrivacyPolicyScreenProps> = ({ onBack }) => 
             >
                 <ArrowLeftIcon className="w-8 h-8 text-slate-700" />
             </button>
-            <h1 className="flex-1 text-center text-3xl sm:text-4xl font-black text-slate-800">
+            <h1 className={`flex-1 text-center text-3xl sm:text-4xl font-black ${isThemed ? 'text-white text-shadow-soft' : 'text-slate-700'}`}>
                 {policyTitle}
             </h1>
         </div>

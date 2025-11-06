@@ -2,7 +2,7 @@
 
 export * from './activities/basicConceptsData.ts';
 export * from './activities/qualities';
-export * from './activities/quantityData.ts';
+export * from './activities/quantities';
 export * from './activities/spatialData.ts';
 export * from './activities/temporalData.ts';
 export * from './activities/reasoningData.ts';

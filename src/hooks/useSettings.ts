@@ -1,8 +1,9 @@
 // FIX: Import React to use React.Dispatch and React.SetStateAction types.
-import React, { useMemo, useCallback, useEffect } from 'react';
+import React, { useMemo, useCallback, useEffect, useState } from 'react';
 import { getCurrentLanguage, setCurrentLanguage, type Locale } from '../i18n/index.ts';
 import { useLocalStorage } from './useLocalStorage.ts';
-import { purchasePremium } from '../services/monetizationService.ts';
+import { purchasePremium, getPaywallOptions, purchasePackageByIdentifier, syncPremiumEntitlement } from '../services/monetizationService.ts';
+import { FREE_THEMES } from '../themes/themeManager.ts';
 
 interface UseSettingsProps {
     showToast: (message: string, type?: 'error' | 'info', duration?: number) => void;
@@ -19,15 +20,19 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
     const [isWordLabelVisible, setIsWordLabelVisible] = useLocalStorage<boolean>('isWordLabelVisible', false);
     const [isBanButtonEnabled, setIsBanButtonEnabled] = useLocalStorage<boolean>('isBanButtonEnabled', false);
     const [isFastTransitionEnabled, setIsFastTransitionEnabled] = useLocalStorage<boolean>('isFastTransitionEnabled', false);
+    // Child-friendly and accessibility settings
+    const [isChildModeEnabled, setIsChildModeEnabled] = useLocalStorage<boolean>('isChildModeEnabled_v1', false);
+    const [isErrorlessModeEnabled, setIsErrorlessModeEnabled] = useLocalStorage<boolean>('isErrorlessModeEnabled_v1', false);
     const [theme, setTheme] = useLocalStorage<string>('theme_v2', 'simple');
     const [language, setLanguage] = useLocalStorage<Locale>('lang_v1', getCurrentLanguage());
     
     useEffect(() => {
         // This runs only once on the very first launch for a user
         if (trialStartDate === null) {
-            console.log("First launch detected. Starting 3-day premium trial.");
+            console.log("First launch detected. Starting 7-day premium trial.");
             setTrialStartDate(Date.now());
-            setTheme('tilki'); // Set default theme to 'tilki' for new users
+            // Set default theme to 'simple' for new users
+            setTheme('simple');
         }
     }, [trialStartDate, setTrialStartDate, setTheme]);
 
@@ -40,18 +45,59 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         if (!trialStartDate) {
             return false;
         }
-        const threeDaysInMillis = 3 * 24 * 60 * 60 * 1000;
-        return (Date.now() - trialStartDate) < threeDaysInMillis;
+        const sevenDaysInMillis = 7 * 24 * 60 * 60 * 1000;
+        return (Date.now() - trialStartDate) < sevenDaysInMillis;
     }, [trialStartDate]);
 
-    const isPremium = hasPurchasedPremium || isTrialActive;
+    // Special promotion: Give all existing users premium until November 15, 2025
+    const isPromotionActive = useMemo(() => {
+        const promotionEndDate = new Date('2025-11-15T23:59:59');
+        const now = new Date();
+        // If user had trialStartDate before today (existing user), give them promotion
+        if (trialStartDate && trialStartDate < Date.now() - (7 * 24 * 60 * 60 * 1000)) {
+            return now < promotionEndDate;
+        }
+        return false;
+    }, [trialStartDate]);
+
+    const isPremium = hasPurchasedPremium || isTrialActive || isPromotionActive;
+
+    // Paywall pricing (for showing prices in UI)
+    const [paywallMonthly, setPaywallMonthly] = useState<string | undefined>(undefined);
+    const [paywallLifetime, setPaywallLifetime] = useState<string | undefined>(undefined);
+    const [paywallMonthlyPkgId, setPaywallMonthlyPkgId] = useState<string | undefined>(undefined);
+    const [paywallLifetimePkgId, setPaywallLifetimePkgId] = useState<string | undefined>(undefined);
+    useEffect(() => {
+        (async () => {
+            try {
+                const opts = await getPaywallOptions(userId);
+                const m = opts.find(o => o.type === 'monthly');
+                const l = opts.find(o => o.type === 'lifetime') || opts.find(o => o.productIdentifier === 'premium_upgrade');
+                setPaywallMonthly(m?.priceString || (m?.price != null ? `${m.price}` : undefined));
+                setPaywallLifetime(l?.priceString || (l?.price != null ? `${l.price}` : undefined));
+                setPaywallMonthlyPkgId(m?.packageIdentifier);
+                setPaywallLifetimePkgId(l?.packageIdentifier);
+            } catch (e) {
+                // silently ignore
+            }
+        })();
+    }, [userId]);
     
     const bannedImageIds = useMemo(() => new Set(bannedImageIdsArray), [bannedImageIdsArray]);
+
+    // Enforce free theme restrictions for non-premium users
+    useEffect(() => {
+        if (!isPremium && theme !== 'simple' && !FREE_THEMES.has(theme)) {
+            setTheme('simple');
+        }
+    }, [isPremium, theme, setTheme]);
 
     const handleToggleMute = useCallback(() => setIsMuted(prev => !prev), [setIsMuted]);
     const handleToggleAutoSpeak = useCallback(() => setIsAutoSpeakEnabled(prev => !prev), [setIsAutoSpeakEnabled]);
     const handleToggleWordLabel = useCallback(() => setIsWordLabelVisible(prev => !prev), [setIsWordLabelVisible]);
     const handleToggleBanButton = useCallback(() => setIsBanButtonEnabled(prev => !prev), [setIsBanButtonEnabled]);
+    const handleToggleChildMode = useCallback(() => setIsChildModeEnabled(prev => !prev), [setIsChildModeEnabled]);
+    const handleToggleErrorlessMode = useCallback(() => setIsErrorlessModeEnabled(prev => !prev), [setIsErrorlessModeEnabled]);
 
     const handleToggleFastTransition = useCallback(() => {
         if (isPremium) setIsFastTransitionEnabled(prev => !prev);
@@ -59,7 +105,8 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
     }, [isPremium, setIsFastTransitionEnabled, showPremiumToast]);
 
     const handleChangeTheme = useCallback((newTheme: string) => {
-        if (!isPremium && newTheme !== 'simple') {
+        // Allow if user is premium OR theme is one of the free themes (temporary promotion) OR it's the simple theme
+        if (!isPremium && newTheme !== 'simple' && !FREE_THEMES.has(newTheme)) {
             showPremiumToast();
             return;
         }
@@ -72,15 +119,83 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
     }, [setLanguage]);
     
     const handlePurchasePremium = useCallback(async (): Promise<boolean> => {
-        const success = await purchasePremium(userId);
-        if (success) {
-            setHasPurchasedPremium(true);
-            showToast('Desteğiniz için teşekkürler! Premium özellikler açıldı.', 'info');
-        } else {
-            showToast('Satın alma işlemi tamamlanamadı. Lütfen tekrar deneyin.', 'error');
+        try {
+            // Try to fetch available packages from RC and present subscription vs lifetime
+            const options = await getPaywallOptions(userId);
+            const monthly = options.find(o => o.type === 'monthly');
+            const lifetime = options.find(o => o.type === 'lifetime') || options.find(o => o.productIdentifier === 'premium_upgrade');
+
+            let success = false;
+            if (monthly && lifetime) {
+                const msg = `Hangisini almak istersiniz?\n\nAylık Abonelik: ${monthly.priceString || monthly.price} / ay\nÖmür Boyu Premium: ${lifetime.priceString || lifetime.price}\n\nAylık için Tamam, Ömür boyu için İptal'e basın.`;
+                const chooseMonthly = window.confirm(msg);
+                const chosen = chooseMonthly ? monthly : lifetime;
+                success = await purchasePackageByIdentifier(chosen.packageIdentifier, userId);
+            } else if (monthly) {
+                // Only monthly available
+                success = await purchasePackageByIdentifier(monthly.packageIdentifier, userId);
+            } else if (lifetime) {
+                success = await purchasePackageByIdentifier(lifetime.packageIdentifier, userId);
+            } else {
+                // Fallback to legacy purchase flow (selects first available or lifetime by product id)
+                success = await purchasePremium(userId);
+            }
+
+            if (success) {
+                setHasPurchasedPremium(true);
+                showToast('Desteğiniz için teşekkürler! Premium özellikler açıldı.', 'info');
+            } else {
+                showToast('Satın alma işlemi tamamlanamadı. Lütfen tekrar deneyin.', 'error');
+            }
+            return success;
+        } catch (e) {
+            console.error('handlePurchasePremium error:', e);
+            showToast('Satın alma işlemi sırasında hata oluştu.', 'error');
+            return false;
         }
-        return success;
     }, [setHasPurchasedPremium, showToast, userId]);
+
+    // Keep entitlement in sync with RC (covers subscription status changes)
+    // This runs on mount, when userId changes, and periodically
+    useEffect(() => {
+        let active = true;
+        let intervalId: NodeJS.Timeout;
+
+        const checkPremiumStatus = async () => {
+            if (!active) return;
+            try {
+                const hasEntitlement = await syncPremiumEntitlement(userId);
+                if (active) {
+                    setHasPurchasedPremium(!!hasEntitlement);
+                }
+            } catch (e) {
+                console.error('Premium status check error:', e);
+            }
+        };
+
+        // Check immediately on mount/userId change
+        checkPremiumStatus();
+
+        // Check periodically every 30 seconds to catch subscription changes
+        intervalId = setInterval(checkPremiumStatus, 30000);
+
+        // Also check when app comes to foreground (for mobile)
+        const handleVisibilityChange = () => {
+            if (!document.hidden && active) {
+                checkPremiumStatus();
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('focus', checkPremiumStatus);
+
+        return () => {
+            active = false;
+            if (intervalId) clearInterval(intervalId);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('focus', checkPremiumStatus);
+        };
+    }, [userId, setHasPurchasedPremium]);
 
     const handleBanImage = useCallback((bannedImageId: number, setActivityData: React.Dispatch<React.SetStateAction<any[]>>) => {
         setBannedImageIdsArray(prev => Array.from(new Set(prev).add(bannedImageId)));
@@ -105,12 +220,15 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
     return {
         isPremium,
         hasPurchasedPremium,
+        paywall: { monthlyPrice: paywallMonthly, lifetimePrice: paywallLifetime, hasData: !!(paywallMonthly || paywallLifetime) },
         bannedImageIds,
         isMuted,
         isAutoSpeakEnabled,
         isWordLabelVisible,
         isBanButtonEnabled,
         isFastTransitionEnabled,
+        isChildModeEnabled,
+        isErrorlessModeEnabled,
         theme,
         language,
         handleToggleMute,
@@ -118,9 +236,39 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         handleToggleWordLabel,
         handleToggleBanButton,
         handleToggleFastTransition,
+        handleToggleChildMode,
+        handleToggleErrorlessMode,
         onChangeTheme: handleChangeTheme,
         onChangeLanguage: handleChangeLanguage,
         handlePurchasePremium,
+        handlePurchaseMonthly: async (): Promise<boolean> => {
+            if (paywallMonthlyPkgId) {
+                const ok = await purchasePackageByIdentifier(paywallMonthlyPkgId, userId);
+                if (ok) {
+                    setHasPurchasedPremium(true);
+                    showToast('Desteğiniz için teşekkürler! Premium özellikler açıldı.', 'info');
+                } else {
+                    showToast('Satın alma işlemi tamamlanamadı. Lütfen tekrar deneyin.', 'error');
+                }
+                return ok;
+            }
+            // fallback to flow
+            return handlePurchasePremium();
+        },
+        handlePurchaseLifetime: async (): Promise<boolean> => {
+            if (paywallLifetimePkgId) {
+                const ok = await purchasePackageByIdentifier(paywallLifetimePkgId, userId);
+                if (ok) {
+                    setHasPurchasedPremium(true);
+                    showToast('Desteğiniz için teşekkürler! Premium özellikler açıldı.', 'info');
+                } else {
+                    showToast('Satın alma işlemi tamamlanamadı. Lütfen tekrar deneyin.', 'error');
+                }
+                return ok;
+            }
+            // fallback to legacy premium purchase (selects lifetime when possible)
+            return handlePurchasePremium();
+        },
         handleBanImage,
         handleUnbanImage,
     };

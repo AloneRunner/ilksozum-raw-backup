@@ -14,26 +14,59 @@ const BANNER_ID = Capacitor.isNativePlatform() ? REAL_BANNER_ID : TEST_BANNER_ID
 
 // ---- RevenueCat
 const RC_PUBLIC_SDK_KEY = 'goog_nISmHsACCmafpOJYWwvRhaaFCyW';
-// KRİTİK DÜZELTME: Ürün Kimliği 'premium_upgrade' olarak değiştirildi.
-// Bu, RevenueCat panelinizdeki ve Google Play'deki ürününüzün gerçek kimliğidir.
-const PREMIUM_PRODUCT_ID = 'premium_upgrade';
+// RevenueCat setup
+// Map multiple products (lifetime IAP and subscriptions) to the same entitlement in RC dashboard.
+// Keep identifiers here in sync with your RC Offering setup.
+const PREMIUM_PRODUCT_ID = 'premium_upgrade'; // lifetime IAP product ID (managed/non-consumable)
 const PREMIUM_ENTITLEMENT_ID = 'premium';
 
-let rcInitialized = false;
+// Heuristic identifiers for packages in RC offerings (adjust to your offering names if needed)
+const PACKAGE_ID_LIFETIME = 'lifetime';
+const PACKAGE_ID_MONTHLY = 'monthly';
 
-const initializeRevenueCat = async (userId?: string) => {
-  if (!Capacitor.isNativePlatform() || rcInitialized) return;
+let rcInitialized = false;
+let currentRcUserId: string | undefined;
+let fallbackUserId: string | undefined; // stable fallback when no userId provided
+
+const getOrCreateFallbackUserId = (): string => {
+  if (fallbackUserId) return fallbackUserId;
+  try {
+    const key = 'rc_fallback_user_id_v1';
+    const fromStorage = window.localStorage.getItem(key);
+    if (fromStorage) {
+      fallbackUserId = fromStorage;
+      return fallbackUserId;
+    }
+    // Generate a stable pseudo-UUID
+    const rand = Math.random().toString(36).slice(2);
+    const id = `guest_${Date.now().toString(36)}_${rand}`;
+    window.localStorage.setItem(key, id);
+    fallbackUserId = id;
+    return id;
+  } catch {
+    // last resort
+    fallbackUserId = `guest_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
+    return fallbackUserId;
+  }
+};
+
+export const initializeRevenueCat = async (userId?: string) => {
+  if (!Capacitor.isNativePlatform()) return;
+
   try {
     await Purchases.setLogLevel({ level: LOG_LEVEL.DEBUG });
-    await Purchases.configure({ apiKey: RC_PUBLIC_SDK_KEY });
-    
-    // Her kullanıcıyı benzersiz ID ile tanımla
-    if (userId) {
-      await Purchases.logIn({ appUserID: userId });
-      console.log(`RevenueCat kullanıcı ID'si ayarlandı: ${userId}`);
+
+    if (!rcInitialized) {
+      await Purchases.configure({ apiKey: RC_PUBLIC_SDK_KEY });
+      rcInitialized = true;
     }
-    
-    rcInitialized = true;
+
+    const resolvedId = userId || getOrCreateFallbackUserId();
+    if (resolvedId && resolvedId !== currentRcUserId) {
+      await Purchases.logIn({ appUserID: resolvedId });
+      currentRcUserId = resolvedId;
+      console.log(`RevenueCat user ID set: ${currentRcUserId}`);
+    }
   } catch (e) {
     console.error('RevenueCat init error:', e);
   }
@@ -41,24 +74,24 @@ const initializeRevenueCat = async (userId?: string) => {
 
 export const initializeAds = async (): Promise<void> => {
   if (!Capacitor.isNativePlatform()) return;
+
   try {
     await AdMob.initialize();
     console.log('AdMob initialized');
 
-    // ❗️Types’ta yoksa bile runtime’da varsa çağır:
     const cfgFn = (AdMob as any)?.setRequestConfiguration as
       | ((cfg: any) => Promise<void>)
       | undefined;
 
     if (cfgFn) {
       await cfgFn({
-        maxAdContentRating: 'G', 			      // <-- string kullan
-        tagForChildDirectedTreatment: true, // COPPA sinyali
-        tagForUnderAgeOfConsent: true, 	    // UAC sinyali
+        maxAdContentRating: 'G',
+        tagForChildDirectedTreatment: true,
+        tagForUnderAgeOfConsent: true,
       });
-      console.log('Kids mode request config set.');
+      console.log('Kids mode request configuration applied.');
     } else {
-      console.log('setRequestConfiguration API yok; geçildi.');
+      console.log('AdMob setRequestConfiguration API not found; skipping.');
     }
   } catch (e) {
     console.error('AdMob init error:', e);
@@ -67,11 +100,13 @@ export const initializeAds = async (): Promise<void> => {
 
 export const showBanner = async () => {
   if (!Capacitor.isNativePlatform()) return;
+
   const opts: BannerAdOptions = {
     adId: BANNER_ID,
     adSize: BannerAdSize.ADAPTIVE_BANNER,
-    position: BannerAdPosition.BOTTOM_CENTER,
+    position: BannerAdPosition.TOP_CENTER,
   };
+
   try {
     await AdMob.showBanner(opts);
     console.log('Banner shown:', BANNER_ID);
@@ -82,13 +117,19 @@ export const showBanner = async () => {
 
 export const hideBanner = async () => {
   if (!Capacitor.isNativePlatform()) return;
-  try { await AdMob.hideBanner(); } catch {}
+  try {
+    await AdMob.hideBanner();
+  } catch {
+    // no-op
+  }
 };
 
 export const restorePurchases = async (userId?: string) => {
   if (!Capacitor.isNativePlatform()) return false;
+
   await initializeRevenueCat(userId);
   if (!rcInitialized) return false;
+
   try {
     const { customerInfo } = await Purchases.restorePurchases();
     const hasPremium = !!customerInfo.entitlements.active[PREMIUM_ENTITLEMENT_ID];
@@ -103,41 +144,152 @@ export const restorePurchases = async (userId?: string) => {
 export const purchasePremium = async (userId?: string) => {
   await initializeRevenueCat(userId);
   if (!rcInitialized) return false;
+
   if (!Capacitor.isNativePlatform()) {
-    // NOTE: alert() ve confirm() kullanmak yerine custom bir modal kullanmalısınız.
-    console.warn('Simülasyon: Satın alma isteği gönderildi.');
-    return true; 
+    console.warn('Simulation: purchase request triggered (web environment).');
+    return true;
   }
+
   try {
     const offerings = await Purchases.getOfferings();
-    
-    // YENİ TEŞHİS LOGU: RevenueCat'ten gelen tüm teklifleri kontrol et.
-    console.log('RevenueCat Offerings Görüldü:', JSON.stringify(offerings, null, 2)); 
+    console.log('RevenueCat offerings:', JSON.stringify(offerings, null, 2));
 
     const current = offerings.current;
     if (!current || !current.availablePackages?.length) {
-        console.error('HATA: RevenueCat/Google Play hiç bir teklif/paket döndürmedi. Offerings boş!');
-        return false;
+      console.error('ERROR: RevenueCat/Google Play returned no available packages.');
+      return false;
     }
 
-    // Doğru Ürün Kimliğine sahip paketi bulmaya çalış
     const pkg =
-      current.availablePackages.find((p: any) => p?.product?.identifier === PREMIUM_PRODUCT_ID) ??
-      current.availablePackages[0]; // Eğer bulunamazsa ilk paketi kullan (yedek)
-      
-    console.log(`Satın alınacak paket: ${pkg.identifier} (Ürün ID: ${pkg.product.identifier})`);
+      // prefer lifetime product id if present, else any
+      current.availablePackages.find((p: any) => p?.identifier === PACKAGE_ID_LIFETIME || p?.product?.identifier === PREMIUM_PRODUCT_ID) ??
+      current.availablePackages[0];
+
+    console.log(`Selected package: ${pkg.identifier} (Product ID: ${pkg.product.identifier})`);
 
     const { customerInfo } = await Purchases.purchasePackage({ aPackage: pkg as any });
     const hasPremium = !!customerInfo.entitlements.active[PREMIUM_ENTITLEMENT_ID];
     if (hasPremium) await hideBanner();
     return hasPremium;
   } catch (e: any) {
-    // Kullanıcının işlemi iptal etmesi, ödeme hatası değildir.
     if (e?.userCancelled) {
-        console.log('Satın alma işlemi kullanıcı tarafından iptal edildi.');
-        return false;
+      console.log('Purchase flow cancelled by user.');
+      return false;
     }
-    console.error('purchasePremium error (Ödeme Hatası):', e);
+    console.error('purchasePremium error:', e);
     return false;
   }
 };
+
+// ---- New: Paywall helpers for subscriptions vs lifetime
+export interface PaywallOption {
+  packageIdentifier: string;
+  productIdentifier: string;
+  type: 'lifetime' | 'monthly' | 'annual' | 'other';
+  price: string | number | null; // priceString preferred if available
+  priceString?: string;
+  title?: string;
+  description?: string;
+}
+
+const resolvePackageType = (pkg: any): PaywallOption['type'] => {
+  const id: string = String(pkg?.identifier || '').toLowerCase();
+  if (id.includes('lifetime')) return 'lifetime';
+  if (id.includes('month')) return 'monthly';
+  if (id.includes('year') || id.includes('annual')) return 'annual';
+  // try product period hints
+  const period: string = String(pkg?.product?.subscriptionPeriod || '').toUpperCase(); // e.g., P1M, P1Y
+  if (period === 'P1M') return 'monthly';
+  if (period === 'P1Y') return 'annual';
+  return 'other';
+};
+
+export const getPaywallOptions = async (userId?: string): Promise<PaywallOption[]> => {
+  await initializeRevenueCat(userId);
+  if (!rcInitialized) return [];
+  try {
+    const offerings = await Purchases.getOfferings();
+    const current = offerings.current;
+    if (!current || !current.availablePackages?.length) return [];
+    return current.availablePackages.map((pkg: any) => ({
+      packageIdentifier: pkg?.identifier,
+      productIdentifier: pkg?.product?.identifier,
+      type: resolvePackageType(pkg),
+      price: (pkg?.product?.price as number) ?? null,
+      priceString: pkg?.product?.priceString,
+      title: pkg?.product?.title,
+      description: pkg?.product?.description,
+    }));
+  } catch (e) {
+    console.error('getPaywallOptions error:', e);
+    return [];
+  }
+};
+
+export const purchasePackageByIdentifier = async (packageIdentifier: string, userId?: string): Promise<boolean> => {
+  await initializeRevenueCat(userId);
+  if (!rcInitialized) return false;
+  if (!Capacitor.isNativePlatform()) {
+    console.warn(`Simulation: purchase ${packageIdentifier} (web environment).`);
+    return true;
+  }
+  try {
+    const offerings = await Purchases.getOfferings();
+    const current = offerings.current;
+    if (!current || !current.availablePackages?.length) return false;
+    const pkg = current.availablePackages.find((p: any) => String(p?.identifier).toLowerCase() === String(packageIdentifier).toLowerCase());
+    const selected = pkg ?? current.availablePackages[0];
+    const { customerInfo } = await Purchases.purchasePackage({ aPackage: selected as any });
+    const hasPremium = !!customerInfo.entitlements.active[PREMIUM_ENTITLEMENT_ID];
+    if (hasPremium) await hideBanner();
+    return hasPremium;
+  } catch (e: any) {
+    if (e?.userCancelled) return false;
+    console.error('purchasePackageByIdentifier error:', e);
+    return false;
+  }
+};
+
+export const purchaseMonthlySubscription = async (userId?: string): Promise<boolean> => {
+  await initializeRevenueCat(userId);
+  if (!rcInitialized) return false;
+  if (!Capacitor.isNativePlatform()) {
+    console.warn('Simulation: purchase monthly (web environment).');
+    return true;
+  }
+  try {
+    const offerings = await Purchases.getOfferings();
+    const current = offerings.current;
+    if (!current || !current.availablePackages?.length) return false;
+    const monthly = current.availablePackages.find((p: any) => {
+      const id = String(p?.identifier || '').toLowerCase();
+      const prodId = String(p?.product?.identifier || '').toLowerCase();
+      return id.includes('month') || id === PACKAGE_ID_MONTHLY || prodId.includes('month');
+    }) ?? current.availablePackages[0];
+    const { customerInfo } = await Purchases.purchasePackage({ aPackage: monthly as any });
+    const hasPremium = !!customerInfo.entitlements.active[PREMIUM_ENTITLEMENT_ID];
+    if (hasPremium) await hideBanner();
+    return hasPremium;
+  } catch (e: any) {
+    if (e?.userCancelled) return false;
+    console.error('purchaseMonthlySubscription error:', e);
+    return false;
+  }
+};
+
+export const syncPremiumEntitlement = async (userId?: string): Promise<boolean> => {
+  await initializeRevenueCat(userId);
+  if (!rcInitialized) return false;
+  try {
+    // getCustomerInfo is supported by purchases-capacitor
+    const { customerInfo } = (await (Purchases as any).getCustomerInfo?.()) || {};
+    const info = customerInfo ?? (await Purchases.restorePurchases()).customerInfo;
+    const hasPremium = !!info?.entitlements?.active?.[PREMIUM_ENTITLEMENT_ID];
+    if (hasPremium) await hideBanner();
+    return !!hasPremium;
+  } catch (e) {
+    console.error('syncPremiumEntitlement error:', e);
+    return false;
+  }
+};
+

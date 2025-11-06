@@ -5,11 +5,14 @@ import { ACHIEVEMENTS, ALL_SUB_ACHIEVEMENTS, LETTER_GROUPS } from '../constants.
 import StarIcon from './icons/StarIcon.tsx';
 import BrainIcon from './icons/BrainIcon.tsx';
 import CrownIcon from './icons/CrownIcon.tsx';
+import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import { AppColor, getColorClasses } from '../themes/colorManager.ts';
+import { useAppContext } from '../contexts/AppContext.ts';
 
 interface AchievementsScreenProps {
     activityStats: Record<string, ActivityStats>;
     onSelectParentReport: () => void;
+    onBack: () => void;
     isPremium: boolean;
 }
 
@@ -102,7 +105,9 @@ const AggregatedProgress: React.FC<{
 };
 
 
-const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ activityStats, onSelectParentReport, isPremium }) => {
+const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ activityStats, onSelectParentReport, onBack, isPremium }) => {
+    const { settings } = useAppContext();
+    const isSimpleTheme = settings.theme === 'simple';
     
     const allLetters = React.useMemo(() => LETTER_GROUPS.flatMap(g => g.letters), []);
     
@@ -153,15 +158,24 @@ const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ activityStats, 
         return subAchievements.length;
     };
 
-    return (
+    const content = (
         <div className="flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in">
-            <div className="w-full flex items-center mb-8 landscape:mb-4 relative">
-                <h1 className="flex-1 text-center text-3xl sm:text-4xl landscape:text-2xl font-black text-white text-shadow-soft">
+            <div className="w-full flex items-center mb-8 landscape:mb-4 relative z-10">
+                <button
+                    onClick={onBack}
+                    className="absolute left-0 p-3 rounded-full bg-white shadow-md hover:bg-sky-50 hover:shadow-lg transform active:scale-95 transition-all duration-200 z-50"
+                    aria-label="Geri Dön"
+                >
+                    <ArrowLeftIcon className="w-8 h-8 text-sky-700"/>
+                </button>
+                <h1 className={isSimpleTheme
+                    ? "flex-1 text-center text-3xl sm:text-4xl landscape:text-2xl font-black text-purple-900 drop-shadow-[0_4px_12px_rgba(147,51,234,0.15)]"
+                    : "flex-1 text-center text-3xl sm:text-4xl landscape:text-2xl font-black text-white text-shadow-soft"}>
                     Başarımlar
                 </h1>
                 <button 
                     onClick={onSelectParentReport}
-                    className="absolute right-0 p-3 rounded-full bg-white shadow-md hover:bg-amber-50 hover:shadow-lg transform active:scale-95 transition-all duration-200"
+                    className="absolute right-0 p-3 rounded-full bg-white shadow-md hover:bg-amber-50 hover:shadow-lg transform active:scale-95 transition-all duration-200 z-50"
                     aria-label="Gelişim Raporunu Görüntüle"
                 >
                     <BrainIcon className="w-8 h-8 text-amber-700"/>
@@ -169,7 +183,9 @@ const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ activityStats, 
                 </button>
             </div>
 
-            <p className="text-center text-white/90 text-shadow-soft mb-8 landscape:mb-4 text-lg landscape:text-base -mt-4 landscape:-mt-2">
+            <p className={isSimpleTheme
+                ? "text-center text-pink-700 drop-shadow-[0_2px_6px_rgba(236,72,153,0.1)] mb-8 landscape:mb-4 text-lg landscape:text-base -mt-4 landscape:-mt-2"
+                : "text-center text-white/90 text-shadow-soft mb-8 landscape:mb-4 text-lg landscape:text-base -mt-4 landscape:-mt-2"}>
                 Bir etkinliği 3 kez hatasız tamamlayarak rozetini kazan!
             </p>
 
@@ -236,6 +252,8 @@ const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ activityStats, 
             </div>
         </div>
     );
+
+    return content;
 };
 
 export default React.memo(AchievementsScreen);

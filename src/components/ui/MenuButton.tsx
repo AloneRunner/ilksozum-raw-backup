@@ -1,8 +1,7 @@
 import React from 'react';
-import { t } from '../../i18n';
 
-type ButtonColor = 'sky' | 'amber' | 'teal' | 'indigo' | 'rose' | 'cyan' | 'lime' | 'purple' | 'orange' | 'pink' | 'blue';
-type ThemeKey = 'simple' | 'balon' | 'gunes' | 'tilki' | 'ay' | 'geceorman' | 'yagmur' | 'kus' | 'tilki2' | 'kedi' | 'kar' | 'gunbatimi' | 'ay2' | 'zurafa' | 'geometri';
+type ButtonColor = 'sky' | 'amber' | 'teal' | 'indigo' | 'rose' | 'cyan' | 'lime' | 'purple' | 'orange' | 'pink' | 'blue' | 'emerald';
+type ThemeKey = 'simple' | 'gunes' | 'tilki' | 'ay' | 'geceorman' | 'yagmur' | 'kus' | 'tilki2' | 'kedi' | 'kar' | 'gunbatimi' | 'ay2' | 'zurafa' | 'geometri' | 'deneme';
 
 interface MenuButtonProps {
   icon: React.FC<{ className?: string }>;
@@ -18,97 +17,74 @@ interface MenuButtonProps {
 }
 
 const themeConfig: Record<ThemeKey, any> = {
-  simple: { // This key is not used directly, but shows the structure
-    sky:    { bg: 'bg-gradient-to-br from-sky-400 to-blue-500',   iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-sky-200' },
-    amber:  { bg: 'bg-gradient-to-br from-amber-400 to-orange-500', iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-amber-200' },
-    teal:   { bg: 'bg-gradient-to-br from-teal-400 to-emerald-500', iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-teal-200' },
-    indigo: { bg: 'bg-gradient-to-br from-indigo-400 to-purple-500', iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-indigo-200' },
-    rose:   { bg: 'bg-gradient-to-br from-rose-400 to-pink-500',    iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-rose-200' },
-    cyan:   { bg: 'bg-gradient-to-br from-cyan-400 to-sky-500',    iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-cyan-200' },
-    lime:   { bg: 'bg-gradient-to-br from-lime-400 to-green-500',  iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-lime-200' },
-    purple: { bg: 'bg-gradient-to-br from-purple-400 to-fuchsia-500',iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-purple-200' },
-    orange: { bg: 'bg-gradient-to-br from-orange-400 to-red-500',   iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-orange-200' },
-    pink:   { bg: 'bg-gradient-to-br from-pink-400 to-rose-500',   iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-pink-200' },
-    blue:   { bg: 'bg-gradient-to-br from-blue-400 to-indigo-500', iconWrapper: 'bg-white/20', text: 'text-white', ring: 'focus:ring-blue-200' },
+  simple: {
+    // Her renk kombinasyonu farklı ve özel
+    sky:     { bg: 'bg-gradient-to-br from-sky-100 via-blue-50 to-cyan-100',        iconBg: 'bg-gradient-to-br from-sky-300 to-blue-400',       iconText: 'text-white',      title: 'text-sky-900',      subtitle: 'text-sky-700',      ring: 'focus:ring-sky-300',     border: 'border-sky-200/60',    glow: 'shadow-[0_8px_20px_rgba(14,165,233,0.25)]',    hoverGlow: 'hover:shadow-[0_12px_28px_rgba(14,165,233,0.35)]' },
+    amber:   { bg: 'bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-100',  iconBg: 'bg-gradient-to-br from-amber-300 to-orange-400',   iconText: 'text-white',      title: 'text-amber-900',    subtitle: 'text-amber-700',    ring: 'focus:ring-amber-300',   border: 'border-amber-200/60',  glow: 'shadow-[0_8px_20px_rgba(251,191,36,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(251,191,36,0.35)]' },
+    teal:    { bg: 'bg-gradient-to-br from-teal-100 via-emerald-50 to-green-100',   iconBg: 'bg-gradient-to-br from-teal-300 to-emerald-400',   iconText: 'text-white',      title: 'text-teal-900',     subtitle: 'text-teal-700',     ring: 'focus:ring-teal-300',    border: 'border-teal-200/60',   glow: 'shadow-[0_8px_20px_rgba(20,184,166,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(20,184,166,0.35)]' },
+    indigo:  { bg: 'bg-gradient-to-br from-indigo-100 via-purple-50 to-violet-100', iconBg: 'bg-gradient-to-br from-indigo-300 to-purple-400',  iconText: 'text-white',      title: 'text-indigo-900',   subtitle: 'text-indigo-700',   ring: 'focus:ring-indigo-300',  border: 'border-indigo-200/60', glow: 'shadow-[0_8px_20px_rgba(99,102,241,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(99,102,241,0.35)]' },
+    rose:    { bg: 'bg-gradient-to-br from-rose-100 via-pink-50 to-red-100',        iconBg: 'bg-gradient-to-br from-rose-300 to-pink-400',      iconText: 'text-white',      title: 'text-rose-900',     subtitle: 'text-rose-700',     ring: 'focus:ring-rose-300',    border: 'border-rose-200/60',   glow: 'shadow-[0_8px_20px_rgba(244,63,94,0.25)]',   hoverGlow: 'hover:shadow-[0_12px_28px_rgba(244,63,94,0.35)]' },
+    cyan:    { bg: 'bg-gradient-to-br from-cyan-100 via-teal-50 to-sky-100',        iconBg: 'bg-gradient-to-br from-cyan-300 to-teal-400',      iconText: 'text-white',      title: 'text-cyan-900',     subtitle: 'text-cyan-700',     ring: 'focus:ring-cyan-300',    border: 'border-cyan-200/60',   glow: 'shadow-[0_8px_20px_rgba(6,182,212,0.25)]',   hoverGlow: 'hover:shadow-[0_12px_28px_rgba(6,182,212,0.35)]' },
+    lime:    { bg: 'bg-gradient-to-br from-lime-100 via-green-50 to-emerald-100',   iconBg: 'bg-gradient-to-br from-lime-300 to-green-400',     iconText: 'text-white',      title: 'text-lime-900',     subtitle: 'text-lime-700',     ring: 'focus:ring-lime-300',    border: 'border-lime-200/60',   glow: 'shadow-[0_8px_20px_rgba(132,204,22,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(132,204,22,0.35)]' },
+    purple:  { bg: 'bg-gradient-to-br from-purple-100 via-fuchsia-50 to-pink-100',  iconBg: 'bg-gradient-to-br from-purple-300 to-fuchsia-400', iconText: 'text-white',      title: 'text-purple-900',   subtitle: 'text-purple-700',   ring: 'focus:ring-purple-300',  border: 'border-purple-200/60', glow: 'shadow-[0_8px_20px_rgba(168,85,247,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(168,85,247,0.35)]' },
+    orange:  { bg: 'bg-gradient-to-br from-orange-100 via-red-50 to-rose-100',      iconBg: 'bg-gradient-to-br from-orange-300 to-red-400',     iconText: 'text-white',      title: 'text-orange-900',   subtitle: 'text-orange-700',   ring: 'focus:ring-orange-300',  border: 'border-orange-200/60', glow: 'shadow-[0_8px_20px_rgba(249,115,22,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(249,115,22,0.35)]' },
+    pink:    { bg: 'bg-gradient-to-br from-pink-100 via-rose-50 to-fuchsia-100',    iconBg: 'bg-gradient-to-br from-pink-300 to-rose-400',      iconText: 'text-white',      title: 'text-pink-900',     subtitle: 'text-pink-700',     ring: 'focus:ring-pink-300',    border: 'border-pink-200/60',   glow: 'shadow-[0_8px_20px_rgba(236,72,153,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(236,72,153,0.35)]' },
+    blue:    { bg: 'bg-gradient-to-br from-blue-100 via-indigo-50 to-sky-100',      iconBg: 'bg-gradient-to-br from-blue-300 to-indigo-400',    iconText: 'text-white',      title: 'text-blue-900',     subtitle: 'text-blue-700',     ring: 'focus:ring-blue-300',    border: 'border-blue-200/60',   glow: 'shadow-[0_8px_20px_rgba(59,130,246,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(59,130,246,0.35)]' },
+    emerald: { bg: 'bg-gradient-to-br from-emerald-100 via-green-50 to-teal-100',   iconBg: 'bg-gradient-to-br from-emerald-300 to-green-400',  iconText: 'text-white',      title: 'text-emerald-900',  subtitle: 'text-emerald-700',  ring: 'focus:ring-emerald-300', border: 'border-emerald-200/60', glow: 'shadow-[0_8px_20px_rgba(16,185,129,0.25)]',  hoverGlow: 'hover:shadow-[0_12px_28px_rgba(16,185,129,0.35)]' },
   },
-  balon:     { bg: 'bg-white/50',          iconBg: 'bg-sky-100/70',     iconText: 'text-sky-600',    title: 'text-sky-900',   subtitle: 'text-sky-700',   ring: 'focus:ring-sky-300' },
-  gunes:     { bg: 'bg-amber-400/70',      iconBg: 'bg-orange-100/50',  iconText: 'text-orange-600', title: 'text-yellow-900',subtitle: 'text-yellow-700',ring: 'focus:ring-amber-300' },
-  tilki:     { bg: 'bg-green-900/70',      iconBg: 'bg-orange-400/20',  iconText: 'text-orange-300', title: 'text-white',     subtitle: 'text-green-200', ring: 'focus:ring-orange-300' },
+  gunes:     { bg: 'bg-gradient-to-br from-yellow-200/90 via-amber-200/85 to-orange-200/80', iconBg: 'bg-gradient-to-br from-yellow-300 to-amber-400', iconText: 'text-white', title: 'text-orange-900', subtitle: 'text-orange-700', ring: 'focus:ring-amber-300', border: 'border-yellow-300/60', glow: 'shadow-[0_10px_28px_rgba(251,191,36,0.35)]', hoverGlow: 'hover:shadow-[0_16px_38px_rgba(251,191,36,0.45)]' },
+  tilki:     { bg: 'bg-gradient-to-br from-white/85 via-amber-50/65 to-lime-100/60', iconBg: 'bg-white/80 border border-amber-100/50',  iconText: 'text-amber-500', title: 'text-emerald-900',     subtitle: 'text-emerald-700', ring: 'focus:ring-amber-200', border: 'border-amber-200/60', glow: 'shadow-[0_8px_24px_rgba(245,158,11,0.18)]', hoverGlow: 'hover:shadow-[0_14px_32px_rgba(56,161,105,0.22)]' },
   tilki2:    { bg: 'bg-green-700/70',      iconBg: 'bg-orange-400/20',  iconText: 'text-orange-300', title: 'text-white',     subtitle: 'text-green-200', ring: 'focus:ring-orange-300' },
   ay:        { bg: 'bg-indigo-900/70',     iconBg: 'bg-yellow-400/20',  iconText: 'text-yellow-300', title: 'text-white',     subtitle: 'text-indigo-200',ring: 'focus:ring-yellow-300' },
   geceorman: { bg: 'bg-indigo-800/70',     iconBg: 'bg-cyan-400/20',    iconText: 'text-cyan-300',   title: 'text-white',     subtitle: 'text-indigo-200',ring: 'focus:ring-cyan-300' },
   yagmur:    { bg: 'bg-emerald-800/70',    iconBg: 'bg-emerald-400/20', iconText: 'text-emerald-300',title: 'text-white',     subtitle: 'text-emerald-100',ring: 'focus:ring-emerald-300' },
   kus:       { bg: 'bg-sky-300/70',        iconBg: 'bg-sky-100/50',     iconText: 'text-sky-600',    title: 'text-sky-900',   subtitle: 'text-sky-700',   ring: 'focus:ring-sky-300' },
-  kedi:      { bg: 'bg-white/50',          iconBg: 'bg-lime-100/70',    iconText: 'text-lime-700',   title: 'text-lime-900',  subtitle: 'text-lime-800',  ring: 'focus:ring-lime-300' },
+  kedi:      { bg: 'bg-gradient-to-br from-amber-100/90 via-orange-100/70 to-yellow-100/80', iconBg: 'bg-white/90', iconText: 'text-orange-500', title: 'text-orange-900', subtitle: 'text-orange-700', ring: 'focus:ring-amber-200', border: 'border-orange-300/70', glow: 'shadow-[0_12px_30px_rgba(249,115,22,0.25)]', hoverGlow: 'hover:shadow-[0_16px_36px_rgba(249,115,22,0.35)]' },
   kar:       { bg: 'bg-white/60',          iconBg: 'bg-sky-200/50',     iconText: 'text-sky-700',    title: 'text-sky-900',   subtitle: 'text-sky-800',   ring: 'focus:ring-sky-300' },
   gunbatimi: { bg: 'bg-rose-900/60',       iconBg: 'bg-orange-400/20',  iconText: 'text-orange-300', title: 'text-white',     subtitle: 'text-rose-200',  ring: 'focus:ring-orange-300' },
   ay2:       { bg: 'bg-indigo-900/70',     iconBg: 'bg-yellow-400/20',  iconText: 'text-yellow-300', title: 'text-white',     subtitle: 'text-indigo-200',ring: 'focus:ring-yellow-300' },
   zurafa:    { bg: 'bg-white/60',          iconBg: 'bg-cyan-200/50',    iconText: 'text-cyan-700',   title: 'text-cyan-900',  subtitle: 'text-cyan-800',  ring: 'focus:ring-cyan-300' },
   geometri:  { bg: 'bg-rose-900/10',       iconBg: 'bg-rose-200/40',    iconText: 'text-rose-800',   title: 'text-rose-900',  subtitle: 'text-rose-700',  ring: 'focus:ring-rose-300' },
+  deneme:    { bg: 'bg-gradient-to-br from-purple-200/90 via-pink-200/85 to-red-200/80', iconBg: 'bg-gradient-to-br from-purple-400 to-pink-500', iconText: 'text-white', title: 'text-purple-900', subtitle: 'text-purple-700', ring: 'focus:ring-purple-300', border: 'border-purple-300/60', glow: 'shadow-[0_10px_28px_rgba(168,85,247,0.35)]', hoverGlow: 'hover:shadow-[0_16px_38px_rgba(168,85,247,0.45)]' },
 };
 
 
 const MenuButton: React.FC<MenuButtonProps> = ({ icon: Icon, title, subtitle, onClick, color, theme, children, disabled = false, badge, isUnderDevelopment }) => {
-  const isThemed = theme !== 'simple';
   const finalDisabled = disabled || isUnderDevelopment;
   const badgeClass = badge === 'Yeni!' ? 'bg-green-400 animate-pulse' : 'bg-orange-400';
 
-  if (!isThemed) {
-    const simpleClasses = themeConfig.simple[color];
-    return (
-        <button
-          onClick={onClick}
-          disabled={finalDisabled}
-          className={`relative w-full h-36 sm-landscape:h-28 text-left p-3 rounded-2xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-[1.03] hover:shadow-xl focus:outline-none focus:ring-4 ${simpleClasses.bg} ${simpleClasses.ring} ${finalDisabled ? 'opacity-50 grayscale pointer-events-none' : ''}`}
-        >
-            <div className="flex flex-col justify-between h-full">
-                <div className="flex-grow">
-                  <div className="flex items-start gap-3 sm-landscape:flex-col sm-landscape:items-start sm-landscape:gap-1">
-                    <div className={`p-2 sm-landscape:p-1.5 rounded-xl flex-shrink-0 ${simpleClasses.iconWrapper}`}>
-                      <Icon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${simpleClasses.text}`} />
-                    </div>
-                    <div className="flex-1 sm-landscape:w-full">
-                      <h2 className={`text-base font-bold leading-tight pt-1 sm-landscape:pt-0 ${simpleClasses.text} text-shadow-soft`}>{title}</h2>
-                    </div>
-                  </div>
-                  <p className={`text-sm leading-tight mt-1 ml-1 text-white/80 text-shadow-soft sm-landscape:hidden`}>{subtitle}</p>
-                </div>
-            </div>
-            {children}
-            {isUnderDevelopment && (
-            <div className="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">{t('app.developing', 'Under development')}</div>
-            )}
-            {disabled && badge && !isUnderDevelopment && (
-              <div className="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">Yakında</div>
-            )}
-            {badge && !disabled && !isUnderDevelopment && (
-              <div className={`absolute top-2 right-2 text-white text-xs font-bold px-2 py-1 rounded-full ${badgeClass}`}>{badge}</div>
-            )}
-        </button>
-    )
-  }
-
-  // Themed version for video backgrounds
-  const themedClasses = themeConfig[theme as ThemeKey] || themeConfig.balon; // Default to 'balon' style if theme not found
+  // All themes now use themed version with proper color palettes
+  const themedClasses = (theme === 'simple' && themeConfig.simple[color]) 
+    ? themeConfig.simple[color] 
+    : themeConfig[theme as ThemeKey] || themeConfig.simple.purple;
+  const themedBorder = themedClasses.border || 'border-white/30';
+  const themedGlow = themedClasses.glow || '';
+  const themedHoverGlow = themedClasses.hoverGlow || '';
+  
   return (
     <button
       onClick={onClick}
       disabled={finalDisabled}
-      className={`relative w-full h-36 sm-landscape:h-28 text-left p-3 rounded-2xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-[1.03] hover:shadow-xl focus:outline-none focus:ring-4 backdrop-blur-md border border-white/30 ${themedClasses.bg} ${themedClasses.ring} ${finalDisabled ? 'opacity-50 grayscale pointer-events-none' : ''}`}
+      className={`relative w-full h-44 landscape:h-44 text-left p-4 landscape:p-3 rounded-2xl shadow-lg ${themedGlow} transition-all duration-300 ease-in-out transform hover:scale-[1.03] hover:shadow-xl ${themedHoverGlow} focus:outline-none focus:ring-4 backdrop-blur-md border ${themedBorder} ${themedClasses.bg} ${themedClasses.ring} ${finalDisabled ? 'opacity-50 grayscale pointer-events-none' : ''}`}
     >
       <div className="flex flex-col justify-between h-full">
         <div className="flex-grow">
-          <div className="flex items-start gap-3 sm-landscape:flex-col sm-landscape:items-start sm-landscape:gap-1">
-            <div className={`p-2 sm-landscape:p-1.5 rounded-xl flex-shrink-0 ${themedClasses.iconBg}`}>
-              <Icon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${themedClasses.iconText}`} />
+          <div className="flex items-start gap-3 landscape:gap-2">
+            <div className={`p-3 landscape:p-2 rounded-xl flex-shrink-0 ${themedClasses.iconBg}`}>
+              <Icon className={`w-9 h-9 landscape:w-7 landscape:h-7 ${themedClasses.iconText}`} />
             </div>
-            <div className="flex-1 sm-landscape:w-full">
-              <h2 className={`text-base font-bold leading-tight pt-1 sm-landscape:pt-0 ${themedClasses.title}`}>{title}</h2>
+            <div className="flex-1">
+              <h2 className={`text-xl landscape:text-base font-bold leading-tight ${themedClasses.title} ${theme === 'kedi' ? 'text-shadow-soft' : ''}`}>{title}</h2>
             </div>
           </div>
-          <p className={`text-sm leading-tight mt-1 ml-1 ${themedClasses.subtitle} sm-landscape:hidden`}>{subtitle}</p>
+          <p className={`text-sm landscape:text-xs leading-snug mt-2 landscape:mt-1.5 ml-1 ${themedClasses.subtitle} ${theme === 'kedi' ? 'text-shadow-soft' : ''}`}>{subtitle}</p>
         </div>
       </div>
+      {theme === 'kedi' && (
+        <span className="absolute bottom-2 right-2 text-3xl animate-bounce drop-shadow-[0_6px_12px_rgba(249,115,22,0.35)]">
+          🐱
+        </span>
+      )}
       {children}
       {isUnderDevelopment && (
         <div className="absolute top-2 right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">Geliştiriliyor</div>

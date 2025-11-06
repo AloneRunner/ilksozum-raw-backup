@@ -115,7 +115,7 @@ export const enToysData: ConceptRound[] = [
   {
     id: 1510,
     question: 'Which one is the kite?',
-    questionAudioKey: 'q_which_is_kite',
+    questionAudioKey: 'q_which_is_kite_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 135, word: 'uçurtma', imageUrl: '/images/135.png', isCorrect: true, audioKey: 'uçurtma', spokenText: 'kite' },

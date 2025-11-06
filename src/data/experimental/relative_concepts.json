@@ -1,0 +1,77 @@
+{
+  "id": "relative_concepts_v1",
+  "titleKey": "experimental.relativeComparison.title",
+  "instructionKey": "experimental.relativeComparison.instruction",
+  "rounds": [
+    {
+      "id": "size_950_953",
+      "dimension": "size",
+      "items": [
+        { "imageId": 950, "labelKey": "experimental.relativeComparison.images.950", "rank": 1 },
+        { "imageId": 951, "labelKey": "experimental.relativeComparison.images.951", "rank": 2 },
+        { "imageId": 952, "labelKey": "experimental.relativeComparison.images.952", "rank": 3 },
+        { "imageId": 953, "labelKey": "experimental.relativeComparison.images.953", "rank": 4 }
+      ]
+    },
+    {
+      "id": "width_954_957",
+      "dimension": "width",
+      "items": [
+        { "imageId": 954, "labelKey": "experimental.relativeComparison.images.954", "rank": 4 },
+        { "imageId": 955, "labelKey": "experimental.relativeComparison.images.955", "rank": 3 },
+        { "imageId": 956, "labelKey": "experimental.relativeComparison.images.956", "rank": 2 },
+        { "imageId": 957, "labelKey": "experimental.relativeComparison.images.957", "rank": 1 }
+      ]
+    },
+    {
+      "id": "thin_thick_958_961",
+      "dimension": "thickness",
+      "items": [
+        { "imageId": 958, "labelKey": "experimental.relativeComparison.images.958", "rank": 1 },
+        { "imageId": 959, "labelKey": "experimental.relativeComparison.images.959", "rank": 2 },
+        { "imageId": 960, "labelKey": "experimental.relativeComparison.images.960", "rank": 3 },
+        { "imageId": 961, "labelKey": "experimental.relativeComparison.images.961", "rank": 4 }
+      ]
+    },
+    {
+      "id": "quantity_962_965",
+      "dimension": "quantity",
+      "items": [
+        { "imageId": 962, "labelKey": "experimental.relativeComparison.images.962", "rank": 1 },
+        { "imageId": 963, "labelKey": "experimental.relativeComparison.images.963", "rank": 2 },
+        { "imageId": 964, "labelKey": "experimental.relativeComparison.images.964", "rank": 3 },
+        { "imageId": 965, "labelKey": "experimental.relativeComparison.images.965", "rank": 4 }
+      ]
+    },
+    {
+      "id": "length_966_969",
+      "dimension": "length",
+      "items": [
+        { "imageId": 966, "labelKey": "experimental.relativeComparison.images.966", "rank": 1 },
+        { "imageId": 967, "labelKey": "experimental.relativeComparison.images.967", "rank": 2 },
+        { "imageId": 968, "labelKey": "experimental.relativeComparison.images.968", "rank": 3 },
+        { "imageId": 969, "labelKey": "experimental.relativeComparison.images.969", "rank": 4 }
+      ]
+    },
+    {
+      "id": "distance_970_973",
+      "dimension": "distance",
+      "items": [
+        { "imageId": 970, "labelKey": "experimental.relativeComparison.images.970", "rank": 1 },
+        { "imageId": 971, "labelKey": "experimental.relativeComparison.images.971", "rank": 2 },
+        { "imageId": 972, "labelKey": "experimental.relativeComparison.images.972", "rank": 3 },
+        { "imageId": 973, "labelKey": "experimental.relativeComparison.images.973", "rank": 4 }
+      ]
+    },
+    {
+      "id": "height_974_977",
+      "dimension": "height",
+      "items": [
+        { "imageId": 974, "labelKey": "experimental.relativeComparison.images.974", "rank": 1 },
+        { "imageId": 975, "labelKey": "experimental.relativeComparison.images.975", "rank": 2 },
+        { "imageId": 976, "labelKey": "experimental.relativeComparison.images.976", "rank": 3 },
+        { "imageId": 977, "labelKey": "experimental.relativeComparison.images.977", "rank": 4 }
+      ]
+    }
+  ]
+}

@@ -38,9 +38,9 @@ export const enYesNoData: Word[] = [
     { id: 112, word: 'bread', imageUrl: getMeta(112).imageUrl, audioKeys: { default: getMeta(112).audioKeys.default }, questionText: 'Is this bread?', isCorrectAnswer: true, activityType: ActivityType.YesNo },
     { id: 112, word: 'cheese', imageUrl: getMeta(112).imageUrl, audioKeys: { default: getMeta(50).audioKeys.default }, questionText: 'Is this cheese?', isCorrectAnswer: false, activityType: ActivityType.YesNo },
     { id: 113, word: 'egg', imageUrl: getMeta(113).imageUrl, audioKeys: { default: getMeta(113).audioKeys.default }, questionText: 'Is this an egg?', isCorrectAnswer: true, activityType: ActivityType.YesNo },
-    { id: 113, word: 'egg', imageUrl: getMeta(113).imageUrl, audioKeys: { default: getMeta(113).audioKeys.default }, questionText: 'Is this a potato?', isCorrectAnswer: false, activityType: ActivityType.YesNo },
+    { id: 113, word: 'potato', imageUrl: getMeta(113).imageUrl, audioKeys: { default: getMeta(802).audioKeys.default }, questionText: 'Is this a potato?', isCorrectAnswer: false, activityType: ActivityType.YesNo },
     { id: 63, word: 'ice cream', imageUrl: getMeta(63).imageUrl, audioKeys: { default: getMeta(63).audioKeys.default }, questionText: 'Is this ice cream?', isCorrectAnswer: true, activityType: ActivityType.YesNo },
-    { id: 63, word: 'ice cream', imageUrl: getMeta(63).imageUrl, audioKeys: { default: getMeta(63).audioKeys.default }, questionText: 'Is this yogurt?', isCorrectAnswer: false, activityType: ActivityType.YesNo },
+    { id: 63, word: 'yogurt', imageUrl: getMeta(63).imageUrl, audioKeys: { default: getMeta(176).audioKeys.default }, questionText: 'Is this yogurt?', isCorrectAnswer: false, activityType: ActivityType.YesNo },
 
     // --- Objects & Vehicles ---
     { id: 1, word: 'car', imageUrl: getMeta(1).imageUrl, audioKeys: { default: getMeta(1).audioKeys.default }, questionText: 'Is this a car?', isCorrectAnswer: true, activityType: ActivityType.YesNo },

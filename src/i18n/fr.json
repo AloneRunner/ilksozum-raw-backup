@@ -3,14 +3,21 @@
     "printPreview": "Aperçu avant impression",
     "savePdf": "Enregistrer en PDF",
     "print": "Imprimer",
-    "back": "Revenir",
+    "back": "Retour",
+    "developing": "En développement",
     "pdfSavedInfo": "PDF enregistré. Consultez votre dossier Documents ou utilisez le menu Partager.",
-    "pdfSaveError": "Une erreur s’est produite lors de l’enregistrement du PDF. Veuillez réessayer.",
-    "pdfCreateError": "Une erreur s’est produite lors de la création du PDF. Veuillez réessayer.",
+    "pdfSaveError": "Une erreur s'est produite lors de l'enregistrement du PDF. Veuillez réessayer.",
+    "pdfCreateError": "Une erreur s'est produite lors de la création du PDF. Veuillez réessayer.",
     "pdfJobName": "Cartes Mes Premiers Mots",
     "shareTitle": "PDF enregistré",
     "shareText": "Le fichier PDF a été enregistré. Voulez-vous le partager ?",
-    "shareDialogTitle": "Partager le PDF"
+    "shareDialogTitle": "Partager le PDF",
+    "noContentForActivity": "Aucun contenu trouvé pour cette activité.",
+    "noMoreImagesForActivity": "Il n'y a plus d'images à afficher pour cette activité.",
+    "noActivitySelected": "Aucune activité sélectionnée.",
+    "activityLoadError": "Une erreur s'est produite lors du chargement de l'activité.",
+    "randomActivityRestarting": "Redémarrage de l'activité aléatoire en cours…",
+    "activityRestarting": "Redémarrage de l'activité…"
   },
   "choice": {
     "readQuestion": "Lire la question",
@@ -19,26 +26,1738 @@
     "hint": "Indice",
     "showLabel": "Afficher les étiquettes",
     "hideLabel": "Masquer les étiquettes",
-    "showHint": "Afficher l’indice",
-    "hideHint": "Masquer l’indice",
-    "banImageAria": "Ne plus afficher cette image",
-    "learnColors": "Apprendre les couleurs",
+    "showHint": "Afficher l'indice",
     "learnShapes": "Apprendre les formes",
-    "learnEmotions": "Apprendre les émotions"
+    "learnEmotions": "Apprendre les émotions",
+    "hideHint": "Masquer l'indice",
+    "banImageAria": "Ne plus afficher cette image",
+    "learnColors": "Apprendre les couleurs"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Activer la lecture automatique",
+    "autoSpeakOff": "Désactiver la lecture automatique"
   },
   "feedback": {
-    "correctPrefix": "Oui, c’est",
-    "wrongPrefix": "Non, c’est"
+    "correctPrefix": "Oui, c'est",
+    "wrongPrefix": "Non, ce n'est pas",
+    "rightPrefix": "Correct, c'est",
+    "sentence": {
+      "correct": "Oui, le {noun} est {adjective}.",
+      "wrong": "Non, le {noun} n'est pas {adjective}."
+    }
   },
   "settings": {
     "language": "Langue",
-    "languageSubtitle": "Langue de l’interface et de la synthèse vocale",
-    "languageNote": "Les activités sur les lettres sont pour l’instant uniquement en turc."
+    "languageSubtitle": "Langue de l'interface et de la synthèse vocale",
+    "languageNote": "Les activités sur les lettres sont pour l'instant uniquement en turc.",
+    "languageAutoNote": "Remarque : Certaines traductions ont été générées avec l'aide de l'IA et peuvent contenir des erreurs. Nous présentons nos excuses aux parents concernés — envoyez-nous vos retours pour que nous puissions corriger les traductions."
   },
   "categories": {
     "objectsIntl": {
       "title": "Objets",
-      "subtitle": "Jeux de questions sur des objets (fixes) pour les langues hors turc"
+      "subtitle": "Ensembles d'objets sélectionnés pour les langues non-turques",
+      "noCuratedSet": "Aucun jeu sélectionné pour cette catégorie pour le moment."
+    }
+  },
+  "menu": {
+    "hello": "Bonjour",
+    "appTitle": "Autisme & Maternelle: 1er Mot",
+    "experimentalTag": "Expérimental",
+    "random": {
+      "title": "Mode aléatoire",
+      "subtitle": "Jouer un mélange d'activités sélectionnées"
+    },
+    "parentTips": {
+      "title": "Conseils pour les parents",
+      "subtitle": "Utilisez l'application plus efficacement"
+    },
+    "letterSound": {
+      "title": "Lettres et sons",
+      "subtitle": "Apprenez les lettres et les sons, épeler et lire."
+    },
+    "objects": {
+      "title": "Découvrons les objets",
+      "subtitle": "Apprenez les animaux, les fruits et plus encore."
+    },
+    "concepts": {
+      "title": "Activités de concepts",
+      "subtitle": "Apprenez les couleurs, les formes et les concepts opposés."
+    },
+    "reasoning": {
+      "title": "Jeux de logique",
+      "subtitle": "Jouez à des jeux de mémoire, sudoku et logique."
+    },
+    "fineMotor": {
+      "title": "Motricité fine",
+      "subtitle": "Suivi de ligne, coloriage, et plus",
+      "developingNote": "En développement",
+      "backButton": "Retour au menu Motricité fine"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Motricité fine"
+      },
+      "fineMotor": {
+        "lineTracing": "Suivi de ligne",
+        "shapeColoring": "Coloriage de formes",
+        "rhythmFollowing": "Suivi du rythme"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Qui • Quoi • Où • Quand • Pourquoi • Comment",
+      "developingNote": "En développement",
+      "category": {
+        "who": "Qui ?",
+        "what": "Quoi ?",
+        "where": "Où ?",
+        "when": "Quand ?",
+        "why": "Pourquoi ?",
+        "how": "Comment ?",
+        "mixed": "Mélangé"
+      }
+    }
+  },
+  "programMode": {
+    "menuTitle": "Mode Programme",
+    "menuSubtitle": "Lancer une session quotidienne guidée",
+    "title": "Mode Programme",
+    "subtitle": "Démarrez une courte session d’apprentissage guidée.",
+    "betaTag": "Expérimental",
+    "forParents": "Note rapide pour les parents",
+    "unitShort": "Unité",
+    "start": "Démarrer le Mode Programme",
+    "badge": "Mode Programme",
+    "unitProgress": "Unité {current}/{total}",
+    "completed": "Terminé",
+    "dailyLimitReached": "Limite quotidienne atteinte",
+    "dailyLimitMessage": "Vous pouvez progresser d'un maximum d'1 unité par jour. Revenez demain !",
+    "jokerActive": "Joker Actif",
+    "progress": {
+      "activity": "Activité {current}/{total}",
+      "round": "Tour {current}/{total}"
+    },
+    "explainer": {
+      "point1": "Offre un flux court et ciblé du concret vers l’abstrait.",
+      "point2": "Pyramide de 10 unités : Bonjour le Monde (Unité 1) → Maîtrise (Unité 10).",
+      "point3": "Chaque activité est évaluée avec pool large (15 tentatives, 80%) et pool étroit (2 parfait).",
+      "point4": "Maximum 1 unité par jour possible. Mode libre évalué avec pondération de 50%.",
+      "point5": "Les parents peuvent débloquer temporairement avec 'Joker' (gratuit pour tous)."
+    },
+    "sessionRules": {
+      "warmup": "Échauffement : 1-2 activités maîtrisées",
+      "newContent": "Nouveau contenu : 2-3 activités débloquées",
+      "reinforcement": "Renforcement : 1-2 activités presque maîtrisées",
+      "dailyLimit": "Limite quotidienne : Maximum 1 unité de progression",
+      "jokerInfo": "Joker : Déblocage temporaire (4/12/24/48/72 heures)",
+      "freeMode": "Mode libre : Évalué avec pondération de 50%"
+    },
+    "planPreview": {
+      "title": "Déroulé du jour",
+      "thisSession": "Dans cette session, dans l'ordre :",
+      "ifGood": "Si tout se passe bien, prochaine session :"
+    }
+  },
+  "fiveWOneH": {
+    "category": {
+      "who": "Qui ?",
+      "what": "Quoi ?",
+      "where": "Où ?",
+      "when": "Quand ?",
+      "why": "Pourquoi ?",
+      "how": "Comment ?",
+      "mixed": "Mixte"
+    },
+    "q_who_to_when_sick": {
+      "question": "Chez qui allons-nous quand nous sommes malades ?",
+      "correct": "Oui ! Nous allons chez le médecin quand nous sommes malades.",
+      "wrong": "Non, ce n'est pas là que nous allons quand nous sommes malades."
+    },
+    "q_who_to_when_fire": {
+      "question": "Qui appelons-nous en cas d'incendie ?",
+      "correct": "Correct ! Nous appelons les pompiers en cas d'incendie.",
+      "wrong": "Non, en cas d'incendie, nous devrions appeler les pompiers."
+    },
+    "q_who_uses_this": {
+      "question": "Qui utilise ceci ?",
+      "correct": "Oui ! Un enseignant utilise le tableau noir.",
+      "wrong": "Non, il est généralement utilisé par un enseignant."
+    },
+    "q_who_brings_letter": {
+      "question": "Qui apporte la lettre ?",
+      "correct": "Correct ! Le facteur apporte la lettre.",
+      "wrong": "Non, le facteur apporte la lettre."
+    },
+    "q_what_brush_teeth_with": {
+      "question": "Avec quoi nous brossons-nous les dents ?",
+      "correct": "Oui ! Nous nous brossons les dents avec du dentifrice.",
+      "wrong": "Non, nous ne nous brossons pas les dents avec ça."
+    },
+    "q_what_eat_with": {
+      "question": "Qu'utilisons-nous pour manger ?",
+      "correct": "Correct ! Nous utilisons une fourchette pour manger.",
+      "wrong": "Non, nous n'utilisons pas cela pour manger."
+    },
+    "q_where_doctor_works": {
+      "question": "Où travaille un médecin ?",
+      "correct": "Oui ! Un médecin travaille à l'hôpital.",
+      "wrong": "Non, un médecin travaille à l'hôpital."
+    },
+    "q_where_is_swing": {
+      "question": "Où est la balançoire ?",
+      "correct": "Correct ! La balançoire est au terrain de jeu.",
+      "wrong": "Non, la balançoire est au terrain de jeu."
+    },
+    "q_where_do_we_sleep": {
+      "question": "Où dormons-nous ?",
+      "correct": "Oui ! Nous dormons dans un lit.",
+      "wrong": "Non, nous ne dormons pas là."
+    },
+    "q_where_fish_lives": {
+      "question": "Où vivent les poissons ?",
+      "correct": "Oui ! Les poissons vivent dans un aquarium.",
+      "wrong": "Non, les poissons ne vivent pas là."
+    },
+    "q_when_see_owl": {
+      "question": "Quand voyons-nous les hiboux ?",
+      "correct": "Correct ! Nous voyons les hiboux la nuit.",
+      "wrong": "Non, les hiboux sont généralement vus la nuit."
+    },
+    "q_when_use_umbrella": {
+      "question": "Quand utilisons-nous un parapluie ?",
+      "correct": "Oui ! Nous utilisons un parapluie quand il pleut.",
+      "wrong": "Non, nous n'utilisons pas de parapluie à ce moment-là."
+    },
+    "q_when_wear_beanie": {
+      "question": "Quand portons-nous un bonnet ?",
+      "correct": "Correct ! Nous portons un bonnet quand il neige.",
+      "wrong": "Non, nous ne portons pas de bonnet à ce moment-là."
+    },
+    "q_why_icecream_melted": {
+      "question": "Pourquoi la glace a-t-elle fondu ?",
+      "correct": "Oui ! La glace fond à cause du soleil.",
+      "wrong": "Non, ce n'est pas pourquoi la glace fond."
+    },
+    "q_why_clothes_neat": {
+      "question": "Pourquoi les vêtements sont-ils bien rangés ?",
+      "correct": "Correct ! Parce qu'ils ont été repassés.",
+      "wrong": "Non, cela ne les rend pas bien rangés."
+    },
+    "q_how_go_to_school": {
+      "question": "Comment allons-nous à l'école ?",
+      "correct": "Oui ! Nous allons à l'école en bus scolaire.",
+      "wrong": "Non, nous n'y allons généralement pas de cette façon."
+    },
+    "q_how_open_door": {
+      "question": "Comment ouvrons-nous la porte ?",
+      "correct": "Oui ! Nous ouvrons la porte avec une clé.",
+      "wrong": "Non, nous n'ouvrons pas la porte avec ça."
+    },
+    "q_how_baby_feels": {
+      "question": "Comment se sent le bébé ?",
+      "correct": "Correct ! Le bébé se sent triste.",
+      "wrong": "Non, le bébé ne se sent pas comme ça."
+    },
+    "q_where_is_sleeping_child": {
+      "question": "Où cet enfant pourrait-il dormir ?",
+      "correct": "Oui ! Nous dormons généralement dans un lit.",
+      "wrong": "Non, nous dormons généralement dans un lit."
+    },
+    "q_why_child_wants_play": {
+      "question": "Pourquoi cet enfant veut-il jouer ?",
+      "correct": "Correct ! Pour s'amuser et jouer avec des amis.",
+      "wrong": "Non, généralement pour s'amuser avec des amis."
+    },
+    "q_where_child_wants_to_go_outside": {
+      "question": "Où l'enfant pourrait-il vouloir aller dehors ?",
+      "correct": "Oui ! L'enfant peut vouloir aller au parc.",
+      "wrong": "Non, généralement, le parc est souhaité."
+    },
+    "q_why_child_tired": {
+      "question": "Pourquoi cet enfant pourrait-il être fatigué ?",
+      "correct": "Correct ! En raison d'un long temps de jeu ou de peu de sommeil.",
+      "wrong": "Non, généralement à cause d'une longue activité ou de peu de sommeil."
+    },
+    "q_where_child_wants_go_park": {
+      "question": "Où cet enfant veut-il aller ?",
+      "correct": "Oui ! Il veut aller au parc.",
+      "wrong": "Non, pas à un endroit différent."
+    },
+    "q_how_child_prefers_drive": {
+      "question": "Comment cet enfant voyage-t-il en voiture ?",
+      "correct": "Correct ! En portant une ceinture de sécurité et avec un parent.",
+      "wrong": "Non, cela doit être en sécurité avec un adulte."
+    },
+    "q_when_rhino_active": {
+      "question": "Quand les rhinocéros sont-ils généralement plus actifs ?",
+      "correct": "Correct ! Selon les espèces, le jour ou au crépuscule.",
+      "wrong": "Non, généralement pas la nuit."
+    },
+    "q_where_camels_live": {
+      "question": "Où trouve-t-on habituellement les chameaux ?",
+      "correct": "Oui ! Dans les déserts et les zones arides.",
+      "wrong": "Non, généralement dans les déserts."
+    },
+    "q_where_fish_live_915": {
+      "question": "Où vivent habituellement les poissons ?",
+      "correct": "Oui ! Ils vivent dans l'eau.",
+      "wrong": "Non, ils ne vivent pas hors de l'eau."
+    },
+    "q_when_bears_hibernate": {
+      "question": "Quand les ours hibernent-ils ?",
+      "correct": "Correct ! Pendant l'hiver.",
+      "wrong": "Non, pendant la saison d'hiver."
+    },
+    "q_who_flies_plane": {
+      "question": "Qui pilote l'avion ?",
+      "correct": "Oui ! Un pilote pilote l'avion.",
+      "wrong": "Non, ils ne pilotent pas l'avion."
+    },
+    "q_who_cuts_hair": {
+      "question": "Chez qui allons-nous pour nous faire couper les cheveux ?",
+      "correct": "Correct ! Un coiffeur nous coupe les cheveux.",
+      "wrong": "Non, ils ne nous coupent pas les cheveux."
+    },
+    "q_who_provides_milk": {
+      "question": "Qui nous fournit du lait ?",
+      "correct": "Oui ! Un agriculteur fournit du lait.",
+      "wrong": "Non, il est généralement fourni par un agriculteur."
+    },
+    "q_what_erase_text": {
+      "question": "Qu'utilisons-nous pour effacer ce qui est écrit ?",
+      "correct": "Correct ! Nous utilisons une gomme pour effacer.",
+      "wrong": "Non, nous n'effaçons pas avec ça."
+    },
+    "q_what_measure_height": {
+      "question": "Qu'utilises-tu pour mesurer la taille ?",
+      "correct": "Oui ! Nous utilisons une règle pour mesurer la taille.",
+      "wrong": "Non, nous ne mesurons pas la taille avec ça."
+    },
+    "q_what_dry_after_bath": {
+      "question": "Avec quoi nous séchons-nous après un bain ?",
+      "correct": "Correct ! Nous nous séchons avec une serviette après un bain.",
+      "wrong": "Non, nous ne nous séchons pas avec ça."
+    },
+    "q_where_to_eat": {
+      "question": "Où allons-nous pour manger ?",
+      "correct": "Oui ! Nous allons au restaurant pour manger.",
+      "wrong": "Non, nous n'y allons pas pour manger."
+    },
+    "q_where_to_read_books": {
+      "question": "Où pouvons-nous aller pour lire des livres ?",
+      "correct": "Correct ! Nous pouvons aller à la bibliothèque pour lire des livres.",
+      "wrong": "Non, ce n'est pas un bon endroit pour lire des livres."
+    },
+    "q_where_to_shop": {
+      "question": "Où faisons-nous les courses ?",
+      "correct": "Oui ! Nous faisons les courses au marché.",
+      "wrong": "Non, nous ne faisons pas les courses là-bas."
+    },
+    "q_when_go_to_bed": {
+      "question": "Quand allons-nous au lit ?",
+      "correct": "Correct ! Nous allons au lit la nuit.",
+      "wrong": "Non, nous n'allons pas au lit à ce moment-là."
+    },
+    "q_when_go_to_beach": {
+      "question": "Quand allons-nous à la plage ?",
+      "correct": "Oui ! Nous allons à la plage quand il fait soleil.",
+      "wrong": "Non, nous n'allons pas à la plage à ce moment-là."
+    },
+    "q_when_make_snowman": {
+      "question": "Quand faisons-nous un bonhomme de neige ?",
+      "correct": "Correct ! Nous faisons un bonhomme de neige quand il neige.",
+      "wrong": "Non, nous ne faisons pas de bonhomme de neige à ce moment-là."
+    },
+    "q_why_child_cold": {
+      "question": "Pourquoi cet enfant a-t-il froid ?",
+      "correct": "Oui ! Parce qu'il fait froid.",
+      "wrong": "Non, ce n'est pas pour ça qu'ils ont froid."
+    },
+    "q_why_hair_wet": {
+      "question": "Pourquoi ces cheveux sont-ils mouillés ?",
+      "correct": "Correct ! Ils sont mouillés à cause d'une douche.",
+      "wrong": "Non, ce n'est pas pour ça qu'ils sont mouillés."
+    },
+    "q_how_reach_high_shelf": {
+      "question": "Comment atteignons-nous une étagère haute ?",
+      "correct": "Oui ! Nous utilisons une échelle pour l'atteindre.",
+      "wrong": "Non, nous ne pouvons pas l'atteindre avec ça."
+    },
+    "q_how_travel_at_sea": {
+      "question": "Comment voyageons-nous en mer ?",
+      "correct": "Correct ! Nous voyageons en bateau en mer.",
+      "wrong": "Non, nous ne voyageons généralement pas comme ça en mer."
+    },
+    "q_how_clean_room": {
+      "question": "Comment nettoyons-nous la chambre ?",
+      "correct": "Oui ! Nous nettoyons la chambre avec un seau et des produits de nettoyage.",
+      "wrong": "Non, nous ne nettoyons pas la chambre avec ça."
+    },
+    "q_who_teaches_at_school": {
+      "question": "Regarde l'image. Qui nous enseigne à l'école ? Choisis la bonne personne.",
+      "correct": "Correct ! C'est le professeur qui enseigne.",
+      "wrong": "Non, à l'école, c'est le professeur qui enseigne."
+    },
+    "q_what_do_we_drink_water_with": {
+      "question": "Lequel utilisons-nous pour boire de l'eau ? Choisissez soigneusement.",
+      "correct": "Oui ! Nous buvons de l'eau avec un verre.",
+      "wrong": "Non, nous ne buvons pas d'eau avec ça."
+    },
+    "q_where_do_we_store_books": {
+      "question": "Où rangeons-nous les livres ? Choisis le bon endroit.",
+      "correct": "Correct ! Nous les rangeons sur une étagère.",
+      "wrong": "Non, nous rangeons les livres sur une étagère."
+    },
+    "q_when_use_sunscreen": {
+      "question": "Quand utilisons-nous de la crème solaire ? Choisissez le bon moment.",
+      "correct": "Oui ! Quand il fait soleil.",
+      "wrong": "Non, nous l'utilisons généralement quand il fait soleil."
+    },
+    "q_why_wash_hands": {
+      "question": "Pourquoi nous lavons-nous les mains ? Choisis la raison saine.",
+      "correct": "Correct ! Pour être propre et se protéger des microbes.",
+      "wrong": "Non, nous nous lavons les mains pour être propres."
+    },
+    "q_how_dry_hands": {
+      "question": "Après s'être lavé les mains, comment les séchons-nous ? Choisissez la bonne méthode.",
+      "correct": "Oui ! Nous les séchons avec une serviette.",
+      "wrong": "Non, nous séchons les mains avec une serviette."
+    }
+  },
+  "reasoning": {
+    "title": "Jeux de logique",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Lequel ne correspond pas ?",
+        "subtitle": "Trouve ce qui ne va pas ensemble"
+      },
+      "functionalMatching": {
+        "title": "Association fonctionnelle",
+        "subtitle": "Associer les objets à leur fonction"
+      },
+      "causeEffect": {
+        "title": "Cause et effet",
+        "subtitle": "Trouver les relations entre les événements"
+      },
+      "sequencingStories": {
+        "title": "Séquençage d'histoires",
+        "subtitle": "Mettre l'histoire dans l'ordre"
+      },
+      "patternCompletion": {
+        "title": "Complétion de motifs",
+        "subtitle": "Prédire la forme suivante"
+      },
+      "sudoku": {
+        "title": "Sudoku d'images",
+        "subtitle": "Compléter la pièce manquante"
+      },
+      "memoryCards": {
+        "title": "Cartes mémoire",
+        "subtitle": "Trouver les paires correspondantes",
+        "instruction": "Mémorise les positions et trouve les paires correspondantes.",
+        "remainingLabel": "Remaining comparisons",
+        "memorizeTitle": "Mémorise !",
+        "playTitle": "Trouve les paires"
+      },
+      "dragAndDropCounting": {
+        "title": "Déplacer des objets",
+        "subtitle": "Déplacer le nombre demandé d'objets"
+      },
+      "dragAndDropPositioning": {
+        "title": "Placer la balle",
+        "subtitle": "Placer l'objet au bon endroit"
+      }
+    },
+    "causeEffect": {
+      "rounds": {
+        "1": { "question": "Que faisons-nous quand il pleut ?" },
+        "2": { "question": "Pourquoi la glace fond-elle ?" },
+        "3": { "question": "Que devient une graine ?" },
+        "4": { "question": "Comment nettoyons-nous nos mains ?" },
+        "5": { "question": "Que se passe-t-il si tu laisses tomber ceci ?" },
+        "6": { "question": "Qu'est-ce qui fait brûler le feu ?" },
+        "7": { "question": "Que se passe-t-il si tu casses un vase avec un marteau ?" },
+        "8": { "question": "Que portons-nous quand il neige ?" },
+        "9": { "question": "Que fait un bébé quand il a faim ?" },
+        "10": { "question": "Comment défroisse-t-on une chemise ?" },
+        "11": { "question": "Que faisons-nous quand la nuit arrive ?" },
+        "12": { "question": "Comment une fleur pousse-t-elle ?" },
+        "13": { "question": "Que se passe-t-il quand on lit un livre ?" },
+        "14": { "question": "Que se passe-t-il quand on gonfle un ballon ?" },
+        "15": { "question": "Que se passe-t-il quand la pâte est cuite ?" }
+      }
+    }
+  },
+  "communication": {
+    "title": "Cartes de communication visuelle",
+    "subtitle": "Système de communication par échange d'images - exprimez vos besoins à travers des images.",
+    "composeHint": "Appuyez sur les cartes pour construire une phrase.",
+    "printHint": "Appuyez sur les cartes pour les ajouter au panier.",
+    "finishSelection": "Terminer la sélection",
+    "addToBasket": "Ajouter au panier",
+    "finishSelectionAria": "Terminer la sélection de cartes",
+    "selectForPrintAria": "Sélectionner les cartes à imprimer",
+    "clearSentenceAria": "Effacer la phrase",
+    "speakSentenceAria": "Prononcer la phrase",
+    "selectCardsForCategory": "Sélectionner les cartes pour \"{title}\"",
+    "printSelectionHelp": "Sélectionnez les cartes à ajouter à votre panier.",
+    "printSelectionCount": "{count} / 9 sélectionné(s)",
+    "removeFromBasket": "Retirer du panier",
+    "printBasketTitle": "Panier d'impression",
+    "basketEmpty": "Votre panier est vide",
+    "basketEmptyHelp": "Retournez aux catégories pour ajouter les cartes que vous voulez imprimer.",
+    "clear": "Vider",
+    "clearBasketAria": "Vider le panier",
+    "printSelectedAria": "Imprimer les cartes sélectionnées",
+    "printPoolLimitWarning": "Votre panier est presque plein ou plein. Vous pouvez ajouter jusqu'à 9 cartes.",
+    "printPoolLimitTooMany": "Vous pouvez sélectionner jusqu'à 9 cartes à imprimer. Veuillez en retirer quelques-unes.",
+    "categories": {
+      "ihtiyaclar": "Besoins essentiels",
+      "eylemler": "Actions",
+      "duygular": "Sentiments",
+      "kisiler": "Personnes",
+      "yerler": "Lieux",
+      "esyalar": "Objets",
+      "hayvanlar": "Animaux",
+      "tasitlar": "Véhicules",
+      "needs": "Besoins essentiels",
+      "actions": "Actions",
+      "emotions": "Sentiments",
+      "people": "Personnes",
+      "places": "Lieux",
+      "objects": "Objets",
+      "animals": "Animaux",
+      "vehicles": "Véhicules"
+    },
+    "subcategories": {
+      "meyveler": "Fruits",
+      "sebzeler": "Légumes",
+      "ana-yemekler": "Plats principaux",
+      "kahvaltiliklar": "Petit-déjeuner",
+      "atistirmaliklar": "Collations",
+      "icecekler": "Boissons",
+      "saglik": "Santé",
+      "tuvalet": "Toilettes",
+      "temizlik": "Hygiène",
+      "uyku": "Sommeil",
+      "gunluk": "Routines quotidiennes",
+      "hareket": "Mouvement et sports",
+      "sosyal": "Interactions sociales",
+      "sanatsal": "Artistique et créatif",
+      "istekler": "Demandes",
+      "pozitif": "Positif",
+      "negatif": "Négatif",
+      "fiziksel": "États physiques",
+      "aile": "Membres de la famille",
+      "okul_kisi": "Environnement scolaire",
+      "meslekler": "Professions",
+      "ev_yer": "Maison",
+      "okul_yer": "École",
+      "dis_mekan": "Extérieur",
+      "ev_esya": "Articles ménagers",
+      "okul_esya": "Fournitures scolaires",
+      "kiyafetler": "Vêtements",
+      "oyun_esya": "Jouets et loisirs",
+      "evcil": "Animaux domestiques",
+      "ciftlik": "Animaux de ferme",
+      "vahsi": "Animaux sauvages",
+      "kara": "Véhicules terrestres",
+      "hava": "Véhicules aériens",
+      "deniz": "Véhicules marins",
+      "fruits": "Fruits",
+      "vegetables": "Légumes",
+      "mainDishes": "Plats principaux",
+      "breakfast": "Petit-déjeuner",
+      "snacks": "Collations",
+      "drinks": "Boissons",
+      "health": "Santé",
+      "toilet": "Toilettes",
+      "hygiene": "Hygiène",
+      "sleep": "Sommeil",
+      "daily": "Routines quotidiennes",
+      "movement": "Mouvement et sports",
+      "social": "Interactions sociales",
+      "artistic": "Artistique et créatif",
+      "requests": "Demandes",
+      "positive": "Positif",
+      "negative": "Négatif",
+      "physical": "États physiques",
+      "family": "Membres de la famille",
+      "schoolPeople": "Environnement scolaire",
+      "professions": "Professions",
+      "homePlaces": "Maison",
+      "schoolPlaces": "École",
+      "outdoors": "Extérieur",
+      "householdItems": "Articles ménagers",
+      "schoolSupplies": "Fournitures scolaires",
+      "clothing": "Vêtements",
+      "toysAndHobbies": "Jouets et loisirs",
+      "pets": "Animaux domestiques",
+      "farm": "Animaux de ferme",
+      "wild": "Animaux sauvages",
+      "land": "Véhicules terrestres",
+      "air": "Véhicules aériens",
+      "sea": "Véhicules marins"
+    }
+  },
+  "settingsEx": {
+    "title": "Paramètres",
+    "premium": {
+      "title": "Fonctionnalités Premium",
+      "desc": "Supprimez les publicités, activez l'interface à thème (fonds animés), consultez le rapport de progression parentale et soutenez le développement.",
+      "cta": "Passer en Premium et nous soutenir",
+      "mathQuestion": "Confirmation parentale :\n\nRépondez à cette question pour continuer :\n\n{num1} + {num2} = ?",
+      "wrongAnswer": "Mauvaise réponse. Veuillez réessayer.",
+      "confirmPurchase": "Confirmer l'achat ?\n\nCette opération sera facturée.",
+      "holdToPurchaseAria": "Maintenez 2 secondes pour acheter",
+      "monthly": "Mensuel",
+      "lifetime": "À vie"
+    },
+    "profile": {
+      "title": "Profil",
+      "active": "Profil actif",
+      "manage": "Gérer"
+    },
+    "achievements": {
+      "title": "Succès",
+      "subtitle": "Voir les badges",
+      "view": "Voir"
+    },
+    "theme": {
+      "title": "Thème de l'application"
+    },
+    "general": {
+      "title": "Paramètres généraux"
+    },
+    "mute": {
+      "title": "Mode muet",
+      "subtitle": "Désactive tous les sons"
+    },
+    "autoSpeak": {
+      "title": "Lecture automatique",
+      "subtitle": "Les questions sont lues automatiquement"
+    },
+    "fastMode": {
+      "title": "Mode rapide",
+      "subtitle": "Accélère les transitions"
+    },
+    "content": {
+      "title": "Paramètres de contenu"
+    },
+    "banButton": {
+      "title": "Bouton bannir l'image",
+      "subtitle": "Affiche le bouton 'Bannir'"
+    },
+    "manageBanned": {
+      "title": "Gérer les images bannies",
+      "subtitle": "Modifier vos images bannies"
+    },
+    "activityManagement": {
+      "title": "Gestion des activités"
+    },
+    "data": {
+      "title": "Gestion des données"
+    },
+    "reset": {
+      "title": "Réinitialiser la progression",
+      "subtitle": "Supprime toutes les données de {name}",
+      "confirm": "Êtes-vous sûr de vouloir réinitialiser toute la progression pour {name} ? Cette action est irréversible."
+    },
+    "about": {
+      "title": "À propos"
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "subtitle": "Utilisation des données et vos droits",
+      "read": "Lire"
+    },
+    "backToSettingsAria": "Revenir aux paramètres"
+  },
+  "achievements": {
+    "title": "Réussites",
+    "subtitle": "Gagnez un badge en réussissant parfaitement une activité 3 fois !",
+    "viewReportAria": "Voir le rapport de progression",
+    "completed": "Terminé",
+    "categories": {
+      "letterSound": "Lettres et sons",
+      "objects": "Découvrons les objets",
+      "concept": "Apprendre les concepts",
+      "reasoning": "Jeux de logique",
+    "fiveWOneH": "5Q1C",
+    "relativeComparison": "Comparaison Relative"
+    }
+  },
+  "common": {
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "letters": {
+    "groups": "Groupes",
+    "letters": "Lettres",
+    "noWordsForGroup": "Aucun mot trouvé pour ce groupe.",
+    "couldNotCreateForLetter": "Impossible de créer cette activité pour la lettre '{letter}'.",
+    "syllableRestarting": "Redémarrage de l'activité de syllabes…"
+  },
+  "concepts": {
+    "basic": "De base",
+    "dimensional": "Dimensionnel",
+    "tactile": "Tactile",
+    "state": "État",
+    "quantity": "Quantité",
+    "location": "Position",
+    "time": "Temps",
+    "activities": {
+      "yesNo": "Oui / Non",
+      "colors": "Couleurs",
+      "shapes": "Formes",
+      "emotions": "Émotions",
+      "parlakMat": "Brillant / Mat",
+      "seffafOpak": "Transparent / Opaque",
+      "straightCurved": "Droit / Courbé",
+      "bigSmall": "Grand / Petit",
+      "longShort": "Long / Court",
+      "thinThick": "Fin / Épais",
+      "wideNarrow": "Large / Étroit",
+      "heavyLight": "Lourd / Léger",
+      "derinSig": "Profond / Peu profond",
+      "kalabalikTenha": "Bondé / Peu fréquenté",
+      "hardSoft": "Dur / Mou",
+      "roughSmooth": "Rugueux / Lisse",
+      "dikenliPuruzsuz": "Épineux / Lisse",
+      "kirisikDuzgun": "Froissé / Lisse",
+      "sivriKut": "Pointu / Émoussé",
+      "oldNew": "Vieux / Neuf",
+      "youngOld": "Jeune / Vieux",
+      "cleanDirty": "Propre / Sale",
+      "wetDry": "Mouillé / Sec",
+      "openClosed": "Ouvert / Fermé",
+      "aliveLifeless": "Vivant / Inanimé",
+      "brokenIntact": "Cassé / Intact",
+      "messyClean": "En désordre / Rangé",
+      "tazeBayat": "Frais / Rassis",
+      "dugumCozuk": "Noué / Dénoué",
+      "hungryFull": "Affamé / Rassasié",
+      "tembelCaliskan": "Paresseux / Travailleur",
+      "hotCold": "Chaud / Froid",
+      "bitterSweet": "Amer / Sucré",
+      "tersDuz": "À l'envers / Droit",
+      "fewMuch": "Peu / Beaucoup",
+      "halfQuarterWhole": "Entier / Moitié / Quart",
+      "fullEmpty": "Plein / Vide",
+      "oddEven": "Impair / Pair",
+      "onUnder": "Sur / Sous",
+      "belowAbove": "En bas / En haut",
+      "inFrontOfBehind": "Devant / Derrière",
+      "insideOutside": "À l'intérieur / À l'extérieur",
+      "besideOpposite": "Côte à côte / En face",
+      "between": "Entre",
+      "leftRight": "Gauche / Droite",
+      "nearFar": "Près / Loin",
+      "highLow": "Haut / Bas",
+      "beforeAfter": "Avant / Après",
+      "dayNight": "Jour / Nuit",
+      "fastSlow": "Rapide / Lent",
+      "senses": "Nos sens",
+      "shinyMatte": "Brillant / Mat",
+      "transparentOpaque": "Transparent / Opaque",
+      "deepShallow": "Profond / Peu profond",
+      "crowdedSparse": "Bondé / Clairsemé",
+      "thornySmooth": "Épineux / Lisse",
+      "wrinkledSmooth": "Froissé / Lisse",
+      "pointedBlunt": "Pointu / Émoussé",
+      "messyTidy": "En désordre / Rangé",
+      "freshStale": "Frais / Rassis",
+      "knottedUntied": "Noué / Dénoué",
+      "lazyHardworking": "Paresseux / Travailleur",
+      "upsideDownUpright": "À l'envers / Droit",
+      "wholeHalfQuarter": "Entier / Moitié / Quart"
+    },
+    "subtitles": {
+      "approveReject": "Approuver ou rejeter l'image",
+      "findColor": "Trouver la couleur demandée",
+      "rightShape": "Choisir la bonne forme",
+      "recognizeFaces": "Reconnaître les expressions faciales",
+      "learnReflections": "Apprendre les reflets",
+      "understandTransparency": "Comprendre la transparence",
+      "recognizeLines": "Reconnaître les lignes",
+      "compareSizes": "Comparer les tailles",
+      "tellLengths": "Distinguer les longueurs",
+      "learnThickness": "Apprendre l'épaisseur",
+      "understandWidth": "Comprendre la largeur",
+      "compareWeights": "Comparer les poids",
+      "measureDepths": "Mesurer les profondeurs",
+      "understandCrowding": "Comprendre l'encombrement",
+      "feelTextures": "Ressentir les textures",
+      "knowSurfaces": "Connaître les surfaces",
+      "plantAnimalTextures": "Textures de plantes et d'animaux",
+      "surfaceConditions": "États de surface",
+      "identifyPoints": "Identifier les pointes",
+      "indicatePositions": "Indiquer les positions",
+      "understandHeights": "Comprendre les hauteurs",
+      "learnOrder": "Apprendre l'ordre",
+      "indicatePlace": "Indiquer le lieu",
+      "learnDirections": "Apprendre les directions",
+      "findMiddle": "Trouver celui du milieu",
+      "tellDirections": "Distinguer les directions",
+      "understandDistances": "Comprendre les distances",
+      "compareLevels": "Comparer les niveaux",
+      "learnTimesOfDay": "Apprendre les moments de la journée",
+      "orderEvents": "Ordonner les événements",
+      "compareSpeeds": "Comparer les vitesses",
+      "compareQuantities": "Comparer les quantités",
+      "learnParts": "Apprendre les parties",
+      "knowContainerStates": "Connaître l'état des contenants",
+      "groupNumbers": "Grouper les nombres",
+      "untangleConnections": "Démêler les connexions",
+      "understandFullness": "Comprendre le remplissage",
+      "understandBehaviors": "Comprendre les comportements",
+      "feelTemperatures": "Sentir les températures",
+      "learnTastes": "Apprendre les goûts",
+      "findCorrectOne": "Trouver le bon"
+    }
+  },
+  "completion": {
+    "heading": "Félicitations !",
+    "msg": {
+      "low": "On réessaie ?",
+      "mid": "Tu te débrouilles très bien !",
+      "high": "Excellent travail !"
+    },
+    "restart": "Rejouer",
+    "home": "Menu principal"
+  },
+  "story": {
+    "readStory": "Lire l'histoire"
+  },
+  "themes": {
+    "simple": "Simple",
+    "balon": "Ballon",
+    "gunes": "Soleil",
+    "tilki": "Renard",
+    "ay": "Lune",
+    "geceorman": "Forêt nocturne",
+    "yagmur": "Pluie",
+    "kus": "Oiseaux",
+    "tilki2": "Renard des prairies",
+    "kedi": "Chat",
+    "kar": "Neige",
+    "gunbatimi": "Coucher de soleil",
+    "ay2": "Croissant",
+    "zurafa": "Girafe",
+    "geometri": "Géométrique",
+    "balloon": "Ballon",
+    "sun": "Soleil",
+    "fox": "Renard",
+    "moon": "Lune",
+    "nightForest": "Forêt nocturne",
+    "rain": "Pluie",
+    "birds": "Oiseaux",
+    "prairieFox": "Renard des prairies",
+    "cat": "Chat",
+    "snow": "Neige",
+    "sunset": "Coucher de soleil",
+    "crescent": "Croissant",
+    "giraffe": "Girafe",
+    "geometric": "Géométrique"
+  },
+  "tabs": {
+    "activities": "Activités",
+    "communication": "Communication",
+    "achievements": "Rapports",
+    "settings": "Paramètres"
+  },
+  "activityMgmt": {
+    "enableAll": "Tout activer",
+    "enableAllHelp": "Activer/désactiver toutes les activités de cette catégorie",
+    "title": "Gestion des activités",
+    "objects": "Découvrons les objets",
+    "concepts": "Activités de concepts",
+    "reasoning": "Jeux de logique",
+    "fineMotor": "Motricité fine",
+    "lineTracing": "Suivi de ligne",
+    "shapeColoring": "Coloriage de formes",
+    "rhythmFollowing": "Suivi du rythme"
+  },
+  "consent": {
+    "title": "Consentement à la confidentialité",
+    "body": "Pour continuer à utiliser l'application, veuillez accepter notre Politique de confidentialité. Nous ne collectons pas de données personnelles ; votre progression et vos réglages restent sur votre appareil. Des publicités non personnalisées peuvent être affichées dans la version gratuite.",
+    "accept": "J'accepte",
+    "viewPolicy": "Lire la politique de confidentialité"
+  },
+  "activities": {
+    "letter": {
+      "syllabification": "Syllabation",
+      "grid": "Grille de lettres",
+      "findSoundInImage": "Trouver le son dans l'image",
+      "embeddedStory": "Heure du conte",
+      "soundPresence": "Le son est-il présent ?",
+      "findTheLetter": "Trouver la lettre"
+    }
+  },
+  "objects": {
+    "categories": {
+      "hayvan": "Animaux",
+      "meyve": "Fruits",
+      "sebze": "Légumes",
+      "yiyecek": "Aliments",
+      "giysi": "Vêtements",
+      "vücut": "Parties du corps",
+      "mutfak": "Ustensiles de cuisine",
+      "ev": "Maison",
+      "ev_esya": "Objets ménagers",
+      "oyuncak": "Jouets",
+      "ulasim": "Transports",
+      "muzik_aleti": "Instruments de musique",
+      "tamir_aleti": "Outils",
+      "eglence": "Divertissements",
+      "okul_esya": "Fournitures scolaires",
+      "profession": "Professions",
+      "insan": "Personnes",
+      "bitki": "Plantes",
+      "doğal yapı": "Structures naturelles",
+      "doğal nesne": "Objets naturels",
+      "doğa olayı": "Phénomènes naturels",
+      "yer": "Lieux",
+      "bina": "Bâtiments",
+      "uzay": "Espace",
+      "meyveler": "Fruits",
+      "sebzeler": "Légumes",
+      "icecekler": "Boissons",
+      "diger_yiyecekler": "Autres aliments",
+      "ev_esyalari": "Articles ménagers",
+      "oyuncaklar": "Jouets",
+      "giysiler_aksesuarlar": "Vêtements et accessoires",
+      "okul_ofis": "Fournitures scolaires et de bureau",
+      "okul_ofis_gerecleri": "Fournitures scolaires et de bureau",
+      "mutfak_gerecleri": "Ustensiles de cuisine",
+      "tasitlar": "Véhicules",
+      "hayvanlar": "Animaux",
+      "bitkiler": "Plantes",
+      "vucudun_bolumleri": "Parties du corps",
+      "meslekler": "Professions",
+      "yerler_odalar": "Lieux et pièces",
+      "doga_uzay": "Structures naturelles et espace",
+      "ev_yapi_insaat": "Maison et construction",
+      "aletler": "Outils",
+      "muzik_aletleri": "Instruments de musique",
+      "animal": "Animaux",
+      "fruit": "Fruits",
+      "vegetable": "Légumes",
+      "food": "Aliments",
+      "clothing": "Vêtements",
+      "body": "Parties du corps",
+      "kitchen": "Ustensiles de cuisine",
+      "home": "Maison",
+      "householdItems": "Articles ménagers",
+      "toys": "Jouets",
+      "transportation": "Transports",
+      "musicalInstruments": "Instruments de musique",
+      "tools": "Outils",
+      "entertainment": "Divertissements",
+      "schoolSupplies": "Fournitures scolaires",
+      "professions": "Professions",
+      "people": "Personnes",
+      "plants": "Plantes",
+      "naturalStructure": "Structures naturelles",
+      "naturalObject": "Objets naturels",
+      "naturalEvent": "Phénomènes naturels",
+      "places": "Lieux",
+      "buildings": "Bâtiments",
+      "space": "Espace",
+      "fruits": "Fruits",
+      "vegetables": "Légumes",
+      "drinks": "Boissons",
+      "otherFoods": "Autres aliments",
+      "household_items": "Articles ménagers",
+      "toys_games": "Jouets",
+      "clothesAccessories": "Vêtements et accessoires",
+      "schoolOffice": "Fournitures scolaires et de bureau",
+      "kitchenUtensils": "Ustensiles de cuisine",
+      "vehicles": "Véhicules",
+      "animals": "Animaux",
+      "bodyParts": "Parties du corps",
+      "placesRooms": "Lieux et pièces",
+      "naturalSpace": "Structures naturelles et espace",
+      "houseConstruction": "Maison et construction",
+      "musical_instruments": "Instruments de musique"
+    },
+    "noTestForCategory": "Impossible de créer un test pour cette catégorie.",
+    "activityRestarting": "Redémarrage de l'activité des objets…"
+  },
+  "parentTips": {
+    "guide": "Guide de l'application",
+    "learnTogether": {
+      "title": "Apprendre ensemble",
+      "text": "Faites les activités avec votre enfant. Répétez les noms des objets et posez des questions à leur sujet (\"Où vit cet animal ?\", \"Quel goût a ce fruit ?\"). Cela favorise le développement du langage et renforce votre lien."
+    },
+    "profile": {
+      "title": "Gestion des profils (optionnel)",
+      "text": "Au premier lancement, l'application crée automatiquement un profil \"Invité\". Si vous souhaitez suivre plusieurs enfants séparément, vous pouvez créer de nouveaux profils dans le menu Paramètres ou passer d'un profil à l'autre."
+    },
+    "settings": {
+      "title": "Explorer les paramètres",
+      "themed": {
+        "title": "Interface à thème",
+        "text": "Changez l'apparence de l'application. Le mode 'Thème' propose des arrière-plans animés, tandis que le mode 'Simple' offre une palette plus douce."
+      },
+      "fastMode": {
+        "title": "Mode rapide",
+        "text": "Raccourcit les retours et accélère les transitions entre les activités."
+      },
+      "ban": {
+        "title": "Bannir une image",
+        "text": "Si votre enfant n'aime pas une image, activez 'Bannir l'image' dans les paramètres et utilisez le bouton bannir pendant les activités pour la masquer à l'avenir."
+      }
+    },
+    "progress": {
+      "title": "Suivre les progrès",
+      "achievements": {
+        "title": "Onglet Réussites",
+        "text": "Montre les catégories maîtrisées par votre enfant. Gagnez un badge en réussissant parfaitement une activité 3 fois !"
+      },
+      "report": {
+        "title": "Rapport de progression",
+        "text": "Met en avant les activités les plus difficiles et les plus réussies pour votre enfant."
+      }
+    },
+    "communication": {
+      "title": "Cartes de communication",
+      "text": "Aidez votre enfant à exprimer ses besoins, sentiments ou demandes grâce à la section Cartes de communication."
+    },
+    "customize": {
+      "title": "Personnaliser les activités",
+      "text": "Utilisez la gestion des activités dans les paramètres pour vous concentrer sur des compétences spécifiques ou désactiver temporairement des activités que votre enfant n'est pas prêt à faire."
+    },
+    "randomMode": {
+      "title": "Essayer le mode aléatoire",
+      "text": "Propose un mélange aléatoire de tous les exercices activés de différentes catégories pour renforcer l'apprentissage de façon ludique."
+    },
+    "extra": {
+      "title": "Conseils supplémentaires",
+      "practice": {
+        "title": "Mode entraînement (bientôt)",
+        "text": "Bientôt, vous pourrez lancer une 'session d'entraînement' basée sur les activités les plus difficiles pour votre enfant."
+      }
+    }
+  },
+  "questions": {
+    "q_which_is_upsidedown": "Lequel est à l'envers ?",
+    "q_which_is_different": "Lequel est différent ?",
+    "q_which_is_big": "Lequel est grand ?",
+    "q_which_is_small": "Lequel est petit ?",
+    "q_which_is_higher": "Lequel est plus haut ?",
+    "q_which_is_lower": "Lequel est plus bas ?",
+    "q_which_is_left": "Lequel regarde à gauche ?",
+    "q_which_is_right": "Lequel regarde à droite ?",
+    "q_which_is_on": "Lequel est au-dessus ?",
+    "q_which_is_under": "Lequel est en dessous ?",
+    "q_which_is_few": "Lequel en a peu ?",
+    "q_which_is_many": "Lequel en a beaucoup ?",
+    "q_which_is_odd": "Lequel est impair ?",
+    "q_which_is_even": "Lequel est pair ?",
+    "q_which_is_rough": "Lequel est rugueux ?",
+    "q_which_is_smooth": "Lequel est lisse ?",
+    "q_which_is_color": "Lequel est {color} ?",
+    "q_which_is_shape": "Lequel est {shape} ?",
+    "q_which_is_object": "Lequel est l'objet ?",
+    "q_does_this_have_sound": "Est-ce que cela fait du bruit ?",
+    "q_what_after_socks": "Que mettons-nous après les chaussettes ?",
+    "q_where_use_pillow": "Où utilise-t-on l'oreiller ?",
+    "q_what_eat_soup_with": "Avec quoi mange-t-on la soupe ?",
+    "q_what_color_picture_with": "Avec quoi colorie-t-on le dessin ?",
+    "q_what_write_paper_with": "Avec quoi écrit-on sur le papier ?",
+    "q_what_brush_teeth_with": "Avec quoi se brosse-t-on les dents ?",
+    "q_what_hammer_nail_with": "Avec quoi enfonce-t-on le clou ?",
+    "q_what_open_door_with": "Avec quoi ouvre-t-on la porte ?",
+    "q_what_eat_pasta_with": "Avec quoi mange-t-on les pâtes ?",
+    "q_where_put_money": "Où mettons-nous l'argent ?",
+    "q_put_ball_in_box": "Mets la balle dans la boîte.",
+    "q_put_book_on_table": "Pose le livre sur la table.",
+    "q_put_car_left_of_house": "Place la voiture à gauche de la maison.",
+    "q_put_apple_right_of_basket": "Place la pomme à droite du panier.",
+    "q_put_shoe_under_bed": "Mets la chaussure sous le lit.",
+    "q_which_is_shiny": "Lequel est brillant ?",
+    "q_which_is_matte": "Lequel est mat ?",
+    "q_which_is_transparent": "Lequel est transparent ?",
+    "q_which_is_opaque": "Lequel est opaque ?",
+    "q_which_is_straight": "Lequel est droit ?",
+    "q_which_is_curved": "Lequel est courbé ?",
+    "q_which_is_crowded": "Lequel est bondé ?",
+    "q_which_is_sparse": "Lequel est clairsemé ?",
+    "q_which_is_pointed": "Lequel est pointu ?",
+    "q_which_is_blunt": "Lequel est émoussé ?",
+    "q_which_is_thick": "Lequel est épais ?",
+    "q_which_is_thin": "Lequel est mince ?",
+    "q_which_is_wide": "Lequel est large ?",
+    "q_which_is_narrow": "Lequel est étroit ?",
+    "q_which_is_hard": "Lequel est dur ?",
+    "q_which_is_soft": "Lequel est mou ?",
+    "q_which_is_heavy": "Lequel est lourd ?",
+    "q_which_is_light": "Lequel est léger ?",
+    "q_which_is_hot": "Lequel est chaud ?",
+    "q_which_is_cold": "Lequel est froid ?",
+    "q_which_is_wet": "Lequel est mouillé ?",
+    "q_which_is_dry": "Lequel est sec ?",
+    "q_which_is_wet_person": "Lequel est mouillé ?",
+    "q_which_is_dry_person": "Lequel est sec ?",
+    "q_which_is_open": "Lequel est ouvert ?",
+    "q_which_is_open_person": "Lequel est ouvert ?",
+    "q_which_is_closed": "Lequel est fermé ?",
+    "q_which_is_closed_person": "Lequel est fermé ?",
+    "q_which_is_hungry": "Lequel a faim ?",
+    "q_which_is_hungry_person": "Lequel a faim ?",
+    "q_which_is_full": "Lequel est rassasié ?",
+    "q_which_is_satiated_person": "Lequel est rassasié ?",
+    "q_which_is_messy": "Lequel est en désordre ?",
+    "q_which_is_tidy": "Lequel est bien rangé ?",
+    "q_which_is_noisy": "Lequel est bruyant ?",
+    "q_which_is_quiet": "Lequel est silencieux ?",
+    "q_which_is_old": "Lequel est vieux ?",
+    "q_which_is_new": "Lequel est nouveau ?",
+    "q_which_is_young": "Lequel est jeune ?",
+    "q_which_is_old_person": "Lequel est vieux ?",
+    "q_which_is_young_person": "Lequel est jeune ?",
+    "q_which_is_lazy": "Lequel est paresseux ?",
+    "q_which_is_hardworking": "Lequel est travailleur ?",
+    "q_which_is_fresh": "Lequel est frais ?",
+    "q_which_is_stale": "Lequel est rassis ?",
+    "q_which_is_upright": "Lequel est droit ?",
+    "q_which_is_upright_person": "Lequel est droit ?",
+    "q_which_is_alive": "Lequel est vivant ?",
+    "q_which_is_upsidedown_person": "Lequel est à l'envers ?",
+    "q_which_is_lifeless": "Lequel est sans vie ?",
+    "q_which_is_bitter": "Lequel est amer ?",
+    "q_which_is_sweet": "Lequel est sucré ?",
+    "q_which_is_sour": "Lequel est acide ?",
+    "q_which_is_thorny": "Lequel est épineux ?",
+    "q_which_is_knotted": "Lequel est noué ?",
+    "q_which_is_untied": "Lequel est dénoué ?",
+    "q_which_is_long": "Lequel est long ?",
+    "q_which_is_short": "Lequel est court ?",
+    "q_which_is_wrinkled": "Lequel est froissé ?",
+    "q_which_is_broken": "Lequel est cassé ?",
+    "q_which_is_intact": "Lequel est intact ?",
+    "q_which_is_clean": "Lequel est propre ?",
+    "q_which_is_dirty": "Lequel est sale ?",
+    "q_which_is_above": "Lequel est en haut ?",
+    "q_which_is_below": "Lequel est en bas ?",
+    "q_which_are_beside": "Lesquels sont côte à côte ?",
+    "q_which_are_opposite": "Lesquels sont en face ?",
+    "q_which_is_in_front": "Lequel est devant ?",
+    "q_which_is_behind": "Lequel est derrière ?",
+    "q_which_is_inside": "Lequel est à l'intérieur ?",
+    "q_which_is_outside": "Lequel est à l'extérieur ?",
+    "q_which_is_between": "Lequel est entre ?",
+    "q_which_is_near": "Lequel est proche ?",
+    "q_which_is_far": "Lequel est loin ?",
+    "q_which_is_deep": "Lequel est profond ?",
+    "q_which_is_shallow": "Lequel est peu profond ?",
+    "q_which_faces_left": "Lequel regarde à gauche ?",
+    "q_which_faces_right": "Lequel regarde à droite ?",
+    "q_which_is_before": "Lequel est avant ?",
+    "q_which_is_after": "Lequel est après ?",
+    "q_which_is_day": "Lequel représente le jour ?",
+    "q_which_is_night": "Lequel représente la nuit ?",
+    "q_which_is_fast": "Lequel est rapide ?",
+    "q_which_is_slow": "Lequel est lent ?",
+    "q_which_sense_see_person": "[TODO translate] q_which_sense_see",
+    "q_which_is_cat_person": "[TODO translate] q_which_is_cat",
+    "q_which_is_lion_person": "[TODO translate] q_which_is_lion",
+    "q_which_is_elephant_person": "[TODO translate] q_which_is_elephant",
+    "q_which_is_fish_person": "[TODO translate] q_which_is_fish",
+    "q_which_is_bird_person": "[TODO translate] q_which_is_bird",
+    "q_which_is_rabbit_person": "[TODO translate] q_which_is_rabbit",
+    "q_which_is_giraffe_person": "[TODO translate] q_which_is_giraffe",
+    "q_which_is_butterfly_person": "[TODO translate] q_which_is_butterfly",
+    "q_which_is_bee_person": "[TODO translate] q_which_is_bee",
+    "q_which_is_duck_person": "[TODO translate] q_which_is_duck",
+    "q_which_is_turtle_person": "[TODO translate] q_which_is_turtle",
+    "q_which_is_eye_person": "[TODO translate] q_which_is_eye",
+    "q_which_is_ear_person": "[TODO translate] q_which_is_ear",
+    "q_which_is_hand_person": "[TODO translate] q_which_is_hand",
+    "q_which_is_foot_person": "[TODO translate] q_which_is_foot",
+    "q_which_is_hair_person": "[TODO translate] q_which_is_hair",
+    "q_which_is_mouth_person": "[TODO translate] q_which_is_mouth",
+    "q_which_is_tongue_person": "[TODO translate] q_which_is_tongue",
+    "q_which_is_arm_person": "[TODO translate] q_which_is_arm",
+    "q_which_is_leg_person": "[TODO translate] q_which_is_leg",
+    "q_which_is_bagel_person": "[TODO translate] q_which_is_bagel",
+    "q_which_is_apple_person": "[TODO translate] q_which_is_apple",
+    "q_which_is_orange_person": "[TODO translate] q_which_is_orange",
+    "q_which_is_strawberry_person": "[TODO translate] q_which_is_strawberry",
+    "q_which_are_grapes_person": "[TODO translate] q_which_are_grapes",
+    "q_which_is_watermelon_person": "[TODO translate] q_which_is_watermelon",
+    "q_which_is_lemon_person": "[TODO translate] q_which_is_lemon",
+    "q_which_is_pear_person": "[TODO translate] q_which_is_pear",
+    "q_which_is_cherry_person": "[TODO translate] q_which_is_cherry",
+    "q_which_is_pineapple_person": "[TODO translate] q_which_is_pineapple",
+    "q_which_is_melon_person": "[TODO translate] q_which_is_melon",
+    "q_which_is_peach_person": "[TODO translate] q_which_is_peach",
+    "q_which_is_stone_person": "[TODO translate] q_which_is_stone",
+    "q_which_is_leaf_person": "[TODO translate] q_which_is_leaf",
+    "q_which_is_ice_person": "[TODO translate] q_which_is_ice",
+    "q_which_is_tree_trunk_person": "[TODO translate] q_which_is_tree_trunk",
+    "q_which_is_feather_person": "[TODO translate] q_which_is_feather",
+    "q_which_is_snow_person": "[TODO translate] q_which_is_snow",
+    "q_which_is_waterfall_person": "[TODO translate] q_which_is_waterfall",
+    "q_which_is_teacher_person": "[TODO translate] q_which_is_teacher",
+    "q_which_is_baby_person": "[TODO translate] q_which_is_baby",
+    "q_which_is_family_person": "[TODO translate] q_which_is_family",
+    "q_which_is_grandmother_person": "[TODO translate] q_which_is_grandmother",
+    "q_which_is_grandfather_person": "[TODO translate] q_which_is_grandfather",
+    "q_which_is_king_person": "[TODO translate] q_which_is_king",
+    "q_which_is_queen_person": "[TODO translate] q_which_is_queen",
+    "q_which_is_tree_person": "[TODO translate] q_which_is_tree",
+    "q_which_is_cactus_person": "[TODO translate] q_which_is_cactus",
+    "q_which_is_grass_person": "[TODO translate] q_which_is_grass",
+    "q_which_is_cotton_person": "[TODO translate] q_which_is_cotton",
+    "q_which_is_tulip_person": "[TODO translate] q_which_is_tulip",
+    "q_which_is_daisy_person": "[TODO translate] q_which_is_daisy",
+    "q_which_is_doctor_person": "[TODO translate] q_which_is_doctor",
+    "q_which_is_firefighter_person": "[TODO translate] q_which_is_firefighter",
+    "q_which_is_chef_person": "[TODO translate] q_which_is_chef",
+    "q_which_is_nurse_person": "[TODO translate] q_which_is_nurse",
+    "q_which_is_pilot_person": "[TODO translate] q_which_is_pilot",
+    "q_which_is_farmer_person": "[TODO translate] q_which_is_farmer",
+    "q_which_is_postman_person": "[TODO translate] q_which_is_postman",
+    "q_which_is_barber_person": "[TODO translate] q_which_is_barber",
+    "q_which_is_waiter_person": "[TODO translate] q_which_is_waiter",
+    "q_which_is_astronaut_person": "[TODO translate] q_which_is_astronaut",
+    "q_which_is_notebook_person": "[TODO translate] q_which_is_notebook",
+    "q_which_is_kite_person": "[TODO translate] q_which_is_kite",
+    "q_which_is_tomato_person": "[TODO translate] q_which_is_tomato",
+    "q_which_is_potato_person": "[TODO translate] q_which_is_potato",
+    "q_which_is_onion_person": "[TODO translate] q_which_is_onion",
+    "q_which_is_pepper_person": "[TODO translate] q_which_is_pepper",
+    "q_which_is_lettuce_person": "[TODO translate] q_which_is_lettuce",
+    "q_which_is_carrot_person": "[TODO translate] q_which_is_carrot",
+    "q_which_is_eggplant_person": "[TODO translate] q_which_is_eggplant",
+    "q_which_is_corn_person": "[TODO translate] q_which_is_corn",
+    "q_which_is_broccoli_person": "[TODO translate] q_which_is_broccoli",
+    "q_which_is_cauliflower_person": "[TODO translate] q_which_is_cauliflower",
+    "q_which_is_cabbage_person": "[TODO translate] q_which_is_cabbage",
+    "q_which_is_alive_person": "Lequel est vivant ?",
+    "q_which_is_big_person": "Lequel est grand ?",
+    "q_which_is_bitter_person": "Lequel est amer ?",
+    "q_which_is_clean_person": "Lequel est propre ?",
+    "q_which_is_thorny_person": "Lequel est épineux ?",
+    "q_which_is_hard_person": "Lequel est dur ?",
+    "q_which_is_long_person": "Lequel est long ?",
+    "q_which_is_noisy_person": "Lequel est bruyant ?",
+    "q_which_is_rough_person": "Lequel est rugueux ?",
+    "q_which_is_lazy_person": "Lequel est paresseux ?",
+    "q_which_is_few_person": "Lequel en a peu ?",
+    "q_which_is_different_person": "Lequel est différent ?",
+    "q_which_is_on_person": "Lequel est au-dessus ?",
+    "q_which_is_day_person": "Lequel représente le jour ?",
+    "q_which_is_before_person": "Lequel est avant ?"
+  },
+  "parentReport": {
+    "title": "Rapport de progression",
+    "goBackAria": "Revenir",
+    "viewAchievementsAria": "Voir les succès",
+    "mostChallenging": "Domaines les plus difficiles (Résumé)",
+    "bestPerforming": "Domaines les plus réussis (Résumé)",
+    "recommendations": "Recommandations",
+    "fullReport": "Rapport complet des activités",
+    "recentActivities": "Activités récentes",
+    "successLabel": "Succès",
+    "errorLabel": "Erreur",
+    "attemptsLabel": "Essais",
+    "noChallengesFound": "Aucune difficulté majeure trouvée. Bravo !",
+    "noSuccessDataYet": "Plus d'activités doivent être complétées pour collecter des données de réussite.",
+    "noRecentActivities": "Aucune activité complétée pour l'instant.",
+    "recommendationFocusOn": "Vous pouvez commencer par vous concentrer sur l'activité \"{activityName}\" qui pose le plus de difficultés à votre enfant.",
+    "recommendationModel": "En rejouant cette activité, vous pouvez servir de modèle et trouver ensemble les bonnes réponses.",
+    "recommendationReinforce": "Votre enfant réussit très bien \"{activityName}\" ! Essayez des activités similaires pour renforcer sa confiance dans ce domaine.",
+    "recommendationGeneral": "Continuez le parcours d'apprentissage ! Essayez différentes catégories pour acquérir de nouvelles compétences."
+  },
+  "programReport": {
+    "title": "Progression du Mode Programme",
+    "currentUnit": "Unité actuelle",
+    "unlockedUnits": "Unités débloquées",
+    "progress": "Progression",
+    "completed": "Toutes les unités terminées ! Excellent !",
+    "advanced": "Niveau avancé ! Vous êtes dans l'unité {unit}.",
+    "progressing": "Belle progression ! Vous êtes dans l'unité {unit}.",
+    "beginning": "Phase de démarrage. Continuez !",
+    "notStarted": "Pas encore commencé",
+    "paceHint": "Rythme suggéré : maximum 1 unité par jour."
+  },
+  "lineTracing": {
+    "instruction": "Suis la ligne avec ton doigt. Reste sur la ligne !"
+  },
+  "rhythmFollowing": {
+    "instruction": "Regarde d'abord le rythme, puis touche/appuie longtemps de la même manière.",
+    "fail": "Réessaie !",
+    "watch": "Regarde d'abord le rythme…",
+    "go": "À toi de jouer !"
+  },
+  "simplePuzzle": {
+    "comingSoon": "Cette activité sera bientôt ajoutée."
+  },
+  "fineMotor": {
+    "activities": {
+      "lineTracing": {
+        "title": "Suivi de ligne",
+        "subtitle": "Suivre le chemin avec le doigt"
+      },
+      "coloring": {
+        "title": "Coloriage de formes",
+        "subtitle": "Appuie pour colorier les formes"
+      },
+      "puzzle": {
+        "title": "Puzzle simple",
+        "subtitle": "Faites glisser les pièces pour compléter l'image"
+      },
+      "rhythm": {
+        "title": "Suivi du Rythme",
+        "subtitle": "Regardez et répétez le rythme"
+      }
+    }
+  },
+  "experimental": {
+    "menuTitle": "Activités Conceptuelles Expérimentales",
+    "relativeComparison": {
+      "title": "Comparaison Relative",
+      "menuSubtitle": "Sélectionnez une activité de comparaison.",
+      "instruction": "Comparez les deux cartes ouvertes et répondez à la question.",
+      "remainingLabel": "Remaining comparisons",
+      "images": {
+        "950": "Le plus petit",
+        "951": "Exemple 951",
+        "952": "Exemple 952",
+        "953": "Le plus grand",
+        "954": "Le plus large",
+        "955": "Exemple 955",
+        "956": "Exemple 956",
+        "957": "Le plus étroit",
+        "958": "Le plus mince",
+        "959": "Exemple 959",
+        "960": "Exemple 960",
+        "961": "Le plus épais",
+        "962": "Le moins",
+        "963": "Exemple 963",
+        "964": "Exemple 964",
+        "965": "Le plus",
+        "966": "Le plus court",
+        "967": "Exemple 967",
+        "968": "Exemple 968",
+        "969": "Le plus long",
+        "970": "Le plus proche",
+        "971": "Exemple 971",
+        "972": "Exemple 972",
+        "973": "Le plus lointain",
+        "974": "Le plus bas",
+        "975": "Exemple 975",
+        "976": "Exemple 976",
+        "977": "Le plus haut"
+      }
+    }
+  },
+  "activityFeedback": {
+    "causeEffect": {
+      "correct": "Bravo !",
+      "wrong": "Réessaie.",
+      "1": {
+        "correct": "Correct! Quand il pleut, nous ouvrons un parapluie.",
+        "wrong": "Non, les lunettes de soleil sont utilisées par temps ensoleillé."
+      },
+      "2": {
+        "correct": "Correct! La glace fond au soleil.",
+        "wrong": "Non, la glace ne gèle pas dans la neige, elle est déjà froide."
+      },
+      "3": {
+        "correct": "Correct! Une graine pousse dans le sol et devient une plante.",
+        "wrong": "Non, une bûche provient de l'abattage d'arbres, pas des graines."
+      },
+      "4": {
+        "correct": "Correct! Les mains sont nettoyées en les lavant avec du savon.",
+        "wrong": "Non, ce sont des mains sales. Elles doivent être nettoyées."
+      },
+      "5": {
+        "correct": "Correct! L'œuf se casse quand on le laisse tomber.",
+        "wrong": "Non, les poussins sortent des œufs mais pas en les laissant tomber, par incubation."
+      },
+      "6": {
+        "correct": "Correct! Le feu brûle en brûlant du bois.",
+        "wrong": "Non, les pierres ne brûlent pas, il faut du bois pour le feu."
+      },
+      "7": {
+        "correct": "Correct! Le vase se casse quand on le frappe avec un marteau.",
+        "wrong": "Non, les vases sont remplis d'eau, ils se cassent avec des marteaux."
+      },
+      "8": {
+        "correct": "Correct! Nous portons un bonnet quand il neige, il nous garde au chaud.",
+        "wrong": "Non, les shorts sont portés par temps chaud, pas en hiver."
+      },
+      "9": {
+        "correct": "Correct! Le bébé boit du lait quand il a faim.",
+        "wrong": "Non, les jouets sont pour s'amuser, le lait est nécessaire pour la faim."
+      },
+      "10": {
+        "correct": "Correct! La chemise est lissée en la repassant.",
+        "wrong": "Non, les ciseaux sont pour couper, le repassage est nécessaire pour lisser."
+      },
+      "11": {
+        "correct": "Correct! Quand la nuit arrive, nous allons au lit pour dormir.",
+        "wrong": "Non, les balles sont pour jouer pendant la journée, la nuit est pour dormir."
+      },
+      "12": {
+        "correct": "Correct! Les fleurs poussent et se développent avec de l'eau.",
+        "wrong": "Non, les ciseaux sont pour couper, les fleurs ont besoin d'eau pour pousser."
+      },
+      "13": {
+        "correct": "Correct! Nous apprenons de nouvelles choses en lisant des livres.",
+        "wrong": "Non, jouer avec des balles est amusant mais il faut lire des livres pour apprendre."
+      },
+      "14": {
+        "correct": "Correct! Les ballons grandissent quand ils sont gonflés.",
+        "wrong": "Non, les pierres sont dures et solides, elles ne peuvent pas être gonflées."
+      },
+      "15": {
+        "correct": "Correct! La pâte devient du pain quand elle est cuite.",
+        "wrong": "Non, les réfrigérateurs sont pour refroidir, un four est nécessaire pour cuire."
+      }
+    },
+    "functionalMatching": {
+      "correct": "Bravo ! Bon appariement !",
+      "wrong": "Ce n'est pas correct.",
+      "1": {
+        "correct": "Nous enfonçons les clous avec un marteau."
+      },
+      "2": {
+        "correct": "Nous nous brossons les dents avec du dentifrice."
+      },
+      "3": {
+        "correct": "Nous portons des chaussures après les chaussettes."
+      },
+      "4": {
+        "correct": "Nous utilisons l'oreiller sur le lit."
+      },
+      "5": {
+        "correct": "Nous mangeons de la soupe avec une cuillère."
+      },
+      "6": {
+        "correct": "Nous peignons l'image avec un pinceau."
+      },
+      "7": {
+        "correct": "Nous écrivons sur du papier avec un stylo."
+      },
+      "8": {
+        "correct": "Nous ouvrons la porte avec une clé."
+      },
+      "9": {
+        "correct": "Nous mangeons des pâtes avec une fourchette."
+      },
+      "10": {
+        "correct": "Nous mettons de l'argent dans une tirelire."
+      },
+      "11": {
+        "correct": "Nous peignons nos cheveux avec un peigne."
+      },
+      "12": {
+        "correct": "Nous lisons le livre sur la table."
+      },
+      "13": {
+        "correct": "Nous coupons du papier avec des ciseaux."
+      },
+      "14": {
+        "correct": "Nous coupons du pain avec un couteau."
+      },
+      "15": {
+        "correct": "Nous nous lavons les mains avec du savon."
+      }
+    },
+    "whatDoesntBelong": {
+      "correct": "Oui, {item} est différent.",
+      "wrong": "Non, c'est pareil.",
+      "1": {
+        "correct": "Oui, {item} est différent.",
+        "wrong": "Non, c'est pareil."
+      },
+      "2": {
+        "correct": "Oui, {item} est différent.",
+        "wrong": "Non, c'est pareil."
+      },
+      "3": {
+        "correct": "Oui, {item} est différent.",
+        "wrong": "Non, c'est pareil."
+      },
+      "4": {
+        "correct": "Oui, {item} est différent.",
+        "wrong": "Non, c'est pareil."
+      },
+      "5": {
+        "correct": "Oui, {item} est un véhicule ; les autres sont des fruits.",
+        "wrong": "Non, {item} est un fruit."
+      },
+      "6": {
+        "correct": "Oui, {item} est un vêtement ; les autres sont des animaux.",
+        "wrong": "Non, {item} est un animal."
+      },
+      "7": {
+        "correct": "Oui, {item} est un vêtement ; les autres sont des véhicules.",
+        "wrong": "Non, {item} est un véhicule."
+      },
+      "8": {
+        "correct": "Oui, {item} est un jouet ; les autres sont des instruments de musique.",
+        "wrong": "Non, {item} est un instrument de musique."
+      },
+      "9": {
+        "correct": "Oui, {item} est un fruit ; les autres sont des légumes.",
+        "wrong": "Non, {item} est un légume."
+      },
+      "10": {
+        "correct": "Oui, {item} est un objet naturel ; les autres sont des formes.",
+        "wrong": "Non, {item} est une forme."
+      },
+      "11": {
+        "correct": "Oui, {item} est un enfant ; les autres sont des professions.",
+        "wrong": "Non, {item} est une profession."
+      },
+      "12": {
+        "correct": "Oui, {item} est un objet ; les autres sont des meubles.",
+        "wrong": "Non, {item} est un meuble."
+      },
+      "13": {
+        "correct": "Oui, {item} est un article de cuisine ; les autres sont des articles de salle de bain.",
+        "wrong": "Non, {item} est un article de salle de bain."
+      },
+      "14": {
+        "correct": "Oui, {item} est un objet ; les autres sont des êtres vivants.",
+        "wrong": "Non, {item} est un être vivant."
+      },
+      "15": {
+        "correct": "Oui, {item} est un outil ; les autres sont des couverts.",
+        "wrong": "Non, {item} est un couvert."
+      },
+      "16": {
+        "correct": "Oui, {item} est de la nourriture ; les autres sont des animaux.",
+        "wrong": "Non, {item} est un animal."
+      },
+      "17": {
+        "correct": "Oui, {item} est une boisson ; les autres sont des fruits.",
+        "wrong": "Non, {item} est un fruit."
+      },
+      "18": {
+        "correct": "Oui, {item} est une couleur ; les autres sont des jouets.",
+        "wrong": "Non, {item} est un jouet."
+      },
+      "19": {
+        "correct": "Oui, {item} est une météo ; les autres sont des vêtements.",
+        "wrong": "Non, {item} est un vêtement."
+      },
+      "20": {
+        "correct": "Oui, {item} est un bâtiment ; les autres sont des véhicules.",
+        "wrong": "Non, {item} est un véhicule."
+      }
+    },
+    "fiveWOneH": {
+      "q_who_to_when_sick": {
+        "correct": "Oui ! Nous allons chez le médecin quand nous sommes malades.",
+        "wrong": "Non, ce n'est pas là que nous allons quand nous sommes malades."
+      },
+      "q_who_to_when_fire": {
+        "correct": "Correct ! Nous appelons les pompiers en cas d'incendie.",
+        "wrong": "Non, en cas d'incendie, nous devrions appeler les pompiers."
+      },
+      "q_who_uses_this": {
+        "correct": "Oui ! Un enseignant utilise le tableau noir.",
+        "wrong": "Non, il est généralement utilisé par un enseignant."
+      },
+      "q_who_brings_letter": {
+        "correct": "Correct ! Le facteur apporte la lettre.",
+        "wrong": "Non, le facteur apporte la lettre."
+      },
+      "q_what_brush_teeth_with": {
+        "correct": "Oui ! Nous nous brossons les dents avec du dentifrice.",
+        "wrong": "Non, nous ne nous brossons pas les dents avec ça."
+      },
+      "q_what_eat_with": {
+        "correct": "Correct ! Nous utilisons une fourchette pour manger.",
+        "wrong": "Non, nous n'utilisons pas cela pour manger."
+      },
+      "q_where_doctor_works": {
+        "correct": "Oui ! Un médecin travaille à l'hôpital.",
+        "wrong": "Non, un médecin travaille à l'hôpital."
+      },
+      "q_where_is_swing": {
+        "correct": "Correct ! La balançoire est au terrain de jeu.",
+        "wrong": "Non, la balançoire est au terrain de jeu."
+      },
+      "q_where_do_we_sleep": {
+        "correct": "Oui ! Nous dormons dans un lit.",
+        "wrong": "Non, nous ne dormons pas là."
+      },
+      "q_where_fish_lives": {
+        "correct": "Oui ! Les poissons vivent dans un aquarium.",
+        "wrong": "Non, les poissons ne vivent pas là."
+      },
+      "q_when_see_owl": {
+        "correct": "Correct ! Nous voyons les hiboux la nuit.",
+        "wrong": "Non, les hiboux sont généralement vus la nuit."
+      },
+      "q_when_use_umbrella": {
+        "correct": "Oui ! Nous utilisons un parapluie quand il pleut.",
+        "wrong": "Non, nous n'utilisons pas de parapluie à ce moment-là."
+      },
+      "q_when_wear_beanie": {
+        "correct": "Correct ! Nous portons un bonnet quand il neige.",
+        "wrong": "Non, nous ne portons pas de bonnet à ce moment-là."
+      },
+      "q_why_icecream_melted": {
+        "correct": "Oui ! La glace fond à cause du soleil.",
+        "wrong": "Non, ce n'est pas pourquoi la glace fond."
+      },
+      "q_why_clothes_neat": {
+        "correct": "Correct ! Parce qu'ils ont été repassés.",
+        "wrong": "Non, cela ne les rend pas bien rangés."
+      },
+      "q_how_go_to_school": {
+        "correct": "Oui ! Nous allons à l'école en bus scolaire.",
+        "wrong": "Non, nous n'y allons généralement pas de cette façon."
+      },
+      "q_how_open_door": {
+        "correct": "Oui ! Nous ouvrons la porte avec une clé.",
+        "wrong": "Non, nous n'ouvrons pas la porte avec ça."
+      },
+      "q_how_baby_feels": {
+        "correct": "Correct ! Le bébé se sent triste.",
+        "wrong": "Non, le bébé ne se sent pas comme ça."
+      },
+      "q_where_is_sleeping_child": {
+        "correct": "Oui ! Nous dormons généralement dans un lit.",
+        "wrong": "Non, nous dormons généralement dans un lit."
+      },
+      "q_why_child_wants_play": {
+        "correct": "Correct ! Pour s'amuser et jouer avec des amis.",
+        "wrong": "Non, généralement pour s'amuser avec des amis."
+      },
+      "q_where_child_wants_to_go_outside": {
+        "correct": "Oui ! L'enfant peut vouloir aller au parc.",
+        "wrong": "Non, généralement, le parc est souhaité."
+      },
+      "q_why_child_tired": {
+        "correct": "Correct ! En raison d'un long temps de jeu ou de peu de sommeil.",
+        "wrong": "Non, généralement à cause d'une longue activité ou de peu de sommeil."
+      },
+      "q_where_child_wants_go_park": {
+        "correct": "Oui ! Il veut aller au parc.",
+        "wrong": "Non, pas à un endroit différent."
+      },
+      "q_how_child_prefers_drive": {
+        "correct": "Correct ! En portant une ceinture de sécurité et avec un parent.",
+        "wrong": "Non, cela doit être en sécurité avec un adulte."
+      },
+      "q_when_rhino_active": {
+        "correct": "Correct ! Selon les espèces, le jour ou au crépuscule.",
+        "wrong": "Non, généralement pas la nuit."
+      },
+      "q_where_camels_live": {
+        "correct": "Oui ! Dans les déserts et les zones arides.",
+        "wrong": "Non, généralement dans les déserts."
+      },
+      "q_where_fish_live_915": {
+        "correct": "Oui ! Ils vivent dans l'eau.",
+        "wrong": "Non, ils ne vivent pas hors de l'eau."
+      },
+      "q_when_bears_hibernate": {
+        "correct": "Correct ! Pendant l'hiver.",
+        "wrong": "Non, pendant la saison d'hiver."
+      },
+      "q_who_flies_plane": {
+        "correct": "Oui ! Un pilote pilote l'avion.",
+        "wrong": "Non, ils ne pilotent pas l'avion."
+      },
+      "q_who_cuts_hair": {
+        "correct": "Correct ! Un coiffeur nous coupe les cheveux.",
+        "wrong": "Non, ils ne nous coupent pas les cheveux."
+      },
+      "q_who_provides_milk": {
+        "correct": "Oui ! Un agriculteur fournit du lait.",
+        "wrong": "Non, il est généralement fourni par un agriculteur."
+      },
+      "q_what_erase_text": {
+        "correct": "Correct ! Nous utilisons une gomme pour effacer.",
+        "wrong": "Non, nous n'effaçons pas avec ça."
+      },
+      "q_what_measure_height": {
+        "correct": "Oui ! Nous utilisons une règle pour mesurer la taille.",
+        "wrong": "Non, nous ne mesurons pas la taille avec ça."
+      },
+      "q_what_dry_after_bath": {
+        "correct": "Correct ! Nous nous séchons avec une serviette après un bain.",
+        "wrong": "Non, nous ne nous séchons pas avec ça."
+      },
+      "q_where_to_eat": {
+        "correct": "Oui ! Nous allons au restaurant pour manger.",
+        "wrong": "Non, nous n'y allons pas pour manger."
+      },
+      "q_where_to_read_books": {
+        "correct": "Correct ! Nous pouvons aller à la bibliothèque pour lire des livres.",
+        "wrong": "Non, ce n'est pas un bon endroit pour lire des livres."
+      },
+      "q_where_to_shop": {
+        "correct": "Oui ! Nous faisons les courses au marché.",
+        "wrong": "Non, nous ne faisons pas les courses là-bas."
+      },
+      "q_when_go_to_bed": {
+        "correct": "Correct ! Nous allons au lit la nuit.",
+        "wrong": "Non, nous n'allons pas au lit à ce moment-là."
+      },
+      "q_when_go_to_beach": {
+        "correct": "Oui ! Nous allons à la plage quand il fait soleil.",
+        "wrong": "Non, nous n'allons pas à la plage à ce moment-là."
+      },
+      "q_when_make_snowman": {
+        "correct": "Correct ! Nous faisons un bonhomme de neige quand il neige.",
+        "wrong": "Non, nous ne faisons pas de bonhomme de neige à ce moment-là."
+      },
+      "q_why_child_cold": {
+        "correct": "Oui ! Parce qu'il fait froid.",
+        "wrong": "Non, ce n'est pas pour ça qu'ils ont froid."
+      },
+      "q_why_hair_wet": {
+        "correct": "Correct ! Ils sont mouillés à cause d'une douche.",
+        "wrong": "Non, ce n'est pas pour ça qu'ils sont mouillés."
+      },
+      "q_how_reach_high_shelf": {
+        "correct": "Oui ! Nous utilisons une échelle pour l'atteindre.",
+        "wrong": "Non, nous ne pouvons pas l'atteindre avec ça."
+      },
+      "q_how_travel_at_sea": {
+        "correct": "Correct ! Nous voyageons en bateau en mer.",
+        "wrong": "Non, nous ne voyageons généralement pas comme ça en mer."
+      },
+      "q_how_clean_room": {
+        "correct": "Oui ! Nous nettoyons la chambre avec un seau et des produits de nettoyage.",
+        "wrong": "Non, nous ne nettoyons pas la chambre avec ça."
+      },
+      "q_who_teaches_at_school": {
+        "correct": "Correct ! C'est le professeur qui enseigne.",
+        "wrong": "Non, à l'école, c'est le professeur qui enseigne."
+      },
+      "q_what_do_we_drink_water_with": {
+        "correct": "Oui ! Nous buvons de l'eau avec un verre.",
+        "wrong": "Non, nous ne buvons pas d'eau avec ça."
+      },
+      "q_where_do_we_store_books": {
+        "correct": "Correct ! Nous les rangeons sur une étagère.",
+        "wrong": "Non, nous rangeons les livres sur une étagère."
+      },
+      "q_when_use_sunscreen": {
+        "correct": "Oui ! Quand il fait soleil.",
+        "wrong": "Non, nous l'utilisons généralement quand il fait soleil."
+      },
+      "q_why_wash_hands": {
+        "correct": "Correct ! Pour être propre et se protéger des microbes.",
+        "wrong": "Non, nous nous lavons les mains pour être propres."
+      },
+      "q_how_dry_hands": {
+        "correct": "Oui ! Nous les séchons avec une serviette.",
+        "wrong": "Non, nous séchons les mains avec une serviette."
+      }
     }
   }
 }

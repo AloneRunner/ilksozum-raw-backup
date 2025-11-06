@@ -139,7 +139,7 @@ export const enFoodsData: ConceptRound[] = [
   {
     id: 1612,
     question: 'Which one is the bagel?',
-    questionAudioKey: 'q_which_is_bagel',
+    questionAudioKey: 'q_which_is_bagel_person',
     activityType: ActivityType.ObjectRecognition,
     options: [
       { id: 296, word: 'simit', imageUrl: '/images/296.png', isCorrect: true, audioKey: 'simit', spokenText: 'bagel' },

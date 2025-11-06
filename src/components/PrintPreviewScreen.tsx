@@ -1,12 +1,13 @@
 // src/components/PrintPreviewScreen.tsx
 import React from 'react';
-import { t } from '../i18n/index.ts';
+import { t, getCurrentLanguage } from '../i18n/index.ts';
 import { CommunicationCard } from '../types.ts';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import PrintIcon from './icons/PrintIcon.tsx';
 import SaveIcon from './icons/SaveIcon.tsx';
 import { imageData } from '../services/database/imageData.ts';
 import { exportPrintAreaToPdf, savePrintAreaAsPdf } from '../utils/exportPdf.ts';
+import { translateLabel } from '../utils/translate.ts';
 
 interface PrintPreviewScreenProps {
   cards: CommunicationCard[];
@@ -34,6 +35,8 @@ const PrintableCard: React.FC<{ card: CommunicationCard; borderColorClass: strin
 }) => {
   const image = card.imageId ? imageData.find((img) => img.id === card.imageId) : null;
   const Icon = card.icon;
+  const lang = getCurrentLanguage();
+  const display = lang === 'tr' ? card.text : translateLabel(card.text, lang);
 
   return (
     <div
@@ -43,7 +46,7 @@ const PrintableCard: React.FC<{ card: CommunicationCard; borderColorClass: strin
         {image ? (
           <img
             src={image.imageUrl}
-            alt={card.text}
+            alt={display}
             className="max-w-full max-h-full object-contain"
             draggable={false}
           />
@@ -52,7 +55,7 @@ const PrintableCard: React.FC<{ card: CommunicationCard; borderColorClass: strin
         ) : null}
       </div>
       <p className="flex-shrink-0 text-center font-bold text-slate-800 text-sm mt-1 break-words">
-        {card.text}
+        {display}
       </p>
     </div>
   );

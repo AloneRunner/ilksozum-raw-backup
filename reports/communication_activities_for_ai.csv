@@ -1,0 +1,304 @@
+category,subcategory,text,short_description,note
+Temel İhtiyaçlar,Meyveler,Elma,Elma - kırmızı tatlı meyve,food
+Temel İhtiyaçlar,Meyveler,Muz,Muz - sarı, yumuşak meyve,food
+Temel İhtiyaçlar,Meyveler,Portakal,Portakal - narenciye,vitamin C sağlar,food
+Temel İhtiyaçlar,Meyveler,Üzüm,Üzüm - küçük salkım meyve,food
+Temel İhtiyaçlar,Meyveler,Çilek,Çilek - küçük kırmızı meyve,food
+Temel İhtiyaçlar,Meyveler,Karpuz,Karpuz - büyük, su oranı yüksek meyve,food
+Temel İhtiyaçlar,Meyveler,Armut,Armut - tatlı meyve,food
+Temel İhtiyaçlar,Meyveler,Kiraz,Kiraz - küçük kırmızı meyve,food
+Temel İhtiyaçlar,Meyveler,Mandalina,Mandalina - küçük narenciye,food
+Temel İhtiyaçlar,Meyveler,Kavun,Kavun - tatlı yaz meyvesi,food
+Temel İhtiyaçlar,Meyveler,Ananas,Ananas - tropikal meyve,food
+Temel İhtiyaçlar,Meyveler,Kivi,Kivi - küçük tüylü meyve,food
+Temel İhtiyaçlar,Meyveler,Nar,Nar - tohumlu narenciye,food
+Temel İhtiyaçlar,Sebzeler,Domates,Domates - sebze/meyve olarak kullanılır,food
+Temel İhtiyaçlar,Sebzeler,Salatalık,Salatalık - su oranı yüksek sebze,food
+Temel İhtiyaçlar,Sebzeler,Havuç,Havuç - turuncu kök sebze,food
+Temel İhtiyaçlar,Sebzeler,Patates,Patates - nişastalı sebze,food
+Temel İhtiyaçlar,Sebzeler,Soğan,Soğan - yemeklerde kullanılan sebze,food
+Temel İhtiyaçlar,Sebzeler,Yeşil Biber,Yeşil biber - sebze,food
+Temel İhtiyaçlar,Sebzeler,Lahana,Lahana - yapraklı sebze,food
+Temel İhtiyaçlar,Sebzeler,ıspanak,Ispanak - yeşil yapraklı sebze,food
+Temel İhtiyaçlar,Sebzeler,Kabak,Kabak - sebze,food
+Temel İhtiyaçlar,Sebzeler,Brokoli,Brokoli - çiçek yapılı sebze,food
+Temel İhtiyaçlar,Sebzeler,Patlıcan,Patlıcan - mor kabuklu sebze,food
+Temel İhtiyaçlar,Sebzeler,Marul,Marul - salata yaprakları,food
+Temel İhtiyaçlar,Sebzeler,Mısır,Mısır - tane sebze,food
+Temel İhtiyaçlar,Ana Yemekler,Pilav,Pilav - pirinç bazlı ana yemek,food
+Temel İhtiyaçlar,Ana Yemekler,Makarna,Makarna - un bazlı ana yemek,food
+Temel İhtiyaçlar,Ana Yemekler,Köfte,Köfte - etli yemek,food
+Temel İhtiyaçlar,Ana Yemekler,Tavuk,Tavuk - pişmiş et çeşidi,food
+Temel İhtiyaçlar,Ana Yemekler,Balık,Balık - deniz ürünü,food
+Temel İhtiyaçlar,Ana Yemekler,Çorba,Çorba - sıvı yemek,food
+Temel İhtiyaçlar,Ana Yemekler,Pizza,Pizza - hamur üstü malzeme,food
+Temel İhtiyaçlar,Ana Yemekler,Hamburger,Hamburger - sandviç türü,food
+Temel İhtiyaçlar,Ana Yemekler,Mantı,Mantı - içli hamur yemeği,food
+Temel İhtiyaçlar,Ana Yemekler,Sulu Yemek,Sulu yemek türü,food
+Temel İhtiyaçlar,Ana Yemekler,Tost,Tost - kızarmış sandviç,food
+Temel İhtiyaçlar,Ana Yemekler,Dolma,Dolma - iç pilavlı sebze,food
+Temel İhtiyaçlar,Kahvaltılıklar,Peynir,Peynir - kahvaltılık süt ürünü,food
+Temel İhtiyaçlar,Kahvaltılıklar,Zeytin,Zeytin - kahvaltılık,food
+Temel İhtiyaçlar,Kahvaltılıklar,Yumurta,Yumurta - kahvaltılık protein,food
+Temel İhtiyaçlar,Kahvaltılıklar,Ekmek,Ekmek - temel karbonhidrat,food
+Temel İhtiyaçlar,Kahvaltılılar,Reçel,Reçel - tatlı sürülebilir,food
+Temel İhtiyaçlar,Kahvaltılılar,Tereyağı,Tereyağı - kahvaltılık yağ,food
+Temel İhtiyaçlar,Kahvaltılılar,Simit,Simit - susamlı halka ekmek,food
+Temel İhtiyaçlar,Kahvaltılılar,Bal,Bal - tatlandırıcı,food
+Temel İhtiyaçlar,Kahvaltılılar,Kaşar Peyniri,Kaşar peyniri - peynir çeşidi,food
+Temel İhtiyaçlar,Kahvaltılılar,Sucuk,Sucuk - kahvaltılık et ürünü,food
+Temel İhtiyaçlar,Atıştırmalıklar,Bisküvi,Bisküvi - tatlı kuru yiyecek,food
+Temel İhtiyaçlar,Atıştırmalıklar,Cips,Cips - tuzlu atıştırmalık,food
+Temel İhtiyaçlar,Atıştırmalıklar,Çikolata,Çikolata - tatlı atıştırmalık,food
+Temel İhtiyaçlar,Atıştırmalıklar,Kraker,Kraker - tuzlu atıştırmalık,food
+Temel İhtiyaçlar,Atıştırmalıklar,Kek,Kek - tatlı atıştırmalık,food
+Temel İhtiyaçlar,Atıştırmalıklar,Pasta,Pasta - kutlamalık tatlı,food
+Temel İhtiyaçlar,Atıştırmalıklar,Dondurma,Dondurma - soğuk tatlı,food
+Temel İhtiyaçlar,Atıştırmalıklar,Jelibon,Jelibon - şekerleme,food
+Temel İhtiyaçlar,Atıştırmalıklar,Kuruyemiş,Kuruyemiş - tuzlu kuruyemiş,food
+Temel İhtiyaçlar,Atıştırmalıklar,Sandviç,Sandviç - ekmek arası besin,food
+Temel İhtiyaçlar,Atıştırmalıklar,Lolipop,Lolipop - şekerleme,food
+Temel İhtiyaçlar,Atıştırmalıklar,Patlamış Mısır,Patlamış mısır - sinema atıştırması,food
+Temel İhtiyaçlar,İçecekler,Su,Su - temel içecek,drink
+Temel İhtiyaçlar,İçecekler,Meyve Suyu,Meyve suyu - içecek,drink
+Temel İhtiyaçlar,İçecekler,Süt,Süt - süt ürünü içecek,drink
+Temel İhtiyaçlar,İçecekler,Çay,Çay - sıcak içecek,drink
+Temel İhtiyaçlar,İçecekler,Kahve,Kahve - kafeinli içecek,drink
+Temel İhtiyaçlar,İçecekler,Ayran,Ayran - yoğurt bazlı içecek,drink
+Temel İhtiyaçlar,İçecekler,Gazoz,Gazoz - gazlı içecek,drink
+Temel İhtiyaçlar,İçecekler,Su Şişesi,Su şişesi - taşınabilir su,drink
+Temel İhtiyaçlar,İçecekler,Limonata,Limonata - tatlı ekşi içecek,drink
+Temel İhtiyaçlar,Sağlık,Hastayım,Hastayım - genel sağlık bildirimi,health
+Temel İhtiyaçlar,Sağlık,Ateşim var,Ateşim var - ateş bildirimi,health
+Temel İhtiyaçlar,Sağlık,Başım ağrıyor,Baş ağrısı bildirimi,health
+Temel İhtiyaçlar,Sağlık,Karnım ağrıyor,Karın ağrısı bildirimi,health
+Temel İhtiyaçlar,Sağlık,Boğazım ağrıyor,Boğaz ağrısı bildirimi,health
+Temel İhtiyaçlar,Sağlık,Kulağım ağrıyor,Kulak ağrısı bildirimi,health
+Temel İhtiyaçlar,Sağlık,Üşüyorum,Üşüme hissi,health
+Temel İhtiyaçlar,Sağlık,Sıcakladım,Ateş/ısı hissi,health
+Temel İhtiyaçlar,Sağlık,Acıyor,Genel acı ifadesi; ardından vücut parçası seçilebilir,health
+Temel İhtiyaçlar,Sağlık,İlaç,İlaç - yardımcı nesne,health
+Temel İhtiyaçlar,Sağlık,Yara bandı,Yara bandı - küçük ilk yardım,health
+Temel İhtiyaçlar,Sağlık,Doktor,Doktor - sağlık uzmanı,health
+Temel İhtiyaçlar,Sağlık,Hemşire,Hemşire - sağlık uzmanı,health
+Temel İhtiyaçlar,Tuvalet,Tuvalet,Tuvalet - ihtiyaç bildirimi,need
+Temel İhtiyaçlar,Tuvalet,Tuvalet Kağıdı,Tuvalet kağıdı - ihtiyaç,need
+Temel İhtiyaçlar,Tuvalet,Sifon,Sifon - tuvalet parçası,need
+Temel İhtiyaçlar,Tuvalet,Lazımlık,Lazımlık - küçük çocuk tuvalet gereci,need
+Temel İhtiyaçlar,Tuvalet,Lavabo,Lavabo - el yıkama yeri,need
+Temel İhtiyaçlar,Tuvalet,Islak Mendil,Islak mendil - temizlik ürünü,need
+Temel İhtiyaçlar,Temizlik,Sabun,Sabun - temizlik ürünü,need
+Temel İhtiyaçlar,Temizlik,Sıvı Sabun,Sıvı sabun - temizlik ürünü,need
+Temel İhtiyaçlar,Temizlik,Diş Fırçası,Diş fırçası - temizlik aracı,need
+Temel İhtiyaçlar,Temizlik,Diş Macunu,Diş macunu - temizlik ürünü,need
+Temel İhtiyaçlar,Temizlik,Havlu,Havlu - kurulanma aracı,need
+Temel İhtiyaçlar,Temizlik,Duş Başlığı,Duş başlığı - banyo aracı,need
+Temel İhtiyaçlar,Temizlik,Şampuan,Şampuan - saç temizleme ürünü,need
+Temel İhtiyaçlar,Temizlik,Tarak,Tarak - saç tarama aracı,need
+Temel İhtiyaçlar,Temizlik,Lif,Lif - banyo süngeri,need
+Temel İhtiyaçlar,Uyku,Yatak,Yatak - uyuma yeri,need
+Temel İhtiyaçlar,Uyku,Yastık,Yastık - baş desteği,need
+Temel İhtiyaçlar,Uyku,Pijama,Pijama - uyku kıyafeti,need
+Temel İhtiyaçlar,Uyku,Battaniye,Battaniye - örtü,need
+Temel İhtiyaçlar,Uyku,Gece Lambası,Gece lambası - uyku yardımı,need
+Eylemler,Günlük,Yemek yemek,Yemek yeme eylemi,action
+Eylemler,Günlük,Su içmek,Su içme eylemi,action
+Eylemler,Günlük,Uyumak,Uyku eylemi,action
+Eylemler,Günlük,Giyinmek,Giyinme eylemi,action
+Eylemler,Günlük,Banyo yapmak,Banyo yapma eylemi,action
+Eylemler,Günlük,Diş fırçalamak,Diş fırçalama eylemi,action
+Eylemler,Günlük,El yıkamak,El yıkama eylemi,action
+Eylemler,Günlük,Tuvalete gitmek,Tuvalete gitme eylemi,action
+Eylemler,Günlük,Saç taramak,Saç tarama eylemi,action
+Eylemler,Günlük,Odayı toplamak,Odayı toplama eylemi,action
+Eylemler,Günlük,Ödev yapmak,Ödev yapma eylemi,action
+Eylemler,Hareket,Koşmak,Koşma eylemi,action
+Eylemler,Hareket,Yürümek,Yürüme eylemi,action
+Eylemler,Hareket,Zıplamak,Zıplama eylemi,action
+Eylemler,Hareket,Tırmanmak,Tırmanma eylemi,action
+Eylemler,Hareket,Yüzmek,Yüzme eylemi,action
+Eylemler,Hareket,Bisiklet sürmek,Bisiklet sürme eylemi,action
+Eylemler,Hareket,Top oynamak,Top oynama eylemi,action
+Eylemler,Hareket,Salıncakta sallanmak,Salıncakta sallanma eylemi,action
+Eylemler,Hareket,Kaydıraktan kaymak,Kaydıraktan kayma eylemi,action
+Eylemler,Sosyal,Konuşmak,Konuşma eylemi,action
+Eylemler,Sosyal,Dinlemek,Dinleme eylemi,action
+Eylemler,Sosyal,Selam vermek,Selam verme eylemi,action
+Eylemler,Sosyal,Hoşça kal,Veda ifadesi,action
+Eylemler,Sosyal,Teşekkür etmek,Teşekkür etme ifadesi,action
+Eylemler,Sosyal,Özür dilemek,Özür dileme ifadesi,action
+Eylemler,Sosyal,Sarılmak,Sarılma eylemi,action
+Eylemler,Sosyal,El sıkışmak,El sıkışma eylemi,action
+Eylemler,Sosyal,Yardım etmek,Yardım etme eylemi,action
+Eylemler,Sosyal,Paylaşmak,Paylaşma eylemi,action
+Eylemler,Sosyal,Sırada beklemek,Sırada bekleme eylemi,action
+Eylemler,Sosyal,Oyununa katılabilir miyim?,Oyun daveti/izin isteme,action
+Eylemler,Sosyal,Seni seviyorum,Sevgi ifadesi,action
+Eylemler,Sanatsal,Resim yapmak,Resim yapma etkinliği,action
+Eylemler,Sanatsal,Şarkı söylemek,Şarkı söyleme etkinliği,action
+Eylemler,Sanatsal,Müzik dinlemek,Müzik dinleme etkinliği,action
+Eylemler,Sanatsal,Dans etmek,Dans etme etkinliği,action
+Eylemler,Sanatsal,Kitap okumak,Kitap okuma etkinliği,action
+Eylemler,Sanatsal,Boyama yapmak,Boyama etkinliği,action
+Eylemler,Sanatsal,Lego oynamak,Lego ile oynama,action
+Eylemler,Sanatsal,Film izlemek,Film izleme etkinliği,action
+Eylemler,İstekler,Oyun oynamak istiyorum,Oyun oynama isteği,action
+Eylemler,İstekler,Dışarı çıkmak istiyorum,Dışarı çıkma isteği,action
+Eylemler,İstekler,Mola vermek istiyorum,Mola isteği,action
+Eylemler,İstekler,Parka gitmek istiyorum,Parka gitme isteği,action
+Eylemler,İstekler,Gezmeye gitmek istiyorum,Gezme isteği,action
+Eylemler,İstekler,Yardım istiyorum,Yardım talebi,action
+Duygular,Pozitif,Mutlu,Mutluluk duygusu,feeling
+Duygular,Pozitif,Neşeli,Neşe duygusu,feeling
+Duygular,Pozitif,Heyecanlı,Heyecan duygusu,feeling
+Duygular,Pozitif,Sakin,Sakinlik durumu,feeling
+Duygular,Pozitif,Rahat,Rahat hissetme durumu,feeling
+Duygular,Pozitif,Gururlu,Gurur hissi,feeling
+Duygular,Pozitif,Sevgi dolu,Sevgi ifadesi,feeling
+Duygular,Pozitif,Şaşırmış,Şaşırma duygusu,feeling
+Duygular,Pozitif,Meraklı,Merak hissi,feeling
+Duygular,Negatif,Üzgün,Üzüntü duygusu,feeling
+Duygular,Negatif,Kızgın,Kızgınlık duygusu,feeling
+Duygular,Negatif,Korkmuş,Korku duygusu,feeling
+Duygular,Negatif,Utanmış,Utanma duygusu,feeling
+Duygular,Negatif,Ağlayan,Ağlama durumu,feeling
+Duygular,Negatif,Endişeli,Endişe duygusu,feeling
+Duygular,Negatif,Kıskanç,Kıskançlık duygusu,feeling
+Duygular,Negatif,Hayal kırıklığına uğramış,Hayal kırıklığı durumu,feeling
+Duygular,Negatif,Yalnız,Yalnızlık hissi,feeling
+Duygular,Fiziksel,Yorgun,Yorgunluk hissi,feeling
+Duygular,Fiziksel,Hasta,Hasta hissetme,feeling
+Duygular,Fiziksel,Uykulu,Uykululuk hissi,feeling
+Duygular,Fiziksel,Sıkılmış,Sıkılma durumu,feeling
+Duygular,Fiziksel,Ac,Genel açlık/acı ifadesi (context gerekli),feeling
+Duygular,Fiziksel,Susamış,Susama hissi,feeling
+Duygular,Fiziksel,Acı çeken,Genel acı/rahatsızlık bildirimi,feeling
+Kişiler,Aile,Anne,Anne - aile üyesi,person
+Kişiler,Aile,Baba,Baba - aile üyesi,person
+Kişiler,Aile,Kız kardeş,Kız kardeş - aile üyesi,person
+Kişiler,Aile,Erkek kardeş,Erkek kardeş - aile üyesi,person
+Kişiler,Aile,Bebek,Bebek - aile üyesi,person
+Kişiler,Aile,Büyükanne,Büyükanne - aile üyesi,person
+Kişiler,Aile,Büyükbaba,Büyükbaba - aile üyesi,person
+Kişiler,Okul,Öğretmen,Öğretmen - okul personeli,person
+Kişiler,Okul,Öğrenci,Öğrenci - okul katılımcısı,person
+Kişiler,Okul,Arkadaş,Arkadaş - sosyal bağlantı,person
+Kişiler,Okul,Müdür,Müdür - okul yöneticisi,person
+Kişiler,Okul,Okul hizmetlisi,Okul hizmetlisi - personel,person
+Kişiler,Okul,Servis şoförü,Servis şoförü - taşımacılık personeli,person
+Kişiler,Meslekler,Doktor,Doktor - sağlık uzmanı,person
+Kişiler,Meslekler,Hemşire,Hemşire - sağlık uzmanı,person
+Kişiler,Meslekler,Polis,Polis - güvenlik görevlisi,person
+Kişiler,Meslekler,İtfaiyeci,İtfaiyeci - acil müdahale,person
+Kişiler,Meslekler,Pilot,Pilot - hava taşıtı operatörü,person
+Kişiler,Meslekler,Astronot,Astronot - uzay çalışanı,person
+Kişiler,Meslekler,İnşaat işçisi,İnşaat işçisi - meslek,person
+Kişiler,Meslekler,Postacı,Postacı - posta dağıtımı,person
+Kişiler,Meslekler,Çiftçi,Çiftçi - tarım işi,person
+Kişiler,Meslekler,Berber,Berber - kuaförlük hizmeti,person
+Kişiler,Meslekler,Market,Market - ticari yer/meslek,person
+Kişiler,Meslekler,Veteriner,Veteriner - hayvan doktoru,person
+Kişiler,Meslekler,Kasiyer,Kasiyer - mağaza çalışanı,person
+Kişiler,Meslekler,Garson,Garson - servis personeli,person
+Yerler,Ev,Ev,Ev - konut yeri,place
+Yerler,Ev,Oda,Oda - ev içi mekan,place
+Yerler,Ev,Oturma Odası,Oturma odası - ortak kullanım,place
+Yerler,Ev,Mutfak,Mutfak - yemek hazırlama alanı,place
+Yerler,Ev,Banyo,Banyo - hijyen alanı,place
+Yerler,Ev,Bahçe,Bahçe - açık alan,place
+Yerler,Ev,Balkon,Balkon - açık küçük alan,place
+Yerler,Okul,Okul,Okul - eğitim mekanı,place
+Yerler,Okul,Sınıf,Sınıf - derslik,place
+Yerler,Okul,Kütüphane,Kütüphane - kitap ve sessiz mekan,place
+Yerler,Okul,Kantin,Kantin - yemek/atıştırmalık alanı,place
+Yerler,Okul,Okul Bahçesi,Okul bahçesi - oyun alanı,place
+Yerler,Okul,Spor Salonu,Spor salonu - spor alanı,place
+Yerler,Dış Mekan,Park,Park - açık oyun alanı,place
+Yerler,Dış Mekan,Market,Market - alışveriş yeri,place
+Yerler,Dış Mekan,Hastane,Hastane - sağlık hizmeti mekanı,place
+Yerler,Dış Mekan,Cami,Cami - ibadet mekanı,place
+Yerler,Dış Mekan,Otobüs Durağı,Otobüs durağı - ulaşım noktası,place
+Yerler,Dış Mekan,AVM,AVM - alışveriş merkezi,place
+Yerler,Dış Mekan,Restoran,Restoran - yemek yenilen mekan,place
+Yerler,Dış Mekan,Sinema Salonu,Sinema - eğlence mekanı,place
+Yerler,Dış Mekan,Plaj,Plaj - deniz kıyısı,place
+Eşyalar,Ev Eşyaları,Masa,Masa - oturma/çalışma yüzeyi,object
+Eşyalar,Ev Eşyaları,Sandalye,Sandalye - oturma mobilyası,object
+Eşyalar,Ev Eşyaları,Koltuk,Koltuk - oturma mobilyası,object
+Eşyalar,Ev Eşyaları,Yatak,Yatak - uyuma mobilyası,object
+Eşyalar,Ev Eşyaları,Dolap,Dolap - depolama ünitesi,object
+Eşyalar,Ev Eşyaları,Lamba,Lamba - aydınlatma elemanı,object
+Eşyalar,Ev Eşyaları,Halı,Halı - zemin örtüsü,object
+Eşyalar,Ev Eşyaları,Televizyon,Televizyon - görsel medya cihazı,object
+Eşyalar,Ev Eşyaları,Buzdolabı,Buzdolabı - gıda saklama cihazı,object
+Eşyalar,Ev Eşyaları,Çamaşır makinesi,Çamaşır makinesi - çamaşır yıkama cihazı,object
+Eşyalar,Ev Eşyaları,Telefon,Telefon - iletişim cihazı,object
+Eşyalar,Ev Eşyaları,Bilgisayar,Bilgisayar - hesaplama/oyun cihazı,object
+Eşyalar,Ev Eşyaları,Anahtar,Anahtar - kilit açma aracı,object
+Eşyalar,Okul Eşyaları,Çanta,Çanta - eşyaları taşıma aracı,object
+Eşyalar,Okul Eşyaları,Kitap,Kitap - okuma materyali,object
+Eşyalar,Okul Eşyaları,Defter,Defter - yazma materyali,object
+Eşyalar,Okul Eşyaları,Kalem,Kalem - yazma aracı,object
+Eşyalar,Okul Eşyaları,Silgi,Silgi - yazı silme aracı,object
+Eşyalar,Okul Eşyaları,Cetvel,Cetvel - ölçü aracı,object
+Eşyalar,Okul Eşyaları,Boya kalemleri,Boya kalemleri - çizim araçları,object
+Eşyalar,Okul Eşyaları,Makas,Makas - kesme aracı,object
+Eşyalar,Okul Eşyaları,Yapıştırıcı,Yapıştırıcı - yapıştırma aracı,object
+Eşyalar,Okul Eşyaları,Tahta,Tahta - yazı tahtası veya yüzey,object
+Eşyalar,Okul Eşyaları,Kalemtıraş,Kalemtıraş - kurşun kalem açma aracı,object
+Eşyalar,Kıyafetler,Tişört,Tişört - üst giyim,object
+Eşyalar,Kıyafetler,Pantolon,Pantolon - alt giyim,object
+Eşyalar,Kıyafetler,Ayakkabı,Ayakkabı - ayak giyimi,object
+Eşyalar,Kıyafetler,Mont,Mont - dış giyim,object
+Eşyalar,Kıyafetler,Çorap,Çorap - ayak içi giyim,object
+Eşyalar,Kıyafetler,Şapka,Şapka - baş giyimi,object
+Eşyalar,Oyun ve Hobi,Top,Top - oyun ekipmanı,object
+Eşyalar,Oyun ve Hobi,Oyuncak araba,Oyuncak araba - oyuncak,object
+Eşyalar,Oyun ve Hobi,Yapboz,Yapboz - zeka oyuncağı,object
+Eşyalar,Oyun ve Hobi,Bloklar,Bloklar - yapı oyuncağı,object
+Eşyalar,Oyun ve Hobi,Peluş oyuncak,Peluş oyuncak - yumuşak oyuncak,object
+Eşyalar,Oyun ve Hobi,Uçurtma,Uçurtma - açık hava oyuncak,object
+Eşyalar,Oyun ve Hobi,Paten,Paten - kayma ekipmanı,object
+Eşyalar,Oyun ve Hobi,Kaykay,Kaykay - kayma ekipmanı,object
+Eşyalar,Oyun ve Hobi,Bebek,Bebek - oyuncak bebek,object
+Eşyalar,Oyun ve Hobi,Oyun hamuru,Oyun hamuru - şekillendirilebilir malzeme,object
+Hayvanlar,Evcil,Kedi,Kedi - evcil hayvan,animal
+Hayvanlar,Evcil,Köpek,Köpek - evcil hayvan,animal
+Hayvanlar,Evcil,Kuş,Kuş - evcil kuş,animal
+Hayvanlar,Evcil,Balık,Balık - evcil su hayvanı,animal
+Hayvanlar,Evcil,Hamster,Hamster - küçük evcil kemirgen,animal
+Hayvanlar,Evcil,Tavşan,Tavşan - küçük evcil hayvan,animal
+Hayvanlar,Çiftlik,İnek,İnek - çiftlik hayvanı,animal
+Hayvanlar,Çiftlik,Horoz,Horoz - çiftlik hayvanı,animal
+Hayvanlar,Çiftlik,At,At - çiftlik/ulaşım hayvanı,animal
+Hayvanlar,Çiftlik,Koyun,Koyun - çiftlik hayvanı,animal
+Hayvanlar,Çiftlik,Keçi,Keçi - çiftlik hayvanı,animal
+Hayvanlar,Çiftlik,Ördek,Ördek - çiftlik hayvanı,animal
+Hayvanlar,Çiftlik,Eşek,Eşek - çiftlik hayvanı,animal
+Hayvanlar,Vahşi,Aslan,Aslan - vahşi hayvan,animal
+Hayvanlar,Vahşi,Fil,Fil - büyük vahşi hayvan,animal
+Hayvanlar,Vahşi,Zürafa,Zürafa - uzun boyunlu vahşi hayvan,animal
+Hayvanlar,Vahşi,Maymun,Maymun - primat,animal
+Hayvanlar,Vahşi,Tilki,Tilki - vahşi hayvan,animal
+Hayvanlar,Vahşi,Panda,Panda - vahşi hayvan,animal
+Hayvanlar,Vahşi,Yılan,Yılan - sürüngen,animal
+Hayvanlar,Vahşi,Kaplan,Kaplan - vahşi kedigiller,animal
+Hayvanlar,Vahşi,Ayı,Ayı - büyük vahşi hayvan,animal
+Hayvanlar,Vahşi,Zebra,Zebra - çizgili vahşi hayvan,animal
+Taşıtlar,Kara,Araba,Araba - kara taşıtı,vehicle
+Taşıtlar,Kara,Otobüs,Otobüs - toplu taşıma aracı,vehicle
+Taşıtlar,Kara,Tren,Tren - demiryolu aracı,vehicle
+Taşıtlar,Kara,Bisiklet,Bisiklet - pedal ile giden araç,vehicle
+Taşıtlar,Kara,Motosiklet,Motosiklet - motorlu iki tekerlekli araç,vehicle
+Taşıtlar,Kara,Kamyon,Kamyon - nakliye aracı,vehicle
+Taşıtlar,Kara,Ambulans,Ambulans - acil durum aracı,vehicle
+Taşıtlar,Kara,Polis Arabası,Polis arabası - güvenlik aracı,vehicle
+Taşıtlar,Kara,İtfaiye Aracı,İtfaiye aracı - yangın müdahale aracı,vehicle
+Taşıtlar,Hava,Uçak,Uçak - hava taşıtı,vehicle
+Taşıtlar,Hava,Helikopter,Helikopter - dikey kalkış hava aracı,vehicle
+Taşıtlar,Hava,Sıcak Hava Balonu,Sıcak hava balonu - hava eğlence aracı,vehicle
+Taşıtlar,Hava,Roket,Roket - uzay/füzeye benzer taşıt,vehicle
+Taşıtlar,Deniz,Gemi,Gemi - deniz taşıtı,vehicle
+Taşıtlar,Deniz,Sandal,Sandal - küçük deniz aracı,vehicle
+Taşıtlar,Deniz,Yelkenli,Yelkenli - yelkenle hareket eden deniz aracı,vehicle
+Taşıtlar,Deniz,Denizaltı,Denizaltı - su altı aracı,vehicle

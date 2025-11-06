@@ -8,6 +8,8 @@ import { speak, playEffect } from '../services/speechService.ts';
 import EyeIcon from './icons/EyeIcon.tsx';
 import EyeSlashIcon from './icons/EyeSlashIcon.tsx';
 import { useAutoSpeak } from '../hooks/useAutoSpeak.ts';
+import { getCurrentLanguage } from '../i18n/index.ts';
+import { translateQuestion } from '../utils/translate.ts';
 
 interface PatternCompletionScreenProps {
     roundData: PatternRound;
@@ -28,8 +30,8 @@ const PatternCompletionScreen: React.FC<PatternCompletionScreenProps> = ({
     const [isCorrect, setIsCorrect] = useState(false);
     const [mistakeMade, setMistakeMade] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
-
-    const question = roundData.question;
+    const currentLang = getCurrentLanguage();
+    const question = translateQuestion(roundData.question, currentLang);
     useAutoSpeak(question, isAutoSpeakEnabled, roundData.id);
 
     useEffect(() => {
@@ -48,12 +50,8 @@ const PatternCompletionScreen: React.FC<PatternCompletionScreenProps> = ({
     const handleOptionClick = async (optionId: number) => {
         if (isCorrect) return;
         setSelectedId(optionId);
+        // Etiket okumayı kaldır - sadece efekt sesi
         
-        const selectedOption = roundData.options.find(o => o.id === optionId);
-        if (selectedOption) {
-            speak(selectedOption.word);
-        }
-
         if (optionId === roundData.answer.id) {
             setIsCorrect(true);
             await playEffect('correct');
@@ -78,54 +76,62 @@ const PatternCompletionScreen: React.FC<PatternCompletionScreenProps> = ({
         <div 
          ref={cardRef}
          tabIndex={-1}
-         className="flex flex-col items-center justify-start h-full w-full max-w-4xl mx-auto p-4 animate-fade-in outline-none overflow-y-auto" 
+         className="flex flex-col items-center justify-start h-full w-full max-w-4xl mx-auto p-4 landscape:p-2 animate-fade-in outline-none overflow-y-auto" 
          aria-live="polite">
             
-            {/* Header */}
-            <div className="w-full flex justify-between items-center mb-4">
-                <button onClick={onBack} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label="Geri dön">
-                    <ArrowLeftIcon className="w-8 h-8 text-indigo-700" />
+            {/* Compact Header for Landscape */}
+            <div className="w-full flex justify-between items-center mb-4 landscape:mb-2 p-2 landscape:p-1 bg-white/50 backdrop-blur-sm rounded-full">
+                <button onClick={onBack} className="p-2 landscape:p-1 rounded-full hover:bg-white/80 transition-colors" aria-label="Geri dön">
+                    <ArrowLeftIcon className="w-8 h-8 landscape:w-6 landscape:h-6 text-indigo-700" />
                 </button>
-                 <div className="flex-grow flex items-center justify-center gap-4">
-                    <h1 className="text-xl sm:text-2xl font-bold text-center text-indigo-800">
-                        {question}
-                    </h1>
-                     <button onClick={handleSpeak} className="p-2 bg-indigo-100 rounded-full hover:bg-indigo-200 transition-colors" aria-label="Soruyu seslendir">
-                        <SpeakerIcon className="w-7 h-7 text-indigo-600" />
+                <div className="flex items-center gap-2 landscape:gap-3">
+                    <h1 className="text-lg landscape:text-sm font-bold text-indigo-800 hidden landscape:block">{question}</h1>
+                    <button onClick={handleSpeak} className="p-2 landscape:p-1 bg-indigo-100 rounded-full hover:bg-indigo-200 transition-colors" aria-label="Soruyu seslendir">
+                        <SpeakerIcon className="w-7 h-7 landscape:w-5 landscape:h-5 text-indigo-600" />
                     </button>
-                 </div>
-                 <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-indigo-800">{currentCard}/{totalCards}</span>
-                    <button onClick={onToggleWordLabel} className="p-2 rounded-full bg-white/50 hover:bg-white/80 transition-colors" aria-label={isWordLabelVisible ? 'Etiketleri gizle' : 'Etiketleri göster'}>
-                        {isWordLabelVisible ? <EyeSlashIcon className="w-7 h-7 text-indigo-600" /> : <EyeIcon className="w-7 h-7 text-indigo-600" />}
+                </div>
+                <div className="flex items-center gap-2">
+                    <div className="text-lg landscape:text-sm font-bold text-indigo-800">{currentCard} / {totalCards}</div>
+                    <button onClick={onToggleWordLabel} className="p-2 landscape:p-1 rounded-full hover:bg-white/80 transition-colors" aria-label={isWordLabelVisible ? "Etiketleri gizle" : "Etiketleri göster"}>
+                        {isWordLabelVisible ? <EyeSlashIcon className="w-8 h-8 landscape:w-6 landscape:h-6 text-indigo-700" /> : <EyeIcon className="w-8 h-8 landscape:w-6 landscape:h-6 text-indigo-700" />}
                     </button>
                 </div>
             </div>
 
-            <div className="w-full flex-grow flex flex-col landscape:flex-row items-center justify-center gap-6 landscape:gap-8">
-                {/* Pattern Display */}
-                <div className="w-full bg-white/60 p-4 rounded-2xl shadow-inner min-h-[120px] flex items-center justify-center landscape:flex-[1.5] landscape:max-h-[70vh]">
-                    <div className="flex items-center gap-2 sm:gap-4 flex-wrap landscape:flex-nowrap">
+            {/* Question - Only Portrait */}
+            <div className="w-full landscape:hidden bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-lg mb-4">
+                <h1 className="text-xl sm:text-2xl font-bold text-center text-indigo-800 flex items-center justify-center gap-4">
+                    {question}
+                    <button onClick={handleSpeak} className="p-2 bg-indigo-100 rounded-full hover:bg-indigo-200 transition-colors" aria-label="Soruyu seslendir">
+                        <SpeakerIcon className="w-7 h-7 text-indigo-600" />
+                    </button>
+                </h1>
+            </div>
+
+            <div className="w-full flex-grow flex flex-col landscape:flex-row items-center landscape:items-start justify-center gap-4 landscape:gap-4 landscape:max-h-[85vh]">
+                {/* Pattern Display - Kartlar küçültüldü */}
+                <div className="w-full bg-white/60 p-4 landscape:p-3 rounded-2xl shadow-inner min-h-[120px] flex items-center justify-center landscape:flex-1 landscape:max-w-[65%]">
+                    <div className="flex items-center gap-2 sm:gap-3 landscape:gap-2 flex-wrap landscape:flex-nowrap justify-center">
                         {roundData.pattern.map((item, index) => (
-                            <div key={index} className="w-20 h-20 sm:w-24 sm:h-24">
-                                <Card imageUrl={item.imageUrl} word={item.word} onClick={() => speak(item.word)} isRevealed={isWordLabelVisible}/>
+                            <div key={index} className="w-14 h-14 sm:w-16 sm:h-16 landscape:w-16 landscape:h-16">
+                                <Card imageUrl={item.imageUrl} word={item.word} onClick={() => {}} isRevealed={isWordLabelVisible}/>
                             </div>
                         ))}
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center bg-slate-200 rounded-2xl border-2 border-dashed border-slate-400">
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 landscape:w-16 landscape:h-16 flex items-center justify-center bg-slate-200 rounded-2xl border-2 border-dashed border-slate-400">
                             {isCorrect ? (
                                 <div className="w-full h-full">
                                     <Card imageUrl={roundData.answer.imageUrl} word={roundData.answer.word} isRevealed={isWordLabelVisible} onClick={() => {}} />
                                 </div>
                             ) : (
-                                <span className="text-4xl text-slate-500">?</span>
+                                <span className="text-2xl landscape:text-xl text-slate-500">?</span>
                             )}
                         </div>
                     </div>
                 </div>
 
-                {/* Options */}
-                <div className="w-full landscape:w-80 sm-landscape:w-72 landscape:flex-shrink-0">
-                    <div className="grid grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto">
+                {/* Options - Seçenekler büyütüldü */}
+                <div className="w-full landscape:w-auto landscape:flex-shrink-0 landscape:max-w-[32%]">
+                    <div className="grid grid-cols-2 gap-3 landscape:gap-3 max-h-[60vh] landscape:max-h-[85vh] overflow-y-auto">
                         {roundData.options.map((option) => (
                             <div
                                 key={option.id}

@@ -1,18 +1,18 @@
 
-import { ActivityType, ActivityCategory, ImageMetadata, ConceptRound, Word, Story, ScreenState, ConceptOption, ActivityStats, MemoryGameRound, SudokuRound, SudokuItem, NumberSequencingRound } from '../types.ts';
+import { ActivityType, ActivityCategory, ImageMetadata, ConceptRound, Word, Story, ScreenState, ConceptOption, ActivityStats, MemoryGameRound, SudokuRound, SudokuItem } from '../types.ts';
 import { storyData } from './staticData.ts';
 import { imageData } from './database/imageData.ts';
 import { 
     sensesData,
     bigSmallData, longShortData, thinThickData, wideNarrowData, oldNewData, youngOldData, hardSoftData, cleanDirtyData, wetDryData, openClosedData, straightCurvedData, aliveLifelessData, bitterSweetData, heavyLightData, hotColdData, roughSmoothData, brokenIntactData, messyCleanData, tazeBayatData, kirisikDuzgunData, sivriKutData, parlakMatData, tembelCaliskanData, seffafOpakData, dikenliPuruzsuzData, dugumCozukData, hungryFullData, derinSigData, kalabalikTenhaData, tersDuzData,
-    numberSequencingData, fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData,
+    fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData,
     onUnderData, belowAboveData, besideOppositeData, inFrontOfBehindData, insideOutsideData, betweenData, leftRightData, nearFarData, highLowData,
     beforeAfterData, dayNightData, fastSlowData,
-    whatDoesntBelongData, functionalMatchingData, causeEffectData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
+    whatDoesntBelongData, functionalMatchingData, causeEffectData, fiveWOneHData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
 } from './database/activities/index.ts';
 import { CONCEPT_ACTIVITIES, LETTER_SOUND_ACTIVITIES, REASONING_ACTIVITIES, LETTER_GROUPS, OBJECT_RECOGNITION_ACTIVITIES, ALL_SUB_ACHIEVEMENTS } from '../constants.ts';
 import { shuffleArray, getValueFromLocalStorage } from '../utils.ts';
-import { getCurrentLanguage } from '../i18n/index.ts';
+import { getCurrentLanguage, t } from '../i18n/index.ts';
 
 
 // --- UTILITY FUNCTIONS ---
@@ -349,10 +349,13 @@ const getBannedImageIds = (): Set<number> => {
 };
 
 const CONCRETE_CATEGORIES_FOR_LETTER_GAMES = [
-  'hayvan', 'meyve', 'sebze', 'taşıt', 'giysi', 'mutfak', 'banyo', 'ev_esya', 
-  'muzik_aleti', 'tamir_aleti', 'oyuncak', 'yiyecek', 'bitki', 'doğal nesne', 'doğal yapı', 'olay',
-  'insan', 'vücut', 'yapı', 'bina', 'malzeme', 'profession', 'yer', 'uzay', 'doğa olayı', 'nesne'
+    'hayvan', 'meyve', 'sebze', 'taşıt', 'giysi', 'mutfak', 'banyo', 'ev_esya', 
+    'muzik_aleti', 'tamir_aleti', 'oyuncak', 'yiyecek', 'bitki', 'doğal nesne', 'doğal yapı', 'olay',
+    'insan', 'vücut', 'yapı', 'bina', 'malzeme', 'profession', 'yer', 'uzay', 'doğa olayı', 'nesne',
+    // Added to include user-curated categories for family members and occupations
+    'aile üyeleri', 'meslekler'
 ];
+
 
 export const getActivityCategory = (activity: ActivityType | string): ActivityCategory | null => {
     const activityInfo = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(activity));
@@ -367,6 +370,12 @@ export const getActivityUiConfig = (activityType: ActivityType | null): {
         backScreen: ScreenState.MainMenu,
         backButtonText: "Etkinlik Menüsüne Dön",
     };
+    if (activityType === ActivityType.FiveWOneH) {
+        return {
+            backScreen: ScreenState.FiveWOneHMenu,
+            backButtonText: '5N1K Menüsüne Dön',
+        };
+    }
 
     if (activityType === ActivityType.Syllabification) {
         return {
@@ -398,6 +407,12 @@ export const getActivityUiConfig = (activityType: ActivityType | null): {
             backButtonText: "Nesne Menüsüne Dön",
         };
     }
+    if (activityType === ActivityType.LineTracing || activityType === ActivityType.ShapeColoring || activityType === ActivityType.RhythmFollowing) {
+        return {
+            backScreen: ScreenState.FineMotorMenu,
+            backButtonText: t('menu.fineMotor.backButton', 'İnce Motor Menüsüne Dön'),
+        };
+    }
 
     return {
         backScreen: ScreenState.MainMenu,
@@ -410,18 +425,31 @@ export const getActivityUiConfig = (activityType: ActivityType | null): {
 export const fetchWordsForLetter = async (letter: string, count?: number): Promise<Word[]> => {
   const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
   const bannedIds = getBannedImageIds();
-  
-  const availableWords = imageData.filter(item => {
-    const isBanned = bannedIds.has(item.id);
-    const hasLetters = item.tags.letters;
-    const isConcrete = CONCRETE_CATEGORIES_FOR_LETTER_GAMES.includes(item.tags.category);
-    
-    // Kullanıcı geri bildirimine göre kafa karıştırıcı konumsal görüntüleri harf oyunlarından çıkarın.
-    // "aile" (family) için istisna, çünkü net bir tek kavramdır.
-    const isConfusingPositionalImage = !!item.tags.position && item.word.toLocaleLowerCase('tr-TR') !== 'aile';
+    // Normalize categories so we correctly match imageData tag.category values
+    const norm = (s?: string) => {
+        if (!s) return '';
+        return s.toString().toLowerCase()
+            .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
+            .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+            .replace(/[^a-z0-9]/g, '');
+    };
 
-    return !isBanned && hasLetters && isConcrete && !isConfusingPositionalImage;
-  });
+    const allowedNorms = CONCRETE_CATEGORIES_FOR_LETTER_GAMES.map(c => norm(c));
+
+    const availableWords = imageData.filter(item => {
+        const isBanned = bannedIds.has(item.id);
+        const hasLetters = item.tags && item.tags.letters;
+        const rawCategory = item.tags && item.tags.category;
+        const normalizedCategory = norm(rawCategory);
+
+        const isConcrete = allowedNorms.some(a => (normalizedCategory && (normalizedCategory.includes(a) || a.includes(normalizedCategory))));
+
+        // Kullanıcı geri bildirimine göre kafa karıştırıcı konumsal görüntüleri harf oyunlarından çıkarın.
+        // "aile" (family) için istisna, çünkü net bir tek kavramdır.
+        const isConfusingPositionalImage = !!(item.tags && item.tags.position) && item.word.toLocaleLowerCase('tr-TR') !== 'aile';
+
+        return !isBanned && hasLetters && isConcrete && !isConfusingPositionalImage;
+    });
   
     const uniqueWordMap = new Map<string, ImageMetadata>();
     
@@ -648,9 +676,22 @@ export const createObjectChoiceRounds = async (categoryId: string, count?: numbe
     }
     const MAX_QUESTIONS_PER_ROUND = count || 8;
     const bannedIds = getBannedImageIds();
-    
+
+    // Normalize category strings to match the canonical IDs generated in `constants.ts`.
+    // - lowercase
+    // - convert Turkish diacritics to ASCII equivalents
+    // - replace spaces, ampersands (&) and slashes with underscores
+    // - collapse consecutive underscores
+    const normalizeCategory = (s?: string) => (s || '').toString().toLowerCase().trim()
+        .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
+        .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
+        .replace(/\s*&\s*|\s+\/\s+|\s+/g, '_').replace(/_+/g, '_')
+        // Remove combining dot (from Turkish uppercase İ lowercasing producing i + \u0307)
+        .replace(/\u0307/g, '');
+    const targetCategory = normalizeCategory(categoryId);
+
     const itemsInCategory = imageData.filter(item =>
-        !bannedIds.has(item.id) && item.tags.category === categoryId
+        !bannedIds.has(item.id) && normalizeCategory(item.tags.category) === targetCategory
     );
 
     if (itemsInCategory.length < 4) return [];
@@ -728,10 +769,10 @@ export const createObjectChoiceRounds = async (categoryId: string, count?: numbe
 
         let distractorPool: ImageMetadata[] = [];
         
-        if (['meyve', 'sebze', 'yiyecek'].includes(categoryId)) {
+        if (['meyve', 'sebze', 'yiyecek'].includes(targetCategory)) {
             distractorPool = imageData.filter(item =>
                 !bannedIds.has(item.id) &&
-                ['meyve', 'sebze', 'yiyecek'].includes(item.tags.category) &&
+                ['meyve', 'sebze', 'yiyecek'].includes(normalizeCategory(item.tags.category)) &&
                 item.word !== correctItem.word &&
                 !hasWordConflict(item.word, correctItem.word)
             );
@@ -786,15 +827,15 @@ export const createObjectChoiceRounds = async (categoryId: string, count?: numbe
 
 // --- DYNAMIC CONCEPT ACTIVITY GENERATORS ---
 
-// Helper to create a ConceptOption from ImageMetadata
-const createOption = (image: ImageMetadata, isCorrect: boolean, spokenText: string): ConceptOption => ({
+// Helper to create a ConceptOption from ImageMetadata (şu an kullanılmıyor)
+/* const createOption = (image: ImageMetadata, isCorrect: boolean, spokenText: string): ConceptOption => ({
     id: image.id,
     word: image.word,
     imageUrl: image.imageUrl,
     audioKey: image.audioKeys.default,
     spokenText: spokenText,
     isCorrect,
-});
+}); */
 
 const createYesNoRounds = (count: number = 8): Word[] => {
     const bannedIds = getBannedImageIds();
@@ -983,44 +1024,6 @@ const createEmotionsRounds = (count: number = 8): ConceptRound[] => {
     return rounds;
 };
 
-// New dynamic generator for Visual "What Doesn't Belong" (3 same, 1 different)
-const createVisualWhatDoesntBelongRounds = (count: number): ConceptRound[] => {
-    const bannedIds = getBannedImageIds();
-    const pool = imageData.filter(item => !bannedIds.has(item.id));
-    const rounds: ConceptRound[] = [];
-    const usedCorrectIds = new Set<number>();
-
-    let attempts = 0;
-    while (rounds.length < count && attempts < 50) {
-        attempts++;
-        
-        let correctItem = getRandomItems(pool.filter(p => !usedCorrectIds.has(p.id)), 1)[0];
-        if (!correctItem) continue;
-        usedCorrectIds.add(correctItem.id);
-
-        const distractorPool = pool.filter(p => p.id !== correctItem!.id);
-        let distractorItem = getRandomItems(distractorPool, 1)[0];
-        if (!distractorItem) continue;
-
-        const options: ConceptOption[] = shuffleArray([
-            createOption(correctItem, true, correctItem.word),
-            createOption(distractorItem, false, distractorItem.word),
-            createOption(distractorItem, false, distractorItem.word),
-            createOption(distractorItem, false, distractorItem.word)
-        ]);
-
-        rounds.push({
-            id: correctItem.id + distractorItem.id + rounds.length,
-            question: "Hangisi farklı?",
-            questionAudioKey: "q_which_is_different",
-            activityType: ActivityType.WhatDoesntBelong,
-            options
-        });
-    }
-    return rounds;
-};
-
-
 // --- NEW, SIMPLIFIED MAIN DATA FETCHER ---
 const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
     [ActivityType.Senses]: sensesData,
@@ -1073,15 +1076,16 @@ const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
     // WhatDoesntBelong is now handled dynamically
     [ActivityType.FunctionalMatching]: functionalMatchingData,
     [ActivityType.CauseEffect]: causeEffectData,
+    [ActivityType.FiveWOneH]: fiveWOneHData,
     [ActivityType.SequencingStories]: sequencingStoryData,
     [ActivityType.PatternCompletion]: patternCompletionData,
     [ActivityType.DragAndDropCounting]: dragAndDropCountingData,
     [ActivityType.DragAndDropPositioning]: dragAndDropPositioningData,
 };
 
-export const fetchConceptActivityData = async (activity: ActivityType, activityStats: Record<string, ActivityStats>, count?: number): Promise<any[]> => {
+export const fetchConceptActivityData = async (activity: ActivityType, _activityStats: Record<string, ActivityStats>, count?: number): Promise<any[]> => {
     const MAX_QUESTIONS_STATIC = count || 8;
-    const NUM_ROUNDS_DYNAMIC = count || 4; 
+    const NUM_ROUNDS_DYNAMIC = count || 4; // Sudoku/Hafıza için 4 tur yeterli 
 
     // Dynamic Generators
     if (activity === ActivityType.YesNo) return createYesNoRounds(MAX_QUESTIONS_STATIC);
@@ -1090,30 +1094,32 @@ export const fetchConceptActivityData = async (activity: ActivityType, activityS
     if (activity === ActivityType.Emotions) return createEmotionsRounds(MAX_QUESTIONS_STATIC);
     
     if (activity === ActivityType.WhatDoesntBelong) {
-        const visualRoundsCount = Math.floor(MAX_QUESTIONS_STATIC / 2);
-        const categoryRoundsCount = MAX_QUESTIONS_STATIC - visualRoundsCount;
-
-        const visualRounds = createVisualWhatDoesntBelongRounds(visualRoundsCount);
-        const categoryRounds = getRandomItems(whatDoesntBelongData, categoryRoundsCount).map(round => ({
+        // Tamamen statik turlar - whatDoesntBelongData'dan
+        const rounds = getRandomItems(whatDoesntBelongData, MAX_QUESTIONS_STATIC).map(round => ({
             ...round,
             options: shuffleArray(round.options),
             activityType: activity,
         }));
+        return shuffleArray(rounds);
+    }
 
-        return shuffleArray([...visualRounds, ...categoryRounds]);
+    // 5N1K: Only use static curated rounds; do NOT merge other reasoning rounds and do NOT slice here
+    // so category filtering can pick sufficient items.
+    if (activity === ActivityType.FiveWOneH) {
+        const base = fiveWOneHData.map(r => ({ ...r, options: shuffleArray(r.options), activityType: ActivityType.FiveWOneH }));
+        return base;
     }
 
 
     if (activity === ActivityType.Sudoku) {
-        const stats = activityStats[String(ActivityType.Sudoku)] || { completions: 0 };
-        const completions = stats.completions || 0;
-        const unknowns = Math.min(4, Math.floor(completions / 2) + 1);
-        
+        // Progressive difficulty: Her 2 başarılı turda +1 boş hücre (1→4 arası)
         const rounds: SudokuRound[] = [];
         const shuffledSolutions = shuffleArray(sudokuData);
 
         for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) {
             const solution = shuffledSolutions[i % shuffledSolutions.length];
+            const unknowns = Math.min(4, Math.floor(i / 2) + 1); // Tur bazlı zorluk
+            
             const puzzleGrid: (SudokuItem | null)[] = [...solution.solutionGrid];
             const indices = shuffleArray(Array.from({ length: 9 }, (_, k) => k));
             
@@ -1131,44 +1137,101 @@ export const fetchConceptActivityData = async (activity: ActivityType, activityS
         return rounds;
     }
 
-    if (activity === ActivityType.MemoryCards) {
-        const stats = activityStats[String(ActivityType.MemoryCards)] || { completions: 0 };
-        const completions = stats.completions || 0;
-        const numPairs = Math.min(5, Math.floor(completions / 2) + 2);
-
-        const rounds: MemoryGameRound[] = [];
+    if (activity === ActivityType.PatternCompletion) {
+        // Progressive difficulty: Seviye bazlı turlar (ID 1-4: Basit, 5-8: Orta, 9-12: Karmaşık)
+        const rounds = [];
+        
         for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) {
-             const boardCards = getRandomItems(memoryCardPool, numPairs);
-             rounds.push({
-                id: i,
-                boardCards: boardCards,
-                activityType: ActivityType.MemoryCards,
-             });
+            // Her 2 turda bir seviye atla: 0→basit, 2→orta, 4→karmaşık
+            const difficultyLevel = Math.floor(i / 2); // 0, 0, 1, 1, 2, 2, 3, 3
+            const startId = Math.min(difficultyLevel * 4 + 1, 9); // 1, 1, 5, 5, 9, 9, 9, 9
+            const endId = Math.min(startId + 3, 12); // 4, 4, 8, 8, 12, 12, 12, 12
+            
+            // İlgili seviyeden rastgele tur seç
+            const levelRounds = patternCompletionData.filter(r => r.id >= startId && r.id <= endId);
+            const selectedRound = levelRounds[Math.floor(Math.random() * levelRounds.length)];
+            
+            if (selectedRound) {
+                rounds.push({
+                    ...selectedRound,
+                    id: selectedRound.id + i * 100, // Unique ID
+                    options: shuffleArray([...selectedRound.options]),
+                });
+            }
         }
         return rounds;
     }
-    
-    if (activity === ActivityType.NumberSequencing) {
-        const stats = activityStats[String(ActivityType.NumberSequencing)] || { completions: 0 };
-        const completions = stats.completions || 0;
-        
-        const allRounds = shuffleArray(numberSequencingData);
-        const easyRounds = allRounds.filter(r => r.difficulty === 'easy');
-        const mediumRounds = allRounds.filter(r => r.difficulty === 'medium');
-        const hardRounds = allRounds.filter(r => r.difficulty === 'hard');
 
-        let selectedRounds: NumberSequencingRound[] = [];
+    if (activity === ActivityType.MemoryCards) {
+        // Progressive difficulty: Her 2 başarılı turda +1 çift (2→6 çift arası)
+        const rounds: MemoryGameRound[] = [];
         
-        if (completions < 2) {
-            selectedRounds = [...getRandomItems(easyRounds, 6), ...getRandomItems(mediumRounds, 2)];
-        } else if (completions < 5) {
-            selectedRounds = [...getRandomItems(easyRounds, 3), ...getRandomItems(mediumRounds, 3), ...getRandomItems(hardRounds, 2)];
-        } else {
-            selectedRounds = [...getRandomItems(easyRounds, 2), ...getRandomItems(mediumRounds, 3), ...getRandomItems(hardRounds, 3)];
+        for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) {
+            const numPairs = Math.min(6, Math.floor(i / 2) + 2); // Tur bazlı zorluk
+            const boardCards = getRandomItems(memoryCardPool, numPairs);
+            
+            rounds.push({
+                id: i,
+                boardCards: boardCards,
+                activityType: ActivityType.MemoryCards,
+            });
         }
-        
-        return shuffleArray(selectedRounds).map(r => ({ ...r, activityType: ActivityType.NumberSequencing }));
+        return rounds;
     }
+
+    // Provide placeholder rounds for fine motor activities which are UI-driven and
+    // don't require prebuilt question payloads. This prevents "no content" messages
+    // when launching LineTracing / ShapeColoring / RhythmFollowing from the menu.
+    if (activity === ActivityType.LineTracing || activity === ActivityType.ShapeColoring || activity === ActivityType.RhythmFollowing) {
+        const rounds: any[] = [];
+        // LineTracing: 6 çizgi tipi var, ShapeColoring: 6 şekil var
+        const numRounds = count || (activity === ActivityType.LineTracing ? 6 : 4);
+        for (let i = 0; i < numRounds; i++) rounds.push({ id: i, activityType: activity });
+        return rounds;
+    }
+
+    // --- Relative Comparison activities: load rounds from experimental JSON if available ---
+    if (activity === ActivityType.RelativeBigSmall || activity === ActivityType.RelativeWideNarrow || activity === ActivityType.RelativeThinThick || activity === ActivityType.RelativeFewMuch || activity === ActivityType.RelativeLongShort || activity === ActivityType.RelativeNearFar || activity === ActivityType.RelativeHighLow) {
+        // Map activity enum to dimension keys used in the JSON file
+        const getDimensionKey = (act: ActivityType) => {
+            switch (act) {
+                case ActivityType.RelativeBigSmall: return 'size';
+                case ActivityType.RelativeWideNarrow: return 'width';
+                case ActivityType.RelativeThinThick: return 'thickness';
+                case ActivityType.RelativeFewMuch: return 'quantity';
+                case ActivityType.RelativeLongShort: return 'length';
+                case ActivityType.RelativeNearFar: return 'distance';
+                case ActivityType.RelativeHighLow: return 'height';
+                default: return 'size';
+            }
+        };
+
+        try {
+            const mod = await import('../data/experimental/relative_concepts.json');
+            const payload = (mod && (mod as any).default) ? (mod as any).default : mod;
+            const roundsPayload = payload && payload.rounds ? payload.rounds : [];
+            const dim = getDimensionKey(activity);
+            // Find rounds matching the requested dimension
+            const matched = roundsPayload.filter((r: any) => String(r.dimension) === dim);
+            if (matched.length === 0) {
+                // If none matched, return an array of minimal placeholder rounds to avoid 'no content'
+                const fallback: any[] = [];
+                for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) fallback.push({ id: i, items: [], dimension: dim, activityType: activity });
+                return fallback;
+            }
+
+            // Normalize to expected Round shape and limit to NUM_ROUNDS_DYNAMIC
+            const rounds = matched.slice(0, NUM_ROUNDS_DYNAMIC).map((r: any, idx: number) => ({ id: r.id || `${dim}_${idx}`, items: r.items || [], dimension: r.dimension, activityType: activity }));
+            return rounds;
+        } catch (e) {
+            console.warn('Could not load experimental relative comparison data', e);
+            const fallback: any[] = [];
+            for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) fallback.push({ id: i, items: [], dimension: getDimensionKey(activity), activityType: activity });
+            return fallback;
+        }
+    }
+    
+    
 
     const rawData = staticActivityDataMap[activity];
     if (!rawData) return [];

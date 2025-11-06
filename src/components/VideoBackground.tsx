@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 interface VideoBackgroundProps {
-  src: string;
+  src: string; // expected to be an absolute /videos/*.mp4 path
 }
 
 const VideoBackground: React.FC<VideoBackgroundProps> = ({ src }) => {
@@ -31,6 +31,28 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ src }) => {
     }, 500); // This duration must match the CSS transition duration
   };
 
+  // Derive a simple portrait fallback (remove 'yan' before .mp4) if a landscape variant fails.
+  const deriveFallback = (failed: string): string | null => {
+    if (!failed.endsWith('.mp4')) return null;
+    // heuristic: replace 'yan.mp4' with '.mp4'
+    const fallback = failed.replace(/yan\.mp4$/i, '.mp4');
+    return fallback !== failed ? fallback : null;
+  };
+
+  const handleVideoError = (which: 'current' | 'next') => () => {
+    const failedSrc = which === 'current' ? currentSrc : nextSrc;
+    if (!failedSrc) return;
+    const fb = deriveFallback(failedSrc);
+    if (fb) {
+      // Try loading fallback immediately
+      if (which === 'current') {
+        setCurrentSrc(fb);
+      } else {
+        setNextSrc(fb);
+      }
+    }
+  };
+
   return (
     <div className="absolute top-0 left-0 w-full h-full -z-10 bg-black">
       {currentSrc && (
@@ -40,6 +62,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ src }) => {
           loop
           muted
           playsInline
+          onError={handleVideoError('current')}
           className={`w-full h-full object-cover transition-opacity duration-500 ${!nextSrc ? 'animate-fade-in' : ''} ${isFading ? 'opacity-0' : 'opacity-100'}`}
         >
           <source src={currentSrc} type="video/mp4" />
@@ -53,11 +76,16 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({ src }) => {
           muted
           playsInline
           onCanPlay={handleNextVideoReady}
+          onError={handleVideoError('next')}
           className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ${isFading ? 'opacity-100' : 'opacity-0'}`}
         >
           <source src={nextSrc} type="video/mp4" />
         </video>
       )}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-sky-950/22 via-sky-900/15 to-emerald-900/30 mix-blend-multiply"
+      />
     </div>
   );
 };

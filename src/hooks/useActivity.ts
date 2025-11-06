@@ -3,6 +3,10 @@ import { ActivityType, ActivityStats, AttemptRecord, ActivityCategory } from '..
 import { ALL_SUB_ACHIEVEMENTS, LETTER_GROUPS, OBJECT_CATEGORIES, LETTER_SOUND_ACTIVITIES } from '../constants.ts';
 import { createObjectChoiceRounds, fetchConceptActivityData, fetchLetterActivityData, fetchSyllableWordsForGroup } from '../services/contentService.ts';
 import { shuffleArray } from '../utils.ts';
+import { t, getCurrentLanguage } from '../i18n/index.ts';
+import { buildDailySession, getRecommendedSessionLength } from '../services/sessionBuilder';
+import { getUnlockedUnits } from '../services/masteryEngine';
+import { getAllowedUnitCeiling, recordUnitAdvanced } from '../services/progressionPolicy';
 
 interface UseActivityProps {
     activityStats: Record<string, ActivityStats>;
@@ -10,9 +14,10 @@ interface UseActivityProps {
     showToast: (message: string, type?: 'error' | 'info', duration?: number) => void;
     handleGoToMenu: () => void;
     enabledActivitiesSet: Set<string>;
+    activeProfileId?: string | null;
 }
 
-export const useActivity = ({ activityStats, setActivityStats, showToast, handleGoToMenu, enabledActivitiesSet }: UseActivityProps) => {
+export const useActivity = ({ activityStats, setActivityStats, showToast, handleGoToMenu, enabledActivitiesSet, activeProfileId }: UseActivityProps) => {
     const [activityType, setActivityType] = useState<ActivityType | null>(null);
     const [activityData, setActivityData] = useState<any[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,12 +26,19 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
     const [selectedGroup, setSelectedGroup] = useState<number | null>(null);
     const [selectedObjectCategory, setSelectedObjectCategory] = useState<{ id: string; title: string } | null>(null);
     const [selectedActivityForLetter, setSelectedActivityForLetter] = useState<ActivityType | null>(null);
+    // 5N1K category tracking (per-category stats like Kim/Ne/Nerede...)
+    const [selectedFiveWOneHKey, setSelectedFiveWOneHKey] = useState<string | null>(null);
     
     // Random Mode State
     const [isRandomMode, setIsRandomMode] = useState(false);
+    const [isProgramMode, setIsProgramMode] = useState(false);
     const [randomModeQueue, setRandomModeQueue] = useState<(ActivityType | string)[]>([]);
     const [currentRandomActivityIndex, setCurrentRandomActivityIndex] = useState(0);
     const [randomModeAttemptCount, setRandomModeAttemptCount] = useState<Record<string, number>>({});
+
+    // --- Program Mode progression (per-profile) ---
+    // Old 24-level system removed - now using unit-based progression with progressionPolicy service
+    // Program mode now uses buildDailySession from sessionBuilder.ts with dynamic difficulty adaptation
 
     const resetActivityState = useCallback(() => {
         setActivityType(null);
@@ -38,6 +50,7 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         setSelectedObjectCategory(null);
         setSelectedActivityForLetter(null);
         setIsRandomMode(false);
+        setIsProgramMode(false);
         setRandomModeQueue([]);
         setCurrentRandomActivityIndex(0);
         setRandomModeAttemptCount({});
@@ -46,6 +59,12 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
     const startSpecificRandomActivity = useCallback(async (activityId: ActivityType | string): Promise<{ success: boolean, data?: any[], type?: ActivityType | string }> => {
         const activityInfo = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(activityId));
         if (!activityInfo) return { success: false };
+
+        // Guard: Disable letter activities for non-TR languages in all random/program flows
+        const lang = getCurrentLanguage();
+        if (activityInfo.category === ActivityCategory.LetterSound && lang !== 'tr') {
+            return { success: false };
+        }
 
         let fetchedData: any[] = [];
         const randomCount = 4;
@@ -114,8 +133,11 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
     }, [startSpecificRandomActivity]);
     
     const handleStartRandomMode = useCallback(async () => {
+        const lang = getCurrentLanguage();
         const availableToPlay = ALL_SUB_ACHIEVEMENTS
-            .filter(sa => enabledActivitiesSet.has(String(sa.id)) && sa.id !== ActivityType.EmbeddedStory);
+            .filter(sa => enabledActivitiesSet.has(String(sa.id)) && sa.id !== ActivityType.EmbeddedStory)
+            // Guard: hide letter activities entirely when language is not Turkish
+            .filter(sa => !(lang !== 'tr' && sa.category === ActivityCategory.LetterSound));
 
         if (availableToPlay.length === 0) {
             showToast("Rastgele mod için hiç etkinlik seçilmemiş. Lütfen ayarlardan etkinlikleri etkinleştirin.", 'info');
@@ -126,7 +148,8 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         setRandomModeQueue(shuffledQueue);
         setCurrentRandomActivityIndex(0);
         setRandomModeAttemptCount({});
-        setIsRandomMode(true);
+    setIsRandomMode(true);
+    setIsProgramMode(false);
         
         const started = await startNextRandomActivity(shuffledQueue, 0);
         if (!started) {
@@ -136,6 +159,40 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         }
         return true;
     }, [enabledActivitiesSet, showToast, startNextRandomActivity, handleGoToMenu]);
+
+    // Program Mode (experimental): curated sequence, independent of enabledActivitiesSet
+    const handleStartProgramMode = useCallback(async () => {
+        // Build session using new unit-based system with daily ceiling
+        const sessionLength = getRecommendedSessionLength(
+            Object.keys(activityStats).filter(id => activityStats[id]?.completions > 0).length
+        );
+        const masteredObjectCategories = new Set<string>(); // TODO: derive from stats if needed
+        const unlockedUnits = getUnlockedUnits(activityStats, masteredObjectCategories);
+        const ceiling = activeProfileId ? getAllowedUnitCeiling(activeProfileId, unlockedUnits) : undefined;
+        
+        const session = buildDailySession(activityStats, masteredObjectCategories, undefined, sessionLength, ceiling);
+        
+        if (session.activities.length === 0) {
+            showToast('Program modu için uygun içerik bulunamadı.', 'info');
+            handleGoToMenu();
+            return false;
+        }
+
+        const PROGRAM_QUEUE = session.activities.map(a => a.activityId);
+        setRandomModeQueue(PROGRAM_QUEUE);
+        setCurrentRandomActivityIndex(0);
+        setRandomModeAttemptCount({});
+        setIsRandomMode(true);
+        setIsProgramMode(true);
+
+        const started = await startNextRandomActivity(PROGRAM_QUEUE, 0);
+        if (!started) {
+            showToast('Program modu için uygun içerik bulunamadı.', 'info');
+            handleGoToMenu();
+            return false;
+        }
+        return true;
+    }, [showToast, startNextRandomActivity, handleGoToMenu, activityStats, activeProfileId]);
 
     const handleAdvance = useCallback(async (isCorrect: boolean) => {
         const newScore = isCorrect ? score + 1 : score;
@@ -157,6 +214,9 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
                 specificKey = `${activityType}-${selectedGroup}`;
             } else if (activityType === ActivityType.ObjectRecognition && selectedObjectCategory) {
                 genericKey = selectedObjectCategory.id;
+            } else if (activityType === ActivityType.FiveWOneH && selectedFiveWOneHKey) {
+                // Record under the selected 5N1K sub-key (e.g., FiveWOneH_Who)
+                genericKey = selectedFiveWOneHKey;
             } else if (activityType !== null) {
                 genericKey = String(activityType);
             }
@@ -167,7 +227,7 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
             }
 
             if (genericKey) {
-                const newRecord: AttemptRecord = { timestamp: Date.now(), score: finalScore, total: totalQuestions };
+                const newRecord: AttemptRecord = { timestamp: Date.now(), score: finalScore, total: totalQuestions, mode: isProgramMode ? 'program' : 'free' };
                 setActivityStats(prev => {
                     const updatedStats = { ...prev };
                     const isComplete = finalScore === totalQuestions;
@@ -221,7 +281,18 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
                 } else {
                      const hasNext = await startNextRandomActivity(randomModeQueue, currentRandomActivityIndex + 1);
                      if (!hasNext) {
-                        showToast("Rastgele mod tamamlandı! Harika iş.", 'info');
+                        if (isProgramMode) {
+                            // Check for unit advancement and record it for daily policy
+                            if (activeProfileId) {
+                                const masteredCats = new Set<string>();
+                                const unlockedUnits = getUnlockedUnits(activityStats, masteredCats);
+                                const maxUnit = Math.max(...Array.from(unlockedUnits));
+                                recordUnitAdvanced(activeProfileId, maxUnit);
+                            }
+                            showToast(t('programMode.completed', 'Program mode finished! Great job.'), 'info');
+                        } else {
+                            showToast("Rastgele mod tamamlandı! Harika iş.", 'info');
+                        }
                         handleGoToMenu();
                      }
                 }
@@ -251,10 +322,14 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         setSelectedObjectCategory,
         selectedActivityForLetter,
         setSelectedActivityForLetter,
+        selectedFiveWOneHKey,
+        setSelectedFiveWOneHKey,
         isRandomMode,
+        isProgramMode,
         resetActivityState,
         handleAdvance,
         handleStartRandomMode,
+        handleStartProgramMode,
         randomModeQueue,
         currentRandomActivityIndex,
         startSpecificRandomActivity,
