@@ -1306,43 +1306,43 @@
     },
     "q_why_child_is_crying": {
       "question": "Bu çocuk neden ağlıyor olabilir?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Çünkü canı acımış ya da üzgün olabilir.",
+      "wrong": "Hayır, genelde başka bir nedenle ağlamaz."
     },
     "q_why_child_holds_umbrella": {
       "question": "Çocuk neden şemsiye tutuyor?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Çünkü yağmur yağıyor olabilir veya güneşten korunuyor olabilir.",
+      "wrong": "Hayır, şemsiye genellikle yağmur veya güneş için kullanılır."
     },
     "q_why_wrinkled_clothes_became_smooth": {
       "question": "Kırışık elbiseler neden bu kadar düzgün hale geldi?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Çünkü ütülenmiş olabilir.",
+      "wrong": "Hayır, ütülenmeden genelde düzgünleşmez."
     },
     "q_why_hands_get_dirty": {
       "question": "Ellerimiz neden kirlenir?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Oyun oynarken, yemek hazırlarken veya dışarıdayken kirlenebilir.",
+      "wrong": "Hayır, eller her zaman temiz kalmaz; bu yüzden yıkanmaları gerekir."
     },
     "q_why_child_is_tired": {
       "question": "Bu çocuk neden yorulmuş olabilir?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Uzun süre oynadığı veya yeterince uyumadığı için yorulmuş olabilir.",
+      "wrong": "Hayır, genelde dinlenmeden yorulmaz."
     },
     "q_why_child_is_lying_down": {
       "question": "Bu çocuk neden yatıyor?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Dinleniyor ya da uyuyor olabilir.",
+      "wrong": "Hayır, genelde dinlenmek ya da uyumak için uzanır."
     },
     "q_why_vase_is_broken": {
       "question": "Vazo neden kırılmış olabilir?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Düşmüş veya sert bir şeye çarpmış olabilir.",
+      "wrong": "Hayır, vazo genelde düşmeden kırılmaz."
     },
     "q_why_room_is_bright": {
       "question": "Oda neden aydınlık?",
-      "correct": "",
-      "wrong": ""
+      "correct": "Doğru! Işık açık olabilir veya güneş içeri giriyor olabilir.",
+      "wrong": "Hayır, ışık olmadan oda parlak olmaz."
     },
     "q_why_floor_is_wet": {
       "question": "Yerler neden ıslak olabilir?",
