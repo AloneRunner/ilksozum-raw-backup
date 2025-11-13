@@ -100,548 +100,548 @@
     "fiveWOneH": {
       "q_who_to_when_sick": {
         "question": "Hastalanınca kime gideriz?",
-        "correct": "Doğru! Hastalanınca kime gideriz?",
-        "wrong": "Hayır. Hastalanınca kime gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_to_when_fire": {
         "question": "Yangın çıkınca kimi ararız?",
-        "correct": "Doğru! Yangın çıkınca kimi ararız?",
-        "wrong": "Hayır. Yangın çıkınca kimi ararız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_teaches_at_school": {
         "question": "Okulda bize kim ders anlatır?",
-        "correct": "Doğru! Okulda bize kim ders anlatır?",
-        "wrong": "Hayır. Okulda bize kim ders anlatır?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_brings_letter": {
         "question": "Mektupları kim getirir?",
-        "correct": "Doğru! Mektupları kim getirir?",
-        "wrong": "Hayır. Mektupları kim getirir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_flies_plane": {
         "question": "Uçağı kim kullanır?",
-        "correct": "Doğru! Uçağı kim kullanır?",
-        "wrong": "Hayır. Uçağı kim kullanır?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_cuts_hair": {
         "question": "Saçımızı kesmesi için kime gideriz?",
-        "correct": "Doğru! Saçımızı kesmesi için kime gideriz?",
-        "wrong": "Hayır. Saçımızı kesmesi için kime gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_cooks_food": {
         "question": "Yemeği kim pişirir?",
-        "correct": "Doğru! Yemeği kim pişirir?",
-        "wrong": "Hayır. Yemeği kim pişirir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_provides_milk": {
         "question": "Sütü bize kim sağlar?",
-        "correct": "Doğru! Sütü bize kim sağlar?",
-        "wrong": "Hayır. Sütü bize kim sağlar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_makes_honey": {
         "question": "Balı kim yapar?",
-        "correct": "Doğru! Balı kim yapar?",
-        "wrong": "Hayır. Balı kim yapar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_reads_bedtime_stories": {
         "question": "Geceleri bize masal anlatıp bizi kim uyutur?",
-        "correct": "Doğru! Geceleri bize masal anlatıp bizi kim uyutur?",
-        "wrong": "Hayır. Geceleri bize masal anlatıp bizi kim uyutur?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_do_we_play_with": {
         "question": "Birlikte oyun oynadığımız kişi kimdir?",
-        "correct": "Doğru! Birlikte oyun oynadığımız kişi kimdir?",
-        "wrong": "Hayır. Birlikte oyun oynadığımız kişi kimdir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_is_sad_about_broken_toy": {
         "question": "Oyuncağı kırıldığı için kim üzgün olabilir?",
-        "correct": "Doğru! Oyuncağı kırıldığı için kim üzgün olabilir?",
-        "wrong": "Hayır. Oyuncağı kırıldığı için kim üzgün olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_is_happy_to_see_food": {
         "question": "Yemeğini görünce kim sevinir?",
-        "correct": "Doğru! Yemeğini görünce kim sevinir?",
-        "wrong": "Hayır. Yemeğini görünce kim sevinir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_is_playing_with_ball": {
         "question": "Topla oynayan kimdir?",
-        "correct": "Doğru! Topla oynayan kimdir?",
-        "wrong": "Hayır. Topla oynayan kimdir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_is_driving_car": {
         "question": "Arabayı süren kimdir?",
-        "correct": "Doğru! Arabayı süren kimdir?",
-        "wrong": "Hayır. Arabayı süren kimdir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_plows_field_and_grows_vegetables": {
         "question": "Tarlayı sürüp sebze ve meyveleri kim yetiştirir?",
-        "correct": "Doğru! Tarlayı sürüp sebze ve meyveleri kim yetiştirir?",
-        "wrong": "Hayır. Tarlayı sürüp sebze ve meyveleri kim yetiştirir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_goes_to_space_in_rocket": {
         "question": "Rokete binip uzaya kim gider?",
-        "correct": "Doğru! Rokete binip uzaya kim gider?",
-        "wrong": "Hayır. Rokete binip uzaya kim gider?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_wears_crown_and_lives_in_palace": {
         "question": "Masallarda tacı olan ve sarayda yaşayan kimdir?",
-        "correct": "Doğru! Masallarda tacı olan ve sarayda yaşayan kimdir?",
-        "wrong": "Hayır. Masallarda tacı olan ve sarayda yaşayan kimdir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_gives_first_aid": {
         "question": "Yaralanan veya hasta olan birine ilk yardımı kim yapar?",
-        "correct": "Doğru! Yaralanan veya hasta olan birine ilk yardımı kim yapar?",
-        "wrong": "Hayır. Yaralanan veya hasta olan birine ilk yardımı kim yapar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_who_studies_and_learns_at_school": {
         "question": "Okulda ders çalışıp yeni şeyler öğrenen kimdir?",
-        "correct": "Doğru! Okulda ders çalışıp yeni şeyler öğrenen kimdir?",
-        "wrong": "Hayır. Okulda ders çalışıp yeni şeyler öğrenen kimdir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_brush_teeth_with": {
         "question": "Dişlerimizi fırçalarken fırçanın üzerine ne süreriz?",
-        "correct": "Doğru! Dişlerimizi fırçalarken fırçanın üzerine ne süreriz?",
-        "wrong": "Hayır. Dişlerimizi fırçalarken fırçanın üzerine ne süreriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_for_soup": {
         "question": "Çorbayı içmek için ne kullanırız?",
-        "correct": "Doğru! Çorbayı içmek için ne kullanırız?",
-        "wrong": "Hayır. Çorbayı içmek için ne kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_erase_with": {
         "question": "Yanlış yazdığımızda ne ile sileriz?",
-        "correct": "Doğru! Yanlış yazdığımızda ne ile sileriz?",
-        "wrong": "Hayır. Yanlış yazdığımızda ne ile sileriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_dry_after_bath": {
         "question": "Banyo yaptıktan sonra ne ile kurulanırız?",
-        "correct": "Doğru! Banyo yaptıktan sonra ne ile kurulanırız?",
-        "wrong": "Hayır. Banyo yaptıktan sonra ne ile kurulanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_chickens_give_us_for_breakfast": {
         "question": "Tavuklar bize kahvaltıda yediğimiz ne verir?",
-        "correct": "Doğru! Tavuklar bize kahvaltıda yediğimiz ne verir?",
-        "wrong": "Hayır. Tavuklar bize kahvaltıda yediğimiz ne verir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_wash_hands_with": {
         "question": "Ellerimizi yıkarken ne kullanırız?",
-        "correct": "Doğru! Ellerimizi yıkarken ne kullanırız?",
-        "wrong": "Hayır. Ellerimizi yıkarken ne kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_to_paint": {
         "question": "Resim yapmak için ne kullanırız?",
-        "correct": "Doğru! Resim yapmak için ne kullanırız?",
-        "wrong": "Hayır. Resim yapmak için ne kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_to_tie_hair": {
         "question": "Saçımızı bağlamak için ne kullanırız?",
-        "correct": "Doğru! Saçımızı bağlamak için ne kullanırız?",
-        "wrong": "Hayır. Saçımızı bağlamak için ne kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_put_under_head_when_sleeping": {
         "question": "Uyurken başımızın altına ne koyarız?",
-        "correct": "Doğru! Uyurken başımızın altına ne koyarız?",
-        "wrong": "Hayır. Uyurken başımızın altına ne koyarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_wear_on_feet_when_going_out": {
         "question": "Dışarı çıkarken ayağımıza ne giyeriz?",
-        "correct": "Doğru! Dışarı çıkarken ayağımıza ne giyeriz?",
-        "wrong": "Hayır. Dışarı çıkarken ayağımıza ne giyeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_people_who_cant_see_far_wear": {
         "question": "Uzağı iyi göremeyenler ne takar?",
-        "correct": "Doğru! Uzağı iyi göremeyenler ne takar?",
-        "wrong": "Hayır. Uzağı iyi göremeyenler ne takar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_put_on_birthday_cake_and_blow": {
         "question": "Doğum günü pastasının üzerine ne koyup üfleriz?",
-        "correct": "Doğru! Doğum günü pastasının üzerine ne koyup üfleriz?",
-        "wrong": "Hayır. Doğum günü pastasının üzerine ne koyup üfleriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_squeeze_on_salad_for_sour_taste": {
         "question": "Salataya ekşi bir tat vermesi için ne sıkarız?",
-        "correct": "Doğru! Salataya ekşi bir tat vermesi için ne sıkarız?",
-        "wrong": "Hayır. Salataya ekşi bir tat vermesi için ne sıkarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_to_hammer_nail_on_wall": {
         "question": "Duvara çivi çakmak için ne kullanırız?",
-        "correct": "Doğru! Duvara çivi çakmak için ne kullanırız?",
-        "wrong": "Hayır. Duvara çivi çakmak için ne kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_burn_to_get_warm": {
         "question": "Isınmak için ne yakarız?",
-        "correct": "Doğru! Isınmak için ne yakarız?",
-        "wrong": "Hayır. Isınmak için ne yakarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_put_stuff_in_when_going_to_school": {
         "question": "Okula giderken eşyalarımızı neyin içine koyarız?",
-        "correct": "Doğru! Okula giderken eşyalarımızı neyin içine koyarız?",
-        "wrong": "Hayır. Okula giderken eşyalarımızı neyin içine koyarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_is_crispy_snack_made_of_potatoes": {
         "question": "Çok sevdiğimiz, çıtır çıtır yenen atıştırmalık, patatesten yapılan nedir?",
-        "correct": "Doğru! Çok sevdiğimiz, çıtır çıtır yenen atıştırmalık, patatesten yapılan nedir?",
-        "wrong": "Hayır. Çok sevdiğimiz, çıtır çıtır yenen atıştırmalık, patatesten yapılan nedir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_drink_water_with": {
         "question": "Suyu ne ile içeriz?",
-        "correct": "Doğru! Suyu ne ile içeriz?",
-        "wrong": "Hayır. Suyu ne ile içeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_stick_on_letter_to_mail": {
         "question": "Mektubu postalamak için üzerine ne yapıştırırız?",
-        "correct": "Doğru! Mektubu postalamak için üzerine ne yapıştırırız?",
-        "wrong": "Hayır. Mektubu postalamak için üzerine ne yapıştırırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_babies_drink_milk_with": {
         "question": "Bebekler sütü ne ile içer?",
-        "correct": "Doğru! Bebekler sütü ne ile içer?",
-        "wrong": "Hayır. Bebekler sütü ne ile içer?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_to_fix_messy_hair": {
         "question": "Dağınık saçlarımızı düzeltmek için ne kullanırız?",
-        "correct": "Doğru! Dağınık saçlarımızı düzeltmek için ne kullanırız?",
-        "wrong": "Hayır. Dağınık saçlarımızı düzeltmek için ne kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_spread_on_bread_for_breakfast": {
         "question": "Ekmeğin üzerine kahvaltıda ne süreriz?",
-        "correct": "Doğru! Ekmeğin üzerine kahvaltıda ne süreriz?",
-        "wrong": "Hayır. Ekmeğin üzerine kahvaltıda ne süreriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_doctors_work": {
         "question": "Doktorlar nerede çalışır?",
-        "correct": "Doğru! Doktorlar nerede çalışır?",
-        "wrong": "Hayır. Doktorlar nerede çalışır?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_go_to_swing": {
         "question": "Salıncakta sallanmak için nereye gideriz?",
-        "correct": "Doğru! Salıncakta sallanmak için nereye gideriz?",
-        "wrong": "Hayır. Salıncakta sallanmak için nereye gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_sleep_at_night": {
         "question": "Gece olunca nerede uyuruz?",
-        "correct": "Doğru! Gece olunca nerede uyuruz?",
-        "wrong": "Hayır. Gece olunca nerede uyuruz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_fish_live": {
         "question": "Balıklar nerede yaşar?",
-        "correct": "Doğru! Balıklar nerede yaşar?",
-        "wrong": "Hayır. Balıklar nerede yaşar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_teachers_teach": {
         "question": "Öğretmenler nerede ders anlatır?",
-        "correct": "Doğru! Öğretmenler nerede ders anlatır?",
-        "wrong": "Hayır. Öğretmenler nerede ders anlatır?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_planes_fly": {
         "question": "Uçaklar nerede uçar?",
-        "correct": "Doğru! Uçaklar nerede uçar?",
-        "wrong": "Hayır. Uçaklar nerede uçar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_ships_sail": {
         "question": "Gemiler nerede yüzer?",
-        "correct": "Doğru! Gemiler nerede yüzer?",
-        "wrong": "Hayır. Gemiler nerede yüzer?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_cars_go": {
         "question": "Arabalar nerede gider?",
-        "correct": "Doğru! Arabalar nerede gider?",
-        "wrong": "Hayır. Arabalar nerede gider?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_eat_out_with_family": {
         "question": "Ailemizle dışarıda yemek yemek için nereye gidebiliriz?",
-        "correct": "Doğru! Ailemizle dışarıda yemek yemek için nereye gidebiliriz?",
-        "wrong": "Hayır. Ailemizle dışarıda yemek yemek için nereye gidebiliriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_buy_food_for_home": {
         "question": "Eve yiyecek almak için nereye gideriz?",
-        "correct": "Doğru! Eve yiyecek almak için nereye gideriz?",
-        "wrong": "Hayır. Eve yiyecek almak için nereye gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_is_place_with_lots_of_books": {
         "question": "Bir sürü kitabın olduğu ve kitap okuyabildiğimiz yer neresidir?",
-        "correct": "Doğru! Bir sürü kitabın olduğu ve kitap okuyabildiğimiz yer neresidir?",
-        "wrong": "Hayır. Bir sürü kitabın olduğu ve kitap okuyabildiğimiz yer neresidir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_camels_usually_live": {
         "question": "Develer genellikle nerede yaşar?",
-        "correct": "Doğru! Develer genellikle nerede yaşar?",
-        "wrong": "Hayır. Develer genellikle nerede yaşar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_bears_usually_live": {
         "question": "Ayılar genellikle nerede yaşar?",
-        "correct": "Doğru! Ayılar genellikle nerede yaşar?",
-        "wrong": "Hayır. Ayılar genellikle nerede yaşar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_put_clean_clothes": {
         "question": "Temiz giysilerimizi nereye koyarız?",
-        "correct": "Doğru! Temiz giysilerimizi nereye koyarız?",
-        "wrong": "Hayır. Temiz giysilerimizi nereye koyarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_go_to_sunbathe_and_swim_in_summer": {
         "question": "Yazın güneşlenmek ve yüzmek için nereye gideriz?",
-        "correct": "Doğru! Yazın güneşlenmek ve yüzmek için nereye gideriz?",
-        "wrong": "Hayır. Yazın güneşlenmek ve yüzmek için nereye gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_birds_lay_eggs": {
         "question": "Kuşlar yumurtalarını nereye yapar?",
-        "correct": "Doğru! Kuşlar yumurtalarını nereye yapar?",
-        "wrong": "Hayır. Kuşlar yumurtalarını nereye yapar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_cook_cooks": {
         "question": "Aşçı yemekleri nerede pişirir?",
-        "correct": "Doğru! Aşçı yemekleri nerede pişirir?",
-        "wrong": "Hayır. Aşçı yemekleri nerede pişirir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_where_set_up_tent_for_camping": {
         "question": "Kamp yapmak için çadırımızı nereye kurarız?",
-        "correct": "Doğru! Kamp yapmak için çadırımızı nereye kurarız?",
-        "wrong": "Hayır. Kamp yapmak için çadırımızı nereye kurarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_use_umbrella": {
         "question": "Şemsiyeyi ne zaman kullanırız?",
-        "correct": "Doğru! Şemsiyeyi ne zaman kullanırız?",
-        "wrong": "Hayır. Şemsiyeyi ne zaman kullanırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_make_snowman": {
         "question": "Kardan adamı ne zaman yaparız?",
-        "correct": "Doğru! Kardan adamı ne zaman yaparız?",
-        "wrong": "Hayır. Kardan adamı ne zaman yaparız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_see_owls": {
         "question": "Baykuşları genellikle ne zaman görürüz?",
-        "correct": "Doğru! Baykuşları genellikle ne zaman görürüz?",
-        "wrong": "Hayır. Baykuşları genellikle ne zaman görürüz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_see_stars_in_sky": {
         "question": "Gökyüzünde yıldızları ne zaman görürüz?",
-        "correct": "Doğru! Gökyüzünde yıldızları ne zaman görürüz?",
-        "wrong": "Hayır. Gökyüzünde yıldızları ne zaman görürüz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_roosters_crow": {
         "question": "Horozlar genellikle ne zaman öter?",
-        "correct": "Doğru! Horozlar genellikle ne zaman öter?",
-        "wrong": "Hayır. Horozlar genellikle ne zaman öter?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_wear_beanie_when_cold": {
         "question": "Başımız üşüdüğünde, bereyi ne zaman takarız?",
-        "correct": "Doğru! Başımız üşüdüğünde, bereyi ne zaman takarız?",
-        "wrong": "Hayır. Başımız üşüdüğünde, bereyi ne zaman takarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_usually_go_to_beach": {
         "question": "Plaja genellikle ne zaman gideriz?",
-        "correct": "Doğru! Plaja genellikle ne zaman gideriz?",
-        "wrong": "Hayır. Plaja genellikle ne zaman gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_blow_out_candles_on_cake": {
         "question": "Pastanın üzerindeki mumları ne zaman üfleriz?",
-        "correct": "Doğru! Pastanın üzerindeki mumları ne zaman üfleriz?",
-        "wrong": "Hayır. Pastanın üzerindeki mumları ne zaman üfleriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_eat": {
         "question": "Ne zaman yemek yeriz?",
-        "correct": "Doğru! Ne zaman yemek yeriz?",
-        "wrong": "Hayır. Ne zaman yemek yeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_sleep": {
         "question": "Ne zaman uyuruz?",
-        "correct": "Doğru! Ne zaman uyuruz?",
-        "wrong": "Hayır. Ne zaman uyuruz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_bears_hibernate": {
         "question": "Ayılar ne zaman kış uykusuna yatar?",
-        "correct": "Doğru! Ayılar ne zaman kış uykusuna yatar?",
-        "wrong": "Hayır. Ayılar ne zaman kış uykusuna yatar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_usually_go_to_bed": {
         "question": "Genellikle ne zaman yatağımıza gideriz?",
-        "correct": "Doğru! Genellikle ne zaman yatağımıza gideriz?",
-        "wrong": "Hayır. Genellikle ne zaman yatağımıza gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_see_sun_in_sky": {
         "question": "Gökyüzünde güneşi ne zaman görürüz?",
-        "correct": "Doğru! Gökyüzünde güneşi ne zaman görürüz?",
-        "wrong": "Hayır. Gökyüzünde güneşi ne zaman görürüz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_turn_on_light_in_room": {
         "question": "Odanın ışığını ne zaman açarız?",
-        "correct": "Doğru! Odanın ışığını ne zaman açarız?",
-        "wrong": "Hayır. Odanın ışığını ne zaman açarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_wear_gloves_when_hands_cold": {
         "question": "Ellerimiz üşüdüğünde eldivenlerimizi ne zaman giyeriz?",
-        "correct": "Doğru! Ellerimiz üşüdüğünde eldivenlerimizi ne zaman giyeriz?",
-        "wrong": "Hayır. Ellerimiz üşüdüğünde eldivenlerimizi ne zaman giyeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_usually_wear_shorts": {
         "question": "Genellikle ne zaman şort giyeriz?",
-        "correct": "Doğru! Genellikle ne zaman şort giyeriz?",
-        "wrong": "Hayır. Genellikle ne zaman şort giyeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_wash_hands": {
         "question": "Ellerimizi ne zaman yıkarız?",
-        "correct": "Doğru! Ellerimizi ne zaman yıkarız?",
-        "wrong": "Hayır. Ellerimizi ne zaman yıkarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_ice_cream_melted": {
         "question": "Dondurma neden erimiş olabilir?",
-        "correct": "Doğru! Dondurma neden erimiş olabilir?",
-        "wrong": "Hayır. Dondurma neden erimiş olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_hair_is_wet": {
         "question": "Bu saç neden ıslak?",
-        "correct": "Doğru! Bu saç neden ıslak?",
-        "wrong": "Hayır. Bu saç neden ıslak?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_child_is_cold": {
         "question": "Çocuk neden üşüyor olabilir?",
-        "correct": "Doğru! Çocuk neden üşüyor olabilir?",
-        "wrong": "Hayır. Çocuk neden üşüyor olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_child_is_crying": {
         "question": "Bu çocuk neden ağlıyor olabilir?",
-        "correct": "Doğru! Bu çocuk neden ağlıyor olabilir?",
-        "wrong": "Hayır. Bu çocuk neden ağlıyor olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_child_holds_umbrella": {
         "question": "Çocuk neden şemsiye tutuyor?",
-        "correct": "Doğru! Çocuk neden şemsiye tutuyor?",
-        "wrong": "Hayır. Çocuk neden şemsiye tutuyor?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_wrinkled_clothes_became_smooth": {
         "question": "Kırışık elbiseler neden bu kadar düzgün hale geldi?",
-        "correct": "Doğru! Kırışık elbiseler neden bu kadar düzgün hale geldi?",
-        "wrong": "Hayır. Kırışık elbiseler neden bu kadar düzgün hale geldi?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_hands_get_dirty": {
         "question": "Ellerimiz neden kirlenir?",
-        "correct": "Doğru! Ellerimiz neden kirlenir?",
-        "wrong": "Hayır. Ellerimiz neden kirlenir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_child_is_tired": {
         "question": "Bu çocuk neden yorulmuş olabilir?",
-        "correct": "Doğru! Bu çocuk neden yorulmuş olabilir?",
-        "wrong": "Hayır. Bu çocuk neden yorulmuş olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_child_is_lying_down": {
         "question": "Bu çocuk neden yatıyor?",
-        "correct": "Doğru! Bu çocuk neden yatıyor?",
-        "wrong": "Hayır. Bu çocuk neden yatıyor?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_vase_is_broken": {
         "question": "Vazo neden kırılmış olabilir?",
-        "correct": "Doğru! Vazo neden kırılmış olabilir?",
-        "wrong": "Hayır. Vazo neden kırılmış olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_room_is_bright": {
         "question": "Oda neden aydınlık?",
-        "correct": "Doğru! Oda neden aydınlık?",
-        "wrong": "Hayır. Oda neden aydınlık?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_floor_is_wet": {
         "question": "Yerler neden ıslak olabilir?",
-        "correct": "Doğru! Yerler neden ıslak olabilir?",
-        "wrong": "Hayır. Yerler neden ıslak olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_room_is_dark": {
         "question": "Oda neden karanlık?",
-        "correct": "Doğru! Oda neden karanlık?",
-        "wrong": "Hayır. Oda neden karanlık?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_child_is_happy": {
         "question": "Çocuk neden mutlu olmuş olabilir?",
-        "correct": "Doğru! Çocuk neden mutlu olmuş olabilir?",
-        "wrong": "Hayır. Çocuk neden mutlu olmuş olabilir?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_dirty_dishes_are_clean": {
         "question": "Kirli tabaklar neden temizlendi?",
-        "correct": "Doğru! Kirli tabaklar neden temizlendi?",
-        "wrong": "Hayır. Kirli tabaklar neden temizlendi?"
+        "correct": "",
+        "wrong": ""
       },
       "q_why_some_people_wear_glasses": {
         "question": "Bazı insanlar neden gözlük takar?",
-        "correct": "Doğru! Bazı insanlar neden gözlük takar?",
-        "wrong": "Hayır. Bazı insanlar neden gözlük takar?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_go_to_school": {
         "question": "Okula nasıl gideriz?",
-        "correct": "Doğru! Okula nasıl gideriz?",
-        "wrong": "Hayır. Okula nasıl gideriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_open_door": {
         "question": "Kapıyı nasıl açarız?",
-        "correct": "Doğru! Kapıyı nasıl açarız?",
-        "wrong": "Hayır. Kapıyı nasıl açarız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_baby_feels": {
         "question": "Bu bebek kendini nasıl hissediyor?",
-        "correct": "Doğru! Bu bebek kendini nasıl hissediyor?",
-        "wrong": "Hayır. Bu bebek kendini nasıl hissediyor?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_reach_high_place": {
         "question": "Yüksek bir yere nasıl ulaşırız?",
-        "correct": "Doğru! Yüksek bir yere nasıl ulaşırız?",
-        "wrong": "Hayır. Yüksek bir yere nasıl ulaşırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_travel_at_sea": {
         "question": "Denizde nasıl seyahat ederiz?",
-        "correct": "Doğru! Denizde nasıl seyahat ederiz?",
-        "wrong": "Hayır. Denizde nasıl seyahat ederiz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_clean_room": {
         "question": "Odayı nasıl temizleriz?",
-        "correct": "Doğru! Odayı nasıl temizleriz?",
-        "wrong": "Hayır. Odayı nasıl temizleriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_dry_hands_after_washing": {
         "question": "Ellerimizi yıkadıktan sonra nasıl kurularız?",
-        "correct": "Doğru! Ellerimizi yıkadıktan sonra nasıl kurularız?",
-        "wrong": "Hayır. Ellerimizi yıkadıktan sonra nasıl kurularız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_child_feels": {
         "question": "Bu çocuk kendini nasıl hissediyor?",
-        "correct": "Doğru! Bu çocuk kendini nasıl hissediyor?",
-        "wrong": "Hayır. Bu çocuk kendini nasıl hissediyor?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_eat_pasta": {
         "question": "Makarnayı nasıl yeriz?",
-        "correct": "Doğru! Makarnayı nasıl yeriz?",
-        "wrong": "Hayır. Makarnayı nasıl yeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_comb_hair": {
         "question": "Saçımızı nasıl tararız?",
-        "correct": "Doğru! Saçımızı nasıl tararız?",
-        "wrong": "Hayır. Saçımızı nasıl tararız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_cut_paper": {
         "question": "Kağıdı nasıl keseriz?",
-        "correct": "Doğru! Kağıdı nasıl keseriz?",
-        "wrong": "Hayır. Kağıdı nasıl keseriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_measure_height": {
         "question": "Boyumuzu nasıl ölçeriz?",
-        "correct": "Doğru! Boyumuzu nasıl ölçeriz?",
-        "wrong": "Hayır. Boyumuzu nasıl ölçeriz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_talk_to_someone_far_away": {
         "question": "Uzaktaki biriyle nasıl konuşuruz?",
-        "correct": "Doğru! Uzaktaki biriyle nasıl konuşuruz?",
-        "wrong": "Hayır. Uzaktaki biriyle nasıl konuşuruz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_light_a_dark_room": {
         "question": "Karanlık bir odayı nasıl aydınlatırız?",
-        "correct": "Doğru! Karanlık bir odayı nasıl aydınlatırız?",
-        "wrong": "Hayır. Karanlık bir odayı nasıl aydınlatırız?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_cook_food": {
         "question": "Yiyecekleri nasıl pişiririz?",
-        "correct": "Doğru! Yiyecekleri nasıl pişiririz?",
-        "wrong": "Hayır. Yiyecekleri nasıl pişiririz?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_rabbit_moves": {
         "question": "Tavşan nasıl hareket eder?",
-        "correct": "Doğru! Tavşan nasıl hareket eder?",
-        "wrong": "Hayır. Tavşan nasıl hareket eder?"
+        "correct": "",
+        "wrong": ""
       }
     }
   },

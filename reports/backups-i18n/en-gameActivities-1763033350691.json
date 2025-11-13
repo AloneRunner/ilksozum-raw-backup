@@ -240,33 +240,33 @@
       },
       "q_what_put_under_head_when_sleeping": {
         "question": "What put under head when sleeping?",
-        "correct": "Correct! What put under head when sleeping?",
-        "wrong": "No. What put under head when sleeping?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_wear_on_feet_when_going_out": {
         "question": "What wear on feet when going out?",
-        "correct": "Correct! What wear on feet when going out?",
-        "wrong": "No. What wear on feet when going out?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_people_who_cant_see_far_wear": {
         "question": "What people who cant see far wear?",
-        "correct": "Correct! What people who cant see far wear?",
-        "wrong": "No. What people who cant see far wear?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_put_on_birthday_cake_and_blow": {
         "question": "What put on birthday cake and blow?",
-        "correct": "Correct! What put on birthday cake and blow?",
-        "wrong": "No. What put on birthday cake and blow?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_squeeze_on_salad_for_sour_taste": {
         "question": "What squeeze on salad for sour taste?",
-        "correct": "Correct! What squeeze on salad for sour taste?",
-        "wrong": "No. What squeeze on salad for sour taste?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_to_hammer_nail_on_wall": {
         "question": "What use to hammer nail on wall?",
-        "correct": "Correct! What use to hammer nail on wall?",
-        "wrong": "No. What use to hammer nail on wall?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_burn_to_get_warm": {
         "question": "What burn to get warm?",
@@ -285,18 +285,18 @@
       },
       "q_what_drink_water_with": {
         "question": "What drink water with?",
-        "correct": "Correct! What drink water with?",
-        "wrong": "No. What drink water with?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_stick_on_letter_to_mail": {
         "question": "What stick on letter to mail?",
-        "correct": "Correct! What stick on letter to mail?",
-        "wrong": "No. What stick on letter to mail?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_babies_drink_milk_with": {
         "question": "What babies drink milk with?",
-        "correct": "Correct! What babies drink milk with?",
-        "wrong": "No. What babies drink milk with?"
+        "correct": "",
+        "wrong": ""
       },
       "q_what_use_to_fix_messy_hair": {
         "question": "What use to fix messy hair?",
@@ -400,8 +400,8 @@
       },
       "q_when_use_umbrella": {
         "question": "When use umbrella?",
-        "correct": "Correct! When use umbrella?",
-        "wrong": "No. When use umbrella?"
+        "correct": "",
+        "wrong": ""
       },
       "q_when_make_snowman": {
         "question": "When make snowman?",
@@ -565,28 +565,28 @@
       },
       "q_how_go_to_school": {
         "question": "How go to school?",
-        "correct": "Correct! How go to school?",
-        "wrong": "No. How go to school?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_open_door": {
         "question": "How open door?",
-        "correct": "Correct! How open door?",
-        "wrong": "No. How open door?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_baby_feels": {
         "question": "How baby feels?",
-        "correct": "Correct! How baby feels?",
-        "wrong": "No. How baby feels?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_reach_high_place": {
         "question": "How reach high place?",
-        "correct": "Correct! How reach high place?",
-        "wrong": "No. How reach high place?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_travel_at_sea": {
         "question": "How travel at sea?",
-        "correct": "Correct! How travel at sea?",
-        "wrong": "No. How travel at sea?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_clean_room": {
         "question": "How clean room?",
@@ -600,38 +600,38 @@
       },
       "q_how_child_feels": {
         "question": "How child feels?",
-        "correct": "Correct! How child feels?",
-        "wrong": "No. How child feels?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_eat_pasta": {
         "question": "How eat pasta?",
-        "correct": "Correct! How eat pasta?",
-        "wrong": "No. How eat pasta?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_comb_hair": {
         "question": "How comb hair?",
-        "correct": "Correct! How comb hair?",
-        "wrong": "No. How comb hair?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_cut_paper": {
         "question": "How cut paper?",
-        "correct": "Correct! How cut paper?",
-        "wrong": "No. How cut paper?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_measure_height": {
         "question": "How measure height?",
-        "correct": "Correct! How measure height?",
-        "wrong": "No. How measure height?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_talk_to_someone_far_away": {
         "question": "How talk to someone far away?",
-        "correct": "Correct! How talk to someone far away?",
-        "wrong": "No. How talk to someone far away?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_light_a_dark_room": {
         "question": "How light a dark room?",
-        "correct": "Correct! How light a dark room?",
-        "wrong": "No. How light a dark room?"
+        "correct": "",
+        "wrong": ""
       },
       "q_how_cook_food": {
         "question": "How cook food?",

@@ -1,0 +1,284 @@
+{
+  "reasoning": {
+    "title": "Məntiq Oyunları",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Fərqli Olan Hansıdır?",
+        "subtitle": "Qrupa uyğun olmayanı tap"
+      },
+      "functionalMatching": {
+        "title": "Funksional Uyğunlaşdırma",
+        "subtitle": "Əşyaları funksiyalarına görə uyğunlaşdır"
+      },
+      "causeEffect": {
+        "title": "Səbəb və Nəticə",
+        "subtitle": "Hadisələr arasındakı əlaqəni tap"
+      },
+      "sequencingStories": {
+        "title": "Hekayə Ardıcıllığı",
+        "subtitle": "Hekayəni düzgün sıraya qoy"
+      },
+      "patternCompletion": {
+        "title": "Nümunə Tamamlama",
+        "subtitle": "Növbəti formanı təxmin et"
+      },
+      "sudoku": {
+        "title": "Şəkilli Sudoku",
+        "subtitle": "Əskik hissəni tamamla"
+      },
+      "memoryCards": {
+        "title": "Yaddaş Kartları",
+        "subtitle": "Uyğun kartları tap",
+        "instruction": "Mövqeləri yadda saxla və uyğun cütləri tap.",
+        "remainingLabel": "Qalan müqayisələr",
+        "memorizeTitle": "Əzbərlə!",
+        "playTitle": "Cütü Tap"
+      },
+      "dragAndDropCounting": {
+        "title": "Əşyaları Hərəkət Etdir",
+        "subtitle": "Tələb olunan sayda əşyanı hərəkət etdir"
+      },
+      "dragAndDropPositioning": {
+        "title": "Əşyanı Yerləşdir",
+        "subtitle": "Əşyanı düzgün yerə qoy",
+        "boxLabel": "QUTU"
+      },
+      "hangman": {
+        "title": "Hangman",
+        "subtitle": "Sözü təxmin et"
+      }
+    },
+    "causeEffect": {
+      "rounds": {
+        "1": {
+          "question": "Yağış yağanda nə edirik?"
+        },
+        "2": {
+          "question": "Dondurma niyə əriyir?"
+        },
+        "3": {
+          "question": "Toxum nə olur?"
+        },
+        "4": {
+          "question": "Əlləri necə təmizləyirik?"
+        },
+        "5": {
+          "question": "Bunu salarsan nə olar?"
+        },
+        "6": {
+          "question": "Od necə yanır?"
+        },
+        "7": {
+          "question": "Çəkiclə vaza sındırsan nə olar?"
+        },
+        "8": {
+          "question": "Qar yağanda nə geyinirik?"
+        },
+        "9": {
+          "question": "Körpə acanda nə edir?"
+        },
+        "10": {
+          "question": "Köynəyi necə düzləşdiririk?"
+        },
+        "11": {
+          "question": "Gecə olanda nə edirik?"
+        },
+        "12": {
+          "question": "Çiçək necə böyüyür?"
+        },
+        "13": {
+          "question": "Kitab oxuyanda nə olur?"
+        },
+        "14": {
+          "question": "Şarı şişirəndə nə olur?"
+        },
+        "15": {
+          "question": "Xəmir bişəndə nə olur?"
+        }
+      }
+    }
+  },
+  "fineMotor": {
+    "activities": {
+      "lineTracing": {
+        "title": "Xətt İzləmə",
+        "subtitle": "Barmağınla yolu izlə"
+      },
+      "coloring": {
+        "title": "Forma Rəngləmə",
+        "subtitle": "Formaları rəngləmək üçün toxun"
+      },
+      "puzzle": {
+        "title": "Sadə Tapmaca",
+        "subtitle": "Şəkli tamamlamaq üçün hissələri sürüşdür"
+      },
+      "rhythm": {
+        "title": "Ritm İzləmə",
+        "subtitle": "Baxın və ritmi təkrarlayın"
+      }
+    }
+  },
+  "experimental": {
+    "menuTitle": "Eksperimental Konseptual Fəaliyyətlər",
+    "relativeComparison": {
+      "title": "Nisbi Müqayisə",
+      "menuSubtitle": "Müqayisə fəaliyyəti seçin.",
+      "instruction": "İki açıq kartı müqayisə edin və suala cavab verin.",
+      "remainingLabel": "Qalan müqayisələr",
+      "images": {
+        "950": "Ən kiçik",
+        "951": "Nümunə 951",
+        "952": "Nümunə 952",
+        "953": "Ən böyük",
+        "954": "Ən geniş",
+        "955": "Nümunə 955",
+        "956": "Nümunə 956",
+        "957": "Ən dar",
+        "958": "Ən nazik",
+        "959": "Nümunə 959",
+        "960": "Nümunə 960",
+        "961": "Ən qalın",
+        "962": "Ən az",
+        "963": "Nümunə 963",
+        "964": "Nümunə 964",
+        "965": "Ən çox",
+        "966": "Ən qısa",
+        "967": "Nümunə 967",
+        "968": "Nümunə 968",
+        "969": "Ən uzun",
+        "970": "Ən yaxın",
+        "971": "Nümunə 971",
+        "972": "Nümunə 972",
+        "973": "Ən uzaq",
+        "974": "Ən aşağı",
+        "975": "Nümunə 975",
+        "976": "Nümunə 976",
+        "977": "Ən yüksək"
+      }
+    }
+  },
+  "lineTracing": {
+    "instruction": "Barmağınla xətti izlə. Xəttin üzərində qal!"
+  },
+  "rhythmFollowing": {
+    "instruction": "Əvvəlcə ritmə baxın, sonra eyni şəkildə toxunun/basıb saxlayın.",
+    "fail": "Yenidən cəhd edin!",
+    "watch": "Əvvəlcə ritmə baxın...",
+    "go": "Sənin növbəndir!"
+  },
+  "simplePuzzle": {
+    "comingSoon": "Bu fəaliyyət tezliklə əlavə olunacaq."
+  },
+  "games": {
+    "hangman": {
+      "pickLetter": "Hərf seç",
+      "remainingLives": "Qalan həyat",
+      "category": "Kateqoriya",
+      "newGame": "Yeni oyun",
+      "youWinTitle": "Təbriklər!",
+      "youWinDesc": "Sözü tapdın!",
+      "youLoseTitle": "Uduzdun",
+      "wordLabel": "Söz",
+      "speak": {
+        "win": "Təbriklər! Sözü tapdın!",
+        "wordWas": "Söz bu idi"
+      }
+    }
+  },
+  "fiveWOneH": {
+    "category": {
+      "who": "Kim?",
+      "what": "Nə?",
+      "where": "Harada?",
+      "when": "Nə vaxt?",
+      "why": "Niyə?",
+      "how": "Necə?",
+      "mixed": "Qarışıq"
+    },
+    "q_who_to_when_sick": {
+      "question": "Xəstələnəndə kimə gedirik?",
+      "correct": "Bəli! Xəstələnəndə həkimə gedirik.",
+      "wrong": "Xeyr, xəstələnəndə ora getmirik."
+    },
+    "q_who_to_when_fire": {
+      "question": "Yanğın çıxanda kimə zəng edirik?",
+      "correct": "Doğru! Yanğın çıxanda yanğınsöndürənlərə zəng edirik.",
+      "wrong": "Xeyr, yanğın zamanı yanğınsöndürənlərə zəng etməliyik."
+    },
+    "q_who_brings_letter": {
+      "question": "Məktubu kim gətirir?",
+      "correct": "Doğru! Məktubu poçtalyon gətirir.",
+      "wrong": "Xeyr, məktubu poçtalyon gətirir."
+    },
+    "q_what_brush_teeth_with": {
+      "question": "Dişlərimizi nə ilə fırçalayırıq?",
+      "correct": "Bəli! Dişlərimizi diş məcunu ilə fırçalayırıq.",
+      "wrong": "Xeyr, dişlərimizi onunla fırçalamırıq."
+    },
+    "q_when_use_umbrella": {
+      "question": "Nə vaxt çətirdən istifadə edirik?",
+      "correct": "Bəli! Yağışda çətirdən istifadə edirik.",
+      "wrong": "Xeyr, o zaman çətirdən istifadə etmirik."
+    },
+    "q_how_go_to_school": {
+      "question": "Məktəbə necə gedirik?",
+      "correct": "Bəli! Məktəbə məktəb avtobusu ilə gedirik.",
+      "wrong": "Xeyr, adətən elə getmirik."
+    },
+    "q_how_open_door": {
+      "question": "Qapını necə açırıq?",
+      "correct": "Bəli! Qapını açarla açırıq.",
+      "wrong": "Xeyr, qapını onunla açmırıq."
+    },
+    "q_how_baby_feels": {
+      "question": "Körpə özünü necə hiss edir?",
+      "correct": "Doğru! Körpə kədərli hiss edir.",
+      "wrong": "Xeyr, körpə elə hiss etmir."
+    },
+    "q_when_bears_hibernate": {
+      "question": "Ayılar nə vaxt qış yuxusuna gedir?",
+      "correct": "Doğru! Qış gələndə.",
+      "wrong": "Xeyr, qış dövründə olur."
+    },
+    "q_who_flies_plane": {
+      "question": "Təyyarəni kim idarə edir?",
+      "correct": "Bəli! Təyyarəni pilot idarə edir.",
+      "wrong": "Xeyr, təyyarəni o idarə etmir."
+    },
+    "q_who_cuts_hair": {
+      "question": "Saçımızı kəsdirmək üçün kimə gedirik?",
+      "correct": "Doğru! Saçımızı bərbər kəsir.",
+      "wrong": "Xeyr, saçımızı o kəsmir."
+    },
+    "q_who_provides_milk": {
+      "question": "Bizi südlə kim təmin edir?",
+      "correct": "Bəli! Südü fermer təmin edir.",
+      "wrong": "Xeyr, südü adətən fermer təmin edir."
+    },
+    "q_what_dry_after_bath": {
+      "question": "Hamamdan sonra nə ilə qurulanırıq?",
+      "correct": "Doğru! Hamamdan sonra dəsmalla qurulanırıq.",
+      "wrong": "Xeyr, onunla qurulanmırıq."
+    },
+    "q_when_make_snowman": {
+      "question": "Nə vaxt qar adamı düzəldirik?",
+      "correct": "Doğru! Qar yağanda qar adamı düzəldirik.",
+      "wrong": "Xeyr, o zaman qar adamı düzəltmirik."
+    },
+    "q_how_travel_at_sea": {
+      "question": "Dənizdə necə səyahət edirik?",
+      "correct": "Doğru! Dənizdə gəmi ilə səyahət edirik.",
+      "wrong": "Xeyr, dənizdə adətən onunla getmirik."
+    },
+    "q_how_clean_room": {
+      "question": "Otağı necə təmizləyirik?",
+      "correct": "Bəli! Otağı təmizlik vedrəsi və ləvazimatları ilə təmizləyirik.",
+      "wrong": "Xeyr, otağı onunla təmizləmirik."
+    },
+    "q_who_teaches_at_school": {
+      "question": "Şəklə bax. Məktəbdə bizə kim dərs deyir? Düzgün adamı seç.",
+      "correct": "Doğru! Müəllim dərs deyir.",
+      "wrong": "Xeyr, məktəbdə dərsi müəllim deyir."
+    }
+  }
+}

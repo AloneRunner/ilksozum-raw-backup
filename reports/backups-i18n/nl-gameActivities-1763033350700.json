@@ -1,0 +1,284 @@
+{
+  "reasoning": {
+    "title": "Logische spellen",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Welke hoort er niet bij?",
+        "subtitle": "Vind het item dat niet past"
+      },
+      "functionalMatching": {
+        "title": "Op functie koppelen",
+        "subtitle": "Koppel items op functie"
+      },
+      "causeEffect": {
+        "title": "Oorzaak en gevolg",
+        "subtitle": "Vind relaties tussen gebeurtenissen"
+      },
+      "sequencingStories": {
+        "title": "Verhalenvolgorde",
+        "subtitle": "Zet het verhaal in de juiste volgorde"
+      },
+      "patternCompletion": {
+        "title": "Patroon voltooien",
+        "subtitle": "Voorspel de volgende vorm"
+      },
+      "sudoku": {
+        "title": "Afbeeldingsudoku",
+        "subtitle": "Vul het ontbrekende stuk in"
+      },
+      "memoryCards": {
+        "title": "Geheugenkaarten",
+        "subtitle": "Vind de bijpassende kaarten",
+        "instruction": "Onthoud de posities en vind de bijpassende paren.",
+        "remainingLabel": "Resterende vergelijkingen",
+        "memorizeTitle": "Onthouden!",
+        "playTitle": "Vind het paar"
+      },
+      "dragAndDropCounting": {
+        "title": "Objecten verplaatsen",
+        "subtitle": "Verplaats het gevraagde aantal objecten"
+      },
+      "dragAndDropPositioning": {
+        "title": "Plaats het object",
+        "subtitle": "Plaats het object op de juiste plek",
+        "boxLabel": "DOOS"
+      },
+      "hangman": {
+        "title": "Galgje",
+        "subtitle": "Raad het woord"
+      }
+    },
+    "causeEffect": {
+      "rounds": {
+        "1": {
+          "question": "Wat doen we als het regent?"
+        },
+        "2": {
+          "question": "Waarom smelt ijs?"
+        },
+        "3": {
+          "question": "Wat wordt er van een zaadje?"
+        },
+        "4": {
+          "question": "Hoe maken we onze handen schoon?"
+        },
+        "5": {
+          "question": "Wat gebeurt er als je dit laat vallen?"
+        },
+        "6": {
+          "question": "Waardoor brandt vuur?"
+        },
+        "7": {
+          "question": "Wat gebeurt er als je met een hamer een vaas kapotmaakt?"
+        },
+        "8": {
+          "question": "Wat dragen we als het sneeuwt?"
+        },
+        "9": {
+          "question": "Wat doet een baby als hij honger heeft?"
+        },
+        "10": {
+          "question": "Hoe maak je een overhemd glad?"
+        },
+        "11": {
+          "question": "Wat doen we als het nacht wordt?"
+        },
+        "12": {
+          "question": "Hoe groeit een bloem?"
+        },
+        "13": {
+          "question": "Wat gebeurt er als je een boek leest?"
+        },
+        "14": {
+          "question": "Wat gebeurt er als je een ballon opblaast?"
+        },
+        "15": {
+          "question": "Wat gebeurt er als deeg wordt gebakken?"
+        }
+      }
+    }
+  },
+  "fineMotor": {
+    "activities": {
+      "lineTracing": {
+        "title": "Lijn volgen",
+        "subtitle": "Volg het pad met je vinger"
+      },
+      "coloring": {
+        "title": "Vormen inkleuren",
+        "subtitle": "Tik om de vormen in te kleuren"
+      },
+      "puzzle": {
+        "title": "Eenvoudige puzzel",
+        "subtitle": "Sleep de stukjes om de afbeelding compleet te maken"
+      },
+      "rhythm": {
+        "title": "Ritme Volgen",
+        "subtitle": "Kijk en herhaal het ritme"
+      }
+    }
+  },
+  "experimental": {
+    "menuTitle": "Experimentele Conceptuele Activiteiten",
+    "relativeComparison": {
+      "title": "Relatieve Vergelijking",
+      "menuSubtitle": "Selecteer een vergelijkingsactiviteit.",
+      "instruction": "Vergelijk de twee open kaarten en beantwoord de vraag.",
+      "remainingLabel": "Resterende vergelijkingen",
+      "images": {
+        "950": "Het kleinst",
+        "951": "Voorbeeld 951",
+        "952": "Voorbeeld 952",
+        "953": "Het grootst",
+        "954": "Het breedst",
+        "955": "Voorbeeld 955",
+        "956": "Voorbeeld 956",
+        "957": "Het smalst",
+        "958": "Het dunst",
+        "959": "Voorbeeld 959",
+        "960": "Voorbeeld 960",
+        "961": "Het dikst",
+        "962": "Het minst",
+        "963": "Voorbeeld 963",
+        "964": "Voorbeeld 964",
+        "965": "Het meest",
+        "966": "Het kortst",
+        "967": "Voorbeeld 967",
+        "968": "Voorbeeld 968",
+        "969": "Het langst",
+        "970": "Het dichtstbij",
+        "971": "Voorbeeld 971",
+        "972": "Voorbeeld 972",
+        "973": "Het verst",
+        "974": "Het laagst",
+        "975": "Voorbeeld 975",
+        "976": "Voorbeeld 976",
+        "977": "Het hoogst"
+      }
+    }
+  },
+  "lineTracing": {
+    "instruction": "Volg de lijn met je vinger. Blijf op de lijn!"
+  },
+  "rhythmFollowing": {
+    "instruction": "Kijk eerst naar het ritme en tik/houd daarna op dezelfde manier vast.",
+    "fail": "Probeer het nog eens!",
+    "watch": "Kijk eerst naar het ritme…",
+    "go": "Jij bent aan de beurt!"
+  },
+  "simplePuzzle": {
+    "comingSoon": "Deze activiteit wordt binnenkort toegevoegd."
+  },
+  "games": {
+    "hangman": {
+      "pickLetter": "Kies een letter",
+      "remainingLives": "Resterende levens",
+      "category": "Categorie",
+      "newGame": "Nieuw spel",
+      "youWinTitle": "Goed gedaan!",
+      "youWinDesc": "Je hebt het woord gevonden!",
+      "youLoseTitle": "Verloren",
+      "wordLabel": "Woord",
+      "speak": {
+        "win": "Goed gedaan! Je hebt het woord gevonden!",
+        "wordWas": "Het woord was"
+      }
+    }
+  },
+  "fiveWOneH": {
+    "category": {
+      "who": "Wie?",
+      "what": "Wat?",
+      "where": "Waar?",
+      "when": "Wanneer?",
+      "why": "Waarom?",
+      "how": "Hoe?",
+      "mixed": "Gemengd"
+    },
+    "q_who_to_when_sick": {
+      "question": "Naar wie gaan we als we ziek zijn?",
+      "correct": "Ja! We gaan naar de dokter als we ziek zijn.",
+      "wrong": "Nee, daar gaan we niet heen als we ziek zijn."
+    },
+    "q_who_to_when_fire": {
+      "question": "Wie bellen we als er brand is?",
+      "correct": "Juist! We bellen de brandweer als er brand is.",
+      "wrong": "Nee, bij brand moeten we de brandweer bellen."
+    },
+    "q_who_brings_letter": {
+      "question": "Wie brengt de brief?",
+      "correct": "Juist! De postbode brengt de brief.",
+      "wrong": "Nee, de postbode brengt de brief."
+    },
+    "q_what_brush_teeth_with": {
+      "question": "Waar poetsen we onze tanden mee?",
+      "correct": "Ja! We poetsen onze tanden met tandpasta.",
+      "wrong": "Nee, daar poetsen we onze tanden niet mee."
+    },
+    "q_when_use_umbrella": {
+      "question": "Wanneer gebruiken we een paraplu?",
+      "correct": "Ja! We gebruiken een paraplu als het regent.",
+      "wrong": "Nee, dan gebruiken we geen paraplu."
+    },
+    "q_how_go_to_school": {
+      "question": "Hoe gaan we naar school?",
+      "correct": "Ja! We gaan met de schoolbus naar school.",
+      "wrong": "Nee, zo gaan we meestal niet."
+    },
+    "q_how_open_door": {
+      "question": "Hoe openen we de deur?",
+      "correct": "Ja! We openen de deur met een sleutel.",
+      "wrong": "Nee, we openen de deur niet daarmee."
+    },
+    "q_how_baby_feels": {
+      "question": "Hoe voelt de baby zich?",
+      "correct": "Juist! De baby voelt zich verdrietig.",
+      "wrong": "Nee, de baby voelt zich niet zo."
+    },
+    "q_when_bears_hibernate": {
+      "question": "Wanneer houden beren een winterslaap?",
+      "correct": "Juist! Tijdens de winter.",
+      "wrong": "Nee, in het winterseizoen."
+    },
+    "q_who_flies_plane": {
+      "question": "Wie bestuurt het vliegtuig?",
+      "correct": "Ja! Een piloot bestuurt het vliegtuig.",
+      "wrong": "Nee, zij besturen het vliegtuig niet."
+    },
+    "q_who_cuts_hair": {
+      "question": "Naar wie gaan we om ons haar te laten knippen?",
+      "correct": "Juist! Een kapper knipt ons haar.",
+      "wrong": "Nee, zij knippen ons haar niet."
+    },
+    "q_who_provides_milk": {
+      "question": "Wie voorziet ons van melk?",
+      "correct": "Ja! Een boer zorgt voor melk.",
+      "wrong": "Nee, het wordt meestal verzorgd door een boer."
+    },
+    "q_what_dry_after_bath": {
+      "question": "Waarmee drogen we ons af na een bad?",
+      "correct": "Juist! We drogen ons af met een handdoek na een bad.",
+      "wrong": "Nee, daar drogen we ons niet mee af."
+    },
+    "q_when_make_snowman": {
+      "question": "Wanneer maken we een sneeuwpop?",
+      "correct": "Juist! We maken een sneeuwpop als het sneeuwt.",
+      "wrong": "Nee, dan maken we geen sneeuwpop."
+    },
+    "q_how_travel_at_sea": {
+      "question": "Hoe reizen we op zee?",
+      "correct": "Juist! We reizen per schip op zee.",
+      "wrong": "Nee, zo reizen we meestal niet op zee."
+    },
+    "q_how_clean_room": {
+      "question": "Hoe maken we de kamer schoon?",
+      "correct": "Ja! We maken de kamer schoon met een schoonmaakemmer en spullen.",
+      "wrong": "Nee, daar maken we de kamer niet mee schoon."
+    },
+    "q_who_teaches_at_school": {
+      "question": "Kijk naar het plaatje. Wie geeft ons les op school? Kies de juiste persoon.",
+      "correct": "Juist! De leraar geeft les.",
+      "wrong": "Nee, op school geeft de leraar les."
+    }
+  }
+}

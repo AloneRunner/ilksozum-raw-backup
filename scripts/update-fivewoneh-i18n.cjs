@@ -62,42 +62,44 @@ try {
       fs.writeFileSync(backupPath, originalText, 'utf8');
 
       const obj = JSON.parse(originalText);
-      if (!obj.fiveWOneH || typeof obj.fiveWOneH !== 'object') {
+      // Support both top-level `fiveWOneH` and `reasoning.fiveWOneH` blocks
+      const containers = [];
+      if (obj.fiveWOneH && typeof obj.fiveWOneH === 'object') containers.push({parent: obj, name: 'fiveWOneH'});
+      if (obj.reasoning && obj.reasoning.fiveWOneH && typeof obj.reasoning.fiveWOneH === 'object') containers.push({parent: obj.reasoning, name: 'fiveWOneH'});
+      if (containers.length === 0) {
         locReport.skipped.push('no-fiveWOneH');
         report.locales[loc] = locReport;
         continue;
       }
 
-      const keys = Object.keys(obj.fiveWOneH);
-      for (const key of keys) {
-        // skip category entry
-        if (key === 'category') continue;
-        const isCanonical = canonicalKeys.includes(key);
-        if (!isCanonical) {
-          // remove stale key
-          locReport.removed.push(key);
-          delete obj.fiveWOneH[key];
-          continue;
-        }
-
-        const entry = obj.fiveWOneH[key];
-        if (!entry || typeof entry !== 'object') continue;
-        const qText = entry.question || '';
-
-        // Ensure correct/wrong exist and are non-empty for TR and EN only
-        if (loc === 'tr' || loc === 'en') {
-          const correct = entry.correct;
-          const wrong = entry.wrong;
-          let changed = false;
-          if (!correct || (typeof correct === 'string' && correct.trim() === '')) {
-            entry.correct = (loc === 'tr' ? 'Doğru!' : 'Correct!') + (qText ? ' ' + qText : '');
-            changed = true;
+      for (const container of containers) {
+        const block = container.parent[container.name];
+        const keys = Object.keys(block);
+        for (const key of keys) {
+          if (key === 'category') continue;
+          const isCanonical = canonicalKeys.includes(key);
+          if (!isCanonical) {
+            locReport.removed.push(key);
+            delete block[key];
+            continue;
           }
-          if (!wrong || (typeof wrong === 'string' && wrong.trim() === '')) {
-            entry.wrong = (loc === 'tr' ? 'Hayır.' : 'No.') + (qText ? ' ' + qText : '');
-            changed = true;
+          const entry = block[key];
+          if (!entry || typeof entry !== 'object') continue;
+          const qText = entry.question || '';
+          if (loc === 'tr' || loc === 'en') {
+            const correct = entry.correct;
+            const wrong = entry.wrong;
+            let changed = false;
+            if (!correct || (typeof correct === 'string' && correct.trim() === '')) {
+              entry.correct = (loc === 'tr' ? 'Doğru!' : 'Correct!') + (qText ? ' ' + qText : '');
+              changed = true;
+            }
+            if (!wrong || (typeof wrong === 'string' && wrong.trim() === '')) {
+              entry.wrong = (loc === 'tr' ? 'Hayır.' : 'No.') + (qText ? ' ' + qText : '');
+              changed = true;
+            }
+            if (changed) locReport.filled.push(key);
           }
-          if (changed) locReport.filled.push(key);
         }
       }
 

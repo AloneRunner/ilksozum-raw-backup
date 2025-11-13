@@ -1,0 +1,284 @@
+{
+  "reasoning": {
+    "title": "Logik- und Denkspiele",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Was passt nicht?",
+        "subtitle": "Finde, was nicht dazugehört"
+      },
+      "functionalMatching": {
+        "title": "Funktionales Zuordnen",
+        "subtitle": "Gegenstände nach Funktion zuordnen"
+      },
+      "causeEffect": {
+        "title": "Ursache und Wirkung",
+        "subtitle": "Beziehungen zwischen Ereignissen finden"
+      },
+      "sequencingStories": {
+        "title": "Geschichten ordnen",
+        "subtitle": "Bringe die Geschichte in die richtige Reihenfolge"
+      },
+      "patternCompletion": {
+        "title": "Muster vervollständigen",
+        "subtitle": "Die nächste Form vorhersagen"
+      },
+      "sudoku": {
+        "title": "Bilder-Sudoku",
+        "subtitle": "Fehlendes Teil ergänzen"
+      },
+      "memoryCards": {
+        "title": "Memo-Karten",
+        "subtitle": "Passende Paare finden",
+        "instruction": "Merke dir die Positionen und finde die passenden Paare.",
+        "remainingLabel": "Verbleibende Vergleiche",
+        "memorizeTitle": "Merken!",
+        "playTitle": "Finde die Paare"
+      },
+      "dragAndDropCounting": {
+        "title": "Objekte bewegen",
+        "subtitle": "Bewege die angeforderte Anzahl"
+      },
+      "dragAndDropPositioning": {
+        "title": "Objekt platzieren",
+        "subtitle": "Lege das Objekt an die richtige Stelle",
+        "boxLabel": "BOX"
+      },
+      "hangman": {
+        "title": "Galgenmännchen",
+        "subtitle": "Errate das Wort"
+      }
+    },
+    "causeEffect": {
+      "rounds": {
+        "1": {
+          "question": "Was machen wir, wenn es regnet?"
+        },
+        "2": {
+          "question": "Warum schmilzt Eis?"
+        },
+        "3": {
+          "question": "Was wird aus einem Samen?"
+        },
+        "4": {
+          "question": "Wie reinigen wir unsere Hände?"
+        },
+        "5": {
+          "question": "Was passiert, wenn du das fallen lässt?"
+        },
+        "6": {
+          "question": "Wodurch brennt Feuer?"
+        },
+        "7": {
+          "question": "Was passiert, wenn du mit einem Hammer eine Vase zerbrichst?"
+        },
+        "8": {
+          "question": "Was ziehen wir an, wenn es schneit?"
+        },
+        "9": {
+          "question": "Was macht ein Baby, wenn es hungrig ist?"
+        },
+        "10": {
+          "question": "Wie glätten wir ein Hemd?"
+        },
+        "11": {
+          "question": "Was machen wir, wenn es Nacht wird?"
+        },
+        "12": {
+          "question": "Wie wächst eine Blume?"
+        },
+        "13": {
+          "question": "Was passiert, wenn man ein Buch liest?"
+        },
+        "14": {
+          "question": "Was passiert, wenn man einen Ballon aufbläst?"
+        },
+        "15": {
+          "question": "Was passiert, wenn Teig gebacken wird?"
+        }
+      }
+    }
+  },
+  "fineMotor": {
+    "activities": {
+      "lineTracing": {
+        "title": "Linien Nachzeichnen",
+        "subtitle": "Folge dem Pfad mit deinem Finger"
+      },
+      "coloring": {
+        "title": "Formen Ausmalen",
+        "subtitle": "Tippe, um die Formen auszumalen"
+      },
+      "puzzle": {
+        "title": "Einfaches Puzzle",
+        "subtitle": "Ziehe die Teile, um das Bild zu vervollständigen"
+      },
+      "rhythm": {
+        "title": "Rhythmus Verfolgen",
+        "subtitle": "Schau und wiederhole den Rhythmus"
+      }
+    }
+  },
+  "experimental": {
+    "menuTitle": "Experimentelle Konzeptuelle Aktivitäten",
+    "relativeComparison": {
+      "title": "Relative Vergleich",
+      "menuSubtitle": "Wählen Sie eine Vergleichsaktivität aus.",
+      "instruction": "Vergleichen Sie die beiden offenen Karten und beantworten Sie die Frage.",
+      "remainingLabel": "Verbleibende Vergleiche",
+      "images": {
+        "950": "Das kleinste",
+        "951": "Beispiel 951",
+        "952": "Beispiel 952",
+        "953": "Das größte",
+        "954": "Das breiteste",
+        "955": "Beispiel 955",
+        "956": "Beispiel 956",
+        "957": "Das schmalste",
+        "958": "Das dünnste",
+        "959": "Beispiel 959",
+        "960": "Beispiel 960",
+        "961": "Das dickste",
+        "962": "Das wenigste",
+        "963": "Beispiel 963",
+        "964": "Beispiel 964",
+        "965": "Das meiste",
+        "966": "Das kürzeste",
+        "967": "Beispiel 967",
+        "968": "Beispiel 968",
+        "969": "Das längste",
+        "970": "Das nächste",
+        "971": "Beispiel 971",
+        "972": "Beispiel 972",
+        "973": "Das entfernteste",
+        "974": "Das niedrigste",
+        "975": "Beispiel 975",
+        "976": "Beispiel 976",
+        "977": "Das höchste"
+      }
+    }
+  },
+  "lineTracing": {
+    "instruction": "Folge der Linie mit deinem Finger. Bleib auf der Linie!"
+  },
+  "rhythmFollowing": {
+    "instruction": "Sieh dir zuerst den Rhythmus an und tippe/drücke dann in gleicher Weise.",
+    "fail": "Versuch's nochmal!",
+    "watch": "Schau dir zuerst den Rhythmus an…",
+    "go": "Du bist dran!"
+  },
+  "simplePuzzle": {
+    "comingSoon": "Diese Aktivität wird bald hinzugefügt."
+  },
+  "games": {
+    "hangman": {
+      "pickLetter": "Wähle einen Buchstaben",
+      "remainingLives": "Verbleibende Leben",
+      "category": "Kategorie",
+      "newGame": "Neues Spiel",
+      "youWinTitle": "Glückwunsch!",
+      "youWinDesc": "Du hast das Wort gefunden!",
+      "youLoseTitle": "Verloren",
+      "wordLabel": "Wort",
+      "speak": {
+        "win": "Glückwunsch! Du hast das Wort gefunden!",
+        "wordWas": "Das Wort war"
+      }
+    }
+  },
+  "fiveWOneH": {
+    "category": {
+      "who": "Wer?",
+      "what": "Was?",
+      "where": "Wo?",
+      "when": "Wann?",
+      "why": "Warum?",
+      "how": "Wie?",
+      "mixed": "Gemischt"
+    },
+    "q_who_to_when_sick": {
+      "question": "Zu wem gehen wir, wenn wir krank sind?",
+      "correct": "Ja! Wir gehen zum Arzt, wenn wir krank sind.",
+      "wrong": "Nein, dorthin gehen wir nicht, wenn wir krank sind."
+    },
+    "q_who_to_when_fire": {
+      "question": "Wen rufen wir an, wenn es brennt?",
+      "correct": "Richtig! Wir rufen die Feuerwehr, wenn es brennt.",
+      "wrong": "Nein, bei einem Brand sollten wir die Feuerwehr rufen."
+    },
+    "q_who_brings_letter": {
+      "question": "Wer bringt den Brief?",
+      "correct": "Richtig! Der Postbote bringt den Brief.",
+      "wrong": "Nein, der Postbote bringt den Brief."
+    },
+    "q_what_brush_teeth_with": {
+      "question": "Womit putzen wir unsere Zähne?",
+      "correct": "Ja! Wir putzen unsere Zähne mit Zahnpasta.",
+      "wrong": "Nein, damit putzen wir unsere Zähne nicht."
+    },
+    "q_when_use_umbrella": {
+      "question": "Wann benutzen wir einen Regenschirm?",
+      "correct": "Ja! Wir benutzen einen Regenschirm, wenn es regnet.",
+      "wrong": "Nein, dann benutzen wir keinen Regenschirm."
+    },
+    "q_how_go_to_school": {
+      "question": "Wie fahren wir zur Schule?",
+      "correct": "Ja! Wir fahren mit dem Schulbus zur Schule.",
+      "wrong": "Nein, normalerweise fahren wir nicht so."
+    },
+    "q_how_open_door": {
+      "question": "Wie öffnen wir die Tür?",
+      "correct": "Ja! Wir öffnen die Tür mit einem Schlüssel.",
+      "wrong": "Nein, damit öffnen wir die Tür nicht."
+    },
+    "q_how_baby_feels": {
+      "question": "Wie fühlt sich das Baby?",
+      "correct": "Richtig! Das Baby fühlt sich traurig.",
+      "wrong": "Nein, das Baby fühlt sich nicht so."
+    },
+    "q_when_bears_hibernate": {
+      "question": "Wann halten Bären Winterschlaf?",
+      "correct": "Richtig! Im Winter.",
+      "wrong": "Nein, in der Wintersaison."
+    },
+    "q_who_flies_plane": {
+      "question": "Wer fliegt das Flugzeug?",
+      "correct": "Ja! Ein Pilot fliegt das Flugzeug.",
+      "wrong": "Nein, sie fliegen das Flugzeug nicht."
+    },
+    "q_who_cuts_hair": {
+      "question": "Zu wem gehen wir, um uns die Haare schneiden zu lassen?",
+      "correct": "Richtig! Ein Friseur schneidet uns die Haare.",
+      "wrong": "Nein, sie schneiden uns nicht die Haare."
+    },
+    "q_who_provides_milk": {
+      "question": "Wer versorgt uns mit Milch?",
+      "correct": "Ja! Ein Bauer liefert Milch.",
+      "wrong": "Nein, sie wird normalerweise von einem Bauern geliefert."
+    },
+    "q_what_dry_after_bath": {
+      "question": "Womit trocknen wir uns nach dem Baden ab?",
+      "correct": "Richtig! Wir trocknen uns nach dem Baden mit einem Handtuch ab.",
+      "wrong": "Nein, damit trocknen wir uns nicht ab."
+    },
+    "q_when_make_snowman": {
+      "question": "Wann bauen wir einen Schneemann?",
+      "correct": "Richtig! Wir bauen einen Schneemann, wenn es schneit.",
+      "wrong": "Nein, dann bauen wir keinen Schneemann."
+    },
+    "q_how_travel_at_sea": {
+      "question": "Wie reisen wir auf dem Meer?",
+      "correct": "Richtig! Wir reisen mit dem Schiff auf dem Meer.",
+      "wrong": "Nein, normalerweise reisen wir nicht damit auf dem Meer."
+    },
+    "q_how_clean_room": {
+      "question": "Wie putzen wir das Zimmer?",
+      "correct": "Ja! Wir putzen das Zimmer mit einem Putzeimer und Zubehör.",
+      "wrong": "Nein, damit putzen wir das Zimmer nicht."
+    },
+    "q_who_teaches_at_school": {
+      "question": "Schau dir das Bild an. Wer unterrichtet uns in der Schule? Wähle die richtige Person.",
+      "correct": "Richtig! Der Lehrer unterrichtet.",
+      "wrong": "Nein, in der Schule unterrichtet der Lehrer."
+    }
+  }
+}
