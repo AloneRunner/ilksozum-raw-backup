@@ -124,7 +124,7 @@
       "title": "Comparaison Relative",
       "menuSubtitle": "Sélectionnez une activité de comparaison.",
       "instruction": "Comparez les deux cartes ouvertes et répondez à la question.",
-      "remainingLabel": "Comparaisons restantes",
+  "remainingLabel": "Comparaisons restantes",
       "images": {
         "950": "Le plus petit",
         "951": "Exemple 951",
@@ -205,6 +205,11 @@
       "correct": "Correct ! Nous appelons les pompiers en cas d'incendie.",
       "wrong": "Non, en cas d'incendie, nous devrions appeler les pompiers."
     },
+    "q_who_uses_this": {
+      "question": "Qui utilise ceci ?",
+      "correct": "Oui ! Un enseignant utilise le tableau noir.",
+      "wrong": "Non, il est généralement utilisé par un enseignant."
+    },
     "q_who_brings_letter": {
       "question": "Qui apporte la lettre ?",
       "correct": "Correct ! Le facteur apporte la lettre.",
@@ -215,10 +220,55 @@
       "correct": "Oui ! Nous nous brossons les dents avec du dentifrice.",
       "wrong": "Non, nous ne nous brossons pas les dents avec ça."
     },
+    "q_what_eat_with": {
+      "question": "Qu'utilisons-nous pour manger ?",
+      "correct": "Correct ! Nous utilisons une fourchette pour manger.",
+      "wrong": "Non, nous n'utilisons pas cela pour manger."
+    },
+    "q_where_doctor_works": {
+      "question": "Où travaille un médecin ?",
+      "correct": "Oui ! Un médecin travaille à l'hôpital.",
+      "wrong": "Non, un médecin travaille à l'hôpital."
+    },
+    "q_where_is_swing": {
+      "question": "Où est la balançoire ?",
+      "correct": "Correct ! La balançoire est au terrain de jeu.",
+      "wrong": "Non, la balançoire est au terrain de jeu."
+    },
+    "q_where_do_we_sleep": {
+      "question": "Où dormons-nous ?",
+      "correct": "Oui ! Nous dormons dans un lit.",
+      "wrong": "Non, nous ne dormons pas là."
+    },
+    "q_where_fish_lives": {
+      "question": "Où vivent les poissons ?",
+      "correct": "Oui ! Les poissons vivent dans un aquarium.",
+      "wrong": "Non, les poissons ne vivent pas là."
+    },
+    "q_when_see_owl": {
+      "question": "Quand voyons-nous les hiboux ?",
+      "correct": "Correct ! Nous voyons les hiboux la nuit.",
+      "wrong": "Non, les hiboux sont généralement vus la nuit."
+    },
     "q_when_use_umbrella": {
       "question": "Quand utilisons-nous un parapluie ?",
       "correct": "Oui ! Nous utilisons un parapluie quand il pleut.",
       "wrong": "Non, nous n'utilisons pas de parapluie à ce moment-là."
+    },
+    "q_when_wear_beanie": {
+      "question": "Quand portons-nous un bonnet ?",
+      "correct": "Correct ! Nous portons un bonnet quand il neige.",
+      "wrong": "Non, nous ne portons pas de bonnet à ce moment-là."
+    },
+    "q_why_icecream_melted": {
+      "question": "Pourquoi la glace a-t-elle fondu ?",
+      "correct": "Oui ! La glace fond à cause du soleil.",
+      "wrong": "Non, ce n'est pas pourquoi la glace fond."
+    },
+    "q_why_clothes_neat": {
+      "question": "Pourquoi les vêtements sont-ils bien rangés ?",
+      "correct": "Correct ! Parce qu'ils ont été repassés.",
+      "wrong": "Non, cela ne les rend pas bien rangés."
     },
     "q_how_go_to_school": {
       "question": "Comment allons-nous à l'école ?",
@@ -234,6 +284,51 @@
       "question": "Comment se sent le bébé ?",
       "correct": "Correct ! Le bébé se sent triste.",
       "wrong": "Non, le bébé ne se sent pas comme ça."
+    },
+    "q_where_is_sleeping_child": {
+      "question": "Où cet enfant pourrait-il dormir ?",
+      "correct": "Oui ! Nous dormons généralement dans un lit.",
+      "wrong": "Non, nous dormons généralement dans un lit."
+    },
+    "q_why_child_wants_play": {
+      "question": "Pourquoi cet enfant veut-il jouer ?",
+      "correct": "Correct ! Pour s'amuser et jouer avec des amis.",
+      "wrong": "Non, généralement pour s'amuser avec des amis."
+    },
+    "q_where_child_wants_to_go_outside": {
+      "question": "Où l'enfant pourrait-il vouloir aller dehors ?",
+      "correct": "Oui ! L'enfant peut vouloir aller au parc.",
+      "wrong": "Non, généralement, le parc est souhaité."
+    },
+    "q_why_child_tired": {
+      "question": "Pourquoi cet enfant pourrait-il être fatigué ?",
+      "correct": "Correct ! En raison d'un long temps de jeu ou de peu de sommeil.",
+      "wrong": "Non, généralement à cause d'une longue activité ou de peu de sommeil."
+    },
+    "q_where_child_wants_go_park": {
+      "question": "Où cet enfant veut-il aller ?",
+      "correct": "Oui ! Il veut aller au parc.",
+      "wrong": "Non, pas à un endroit différent."
+    },
+    "q_how_child_prefers_drive": {
+      "question": "Comment cet enfant voyage-t-il en voiture ?",
+      "correct": "Correct ! En portant une ceinture de sécurité et avec un parent.",
+      "wrong": "Non, cela doit être en sécurité avec un adulte."
+    },
+    "q_when_rhino_active": {
+      "question": "Quand les rhinocéros sont-ils généralement plus actifs ?",
+      "correct": "Correct ! Selon les espèces, le jour ou au crépuscule.",
+      "wrong": "Non, généralement pas la nuit."
+    },
+    "q_where_camels_live": {
+      "question": "Où trouve-t-on habituellement les chameaux ?",
+      "correct": "Oui ! Dans les déserts et les zones arides.",
+      "wrong": "Non, généralement dans les déserts."
+    },
+    "q_where_fish_live_915": {
+      "question": "Où vivent habituellement les poissons ?",
+      "correct": "Oui ! Ils vivent dans l'eau.",
+      "wrong": "Non, ils ne vivent pas hors de l'eau."
     },
     "q_when_bears_hibernate": {
       "question": "Quand les ours hibernent-ils ?",
@@ -255,15 +350,65 @@
       "correct": "Oui ! Un agriculteur fournit du lait.",
       "wrong": "Non, il est généralement fourni par un agriculteur."
     },
+    "q_what_erase_text": {
+      "question": "Qu'utilisons-nous pour effacer ce qui est écrit ?",
+      "correct": "Correct ! Nous utilisons une gomme pour effacer.",
+      "wrong": "Non, nous n'effaçons pas avec ça."
+    },
+    "q_what_measure_height": {
+      "question": "Qu'utilises-tu pour mesurer la taille ?",
+      "correct": "Oui ! Nous utilisons une règle pour mesurer la taille.",
+      "wrong": "Non, nous ne mesurons pas la taille avec ça."
+    },
     "q_what_dry_after_bath": {
       "question": "Avec quoi nous séchons-nous après un bain ?",
       "correct": "Correct ! Nous nous séchons avec une serviette après un bain.",
       "wrong": "Non, nous ne nous séchons pas avec ça."
     },
+    "q_where_to_eat": {
+      "question": "Où allons-nous pour manger ?",
+      "correct": "Oui ! Nous allons au restaurant pour manger.",
+      "wrong": "Non, nous n'y allons pas pour manger."
+    },
+    "q_where_to_read_books": {
+      "question": "Où pouvons-nous aller pour lire des livres ?",
+      "correct": "Correct ! Nous pouvons aller à la bibliothèque pour lire des livres.",
+      "wrong": "Non, ce n'est pas un bon endroit pour lire des livres."
+    },
+    "q_where_to_shop": {
+      "question": "Où faisons-nous les courses ?",
+      "correct": "Oui ! Nous faisons les courses au marché.",
+      "wrong": "Non, nous ne faisons pas les courses là-bas."
+    },
+    "q_when_go_to_bed": {
+      "question": "Quand allons-nous au lit ?",
+      "correct": "Correct ! Nous allons au lit la nuit.",
+      "wrong": "Non, nous n'allons pas au lit à ce moment-là."
+    },
+    "q_when_go_to_beach": {
+      "question": "Quand allons-nous à la plage ?",
+      "correct": "Oui ! Nous allons à la plage quand il fait soleil.",
+      "wrong": "Non, nous n'allons pas à la plage à ce moment-là."
+    },
     "q_when_make_snowman": {
       "question": "Quand faisons-nous un bonhomme de neige ?",
       "correct": "Correct ! Nous faisons un bonhomme de neige quand il neige.",
       "wrong": "Non, nous ne faisons pas de bonhomme de neige à ce moment-là."
+    },
+    "q_why_child_cold": {
+      "question": "Pourquoi cet enfant a-t-il froid ?",
+      "correct": "Oui ! Parce qu'il fait froid.",
+      "wrong": "Non, ce n'est pas pour ça qu'ils ont froid."
+    },
+    "q_why_hair_wet": {
+      "question": "Pourquoi ces cheveux sont-ils mouillés ?",
+      "correct": "Correct ! Ils sont mouillés à cause d'une douche.",
+      "wrong": "Non, ce n'est pas pour ça qu'ils sont mouillés."
+    },
+    "q_how_reach_high_shelf": {
+      "question": "Comment atteignons-nous une étagère haute ?",
+      "correct": "Oui ! Nous utilisons une échelle pour l'atteindre.",
+      "wrong": "Non, nous ne pouvons pas l'atteindre avec ça."
     },
     "q_how_travel_at_sea": {
       "question": "Comment voyageons-nous en mer ?",
@@ -279,6 +424,31 @@
       "question": "Regarde l'image. Qui nous enseigne à l'école ? Choisis la bonne personne.",
       "correct": "Correct ! C'est le professeur qui enseigne.",
       "wrong": "Non, à l'école, c'est le professeur qui enseigne."
+    },
+    "q_what_do_we_drink_water_with": {
+      "question": "Lequel utilisons-nous pour boire de l'eau ? Choisissez soigneusement.",
+      "correct": "Oui ! Nous buvons de l'eau avec un verre.",
+      "wrong": "Non, nous ne buvons pas d'eau avec ça."
+    },
+    "q_where_do_we_store_books": {
+      "question": "Où rangeons-nous les livres ? Choisis le bon endroit.",
+      "correct": "Correct ! Nous les rangeons sur une étagère.",
+      "wrong": "Non, nous rangeons les livres sur une étagère."
+    },
+    "q_when_use_sunscreen": {
+      "question": "Quand utilisons-nous de la crème solaire ? Choisissez le bon moment.",
+      "correct": "Oui ! Quand il fait soleil.",
+      "wrong": "Non, nous l'utilisons généralement quand il fait soleil."
+    },
+    "q_why_wash_hands": {
+      "question": "Pourquoi nous lavons-nous les mains ? Choisis la raison saine.",
+      "correct": "Correct ! Pour être propre et se protéger des microbes.",
+      "wrong": "Non, nous nous lavons les mains pour être propres."
+    },
+    "q_how_dry_hands": {
+      "question": "Après s'être lavé les mains, comment les séchons-nous ? Choisissez la bonne méthode.",
+      "correct": "Oui ! Nous les séchons avec une serviette.",
+      "wrong": "Non, nous séchons les mains avec une serviette."
     }
   }
 }

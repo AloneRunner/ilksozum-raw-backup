@@ -809,6 +809,11 @@
       "correct": "Correct! We call the firefighters in a fire.",
       "wrong": "No, in a fire we should call the firefighters."
     },
+    "q_who_uses_this": {
+      "question": "Who uses this?",
+      "correct": "Yes! A teacher uses the blackboard.",
+      "wrong": "No, it is usually used by a teacher."
+    },
     "q_who_brings_letter": {
       "question": "Who brings the letter?",
       "correct": "Correct! The postman brings the letter.",
@@ -819,10 +824,60 @@
       "correct": "Yes! We put toothpaste on the toothbrush when we brush our teeth.",
       "wrong": "No, we don't put that on the toothbrush."
     },
+    "q_what_brush_teeth_with_129": {
+      "question": "What do we brush our teeth with?",
+      "correct": "Yes! We brush our teeth with a toothbrush.",
+      "wrong": "No, we don't brush our teeth with that."
+    },
+    "q_what_eat_with": {
+      "question": "What do we use to eat?",
+      "correct": "Correct! We use a fork to eat.",
+      "wrong": "No, we don't use that to eat."
+    },
+    "q_where_doctor_works": {
+      "question": "Where does a doctor work?",
+      "correct": "Yes! A doctor works at a hospital.",
+      "wrong": "No, a doctor works at a hospital."
+    },
+    "q_where_is_swing": {
+      "question": "Where is the swing?",
+      "correct": "Correct! The swing is at the playground.",
+      "wrong": "No, the swing is at the playground."
+    },
+    "q_where_do_we_sleep": {
+      "question": "Where do we sleep?",
+      "correct": "Yes! We sleep in a bed.",
+      "wrong": "No, we don't sleep there."
+    },
+    "q_where_fish_lives": {
+      "question": "Where do fish live?",
+      "correct": "Yes! Fish live in an aquarium.",
+      "wrong": "No, fish don't live there."
+    },
+    "q_when_see_owl": {
+      "question": "When do we see owls?",
+      "correct": "Correct! We see owls at night.",
+      "wrong": "No, owls are usually seen at night."
+    },
     "q_when_use_umbrella": {
       "question": "When do we use an umbrella?",
       "correct": "Yes! We use an umbrella when it rains.",
       "wrong": "No, we don't use an umbrella then."
+    },
+    "q_when_wear_beanie": {
+      "question": "When do we wear a beanie?",
+      "correct": "Correct! We wear a beanie when it snows.",
+      "wrong": "No, we don't wear a beanie then."
+    },
+    "q_why_icecream_melted": {
+      "question": "Why did the ice cream melt?",
+      "correct": "Yes! Ice cream melts because of the sun.",
+      "wrong": "No, that's not why ice cream melts."
+    },
+    "q_why_clothes_neat": {
+      "question": "Why are the clothes neat?",
+      "correct": "Correct! Because they were ironed.",
+      "wrong": "No, that doesn't make them neat."
     },
     "q_how_go_to_school": {
       "question": "How do we go to school?",
@@ -838,6 +893,51 @@
       "question": "How does the baby feel?",
       "correct": "Correct! The baby feels sad.",
       "wrong": "No, the baby doesn't feel that way."
+    },
+    "q_where_is_sleeping_child": {
+      "question": "Where might this child be sleeping?",
+      "correct": "Yes! We usually sleep in a bed.",
+      "wrong": "No, we usually sleep in a bed."
+    },
+    "q_why_child_wants_play": {
+      "question": "Why does this child want to play?",
+      "correct": "Correct! To have fun and play with friends.",
+      "wrong": "No, usually to have fun with friends."
+    },
+    "q_where_child_wants_to_go_outside": {
+      "question": "Where might the child want to go outside?",
+      "correct": "Yes! The child may want to go to the park.",
+      "wrong": "No, usually the park is desired."
+    },
+    "q_why_child_tired": {
+      "question": "Why might this child be tired?",
+      "correct": "Correct! Due to long play or little sleep.",
+      "wrong": "No, usually because of long activity or little sleep."
+    },
+    "q_where_child_wants_go_park": {
+      "question": "Where does this child want to go?",
+      "correct": "Yes! Wants to go to the park.",
+      "wrong": "No, not to a different place."
+    },
+    "q_how_child_prefers_drive": {
+      "question": "How does this child travel by car?",
+      "correct": "Correct! Wearing a seatbelt and with a parent.",
+      "wrong": "No, it should be safely with an adult."
+    },
+    "q_when_rhino_active": {
+      "question": "When are rhinos generally more active?",
+      "correct": "Correct! Depending on species, day or twilight.",
+      "wrong": "No, usually not at night."
+    },
+    "q_where_camels_live": {
+      "question": "Where are camels usually found?",
+      "correct": "Yes! In deserts and dry areas.",
+      "wrong": "No, usually in deserts."
+    },
+    "q_where_fish_live_915": {
+      "question": "Where do fish usually live?",
+      "correct": "Yes! They live in water.",
+      "wrong": "No, they don't live out of water."
     },
     "q_when_bears_hibernate": {
       "question": "When do bears hibernate?",
@@ -859,15 +959,65 @@
       "correct": "Yes! A farmer provides milk.",
       "wrong": "No, it is usually provided by a farmer."
     },
+    "q_what_erase_text": {
+      "question": "What do we use to erase writing?",
+      "correct": "Correct! We use an eraser to erase.",
+      "wrong": "No, we don't erase with that."
+    },
+    "q_what_measure_height": {
+      "question": "What do you use to measure height?",
+      "correct": "Yes! We use a ruler to measure height.",
+      "wrong": "No, we don't measure height with that."
+    },
     "q_what_dry_after_bath": {
       "question": "What do we dry ourselves with after a bath?",
       "correct": "Correct! We dry ourselves with a towel after a bath.",
       "wrong": "No, we don't dry with that."
     },
+    "q_where_to_eat": {
+      "question": "Where do we go to eat?",
+      "correct": "Yes! We go to a restaurant to eat.",
+      "wrong": "No, we don't go there to eat."
+    },
+    "q_where_to_read_books": {
+      "question": "Where can we go to read books?",
+      "correct": "Correct! We can go to the library to read books.",
+      "wrong": "No, that's not a good place to read books."
+    },
+    "q_where_to_shop": {
+      "question": "Where do we shop?",
+      "correct": "Yes! We shop at the market.",
+      "wrong": "No, we don't shop there."
+    },
+    "q_when_go_to_bed": {
+      "question": "When do we go to bed?",
+      "correct": "Correct! We go to bed at night.",
+      "wrong": "No, we don't go to bed then."
+    },
+    "q_when_go_to_beach": {
+      "question": "When do we go to the beach?",
+      "correct": "Yes! We go to the beach when it's sunny.",
+      "wrong": "No, we don't go to the beach then."
+    },
     "q_when_make_snowman": {
       "question": "When do we make a snowman?",
       "correct": "Correct! We make a snowman when it snows.",
       "wrong": "No, we don't make a snowman then."
+    },
+    "q_why_child_cold": {
+      "question": "Why is this child cold?",
+      "correct": "Yes! Because it is cold.",
+      "wrong": "No, that's not why they're cold."
+    },
+    "q_why_hair_wet": {
+      "question": "Why is this hair wet?",
+      "correct": "Correct! It's wet because of a shower.",
+      "wrong": "No, that's not why it's wet."
+    },
+    "q_how_reach_high_shelf": {
+      "question": "How do we reach a high shelf?",
+      "correct": "Yes! We use a ladder to reach.",
+      "wrong": "No, we can't reach with that."
     },
     "q_how_travel_at_sea": {
       "question": "How do we travel at sea?",
@@ -883,6 +1033,31 @@
       "question": "Look at the picture. Who teaches us at school? Pick the right person.",
       "correct": "Correct! The teacher teaches.",
       "wrong": "No, at school the teacher teaches."
+    },
+    "q_what_do_we_drink_water_with": {
+      "question": "Which one do we use to drink water? Choose carefully.",
+      "correct": "Yes! We drink water with a glass.",
+      "wrong": "No, we don't drink water with that."
+    },
+    "q_where_do_we_store_books": {
+      "question": "Where do we keep books? Pick the right place.",
+      "correct": "Correct! We keep them on a bookshelf.",
+      "wrong": "No, we keep books on a bookshelf."
+    },
+    "q_when_use_sunscreen": {
+      "question": "When do we use sunscreen? Choose the right time.",
+      "correct": "Yes! When it's sunny.",
+      "wrong": "No, we usually use it when it's sunny."
+    },
+    "q_why_wash_hands": {
+      "question": "Why do we wash our hands? Pick the healthy reason.",
+      "correct": "Correct! To be clean and protect from germs.",
+      "wrong": "No, we wash hands to be clean."
+    },
+    "q_how_dry_hands": {
+      "question": "After washing hands, how do we dry them? Choose the right method.",
+      "correct": "Yes! We dry them with a towel.",
+      "wrong": "No, we dry hands with a towel."
     },
     "q_who_makes_honey": {
       "question": "Who makes honey?",

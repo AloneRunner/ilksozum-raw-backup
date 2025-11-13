@@ -124,7 +124,7 @@
       "title": "Relative Vergleich",
       "menuSubtitle": "Wählen Sie eine Vergleichsaktivität aus.",
       "instruction": "Vergleichen Sie die beiden offenen Karten und beantworten Sie die Frage.",
-      "remainingLabel": "Verbleibende Vergleiche",
+  "remainingLabel": "Verbleibende Vergleiche",
       "images": {
         "950": "Das kleinste",
         "951": "Beispiel 951",
@@ -205,6 +205,11 @@
       "correct": "Richtig! Wir rufen die Feuerwehr, wenn es brennt.",
       "wrong": "Nein, bei einem Brand sollten wir die Feuerwehr rufen."
     },
+    "q_who_uses_this": {
+      "question": "Wer benutzt das?",
+      "correct": "Ja! Ein Lehrer benutzt die Tafel.",
+      "wrong": "Nein, sie wird normalerweise von einem Lehrer benutzt."
+    },
     "q_who_brings_letter": {
       "question": "Wer bringt den Brief?",
       "correct": "Richtig! Der Postbote bringt den Brief.",
@@ -215,10 +220,55 @@
       "correct": "Ja! Wir putzen unsere Zähne mit Zahnpasta.",
       "wrong": "Nein, damit putzen wir unsere Zähne nicht."
     },
+    "q_what_eat_with": {
+      "question": "Was benutzen wir zum Essen?",
+      "correct": "Richtig! Wir benutzen eine Gabel zum Essen.",
+      "wrong": "Nein, das benutzen wir nicht zum Essen."
+    },
+    "q_where_doctor_works": {
+      "question": "Wo arbeitet ein Arzt?",
+      "correct": "Ja! Ein Arzt arbeitet in einem Krankenhaus.",
+      "wrong": "Nein, ein Arzt arbeitet in einem Krankenhaus."
+    },
+    "q_where_is_swing": {
+      "question": "Wo ist die Schaukel?",
+      "correct": "Richtig! Die Schaukel ist auf dem Spielplatz.",
+      "wrong": "Nein, die Schaukel ist auf dem Spielplatz."
+    },
+    "q_where_do_we_sleep": {
+      "question": "Wo schlafen wir?",
+      "correct": "Ja! Wir schlafen in einem Bett.",
+      "wrong": "Nein, dort schlafen wir nicht."
+    },
+    "q_where_fish_lives": {
+      "question": "Wo leben Fische?",
+      "correct": "Ja! Fische leben in einem Aquarium.",
+      "wrong": "Nein, Fische leben dort nicht."
+    },
+    "q_when_see_owl": {
+      "question": "Wann sehen wir Eulen?",
+      "correct": "Richtig! Wir sehen Eulen in der Nacht.",
+      "wrong": "Nein, Eulen werden normalerweise nachts gesehen."
+    },
     "q_when_use_umbrella": {
       "question": "Wann benutzen wir einen Regenschirm?",
       "correct": "Ja! Wir benutzen einen Regenschirm, wenn es regnet.",
       "wrong": "Nein, dann benutzen wir keinen Regenschirm."
+    },
+    "q_when_wear_beanie": {
+      "question": "Wann tragen wir eine Mütze?",
+      "correct": "Richtig! Wir tragen eine Mütze, wenn es schneit.",
+      "wrong": "Nein, dann tragen wir keine Mütze."
+    },
+    "q_why_icecream_melted": {
+      "question": "Warum ist das Eis geschmolzen?",
+      "correct": "Ja! Eis schmilzt wegen der Sonne.",
+      "wrong": "Nein, deswegen schmilzt Eis nicht."
+    },
+    "q_why_clothes_neat": {
+      "question": "Warum ist die Kleidung ordentlich?",
+      "correct": "Richtig! Weil sie gebügelt wurde.",
+      "wrong": "Nein, das macht sie nicht ordentlich."
     },
     "q_how_go_to_school": {
       "question": "Wie fahren wir zur Schule?",
@@ -234,6 +284,51 @@
       "question": "Wie fühlt sich das Baby?",
       "correct": "Richtig! Das Baby fühlt sich traurig.",
       "wrong": "Nein, das Baby fühlt sich nicht so."
+    },
+    "q_where_is_sleeping_child": {
+      "question": "Wo könnte dieses Kind schlafen?",
+      "correct": "Ja! Normalerweise schlafen wir in einem Bett.",
+      "wrong": "Nein, normalerweise schlafen wir in einem Bett."
+    },
+    "q_why_child_wants_play": {
+      "question": "Warum möchte dieses Kind spielen?",
+      "correct": "Richtig! Um Spaß zu haben und mit Freunden zu spielen.",
+      "wrong": "Nein, normalerweise, um Spaß mit Freunden zu haben."
+    },
+    "q_where_child_wants_to_go_outside": {
+      "question": "Wohin möchte das Kind draußen gehen?",
+      "correct": "Ja! Das Kind möchte vielleicht in den Park gehen.",
+      "wrong": "Nein, normalerweise wird der Park gewünscht."
+    },
+    "q_why_child_tired": {
+      "question": "Warum könnte dieses Kind müde sein?",
+      "correct": "Richtig! Wegen langem Spielen oder wenig Schlaf.",
+      "wrong": "Nein, normalerweise wegen langer Aktivität oder wenig Schlaf."
+    },
+    "q_where_child_wants_go_park": {
+      "question": "Wohin möchte dieses Kind gehen?",
+      "correct": "Ja! Es möchte in den Park gehen.",
+      "wrong": "Nein, nicht an einen anderen Ort."
+    },
+    "q_how_child_prefers_drive": {
+      "question": "Wie fährt dieses Kind mit dem Auto?",
+      "correct": "Richtig! Angeschnallt und mit einem Elternteil.",
+      "wrong": "Nein, es sollte sicher mit einem Erwachsenen sein."
+    },
+    "q_when_rhino_active": {
+      "question": "Wann sind Nashörner normalerweise aktiver?",
+      "correct": "Richtig! Je nach Art, tagsüber oder in der Dämmerung.",
+      "wrong": "Nein, normalerweise nicht nachts."
+    },
+    "q_where_camels_live": {
+      "question": "Wo findet man Kamele normalerweise?",
+      "correct": "Ja! In Wüsten und trockenen Gebieten.",
+      "wrong": "Nein, normalerweise in Wüsten."
+    },
+    "q_where_fish_live_915": {
+      "question": "Wo leben Fische normalerweise?",
+      "correct": "Ja! Sie leben im Wasser.",
+      "wrong": "Nein, sie leben nicht außerhalb des Wassers."
     },
     "q_when_bears_hibernate": {
       "question": "Wann halten Bären Winterschlaf?",
@@ -255,15 +350,65 @@
       "correct": "Ja! Ein Bauer liefert Milch.",
       "wrong": "Nein, sie wird normalerweise von einem Bauern geliefert."
     },
+    "q_what_erase_text": {
+      "question": "Was benutzen wir, um Geschriebenes zu löschen?",
+      "correct": "Richtig! Wir benutzen einen Radiergummi zum Löschen.",
+      "wrong": "Nein, damit löschen wir nicht."
+    },
+    "q_what_measure_height": {
+      "question": "Was benutzt du, um die Größe zu messen?",
+      "correct": "Ja! Wir benutzen ein Lineal, um die Größe zu messen.",
+      "wrong": "Nein, damit messen wir nicht die Größe."
+    },
     "q_what_dry_after_bath": {
       "question": "Womit trocknen wir uns nach dem Baden ab?",
       "correct": "Richtig! Wir trocknen uns nach dem Baden mit einem Handtuch ab.",
       "wrong": "Nein, damit trocknen wir uns nicht ab."
     },
+    "q_where_to_eat": {
+      "question": "Wohin gehen wir zum Essen?",
+      "correct": "Ja! Wir gehen in ein Restaurant, um zu essen.",
+      "wrong": "Nein, dorthin gehen wir nicht zum Essen."
+    },
+    "q_where_to_read_books": {
+      "question": "Wohin können wir gehen, um Bücher zu lesen?",
+      "correct": "Richtig! Wir können in die Bibliothek gehen, um Bücher zu lesen.",
+      "wrong": "Nein, das ist kein guter Ort, um Bücher zu lesen."
+    },
+    "q_where_to_shop": {
+      "question": "Wo kaufen wir ein?",
+      "correct": "Ja! Wir kaufen auf dem Markt ein.",
+      "wrong": "Nein, dort kaufen wir nicht ein."
+    },
+    "q_when_go_to_bed": {
+      "question": "Wann gehen wir ins Bett?",
+      "correct": "Richtig! Wir gehen nachts ins Bett.",
+      "wrong": "Nein, dann gehen wir nicht ins Bett."
+    },
+    "q_when_go_to_beach": {
+      "question": "Wann gehen wir an den Strand?",
+      "correct": "Ja! Wir gehen an den Strand, wenn es sonnig ist.",
+      "wrong": "Nein, dann gehen wir nicht an den Strand."
+    },
     "q_when_make_snowman": {
       "question": "Wann bauen wir einen Schneemann?",
       "correct": "Richtig! Wir bauen einen Schneemann, wenn es schneit.",
       "wrong": "Nein, dann bauen wir keinen Schneemann."
+    },
+    "q_why_child_cold": {
+      "question": "Warum ist diesem Kind kalt?",
+      "correct": "Ja! Weil es kalt ist.",
+      "wrong": "Nein, deshalb ist ihnen nicht kalt."
+    },
+    "q_why_hair_wet": {
+      "question": "Warum ist dieses Haar nass?",
+      "correct": "Richtig! Es ist nass wegen einer Dusche.",
+      "wrong": "Nein, deshalb ist es nicht nass."
+    },
+    "q_how_reach_high_shelf": {
+      "question": "Wie erreichen wir ein hohes Regal?",
+      "correct": "Ja! Wir benutzen eine Leiter, um es zu erreichen.",
+      "wrong": "Nein, damit können wir es nicht erreichen."
     },
     "q_how_travel_at_sea": {
       "question": "Wie reisen wir auf dem Meer?",
@@ -279,6 +424,31 @@
       "question": "Schau dir das Bild an. Wer unterrichtet uns in der Schule? Wähle die richtige Person.",
       "correct": "Richtig! Der Lehrer unterrichtet.",
       "wrong": "Nein, in der Schule unterrichtet der Lehrer."
+    },
+    "q_what_do_we_drink_water_with": {
+      "question": "Was benutzen wir, um Wasser zu trinken? Wähle sorgfältig aus.",
+      "correct": "Ja! Wir trinken Wasser mit einem Glas.",
+      "wrong": "Nein, damit trinken wir kein Wasser."
+    },
+    "q_where_do_we_store_books": {
+      "question": "Wo bewahren wir Bücher auf? Wähle den richtigen Ort.",
+      "correct": "Richtig! Wir bewahren sie in einem Bücherregal auf.",
+      "wrong": "Nein, wir bewahren Bücher in einem Bücherregal auf."
+    },
+    "q_when_use_sunscreen": {
+      "question": "Wann benutzen wir Sonnencreme? Wähle die richtige Zeit.",
+      "correct": "Ja! Wenn es sonnig ist.",
+      "wrong": "Nein, wir benutzen sie normalerweise, wenn es sonnig ist."
+    },
+    "q_why_wash_hands": {
+      "question": "Warum waschen wir unsere Hände? Wähle den gesunden Grund.",
+      "correct": "Richtig! Um sauber zu sein und uns vor Keimen zu schützen.",
+      "wrong": "Nein, wir waschen die Hände, um sauber zu sein."
+    },
+    "q_how_dry_hands": {
+      "question": "Wie trocknen wir unsere Hände nach dem Waschen? Wähle die richtige Methode.",
+      "correct": "Ja! Wir trocknen sie mit einem Handtuch ab.",
+      "wrong": "Nein, wir trocknen die Hände mit einem Handtuch ab."
     }
   }
 }

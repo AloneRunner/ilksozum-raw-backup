@@ -124,7 +124,7 @@
       "title": "Nisbi Müqayisə",
       "menuSubtitle": "Müqayisə fəaliyyəti seçin.",
       "instruction": "İki açıq kartı müqayisə edin və suala cavab verin.",
-      "remainingLabel": "Qalan müqayisələr",
+  "remainingLabel": "Qalan müqayisələr",
       "images": {
         "950": "Ən kiçik",
         "951": "Nümunə 951",
@@ -205,6 +205,11 @@
       "correct": "Doğru! Yanğın çıxanda yanğınsöndürənlərə zəng edirik.",
       "wrong": "Xeyr, yanğın zamanı yanğınsöndürənlərə zəng etməliyik."
     },
+    "q_who_uses_this": {
+      "question": "Bundan kim istifadə edir?",
+      "correct": "Bəli! Qara lövhədən müəllim istifadə edir.",
+      "wrong": "Xeyr, bundan adətən müəllim istifadə edir."
+    },
     "q_who_brings_letter": {
       "question": "Məktubu kim gətirir?",
       "correct": "Doğru! Məktubu poçtalyon gətirir.",
@@ -215,10 +220,55 @@
       "correct": "Bəli! Dişlərimizi diş məcunu ilə fırçalayırıq.",
       "wrong": "Xeyr, dişlərimizi onunla fırçalamırıq."
     },
+    "q_what_eat_with": {
+      "question": "Yemək yemək üçün nə istifadə edirik?",
+      "correct": "Doğru! Yemək yemək üçün çəngəl istifadə edirik.",
+      "wrong": "Xeyr, yemək üçün o istifadə edilmir."
+    },
+    "q_where_doctor_works": {
+      "question": "Həkim harada işləyir?",
+      "correct": "Bəli! Həkim xəstəxanada işləyir.",
+      "wrong": "Xeyr, həkim xəstəxanada işləyir."
+    },
+    "q_where_is_swing": {
+      "question": "Yelləncək haradadır?",
+      "correct": "Doğru! Yelləncək uşaq parkındadır.",
+      "wrong": "Xeyr, yelləncək parkda tapılar."
+    },
+    "q_where_do_we_sleep": {
+      "question": "Harada yatırıq?",
+      "correct": "Bəli! Yataqda yatırıq.",
+      "wrong": "Xeyr, orada yatmırıq."
+    },
+    "q_where_fish_lives": {
+      "question": "Balıq harada yaşayır?",
+      "correct": "Bəli! Balıq akvariumda yaşayır.",
+      "wrong": "Xeyr, balıq orada yaşamır."
+    },
+    "q_when_see_owl": {
+      "question": "Bayquşu nə vaxt görürük?",
+      "correct": "Doğru! Bayquşu gecə görürük.",
+      "wrong": "Xeyr, bayquş adətən gecə görünür."
+    },
     "q_when_use_umbrella": {
       "question": "Nə vaxt çətirdən istifadə edirik?",
       "correct": "Bəli! Yağışda çətirdən istifadə edirik.",
       "wrong": "Xeyr, o zaman çətirdən istifadə etmirik."
+    },
+    "q_when_wear_beanie": {
+      "question": "Nə vaxt papaq taxırıq?",
+      "correct": "Doğru! Qarlı havada papaq taxırıq.",
+      "wrong": "Xeyr, o zaman papaq taxmırıq."
+    },
+    "q_why_icecream_melted": {
+      "question": "Dondurma niyə əridi?",
+      "correct": "Bəli! Dondurma günəşdən əriyir.",
+      "wrong": "Xeyr, dondurma buna görə əriməz."
+    },
+    "q_why_clothes_neat": {
+      "question": "Paltarlar niyə səliqəlidir?",
+      "correct": "Doğru! Çünkü ütülənib.",
+      "wrong": "Xeyr, buna görə səliqəli olmaz."
     },
     "q_how_go_to_school": {
       "question": "Məktəbə necə gedirik?",
@@ -234,6 +284,51 @@
       "question": "Körpə özünü necə hiss edir?",
       "correct": "Doğru! Körpə kədərli hiss edir.",
       "wrong": "Xeyr, körpə elə hiss etmir."
+    },
+    "q_where_is_sleeping_child": {
+      "question": "Bu uşaq harada yata bilər?",
+      "correct": "Bəli! Adətən yataqda yatırıq.",
+      "wrong": "Xeyr, adətən yataqda yatırıq."
+    },
+    "q_why_child_wants_play": {
+      "question": "Bu uşaq niyə oynamaq istəyir?",
+      "correct": "Doğru! Əylənmək və dostları ilə vaxt keçirmək istəyir.",
+      "wrong": "Xeyr, adətən əylənmək və dostları ilə olmaq üçündür."
+    },
+    "q_where_child_wants_to_go_outside": {
+      "question": "Çöldə hara getmək istəyə bilər?",
+      "correct": "Bəli! Parka getmək istəyə bilər.",
+      "wrong": "Xeyr, adətən parka getmək istər."
+    },
+    "q_why_child_tired": {
+      "question": "Bu uşaq niyə yorulmuş ola bilər?",
+      "correct": "Doğru! Uzun müddət oynadığı və ya az yatdığı üçün ola bilər.",
+      "wrong": "Xeyr, adətən uzun fəaliyyət ya da az yuxu üzündəndir."
+    },
+    "q_where_child_wants_go_park": {
+      "question": "Bu uşaq hansı yerə getmək istəyir?",
+      "correct": "Bəli! Parka getmək istəyir.",
+      "wrong": "Xeyr, başqa yerə getmək istəmir."
+    },
+    "q_how_child_prefers_drive": {
+      "question": "Bu uşaq maşınla necə gəzir?",
+      "correct": "Doğru! Təhlükəsizlik kəmərini taxaraq və valideyni ilə.",
+      "wrong": "Xeyr, təhlükəsiz şəkildə və böyüklə olmalıdır."
+    },
+    "q_when_rhino_active": {
+      "question": "Kərgədanlar adətən nə vaxt daha aktiv olurlar?",
+      "correct": "Doğru! Növünə görə gündüz və ya alaqaranlıqda ola bilər.",
+      "wrong": "Xeyr, adətən gecə deyil."
+    },
+    "q_where_camels_live": {
+      "question": "Dəvələr adətən harada tapılır?",
+      "correct": "Bəli! Səhralarda və quru bölgələrdə.",
+      "wrong": "Xeyr, adətən səhralardadır."
+    },
+    "q_where_fish_live_915": {
+      "question": "Balıqlar adətən harada yaşayır?",
+      "correct": "Bəli! Suyun içində yaşayırlar.",
+      "wrong": "Xeyr, sudan kənarda yaşamırlar."
     },
     "q_when_bears_hibernate": {
       "question": "Ayılar nə vaxt qış yuxusuna gedir?",
@@ -255,15 +350,65 @@
       "correct": "Bəli! Südü fermer təmin edir.",
       "wrong": "Xeyr, südü adətən fermer təmin edir."
     },
+    "q_what_erase_text": {
+      "question": "Yazını silmək üçün nə istifadə edirik?",
+      "correct": "Doğru! Yazını silmək üçün pozan istifadə edirik.",
+      "wrong": "Xeyr, yazını onunla silmirik."
+    },
+    "q_what_measure_height": {
+      "question": "Boyunu ölçmək üçün nə istifadə edirsən?",
+      "correct": "Bəli! Boyu ölçmək üçün xətkeş istifadə edirik.",
+      "wrong": "Xeyr, boyu onunla ölçmürük."
+    },
     "q_what_dry_after_bath": {
       "question": "Hamamdan sonra nə ilə qurulanırıq?",
       "correct": "Doğru! Hamamdan sonra dəsmalla qurulanırıq.",
       "wrong": "Xeyr, onunla qurulanmırıq."
     },
+    "q_where_to_eat": {
+      "question": "Yemək yemək üçün haraya gedirik?",
+      "correct": "Bəli! Yemək üçün restorana gedirik.",
+      "wrong": "Xeyr, yemək üçün ora getmirik."
+    },
+    "q_where_to_read_books": {
+      "question": "Kitab oxumaq üçün haraya gedə bilərik?",
+      "correct": "Doğru! Kitab oxumaq üçün kitabxanaya gedə bilərik.",
+      "wrong": "Xeyr, kitab oxumaq üçün ora uyğun deyil."
+    },
+    "q_where_to_shop": {
+      "question": "Alış-verişi haradan edirik?",
+      "correct": "Bəli! Alış-verişi marketdən edirik.",
+      "wrong": "Xeyr, alış-verişi oradan etmirik."
+    },
+    "q_when_go_to_bed": {
+      "question": "Nə vaxt yatağımıza giririk?",
+      "correct": "Doğru! Yatağa gecə giririk.",
+      "wrong": "Xeyr, o zaman yatağa girmirik."
+    },
+    "q_when_go_to_beach": {
+      "question": "Nə vaxt çimərliyə gedirik?",
+      "correct": "Bəli! Günəşli havada çimərliyə gedirik.",
+      "wrong": "Xeyr, o havada çimərliyə getmirik."
+    },
     "q_when_make_snowman": {
       "question": "Nə vaxt qar adamı düzəldirik?",
       "correct": "Doğru! Qar yağanda qar adamı düzəldirik.",
       "wrong": "Xeyr, o zaman qar adamı düzəltmirik."
+    },
+    "q_why_child_cold": {
+      "question": "Bu uşaq niyə üşüyür?",
+      "correct": "Bəli! Soyuq hava üzündən üşüyür.",
+      "wrong": "Xeyr, buna görə üşüməz."
+    },
+    "q_why_hair_wet": {
+      "question": "Bu saç niyə yaşdır?",
+      "correct": "Doğru! Duş qəbul etdiyi üçün yaşdır.",
+      "wrong": "Xeyr, buna görə yaş deyil."
+    },
+    "q_how_reach_high_shelf": {
+      "question": "Yüksək bir rəfə necə çatırıq?",
+      "correct": "Bəli! Nərdivanla çatırıq.",
+      "wrong": "Xeyr, onunla çata bilmərik."
     },
     "q_how_travel_at_sea": {
       "question": "Dənizdə necə səyahət edirik?",
@@ -279,6 +424,31 @@
       "question": "Şəklə bax. Məktəbdə bizə kim dərs deyir? Düzgün adamı seç.",
       "correct": "Doğru! Müəllim dərs deyir.",
       "wrong": "Xeyr, məktəbdə dərsi müəllim deyir."
+    },
+    "q_what_do_we_drink_water_with": {
+      "question": "Su içmək üçün hansını istifadə edirik? Diqqətlə seç.",
+      "correct": "Bəli! Suyu stəkanla içirik.",
+      "wrong": "Xeyr, suyu onunla içmirik."
+    },
+    "q_where_do_we_store_books": {
+      "question": "Kitabları haraya qoyuruq? Düzgün yeri seç.",
+      "correct": "Doğru! Kitab rəfində saxlayırıq.",
+      "wrong": "Xeyr, kitabları kitab rəfində saxlayırıq."
+    },
+    "q_when_use_sunscreen": {
+      "question": "Nə vaxt günəş kremi çəkməliyik? Düzgün vaxtı seç.",
+      "correct": "Bəli! Günəşli havada çəkirik.",
+      "wrong": "Xeyr, günəş kremi adətən günəşli havada çəkilir."
+    },
+    "q_why_wash_hands": {
+      "question": "Əllərimizi niyə yuyuruq? Sağlam səbəbi seç.",
+      "correct": "Doğru! Təmiz olmaq və mikroblardan qorunmaq üçün.",
+      "wrong": "Xeyr, əllərimizi təmiz olmaq üçün yuyuruq."
+    },
+    "q_how_dry_hands": {
+      "question": "Əllərimizi yuduqdan sonra necə qurulayırıq? Düzgün üsulu seç.",
+      "correct": "Bəli! Dəsmalla qurulayırıq.",
+      "wrong": "Xeyr, əllər dəsmalla qurulanır."
     }
   }
 }

@@ -124,7 +124,7 @@
       "title": "Relatieve Vergelijking",
       "menuSubtitle": "Selecteer een vergelijkingsactiviteit.",
       "instruction": "Vergelijk de twee open kaarten en beantwoord de vraag.",
-      "remainingLabel": "Resterende vergelijkingen",
+  "remainingLabel": "Resterende vergelijkingen",
       "images": {
         "950": "Het kleinst",
         "951": "Voorbeeld 951",
@@ -205,6 +205,11 @@
       "correct": "Juist! We bellen de brandweer als er brand is.",
       "wrong": "Nee, bij brand moeten we de brandweer bellen."
     },
+    "q_who_uses_this": {
+      "question": "Wie gebruikt dit?",
+      "correct": "Ja! Een leraar gebruikt het schoolbord.",
+      "wrong": "Nee, het wordt meestal gebruikt door een leraar."
+    },
     "q_who_brings_letter": {
       "question": "Wie brengt de brief?",
       "correct": "Juist! De postbode brengt de brief.",
@@ -215,10 +220,55 @@
       "correct": "Ja! We poetsen onze tanden met tandpasta.",
       "wrong": "Nee, daar poetsen we onze tanden niet mee."
     },
+    "q_what_eat_with": {
+      "question": "Wat gebruiken we om te eten?",
+      "correct": "Juist! We gebruiken een vork om te eten.",
+      "wrong": "Nee, dat gebruiken we niet om te eten."
+    },
+    "q_where_doctor_works": {
+      "question": "Waar werkt een dokter?",
+      "correct": "Ja! Een dokter werkt in een ziekenhuis.",
+      "wrong": "Nee, een dokter werkt in een ziekenhuis."
+    },
+    "q_where_is_swing": {
+      "question": "Waar is de schommel?",
+      "correct": "Juist! De schommel is in de speeltuin.",
+      "wrong": "Nee, de schommel is in de speeltuin."
+    },
+    "q_where_do_we_sleep": {
+      "question": "Waar slapen we?",
+      "correct": "Ja! We slapen in een bed.",
+      "wrong": "Nee, daar slapen we niet."
+    },
+    "q_where_fish_lives": {
+      "question": "Waar leven vissen?",
+      "correct": "Ja! Vissen leven in een aquarium.",
+      "wrong": "Nee, vissen leven daar niet."
+    },
+    "q_when_see_owl": {
+      "question": "Wanneer zien we uilen?",
+      "correct": "Juist! We zien uilen 's nachts.",
+      "wrong": "Nee, uilen worden meestal 's nachts gezien."
+    },
     "q_when_use_umbrella": {
       "question": "Wanneer gebruiken we een paraplu?",
       "correct": "Ja! We gebruiken een paraplu als het regent.",
       "wrong": "Nee, dan gebruiken we geen paraplu."
+    },
+    "q_when_wear_beanie": {
+      "question": "Wanneer dragen we een muts?",
+      "correct": "Juist! We dragen een muts als het sneeuwt.",
+      "wrong": "Nee, dan dragen we geen muts."
+    },
+    "q_why_icecream_melted": {
+      "question": "Waarom is het ijsje gesmolten?",
+      "correct": "Ja! IJs smelt door de zon.",
+      "wrong": "Nee, daarom smelt ijs niet."
+    },
+    "q_why_clothes_neat": {
+      "question": "Waarom zijn de kleren netjes?",
+      "correct": "Juist! Omdat ze gestreken zijn.",
+      "wrong": "Nee, daardoor worden ze niet netjes."
     },
     "q_how_go_to_school": {
       "question": "Hoe gaan we naar school?",
@@ -234,6 +284,51 @@
       "question": "Hoe voelt de baby zich?",
       "correct": "Juist! De baby voelt zich verdrietig.",
       "wrong": "Nee, de baby voelt zich niet zo."
+    },
+    "q_where_is_sleeping_child": {
+      "question": "Waar zou dit kind kunnen slapen?",
+      "correct": "Ja! We slapen meestal in een bed.",
+      "wrong": "Nee, we slapen meestal in een bed."
+    },
+    "q_why_child_wants_play": {
+      "question": "Waarom wil dit kind spelen?",
+      "correct": "Juist! Om plezier te hebben en met vrienden te spelen.",
+      "wrong": "Nee, meestal om plezier te hebben met vrienden."
+    },
+    "q_where_child_wants_to_go_outside": {
+      "question": "Waar zou het kind buiten naartoe willen gaan?",
+      "correct": "Ja! Het kind wil misschien naar het park.",
+      "wrong": "Nee, meestal is het park gewenst."
+    },
+    "q_why_child_tired": {
+      "question": "Waarom zou dit kind moe kunnen zijn?",
+      "correct": "Juist! Door lang spelen of weinig slaap.",
+      "wrong": "Nee, meestal door lange activiteit of weinig slaap."
+    },
+    "q_where_child_wants_go_park": {
+      "question": "Waar wil dit kind naartoe?",
+      "correct": "Ja! Het wil naar het park.",
+      "wrong": "Nee, niet naar een andere plek."
+    },
+    "q_how_child_prefers_drive": {
+      "question": "Hoe reist dit kind met de auto?",
+      "correct": "Juist! Met de autogordel om en met een ouder.",
+      "wrong": "Nee, het moet veilig zijn met een volwassene."
+    },
+    "q_when_rhino_active": {
+      "question": "Wanneer zijn neushoorns meestal actiever?",
+      "correct": "Juist! Afhankelijk van de soort, overdag of in de schemering.",
+      "wrong": "Nee, meestal niet 's nachts."
+    },
+    "q_where_camels_live": {
+      "question": "Waar worden kamelen meestal gevonden?",
+      "correct": "Ja! In woestijnen en droge gebieden.",
+      "wrong": "Nee, meestal in woestijnen."
+    },
+    "q_where_fish_live_915": {
+      "question": "Waar leven vissen meestal?",
+      "correct": "Ja! Ze leven in het water.",
+      "wrong": "Nee, ze leven niet buiten het water."
     },
     "q_when_bears_hibernate": {
       "question": "Wanneer houden beren een winterslaap?",
@@ -255,15 +350,65 @@
       "correct": "Ja! Een boer zorgt voor melk.",
       "wrong": "Nee, het wordt meestal verzorgd door een boer."
     },
+    "q_what_erase_text": {
+      "question": "Wat gebruiken we om te wissen?",
+      "correct": "Juist! We gebruiken een gum om te wissen.",
+      "wrong": "Nee, daar wissen we niet mee."
+    },
+    "q_what_measure_height": {
+      "question": "Wat gebruik je om de lengte te meten?",
+      "correct": "Ja! We gebruiken een liniaal om de lengte te meten.",
+      "wrong": "Nee, daar meten we de lengte niet mee."
+    },
     "q_what_dry_after_bath": {
       "question": "Waarmee drogen we ons af na een bad?",
       "correct": "Juist! We drogen ons af met een handdoek na een bad.",
       "wrong": "Nee, daar drogen we ons niet mee af."
     },
+    "q_where_to_eat": {
+      "question": "Waar gaan we heen om te eten?",
+      "correct": "Ja! We gaan naar een restaurant om te eten.",
+      "wrong": "Nee, daar gaan we niet heen om te eten."
+    },
+    "q_where_to_read_books": {
+      "question": "Waar kunnen we heen gaan om boeken te lezen?",
+      "correct": "Juist! We kunnen naar de bibliotheek gaan om boeken te lezen.",
+      "wrong": "Nee, dat is geen goede plek om boeken te lezen."
+    },
+    "q_where_to_shop": {
+      "question": "Waar doen we boodschappen?",
+      "correct": "Ja! We doen boodschappen op de markt.",
+      "wrong": "Nee, daar doen we geen boodschappen."
+    },
+    "q_when_go_to_bed": {
+      "question": "Wanneer gaan we naar bed?",
+      "correct": "Juist! We gaan 's nachts naar bed.",
+      "wrong": "Nee, dan gaan we niet naar bed."
+    },
+    "q_when_go_to_beach": {
+      "question": "Wanneer gaan we naar het strand?",
+      "correct": "Ja! We gaan naar het strand als het zonnig is.",
+      "wrong": "Nee, dan gaan we niet naar het strand."
+    },
     "q_when_make_snowman": {
       "question": "Wanneer maken we een sneeuwpop?",
       "correct": "Juist! We maken een sneeuwpop als het sneeuwt.",
       "wrong": "Nee, dan maken we geen sneeuwpop."
+    },
+    "q_why_child_cold": {
+      "question": "Waarom heeft dit kind het koud?",
+      "correct": "Ja! Omdat het koud is.",
+      "wrong": "Nee, daarom hebben ze het niet koud."
+    },
+    "q_why_hair_wet": {
+      "question": "Waarom is dit haar nat?",
+      "correct": "Juist! Het is nat door een douche.",
+      "wrong": "Nee, daarom is het niet nat."
+    },
+    "q_how_reach_high_shelf": {
+      "question": "Hoe bereiken we een hoge plank?",
+      "correct": "Ja! We gebruiken een ladder om te bereiken.",
+      "wrong": "Nee, daar kunnen we niet mee bereiken."
     },
     "q_how_travel_at_sea": {
       "question": "Hoe reizen we op zee?",
@@ -279,6 +424,31 @@
       "question": "Kijk naar het plaatje. Wie geeft ons les op school? Kies de juiste persoon.",
       "correct": "Juist! De leraar geeft les.",
       "wrong": "Nee, op school geeft de leraar les."
+    },
+    "q_what_do_we_drink_water_with": {
+      "question": "Welke gebruiken we om water te drinken? Kies zorgvuldig.",
+      "correct": "Ja! We drinken water met een glas.",
+      "wrong": "Nee, daar drinken we geen water mee."
+    },
+    "q_where_do_we_store_books": {
+      "question": "Waar bewaren we boeken? Kies de juiste plek.",
+      "correct": "Juist! We bewaren ze op een boekenplank.",
+      "wrong": "Nee, we bewaren boeken op een boekenplank."
+    },
+    "q_when_use_sunscreen": {
+      "question": "Wanneer gebruiken we zonnebrandcrème? Kies de juiste tijd.",
+      "correct": "Ja! Als het zonnig is.",
+      "wrong": "Nee, we gebruiken het meestal als het zonnig is."
+    },
+    "q_why_wash_hands": {
+      "question": "Waarom wassen we onze handen? Kies de gezonde reden.",
+      "correct": "Juist! Om schoon te zijn en te beschermen tegen ziektekiemen.",
+      "wrong": "Nee, we wassen onze handen om schoon te zijn."
+    },
+    "q_how_dry_hands": {
+      "question": "Hoe drogen we onze handen na het wassen? Kies de juiste methode.",
+      "correct": "Ja! We drogen ze af met een handdoek.",
+      "wrong": "Nee, we drogen onze handen af met een handdoek."
     }
   }
 }
