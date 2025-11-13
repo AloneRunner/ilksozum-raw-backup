@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { t } from '../i18n';
+import { ActivityType } from '../types';
 import { SimpleThemeWrapper, SIMPLE_THEME_ACTION_BUTTON, SIMPLE_THEME_TEXT_PRIMARY, SIMPLE_THEME_TEXT_SECONDARY } from '../themes/simpleTheme.tsx';
 import AcademicCapIcon from './icons/AcademicCapIcon.tsx';
-import { ActivityStats } from '../types.ts';
+import { ActivityStats, ParentOverride } from '../types.ts';
 import { UNIT_DEFINITIONS } from '../constants/unitDefinitions';
-import { getUnitCompletionPercentage, isUnitUnlocked, getUnlockedUnits } from '../services/masteryEngine';
+import { getUnitCompletionPercentage, getUnitDisplaySuccessPercentage, isUnitUnlocked, getUnlockedUnits } from '../services/masteryEngine';
 import { buildDailySession, getRecommendedSessionLength, shouldShowNewSession } from '../services/sessionBuilder';
 import { getActivityMetadata } from '../constants/activityMetadata';
 import { getAllowedUnitCeiling, getPolicyToday } from '../services/progressionPolicy';
@@ -19,6 +20,8 @@ interface ProgramModeIntroScreenProps {
   masteredObjectCategories?: Set<string>;
   lastSessionDate?: string;
   profileId?: string;
+  isPremium?: boolean;
+  parentOverrides?: ParentOverride[];
 }
 
 type TabType = 'progress' | 'units' | 'today';
@@ -29,29 +32,44 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
   activityStats,
   masteredObjectCategories = new Set(),
   lastSessionDate,
-  profileId
+  profileId,
+  isPremium,
+  parentOverrides
 }) => {
   const [activeTab, setActiveTab] = useState<TabType>('today');
   
   // Calculate unit progress
-  const unitProgress = useMemo(() => 
-    UNIT_DEFINITIONS.map(unit => ({
-      ...unit,
-      isUnlocked: isUnitUnlocked(unit.unitNumber, activityStats, masteredObjectCategories),
-      completionPercentage: getUnitCompletionPercentage(unit.unitNumber, activityStats, masteredObjectCategories)
-    })),
+  const unitProgress = useMemo(() =>
+    UNIT_DEFINITIONS.map(unit => {
+      const completion = getUnitCompletionPercentage(unit.unitNumber, activityStats, masteredObjectCategories);
+      // Always use display-oriented success that blends Program + Free mode stats,
+      // but does not penalize for completely unattempted activities.
+      const display = getUnitDisplaySuccessPercentage(unit.unitNumber, activityStats, masteredObjectCategories);
+      return {
+        ...unit,
+        isUnlocked: isUnitUnlocked(unit.unitNumber, activityStats, masteredObjectCategories),
+        completionPercentage: completion,
+        displayPercentage: display
+      };
+    }),
     [activityStats, masteredObjectCategories]
   );
 
-  // Build today's session within daily unit ceiling (max 1 advancement per day)
+  // Build today's session within daily unit ceiling (max 3 advancements per day)
+  // Re-read policy snapshot to catch unit advancements during activity completion
+  const policySnapshot = useMemo(() => 
+    profileId ? getPolicyToday(profileId) : { advances: 0, date: new Date().toISOString().split('T')[0] },
+    [profileId, activityStats] // Re-evaluate when activityStats changes (after each activity)
+  );
+  
   const todaySession = useMemo(() => {
     const sessionLength = getRecommendedSessionLength(
       Object.keys(activityStats).filter(id => activityStats[id]?.completions > 0).length
     );
     const unlocked = getUnlockedUnits(activityStats, masteredObjectCategories);
-    const ceiling = profileId ? getAllowedUnitCeiling(profileId, unlocked) : undefined;
-    return buildDailySession(activityStats, masteredObjectCategories, undefined, sessionLength, ceiling);
-  }, [activityStats, masteredObjectCategories, profileId]);
+    const ceiling = (!isPremium && profileId) ? getAllowedUnitCeiling(profileId, unlocked) : undefined;
+    return buildDailySession(activityStats, masteredObjectCategories, undefined, sessionLength, ceiling, parentOverrides);
+  }, [activityStats, masteredObjectCategories, profileId, policySnapshot, isPremium]);
 
   // Check if today's session is fresh
   const isSessionFresh = useMemo(() => 
@@ -76,10 +94,24 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
     );
   };
 
-  // Get activity name with metadata
+  // Localized activity name (fallback to metadata Turkish name)
   const getActivityName = (activityId: string) => {
     const metadata = getActivityMetadata(activityId);
-    return metadata?.activityName || activityId;
+    const base = metadata?.activityName || activityId;
+    // Resolve enum name if ID is numeric (ActivityType is a numeric enum)
+    let keyId = activityId;
+    if (/^\d+$/.test(activityId)) {
+      const enumName = (ActivityType as any)[Number(activityId)];
+      if (typeof enumName === 'string') keyId = enumName;
+    }
+    const langKey = `programMode.activityNames.${keyId}`;
+    const localized = t(langKey, base);
+    return localized;
+  };
+
+  const getUnitName = (unitNumber: number, defaultName: string) => {
+    const key = `programMode.unitNames.${unitNumber}`;
+    return t(key, defaultName);
   };
 
   // Render tab button
@@ -105,15 +137,23 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
           </h1>
         </div>
         <p className={`mt-3 text-sm sm:text-base ${SIMPLE_THEME_TEXT_SECONDARY}`}>
-          {t('programMode.subtitle', 'Uzman planıyla 10 ünitede beceri geliştirin')}
+          {t('programMode.subtitle', '10 ünitede planlı ve dengeli ilerleme')}
         </p>
+        {/* Development warning banner */}
+        <div className="mt-3 text-xs sm:text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 inline-flex items-start gap-2 text-left">
+          <span>⚠️</span>
+          <div>
+            <div className="font-semibold">{t('programMode.devWarningTitle', 'Deneysel: Program Modu')}</div>
+            <div>{t('programMode.devWarningDesc', 'Bu mod hâlâ geliştirilme aşamasındadır. Zaman zaman ünite geçişi/ilerleme beklediğiniz gibi çalışmayabilir. Lütfen hataları ve görüşlerinizi bizimle paylaşın.')}</div>
+          </div>
+        </div>
       </header>
 
       {/* TABS */}
       <div className="flex gap-2 p-1 bg-gray-100 rounded-xl">
-        <TabButton tab="today" label={t('programMode.tabs.today', 'Bugün')} icon="🎯" />
-        <TabButton tab="progress" label={t('programMode.tabs.progress', 'İlerleme')} icon="📊" />
-        <TabButton tab="units" label={t('programMode.tabs.units', 'Üniteler')} icon="📚" />
+  <TabButton tab="today" label={t('programMode.tabs.today', 'Bugün')} icon="🎯" />
+  <TabButton tab="progress" label={t('programMode.tabs.progress', 'İlerleme')} icon="📊" />
+  <TabButton tab="units" label={t('programMode.tabs.units', 'Üniteler')} icon="📚" />
       </div>
 
       {/* TAB CONTENT */}
@@ -129,26 +169,31 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                 <div className="flex items-center gap-2">
                   {!isSessionFresh && (
                     <span className="text-xs px-2 py-1 rounded-full bg-orange-200 text-orange-800 font-semibold">
-                      {t('programMode.alreadyDone', 'Bugün yapıldı')}
+                      {t('programMode.alreadyDone', 'Bugün tamamlandı')}
                     </span>
                   )}
                   <span className={`text-xs px-2 py-1 rounded-full bg-emerald-200 text-emerald-800 font-semibold`}>
-                    ~{todaySession.estimatedDuration} dk
+                    ~{todaySession.estimatedDuration} {t('programMode.minutesAbbrev', 'dk')}
                   </span>
                 </div>
               </div>
 
-              {/* Daily progression note */}
-              {profileId && (() => {
+              {/* Daily progression note: hide for premium users */}
+              {!isPremium && profileId && (() => {
                 const snap = getPolicyToday(profileId);
-                if ((snap.advances || 0) >= 1) {
+                const used = snap.advances || 0;
+                if (used >= 3) {
                   return (
                     <div className="mb-3 text-xs text-amber-800 bg-amber-100 border border-amber-200 rounded-lg px-3 py-2">
-                      {t('programMode.dailyLimitNote', 'Bugün yeni ünite ilerleme hakkınızı kullandınız. Pekiştirme ve tekrarlarla devam edelim.')}
+                      {t('programMode.dailyLimitNote', "Daily unit advancement limit (3) reached. Let's continue with reinforcement today.")}
                     </div>
                   );
                 }
-                return null;
+                return (
+                  <div className="mb-3 text-xs text-emerald-800 bg-emerald-100 border border-emerald-200 rounded-lg px-3 py-2">
+                    {t('programMode.dailyLimitRemaining', 'Daily advancement: {used}/3').replace('{used}', String(used))}
+                  </div>
+                );
               })()}
 
               <div className="space-y-3">
@@ -164,7 +209,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                         .map((activity, idx) => (
                           <li key={idx} className="flex items-center gap-2">
                             <span className="text-orange-500">•</span>
-                            <span>{activity.activityName}</span>
+                            <span>{getActivityName(String(activity.activityId))}</span>
                           </li>
                         ))}
                     </ul>
@@ -183,31 +228,35 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                         .map((activity, idx) => (
                           <li key={idx} className="flex items-center gap-2">
                             <span className="text-blue-500">•</span>
-                            <span>{activity.activityName}</span>
+                            <span>{getActivityName(String(activity.activityId))}</span>
                           </li>
                         ))}
                     </ul>
                   </div>
                 )}
 
-                {/* Reinforcement */}
-                {todaySession.activities.filter(a => a.sessionRole === 'reinforcement').length > 0 && (
-                  <div>
-                    <p className="text-xs font-bold text-purple-600 mb-1">
-                      💪 {t('programMode.reinforcement', 'Pekiştirme')}
-                    </p>
+                {/* Reinforcement (always render a block) */}
+                <div>
+                  <p className="text-xs font-bold text-purple-600 mb-1">
+                    💪 {t('programMode.reinforcement', 'Pekiştirme')}
+                  </p>
+                  {todaySession.activities.filter(a => a.sessionRole === 'reinforcement').length > 0 ? (
                     <ul className="space-y-1 text-sm">
                       {todaySession.activities
                         .filter(a => a.sessionRole === 'reinforcement')
                         .map((activity, idx) => (
                           <li key={idx} className="flex items-center gap-2">
                             <span className="text-purple-500">•</span>
-                            <span>{activity.activityName}</span>
+                            <span>{getActivityName(String(activity.activityId))}</span>
                           </li>
                         ))}
                     </ul>
-                  </div>
-                )}
+                  ) : (
+                    <p className="text-[11px] text-purple-700 bg-purple-50 border border-purple-200 rounded-md px-2 py-1 inline-block">
+                      {t('programMode.noReinforcementToday', 'Bugün pekiştirme yok (zayıf etkinlik bulunamadı).')}
+                    </p>
+                  )}
+                </div>
               </div>
             </section>
           ) : (
@@ -217,7 +266,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                 {t('programMode.allComplete', 'Tebrikler!')}
               </p>
               <p className={`text-sm ${SIMPLE_THEME_TEXT_SECONDARY} mt-1`}>
-                {t('programMode.allCompleteDesc', 'Tüm etkinlikler tamamlandı!')}
+                {t('programMode.allCompleteDesc', 'Tüm içerikler tamamlandı!')}
               </p>
             </section>
           )}
@@ -225,33 +274,41 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
           {/* INFO FOR PARENTS */}
           <section className="rounded-2xl bg-white/95 border border-gray-100 shadow-sm p-4 sm:p-5">
             <h2 className={`text-sm font-bold mb-2 ${SIMPLE_THEME_TEXT_PRIMARY}`}>
-              💡 {t('programMode.sessionRules', 'Oturum Kuralları')}
+              💡 {t('programMode.sessionRulesTitle', 'Oturum Kuralları')}
             </h2>
             <ul className={`list-disc pl-5 space-y-1 text-xs ${SIMPLE_THEME_TEXT_SECONDARY}`}>
               <li>
-                <strong>{t('programMode.rules.count', 'Oturum başına etkinlik sayısı:')}</strong> {todaySession.activities.length} etkinlik 
-                ({todaySession.activities.filter(a => a.sessionRole === 'warmup').length} ısınma, {' '}
-                {todaySession.activities.filter(a => a.sessionRole === 'new').length} yeni içerik, {' '}
-                {todaySession.activities.filter(a => a.sessionRole === 'reinforcement').length} pekiştirme)
+                <strong>{t('programMode.rules.count', 'Oturumdaki etkinlik sayısı:')}</strong> {todaySession.activities.length} {t('programMode.rules.activityWord', 'etkinlik')}
+                ({todaySession.activities.filter(a => a.sessionRole === 'warmup').length} {t('programMode.rules.warmupWord', 'ısınma')}, {' '}
+                {todaySession.activities.filter(a => a.sessionRole === 'new').length} {t('programMode.rules.newWord', 'yeni içerik')}, {' '}
+                {todaySession.activities.filter(a => a.sessionRole === 'reinforcement').length} {t('programMode.rules.reinforcementWord', 'pekiştirme')})
               </li>
               <li>
-                <strong>{t('programMode.rules.selection', 'Seçim mantığı:')}</strong> Günlük seanslar aralıklı tekrar prensibiyle oluşturulur (Isınma → Yeni içerik → Pekiştirme)
+                <strong>{t('programMode.rules.selection', 'Sıralama:')}</strong> {t('programMode.rules.selectionDesc', 'Isınma (geçmişten 1 rahat etkinlik) → Yeni içerik (odak ünite, önce hiç çözülmeyenler) → Pekiştirme (geçmişten en zayıf 0–2)')}
               </li>
               <li>
-                <strong>{t('programMode.rules.failure', 'Başarısızlık durumu:')}</strong> Etkinlik tamamlanır, skor kaydedilir. Ustalaşılmadıysa sonraki günlerde tekrar gelir.
+                <strong>{t('programMode.rules.coverageFirst', 'Kapsam önceliği:')}</strong> {t('programMode.rules.coverageFirstDesc', 'Odak ünitede henüz çözülmeyen içerik varsa Yeni İçerik +1 artar, Pekiştirme -1 azalır. Böylece önce tüm konulara en az 1 kez dokunuruz.')}
               </li>
               <li>
-                <strong>{t('programMode.rules.mastery', 'Ustalaşma kuralları:')}</strong> 
-                <ul className="ml-4 mt-1">
-                  <li>• <strong>Geniş havuz</strong> (Renkler, Şekiller vb.): 15 denemede %80 başarı</li>
-                  <li>• <strong>Dar havuz</strong> (5N1K, Benzer Farklı vb.): 2 mükemmel seans (%100)</li>
-                </ul>
+                <strong>{t('programMode.rules.failure', 'Başarı düşük olursa:')}</strong> {t('programMode.rules.failureDesc', 'Etkinlik tamamlanır, puan kaydedilir. Başarı yeterli değilse ilerleyen günlerde yeniden çalışılır.')}
               </li>
               <li>
-                <strong>{t('programMode.rules.daily', 'Günlük limit:')}</strong> Günde 1 oturum önerilir (optimal aralıklı öğrenme için)
+                <strong>{t('programMode.rules.unlocking', 'Ünite açma şartı:')}</strong> {t('programMode.rules.unlockingDesc', 'O ünitedeki her etkinlik en az 1 kez çözülmüş olmalı ve genel başarı ≥ %80 olmalı (Serbest + Program denemeleri birlikte hesaplanır).')}
+              </li>
+              {!isPremium ? (
+                <li>
+                  <strong>{t('programMode.rules.daily', 'Günlük sınır:')}</strong> {t('programMode.rules.dailyDesc', 'Günde en fazla 3 ünite ilerleme (aşırı hızlanmayı önlemek için)')}
+                </li>
+              ) : (
+                <li>
+                  <strong>{t('programMode.rules.dailyPremium', 'Premium:')}</strong> {t('programMode.rules.dailyPremiumDesc', 'Günlük ilerleme sınırı yoktur; kilidi açılan üniteler serbestçe oynanır.')}
+                </li>
+              )}
+              <li>
+                <strong>{t('programMode.rules.progressDisplay', 'Görünen yüzde:')}</strong> {t('programMode.rules.progressDisplayDesc', 'Ünite yüzdesi, ebeveyn raporundaki başarıyla aynıdır (Serbest + Program toplamı).')}
               </li>
               <li>
-                <strong>{t('programMode.rules.joker', 'Joker Hakkı:')}</strong> Ebeveynler kilitli bir etkinliği süreli olarak açabilir; bu, ustalaşma kurallarını atlamaz, sadece erişime izin verir.
+                <strong>{t('programMode.rules.joker', 'Joker:')}</strong> {t('programMode.rules.jokerDesc', 'Ebeveynler geçici olarak kilitli bir etkinliği açabilir; ustalık kuralları değişmez, sadece erişim sağlar.')}
               </li>
             </ul>
           </section>
@@ -261,7 +318,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
       {activeTab === 'progress' && (
         <section className="rounded-2xl bg-white/95 border border-emerald-100 shadow-sm p-4 sm:p-6">
           <h2 className={`text-lg font-bold mb-4 ${SIMPLE_THEME_TEXT_PRIMARY}`}>
-            📊 {t('programMode.unitProgress', 'Ünite İlerlemesi')}
+            📊 {t('programMode.unitProgress', 'Unit Progress')}
           </h2>
           <div className="space-y-3">
             {unitProgress.map((unit) => (
@@ -272,21 +329,21 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <span className={`text-sm font-semibold ${unit.isUnlocked ? SIMPLE_THEME_TEXT_PRIMARY : 'text-gray-400'}`}>
-                      {unit.unitName}
+                      {getUnitName(unit.unitNumber, unit.unitName)}
                     </span>
                     {unit.isUnlocked ? (
                       <span className="text-xs text-emerald-600 font-medium">
-                        {unit.completionPercentage === 100 ? (
+                        {unit.displayPercentage === 100 ? (
                           <CheckCircleIcon className="h-4 w-4 inline text-emerald-600" />
                         ) : (
-                          `%${unit.completionPercentage}`
+                          `%${unit.displayPercentage}`
                         )}
                       </span>
                     ) : (
                       <LockClosedIcon className="h-3 w-3 text-gray-400" />
                     )}
                   </div>
-                  {renderProgressCircles(unit.completionPercentage)}
+                  {renderProgressCircles(unit.displayPercentage)}
                 </div>
               </div>
             ))}
@@ -297,7 +354,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
       {activeTab === 'units' && (
         <section className="rounded-2xl bg-white/95 border border-emerald-100 shadow-sm p-4 sm:p-6">
           <h2 className={`text-lg font-bold mb-4 ${SIMPLE_THEME_TEXT_PRIMARY}`}>
-            📚 {t('programMode.unitDetails', 'Ünite Detayları')}
+            📚 {t('programMode.unitDetails', 'Unit Details')}
           </h2>
           <div className="space-y-4">
             {unitProgress.map((unit) => (
@@ -313,11 +370,11 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <span className={`text-sm font-bold ${unit.isUnlocked ? SIMPLE_THEME_TEXT_PRIMARY : 'text-gray-400'}`}>
-                          {unit.unitName}
+                          {getUnitName(unit.unitNumber, unit.unitName)}
                         </span>
                         <div className="flex items-center gap-2">
                           <span className="text-xs text-gray-500">
-                            {unit.activities.length} etkinlik
+                            {t('programMode.activityCountLabel', '{count} activities').replace('{count}', String(unit.activities.length))}
                           </span>
                           {!unit.isUnlocked && <LockClosedIcon className="h-3 w-3 text-gray-400" />}
                         </div>
@@ -338,7 +395,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                   </ul>
                   {!unit.isUnlocked && (
                     <p className="mt-3 text-xs text-gray-500 italic">
-                      🔒 {t('programMode.unlockHint', 'Bir önceki üniteyi %80 tamamlayınca açılır')}
+                      🔒 {t('programMode.unlockHint', 'Unlocks when previous unit reaches 80%')}
                     </p>
                   )}
                 </div>
@@ -350,7 +407,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
 
       <div className="mt-2 flex items-center justify-between gap-3">
         <button type="button" onClick={onBack} className={SIMPLE_THEME_ACTION_BUTTON}>
-          {t('app.back', 'Geri dön')}
+          {t('app.back', 'Back')}
         </button>
         <button
           type="button"
@@ -359,8 +416,8 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
           className={`${SIMPLE_THEME_ACTION_BUTTON} !bg-emerald-600 !text-white border-emerald-500 hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed`}
         >
           {todaySession.activities.length === 0 
-            ? t('programMode.noActivities', 'Tüm etkinlikler tamamlandı!')
-            : t('programMode.start', 'Seansı Başlat')}
+            ? t('programMode.noActivities', 'All activities completed!')
+            : t('programMode.start', 'Start Program Mode')}
         </button>
       </div>
     </SimpleThemeWrapper>

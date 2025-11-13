@@ -1,22 +1,52 @@
-// Lightweight i18n utilities
-import tr from './tr.json';
-import en from './en.json';
-import de from './de.json';
-import fr from './fr.json';
-import nl from './nl.json';
-import az from './az.json';
+// Lightweight i18n utilities - Modular structure
+import trCommon from './tr/common.json';
+import trScreens from './tr/screens.json';
+import trLetterActivities from './tr/letterActivities.json';
+import trGameActivities from './tr/gameActivities.json';
+import trContent from './tr/content.json';
+
+import enCommon from './en/common.json';
+import enScreens from './en/screens.json';
+import enLetterActivities from './en/letterActivities.json';
+import enGameActivities from './en/gameActivities.json';
+import enContent from './en/content.json';
+
+import deCommon from './de/common.json';
+import deScreens from './de/screens.json';
+import deLetterActivities from './de/letterActivities.json';
+import deGameActivities from './de/gameActivities.json';
+import deContent from './de/content.json';
+
+import frCommon from './fr/common.json';
+import frScreens from './fr/screens.json';
+import frLetterActivities from './fr/letterActivities.json';
+import frGameActivities from './fr/gameActivities.json';
+import frContent from './fr/content.json';
+
+import nlCommon from './nl/common.json';
+import nlScreens from './nl/screens.json';
+import nlLetterActivities from './nl/letterActivities.json';
+import nlGameActivities from './nl/gameActivities.json';
+import nlContent from './nl/content.json';
+
+import azCommon from './az/common.json';
+import azScreens from './az/screens.json';
+import azLetterActivities from './az/letterActivities.json';
+import azGameActivities from './az/gameActivities.json';
+import azContent from './az/content.json';
 
 export type Locale = 'tr' | 'en' | 'de' | 'fr' | 'nl' | 'az';
 
 type Dict = Record<string, any>;
 
+// Merge all modules for each language
 const resources: Record<Locale, Dict> = {
-  tr,
-  en,
-  de,
-  fr,
-  nl,
-  az,
+  tr: { ...trCommon, ...trScreens, ...trLetterActivities, ...trGameActivities, ...trContent },
+  en: { ...enCommon, ...enScreens, ...enLetterActivities, ...enGameActivities, ...enContent },
+  de: { ...deCommon, ...deScreens, ...deLetterActivities, ...deGameActivities, ...deContent },
+  fr: { ...frCommon, ...frScreens, ...frLetterActivities, ...frGameActivities, ...frContent },
+  nl: { ...nlCommon, ...nlScreens, ...nlLetterActivities, ...nlGameActivities, ...nlContent },
+  az: { ...azCommon, ...azScreens, ...azLetterActivities, ...azGameActivities, ...azContent },
 };
 
 let currentLang: Locale = ((): Locale => {

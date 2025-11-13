@@ -33,7 +33,8 @@ export const useAppCore = () => {
 
     // --- State Hooks ---
     const profile = useProfile({ showToast });
-    const settings = useSettings({ showToast, showPremiumToast, userId: profile.activeProfile?.id });
+    // Use a single global RevenueCat user (fallback/device-level). Do not couple RC user to profile id.
+    const settings = useSettings({ showToast, showPremiumToast });
     const communication = useCommunication();
     const print = usePrint({ showToast });
     
@@ -51,6 +52,7 @@ export const useAppCore = () => {
         handleGoToMenu,
         enabledActivitiesSet: profile.enabledActivitiesSet,
         activeProfileId: profile.activeProfile?.id || null,
+        isPremium: settings.isPremium,
     });
     
     const setActiveTab = (tab: Tab) => {
@@ -85,7 +87,8 @@ export const useAppCore = () => {
     // --- Effects ---
     useEffect(() => { setMutedState(settings.isMuted); }, [settings.isMuted]);
     useEffect(() => { initializeAds(); }, []);
-    useEffect(() => { initializeRevenueCat(profile.activeProfile?.id); }, [profile.activeProfile?.id]);
+    // Initialize RevenueCat once with device-level fallback user (not per profile)
+    useEffect(() => { initializeRevenueCat(); }, []);
     
     useEffect(() => {
         // This effect runs when profile is loaded or changes.
@@ -102,7 +105,7 @@ export const useAppCore = () => {
             case ScreenState.Playing:
             case ScreenState.Finished:
                 if (activity.isRandomMode) {
-                    handleGoToMenu();
+                    setScreenState(ScreenState.MainMenu);
                     break;
                 }
                 const { backScreen } = getActivityUiConfig(activity.activityType);
@@ -115,7 +118,7 @@ export const useAppCore = () => {
             case ScreenState.ReasoningActivitiesMenu:
             case ScreenState.ObjectCategoriesMenu:
             case ScreenState.CommunicationMenu:
-            case ScreenState.Achievements: handleGoToMenu(); break;
+            case ScreenState.Achievements: setScreenState(ScreenState.MainMenu); break;
             case ScreenState.Settings: case ScreenState.ParentTips: setScreenState(ScreenState.MainMenu); break;
             case ScreenState.PrivacyPolicy: case ScreenState.BannedImages: case ScreenState.ActivityManagement: setScreenState(ScreenState.Settings); break;
             case ScreenState.PrintPool: case ScreenState.PrintSelectionDetail: case ScreenState.PrintPreview: setScreenState(previousScreen); break;
@@ -140,6 +143,8 @@ export const useAppCore = () => {
 
     useEffect(() => {
         if (screenState === ScreenState.Playing && activity.activityType !== null) {
+            // Hangman is self-contained and does not rely on activityData length
+            if (activity.activityType === ActivityType.Hangman) return;
             if (activity.activityData.length > 0 && activity.currentIndex >= activity.activityData.length) {
                 setScreenState(ScreenState.Finished);
             } else if (activity.activityData.length === 0) {
@@ -248,7 +253,7 @@ export const useAppCore = () => {
             showToast(t('app.activityRestarting', 'Restarting activity...'), "info", 2000);
             try {
                 const { fetchConceptActivityData } = await import('../services/contentService.ts');
-                const data = await fetchConceptActivityData(activity.activityType, profile.activityStats);
+                const data = await fetchConceptActivityData(activity.activityType, profile.activityStats, undefined, settings.isPremium);
                 if (data && data.length > 0) {
                     activity.setActivityData(data);
                     activity.setCurrentIndex(0);

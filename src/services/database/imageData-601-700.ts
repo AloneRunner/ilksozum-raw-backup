@@ -1311,7 +1311,7 @@ export const imageData_601_700: ImageMetadata[] = [
       "syllables": ["de", "niz", "kes", "ta", "ne", "si"],
       "category": "Hayvanlar",
       "concept": ["dikenli-pürüzsüz"],
-      "lifeform": "cansız", // Note: Should be 'canlı'
+      "lifeform": "canlı", // Note: Should be 'canlı'
       "letters": ["D", "E", "N", "İ", "Z", "K", "E", "S", "T", "A", "N", "E", "S", "İ"],
       "texture": "dikenli"
     }

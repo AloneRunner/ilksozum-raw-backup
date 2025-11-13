@@ -1,7 +1,7 @@
-// Daily progression policy: at most one unit advancement per day per profile
+// Daily progression policy: at most three unit advancements per day per profile
 
 export interface DailyPolicySnapshot {
-  advances: number; // how many unit advancements happened today (0 or 1)
+  advances: number; // how many unit advancements happened today (0..3)
   lastAdvancedUnit?: number;
   date: string; // YYYY-MM-DD
 }
@@ -29,22 +29,32 @@ export function getPolicyToday(profileId: string): DailyPolicySnapshot {
 
 export function canAdvanceUnitToday(profileId: string): boolean {
   const snap = getPolicyToday(profileId);
-  return (snap.advances || 0) < 1;
+  return (snap.advances || 0) < 3;
 }
 
 export function recordUnitAdvanced(profileId: string, unitNumber: number) {
   const snap = getPolicyToday(profileId);
-  const next: DailyPolicySnapshot = { ...snap, advances: Math.min(1, (snap.advances || 0) + 1), lastAdvancedUnit: unitNumber };
+  const next: DailyPolicySnapshot = { ...snap, advances: Math.min(3, (snap.advances || 0) + 1), lastAdvancedUnit: unitNumber };
   try { window.localStorage.setItem(key(profileId), JSON.stringify(next)); } catch {}
 }
 
 export function getAllowedUnitCeiling(profileId: string, currentUnlockedUnits: Set<number>): number {
   const snap = getPolicyToday(profileId);
-  if ((snap.advances || 0) >= 1 && snap.lastAdvancedUnit) {
+  
+  // After 3 advancements, freeze at the last advanced unit
+  if ((snap.advances || 0) >= 3 && snap.lastAdvancedUnit) {
     return snap.lastAdvancedUnit;
   }
-  // If no advance yet today, ceiling is the max currently unlocked unit
-  let max = 1;
-  currentUnlockedUnits.forEach(u => { if (u > max) max = u; });
-  return max;
+  
+  // Otherwise, ceiling = initial unit (1) + number of advancements
+  // 0 advancements → ceiling = 1 (Unit 1 only)
+  // 1 advancement → ceiling = 2 (Units 1-2)
+  // 2 advancements → ceiling = 3 (Units 1-3)
+  const baseCeiling = 1 + (snap.advances || 0);
+  
+  // But don't exceed what's actually unlocked
+  let maxUnlocked = 1;
+  currentUnlockedUnits.forEach(u => { if (u > maxUnlocked) maxUnlocked = u; });
+  
+  return Math.min(baseCeiling, maxUnlocked);
 }

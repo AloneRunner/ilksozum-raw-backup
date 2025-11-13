@@ -63,12 +63,12 @@ export const fewMuchData: ConceptRound[] = [
 
     // 7. Kalem (715 vs 714) - ID'ler ters yazılmış, düzeltildi
     { id: 13, question: "Az olan hangisi?", questionAudioKey: "q_which_is_few", activityType: ActivityType.FewMuch, options: [ // Key eklendi
-        { id: 714, word: "boya kalemleri", imageUrl: "/images/715.png", isCorrect: true, audioKey: "boya_kalemleri", spokenText: "bu kalemler az" },
-        { id: 715, word: "boya kalemleri", imageUrl: "/images/714.png", isCorrect: false, audioKey: "boya_kalemleri", spokenText: "bu kalemler çok" }
+        { id: 714, word: "boya kalemleri", imageUrl: "/images/714.png", isCorrect: true, audioKey: "boya_kalemleri", spokenText: "bu kalemler az" },
+        { id: 715, word: "boya kalemleri", imageUrl: "/images/715.png", isCorrect: false, audioKey: "boya_kalemleri", spokenText: "bu kalemler çok" }
     ]},
     { id: 14, question: "Çok olan hangisi?", questionAudioKey: "q_which_is_much", activityType: ActivityType.FewMuch, options: [ // Key eklendi
-        { id: 714, word: "boya kalemleri", imageUrl: "/images/715.png", isCorrect: false, audioKey: "boya_kalemleri", spokenText: "bu kalemler az" },
-        { id: 715, word: "boya kalemleri", imageUrl: "/images/714.png", isCorrect: true, audioKey: "boya_kalemleri", spokenText: "bu kalemler çok" }
+        { id: 714, word: "boya kalemleri", imageUrl: "/images/714.png", isCorrect: false, audioKey: "boya_kalemleri", spokenText: "bu kalemler az" },
+        { id: 715, word: "boya kalemleri", imageUrl: "/images/715.png", isCorrect: true, audioKey: "boya_kalemleri", spokenText: "bu kalemler çok" }
     ]},
 
     // 8. Çiçekler (459 vs 483)

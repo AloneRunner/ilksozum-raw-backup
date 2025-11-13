@@ -20,8 +20,10 @@ import {
   SIMPLE_THEME_TEXT_PRIMARY,
   SIMPLE_THEME_TEXT_SECONDARY,
 } from '../themes/simpleTheme';
+import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import PanelStars from './ui/PanelStars.tsx';
 
-type ThemeVariant = 'cat' | 'hilal' | 'snow' | 'fox' | 'zurafa' | 'geceorman' | 'ay' | 'yagmur' | 'geometri' | 'gunbatimi' | 'tilki2' | 'kus' | 'gunes' | 'deneme' | 'simple';
+type ThemeVariant = 'cat' | 'hilal' | 'snow' | 'fox' | 'zurafa' | 'geceorman' | 'ay' | 'yagmur' | 'geometri' | 'gunbatimi' | 'tilki2' | 'kus' | 'gunes' | 'deneme' | 'deneme2' | 'simple';
 
 
 interface SettingsScreenProps {
@@ -40,6 +42,7 @@ interface SettingsScreenProps {
   hasPurchasedPremium: boolean;
   onPurchaseMonthly: () => void;
   onPurchaseLifetime: () => void;
+  onRestorePurchases: () => Promise<boolean>;
   onResetProgress: () => void;
   theme: string;
   onChangeTheme: (themeKey: string) => void;
@@ -72,6 +75,8 @@ const ToggleSwitch: React.FC<{ isEnabled: boolean; onToggle: () => void; themeVa
       ? 'focus:ring-indigo-400'
       : themeVariant === 'yagmur'
       ? 'focus:ring-blue-400'
+      : themeVariant === 'deneme2'
+      ? 'focus:ring-cyan-300'
       : 'focus:ring-indigo-400';
   const activeBackground =
     themeVariant === 'cat'
@@ -90,6 +95,8 @@ const ToggleSwitch: React.FC<{ isEnabled: boolean; onToggle: () => void; themeVa
       ? 'bg-indigo-500'
       : themeVariant === 'yagmur'
       ? 'bg-blue-500'
+      : themeVariant === 'deneme2'
+      ? 'bg-cyan-400'
       : 'bg-indigo-500';
   return (
     <button
@@ -134,6 +141,8 @@ const SettingsRow: React.FC<{
       ? 'bg-white/12 border border-indigo-400/20 shadow-[0_18px_40px_rgba(99,102,241,0.25)] backdrop-blur-md'
       : themeVariant === 'yagmur'
       ? 'bg-white/14 border border-blue-400/20 shadow-[0_18px_40px_rgba(59,130,246,0.25)] backdrop-blur-md'
+      : themeVariant === 'deneme2'
+      ? 'bg-white/10 border border-cyan-300/30 shadow-[0_18px_40px_rgba(14,165,233,0.2)] backdrop-blur-md'
       : isThemed
       ? 'bg-white/38 backdrop-blur-md'
       : 'bg-white/95 border border-slate-200 shadow-md';
@@ -154,6 +163,8 @@ const SettingsRow: React.FC<{
       ? 'text-indigo-100 drop-shadow-[0_2px_8px_rgba(30,27,75,0.7)]'
       : themeVariant === 'yagmur'
       ? 'text-blue-100 drop-shadow-[0_2px_8px_rgba(23,37,84,0.7)]'
+      : themeVariant === 'deneme2'
+      ? 'text-white'
       : SIMPLE_THEME_TEXT_PRIMARY;
   const subTextColor =
     themeVariant === 'cat'
@@ -172,6 +183,8 @@ const SettingsRow: React.FC<{
       ? 'text-indigo-300 drop-shadow-[0_1px_4px_rgba(30,27,75,0.65)]'
       : themeVariant === 'yagmur'
       ? 'text-blue-200 drop-shadow-[0_1px_4px_rgba(23,37,84,0.65)]'
+      : themeVariant === 'deneme2'
+      ? 'text-white/85'
       : SIMPLE_THEME_TEXT_SECONDARY;
   const crownTone =
     themeVariant === 'cat'
@@ -190,6 +203,8 @@ const SettingsRow: React.FC<{
       ? 'text-indigo-400'
       : themeVariant === 'yagmur'
       ? 'text-blue-400'
+      : themeVariant === 'deneme2'
+      ? 'text-cyan-300'
       : 'text-amber-500';
 
   return (
@@ -297,6 +312,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   onSelectPrivacyPolicy, onManageBannedImages, isPremium, hasPurchasedPremium,
   onPurchaseMonthly, onPurchaseLifetime, onResetProgress, theme, onChangeTheme, activeProfile, onManageProfiles, onManageActivities, showPremiumToast,
   onSelectAchievements,
+  onRestorePurchases,
   parentOverrides,
   onAddParentOverride,
   onRemoveParentOverride,
@@ -313,9 +329,10 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
     };
   }, []);
   const { settings } = useAppContext();
-  const darkSettingsThemes = new Set(['geceorman', 'ay', 'yagmur']);
+  const darkSettingsThemes = new Set(['geceorman', 'ay', 'yagmur', 'deneme2']);
   const isThemed = settings.theme !== 'simple';
   const isDarkSettings = darkSettingsThemes.has(settings.theme);
+  const isCosmicTheme = settings.theme === 'deneme2';
   const isCatTheme = settings.theme === 'kedi';
   const isHilalTheme = settings.theme === 'ay2';
   const isSnowTheme = settings.theme === 'kar';
@@ -331,8 +348,50 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const isGunesTheme = settings.theme === 'gunes';
   const isDenemeTheme = settings.theme === 'deneme';
   const isSimpleTheme = settings.theme === 'simple';
-  const themeVariant: ThemeVariant | undefined = isCatTheme ? 'cat' : isHilalTheme ? 'hilal' : isSnowTheme ? 'snow' : isFoxTheme ? 'fox' : isZurafaTheme ? 'zurafa' : isGeceOrmanTheme ? 'geceorman' : isAyTheme ? 'ay' : isYagmurTheme ? 'yagmur' : isGeometriTheme ? 'geometri' : isGunBatimiTheme ? 'gunbatimi' : isTilki2Theme ? 'tilki2' : isKusTheme ? 'kus' : isGunesTheme ? 'gunes' : isDenemeTheme ? 'deneme' : isSimpleTheme ? 'simple' : undefined;
+  const themeVariant: ThemeVariant | undefined = isCatTheme
+    ? 'cat'
+    : isHilalTheme
+    ? 'hilal'
+    : isSnowTheme
+    ? 'snow'
+    : isFoxTheme
+    ? 'fox'
+    : isZurafaTheme
+    ? 'zurafa'
+    : isGeceOrmanTheme
+    ? 'geceorman'
+    : isAyTheme
+    ? 'ay'
+    : isYagmurTheme
+    ? 'yagmur'
+    : isGeometriTheme
+    ? 'geometri'
+    : isGunBatimiTheme
+    ? 'gunbatimi'
+    : isTilki2Theme
+    ? 'tilki2'
+    : isKusTheme
+    ? 'kus'
+    : isGunesTheme
+    ? 'gunes'
+    : isDenemeTheme
+    ? 'deneme'
+    : isCosmicTheme
+    ? 'deneme2'
+    : isSimpleTheme
+    ? 'simple'
+    : undefined;
   const lang = getCurrentLanguage();
+  const getLocaleForLang = (l: string) => l === 'tr' ? 'tr-TR' : l === 'de' ? 'de-DE' : l === 'fr' ? 'fr-FR' : l === 'nl' ? 'nl-NL' : l === 'az' ? 'az-Latn-AZ' : 'en-US';
+  const promoNote: string | null = (() => {
+    const p = (settings as any).promotion as { isActive?: boolean; endsAt?: string } | undefined;
+    if (p?.isActive && p?.endsAt) {
+      const ends = new Date(p.endsAt);
+      const dateStr = ends.toLocaleDateString(getLocaleForLang(lang), { day: 'numeric', month: 'long', year: 'numeric' });
+      return t('settingsEx.promoNote', 'Hediye Premium: {date} tarihine kadar tüm özellikler açık.').replace('{date}', dateStr);
+    }
+    return null;
+  })();
   // derived premium flag is used inline in UI without separate variable
 
   // Joker Hakkı form state
@@ -350,7 +409,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const Avatar = getAvatar(activeProfile.avatar);
 
   const titleColor =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'text-white text-shadow-soft'
+      : themeVariant === 'cat'
       ? 'text-orange-900 drop-shadow-[0_6px_16px_rgba(255,255,255,0.55)]'
       : themeVariant === 'hilal'
       ? 'text-indigo-100 drop-shadow-[0_6px_16px_rgba(15,23,42,0.7)]'
@@ -364,7 +425,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'text-white text-shadow-soft'
       : SIMPLE_THEME_TEXT_PRIMARY;
   const iconColor =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'text-white'
+      : themeVariant === 'cat'
       ? 'text-orange-500'
       : themeVariant === 'hilal'
       ? 'text-indigo-200'
@@ -378,7 +441,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'text-white'
       : 'text-indigo-600';
   const sectionTitleColor =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'text-white text-shadow-soft'
+      : themeVariant === 'cat'
       ? 'text-orange-900 drop-shadow-[0_4px_12px_rgba(255,255,255,0.5)]'
       : themeVariant === 'hilal'
       ? 'text-indigo-100 drop-shadow-[0_4px_12px_rgba(15,23,42,0.65)]'
@@ -392,7 +457,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'text-white text-shadow-soft'
       : SIMPLE_THEME_TEXT_PRIMARY;
   const rowBg =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'bg-white/10 border border-cyan-300/30 shadow-[0_18px_40px_rgba(14,165,233,0.2)] backdrop-blur-md'
+      : themeVariant === 'cat'
       ? 'bg-white/42 border border-orange-200/45 shadow-[0_20px_44px_rgba(249,115,22,0.22)] backdrop-blur-lg'
       : themeVariant === 'hilal'
       ? 'bg-white/44 border border-indigo-200/45 shadow-[0_20px_44px_rgba(79,70,229,0.22)] backdrop-blur-lg'
@@ -406,7 +473,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'bg-white/14'
       : 'bg-white/92 border border-slate-200/70 shadow-sm';
   const textColor =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'text-white'
+      : themeVariant === 'cat'
       ? 'text-orange-900 drop-shadow-[0_2px_8px_rgba(255,255,255,0.55)]'
       : themeVariant === 'hilal'
       ? 'text-indigo-100 drop-shadow-[0_2px_8px_rgba(15,23,42,0.65)]'
@@ -420,7 +489,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'text-white'
       : SIMPLE_THEME_TEXT_PRIMARY;
   const subTextColor =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'text-white/80'
+      : themeVariant === 'cat'
       ? 'text-orange-700 drop-shadow-[0_1px_4px_rgba(255,255,255,0.45)]'
       : themeVariant === 'hilal'
       ? 'text-indigo-200 drop-shadow-[0_1px_4px_rgba(15,23,42,0.6)]'
@@ -434,7 +505,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'text-white/70'
       : SIMPLE_THEME_TEXT_SECONDARY;
   const premiumCardClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'relative overflow-hidden p-6 rounded-3xl text-white bg-white/10 border border-cyan-300/30 shadow-[0_28px_52px_rgba(14,165,233,0.22)] backdrop-blur-xl text-center'
+      : themeVariant === 'cat'
       ? 'relative overflow-hidden p-6 rounded-3xl text-orange-900 bg-gradient-to-b from-white/60 via-white/38 to-white/24 border border-orange-200/40 shadow-[0_28px_52px_rgba(249,115,22,0.22)] backdrop-blur-lg text-center'
       : themeVariant === 'hilal'
       ? 'relative overflow-hidden p-6 rounded-3xl text-indigo-100 bg-gradient-to-b from-white/60 via-indigo-50/34 to-white/24 border border-indigo-200/40 shadow-[0_28px_52px_rgba(79,70,229,0.22)] backdrop-blur-lg text-center'
@@ -446,7 +519,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'relative overflow-hidden p-6 rounded-3xl text-cyan-900 bg-gradient-to-b from-white/60 via-cyan-50/34 to-white/24 border border-cyan-200/40 shadow-[0_28px_52px_rgba(6,182,212,0.22)] backdrop-blur-lg text-center'
       : 'relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/95 p-6 text-center shadow-lg';
   const premiumTitleClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'text-2xl font-bold mb-2 text-white'
+      : themeVariant === 'cat'
       ? 'text-2xl font-bold mb-2 drop-shadow-[0_2px_8px_rgba(255,255,255,0.55)]'
       : themeVariant === 'hilal'
       ? 'text-2xl font-bold mb-2 drop-shadow-[0_2px_8px_rgba(15,23,42,0.65)]'
@@ -458,7 +533,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'text-2xl font-bold mb-2 drop-shadow-[0_2px_8px_rgba(255,255,255,0.55)]'
       : `text-2xl font-bold mb-2 ${SIMPLE_THEME_TEXT_PRIMARY}`;
   const premiumDescClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'mb-4 text-white/85'
+      : themeVariant === 'cat'
       ? 'mb-4 text-orange-700 drop-shadow-[0_1px_4px_rgba(255,255,255,0.45)]'
       : themeVariant === 'hilal'
       ? 'mb-4 text-indigo-200 drop-shadow-[0_1px_4px_rgba(15,23,42,0.6)]'
@@ -470,7 +547,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'mb-4 text-cyan-700 drop-shadow-[0_1px_4px_rgba(255,255,255,0.45)]'
       : `mb-4 text-sm sm:text-base ${SIMPLE_THEME_TEXT_SECONDARY}`;
   const premiumCrownClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'w-12 h-12 mx-auto mb-2 text-cyan-300 drop-shadow-[0_10px_24px_rgba(14,165,233,0.35)]'
+      : themeVariant === 'cat'
       ? 'w-12 h-12 mx-auto mb-2 text-orange-400 drop-shadow-[0_10px_24px_rgba(249,115,22,0.35)]'
       : themeVariant === 'hilal'
       ? 'w-12 h-12 mx-auto mb-2 text-indigo-400 drop-shadow-[0_10px_24px_rgba(79,70,229,0.35)]'
@@ -482,7 +561,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'w-12 h-12 mx-auto mb-2 text-cyan-400 drop-shadow-[0_10px_24px_rgba(6,182,212,0.35)]'
       : 'w-12 h-12 mx-auto mb-2 text-amber-400';
   const avatarBgClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'bg-white/15 border border-cyan-300/30 shadow-[0_14px_32px_rgba(14,165,233,0.2)]'
+      : themeVariant === 'cat'
       ? 'bg-white/42 border border-orange-200/40 shadow-[0_14px_32px_rgba(249,115,22,0.2)]'
       : themeVariant === 'hilal'
       ? 'bg-white/44 border border-indigo-200/40 shadow-[0_14px_32px_rgba(79,70,229,0.2)]'
@@ -496,7 +577,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'bg-white/24'
       : 'bg-slate-50/40 border border-slate-200/20 shadow-lg';
   const avatarIconClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'w-12 h-12 text-white'
+      : themeVariant === 'cat'
       ? 'w-12 h-12 text-orange-500'
       : themeVariant === 'hilal'
       ? 'w-12 h-12 text-indigo-500'
@@ -508,7 +591,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'w-12 h-12 text-cyan-500'
       : 'w-12 h-12 text-slate-300';
   const manageButtonClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'bg-cyan-500/90 text-white font-semibold py-2 px-4 rounded-lg shadow-[0_12px_28px_rgba(14,165,233,0.28)] hover:bg-cyan-400/90 transition-colors'
+      : themeVariant === 'cat'
       ? 'bg-orange-400/90 text-white font-semibold py-2 px-4 rounded-lg shadow-[0_12px_28px_rgba(249,115,22,0.28)] hover:bg-orange-500 transition-colors'
       : themeVariant === 'hilal'
       ? 'bg-indigo-500/90 text-white font-semibold py-2 px-4 rounded-lg shadow-[0_12px_28px_rgba(79,70,229,0.28)] hover:bg-indigo-600 transition-colors'
@@ -520,7 +605,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'bg-cyan-400/90 text-white font-semibold py-2 px-4 rounded-lg shadow-[0_12px_28px_rgba(6,182,212,0.28)] hover:bg-cyan-500 transition-colors'
       : 'bg-sky-500 text-white font-semibold py-2 px-4 rounded-lg shadow-sm hover:bg-sky-600 transition-colors';
   const manageBannedButtonClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'p-2 rounded-full bg-white/15 border border-cyan-300/30 text-cyan-200 shadow-[0_12px_28px_rgba(14,165,233,0.2)] hover:bg-white/25 transition-colors'
+      : themeVariant === 'cat'
       ? 'p-2 rounded-full bg-white/38 border border-orange-200/40 text-orange-500 shadow-[0_12px_28px_rgba(249,115,22,0.2)] hover:bg-white/48 transition-colors'
       : themeVariant === 'hilal'
       ? 'p-2 rounded-full bg-white/40 border border-indigo-200/40 text-indigo-500 shadow-[0_12px_28px_rgba(79,70,229,0.2)] hover:bg-white/50 transition-colors'
@@ -534,7 +621,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'p-2 rounded-full bg-white/24 hover:bg-white/32'
       : 'p-2 rounded-full bg-slate-100/30 border border-slate-200/20 shadow-sm hover:bg-slate-100/50 transition-colors';
   const manageBannedIconClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'w-6 h-6 text-cyan-200'
+      : themeVariant === 'cat'
       ? 'w-6 h-6 text-orange-500'
       : themeVariant === 'hilal'
       ? 'w-6 h-6 text-indigo-200'
@@ -548,7 +637,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'w-6 h-6 text-white/80'
       : 'w-6 h-6 text-slate-300';
   const privacyLinkClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'font-bold hover:underline text-cyan-200'
+      : themeVariant === 'cat'
       ? 'font-bold hover:underline text-orange-600'
       : themeVariant === 'hilal'
       ? 'font-bold hover:underline text-indigo-200'
@@ -562,7 +653,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       ? 'font-bold hover:underline text-sky-300'
       : 'font-semibold text-sky-600 transition-colors hover:text-sky-700';
   const sectionBorderClass =
-    themeVariant === 'cat'
+    isCosmicTheme
+      ? 'border-cyan-300/30'
+      : themeVariant === 'cat'
       ? 'border-orange-200/60'
       : themeVariant === 'hilal'
       ? 'border-indigo-200/60'
@@ -767,6 +860,12 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
           </span>
         </div>
       )}
+      {settings.theme === 'deneme2' && (
+        <>
+          <CosmicBackdrop variant="light" showMeteors={false} showDots={false} />
+          <PanelStars count={72} />
+        </>
+      )}
       {!isThemed && (
         <div className="mb-4 w-full">
           <span className={SIMPLE_THEME_TAG_CLASS}>{t('tabs.settings', 'Ayarlar')}</span>
@@ -792,13 +891,13 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
         >
           <ArrowLeftIcon className={`w-8 h-8 ${iconColor}`} />
         </button>
-        <h1 className={`flex-1 text-center text-2xl landscape:text-xl sm:text-3xl font-black ${titleColor}`}>
+        <h1 className={`flex-1 text-center text-2xl landscape:text-xl sm:text-3xl font-black ${titleColor} ${isCosmicTheme ? 'tracking-wide drop-shadow-[0_8px_28px_rgba(14,165,233,0.35)]' : ''}`}>
           {t('settingsEx.title', 'Ayarlar')}
         </h1>
         <div className="h-12 w-12 shrink-0" aria-hidden="true" />
       </div>
       
-      <div className={`w-full space-y-4 ${themeVariant ? 'pr-2 pb-10' : 'pb-12'}`}>
+  <div className={`w-full space-y-4 ${themeVariant ? 'pr-2 pb-10' : 'pb-12'} ${isCosmicTheme ? 'pt-2' : ''}`}>
         {!hasPurchasedPremium && (
           <div className={premiumCardClass}>
             {themeVariant === 'cat' && (
@@ -844,15 +943,20 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
             <CrownIcon className={premiumCrownClass}/>
             <h2 className={premiumTitleClass}>{t('settingsEx.premium.title', 'Premium Özellikler')}</h2>
             <p className={premiumDescClass}>{t('settingsEx.premium.desc', 'Tüm reklamları kaldırın, temalı arayüzü açın, gelişim raporunu görüntüleyin ve daha fazlasına erişin!')}</p>
+            {promoNote && (
+              <p className={premiumDescClass}>
+                {promoNote}
+              </p>
+            )}
             {settings.paywall?.hasData && (
               <div className="mb-4 flex items-center justify-center gap-3 text-sm">
                 {settings.paywall.monthlyPrice && (
-                  <span className="inline-flex items-center rounded-full px-3 py-1 bg-black/10 text-black/70">
+                  <span className={`inline-flex items-center rounded-full px-3 py-1 ${isCosmicTheme ? 'bg-white/15 text-white/90' : 'bg-black/10 text-black/70'}`}>
                     {t('settingsEx.premium.monthly', 'Aylık')}: {settings.paywall.monthlyPrice}
                   </span>
                 )}
                 {settings.paywall.lifetimePrice && (
-                  <span className="inline-flex items-center rounded-full px-3 py-1 bg-black/10 text-black/70">
+                  <span className={`inline-flex items-center rounded-full px-3 py-1 ${isCosmicTheme ? 'bg-white/15 text-white/90' : 'bg-black/10 text-black/70'}`}>
                     {t('settingsEx.premium.lifetime', 'Ömür Boyu')}: {settings.paywall.lifetimePrice}
                   </span>
                 )}
@@ -870,11 +974,20 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
                 isThemed={isThemed}
                 label={`${t('settingsEx.premium.lifetime', 'Ömür Boyu')}${settings.paywall?.lifetimePrice ? `: ${settings.paywall.lifetimePrice}` : ''}`}
               />
+              <button
+                type="button"
+                onClick={() => { void onRestorePurchases(); }}
+                className={`mt-1 inline-flex items-center gap-1 rounded-full px-3 py-2 text-xs font-semibold transition-colors ${isCosmicTheme ? 'bg-white/15 text-white/90 hover:bg-white/25' : isThemed ? 'bg-black/10 text-white/90 hover:bg-black/20' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+                aria-label={t('settingsEx.premium.restoreAria', 'Satın alımları geri yükle')}
+              >
+                <RestoreIcon className={`w-4 h-4 ${isCosmicTheme ? 'text-white/90' : isThemed ? 'text-white/90' : 'text-slate-600'}`} />
+                {t('settingsEx.premium.restore', 'Satın alımları geri yükle')}
+              </button>
             </div>
           </div>
         )}
 
-  <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.profile.title', 'Profil')}</h2>
+  <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_14px_rgba(14,165,233,0.4)]' : ''}`}>{t('settingsEx.profile.title', 'Profil')}</h2>
         <div className={`p-4 rounded-xl shadow-sm flex items-center justify-between ${rowBg}`}>
             <div className="flex items-center gap-4">
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center ${avatarBgClass}`}>
@@ -906,7 +1019,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
             </button>
         </div>
         
-  <h2 className={`text-lg font-bold pt-3 pb-1.5 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.theme.title', 'Uygulama Teması')}</h2>
+  <h2 className={`text-lg font-bold pt-3 pb-1.5 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_12px_rgba(14,165,233,0.35)]' : ''}`}>{t('settingsEx.theme.title', 'Uygulama Teması')}</h2>
     <div className="grid grid-cols-4 sm:grid-cols-5 gap-1.5 mt-2">
       {Object.entries(THEMES).map(([key, themeInfo]) => {
         const isThemedButton = themeInfo.type === 'video';
@@ -932,7 +1045,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
 
         <div className="grid grid-cols-1 landscape:grid-cols-2 gap-4">
             <div>
-        <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.general.title', 'Genel Ayarlar')}</h2>
+  <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_12px_rgba(14,165,233,0.35)]' : ''}`}>{t('settingsEx.general.title', 'Genel Ayarlar')}</h2>
                 <div className="space-y-3 mt-2">
                     {/* Language selector */}
                     <SettingsRow title={t('settings.language')} subtitle={t('settings.languageSubtitle')} isThemed={isThemed} themeVariant={themeVariant}>
@@ -968,7 +1081,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
                 </div>
             </div>
              <div>
-        <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.content.title', 'İçerik Ayarları')}</h2>
+  <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_12px_rgba(14,165,233,0.35)]' : ''}`}>{t('settingsEx.content.title', 'İçerik Ayarları')}</h2>
                 <div className="space-y-3 mt-2">
           <SettingsRow title={t('settingsEx.banButton.title', 'Görsel Yasaklama')} subtitle={t('settingsEx.banButton.subtitle', "'Yasakla' düğmesini gösterir")} isThemed={isThemed} themeVariant={themeVariant}>
                         <ToggleSwitch isEnabled={isBanButtonEnabled} onToggle={onToggleBanButton} themeVariant={themeVariant} />
@@ -982,12 +1095,14 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
             </div>
         </div>
 
-    <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.activityManagement.title', 'Etkinlik Yönetimi')}</h2>
+  <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_12px_rgba(14,165,233,0.35)]' : ''}`}>{t('settingsEx.activityManagement.title', 'Etkinlik Yönetimi')}</h2>
      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {ACHIEVEMENTS.filter(a => !(a.id === ActivityCategory.LetterSound && lang !== 'tr')).map(ach => {
           const colorClasses = getColorClasses(ach.color);
           const activityButtonClass =
-            themeVariant === 'cat'
+            isCosmicTheme
+              ? 'relative flex items-center gap-4 p-4 rounded-2xl border border-cyan-300/30 bg-white/10 shadow-[0_20px_44px_rgba(14,165,233,0.2)] backdrop-blur-md transition-all duration-200 hover:bg-white/15 hover:shadow-[0_24px_50px_rgba(14,165,233,0.26)]'
+            : themeVariant === 'cat'
               ? 'relative flex items-center gap-4 p-4 rounded-2xl border border-orange-200/45 bg-white/38 shadow-[0_20px_44px_rgba(249,115,22,0.2)] transition-all duration-200 hover:bg-white/50 hover:shadow-[0_24px_50px_rgba(249,115,22,0.26)]'
             : themeVariant === 'hilal'
               ? 'relative flex items-center gap-4 p-4 rounded-2xl border border-indigo-200/45 bg-white/40 shadow-[0_20px_44px_rgba(79,70,229,0.2)] transition-all duration-200 hover:bg-white/52 hover:shadow-[0_24px_50px_rgba(79,70,229,0.26)]'
@@ -999,7 +1114,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
               ? 'relative flex items-center gap-4 p-4 rounded-2xl border border-cyan-200/45 bg-white/38 shadow-[0_20px_44px_rgba(6,182,212,0.2)] transition-all duration-200 hover:bg-white/50 hover:shadow-[0_24px_50px_rgba(6,182,212,0.26)]'
             : 'relative flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/90 p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg';
           const activityIconWrapperClass =
-            themeVariant === 'cat'
+            isCosmicTheme
+              ? 'p-2.5 rounded-xl bg-white/20 border border-cyan-300/30 shadow-[0_10px_22px_rgba(14,165,233,0.22)]'
+            : themeVariant === 'cat'
               ? 'p-2.5 rounded-xl bg-orange-100 border border-orange-200/70 shadow-[0_10px_22px_rgba(249,115,22,0.22)]'
             : themeVariant === 'hilal'
               ? 'p-2.5 rounded-xl bg-indigo-100 border border-indigo-200/70 shadow-[0_10px_22px_rgba(79,70,229,0.22)]'
@@ -1011,7 +1128,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
               ? 'p-2.5 rounded-xl bg-cyan-100 border border-cyan-200/70 shadow-[0_10px_22px_rgba(6,182,212,0.22)]'
             : `p-2.5 ${colorClasses.bg100} rounded-xl border border-slate-200/70 shadow-sm`;
           const activityIconClass =
-            themeVariant === 'cat'
+            isCosmicTheme
+              ? 'w-7 h-7 text-white'
+            : themeVariant === 'cat'
               ? 'w-7 h-7 text-orange-500'
             : themeVariant === 'hilal'
               ? 'w-7 h-7 text-indigo-200'
@@ -1023,7 +1142,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
               ? 'w-7 h-7 text-cyan-500'
             : `w-6 h-6 ${colorClasses.text600}`;
           const activityTextClass =
-            themeVariant === 'cat'
+            isCosmicTheme
+              ? 'font-semibold text-white'
+            : themeVariant === 'cat'
               ? 'font-semibold text-orange-900 drop-shadow-[0_1px_4px_rgba(255,255,255,0.55)]'
             : themeVariant === 'hilal'
               ? 'font-semibold text-indigo-100 drop-shadow-[0_1px_4px_rgba(15,23,42,0.65)]'
@@ -1082,7 +1203,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
 
     <div className="grid grid-cols-1 landscape:grid-cols-2 gap-4">
             <div>
-         <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.data.title', 'Veri Yönetimi')}</h2>
+         <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_12px_rgba(14,165,233,0.35)]' : ''}`}>{t('settingsEx.data.title', 'Veri Yönetimi')}</h2>
                 <div className="space-y-3 mt-2">
           <SettingsRow title={t('settingsEx.reset.title', 'İlerlemeyi Sıfırla')} subtitle={t('settingsEx.reset.subtitle', `${activeProfile.name}'in tüm verilerini siler`).replace('{name}', activeProfile.name)} isThemed={isThemed} themeVariant={themeVariant}>
             <button onClick={handleResetClick} className={`p-2 rounded-full transition-colors ${isThemed ? 'bg-red-500/20 hover:bg-red-500/40' : 'bg-red-100 hover:bg-red-200'}`} aria-label={t('settingsEx.reset.title', 'Reset Progress')}>
@@ -1092,7 +1213,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
                 </div>
             </div>
              <div>
-        <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor}`}>{t('settingsEx.about.title', 'Hakkında')}</h2>
+  <h2 className={`text-xl font-bold pt-4 pb-2 border-b ${sectionBorderClass} ${sectionTitleColor} ${isCosmicTheme ? 'drop-shadow-[0_4px_12px_rgba(14,165,233,0.35)]' : ''}`}>{t('settingsEx.about.title', 'Hakkında')}</h2>
                 <div className="space-y-3 mt-2">
           <SettingsRow title={t('settingsEx.privacy.title', 'Gizlilik Politikası')} subtitle={t('settingsEx.privacy.subtitle', 'Veri kullanımı ve haklarınız')} isThemed={isThemed} themeVariant={themeVariant}>
              <button onClick={onSelectPrivacyPolicy} className={privacyLinkClass}>

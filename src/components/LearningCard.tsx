@@ -8,6 +8,7 @@ import EyeIcon from './icons/EyeIcon.tsx';
 import EyeSlashIcon from './icons/EyeSlashIcon.tsx';
 import BanIcon from './icons/BanIcon.tsx';
 import { useAutoSpeak } from '../hooks/useAutoSpeak.ts';
+import { t, getCurrentLanguage } from '../i18n/index.ts';
 
 interface LearningCardProps {
     word: Word;
@@ -35,11 +36,13 @@ const LearningCard: React.FC<LearningCardProps> = ({
     const [mistakeMade, setMistakeMade] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
     
-    const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+    const lang = getCurrentLanguage();
+    const locale = lang === 'tr' ? 'tr-TR' : lang === 'de' ? 'de-DE' : lang === 'az' ? 'az-AZ' : lang === 'fr' ? 'fr-FR' : lang === 'nl' ? 'nl-NL' : 'en-US';
+    const upperCaseLetter = letter.toLocaleUpperCase(locale);
 
     const totalCorrectLetters = useMemo(() => 
-        word.word.split('').filter(c => c.toLocaleUpperCase('tr-TR') === upperCaseLetter).length
-    , [word, upperCaseLetter]);
+        word.word.split('').filter(c => c.toLocaleUpperCase(locale) === upperCaseLetter).length
+    , [word, upperCaseLetter, locale]);
 
     useAutoSpeak(word.word, isAutoSpeakEnabled, word.id, 250);
 
@@ -114,7 +117,7 @@ const LearningCard: React.FC<LearningCardProps> = ({
                 {/* Left Side: Title and Image */}
                 <div className="w-full landscape:w-2/5 flex flex-col items-center">
                     <h1 className="text-base sm:text-lg font-bold text-center text-sky-800 mb-2 drop-shadow-md">
-                        <span className="text-red-500 font-black text-lg sm:text-xl">{`"${upperCaseLetter}"`}</span> sesini bul
+                        <span className="text-red-500 font-black text-lg sm:text-xl">{`"${upperCaseLetter}"`}</span> {t('letters.findTheLetter.instruction', "'{letter}' sesini bul").replace('{letter}', upperCaseLetter).replace(`"${upperCaseLetter}" `, '')}
                     </h1>
                     <Card
                         imageUrl={word.imageUrl}

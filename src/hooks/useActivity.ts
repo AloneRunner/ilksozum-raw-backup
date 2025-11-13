@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { ActivityType, ActivityStats, AttemptRecord, ActivityCategory } from '../types.ts';
 import { ALL_SUB_ACHIEVEMENTS, LETTER_GROUPS, OBJECT_CATEGORIES, LETTER_SOUND_ACTIVITIES } from '../constants.ts';
-import { createObjectChoiceRounds, fetchConceptActivityData, fetchLetterActivityData, fetchSyllableWordsForGroup } from '../services/contentService.ts';
+import { createObjectChoiceRounds, fetchConceptActivityData, fetchLetterActivityData, fetchSyllableWordsForGroup, fetchFiveWOneHBySubKey } from '../services/contentService.ts';
 import { shuffleArray } from '../utils.ts';
 import { t, getCurrentLanguage } from '../i18n/index.ts';
 import { buildDailySession, getRecommendedSessionLength } from '../services/sessionBuilder';
@@ -15,9 +15,10 @@ interface UseActivityProps {
     handleGoToMenu: () => void;
     enabledActivitiesSet: Set<string>;
     activeProfileId?: string | null;
+    isPremium?: boolean;
 }
 
-export const useActivity = ({ activityStats, setActivityStats, showToast, handleGoToMenu, enabledActivitiesSet, activeProfileId }: UseActivityProps) => {
+export const useActivity = ({ activityStats, setActivityStats, showToast, handleGoToMenu, enabledActivitiesSet, activeProfileId, isPremium }: UseActivityProps) => {
     const [activityType, setActivityType] = useState<ActivityType | null>(null);
     const [activityData, setActivityData] = useState<any[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,14 +61,17 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         const activityInfo = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(activityId));
         if (!activityInfo) return { success: false };
 
-        // Guard: Disable letter activities for non-TR languages in all random/program flows
+        // Guard: Allow letter activities for TR + DE/AZ/EN/FR/NL (beta); block others in random/program flows
         const lang = getCurrentLanguage();
-        if (activityInfo.category === ActivityCategory.LetterSound && lang !== 'tr') {
-            return { success: false };
+        if (activityInfo.category === ActivityCategory.LetterSound) {
+            const allowed = new Set(['tr','de','az','en','fr','nl']);
+            if (!allowed.has(lang)) return { success: false };
         }
 
-        let fetchedData: any[] = [];
-        const randomCount = 4;
+    let fetchedData: any[] = [];
+            // Program & random mod: her etkinlik çağrısında hedef soru sayısı = 6
+            // İçerik servisleri count paramıyla soruları azaltabilir (yetersiz havuz durumunda)
+            const randomCount = 6;
         
         try {
             switch (activityInfo.category) {
@@ -97,9 +101,29 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
                     }
                     break;
                 }
-                case ActivityCategory.Concept:
+                case ActivityCategory.Concept: {
+                    fetchedData = await fetchConceptActivityData(activityInfo.id as ActivityType, activityStats, randomCount, isPremium);
+                    break;
+                }
                 case ActivityCategory.Reasoning: {
-                    fetchedData = await fetchConceptActivityData(activityInfo.id as ActivityType, activityStats, randomCount);
+                    // Special handling for 5W1H sub-IDs (string IDs)
+                    if (String(activityInfo.id).startsWith('FiveWOneH_')) {
+                        const subKey = String(activityInfo.id);
+                        fetchedData = await fetchFiveWOneHBySubKey(subKey, randomCount);
+                    } else {
+                        fetchedData = await fetchConceptActivityData(activityInfo.id as ActivityType, activityStats, randomCount, isPremium);
+                    }
+                    break;
+                }
+                case ActivityCategory.FineMotor: {
+                    // Fine motor activities (LineTracing, ShapeColoring, RhythmFollowing) use placeholder rounds
+                    // provided by fetchConceptActivityData (which returns minimal round objects).
+                    fetchedData = await fetchConceptActivityData(activityInfo.id as ActivityType, activityStats, randomCount, isPremium);
+                    break;
+                }
+                case ActivityCategory.RelativeComparison: {
+                    // Experimental relative comparison rounds are delivered via fetchConceptActivityData
+                    fetchedData = await fetchConceptActivityData(activityInfo.id as ActivityType, activityStats, randomCount, isPremium);
                     break;
                 }
             }
@@ -108,7 +132,9 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         }
         
         if (fetchedData.length > 0) {
-            return { success: true, data: fetchedData, type: activityInfo.id as ActivityType };
+            // For 5W1H sub-IDs keep activityType as FiveWOneH for UI/back navigation but stats key uses sub-ID elsewhere
+            const resolvedType = String(activityInfo.id).startsWith('FiveWOneH_') ? ActivityType.FiveWOneH : (activityInfo.id as ActivityType);
+            return { success: true, data: fetchedData, type: resolvedType };
         }
         
         return { success: false };
@@ -121,23 +147,43 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
             const { success, data, type } = await startSpecificRandomActivity(nextActivityId);
 
             if (success && data && type) {
+                // Normal start
                 setActivityType(type as ActivityType);
                 setActivityData(data);
                 setCurrentIndex(0);
                 setScore(0);
                 return true; // Found an activity to start
+            } else {
+                // Record a skipped attempt so early progress can reflect exposure
+                setActivityStats(prev => {
+                    const key = String(nextActivityId);
+                    const current = prev[key] || { attempts: 0, completions: 0, totalCorrect: 0, totalQuestions: 0, history: [] };
+                    const newRecord: AttemptRecord = { timestamp: Date.now(), score: 0, total: 0, mode: isProgramMode ? 'program' : 'free' };
+                    return {
+                        ...prev,
+                        [key]: {
+                            ...current,
+                            attempts: (current.attempts || 0) + 1,
+                            history: [...(current.history || []), newRecord].slice(-10)
+                        }
+                    };
+                });
+                console.warn(`No data for activity ${String(nextActivityId)}; recorded skipped attempt.`);
             }
-            console.warn(`No data for random activity: ${String(nextActivityId)}. Skipping.`);
         }
         return false; // No more activities in the queue
-    }, [startSpecificRandomActivity]);
+    }, [startSpecificRandomActivity, setActivityStats, isProgramMode]);
     
     const handleStartRandomMode = useCallback(async () => {
         const lang = getCurrentLanguage();
         const availableToPlay = ALL_SUB_ACHIEVEMENTS
             .filter(sa => enabledActivitiesSet.has(String(sa.id)) && sa.id !== ActivityType.EmbeddedStory)
-            // Guard: hide letter activities entirely when language is not Turkish
-            .filter(sa => !(lang !== 'tr' && sa.category === ActivityCategory.LetterSound));
+            // Guard: allow letter activities for tr/de/az/en/fr/nl only
+            .filter(sa => {
+                if (sa.category !== ActivityCategory.LetterSound) return true;
+                const allowed = new Set(['tr','de','az','en','fr','nl']);
+                return allowed.has(lang);
+            });
 
         if (availableToPlay.length === 0) {
             showToast("Rastgele mod için hiç etkinlik seçilmemiş. Lütfen ayarlardan etkinlikleri etkinleştirin.", 'info');
@@ -170,7 +216,15 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         const unlockedUnits = getUnlockedUnits(activityStats, masteredObjectCategories);
         const ceiling = activeProfileId ? getAllowedUnitCeiling(activeProfileId, unlockedUnits) : undefined;
         
-        const session = buildDailySession(activityStats, masteredObjectCategories, undefined, sessionLength, ceiling);
+        const parentOverrides = activeProfileId ? JSON.parse(window.localStorage.getItem(`parentOverrides_profile_${activeProfileId}`) || '[]') : undefined;
+        const session = buildDailySession(
+            activityStats,
+            masteredObjectCategories,
+            undefined,
+            sessionLength,
+            isPremium ? undefined : ceiling,
+            parentOverrides
+        );
         
         if (session.activities.length === 0) {
             showToast('Program modu için uygun içerik bulunamadı.', 'info');
@@ -206,28 +260,35 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
             let genericKey: string | null = null;
             let specificKey: string | null = null;
 
-            if (activityType && LETTER_SOUND_ACTIVITIES.includes(activityType) && selectedLetter) {
-                genericKey = String(activityType);
-                specificKey = `${activityType}-${selectedLetter}`;
-            } else if (activityType === ActivityType.Syllabification && selectedGroup !== null) {
-                genericKey = String(activityType);
-                specificKey = `${activityType}-${selectedGroup}`;
-            } else if (activityType === ActivityType.ObjectRecognition && selectedObjectCategory) {
-                genericKey = selectedObjectCategory.id;
-            } else if (activityType === ActivityType.FiveWOneH && selectedFiveWOneHKey) {
-                // Record under the selected 5N1K sub-key (e.g., FiveWOneH_Who)
-                genericKey = selectedFiveWOneHKey;
-            } else if (activityType !== null) {
-                genericKey = String(activityType);
-            }
-
+            // In random/program mode, use the queue ID directly (it's already the correct granular ID)
             if (isRandomMode) {
                 genericKey = String(randomModeQueue[currentRandomActivityIndex]);
                 specificKey = null;
+            } else {
+                // In free mode, determine key based on activity type and context
+                if (activityType && LETTER_SOUND_ACTIVITIES.includes(activityType) && selectedLetter) {
+                    genericKey = String(activityType);
+                    specificKey = `${activityType}-${selectedLetter}`;
+                } else if (activityType === ActivityType.Syllabification && selectedGroup !== null) {
+                    genericKey = String(activityType);
+                    specificKey = `${activityType}-${selectedGroup}`;
+                } else if (activityType === ActivityType.ObjectRecognition && selectedObjectCategory) {
+                    genericKey = selectedObjectCategory.id;
+                } else if (activityType === ActivityType.FiveWOneH && selectedFiveWOneHKey) {
+                    // Record under the selected 5N1K sub-key (e.g., FiveWOneH_Who)
+                    genericKey = selectedFiveWOneHKey;
+                } else if (activityType !== null) {
+                    genericKey = String(activityType);
+                }
             }
 
             if (genericKey) {
                 const newRecord: AttemptRecord = { timestamp: Date.now(), score: finalScore, total: totalQuestions, mode: isProgramMode ? 'program' : 'free' };
+                
+                // Check units before stats update (for detecting new unlocks)
+                const emptyMasteredCats = new Set<string>();
+                const previousUnlockedUnits = getUnlockedUnits(activityStats, emptyMasteredCats);
+                
                 setActivityStats(prev => {
                     const updatedStats = { ...prev };
                     const isComplete = finalScore === totalQuestions;
@@ -257,6 +318,20 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
                     } else {
                         updateStats(genericKey!, false);
                     }
+                    
+                    // Check if new unit unlocked after this activity (Program Mode only)
+                    if (isProgramMode && activeProfileId) {
+                        const currentUnlockedUnits = getUnlockedUnits(updatedStats, emptyMasteredCats);
+                        
+                        // Find newly unlocked units
+                        currentUnlockedUnits.forEach(unitNum => {
+                            if (!previousUnlockedUnits.has(unitNum)) {
+                                console.log(`[Unit Advancement] New unit unlocked: ${unitNum}`);
+                                recordUnitAdvanced(activeProfileId, unitNum);
+                            }
+                        });
+                    }
+                    
                     return updatedStats;
                 });
             }
@@ -282,13 +357,6 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
                      const hasNext = await startNextRandomActivity(randomModeQueue, currentRandomActivityIndex + 1);
                      if (!hasNext) {
                         if (isProgramMode) {
-                            // Check for unit advancement and record it for daily policy
-                            if (activeProfileId) {
-                                const masteredCats = new Set<string>();
-                                const unlockedUnits = getUnlockedUnits(activityStats, masteredCats);
-                                const maxUnit = Math.max(...Array.from(unlockedUnits));
-                                recordUnitAdvanced(activeProfileId, maxUnit);
-                            }
                             showToast(t('programMode.completed', 'Program mode finished! Great job.'), 'info');
                         } else {
                             showToast("Rastgele mod tamamlandı! Harika iş.", 'info');

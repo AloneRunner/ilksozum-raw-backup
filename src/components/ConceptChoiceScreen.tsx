@@ -21,6 +21,9 @@ import { translateLabel, getSpeechLocale, translateQuestion } from '../utils/tra
 import { useAppContext } from '../contexts/AppContext.ts';
 import { getFriendlyCategoryLabelByImageId, getFriendlyCategoryLabelSingularFromRaw } from '../utils/groupLabels.ts';
 import { imageData } from '../services/database/imageData.ts';
+import CosmicBuddy from './ui/CosmicBuddy.tsx';
+import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import PanelStars from './ui/PanelStars.tsx';
 
 // Helper to get category from imageData by id
 const getCategoryById = (id: number): string | null => {
@@ -239,8 +242,6 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
     q_which_is_between: 'Which one is between?',
     q_which_is_near: 'Which one is nearer?',
     q_which_is_far: 'Which one is farther?',
-    q_which_is_higher: 'Which one is higher?',
-    q_which_is_lower: 'Which one is lower?',
         q_which_faces_left: 'Which one faces left?',
         q_which_faces_right: 'Which one faces right?',
         // Dynamic/generic
@@ -334,8 +335,7 @@ function getQuestionTtsText(roundData: ConceptRound, lang: ReturnType<typeof get
     if (override && override.trim().length > 0) return override.trim();
     const q = getLocalizedQuestion(roundData, lang);
     if (roundData.activityType === ActivityType.FiveWOneH) {
-        if (lang === 'tr') return `Soru: ${q}. Doğru resmi seç.`;
-        if (lang === 'en') return `Question: ${q}. Choose the correct picture.`;
+        return q;
     }
     return q;
 }
@@ -728,7 +728,7 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
             case ActivityType.BitterSweet:
                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-28 h-28"> <circle cx="50" cy="50" r="45" fill={taste === 'sweet' ? '#fde047' : '#a3e635'} stroke={taste === 'sweet' ? '#f59e0b' : '#65a30d'} strokeWidth="4" className="transition-colors duration-300"/> <circle cx="35" cy="40" r="5" fill="black" /> <circle cx="65" cy="40" r="5" fill="black" /> <path d={taste === 'sweet' ? "M30 65 Q 50 80 70 65" : "M30 75 Q 50 60 70 75"} stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" className="transition-all duration-300"/> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setTaste('bitter'); speak('acı'); }} className={`${baseButtonClasses} bg-green-600 text-sm px-4`}>Acı</button> <button onClick={() => { setTaste('sweet'); speak('tatlı'); }} className={`${baseButtonClasses} bg-pink-400 text-sm px-4`}>Tatlı</button> </div> </div> );
             case ActivityType.TersDuz:
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-24 h-24 transition-transform duration-500" style={{ transform: isRightSideUp ? 'rotate(0deg)' : 'rotate(180deg)' }}><HouseIconSimple className="w-full h-full" /></div> </div> <div className="flex justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsRightSideUp(prev => !prev); speak(isRightSideUp ? 'ters' : 'düz'); }} className={`${baseButtonClasses} bg-purple-500 text-sm px-4 sm-landscape:w-32`}>Çevir</button> </div> </div> );
+                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="w-24 h-24 transition-transform duration-500" style={{ transform: isRightSideUp ? 'rotate(0deg)' : 'rotate(180deg)' }}><HouseIconSimple className="w-full h-full" /></div> </div> <div className="flex justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsRightSideUp(prev => !prev); speak(isRightSideUp ? 'ters' : 'düz'); }} className={`${baseButtonClasses} bg-purple-500 text-sm px-4 sm-landscape:w-32`}>{isRightSideUp ? 'Düz' : 'Ters'}</button> </div> </div> );
             case ActivityType.FewMuch:
                  const addApple = () => { if (itemCount < MAX_ITEMS) { const wasFew = itemCount <= MUCH_THRESHOLD; const newCount = itemCount + 1; setItemCount(newCount); if(newCount > MUCH_THRESHOLD && wasFew) speak('çok'); }};
                  const removeApple = () => { if (itemCount > 0) { const wasMany = itemCount > MUCH_THRESHOLD; const newCount = itemCount - 1; setItemCount(newCount); if(newCount <= MUCH_THRESHOLD && wasMany) speak('az'); }};
@@ -916,6 +916,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     const currentTheme = themeClasses[themeColor];
 
     const { settings } = useAppContext();
+    const isCosmic = settings.theme === 'deneme2';
     let effectiveTheme = currentTheme;
     if (settings.theme === 'kedi') {
         effectiveTheme = {
@@ -933,6 +934,15 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
             hoverBg: 'hover:bg-cyan-600',
             ring: 'focus:ring-cyan-300'
         };
+    } else if (isCosmic) {
+        // deneme2 kozmik tema: vurgular gökyüzü tonları, koyu cam arka planlar
+        effectiveTheme = {
+            text: 'text-sky-100',
+            accent: 'text-sky-300',
+            bg: 'bg-slate-900/60',
+            hoverBg: 'hover:bg-slate-900/70',
+            ring: 'focus:ring-sky-300'
+        } as any;
     }
 
     useEffect(() => {
@@ -1010,9 +1020,17 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                     // FiveWOneH: prefer per-round i18n feedback if available
                     if (roundData.activityType === ActivityType.FiveWOneH) {
                         const questionKey = roundData.questionAudioKey || `q_${roundData.id}`;
-                        const fbKey = `activityFeedback.fiveWOneH.${questionKey}.correct`;
+                        const fbKey = `fiveWOneH.${questionKey}.correct`;
                         const genericKey = 'activityFeedback.fiveWOneH.correct';
-                        const msg = t(fbKey, t(genericKey, t('feedback.rightPrefix')));
+                        const genericMsg = t(genericKey, t('feedback.rightPrefix'));
+                        let msg = t(fbKey, genericMsg);
+                        const speechOverride = (getSpeechBlock()?.correct) as string | undefined;
+                        if (speechOverride) {
+                            const rightPrefix = t('feedback.rightPrefix');
+                            if (!msg || msg === genericMsg || msg === rightPrefix) {
+                                msg = speechOverride;
+                            }
+                        }
                         await speak(msg, getSpeechLocale(currentLang));
                         setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
                         return;
@@ -1177,9 +1195,17 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                 // FiveWOneH: prefer per-round i18n feedback if available
                 if (roundData.activityType === ActivityType.FiveWOneH) {
                     const questionKey = roundData.questionAudioKey || `q_${roundData.id}`;
-                    const fbKey = `activityFeedback.fiveWOneH.${questionKey}.wrong`;
+                    const fbKey = `fiveWOneH.${questionKey}.wrong`;
                     const genericKey = 'activityFeedback.fiveWOneH.wrong';
-                    const msg = t(fbKey, t(genericKey, t('feedback.wrongPrefix')));
+                    const genericMsg = t(genericKey, t('feedback.wrongPrefix'));
+                    let msg = t(fbKey, genericMsg);
+                    const speechOverride = (getSpeechBlock()?.wrong) as string | undefined;
+                    if (speechOverride) {
+                        const wrongPrefix = t('feedback.wrongPrefix');
+                        if (!msg || msg === genericMsg || msg === wrongPrefix) {
+                            msg = speechOverride;
+                        }
+                    }
                     await speak(msg, getSpeechLocale(currentLang));
                     setTimeout(() => {
                         setIsWrong(null);
@@ -1288,7 +1314,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                           'grid-cols-2 sm-landscape:grid-cols-4';
 
     const renderHeader = () => (
-         <div className="w-full flex justify-between items-center mb-2 sm:mb-4 px-3 py-1.5 bg-white/50 backdrop-blur-sm rounded-full">
+         <div className={`w-full flex justify-between items-center mb-2 sm:mb-4 px-3 py-1.5 ${isCosmic ? 'bg-slate-900/60 border border-sky-400/20' : 'bg-white/50'} backdrop-blur-sm rounded-full`}>
             <button onClick={onBack} className="p-1.5 rounded-full hover:bg-white/50 transition-colors" aria-label={t('app.back')}>
                 <ArrowLeftIcon className={`w-7 h-7 ${effectiveTheme.accent}`} />
             </button>
@@ -1351,6 +1377,11 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
         </div>
     );
     
+    // Kozmik buddy bileşeni (yalnızca deneme2 + dikey)
+    const isPortrait = !isLandscape;
+    const Buddy = isCosmic && isPortrait ? CosmicBuddy : null;
+    const buddyMood: 'idle' | 'think' | 'happy' | 'sad' = isCorrect ? 'happy' : (isWrong ? 'sad' : (selectedId ? 'think' : 'idle'));
+
     const supportedHelpers: ActivityType[] = [
         ActivityType.Colors, ActivityType.Shapes, ActivityType.Emotions,
         ActivityType.BigSmall, ActivityType.LongShort, ActivityType.ThinThick, ActivityType.WideNarrow,
@@ -1378,7 +1409,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
              aria-live="polite">
                 
                 {/* Header */}
-                <div className="w-full flex justify-between items-center px-2 py-1 bg-white/70 backdrop-blur-sm rounded-full absolute top-1 left-1/2 -translate-x-1/2 z-20 max-w-xs shadow-md">
+                <div className={`w-full flex justify-between items-center px-2 py-1 ${isCosmic ? 'bg-slate-900/60 border border-sky-400/20' : 'bg-white/70'} backdrop-blur-sm rounded-full absolute top-1 left-1/2 -translate-x-1/2 z-20 max-w-xs shadow-md`}>
                     <button onClick={onBack} className="p-1 rounded-full hover:bg-white/70 transition-colors" aria-label="Geri dön">
                         <ArrowLeftIcon className={`w-6 h-6 ${effectiveTheme.accent}`} />
                     </button>
@@ -1387,7 +1418,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                 </div>
 
                 {/* Question */}
-                <h1 className={`text-xl font-bold text-center ${effectiveTheme.text} flex items-center justify-center gap-3 absolute top-12 left-1/2 -translate-x-1/2 z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
+                <h1 className={`text-xl sm:text-2xl font-bold text-center ${isCosmic ? 'bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 text-glow-planet' : effectiveTheme.text} flex items-center justify-center gap-3 absolute top-12 left-1/2 -translate-x-1/2 z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
                     {settings.theme === 'kedi' ? '🐱 ' : settings.theme === 'zurafa' ? '🦒🌸 ' : ''}{localizedQuestion}
                     <button onClick={handleSpeak} className={`p-1.5 ${effectiveTheme.bg} rounded-full ${effectiveTheme.hoverBg} transition-colors`} aria-label={t('choice.readQuestion')}>
                         <SpeakerIcon className={`w-5 h-5 ${effectiveTheme.accent}`} />
@@ -1443,7 +1474,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                                 onClick={() => handleCardClick(option.id, option.isCorrect, hintSpokenWord)}
                                 className={`w-1/2 h-full flex items-center justify-center p-4 cursor-pointer transition-all duration-300 relative overflow-hidden ${hintClass} ${isOptionWrong ? 'animate-shake' : ''}`}
                                 style={{ 
-                                    backgroundColor: isOptionCorrect ? '#22c55e' : isOptionWrong ? '#ef4444' : '#f1f5f9',
+                                    backgroundColor: isOptionCorrect ? '#22c55e' : isOptionWrong ? '#ef4444' : (isCosmic ? '#0b1220' : '#f1f5f9'),
                                     ...hintStyle
                                 }}
                             >
@@ -1476,15 +1507,20 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                 </div>
 
                 {/* Footer Controls */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center gap-4 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg">
-                    <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? effectiveTheme.bg : 'bg-white/50 hover:bg-white/70'} border border-slate-300/50`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
+                <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center gap-4 ${isCosmic ? 'bg-slate-900/70 border border-sky-400/20' : 'bg-white/80'} backdrop-blur-sm rounded-2xl p-2 shadow-lg`}>
+                    <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? effectiveTheme.bg : (isCosmic ? 'bg-slate-900/50 hover:bg-slate-900/60 border border-sky-400/20' : 'bg-white/50 hover:bg-white/70 border border-slate-300/50')}`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
                         {isWordLabelVisible ? <EyeSlashIcon className={`w-6 h-6 ${effectiveTheme.accent}`} /> : <EyeIcon className={`w-6 h-6 ${effectiveTheme.accent}`} />}
                         <span className={`text-xs font-bold ${effectiveTheme.text} mt-1`}>{t('choice.label')}</span>
                     </button>
-                    <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center bg-amber-100 hover:bg-amber-200 border border-amber-300`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
-                        <LightBulbIcon className={`w-6 h-6 text-amber-600`} />
-                        <span className={`text-xs font-bold text-amber-800 mt-1`}>{t('choice.hint')}</span>
-                    </button>
+                    {/* Dikey kozmik modda ipucu butonunu gizle, yerine buddy ekle */}
+                    {isCosmic && isPortrait ? (
+                        Buddy ? <Buddy mood={buddyMood} size="sm" /> : null
+                    ) : (
+                        <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-16 h-14 rounded-lg transition-colors text-center ${isHelperVisible ? effectiveTheme.bg : (isCosmic ? 'bg-slate-900/50 hover:bg-slate-900/60 border border-sky-400/20' : 'bg-white/50 hover:bg-white/70 border border-slate-300/50')}`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
+                            <LightBulbIcon className={`w-6 h-6 text-amber-600`} />
+                            <span className={`text-xs font-bold text-amber-800 mt-1`}>{t('choice.hint')}</span>
+                        </button>
+                    )}
                 </div>
             </div>
         );
@@ -1494,15 +1530,24 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
         <div 
          ref={cardRef}
          tabIndex={-1}
-         className="flex flex-col h-full w-full max-w-5xl mx-auto p-2 sm:p-4 animate-fade-in outline-none landscape:p-0"
+         className="relative overflow-hidden flex flex-col h-full w-full max-w-5xl mx-auto p-2 sm:p-4 animate-fade-in outline-none landscape:p-0"
          aria-live="polite">
+            {isCosmic && (
+                <CosmicBackdrop variant="light" showMeteors={true} />
+            )}
             
             {renderHeader()}
             
-            <div className="flex-grow w-full flex flex-col items-center justify-center p-4 sm:p-6 sm-landscape:p-2 bg-white/60 backdrop-blur-lg rounded-3xl shadow-xl overflow-y-auto">
+                        <div className={`relative flex-grow w-full flex flex-col items-center justify-center p-4 sm:p-6 sm-landscape:p-2 ${isCosmic ? 'bg-slate-900/50 border border-sky-400/20' : 'bg-white/60'} backdrop-blur-lg rounded-3xl shadow-xl overflow-y-auto`}>
+                                {isCosmic && (
+                                    <>
+                                        <PanelStars count={52} className="rounded-3xl" />
+                                        <div className="cosmic-panel-nebula rounded-3xl" />
+                                    </>
+                                )}
                 <div className="w-full flex flex-col landscape:flex-row landscape:items-start landscape:justify-center landscape:gap-6">
                     <div className="w-full flex flex-col items-center justify-start landscape:justify-center landscape:w-7/12 landscape:max-w-md">
-                        <h1 className={`text-xl sm:text-2xl font-bold text-center ${effectiveTheme.text} mb-4 flex items-center gap-3 landscape:text-lg sm-landscape:text-base drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
+                        <h1 className={`text-xl sm:text-2xl font-bold text-center ${isCosmic ? 'bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 text-glow-planet' : effectiveTheme.text} mb-4 flex items-center gap-3 landscape:text-lg sm-landscape:text-base drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>
                             {settings.theme === 'kedi' ? '🐱 ' : settings.theme === 'zurafa' ? '🦒🌸 ' : ''}{localizedQuestion}
                             <button onClick={handleSpeak} className={`p-2 ${effectiveTheme.bg} rounded-full ${effectiveTheme.hoverBg} transition-colors`} aria-label={t('choice.readQuestion')}>
                                 <SpeakerIcon className={`w-6 h-6 sm-landscape:w-5 sm-landscape:h-5 ${effectiveTheme.accent}`} />
@@ -1531,17 +1576,28 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                     </div>
 
                     <div className="flex justify-center items-center gap-4">
-                        <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? effectiveTheme.bg : 'bg-white/50 border border-slate-300/50'}`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
+                        <button onClick={onToggleWordLabel} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isWordLabelVisible ? effectiveTheme.bg : (isCosmic ? 'bg-slate-900/50 border border-sky-400/20' : 'bg-white/50 border border-slate-300/50')}`} aria-label={isWordLabelVisible ? t('choice.hideLabel') : t('choice.showLabel')}>
                             {isWordLabelVisible ? <EyeSlashIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} /> : <EyeIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} />}
                             <span className={`text-xs sm-landscape:text-[10px] font-bold ${effectiveTheme.text} mt-1`}>{t('choice.label')}</span>
                         </button>
                         {supportedHelpers.includes(roundData.activityType) && (
-                            <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isHelperVisible ? effectiveTheme.bg : 'bg-white/50 border border-slate-300/50'}`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
-                                <LightBulbIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} />
-                                <span className={`text-xs sm-landscape:text-[10px] font-bold ${effectiveTheme.text} mt-1`}>{t('choice.hint')}</span>
-                            </button>
+                            isCosmic && !isLandscape ? (
+                                // Hide hint button in portrait cosmic; show a buddy centered below instead (outside this row)
+                                null
+                            ) : (
+                                <button onClick={handleHint} className={`flex flex-col items-center justify-center p-2 w-20 sm-landscape:w-16 h-16 sm-landscape:h-14 rounded-lg transition-colors text-center ${isHelperVisible ? effectiveTheme.bg : (isCosmic ? 'bg-slate-900/50 hover:bg-slate-900/60 border border-sky-400/20' : 'bg-white/50 hover:bg-white/70 border border-slate-300/50')}`} aria-label={isHelperVisible ? t('choice.hideHint') : t('choice.showHint')}>
+                                    <LightBulbIcon className={`w-7 h-7 sm-landscape:w-6 sm-landscape:h-6 ${effectiveTheme.accent}`} />
+                                    <span className={`text-xs sm-landscape:text-[10px] font-bold ${effectiveTheme.text} mt-1`}>{t('choice.hint')}</span>
+                                </button>
+                            )
                         )}
                     </div>
+                    {/* Portrait cosmic buddy below the row for extra space */}
+                    {isCosmic && !isLandscape && Buddy && (
+                        <div className="w-full flex justify-center pt-2">
+                            <Buddy mood={buddyMood} size="md" />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

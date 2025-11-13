@@ -7,13 +7,20 @@ import HandIcon from './components/icons/HandIcon.tsx';
 import FiveWOneHIcon from './components/icons/FiveWOneHIcon.tsx';
 
 
-export const LETTER_SOUND_ACTIVITIES = [ActivityType.Syllabification, ActivityType.FindTheLetterInGrid, ActivityType.FindTheSoundInImage, ActivityType.EmbeddedStory, ActivityType.SoundPresence, ActivityType.FindTheLetter];
+export const LETTER_SOUND_ACTIVITIES = [
+    ActivityType.Syllabification, 
+    ActivityType.FindTheLetterInGrid, 
+    ActivityType.FindTheSoundInImage, 
+    ActivityType.EmbeddedStory, 
+    ActivityType.SoundPresence, 
+    ActivityType.FindTheLetter,
+];
 
 export const CONCEPT_ACTIVITIES = [
     ActivityType.YesNo, 
     ActivityType.Colors, 
     ActivityType.Shapes, 
-    ActivityType.Emotions, 
+    ActivityType.Emotions,
     ActivityType.BigSmall, 
     ActivityType.LongShort, 
     ActivityType.ThinThick, 
@@ -77,6 +84,9 @@ export const REASONING_ACTIVITIES = [
     ActivityType.MemoryCards,
     ActivityType.DragAndDropCounting,
     ActivityType.DragAndDropPositioning,
+    ActivityType.Hangman,              // EĞLENCE: Adam Asmaca - Harf seçerek kelimeyi bul
+    ActivityType.ObjectCollector,      // EĞLENCE: Nesne Toplama - Düşen objeleri sepete topla
+    ActivityType.EmotionPuppet,        // EĞLENCE: Duygu Kuklası - Yüz parçalarını birleştir
 ];
 
 export const OBJECT_RECOGNITION_ACTIVITIES = [ActivityType.ObjectRecognition];
@@ -306,6 +316,10 @@ export const ALL_SUB_ACHIEVEMENTS: SubAchievement[] = [
   { id: ActivityType.MemoryCards, name: "Hafıza Kartları", category: ActivityCategory.Reasoning },
   { id: ActivityType.DragAndDropCounting, name: "Nesneleri Taşı", category: ActivityCategory.Reasoning },
   { id: ActivityType.DragAndDropPositioning, name: "Topu Yerleştir", category: ActivityCategory.Reasoning },
+  { id: ActivityType.Hangman, name: "Adam Asmaca", category: ActivityCategory.Reasoning },
+  { id: ActivityType.ObjectCollector, name: "Nesne Toplama", category: ActivityCategory.Reasoning },
+  { id: ActivityType.EmotionPuppet, name: "Duygu Kuklası", category: ActivityCategory.Reasoning },
+  
   // Fine motor activities (make them manageable in Activity Management)
   { id: ActivityType.LineTracing, name: "Çizgi Takip", category: ActivityCategory.FineMotor },
   { id: ActivityType.ShapeColoring, name: "Şekil Boyama", category: ActivityCategory.FineMotor },
@@ -345,7 +359,7 @@ export const ACTIVITY_DEPENDENCIES: Partial<Record<ActivityType, ActivityType>> 
     [ActivityType.BesideOpposite]: ActivityType.OnUnder,
 
     // Reasoning
-    [ActivityType.FunctionalMatching]: ActivityType.WhatDoesntBelong,
+    // FunctionalMatching removed - now integrated into 5N1K "What?" category
     [ActivityType.CauseEffect]: ActivityType.WhatDoesntBelong,
     [ActivityType.FiveWOneH]: ActivityType.WhatDoesntBelong,
     [ActivityType.SequencingStories]: ActivityType.BeforeAfter,

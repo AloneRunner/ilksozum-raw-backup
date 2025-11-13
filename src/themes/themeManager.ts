@@ -32,7 +32,7 @@ export const THEMES: Record<string, Theme> = {
   ay2: { name: 'Hilal', previewClass: 'bg-indigo-500', type: 'video', value: '/videos/ay2.mp4', landscapeValue: '/videos/ayyan.mp4' },
   zurafa: { name: 'Zürafa', previewClass: 'bg-cyan-300', type: 'video', value: '/videos/zurafa2.mp4' },
     geometri: { name: 'Geometrik', previewClass: 'bg-rose-200', type: 'video', value: '/videos/geometri.mp4', landscapeValue: '/videos/geometriyan.mp4' },
-    deneme2: { name: '✨ Kozmik Küreler 2.0', previewClass: 'bg-gradient-to-br from-[#0b1224] via-[#0a1020] to-[#03020a]', type: 'gradient', value: 'bg-[radial-gradient(ellipse_at_top_left,_#1b2735_0%,_#0f172a_40%,_#010310_100%)]' },
+    deneme2: { name: '✨ Kozmik Küreler 2.0', previewClass: 'bg-gradient-to-br from-[#0b1224] via-[#0a1020] to-[#03020a]', type: 'gradient', value: 'bg-gradient-to-br from-[#0b1224] via-[#0a1020] to-[#03020a]' },
 };
 
 // Themes that should be available to all users (temporarily free or permanently free)

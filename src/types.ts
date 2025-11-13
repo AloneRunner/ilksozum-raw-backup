@@ -48,6 +48,7 @@ export enum ActivityType {
   EmbeddedStory,
   SoundPresence,
   FindTheLetter,
+  Hangman,              // Adam Asmaca: Harf seçerek kelimeyi bul
   
   // === Kavram Etkinlikleri > Ana Kategori ===
   YesNo, // Evet/Hayır is a main category now
@@ -146,6 +147,8 @@ export enum ActivityType {
   DragAndDropCounting,
   DragAndDropPositioning,
   ObjectRecognition,
+  ObjectCollector,      // Nesne Toplama Oyunu: Düşen objeleri sepete toplama
+  EmotionPuppet,        // Duygu Kuklası: Yüz parçalarını birleştirerek duygu oluşturma
   // === 5N1K (Who/What/Where/When/Why/How) ===
   FiveWOneH,
 }

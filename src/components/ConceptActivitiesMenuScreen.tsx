@@ -11,6 +11,8 @@ import WideNarrowIcon from "./icons/WideNarrowIcon.tsx";
 import TextureIcon from "./icons/TextureIcon.tsx";
 import ArrowsRightLeftIcon from "./icons/ArrowsRightLeftIcon.tsx";
 import { getCurrentLanguage, t } from "../i18n/index.ts";
+import CosmicBackdrop from "./ui/CosmicBackdrop.tsx";
+import PanelStars from "./ui/PanelStars.tsx";
 
 interface ConceptActivity {
   type: ActivityType;
@@ -304,7 +306,9 @@ const TabButton: React.FC<{
   onClick: () => void;
   isThemed: boolean;
   displayMode?: "simple" | "default";
-}> = ({ name, icon: Icon, isActive, onClick, isThemed, displayMode = "default" }) => {
+  isCosmic?: boolean;
+  isUnderwater?: boolean;
+}> = ({ name, icon: Icon, isActive, onClick, isThemed, displayMode = "default", isCosmic, isUnderwater }) => {
   if (displayMode === "simple") {
     return (
             <button
@@ -317,6 +321,38 @@ const TabButton: React.FC<{
               <Icon className="h-5 w-5" />
               {name}
             </button>
+    );
+  }
+
+  if (isCosmic) {
+    return (
+      <button
+        onClick={onClick}
+        className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+          isActive 
+            ? 'bg-gradient-to-r from-sky-400 to-indigo-400 text-slate-900 shadow-[0_0_20px_rgba(56,189,248,0.6)] scale-105' 
+            : 'bg-slate-800/50 text-sky-200/80 border border-sky-400/20 hover:bg-slate-700/60 hover:border-sky-400/40 hover:scale-105'
+        }`}
+      >
+        <Icon className="h-5 w-5 sm-landscape:h-4 sm-landscape:w-4" />
+        <span className="text-sm font-bold sm-landscape:text-xs whitespace-nowrap">{name}</span>
+      </button>
+    );
+  }
+
+  if (isUnderwater) {
+    return (
+      <button
+        onClick={onClick}
+        className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+          isActive 
+            ? 'bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-900 shadow-[0_0_20px_rgba(6,182,212,0.6)] scale-105' 
+            : 'bg-slate-800/30 text-cyan-200/80 border border-cyan-400/20 hover:bg-slate-700/40 hover:border-cyan-400/40 hover:scale-105'
+        }`}
+      >
+        <Icon className="h-5 w-5 sm-landscape:h-4 sm-landscape:w-4" />
+        <span className="text-sm font-bold sm-landscape:text-xs whitespace-nowrap">{name}</span>
+      </button>
     );
   }
 
@@ -351,32 +387,239 @@ const ConceptActivitiesMenuScreen: React.FC<ConceptActivitiesMenuScreenProps> = 
   const activeTabData = tabs.find((t) => t.name === activeCategory) || tabs[0];
   const colors = ["teal", "rose", "sky", "amber", "purple", "cyan", "indigo"] as const;
   const isSimpleTheme = theme === "simple";
-  const titleColorClass = isSimpleTheme ? "text-purple-900" : "text-white text-shadow-soft";
-  const iconColorClass = isSimpleTheme ? "text-purple-700" : "text-white";
+  const isCosmic = theme === 'deneme2';
+  const isUnderwater = theme === 'deneme';
+  
+  const titleColorClass = isCosmic
+    ? 'bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 text-glow-planet drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
+    : isUnderwater
+    ? 'text-cyan-200 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]'
+    : isSimpleTheme ? "text-purple-900" : "text-white text-shadow-soft";
+  const iconColorClass = isCosmic ? 'text-sky-300' : isUnderwater ? 'text-cyan-300' : isSimpleTheme ? "text-purple-700" : "text-white";
 
-  return (
-    <div className="flex h-full max-w-4xl flex-col items-center p-2 sm:p-4 animate-fade-in">
-      <div
-        className={`flex h-full w-full flex-col rounded-3xl p-4 shadow-2xl sm:p-6 sm-landscape:p-2 ${
-          isSimpleTheme ? "bg-white/80 backdrop-blur-md border border-purple-200/50" : "bg-black/20 backdrop-blur-md"
+  // Cosmic gradient palettes for each activity
+  const cosmicPalettes: Record<number, string> = {
+    0: 'from-teal-400 via-cyan-300 to-sky-200',
+    1: 'from-rose-400 via-pink-300 to-fuchsia-200',
+    2: 'from-sky-400 via-blue-300 to-indigo-200',
+    3: 'from-amber-400 via-orange-300 to-yellow-200',
+    4: 'from-purple-400 via-violet-300 to-indigo-200',
+    5: 'from-cyan-400 via-teal-300 to-emerald-200',
+    6: 'from-indigo-400 via-purple-300 to-fuchsia-200',
+  };
+
+  // Render cosmic activity card
+  const renderCosmicCard = (activity: ConceptActivity, index: number, Icon: React.FC<{ className?: string }>, stats: ActivityStats, isDisabled: boolean) => {
+    const gradient = cosmicPalettes[index % 7];
+    return (
+      <button
+        key={activity.type}
+        onClick={() => !isDisabled && onSelectActivity(activity.type)}
+        disabled={isDisabled}
+        className={`group relative overflow-hidden rounded-3xl p-4 min-h-[180px] flex flex-col transition-all duration-300 ${
+          isDisabled 
+            ? 'opacity-40 cursor-not-allowed' 
+            : 'hover:scale-105 hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] active:scale-95'
+        }`}
+        style={{
+          background: isDisabled 
+            ? 'linear-gradient(135deg, rgba(51,65,85,0.6), rgba(30,41,59,0.6))' 
+            : `linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,41,59,0.85))`,
+          border: '2px solid rgba(56,189,248,0.3)',
+        }}
+      >
+        {/* Inner glow layer */}
+        <div 
+          className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity rounded-3xl"
+          style={{
+            background: `radial-gradient(circle at 30% 30%, ${gradient.split(' ')[0].replace('from-', '')}, transparent 70%)`,
+          }}
+        />
+        
+        {/* Icon orb */}
+        <div className="relative z-10 mb-2 flex justify-center flex-shrink-0">
+          <div 
+            className={`w-14 h-14 rounded-full flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg ${!isDisabled && 'group-hover:shadow-[0_0_20px_rgba(56,189,248,0.6)]'} transition-shadow`}
+          >
+            <Icon className="w-7 h-7 text-slate-900" />
+          </div>
+        </div>
+        
+        {/* Title */}
+        <h3 className="relative z-10 text-center font-bold text-sm text-sky-100 mb-1 group-hover:text-white transition-colors flex-shrink-0">
+          {activity.title}
+        </h3>
+        
+        {/* Subtitle */}
+        <p className="relative z-10 text-center text-xs text-sky-300/70 mb-2 flex-shrink-0 line-clamp-1">
+          {activity.subtitle}
+        </p>
+        
+        {/* Progress */}
+        <div className="relative z-10 mt-auto">
+          <ProgressIndicator
+            attempts={stats.attempts}
+            completions={stats.completions}
+            totalCorrect={stats.totalCorrect}
+            totalQuestions={stats.totalQuestions}
+          />
+        </div>
+      </button>
+    );
+  };
+
+  // Render underwater activity card - jellyfish style matching main menu
+  const renderUnderwaterCard = (activity: ConceptActivity, _index: number, Icon: React.FC<{ className?: string }>, stats: ActivityStats, isDisabled: boolean) => {
+    const jellyfishColors = [
+      'from-pink-400 to-purple-500',      // Pembe-mor jellyfish
+      'from-cyan-400 to-blue-500',        // Mavi jellyfish  
+      'from-green-400 to-teal-500',       // Yeşil jellyfish
+      'from-purple-400 to-indigo-500',    // Mor jellyfish
+      'from-teal-400 to-cyan-500',        // Turkuaz jellyfish
+      'from-blue-400 to-cyan-500',        // Açık mavi jellyfish
+    ];
+    const color = jellyfishColors[_index % jellyfishColors.length];
+    
+    return (
+      <button
+        key={activity.type}
+        onClick={() => !isDisabled && onSelectActivity(activity.type)}
+        disabled={isDisabled}
+        className={`relative flex flex-col items-center transition-all duration-300 ${
+          isDisabled ? 'opacity-40 cursor-not-allowed' : 'hover:scale-110 cursor-pointer'
         }`}
       >
-        <div className="relative mb-4 flex-shrink-0 w-full text-center sm-landscape:mb-2">
+        {/* Jellyfish body (dome) */}
+        <div className={`w-24 h-12 rounded-t-full bg-gradient-to-b ${color} border-2 border-white/30 backdrop-blur-sm shadow-lg relative overflow-hidden ${!isDisabled && 'hover:shadow-2xl'}`}>
+          {/* Shine effect */}
+          <div className="absolute top-1 left-3 w-4 h-4 bg-white/40 rounded-full blur-sm"></div>
+          <div className="absolute top-2 right-4 w-2 h-2 bg-white/30 rounded-full blur-sm"></div>
+          
+          {/* Icon in center */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Icon className="w-8 h-8 text-white drop-shadow-md" />
+          </div>
+        </div>
+        
+        {/* Tentacles */}
+        <div className="flex gap-0.5 justify-center -mt-1">
+          {[...Array(8)].map((_, i) => (
+            <div 
+              key={i} 
+              className={`w-0.5 h-8 bg-gradient-to-b ${color} opacity-60 rounded-full`}
+              style={{ height: `${24 + Math.random() * 8}px` }}
+            />
+          ))}
+        </div>
+        
+        {/* Title */}
+        <h3 className="text-sm font-bold text-cyan-100 text-center mt-2 line-clamp-2 px-2">
+          {activity.title}
+        </h3>
+        
+        {/* Subtitle */}
+        <p className="text-xs text-cyan-200/70 text-center line-clamp-1 px-2 mb-2">
+          {activity.subtitle}
+        </p>
+        
+        {/* Progress */}
+        <div className="w-full px-2">
+          <ProgressIndicator
+            attempts={stats.attempts}
+            completions={stats.completions}
+            totalCorrect={stats.totalCorrect}
+            totalQuestions={stats.totalQuestions}
+          />
+        </div>
+      </button>
+    );
+  };
+
+  return (
+    <div className={`relative flex h-full max-w-4xl flex-col items-center p-2 sm:p-4 animate-fade-in ${isCosmic || isUnderwater ? 'overflow-hidden' : ''}`}>
+      {isCosmic && (
+        <CosmicBackdrop variant="light" showMeteors={false} />
+      )}
+      {isUnderwater && (
+        <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden>
+          {/* Ocean gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
+          
+          {/* Animated bubbles */}
+          <div className="absolute inset-0">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full bg-cyan-400/20 border border-cyan-300/30 animate-bounce"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${8 + Math.random() * 12}px`,
+                  height: `${8 + Math.random() * 12}px`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+          
+          {/* Light rays */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-300/50 via-transparent to-transparent transform rotate-12" />
+            <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-cyan-200/40 via-transparent to-transparent transform -rotate-6" />
+          </div>
+        </div>
+      )}
+      
+      {/* Cosmic: Wrap in big panel */}
+      <div className={`relative flex h-full w-full flex-col rounded-3xl p-4 shadow-2xl sm:p-6 sm-landscape:p-2 ${
+        isCosmic 
+          ? 'bg-slate-900/50 border border-sky-400/20 backdrop-blur-lg overflow-y-auto'
+          : isUnderwater
+          ? 'bg-gradient-to-b from-[#001122]/60 via-[#001a2e]/50 to-[#000814]/40 border border-cyan-400/20 backdrop-blur-lg overflow-y-auto'
+          : isSimpleTheme ? "bg-white/80 backdrop-blur-md border border-purple-200/50" : "bg-black/20 backdrop-blur-md"
+      }`}>
+        {isCosmic && (
+          <>
+            <PanelStars count={62} className="rounded-3xl" />
+            <div className="cosmic-panel-nebula rounded-3xl" />
+          </>
+        )}
+        {isUnderwater && (
+          <>
+            {/* Underwater decorative elements */}
+            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+              {/* Small jellyfish */}
+              <div className="absolute top-8 right-12 w-8 h-8 opacity-30">
+                <div className="w-full h-full bg-cyan-400/20 rounded-full relative">
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-4 bg-cyan-400/20 rounded-b-full"></div>
+                  <div className="absolute top-1 left-1 w-1 h-2 bg-cyan-300/30 rounded-full"></div>
+                  <div className="absolute top-1 right-1 w-1 h-2 bg-cyan-300/30 rounded-full"></div>
+                </div>
+              </div>
+              {/* Small fish */}
+              <div className="absolute bottom-12 left-8 text-cyan-300/20 text-lg animate-pulse">🐠</div>
+            </div>
+          </>
+        )}
+        
+        <div className="relative z-10 mb-4 flex-shrink-0 w-full flex justify-between items-center sm-landscape:mb-2 px-3 py-1.5">
           <button
             onClick={onBack}
-            className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full p-2 transition-colors hover:bg-black/10"
+            className={`p-2 rounded-full transition-colors ${isCosmic ? 'hover:bg-white/20' : 'hover:bg-black/10'}`}
             aria-label={t("app.back", "Go back")}
           >
             <ArrowLeftIcon className={`h-8 w-8 sm-landscape:h-7 sm-landscape:w-7 ${iconColorClass}`} />
           </button>
-          <h1 className={`text-2xl font-black sm:text-3xl sm-landscape:text-xl ${titleColorClass}`}>
+          <h1 className={`flex-1 text-center text-2xl font-black sm:text-3xl sm-landscape:text-xl ${titleColorClass}`}>
             {lang === "tr" ? "Kavram Etkinlikleri" : "Concept Activities"}
           </h1>
+          <div className="w-12 h-12 sm-landscape:w-11 sm-landscape:h-11" />
         </div>
 
         <div
-          className={`mb-4 flex w-full justify-around overflow-x-auto rounded-t-xl pb-1 sm-landscape:mb-2 ${
-            isSimpleTheme ? "bg-purple-100/50" : "bg-black/20"
+          className={`relative z-10 mb-4 flex w-full gap-2 overflow-x-auto rounded-t-xl pb-1 sm-landscape:mb-2 ${
+            isCosmic ? '' : isUnderwater ? 'bg-gradient-to-r from-cyan-900/20 to-teal-900/20' : isSimpleTheme ? "bg-purple-100/50" : "bg-black/20"
           }`}
         >
           {tabs.map((tab) => (
@@ -386,43 +629,75 @@ const ConceptActivitiesMenuScreen: React.FC<ConceptActivitiesMenuScreenProps> = 
               icon={tab.icon}
               isActive={activeCategory === tab.name}
               onClick={() => onSelectCategory(tab.name)}
-              isThemed={!isSimpleTheme}
+              isThemed={isCosmic || isUnderwater || !isSimpleTheme}
+              isCosmic={isCosmic}
+              isUnderwater={isUnderwater}
             />
           ))}
         </div>
 
-        <div key={activeTabData.name} className="relative flex-grow overflow-y-auto pr-2 animate-fade-in">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 landscape:grid-cols-3 sm-landscape:grid-cols-4">
-            {activeTabData.activities.map((activity, index) => {
-              const stats =
-                activityStats[String(activity.type)] || {
-                  attempts: 0,
-                  completions: 0,
-                  totalCorrect: 0,
-                  totalQuestions: 0,
-                };
-              const isDisabled = !enabledActivities.has(String(activity.type));
-              return (
-                <MenuButton
-                  key={activity.type}
-                  icon={activeTabData.icon}
-                  title={activity.title}
-                  subtitle={activity.subtitle}
-                  onClick={() => onSelectActivity(activity.type)}
-                  color={colors[index % colors.length]}
-                  theme={theme}
-                  disabled={isDisabled}
-                >
-                  <ProgressIndicator
-                    attempts={stats.attempts}
-                    completions={stats.completions}
-                    totalCorrect={stats.totalCorrect}
-                    totalQuestions={stats.totalQuestions}
-                  />
-                </MenuButton>
-              );
-            })}
-          </div>
+        <div key={activeTabData.name} className="relative z-10 flex-grow overflow-y-auto animate-fade-in">
+          {isCosmic ? (
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 landscape:grid-cols-3 sm-landscape:grid-cols-4">
+              {activeTabData.activities.map((activity, index) => {
+                const stats =
+                  activityStats[String(activity.type)] || {
+                    attempts: 0,
+                    completions: 0,
+                    totalCorrect: 0,
+                    totalQuestions: 0,
+                  };
+                const isDisabled = !enabledActivities.has(String(activity.type));
+                return renderCosmicCard(activity, index, activeTabData.icon, stats, isDisabled);
+              })}
+            </div>
+          ) : isUnderwater ? (
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 landscape:grid-cols-3 sm-landscape:grid-cols-4">
+              {activeTabData.activities.map((activity, index) => {
+                const stats =
+                  activityStats[String(activity.type)] || {
+                    attempts: 0,
+                    completions: 0,
+                    totalCorrect: 0,
+                    totalQuestions: 0,
+                  };
+                const isDisabled = !enabledActivities.has(String(activity.type));
+                return renderUnderwaterCard(activity, index, activeTabData.icon, stats, isDisabled);
+              })}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 landscape:grid-cols-3 sm-landscape:grid-cols-4">
+              {activeTabData.activities.map((activity, index) => {
+                const stats =
+                  activityStats[String(activity.type)] || {
+                    attempts: 0,
+                    completions: 0,
+                    totalCorrect: 0,
+                    totalQuestions: 0,
+                  };
+                const isDisabled = !enabledActivities.has(String(activity.type));
+                return (
+                  <MenuButton
+                    key={activity.type}
+                    icon={activeTabData.icon}
+                    title={activity.title}
+                    subtitle={activity.subtitle}
+                    onClick={() => onSelectActivity(activity.type)}
+                    color={colors[index % colors.length]}
+                    theme={theme}
+                    disabled={isDisabled}
+                  >
+                    <ProgressIndicator
+                      attempts={stats.attempts}
+                      completions={stats.completions}
+                      totalCorrect={stats.totalCorrect}
+                      totalQuestions={stats.totalQuestions}
+                    />
+                  </MenuButton>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

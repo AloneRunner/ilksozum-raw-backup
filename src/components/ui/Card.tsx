@@ -60,6 +60,7 @@ const Card: React.FC<CardProps> = ({
             zurafa: { bg: 'bg-cyan-100/90 backdrop-blur-sm border border-cyan-300/50', text: 'text-cyan-900', border: 'border-cyan-300/50' },
             geometri: { bg: 'bg-rose-100/90 backdrop-blur-sm border border-rose-300/50', text: 'text-rose-900', border: 'border-rose-300/50' },
             deneme: { bg: 'bg-gradient-to-br from-purple-200/95 via-pink-200/90 to-red-200/85 backdrop-blur-sm border border-purple-400/60', text: 'text-purple-900 font-bold', border: 'border-purple-400/60' },
+            deneme2: { bg: 'bg-slate-900/60 backdrop-blur-sm border border-sky-400/25', text: 'text-sky-100 text-glow-planet', border: 'border-sky-400/25' },
         };
         return themeColors[settings.theme] || { bg: 'bg-black/60 backdrop-blur-sm', text: 'text-white', border: '' };
     };
@@ -67,8 +68,13 @@ const Card: React.FC<CardProps> = ({
     const labelColors = getLabelColors();
 
     if (!isFlippable) {
+        const baseContainer = settings.theme === 'deneme2'
+            ? 'bg-slate-900/50 backdrop-blur-md border border-sky-400/20 shadow-[0_0_24px_rgba(56,189,248,0.12)]'
+            : 'bg-white/70 backdrop-blur-md border border-white/50';
+
         const simpleCardClasses = [
-            'relative w-full rounded-2xl shadow-lg overflow-hidden transition-all duration-300 ease-in-out group bg-white/70 backdrop-blur-md border border-white/50',
+            'relative w-full rounded-2xl shadow-lg overflow-hidden transition-all duration-300 ease-in-out group',
+            baseContainer,
             className,
             isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 hover:shadow-xl cursor-pointer',
             isSelected ? 'ring-4 ring-amber-400 shadow-amber-300/50' : '',

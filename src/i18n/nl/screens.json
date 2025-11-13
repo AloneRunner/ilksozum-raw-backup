@@ -1,0 +1,460 @@
+{
+  "achievements": {
+    "title": "Prestaties",
+    "subtitle": "Verdien een badge door een activiteit 3 keer perfect te voltooien!",
+    "viewReportAria": "Bekijk voortgangsrapport",
+    "completed": "Voltooid",
+    "categories": {
+      "letterSound": "Letters en klanken",
+      "objects": "Objecten leren",
+      "concept": "Concepten leren",
+      "reasoning": "Logische spellen",
+      "fiveWOneH": "5W1H",
+      "relativeComparison": "Relatieve Vergelijking"
+    }
+  },
+  "activities": {
+    "reasoning": {
+      "whatDoesntBelong": "Wat hoort niet?",
+      "functionalMatching": "Functionele koppeling",
+      "causeEffect": "Oorzaak en gevolg",
+      "sequencingStories": "Volgorde",
+      "patternCompletion": "Patroon voltooien",
+      "sudoku": "Sudoku",
+      "memoryCards": "Geheugenkaarten",
+      "dragAndDropCounting": "Objecten verplaatsen",
+      "dragAndDropPositioning": "Plaats de bal",
+      "hangman": "Galgje"
+    },
+    "fineMotor": {
+      "lineTracing": "Lijnen traceren",
+      "shapeColoring": "Vormen kleuren",
+      "rhythmFollowing": "Ritme volgen"
+    },
+    "fiveWOneH": {
+      "who": "5W1H - Wie?",
+      "what": "5W1H - Wat?",
+      "where": "5W1H - Waar?",
+      "when": "5W1H - Wanneer?",
+      "why": "5W1H - Waarom?",
+      "how": "5W1H - Hoe?"
+    }
+  },
+  "settingsEx": {
+    "title": "Instellingen",
+    "premium": {
+      "title": "Premiumfuncties",
+      "desc": "Verwijder advertenties, ontgrendel de thema‑interface (bewegende achtergronden), bekijk voortgangsrapporten voor ouders en steun de ontwikkeling.",
+      "cta": "Word Premium & steun ons",
+      "mathQuestion": "Ouderbevestiging:\n\nBeantwoord deze vraag om door te gaan:\n\n{num1} + {num2} = ?",
+      "wrongAnswer": "Fout antwoord. Probeer het opnieuw.",
+      "confirmPurchase": "Aankoop bevestigen?\n\nDeze actie is betaald.",
+      "holdToPurchaseAria": "2 seconden ingedrukt houden om te kopen",
+      "monthly": "Maandelijks",
+      "lifetime": "Levenslang"
+    },
+    "profile": {
+      "title": "Profiel",
+      "active": "Actief profiel",
+      "manage": "Beheren"
+    },
+    "achievements": {
+      "title": "Prestaties",
+      "subtitle": "Bekijk badges",
+      "view": "Bekijken"
+    },
+    "theme": {
+      "title": "App‑thema"
+    },
+    "general": {
+      "title": "Algemene instellingen"
+    },
+    "mute": {
+      "title": "Stille modus",
+      "subtitle": "Schakelt alle geluiden uit"
+    },
+    "autoSpeak": {
+      "title": "Automatisch voorlezen",
+      "subtitle": "Vragen worden automatisch voorgelezen"
+    },
+    "fastMode": {
+      "title": "Snelle modus",
+      "subtitle": "Versnelt overgangen"
+    },
+    "content": {
+      "title": "Inhoudsinstellingen"
+    },
+    "banButton": {
+      "title": "Knop 'Afbeelding verbannen'",
+      "subtitle": "Toont de knop 'Verbannen'"
+    },
+    "manageBanned": {
+      "title": "Verbannen afbeeldingen beheren",
+      "subtitle": "Je verbannen afbeeldingen bewerken"
+    },
+    "activityManagement": {
+      "title": "Activiteitenbeheer"
+    },
+    "data": {
+      "title": "Gegevensbeheer"
+    },
+    "reset": {
+      "title": "Voortgang resetten",
+      "subtitle": "Verwijdert alle gegevens van {name}",
+      "confirm": "Weet je zeker dat je alle voortgang voor {name} wilt resetten? Dit kan niet ongedaan worden gemaakt."
+    },
+    "about": {
+      "title": "Over"
+    },
+    "privacy": {
+      "title": "Privacybeleid",
+      "subtitle": "Gegevensgebruik en jouw rechten",
+      "read": "Lezen"
+    },
+    "backToSettingsAria": "Terug naar instellingen"
+  },
+  "parentReport": {
+    "title": "Voortgangsrapport",
+    "goBackAria": "Ga terug",
+    "group": "Groep",
+    "viewAchievementsAria": "Prestaties bekijken",
+    "mostChallenging": "Meest uitdagende gebieden (Samenvatting)",
+    "bestPerforming": "Beste prestaties (Samenvatting)",
+    "recommendations": "Aanbevelingen",
+    "fullReport": "Volledig activiteitenrapport",
+    "recentActivities": "Recente activiteiten",
+    "successLabel": "Succes",
+    "errorLabel": "Fout",
+    "attemptsLabel": "Pogingen",
+    "noChallengesFound": "Geen grote uitdagingen gevonden. Goed gedaan!",
+    "noSuccessDataYet": "Er moeten meer activiteiten worden voltooid om succesgegevens te verzamelen.",
+    "noRecentActivities": "Nog geen activiteiten voltooid.",
+    "recommendationFocusOn": "Je kunt beginnen met focussen op de activiteit \"{activityName}\" waar je kind het meest moeite mee heeft.",
+    "recommendationModel": "Als je deze activiteit opnieuw speelt, kun je een voorbeeld zijn en samen de juiste antwoorden vinden.",
+    "recommendationReinforce": "Je kind is erg succesvol in \"{activityName}\"! Probeer soortgelijke activiteiten om het zelfvertrouwen in dit gebied te versterken.",
+    "recommendationGeneral": "Ga door met leren! Probeer activiteiten uit verschillende categorieën om nieuwe vaardigheden te ontwikkelen."
+  },
+  "programReport": {
+    "title": "Voortgang Programmamodus",
+    "currentUnit": "Huidige eenheid",
+    "unlockedUnits": "Gedeblokkeerde eenheden",
+    "progress": "Voortgang",
+    "completed": "Alle eenheden voltooid! Geweldig!",
+    "advanced": "Gevorderd niveau! Je bent in eenheid {unit}.",
+    "progressing": "Mooie voortgang! Je bent in eenheid {unit}.",
+    "beginning": "Beginfase. Ga zo door!",
+    "notStarted": "Nog niet gestart",
+    "paceHint": "Aanbevolen tempo: maximaal 3 eenheden per dag."
+  },
+  "activityMgmt": {
+    "enableAll": "Alles inschakelen",
+    "enableAllHelp": "Alle activiteiten in deze categorie in-/uitschakelen",
+    "title": "Activiteitenbeheer",
+    "objects": "Objecten leren",
+    "concepts": "Conceptactiviteiten",
+    "reasoning": "Logische spellen",
+    "fineMotor": "Fijne motoriek",
+    "lineTracing": "Lijnvolgen",
+    "shapeColoring": "Vormen inkleuren",
+    "rhythmFollowing": "Ritme volgen"
+  },
+  "parentTips": {
+    "guide": "App-gids",
+    "learnTogether": {
+      "title": "Samen leren",
+      "text": "Doe activiteiten samen met je kind. Herhaal de namen van objecten en stel er vragen over (\"Waar woont dit dier?\", \"Hoe smaakt dit fruit?\"). Dit ondersteunt de taalontwikkeling en versterkt jullie band."
+    },
+    "profile": {
+      "title": "Profielbeheer (optioneel)",
+      "text": "Bij de eerste start maakt de app automatisch een 'Gast'-profiel aan. Wil je meerdere kinderen apart volgen, dan kun je in het menu Instellingen nieuwe profielen aanmaken of wisselen tussen bestaande profielen."
+    },
+    "settings": {
+      "title": "Instellingen verkennen",
+      "themed": {
+        "title": "Thema-interface",
+        "text": "Verander het uiterlijk van de app. De modus 'Thema' heeft levendige achtergronden, terwijl 'Eenvoudig' een zachter kleurenpalet biedt."
+      },
+      "fastMode": {
+        "title": "Snelle modus",
+        "text": "Verkort feedback en versnelt overgangen tussen activiteiten."
+      },
+      "ban": {
+        "title": "Afbeelding verbannen",
+        "text": "Als je kind een afbeelding niet leuk vindt, schakel dan 'Afbeelding verbannen' in bij Instellingen en gebruik de ban-knop tijdens activiteiten om deze later te verbergen."
+      }
+    },
+    "progress": {
+      "title": "Voortgang bijhouden",
+      "achievements": {
+        "title": "Prestaties-tabblad",
+        "text": "Toont welke categorieën je kind beheerst. Verdien een badge door een activiteit 3 keer perfect te voltooien!"
+      },
+      "report": {
+        "title": "Voortgangsrapport",
+        "text": "Benadrukt de meest uitdagende en meest succesvolle activiteiten voor je kind."
+      }
+    },
+    "communication": {
+      "title": "Communicatiekaarten",
+      "text": "Help je kind behoeften, gevoelens of verzoeken te uiten via het onderdeel Communicatiekaarten."
+    },
+    "customize": {
+      "title": "Activiteiten aanpassen",
+      "text": "Gebruik Activiteitenbeheer in Instellingen om je te richten op specifieke vaardigheden of tijdelijk activiteiten uit te schakelen waarvoor je kind nog niet klaar is."
+    },
+    "randomMode": {
+      "title": "Probeer Willekeurige modus",
+      "text": "Biedt een willekeurige mix van alle ingeschakelde oefeningen uit verschillende categorieën om het leren op een leuke manier te versterken."
+    },
+    "extra": {
+      "title": "Extra tips",
+      "practice": {
+        "title": "Oefenmodus (binnenkort)",
+        "text": "Binnenkort kun je een 'Oefensessie' starten op basis van de activiteiten waar je kind het meest moeite mee heeft."
+      }
+    }
+  },
+  "programMode": {
+    "menuTitle": "Programmamodus",
+    "menuSubtitle": "Start een begeleide dagelijkse sessie",
+    "title": "Programmamodus",
+    "subtitle": "Ontwikkel vaardigheden via 10 eenheden met een begeleid plan.",
+    "devWarningTitle": "Experimenteel: Programmamodus",
+    "devWarningDesc": "Deze modus is nog in ontwikkeling. Eenheidsvoortgang kan soms onverwacht zijn. Deel a.u.b. problemen of feedback.",
+    "betaTag": "Experimenteel",
+    "forParents": "Korte uitleg voor ouders",
+    "unitShort": "Eenheid",
+    "start": "Programmamodus starten",
+    "badge": "Programmamodus",
+    "unitProgress": "Eenheid Voortgang",
+    "completed": "Voltooid",
+    "dailyLimitReached": "Dagelijkse limiet bereikt",
+    "dailyLimitMessage": "Je kunt maximaal 3 eenheden per dag vooruitgaan. Kom morgen terug!",
+    "dailyLimitNote": "Dagelijkse eenhedenlimiet (3) bereikt. Ga vandaag verder met versterking.",
+    "dailyLimitRemaining": "Dagelijkse voortgang: {used}/3",
+    "minutesAbbrev": "min",
+    "jokerActive": "Joker Recht Actief",
+    "todaySession": "Programma van vandaag",
+    "alreadyDone": "Vandaag gedaan",
+    "warmup": "Opwarming",
+    "newContent": "Nieuwe inhoud",
+    "reinforcement": "Versterking",
+    "noReinforcementToday": "Vandaag geen versterking (geen zwakke activiteiten gevonden).",
+    "allComplete": "Gefeliciteerd!",
+    "allCompleteDesc": "Alle activiteiten voltooid!",
+    "noActivities": "Alle activiteiten voltooid!",
+    "sessionRulesTitle": "Sessieregels",
+    "unitDetails": "Eenheidsdetails",
+    "unlockHint": "Ontgrendelt wanneer vorige eenheid 80% bereikt",
+    "activityCountLabel": "{count} activiteiten",
+    "tabs": {
+      "today": "Vandaag",
+      "progress": "Voortgang",
+      "units": "Eenheden"
+    },
+    "progress": {
+      "activity": "Activiteit {current}/{total}",
+      "round": "Ronde {current}/{total}"
+    },
+    "explainer": {
+      "point1": "Biedt een korte, gerichte flow van concreet naar abstract.",
+      "point2": "10-eenheden piramide: Hallo Wereld (Eenheid 1) → Meesterschap (Eenheid 10).",
+      "point3": "Elke activiteit wordt beoordeeld met brede pool (15 pogingen, 80%) en smalle pool (2 perfect).",
+      "point4": "Maximum 3 eenheden per dag mogelijk. Vrije modus weegt voor 50% mee.",
+      "point5": "Ouders kunnen tijdelijk deblokkeren met 'Joker Recht' (gratis voor alle gebruikers)."
+    },
+    "sessionRules": {
+      "title": "Regels van Programma‑modus",
+      "warmup": "Opwarming: 1-2 beheerste activiteiten",
+      "newContent": "Nieuwe inhoud: 2-3 gedeblokkeerde activiteiten",
+      "reinforcement": "Versterking: 1-2 bijna beheerste activiteiten",
+      "dailyLimit": "Dagelijkse limiet: Maximaal 3 eenheden vooruitgang",
+      "jokerInfo": "Joker Recht: Tijdelijke deblokkering (4/12/24/48/72 uur)",
+      "freeMode": "Vrije modus: Beoordeeld met 50% weging"
+    },
+    "rules": {
+      "count": "Activiteiten per sessie:",
+      "activityWord": "activiteiten",
+      "warmupWord": "opwarming",
+      "newWord": "nieuwe inhoud",
+      "reinforcementWord": "versterking",
+      "selection": "Selectielogica:",
+      "selectionDesc": "Opwarming (1 beheerst) → Nieuwe inhoud (focus‑eenheid, nooit geprobeerd krijgt prioriteit) → Versterking (0–2 zwakste uit vorige eenheden)",
+      "coverageFirst": "Dekking eerst:",
+      "coverageFirstDesc": "Als de focus‑eenheid nog ongeprobeerde inhoud bevat, Nieuwe inhoud +1 en Versterking −1. Zorgt voor eerste blootstelling aan elke vaardigheid.",
+      "failure": "Bij mislukking:",
+      "failureDesc": "Activiteit wordt afgerond, score wordt opgeslagen. Als niet beheerst, komt deze op latere dagen terug.",
+      "unlocking": "Ontgrendelvoorwaarde:",
+      "unlockingDesc": "Elke activiteit in de eenheid moet minimaal één keer geprobeerd zijn en gemiddeld succes ≥ 80% (Vrij + Programma samen).",
+      "mastery": "Beheersingsregels:",
+      "widePool": "Brede pool",
+      "widePoolDesc": "(Kleuren, Vormen, etc.): 80% succes in de laatste 5 pogingen",
+      "narrowPool": "Smalle pool",
+      "narrowPoolDesc": "(5W1H, Gelijk/Anders, etc.): 2 perfecte sessies (100%)",
+      "daily": "Dagelijkse limiet:",
+      "dailyDesc": "Maximaal 3 eenheden vooruitgang per dag (aanbevolen bovengrens om te voorkomen dat je te snel gaat)",
+      "dailyPremium": "Premium:",
+      "dailyPremiumDesc": "Geen dagelijkse limiet; gedeblokkeerde eenheden vrij speelbaar.",
+      "joker": "Joker:",
+      "jokerDesc": "Ouders kunnen tijdelijk een vergrendelde activiteit ontgrendelen; de beheersingsregels blijven gelden.",
+      "progressDisplay": "Weergegeven %:",
+      "progressDisplayDesc": "Het eenheidspercentage volgt het gecombineerde succes in het ouderrapport (Vrij + Programma totaal).",
+      "progressFormula": "Vroege voortgangsformule:",
+      "progressFormulaDesc": "40% Dekking + 30% Nauwkeurigheid + 30% Beheersing (gedeeltelijke beheersing = venstervulling × succes). Voorbeeld: 76 → 82 → 88 → 94 → 100."
+    },
+    "unitNames": {
+      "1": "Hallo Wereld",
+      "2": "Fysieke Wereld",
+      "3": "Geheugen & Aandacht",
+      "4": "Eigenschappen I",
+      "5": "Eigenschappen II",
+      "6": "Patronen & Relaties",
+      "7": "Relatieve Concepten",
+      "8": "Oorzaak‑Gevolg & Volgorde",
+      "9": "Onderzoek & Analyse",
+      "10": "Beheersing"
+    },
+    "activityNames": {
+      "hayvanlar": "Dieren",
+      "meyveler": "Fruit",
+      "tasitlar": "Voertuigen",
+      "oyuncaklar": "Speelgoed",
+      "vucudun_bolumleri": "Lichaamsdelen",
+      "giysiler_aksesuarlar": "Kleding & Accessoires",
+      "ev_esyalari": "Huishoudelijke artikelen",
+      "mutfak_gerecleri": "Keukenbenodigdheden",
+      "icecekler": "Dranken",
+      "sebzeler": "Groenten",
+      "diger_yiyecekler": "Andere voedingsmiddelen",
+      "bitkiler": "Planten",
+      "aile_uyeleri": "Familieleden",
+      "meslekler": "Beroepen",
+      "mekanlar_odalar": "Plaatsen & Kamers",
+      "aletler": "Gereedschap",
+      "muzik_aletleri": "Muziekinstrumenten",
+      "okul_ofis_gerecleri": "School‑ & Kantoorbenodigdheden",
+      "dogal_yapilar_uzay": "Natuurlijke structuren & Ruimte",
+      "FiveWOneH_Who": "5W1H - Wie?",
+      "FiveWOneH_What": "5W1H - Wat?",
+      "FiveWOneH_Where": "5W1H - Waar?",
+      "FiveWOneH_When": "5W1H - Wanneer?",
+      "FiveWOneH_Why": "5W1H - Waarom?",
+      "FiveWOneH_How": "5W1H - Hoe?",
+      "Colors": "Kleuren",
+      "Shapes": "Vormen",
+      "LineTracing": "Lijntrekken",
+      "BigSmall": "Groot / Klein",
+      "InsideOutside": "Binnen / Buiten",
+      "OnUnder": "Op / Onder",
+      "ShapeColoring": "Vormen inkleuren",
+      "MemoryCards": "Geheugenkaarten",
+      "WhatDoesntBelong": "Wat hoort er niet bij?",
+      "FullEmpty": "Vol / Leeg",
+      "LongShort": "Lang / Kort",
+      "ThinThick": "Dun / Dik",
+      "WideNarrow": "Breed / Smal",
+      "FewMuch": "Weinig / Veel",
+      "OpenClosed": "Open / Gesloten",
+      "WetDry": "Nat / Droog",
+      "CleanDirty": "Schoon / Vies",
+      "HotCold": "Heet / Koud",
+      "HardSoft": "Hard / Zacht",
+      "Emotions": "Emoties",
+      "DayNight": "Dag / Nacht",
+      "DikenliPuruzsuz": "Stekelig / Glad",
+      "DugumCozuk": "Knoop / Losgemaakt",
+      "PatternCompletion": "Patroon voltooien",
+      "FunctionalMatching": "Functionele matching",
+      "RhythmFollowing": "Ritme volgen",
+      "BrokenIntact": "Kapot / Heel",
+      "RoughSmooth": "Ruw / Glad",
+      "HeavyLight": "Zwaar / Licht",
+      "BitterSweet": "Bitter / Zoet",
+      "RelativeBigSmall": "Relatief Groot / Klein",
+      "RelativeLongShort": "Relatief Lang / Kort",
+      "RelativeThinThick": "Relatief Dun / Dik",
+      "RelativeWideNarrow": "Relatief Breed / Smal",
+      "RelativeFewMuch": "Relatief Weinig / Veel",
+      "BeforeAfter": "Voor / Na",
+      "BelowAbove": "Onder / Boven",
+      "BesideOpposite": "Naast / Tegenover",
+      "InFrontOfBehind": "Voor / Achter",
+      "NearFar": "Dichtbij / Ver",
+      "HighLow": "Hoog / Laag",
+      "YesNo": "Ja / Nee",
+      "TazeBayat": "Vers / Oud",
+      "KirisikDuzgun": "Gekreukt / Glad",
+      "SivriKut": "Scherp / Bot",
+      "ParlakMat": "Glanzend / Mat",
+      "OldNew": "Oud / Nieuw",
+      "CauseEffect": "Oorzaak & Gevolg",
+      "SequencingStories": "Verhalen rangschikken",
+      "DragAndDropCounting": "Slepen & Neerzetten Tellen",
+      "DragAndDropPositioning": "Slepen & Neerzetten Positionering",
+      "HalfQuarterWhole": "Heel / Half / Kwart",
+      "MessyClean": "Rommelig / Netjes",
+      "StraightCurved": "Recht / Gebogen",
+      "Sudoku": "Visuele Sudoku",
+      "AliveLifeless": "Levend / Levenloos",
+      "Between": "Tussen",
+      "OddEven": "Oneven / Even",
+      "RelativeNearFar": "Relatief Dichtbij / Ver",
+      "RelativeHighLow": "Relatief Hoog / Laag",
+      "DerinSig": "Diep / Ondiep",
+      "KalabalikTenha": "Druk / Stil",
+      "HungryFull": "Hongerig / Vol",
+      "YoungOld": "Jong / Oud",
+      "LeftRight": "Links / Rechts",
+      "Senses": "Onze zintuigen",
+      "TembelCaliskan": "Lui / Hardwerkend",
+      "SeffafOpak": "Transparant / Ondoorzichtig",
+      "FastSlow": "Snel / Langzaam",
+      "FindTheSoundInImage": "Vind het geluid",
+      "FindTheLetter": "Vind de letter",
+      "FindTheLetterInGrid": "Letter‑raster",
+      "SoundPresence": "Geluid aanwezigheid",
+      "Syllabification": "Lettergrepen",
+      "EmbeddedStory": "Ingebed verhaal"
+    },
+    "planPreview": {
+      "title": "Verloop van vandaag",
+      "thisSession": "In deze sessie, op volgorde:",
+      "ifGood": "Als het goed gaat, volgende sessie:"
+    }
+  },
+  "developmentNotes": {
+    "title": "Geplande updates",
+    "subtitle": "Onze app blijft groeien! Bedankt voor je geduld.",
+    "modes": {
+      "title": "Modusontwikkelingen",
+      "programMode": "Programmamodus wordt uitgebreid",
+      "reinforcementMode": "Versterkingsmodus wordt toegevoegd",
+      "angerMode": "Zachte begeleidingsmodus: bij overmatige herhaling wordt de feedback geleidelijk en rustig wat steviger"
+    },
+    "content": {
+      "title": "Inhoud- en activiteitsuitbreidingen",
+      "newObjects": "Nieuwe objecten worden toegevoegd",
+      "objectCategories": "Objectcategorieën worden onderverdeeld in subcategorieën",
+      "activityAudio": "Activiteitsverhalen worden verhelderd",
+      "letterActivities": "Letteractiviteiten worden verbeterd",
+      "letterDrawing": "Letteroefeningen worden toegevoegd",
+      "freeGames": "Vrije spellen zoals galgje worden toegevoegd",
+      "fineMotor": "Fijne motoriek en hersenpellen worden verbeterd"
+    },
+    "languages": {
+      "title": "Taalstructuur en meertalige ondersteuning",
+      "existingReview": "Bestaande vreemde talen worden herzien",
+      "newLanguages": "Nieuwe talen worden toegevoegd",
+      "learningActivities": "Meertalige structuur wordt omgezet naar vreemde taal leeractiviteiten"
+    },
+    "themes": {
+      "title": "Thema- en visuele aanpassingen",
+      "redesign": "Thema's worden herontworpen"
+    },
+    "reports": {
+      "title": "Rapportage- en feedbacksysteem",
+      "improvedReports": "Rapportageniveau wordt verbeterd",
+      "detailedFeedback": "Niet alleen activiteitssucces, maar ook specifieke moeilijke objecten/concepten worden aangegeven"
+    }
+  }
+}

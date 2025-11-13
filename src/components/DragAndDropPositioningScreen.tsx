@@ -4,7 +4,7 @@ import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import { speak, playEffect } from '../services/speechService.ts';
 import SpeakerIcon from './icons/SpeakerIcon.tsx';
 import { useAutoSpeak } from '../hooks/useAutoSpeak.ts';
-import { getCurrentLanguage } from '../i18n/index.ts';
+import { getCurrentLanguage, t } from '../i18n/index.ts';
 import { translateQuestion } from '../utils/translate.ts';
 
 interface DragAndDropPositioningScreenProps {
@@ -178,7 +178,7 @@ const DragAndDropPositioningScreen: React.FC<DragAndDropPositioningScreenProps> 
                         <Zone position="solunda" gridClass="col-start-1 row-start-2" />
                         <div className="relative col-start-2 row-start-2">
                             <div className="absolute inset-0 bg-amber-300 rounded-2xl flex items-center justify-center shadow-lg">
-                                <span className="font-bold text-white text-xl landscape:text-base">KUTU</span>
+                                            <span className="font-bold text-white text-xl landscape:text-base">{t('reasoning.activities.dragAndDropPositioning.boxLabel', currentLang === 'tr' ? 'KUTU' : 'BOX')}</span>
                             </div>
                             <Zone position="içinde" gridClass="w-full h-full" />
                         </div>

@@ -1,7 +1,7 @@
 
-const CACHE_NAME = 'ilk-sozum-v2'; // Version bump to invalidate old cache
-const PLACEHOLDER_IMAGE = '/images/placeholder.png'; 
 
+const CACHE_NAME = 'ilk-sozum-v3-fivewoneh-fix'; // Version bump to invalidate old cache (Nov 13, 2025: fiveWOneH data alignment)
+const PLACEHOLDER_IMAGE = '/images/placeholder.png';
 // Files that constitute the essential "shell" of the application.
 // We only cache the absolute essentials. Dynamic content like images will be cached on first load.
 const APP_SHELL_FILES = [

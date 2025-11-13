@@ -6,6 +6,8 @@ import { translateLabel } from "../utils/translate.ts";
 import { imageData } from "../services/database/imageData.ts";
 import { ActivityStats } from "../types.ts";
 import ProgressIndicator from "./ui/ProgressIndicator.tsx";
+import CosmicBackdrop from "./ui/CosmicBackdrop.tsx";
+import PanelStars from "./ui/PanelStars.tsx";
 
 import {
   SIMPLE_THEME_COLORS,
@@ -47,6 +49,111 @@ const ObjectCategoriesMenuScreen: React.FC<ObjectCategoriesMenuScreenProps> = ({
     ...category,
     title: translateLabel(String(category.title), lang),
   }));
+
+  // Cosmic theme - deneme2: Planet-like menu buttons with space backdrop
+  if (theme === 'deneme2') {
+    return (
+      <>
+        <CosmicBackdrop variant="rich" />
+        <div className="relative z-10 flex h-full max-w-4xl landscape:max-w-6xl flex-col items-center justify-start animate-fade-in px-4 py-4 landscape:py-3 overflow-hidden">
+          <PanelStars count={96} />
+          <div className="relative mb-3 landscape:mb-2 flex w-full items-center">
+            <button
+              onClick={onBack}
+              className="absolute left-0 rounded-full p-2 bg-cyan-400/20 hover:bg-cyan-400/30 border border-cyan-300/40 backdrop-blur-sm transition-colors"
+              aria-label={t("app.back", "Go back")}
+              type="button"
+            >
+              <ArrowLeftIcon className="h-7 w-7 landscape:h-6 landscape:w-6 text-white drop-shadow" />
+            </button>
+            <div className="flex-1 flex justify-center">
+              <div className="inline-block px-6 py-2.5 rounded-full bg-gradient-to-r from-sky-600/80 via-cyan-500/80 to-indigo-600/80 border border-cyan-300/50 shadow-lg shadow-cyan-400/30 backdrop-blur-sm">
+                <h1 className="text-xl sm:text-2xl landscape:text-lg font-extrabold text-white drop-shadow">
+                  {titleOverride || t("menu.objects.title", "Nesneleri Tanıyalım")}
+                </h1>
+              </div>
+            </div>
+          </div>
+
+          <div className="animate-fade-in w-full flex-grow overflow-y-auto pr-2">
+            <div className="touch-pan-y grid grid-cols-2 gap-3 sm:gap-4 landscape:grid-cols-4">
+              {localizedCategories.map((category, idx) => {
+                const image = imageData.find((item) => item.id === category.imageId);
+                const stats =
+                  activityStats[category.id] || { attempts: 0, completions: 0, totalCorrect: 0, totalQuestions: 0 };
+                const isDisabled =
+                  Boolean((category as { disabled?: boolean }).disabled) || !enabledActivities.has(category.id);
+                const imageUrl = image?.imageUrl || "/images/placeholder.png";
+                const ringColors = [
+                  'from-cyan-400 via-blue-500 to-indigo-600',
+                  'from-sky-400 via-cyan-500 to-teal-500',
+                  'from-indigo-500 via-blue-500 to-cyan-400',
+                  'from-teal-500 via-cyan-500 to-blue-500',
+                ];
+                const ring = ringColors[idx % ringColors.length];
+
+                return (
+                  <div key={category.id} className="group relative">
+                    <button
+                      type="button"
+                      onClick={() => onSelectCategory(category.id)}
+                      disabled={isDisabled}
+                      className={`w-full min-h-[180px] landscape:min-h-[160px] flex flex-col items-center justify-start gap-2 rounded-2xl p-4 landscape:p-3 pt-4 landscape:pt-3 pb-12 landscape:pb-10 transition-all duration-200 ${isDisabled ? 'opacity-60' : 'hover:shadow-xl hover:-translate-y-1'} bg-white/5 border border-cyan-300/30 backdrop-blur-md`}
+                    >
+                      {/* Planet-like orb */}
+                      <div className={`relative flex items-center justify-center w-24 h-24 landscape:w-20 landscape:h-20 rounded-full bg-gradient-to-br ${ring} shadow-[0_0_24px_rgba(56,189,248,0.35)]`}> 
+                        <div className="absolute inset-0 rounded-full border border-white/20 opacity-70" />
+                        <div className="absolute -inset-1 rounded-full blur-xl bg-cyan-400/10" />
+                        <div className="relative flex items-center justify-center w-[76%] h-[76%] rounded-full bg-black/20 border border-white/20 overflow-hidden">
+                          <img src={imageUrl} alt={String(category.title)} className="w-14 h-14 landscape:w-12 landscape:h-12 object-contain drop-shadow" />
+                        </div>
+                      </div>
+                      <div className="mt-2 landscape:mt-1 text-center text-base landscape:text-sm font-bold leading-tight text-white drop-shadow-sm">
+                        {String(category.title)}
+                      </div>
+                      {stats.attempts > 0 && (
+                        <ProgressIndicator
+                          mode="aggregate"
+                          attempts={stats.attempts}
+                          completions={stats.completions}
+                          totalCorrect={stats.totalCorrect}
+                          totalQuestions={stats.totalQuestions}
+                        />
+                      )}
+                    </button>
+                    {onAddCategoryToPrintPool && isPremium && (
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const color = gradientPalette[(localizedCategories.indexOf(category)) % gradientPalette.length] as keyof typeof SIMPLE_THEME_COLORS;
+                          onAddCategoryToPrintPool(category.id, color);
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.stopPropagation();
+                            const color = gradientPalette[(localizedCategories.indexOf(category)) % gradientPalette.length] as keyof typeof SIMPLE_THEME_COLORS;
+                            onAddCategoryToPrintPool(category.id, color);
+                          }
+                        }}
+                        className="absolute top-2 right-2 p-2 rounded-full bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-300/50 shadow-md transition-all hover:scale-110 cursor-pointer z-10"
+                        title={t('print.addToPrintPool', 'Yazdırma Listesine Ekle')}
+                      >
+                        <svg className="w-4 h-4 text-cyan-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   // Simple2 teması - Simple ile aynı tasarım, mor/pembe renklerle
   if (isSimple2Theme) {

@@ -24,6 +24,9 @@ const ReasoningActivitiesMenuScreen = lazy(() => import('../ReasoningActivitiesM
 const SudokuScreen = lazy(() => import('../SudokuScreen.tsx'));
 const PatternCompletionScreen = lazy(() => import('../PatternCompletionScreen.tsx'));
 const MemoryCardsScreen = lazy(() => import('../MemoryCardsScreen.tsx'));
+const HangmanScreen = lazy(() => import('../HangmanScreen.tsx'));
+const ObjectCollectorScreen = lazy(() => import('../ObjectCollectorScreen.tsx'));
+const EmotionPuppetScreen = lazy(() => import('../EmotionPuppetScreen.tsx'));
 const PrivacyPolicyScreen = lazy(() => import('../PrivacyPolicyScreen.tsx'));
 const AchievementsScreen = lazy(() => import('../AchievementsScreen.tsx'));
 const ParentReportScreen = lazy(() => import('../ParentReportScreen.tsx'));
@@ -98,6 +101,26 @@ export const AppRouter = () => {
         }
     }, [screenState, relativeComparisonRounds.length, handleGoToMenu, ctx.toast]);
     
+    // Language validation for letter activities
+    useEffect(() => {
+        const lang = getCurrentLanguage();
+        const allowed = new Set(['tr','de','az','en','fr','nl']);
+        
+        if (screenState === ScreenState.LetterActivitiesMenu || screenState === ScreenState.LetterSelection) {
+            if (!allowed.has(lang)) {
+                ctx.toast.showToast(t('settings.languageNote', 'Letter activities are available in Turkish, German, Azerbaijani, English, French, and Dutch.'), 'info');
+                setScreenState(ScreenState.MainMenu);
+            }
+        }
+        
+        if (screenState === ScreenState.GroupSelection) {
+            if (lang !== 'tr' && lang !== 'az') {
+                ctx.toast.showToast(t('settings.languageNote', 'Syllabification is currently available only in Turkish and Azerbaijani.'), 'info');
+                setScreenState(ScreenState.MainMenu);
+            }
+        }
+    }, [screenState, ctx.toast]);
+    
     // Build a flattened list of object categories (roots + subcategories)
     const flattenedObjectCategories = useMemo(() => {
         const flat: Array<{ id: string; title: string; imageId?: number }> = [];
@@ -128,7 +151,7 @@ export const AppRouter = () => {
 
     const renderPlayingScreen = () => {
         const { activityData, currentIndex, activityType } = ctx.activity;
-        if (!activityData || activityData.length === 0 || currentIndex >= activityData.length) {
+        if (activityType !== ActivityType.Hangman && (!activityData || activityData.length === 0 || currentIndex >= activityData.length)) {
             return <MainMenuScreen onSelectCategory={() => {}} onStartRandomMode={ctx.activity.handleStartRandomMode} onSelectParentTips={() => setScreenState(ScreenState.ParentTips)} onSelectSettings={() => setScreenState(ScreenState.Settings)} theme={ctx.settings.theme}/>; // Fallback
         }
 
@@ -201,6 +224,30 @@ export const AppRouter = () => {
                 return <>
                     {renderProgramModeOverlay()}
                     <SudokuScreen roundData={currentData} {...commonProps} onBack={onBackToReasoning} isAutoSpeakEnabled={ctx.settings.isAutoSpeakEnabled} isWordLabelVisible={ctx.settings.isWordLabelVisible} onToggleWordLabel={ctx.settings.handleToggleWordLabel} />
+                </>;
+            case ActivityType.Hangman:
+                return <>
+                    <HangmanScreen onBack={onBackToReasoning} />
+                </>;
+            case ActivityType.ObjectCollector:
+                return <>
+                    {renderProgramModeOverlay()}
+                    <ObjectCollectorScreen 
+                        onBack={onBackToReasoning} 
+                        targetCategory={currentData.category}
+                        targetObjects={currentData.targetObjects}
+                        distractorObjects={currentData.distractorObjects}
+                        onComplete={(_score, isCorrect) => ctx.activity.handleAdvance(isCorrect)}
+                    />
+                </>;
+            case ActivityType.EmotionPuppet:
+                return <>
+                    {renderProgramModeOverlay()}
+                    <EmotionPuppetScreen 
+                        roundData={currentData}
+                        {...commonProps}
+                        onBack={onBackToReasoning}
+                    />
                 </>;
             case ActivityType.PatternCompletion:
                 return <>
@@ -293,7 +340,8 @@ export const AppRouter = () => {
             onSelectCategory={async (category) => {
                 if (category === 'letterSound') {
                     const lang = getCurrentLanguage();
-                    if (lang !== 'tr') {
+                    const allowed = new Set(['tr','de','az','en','fr','nl']);
+                    if (!allowed.has(lang)) {
                         ctx.toast.showToast(t('settings.languageNote', 'Letter activities are currently Turkish-only.'), 'info');
                         return;
                     }
@@ -346,7 +394,7 @@ export const AppRouter = () => {
 
                     setScreenState(ScreenState.Loading);
                     const { fetchConceptActivityData } = await import('../../services/contentService.ts');
-                    const base = await fetchConceptActivityData(ActivityType.FiveWOneH, ctx.profile.activityStats);
+                    const base = await fetchConceptActivityData(ActivityType.FiveWOneH, ctx.profile.activityStats, undefined, ctx.settings.isPremium);
 
                     let data = base;
                     if (cat !== 'Karışık') {
@@ -364,16 +412,11 @@ export const AppRouter = () => {
                         setScreenState(ScreenState.FiveWOneHMenu);
                     }
                 }}
-                onBack={() => { ctx.activity.setSelectedFiveWOneHKey(null); setScreenState(ScreenState.ReasoningActivitiesMenu); }}
+                onBack={() => { ctx.activity.setSelectedFiveWOneHKey(null); setScreenState(ScreenState.MainMenu); }}
+                theme={ctx.settings.theme}
             />;
         }
         case ScreenState.LetterActivitiesMenu: {
-            const lang = getCurrentLanguage();
-            if (lang !== 'tr') {
-                ctx.toast.showToast(t('settings.languageNote', 'Letter activities are currently Turkish-only.'), 'info');
-                setScreenState(ScreenState.MainMenu);
-                return <MainMenuScreen onSelectCategory={() => {}} onStartRandomMode={ctx.activity.handleStartRandomMode} onSelectParentTips={() => setScreenState(ScreenState.ParentTips)} onSelectSettings={() => setScreenState(ScreenState.Settings)} theme={ctx.settings.theme}/>;
-            }
             return <LetterActivitiesMenuScreen onSelectActivity={(act) => {
             if (act === ActivityType.Syllabification) {
                 ctx.activity.setActivityType(ActivityType.Syllabification);
@@ -386,22 +429,10 @@ export const AppRouter = () => {
         }
         
         case ScreenState.LetterSelection: {
-            const lang = getCurrentLanguage();
-            if (lang !== 'tr') {
-                ctx.toast.showToast(t('settings.languageNote', 'Letter activities are currently Turkish-only.'), 'info');
-                setScreenState(ScreenState.MainMenu);
-                return <MainMenuScreen onSelectCategory={() => {}} onStartRandomMode={ctx.activity.handleStartRandomMode} onSelectParentTips={() => setScreenState(ScreenState.ParentTips)} onSelectSettings={() => setScreenState(ScreenState.Settings)} theme={ctx.settings.theme} />;
-            }
             return <LetterSelectionScreen onSelectLetter={ctx.activity.handleStartActivityWithLetter} onBack={() => setScreenState(ScreenState.LetterActivitiesMenu)} activityType={ctx.activity.selectedActivityForLetter} activityStats={ctx.profile.activityStats} theme={ctx.settings.theme} />;
         }
         
         case ScreenState.GroupSelection: {
-            const lang = getCurrentLanguage();
-            if (lang !== 'tr') {
-                ctx.toast.showToast(t('settings.languageNote', 'Letter activities are currently Turkish-only.'), 'info');
-                setScreenState(ScreenState.MainMenu);
-                return <MainMenuScreen onSelectCategory={() => {}} onStartRandomMode={ctx.activity.handleStartRandomMode} onSelectParentTips={() => setScreenState(ScreenState.ParentTips)} onSelectSettings={() => setScreenState(ScreenState.Settings)} theme={ctx.settings.theme} />;
-            }
             return <GroupSelectionScreen onSelectGroup={async (groupNumber) => {
             ctx.profile.updateActivityAttempt(`${ActivityType.Syllabification}-${groupNumber}`);
             ctx.profile.updateActivityAttempt(String(ActivityType.Syllabification));
@@ -550,7 +581,7 @@ export const AppRouter = () => {
             ctx.activity.setActivityType(act);
             setScreenState(ScreenState.Loading);
                     const { fetchConceptActivityData } = await import('../../services/contentService.ts');
-                    const data = await fetchConceptActivityData(act, ctx.profile.activityStats);
+                    const data = await fetchConceptActivityData(act, ctx.profile.activityStats, undefined, ctx.settings.isPremium);
             if(data.length > 0) {
                 ctx.activity.setActivityData(data);
                 ctx.activity.setCurrentIndex(0);
@@ -563,18 +594,28 @@ export const AppRouter = () => {
         }} onBack={handleGoToMenu} activeCategory={ctx.navigation.activeConceptTab} onSelectCategory={ctx.navigation.setActiveConceptTab} activityStats={ctx.profile.activityStats} theme={ctx.settings.theme} enabledActivities={ctx.profile.enabledActivitiesSet}/>;
       
         case ScreenState.ReasoningActivitiesMenu: return <ReasoningActivitiesMenuScreen onSelectActivity={async (act) => {
-            // 5N1K has its own category selection menu
+            // Special cases for reasoning menu
             if (act === ActivityType.FiveWOneH) {
                 setScreenState(ScreenState.FiveWOneHMenu);
                 return;
             }
-            
+            // Hangman is a self-contained mini game (no external content, no stats)
+            if (act === ActivityType.Hangman) {
+                ctx.activity.setActivityType(act);
+                // Provide a placeholder round so Playing screen renders
+                ctx.activity.setActivityData([{ id: 'hangman-placeholder' }]);
+                ctx.activity.setCurrentIndex(0);
+                ctx.activity.setScore(0);
+                setScreenState(ScreenState.Playing);
+                return;
+            }
+            // Normal reasoning/concept flow
             ctx.profile.updateActivityAttempt(String(act));
             ctx.activity.setActivityType(act);
             setScreenState(ScreenState.Loading);
             const { fetchConceptActivityData } = await import('../../services/contentService.ts');
-            const data = await fetchConceptActivityData(act, ctx.profile.activityStats);
-            if(data.length > 0) {
+            const data = await fetchConceptActivityData(act, ctx.profile.activityStats, undefined, ctx.settings.isPremium);
+            if (data.length > 0) {
                 ctx.activity.setActivityData(data);
                 ctx.activity.setCurrentIndex(0);
                 ctx.activity.setScore(0);
@@ -590,7 +631,7 @@ export const AppRouter = () => {
             ctx.activity.setActivityType(act);
             setScreenState(ScreenState.Loading);
             const { fetchConceptActivityData } = await import('../../services/contentService.ts');
-            const data = await fetchConceptActivityData(act, ctx.profile.activityStats);
+            const data = await fetchConceptActivityData(act, ctx.profile.activityStats, undefined, ctx.settings.isPremium);
             if(data.length > 0) {
                 ctx.activity.setActivityData(data);
                 ctx.activity.setCurrentIndex(0);
@@ -607,7 +648,7 @@ export const AppRouter = () => {
             ctx.activity.setActivityType(act);
             setScreenState(ScreenState.Loading);
             const { fetchConceptActivityData } = await import('../../services/contentService.ts');
-            const data = await fetchConceptActivityData(act, ctx.profile.activityStats);
+            const data = await fetchConceptActivityData(act, ctx.profile.activityStats, undefined, ctx.settings.isPremium);
             if(data.length > 0) {
                 ctx.activity.setActivityData(data);
                 ctx.activity.setCurrentIndex(0);
@@ -632,6 +673,8 @@ export const AppRouter = () => {
             masteredObjectCategories={new Set()}
             profileId={ctx.profile.activeProfile?.id || undefined}
             lastSessionDate={window.localStorage.getItem(`lastProgramSession_${ctx.profile.activeProfile?.id}`) || undefined}
+            isPremium={ctx.settings.isPremium}
+            parentOverrides={ctx.profile.parentOverrides}
         />;
 
         case ScreenState.Playing: return renderPlayingScreen();
@@ -665,6 +708,11 @@ export const AppRouter = () => {
             ctx.setCategoryToManage(cat);
             setScreenState(ScreenState.ActivityManagement);
         }} showPremiumToast={ctx.toast.showPremiumToast} onSelectAchievements={() => setScreenState(ScreenState.Achievements)}
+        onRestorePurchases={async () => {
+            // Pass all profile IDs for migration attempt
+            const profileIds = ctx.profile.profiles.map(p => p.id);
+            return await ctx.settings.handleRestorePurchases(profileIds);
+        }}
         parentOverrides={ctx.profile.parentOverrides}
         onAddParentOverride={ctx.profile.handleAddParentOverride}
         onRemoveParentOverride={ctx.profile.handleRemoveParentOverride}

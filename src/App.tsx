@@ -1,6 +1,6 @@
 
 import React, { Suspense, useMemo, useEffect, useState } from 'react';
-import { applyDocumentLanguage, getCurrentLanguage } from './i18n/index.ts';
+import { applyDocumentLanguage, getCurrentLanguage, t } from './i18n/index.ts';
 import { setSpeechLanguage } from './services/speechService.ts';
 import { AppContext, IAppContext } from './contexts/AppContext.ts';
 import { useAppCore } from './hooks/useAppCore.ts';
@@ -14,6 +14,7 @@ import BottomNavBar from './components/BottomNavBar.tsx';
 import { AppRouter } from './components/navigation/AppRouter.tsx';
 import BasketIcon from './components/icons/BasketIcon.tsx';
 import VideoBackground from './components/VideoBackground.tsx';
+import AmbientSound from './components/AmbientSound.tsx';
 import PrivacyConsentModal from './components/PrivacyConsentModal.tsx';
 
 export default function App(): React.ReactNode {
@@ -51,6 +52,20 @@ export default function App(): React.ReactNode {
     applyDocumentLanguage();
     // Update speech language
     setSpeechLanguage(getCurrentLanguage());
+    // Update document title based on language
+    const appName = t('app.name', 'İlk Sözüm: Otizm & Okul Öncesi');
+    document.title = appName;
+    // Update meta description
+    const appDescription = t('app.description', 'Çocuklar için kelimeleri, kavramları ve sesleri öğreten interaktif eğitici kartlar.');
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', appDescription);
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = appDescription;
+      document.head.appendChild(meta);
+    }
   }, [settings.language]);
 
   // Keep consent shown until accepted; don't show over the policy screen
@@ -77,6 +92,7 @@ export default function App(): React.ReactNode {
     <AppContext.Provider value={appCore as IAppContext}>
       <div className={`relative w-screen h-screen transition-colors duration-500 ${background.type === 'gradient' ? background.value : ''} flex flex-col`}>
         {background.type === 'video' && <VideoBackground key={background.value} src={background.value} />}
+        <AmbientSound theme={settings.theme} />
         <Suspense fallback={<div className="flex items-center justify-center h-full"><Spinner /></div>}>
           <div className={`w-full flex-grow min-h-0 overflow-y-auto overflow-x-hidden ${!settings.isPremium ? 'pt-16' : ''} ${showNavBar ? 'pb-20 landscape:pb-0 landscape:pl-20' : ''}`}>
              <AppRouter />

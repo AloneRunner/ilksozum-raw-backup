@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import { speak, playEffect } from '../services/speechService.ts';
 import { useAutoSpeak } from '../hooks/useAutoSpeak.ts';
+import { getCurrentLanguage, t } from '../i18n/index.ts';
+import { getAlphabet } from '../data/alphabets.ts';
 
 interface LetterGridScreenProps {
   letter: string;
@@ -10,21 +12,29 @@ interface LetterGridScreenProps {
   isAutoSpeakEnabled: boolean;
 }
 
-const ALPHABET = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
-const LOWER_ALPHABET = "abcçdefgğhıijklmnoöprsştuüvyz";
+// Helper: locale tag for casing rules
+const getLocaleTag = (lang: ReturnType<typeof getCurrentLanguage>) => {
+    switch (lang) {
+        case 'tr': return 'tr-TR';
+        case 'de': return 'de-DE';
+        case 'az': return 'az-AZ';
+        default: return lang;
+    }
+};
 
-const generateGrid = (targetLetter: string): string[] => {
+const generateGrid = (targetLetter: string, lang: ReturnType<typeof getCurrentLanguage>): string[] => {
     const gridSize = 25; // 5x5 grid
     const grid = new Array(gridSize).fill('');
-    const upperCaseTarget = targetLetter.toLocaleUpperCase('tr-TR');
+    const locale = getLocaleTag(lang);
+    const upperCaseTarget = targetLetter.toLocaleUpperCase(locale);
     
+    // Determine the display lowercase form of the target
     let lowerCaseTarget: string;
-    if (upperCaseTarget === 'A') {
-        lowerCaseTarget = 'ɑ'; // Special school 'a'
-    } else if (upperCaseTarget === 'İ') {
-        lowerCaseTarget = 'i';
+    if (lang === 'tr' && upperCaseTarget === 'A') {
+        // Turkish “school a” glyph for visual distinction
+        lowerCaseTarget = 'ɑ';
     } else {
-        lowerCaseTarget = upperCaseTarget.toLocaleLowerCase('tr-TR');
+        lowerCaseTarget = upperCaseTarget.toLocaleLowerCase(locale);
     }
 
     const totalTargets = Math.floor(Math.random() * 2) + 5; // 5-6 targets
@@ -50,9 +60,15 @@ const generateGrid = (targetLetter: string): string[] => {
         }
     }
     
-    // Fill the rest with random letters
-    const allLetters = (ALPHABET + LOWER_ALPHABET.replace('a','ɑ')).split('');
-    const distractors = allLetters.filter(l => l !== upperCaseTarget && l !== lowerCaseTarget);
+    // Build letter pool (upper+lower) from current language alphabet
+    const baseAlphabet = getAlphabet(lang);
+    const letterForms: string[] = [];
+    for (const L of baseAlphabet) {
+        const U = L.toLocaleUpperCase(locale);
+        const lower = (lang === 'tr' && U === 'A') ? 'ɑ' : U.toLocaleLowerCase(locale);
+        letterForms.push(U, lower);
+    }
+    const distractors = letterForms.filter(l => l !== upperCaseTarget && l !== lowerCaseTarget);
     for (let i = 0; i < gridSize; i++) {
         if (grid[i] === '') {
             grid[i] = distractors[Math.floor(Math.random() * distractors.length)];
@@ -68,37 +84,39 @@ const LetterGridScreen: React.FC<LetterGridScreenProps> = ({ letter, onAdvance, 
     const [totalTargets, setTotalTargets] = useState(0);
     const [mistakeMade, setMistakeMade] = useState(false);
     const [isWrong, setIsWrong] = useState(false);
+    const lang = getCurrentLanguage();
+    const locale = getLocaleTag(lang);
     
-    const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+    const upperCaseLetter = letter.toLocaleUpperCase(locale);
     let lowerCaseTarget: string;
-    if (upperCaseLetter === 'A') {
+    if (lang === 'tr' && upperCaseLetter === 'A') {
         lowerCaseTarget = 'ɑ';
-    } else if (upperCaseLetter === 'İ') {
-        lowerCaseTarget = 'i';
     } else {
-        lowerCaseTarget = upperCaseLetter.toLocaleLowerCase('tr-TR');
+        lowerCaseTarget = upperCaseLetter.toLocaleLowerCase(locale);
     }
 
-    const question = `Tabloda gizlenen bütün '${upperCaseLetter}' harflerini bul.`;
+    const question = t('letters.grid.findAll', `Tabloda gizlenen bütün "{letter}" harflerini bul.`).replace('{letter}', upperCaseLetter);
     useAutoSpeak(question, isAutoSpeakEnabled, letter);
 
     useEffect(() => {
-        const newGrid = generateGrid(letter);
+        const newGrid = generateGrid(letter, lang);
         setGrid(newGrid);
         setFoundLetters([]);
         setMistakeMade(false);
         setIsWrong(false);
         setTotalTargets(newGrid.filter(l => l === upperCaseLetter || l === lowerCaseTarget).length);
-    }, [letter, upperCaseLetter, lowerCaseTarget]);
+    }, [letter, upperCaseLetter, lowerCaseTarget, lang]);
 
-    const handleCellClick = (clickedLetter: string, index: number) => {
+    const handleCellClick = async (clickedLetter: string, index: number) => {
         if (foundLetters.includes(index)) return;
 
         if (clickedLetter === upperCaseLetter || clickedLetter === lowerCaseTarget) {
             const newFound = [...foundLetters, index];
             setFoundLetters(newFound);
-            playEffect('correct');
-            speak(upperCaseLetter);
+            
+            // Play sounds sequentially to avoid interruption
+            await playEffect('correct');
+            await speak(upperCaseLetter);
 
             if (newFound.length === totalTargets) {
                 setTimeout(() => onAdvance(!mistakeMade), 1000);
@@ -120,7 +138,7 @@ const LetterGridScreen: React.FC<LetterGridScreenProps> = ({ letter, onAdvance, 
                         <ArrowLeftIcon className="w-8 h-8 text-sky-700" />
                     </button>
                     <h1 className="text-2xl sm:text-3xl font-black text-sky-800">
-                        Tüm <span className="text-red-500 font-black text-3xl sm:text-4xl">{`"${upperCaseLetter}"`}</span> harflerini bul
+                        {t('letters.grid.findAll.short', 'Tüm {letter} harflerini bul').replace('{letter}', `"${upperCaseLetter}"`)}
                     </h1>
                      <div className="text-3xl sm:text-4xl font-bold text-white bg-sky-500 px-6 py-3 rounded-full shadow-lg">
                         {foundLetters.length}/{totalTargets}

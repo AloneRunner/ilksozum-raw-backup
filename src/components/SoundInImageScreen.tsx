@@ -8,6 +8,7 @@ import EyeIcon from './icons/EyeIcon.tsx';
 import EyeSlashIcon from './icons/EyeSlashIcon.tsx';
 import BanIcon from './icons/BanIcon.tsx';
 import { useAutoSpeak } from '../hooks/useAutoSpeak.ts';
+import { t, getCurrentLanguage } from '../i18n/index.ts';
 
 interface SoundInImageScreenProps {
     roundData: Word;
@@ -34,8 +35,10 @@ const SoundInImageScreen: React.FC<SoundInImageScreenProps> = ({
     const [mistakeMade, setMistakeMade] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
-    const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
-    const question = `İçinde "${upperCaseLetter}" sesi olan hangisi?`;
+    const lang = getCurrentLanguage();
+    const letterLocale = (lang === 'tr' ? 'tr-TR' : lang === 'de' ? 'de-DE' : lang === 'az' ? 'az-AZ' : 'en-US');
+    const upperCaseLetter = letter.toLocaleUpperCase(letterLocale);
+    const question = t('letters.findSoundInImage.question', "İçinde '{letter}' sesi olan hangisi?").replace('{letter}', upperCaseLetter);
 
     useAutoSpeak(question, isAutoSpeakEnabled, roundData.id);
 
@@ -64,7 +67,8 @@ const SoundInImageScreen: React.FC<SoundInImageScreenProps> = ({
             if (isFastTransitionEnabled) {
                 await playEffect('correct');
             } else {
-                await speak(`Evet, bu ${option.word}.`);
+                const msg = t('letters.findSoundInImage.correct', 'Evet, bu {word}.').replace('{word}', option.word);
+                await speak(msg);
             }
             setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
         } else {
@@ -73,7 +77,8 @@ const SoundInImageScreen: React.FC<SoundInImageScreenProps> = ({
             if (isFastTransitionEnabled) {
                 await playEffect('incorrect');
             } else {
-                await speak(`Hayır, bu ${option.word}.`);
+                const msg = t('letters.findSoundInImage.incorrect', 'Hayır, bu {word}.').replace('{word}', option.word);
+                await speak(msg);
             }
             setTimeout(() => {
                 setIsWrong(null);
@@ -147,10 +152,10 @@ const SoundInImageScreen: React.FC<SoundInImageScreenProps> = ({
                 </div>
                 <div className="hidden landscape:flex landscape:w-64 sm-landscape:w-56 landscape:flex-shrink-0 flex-col items-center gap-3">
                     <div className="p-3 rounded-xl bg-white/60 shadow-inner text-sky-800 font-semibold">
-                        İpucu: Sesi dinle ve ilk harfe dikkat et.
+                        {t('letters.findSoundInImage.hint', 'İpucu: Sesi dinle ve ilk harfe dikkat et.')}
                     </div>
                     <button onClick={handleSpeak} className="w-full py-3 rounded-lg bg-sky-500 text-white font-bold shadow hover:bg-sky-600">
-                        Soruyu Tekrar Dinle
+                        {t('letters.findSoundInImage.repeatButton', 'Soruyu Tekrar Dinle')}
                     </button>
                 </div>
             </div>

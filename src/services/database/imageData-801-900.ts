@@ -367,7 +367,7 @@ export const imageData_801_900: ImageMetadata[] = [
     "imageUrl": "/images/831.png",
     "audioKeys": { "default": "öğrenci" },
     "tags": {
-      "category": "MesleklerS",
+      "category": "Meslekler",
       "lifeform": "canlı",
       "syllables": ["öğ", "ren", "ci"],
       "letters": ["Ö", "Ğ", "R", "E", "N", "C", "İ"]

@@ -168,7 +168,7 @@ const ActivityManagementScreen: React.FC<ActivityManagementScreenProps> = ({
     if (category === ActivityCategory.Reasoning && typeof activityId === 'number') {
       switch (activityId) {
         case ActivityType.WhatDoesntBelong: return t('reasoning.activities.whatDoesntBelong.title', fallback);
-        case ActivityType.FunctionalMatching: return t('reasoning.activities.functionalMatching.title', fallback);
+        // FunctionalMatching removed - now integrated into 5N1K "What?" category
         case ActivityType.CauseEffect: return t('reasoning.activities.causeEffect.title', fallback);
         case ActivityType.SequencingStories: return t('reasoning.activities.sequencingStories.title', fallback);
         case ActivityType.PatternCompletion: return t('reasoning.activities.patternCompletion.title', fallback);

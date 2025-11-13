@@ -1,0 +1,50 @@
+{
+  "letters": {
+    "groups": "Gruplar",
+    "letters": "Harfler",
+    "selectLetterPrompt": "Alıştırma yapmak için bir harf seç.",
+    "selectActivity": "Etkinlik Seç",
+    "menuSubtitle": "Bir aktivite seç ve harfleri öğrenmeye başla!",
+    "soundPresence": {
+      "question": "Bu görselde '{letter}' sesi var mı?"
+    },
+    "grid": {
+      "findAll": "Tabloda gizlenen bütün \"{letter}\" harflerini bul.",
+      "findAll.short": "Tüm {letter} harflerini bul",
+      "progress": "Bulunan"
+    },
+    "findSoundInImage": {
+      "question": "İçinde '{letter}' sesi olan hangisi?",
+      "correct": "Evet, bu {word}.",
+      "incorrect": "Hayır, bu {word}.",
+      "hint": "İpucu: Sesi dinle ve ilk harfe dikkat et.",
+      "repeatButton": "Soruyu Tekrar Dinle"
+    },
+    "findTheLetter": {
+      "instruction": "'{letter}' sesini bul"
+    },
+    "noWordsForGroup": "Bu grup için kelime bulunamadı.",
+    "couldNotCreateForLetter": "'{letter}' harfi için bu etkinlik oluşturulamadı.",
+    "syllableRestarting": "Hece etkinliği yeniden başlatılıyor..."
+  },
+  "activities": {
+    "letter": {
+      "syllabification": "Heceleme",
+      "grid": "Harf Tablosu",
+      "findSoundInImage": "Görselde Sesi Bul",
+      "embeddedStory": "Hikaye Zamanı",
+      "soundPresence": "Seste Harf Var mı?",
+      "findTheLetter": "Harf Bulma Oyunu",
+      "betaNotice": "Harf etkinlikleri deneme aşamasında. Hata görürseniz lütfen bize bildirin."
+    },
+    "letterSubtitles": {
+      "grid": "Karışık harflerden isteneni bul.",
+      "soundPresence": "Görselin adında o ses var mı?",
+      "findTheLetter": "Kelimenin içindeki harfleri bul.",
+      "findSoundInImage": "İstenen sesi içeren görseli seç."
+    }
+  },
+  "story": {
+    "readStory": "Hikayeyi seslendir"
+  }
+}

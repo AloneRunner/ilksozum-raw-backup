@@ -2,9 +2,12 @@ import React from "react";
 import { getCurrentLanguage } from "../i18n/index.ts";
 import { t } from "../i18n/index.ts";
 import MenuButton from "./ui/MenuButton.tsx";
-import MenuOrb from "./ui/MenuOrb.tsx";
+// import MenuOrb from "./ui/MenuOrb.tsx";
 import CosmicOrb from "./ui/CosmicOrb.tsx";
-import ShootingStars from "./ui/ShootingStars.tsx";
+// import ShootingStars from "./ui/ShootingStars.tsx"; // sadeleştirildi
+import WanderingMeteors from "./ui/WanderingMeteors.tsx";
+import UFOFlyby from "./ui/UFOFlyby.tsx";
+import DevelopmentNotesCard from "./DevelopmentNotesCard.tsx";
 import StoryIcon from "./icons/StoryIcon.tsx";
 import BasketIcon from "./icons/BasketIcon.tsx";
 import SparklesIcon from "./icons/SparklesIcon.tsx";
@@ -194,20 +197,16 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
       subtitle: t('programMode.menuSubtitle', 'Uzman planıyla günlük oturum başlat'),
       color: 'emerald' as const,
     },
-    ...(lang === "tr"
-      ? [
-          {
-            id: "letterSound" as const,
-            icon: StoryIcon,
-            title: t("menu.letterSound.title", "Harf ve Sesler"),
-            subtitle: t(
-              "menu.letterSound.subtitle",
-              "Harfleri ve sesleri \u00f6\u011fren, hecele ve oku."
-            ),
-            color: "sky" as const,
-          },
-        ]
-      : []),
+    {
+      id: "letterSound" as const,
+      icon: StoryIcon,
+      title: t("menu.letterSound.title", "Harf ve Sesler"),
+      subtitle: t(
+        "menu.letterSound.subtitle",
+        "Harfleri ve sesleri \u00f6\u011fren, hecele ve oku."
+      ),
+      color: "sky" as const,
+    },
     ...(lang === "tr"
       ? [
           {
@@ -318,9 +317,9 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
   {/* Deep space gradient background - daha koyu ve derin */}
   <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#0a0e27] via-[#050816] to-[#000000]" />
   
-  {/* Twinkling stars background - daha parlak yıldızlar */}
-  <div className="absolute inset-0 -z-18 opacity-100">
-    {Array.from({ length: 120 }, (_, i) => (
+  {/* Twinkling stars background - optimize edilmiş, daha az yıldız */}
+  <div className="absolute inset-0 -z-18 opacity-60">
+    {Array.from({ length: 30 }, (_, i) => (
       <div
         key={i}
         className="absolute w-[2px] h-[2px] bg-white rounded-full animate-twinkle"
@@ -328,7 +327,7 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
           animationDelay: `${Math.random() * 3}s`,
-          opacity: Math.random() * 0.8 + 0.2,
+          opacity: Math.random() * 0.6 + 0.2,
         }}
       />
     ))}
@@ -337,26 +336,34 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
   {/* Grid pattern - uzay koordinat sistemi */}
   <div className="absolute inset-0 -z-15 [background-image:radial-gradient(circle_at_center,_rgba(147,197,253,0.15)_1px,transparent_1px)] [background-size:30px_30px] opacity-30" />
   
-  {/* Nebula glow effects - arka planda renkli parlama */}
-  <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] -z-17" />
-  <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] -z-17" />
+  {/* Nebula glow effects - optimize edilmiş, blur azaltıldı */}
+  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/8 rounded-full blur-[80px] -z-17" />
+  <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-cyan-500/8 rounded-full blur-[70px] -z-17" />
+
+  {/* Vignette - kenarlarda kontrast ve derinlik */}
+  <div className="absolute inset-0 -z-14 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 75%, rgba(0,0,0,0.6) 100%)' }} />
+
+  {/* Solar core - optimize edilmiş */}
+  <div className="absolute left-1/2 top-24 -translate-x-1/2 w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 blur-[12px] opacity-80 -z-16" />
+  <div className="absolute left-1/2 top-24 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-yellow-100 via-amber-200 to-white/60 -z-15" />
   
-        {/* shooting stars */}
-        <ShootingStars count={12} />
+  {/* Optimize edilmiş arka plan efektleri */}
+  <WanderingMeteors count={2} />
+  <UFOFlyby count={1} />
 
-        {/* Header - daha belirgin */}
-        <div className="w-full text-center mb-6 pt-4 z-10">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white drop-shadow-[0_8px_24px_rgba(147,197,253,0.5)] font-[Poppins] tracking-wide">
-            ✨ Kozmik Keşif
-          </h1>
-          <p className="mt-2 text-blue-200/80 font-medium text-sm">
-            {t('menu.chooseActivity', 'Bir macera seç.')}
-          </p>
-        </div>
-
-        {/* Grid of CosmicOrbs (two columns, larger orbs) */}
         <div className="relative w-full flex-grow overflow-y-auto pr-1 pb-24 z-10">
-          <div className="grid grid-cols-2 gap-6 sm:gap-8 justify-items-center items-start px-2 sm:px-4">
+          <div className="px-2 sm:px-4">
+            <div className="text-center pt-6 mb-6">
+              <h1 className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 drop-shadow-[0_10px_30px_rgba(147,197,253,0.45)] font-[Poppins] tracking-wide">
+                ✨ Kozmik Keşif
+              </h1>
+              <p className="mt-2 text-sky-200/90 font-semibold text-sm drop-shadow-[0_2px_8px_rgba(15,23,42,0.55)]">
+                {t('menu.chooseActivity', 'Bir macera seç.')}
+              </p>
+            </div>
+
+            {/* Grid of CosmicOrbs (two columns, larger orbs) */}
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 justify-items-center items-start">
             {/* Random Mode */}
             <CosmicOrb icon={StarIcon} title={t('menu.random.title','Rastgele Mod')} onClick={onStartRandomMode} palette={'sun' as any} size="xl" showOrbit />
             {menuItems.map((item) => (
@@ -371,74 +378,209 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
               />
             ))}
             <CosmicOrb icon={PersonIcon} title={t('menu.parentTips.title','Ebeveyn İpuçları')} onClick={onSelectParentTips} palette={'galaxy' as any} size="xl" showOrbit />
-          </div>
-          {lang !== 'tr' && (
-            <div className="text-center text-xs text-blue-300/60 mt-3">
-              {t('settings.languageNote','Letter activities are currently Turkish-only.')}
             </div>
-          )}
+            
+            {/* Development Notes Card */}
+            <div className="mt-6">
+              <DevelopmentNotesCard theme={theme} />
+            </div>
+            
+            {lang !== 'tr' && (
+              <div className="text-center text-xs text-blue-300/60 mt-3">
+                {t('settings.languageNote','Letter activities are currently Turkish-only.')}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
   }
 
-  // Special cosmic layout for "deneme" theme
+  // Special underwater layout for "deneme" theme
   if (isDenemeTheme) {
     return (
-      <div className="relative flex flex-col items-center justify-start h-full max-w-lg landscape:max-w-5xl mx-auto p-4 sm-landscape:p-2 animate-fade-in overflow-hidden rounded-[28px]">
-        {/* Cosmic gradient background */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0D122D] via-[#0b0f2b] to-[#010310]" />
-        {/* Stars dotted grid with slow pan */}
-        <div className="absolute inset-0 -z-10 opacity-70 [background-image:radial-gradient(1.2px_1.2px_at_1.2px_1.2px,rgba(255,255,255,0.9)_1.2px,transparent_1.2px)] [background-size:22px_22px] animate-pan-slow" />
-
-        {/* Header */}
-        <div className="w-full text-center mb-3">
-          <p className="text-slate-300 text-sm sm:text-base font-semibold mb-1">
-            {t("menu.hello", "Merhaba")} <span className="inline-block animate-wave">👋</span>
-          </p>
-          <h1 className="text-2xl sm:text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-300 via-sky-300 to-cyan-200 drop-shadow-[0_6px_16px_rgba(56,189,248,0.35)]">
-            {t("menu.appTitle", "İlk Sözüm")}
-          </h1>
-          <p className="mt-1 text-slate-400 text-xs sm:text-sm">{t("menu.chooseActivity", "Hadi bir etkinlik seçelim.")}</p>
+      <div className="relative flex flex-col items-center justify-start h-full w-full mx-auto p-4 sm-landscape:p-2 animate-fade-in overflow-hidden">
+        {/* Deep ocean gradient background */}
+        <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
+        
+        {/* Ocean bubbles animation */}
+        <div className="absolute inset-0 -z-18 opacity-40">
+          {Array.from({ length: 25 }, (_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/60 rounded-full animate-bubble"
+              style={{
+                left: `${Math.random() * 100}%`,
+                bottom: `-10px`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${4 + Math.random() * 4}s`,
+              }}
+            />
+          ))}
         </div>
 
-        {/* Orbs grid */}
-        <div className="relative w-full flex-grow overflow-y-auto pr-1">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pb-6">
-            {/* Random Mode as first orb */}
-            <MenuOrb
-              icon={StarIcon}
-              title={t("menu.random.title", "Rastgele Mod")}
-              onClick={onStartRandomMode}
-              color="rose"
-            />
+        {/* Ocean floor sand */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 -z-15 bg-gradient-to-t from-amber-900/30 via-amber-800/20 to-transparent" />
+        
+        {/* Light rays from surface */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-300/60 via-cyan-400/30 to-transparent -z-16" />
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-blue-300/60 via-blue-400/30 to-transparent -z-16" />
 
-            {menuItems.map((item, idx) => (
-              <MenuOrb
-                key={item.id}
-                icon={item.icon}
-                title={item.title}
-                onClick={() => onSelectCategory(item.id)}
-                color={(idx % 6 === 0 ? "sky" : idx % 6 === 1 ? "amber" : idx % 6 === 2 ? "emerald" : idx % 6 === 3 ? "purple" : idx % 6 === 4 ? "blue" : "pink") as any}
-              />
-            ))}
-
-            {/* Parent Tips orb */}
-            <MenuOrb
-              icon={PersonIcon}
-              title={t("menu.parentTips.title", "Ebeveyn İpuçları")}
-              onClick={onSelectParentTips}
-              color="cyan"
-            />
-          </div>
-          {lang !== "tr" && (
-            <div className="col-span-2 sm:col-span-3 text-center text-xs text-slate-400 mt-1">
-              {t(
-                "settings.languageNote",
-                "Letter activities are currently Turkish-only."
-              )}
+        <div className="relative w-full flex-grow overflow-y-auto pr-1 pb-24 z-10">
+          <div className="px-2 sm:px-4">
+            <div className="text-center pt-6 mb-8">
+              <h1 className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-200 to-teal-300 drop-shadow-[0_10px_30px_rgba(56,189,248,0.45)] font-[Poppins] tracking-wide">
+                🌊 Okyanus Keşfi
+              </h1>
+              <p className="mt-2 text-cyan-200/90 font-semibold text-sm drop-shadow-[0_2px_8px_rgba(15,23,42,0.55)]">
+                {t('menu.chooseActivity', 'Bir derinlik seç.')}
+              </p>
             </div>
-          )}
+
+            {/* Grid of Jellyfish orbs (two columns, no text) */}
+            <div className="grid grid-cols-2 gap-8 sm:gap-10 justify-items-center items-start">
+              {/* Random Mode */}
+              <div className="flex flex-col items-center">
+                <div className="relative cursor-pointer" onClick={onStartRandomMode}>
+                  {/* Jellyfish body - bell shape */}
+                  <div className="relative w-32 h-24 sm:w-36 sm:h-28">
+                    <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-rose-400/80 via-pink-500/80 to-purple-600/80 rounded-t-full blur-sm animate-pulse" />
+                    <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-rose-300/60 via-pink-400/60 to-purple-500/60 rounded-t-full border-t border-rose-200/30" />
+                  </div>
+                  <div className="absolute inset-x-0 top-4 flex items-center justify-center">
+                    <StarIcon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" />
+                  </div>
+                  {/* Jellyfish tentacles - more detailed */}
+                  <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-20 h-12">
+                    {Array.from({ length: 8 }, (_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-0.5 bg-gradient-to-b from-purple-400/60 via-purple-300/40 to-transparent animate-tentacle"
+                        style={{
+                          left: `${i * 12.5 + 6}%`,
+                          height: `${25 + Math.random() * 15}px`,
+                          animationDelay: `${i * 0.15}s`,
+                          transformOrigin: 'top',
+                        }}
+                      />
+                    ))}
+                  </div>
+                  {/* Invisible overlay for better click area */}
+                  <div className="absolute inset-0 -m-4 rounded-2xl hover:bg-cyan-400/10 transition-colors duration-200" />
+                </div>
+                <div className="mt-2 px-3 py-1 bg-cyan-500/20 rounded-full text-xs text-cyan-200">
+                  Rastgele
+                </div>
+              </div>
+
+              {menuItems.map((item, idx) => (
+                <div key={item.id} className="flex flex-col items-center">
+                  <div className="relative cursor-pointer" onClick={() => onSelectCategory(item.id)}>
+                    {/* Jellyfish body - bell shape */}
+                    <div className="relative w-32 h-24 sm:w-36 sm:h-28">
+                      <div className={`absolute inset-x-0 top-0 h-16 sm:h-20 rounded-t-full blur-sm animate-pulse ${
+                        idx === 0 ? 'bg-gradient-to-br from-cyan-400/80 via-blue-500/80 to-teal-600/80' :
+                        idx === 1 ? 'bg-gradient-to-br from-blue-400/80 via-indigo-500/80 to-cyan-600/80' :
+                        idx === 2 ? 'bg-gradient-to-br from-teal-400/80 via-green-500/80 to-emerald-600/80' :
+                        idx === 3 ? 'bg-gradient-to-br from-emerald-400/80 via-teal-500/80 to-cyan-600/80' :
+                        idx === 4 ? 'bg-gradient-to-br from-indigo-400/80 via-purple-500/80 to-blue-600/80' :
+                        idx === 5 ? 'bg-gradient-to-br from-purple-400/80 via-violet-500/80 to-indigo-600/80' :
+                        idx === 6 ? 'bg-gradient-to-br from-violet-400/80 via-fuchsia-500/80 to-purple-600/80' :
+                        'bg-gradient-to-br from-fuchsia-400/80 via-rose-500/80 to-pink-600/80'
+                      }`} style={{ animationDelay: `${idx * 0.5}s` }} />
+                      <div className={`absolute inset-x-0 top-0 h-16 sm:h-20 rounded-t-full border-t border-white/20 ${
+                        idx === 0 ? 'bg-gradient-to-br from-cyan-300/60 via-blue-400/60 to-teal-500/60' :
+                        idx === 1 ? 'bg-gradient-to-br from-blue-300/60 via-indigo-400/60 to-cyan-500/60' :
+                        idx === 2 ? 'bg-gradient-to-br from-teal-300/60 via-green-400/60 to-emerald-500/60' :
+                        idx === 3 ? 'bg-gradient-to-br from-emerald-300/60 via-teal-400/60 to-cyan-500/60' :
+                        idx === 4 ? 'bg-gradient-to-br from-indigo-300/60 via-purple-400/60 to-blue-500/60' :
+                        idx === 5 ? 'bg-gradient-to-br from-purple-300/60 via-violet-400/60 to-indigo-500/60' :
+                        idx === 6 ? 'bg-gradient-to-br from-violet-300/60 via-fuchsia-400/60 to-purple-500/60' :
+                        'bg-gradient-to-br from-fuchsia-300/60 via-rose-400/60 to-pink-500/60'
+                      }`} />
+                    </div>
+                    <div className="absolute inset-x-0 top-4 flex items-center justify-center">
+                      <item.icon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" />
+                    </div>
+                    {/* Jellyfish tentacles - more detailed */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-20 h-12">
+                      {Array.from({ length: 8 }, (_, i) => (
+                        <div
+                          key={i}
+                          className={`absolute w-0.5 bg-gradient-to-b ${
+                            idx === 0 ? 'from-cyan-400/60 via-cyan-300/40' :
+                            idx === 1 ? 'from-blue-400/60 via-blue-300/40' :
+                            idx === 2 ? 'from-teal-400/60 via-teal-300/40' :
+                            idx === 3 ? 'from-emerald-400/60 via-emerald-300/40' :
+                            idx === 4 ? 'from-indigo-400/60 via-indigo-300/40' :
+                            idx === 5 ? 'from-purple-400/60 via-purple-300/40' :
+                            idx === 6 ? 'from-violet-400/60 via-violet-300/40' :
+                            'from-fuchsia-400/60 via-fuchsia-300/40'
+                          } to-transparent animate-tentacle`}
+                          style={{
+                            left: `${i * 12.5 + 6}%`,
+                            height: `${25 + Math.random() * 15}px`,
+                            animationDelay: `${i * 0.15 + idx * 0.3}s`,
+                            transformOrigin: 'top',
+                          }}
+                        />
+                      ))}
+                    </div>
+                    {/* Invisible overlay for better click area */}
+                    <div className="absolute inset-0 -m-4 rounded-2xl hover:bg-cyan-400/10 transition-colors duration-200" />
+                  </div>
+                  <div className="mt-2 px-3 py-1 bg-cyan-500/20 rounded-full text-xs text-cyan-200">
+                    {item.title.split(' ')[0]}
+                  </div>
+                </div>
+              ))}
+
+              {/* Parent Tips */}
+              <div className="flex flex-col items-center">
+                <div className="relative cursor-pointer" onClick={onSelectParentTips}>
+                  {/* Jellyfish body - bell shape */}
+                  <div className="relative w-32 h-24 sm:w-36 sm:h-28">
+                    <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-emerald-400/80 via-green-500/80 to-teal-600/80 rounded-t-full blur-sm animate-pulse" />
+                    <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-emerald-300/60 via-green-400/60 to-teal-500/60 rounded-t-full border-t border-emerald-200/30" />
+                  </div>
+                  <div className="absolute inset-x-0 top-4 flex items-center justify-center">
+                    <PersonIcon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" />
+                  </div>
+                  {/* Jellyfish tentacles - more detailed */}
+                  <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-20 h-12">
+                    {Array.from({ length: 8 }, (_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-0.5 bg-gradient-to-b from-green-400/60 via-green-300/40 to-transparent animate-tentacle"
+                        style={{
+                          left: `${i * 12.5 + 6}%`,
+                          height: `${25 + Math.random() * 15}px`,
+                          animationDelay: `${i * 0.15}s`,
+                          transformOrigin: 'top',
+                        }}
+                      />
+                    ))}
+                  </div>
+                  {/* Invisible overlay for better click area */}
+                  <div className="absolute inset-0 -m-4 rounded-2xl hover:bg-cyan-400/10 transition-colors duration-200" />
+                </div>
+                <div className="mt-2 px-3 py-1 bg-cyan-500/20 rounded-full text-xs text-cyan-200">
+                  İpuçları
+                </div>
+              </div>
+            </div>
+            
+            {/* Development Notes Card */}
+            <div className="mt-8">
+              <DevelopmentNotesCard theme={theme} />
+            </div>
+            
+            {lang !== 'tr' && (
+              <div className="text-center text-xs text-cyan-300/60 mt-3">
+                {t('settings.languageNote','Letter activities are currently Turkish-only.')}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -538,7 +680,12 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
             color="purple"
             theme={theme}
           />
-        </div>
+          
+            {/* Development Notes Card - full width */}
+            <div className="col-span-1 sm:col-span-2 landscape:col-span-3">
+              <DevelopmentNotesCard theme={theme} />
+            </div>
+          </div>
       </div>
     </div>
   );

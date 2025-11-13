@@ -105,7 +105,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/908.gif",
     "audioKeys": { "default": "gergedan", "concept": "hızlı" },
     "tags": {
-      "category": "Hayvanlar",
+      "category": "hayvanlar",
       "concept": ["hızlı-yavaş"],
       "speed": "hızlı",
       "lifeform": "canlı",
@@ -119,7 +119,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/909.gif",
     "audioKeys": { "default": "deve", "concept": "yavaş" },
     "tags": {
-      "category": "Hayvanlar",
+      "category": "hayvanlar",
       "concept": ["hızlı-yavaş"],
       "speed": "yavaş",
       "lifeform": "canlı",
@@ -206,7 +206,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/915.png",
     "audioKeys": { "default": "balık" },
     "tags": {
-      "category": "Hayvanlar",
+      "category": "hayvanlar",
       "concept": ["hayvanlar"],
       "lifeform": "canlı",
       "syllables": ["ba", "lık"],
@@ -219,11 +219,512 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/916.png",
     "audioKeys": { "default": "ayı" },
     "tags": {
-      "category": "Hayvanlar",
+      "category": "hayvanlar",
       "concept": ["hayvanlar"],
       "lifeform": "canlı",
       "syllables": ["a", "yı"],
       "letters": ["A", "Y", "I"]
+    }
+  }
+  ,
+  {
+    "id": 917,
+    "word": "örümcek",
+    "imageUrl": "/images/917.png",
+    "audioKeys": { "default": "örümcek" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["ö", "rüm", "cek"],
+      "letters": ["Ö", "R", "Ü", "M", "C", "E", "K"]
+    }
+  },
+  {
+    "id": 918,
+    "word": "hindi",
+    "imageUrl": "/images/918.png",
+    "audioKeys": { "default": "hindi" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["hin", "di"],
+      "letters": ["H", "İ", "N", "D", "İ"]
+    }
+  },
+  {
+    "id": 919,
+    "word": "koç",
+    "imageUrl": "/images/919.png",
+    "audioKeys": { "default": "koç" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["koç"],
+      "letters": ["K", "O", "Ç"]
+    }
+  },
+  {
+    "id": 920,
+    "word": "tavus kuşu",
+    "imageUrl": "/images/920.png",
+    "audioKeys": { "default": "tavus kuşu" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["ta", "vus", "ku", "şu"],
+      "letters": ["T", "A", "V", "U", "S", "K", "U", "Ş", "U"]
+    }
+  },
+  {
+    "id": 921,
+    "word": "kuğu",
+    "imageUrl": "/images/921.png",
+    "audioKeys": { "default": "kuğu" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["ku", "ğu"],
+      "letters": ["K", "U", "Ğ", "U"]
+    }
+  },
+  {
+    "id": 922,
+    "word": "kurt",
+    "imageUrl": "/images/922.png",
+    "audioKeys": { "default": "kurt" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["kurt"],
+      "letters": ["K", "U", "R", "T"]
+    }
+  },
+  {
+    "id": 923,
+    "word": "domuz",
+    "imageUrl": "/images/923.png",
+    "audioKeys": { "default": "domuz" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["do", "muz"],
+      "letters": ["D", "O", "M", "U", "Z"]
+    }
+  },
+  {
+    "id": 924,
+    "word": "karides",
+    "imageUrl": "/images/924.png",
+    "audioKeys": { "default": "karides" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["ka", "ri", "des"],
+      "letters": ["K", "A", "R", "İ", "D", "E", "S"]
+    }
+  },
+  {
+    "id": 925,
+    "word": "yengeç",
+    "imageUrl": "/images/925.png",
+    "audioKeys": { "default": "yengeç" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["yen", "geç"],
+      "letters": ["Y", "E", "N", "G", "E", "Ç"]
+    }
+  },
+  {
+    "id": 926,
+    "word": "timsah",
+    "imageUrl": "/images/926.png",
+    "audioKeys": { "default": "timsah" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["tim", "sah"],
+      "letters": ["T", "İ", "M", "S", "A", "H"]
+    }
+  },
+  {
+    "id": 927,
+    "word": "deniz atı",
+    "imageUrl": "/images/927.png",
+    "audioKeys": { "default": "deniz atı" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["de", "niz", "a", "tı"],
+      "letters": ["D", "E", "N", "İ", "Z", "A", "T", "I"]
+    }
+  },
+  {
+    "id": 928,
+    "word": "bezelye",
+    "imageUrl": "/images/928.png",
+    "audioKeys": { "default": "bezelye" },
+    "tags": {
+      "category": "sebzeler",
+      "concept": ["sebzeler"],
+      "lifeform": "cansız",
+      "syllables": ["be", "zel", "ye"],
+      "letters": ["B", "E", "Z", "E", "L", "Y", "E"]
+    }
+  },
+  {
+    "id": 929,
+    "word": "bebek bezi",
+    "imageUrl": "/images/929.png",
+    "audioKeys": { "default": "bebek bezi" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["be", "bek", "be", "zi"],
+      "letters": ["B", "E", "B", "E", "K", "B", "E", "Z", "İ"]
+    }
+  },
+  {
+    "id": 930,
+    "word": "saç kurutma makinesi",
+    "imageUrl": "/images/930.png",
+    "audioKeys": { "default": "saç kurutma makinesi" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["saç", "ku", "rut", "ma", "ma", "ki", "ne", "si"],
+      "letters": ["S", "A", "Ç", "K", "U", "R", "U", "T", "M", "A", "M", "A", "K", "İ", "N", "E", "S", "İ"]
+    }
+  },
+  {
+    "id": 931,
+    "word": "kereviz",
+    "imageUrl": "/images/931.png",
+    "audioKeys": { "default": "kereviz" },
+    "tags": {
+      "category": "sebzeler",
+      "concept": ["sebzeler"],
+      "lifeform": "cansız",
+      "syllables": ["ke", "re", "viz"],
+      "letters": ["K", "E", "R", "E", "V", "İ", "Z"]
+    }
+  },
+  {
+    "id": 932,
+    "word": "elektrikli süpürge",
+    "imageUrl": "/images/932.png",
+    "audioKeys": { "default": "elektrikli süpürge" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["e", "lek", "trik", "li", "sü", "pür", "ge"],
+      "letters": ["E", "L", "E", "K", "T", "R", "İ", "K", "L", "İ", "S", "Ü", "P", "Ü", "R", "G", "E"]
+    }
+  },
+  {
+    "id": 933,
+    "word": "kağıt havlu",
+    "imageUrl": "/images/933.png",
+    "audioKeys": { "default": "kağıt havlu" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["ka", "ğıt", "hav", "lu"],
+      "letters": ["K", "A", "Ğ", "I", "T", "H", "A", "V", "L", "U"]
+    }
+  },
+  {
+    "id": 934,
+    "word": "mutfak önlüğü",
+    "imageUrl": "/images/934.png",
+    "audioKeys": { "default": "mutfak önlüğü" },
+    "tags": {
+      "category": "giysiler_aksesuarlar",
+      "concept": ["giysiler"],
+      "lifeform": "cansız",
+      "syllables": ["mut", "fak", "ön", "lü", "ğü"],
+      "letters": ["M", "U", "T", "F", "A", "K", "Ö", "N", "L", "Ü", "Ğ", "U"]
+    }
+  },
+  {
+    "id": 935,
+    "word": "rende",
+    "imageUrl": "/images/935.png",
+    "audioKeys": { "default": "rende" },
+    "tags": {
+      "category": "mutfak_gerecleri",
+      "concept": ["mutfak gereçleri"],
+      "lifeform": "cansız",
+      "syllables": ["ren", "de"],
+      "letters": ["R", "E", "N", "D", "E"]
+    }
+  },
+  {
+    "id": 936,
+    "word": "tel zımba",
+    "imageUrl": "/images/936.png",
+    "audioKeys": { "default": "tel zımba" },
+    "tags": {
+      "category": "okul_ofis_gerecleri",
+      "concept": ["okul ofis gereçleri"],
+      "lifeform": "cansız",
+      "syllables": ["tel", "zım", "ba"],
+      "letters": ["T", "E", "L", "Z", "I", "M", "B", "A"]
+    }
+  },
+  {
+    "id": 937,
+    "word": "tenis raketi",
+    "imageUrl": "/images/937.png",
+    "audioKeys": { "default": "tenis raketi" },
+    "tags": {
+      "category": "oyuncaklar",
+      "concept": ["oyuncaklar"],
+      "lifeform": "cansız",
+      "syllables": ["te", "nis", "ra", "ke", "ti"],
+      "letters": ["T", "E", "N", "İ", "S", "R", "A", "K", "E", "T", "İ"]
+    }
+  },
+  {
+    "id": 938,
+    "word": "tırnak makası",
+    "imageUrl": "/images/938.png",
+    "audioKeys": { "default": "tırnak makası" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["tır", "nak", "ma", "ka", "sı"],
+      "letters": ["T", "I", "R", "N", "A", "K", "M", "A", "K", "A", "S", "I"]
+    }
+  },
+  {
+    "id": 939,
+    "word": "ocak",
+    "imageUrl": "/images/939.png",
+    "audioKeys": { "default": "ocak" },
+    "tags": {
+      "category": "mutfak_gerecleri",
+      "concept": ["mutfak gereçleri"],
+      "lifeform": "cansız",
+      "syllables": ["o", "cak"],
+      "letters": ["O", "C", "A", "K"]
+    }
+  },
+  {
+    "id": 940,
+    "word": "kukla",
+    "imageUrl": "/images/940.png",
+    "audioKeys": { "default": "kukla" },
+    "tags": {
+      "category": "oyuncaklar",
+      "concept": ["oyuncaklar"],
+      "lifeform": "cansız",
+      "syllables": ["kuk", "la"],
+      "letters": ["K", "U", "K", "L", "A"]
+    }
+  },
+  {
+    "id": 941,
+    "word": "mikro dalga fırın",
+    "imageUrl": "/images/941.png",
+    "audioKeys": { "default": "mikro dalga fırın" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["mik", "ro", "dal", "ga", "fı", "rın"],
+      "letters": ["M", "İ", "K", "R", "O", "D", "A", "L", "G", "A", "F", "I", "R", "I", "N"]
+    }
+  },
+  {
+    "id": 942,
+    "word": "sivrisinek",
+    "imageUrl": "/images/942.png",
+    "audioKeys": { "default": "sivrisinek" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar", "böcekler"],
+      "lifeform": "canlı",
+      "syllables": ["siv", "ri", "si", "nek"],
+      "letters": ["S", "İ", "V", "R", "İ", "S", "İ", "N", "E", "K"]
+    }
+  },
+  {
+    "id": 943,
+    "word": "sarımsak",
+    "imageUrl": "/images/943.png",
+    "audioKeys": { "default": "sarımsak" },
+    "tags": {
+      "category": "diger_yiyecekler",
+      "concept": ["diğer yiyecekler"],
+      "lifeform": "cansız",
+      "syllables": ["sa", "rım", "sak"],
+      "letters": ["S", "A", "R", "I", "M", "S", "A", "K"]
+    }
+  },
+  {
+    "id": 944,
+    "word": "incir",
+    "imageUrl": "/images/944.png",
+    "audioKeys": { "default": "incir" },
+    "tags": {
+      "category": "meyveler",
+      "concept": ["meyveler"],
+      "lifeform": "cansız",
+      "syllables": ["in", "cir"],
+      "letters": ["İ", "N", "C", "İ", "R"]
+    }
+  },
+  {
+    "id": 945,
+    "word": "tablet",
+    "imageUrl": "/images/945.png",
+    "audioKeys": { "default": "tablet" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["ta", "blet"],
+      "letters": ["T", "A", "B", "L", "E", "T"]
+    }
+  },
+  {
+    "id": 946,
+    "word": "kumanda",
+    "imageUrl": "/images/946.png",
+    "audioKeys": { "default": "kumanda" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["ev eşyaları"],
+      "lifeform": "cansız",
+      "syllables": ["ku", "man", "da"],
+      "letters": ["K", "U", "M", "A", "N", "D", "A"]
+    }
+  },
+  {
+    "id": 947,
+    "word": "kanguru",
+    "imageUrl": "/images/947.png",
+    "audioKeys": { "default": "kanguru" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["kan", "gu", "ru"],
+      "letters": ["K", "A", "N", "G", "U", "R", "U"]
+    }
+  },
+  {
+    "id": 948,
+    "word": "köpek balığı",
+    "imageUrl": "/images/948.png",
+    "audioKeys": { "default": "köpek balığı" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["hayvanlar"],
+      "lifeform": "canlı",
+      "syllables": ["kö", "pek", "ba", "lı", "ğı"],
+      "letters": ["K", "Ö", "P", "E", "K", "B", "A", "L", "I", "Ğ", "I"]
+    }
+  }
+  ,
+  {
+    "id": 949,
+    "word": "ağız",
+    "imageUrl": "/images/949.png",
+    "audioKeys": { "default": "ağız" },
+    "tags": {
+      "category": "vucut_bolumleri",
+      "concept": ["vücut bölümleri"],
+      "lifeform": "canlı",
+      "syllables": ["a", "ğız"],
+      "letters": ["A", "Ğ", "I", "Z"]
+    }
+  }
+  ,
+  {
+    "id": 978,
+    "word": "kemer",
+    "imageUrl": "/images/978.png",
+    "audioKeys": { "default": "kemer" },
+    "tags": {
+      "category": "giyim_aksesuarlar",
+      "concept": ["giysi aksesuarları", "kemer"],
+      "lifeform": "cansız",
+      "syllables": ["ke", "mer"],
+      "letters": ["K","E","M","E","R"]
+    }
+  }
+  ,
+  {
+    "id": 979,
+    "word": "toka",
+    "imageUrl": "/images/979.png",
+    "audioKeys": { "default": "toka" },
+    "tags": {
+      "category": "saç_aksesuarları",
+      "concept": ["aksesuarlar"],
+      "lifeform": "cansız",
+      "syllables": ["to", "ka"],
+      "letters": ["T","O","K","A"]
+    }
+  }
+  ,
+  {
+    "id": 980,
+    "word": "tuvalet kağıdı",
+    "imageUrl": "/images/980.png",
+    "audioKeys": { "default": "tuvalet kağıdı" },
+    "tags": {
+      "category": "ev_esyalari",
+      "concept": ["tuvalet", "kağıt"],
+      "lifeform": "cansız",
+      "syllables": ["tu", "va", "let", "ka", "ğı", "dı"],
+      "letters": ["T","U","V","A","L","E","T","K","A","Ğ","I","D","I"]
+    }
+  }
+  ,
+  {
+    "id": 981,
+    "word": "diş",
+    "imageUrl": "/images/981.png",
+    "audioKeys": { "default": "diş" },
+    "tags": {
+      "category": "vucut_bolumleri",
+      "concept": ["vücut bölümleri"],
+      "lifeform": "canlı",
+      "syllables": ["diş"],
+      "letters": ["D","I","Ş"]
+    }
+  }
+  ,
+  {
+    "id": 982,
+    "word": "su",
+    "imageUrl": "/images/982.png",
+    "audioKeys": { "default": "su" },
+    "tags": {
+      "category": "içecekler",
+      "concept": ["sıvılar", "içecekler"],
+      "lifeform": "cansız",
+      "syllables": ["su"],
+      "letters": ["S","U"]
     }
   }
 ];

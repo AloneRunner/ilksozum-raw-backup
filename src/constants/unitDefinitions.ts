@@ -47,7 +47,6 @@ export const UNIT_DEFINITIONS: UnitDefinition[] = [
     unitName: 'Hafıza ve Dikkat',
     activities: [
       ActivityType.MemoryCards,
-      ActivityType.WhatDoesntBelong,
       ActivityType.FullEmpty,
       'mutfak_gerecleri',
       'icecekler',
@@ -96,7 +95,6 @@ export const UNIT_DEFINITIONS: UnitDefinition[] = [
     unitName: 'Örüntü ve İlişkiler',
     activities: [
       ActivityType.PatternCompletion,
-      ActivityType.FunctionalMatching,
       ActivityType.RhythmFollowing,
       'muzik_aletleri',
       'okul_ofis_gerecleri',
@@ -137,6 +135,7 @@ export const UNIT_DEFINITIONS: UnitDefinition[] = [
     unitNumber: 8,
     unitName: 'Neden-Sonuç ve Sıralama',
     activities: [
+      ActivityType.WhatDoesntBelong,
       ActivityType.CauseEffect,
       ActivityType.SequencingStories,
       ActivityType.DragAndDropCounting,
@@ -153,7 +152,10 @@ export const UNIT_DEFINITIONS: UnitDefinition[] = [
     unitNumber: 9,
     unitName: 'Sorgulama ve Analiz',
     activities: [
-      ActivityType.FiveWOneH, // Kim/Ne/Nerede
+      // 5N1K erken alt başlıkları
+      'FiveWOneH_Who',
+      'FiveWOneH_What',
+      'FiveWOneH_Where',
       ActivityType.Sudoku,
       ActivityType.AliveLifeless,
       ActivityType.Between,
@@ -172,7 +174,10 @@ export const UNIT_DEFINITIONS: UnitDefinition[] = [
     unitNumber: 10,
     unitName: 'Ustalık',
     activities: [
-      // Advanced 5N1K (Neden/Nasıl/Ne Zaman) - handled via context in FiveWOneH
+      // 5N1K ileri alt başlıkları
+      'FiveWOneH_When',
+      'FiveWOneH_Why',
+      'FiveWOneH_How',
       ActivityType.LeftRight,
       ActivityType.Senses,
       ActivityType.TembelCaliskan,

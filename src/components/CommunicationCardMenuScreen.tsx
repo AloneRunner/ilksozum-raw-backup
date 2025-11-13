@@ -2,6 +2,8 @@ import React from "react";
 import { CommunicationCategory } from "../types.ts";
 import { getCurrentLanguage, t } from "../i18n/index.ts";
 import ArrowLeftIcon from "./icons/ArrowLeftIcon.tsx";
+import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import PanelStars from './ui/PanelStars.tsx';
 
 interface CommunicationCardMenuScreenProps {
   categories: CommunicationCategory[];
@@ -16,6 +18,7 @@ const deriveThemeFlags = (theme: string) => ({
   isSnowTheme: theme === "kar",
   isFoxTheme: theme === "tilki",
   isZurafaTheme: theme === "zurafa",
+  isUnderwater: theme === 'deneme',
 });
 
 type PaletteEntry = { gradient: string; border: string; textClass: string; iconClass: string; shadow: string };
@@ -149,6 +152,8 @@ const CategoryButton: React.FC<{ category: CommunicationCategory; onClick: () =>
       : t(`communication.categories.${(category as any).id}`, title);
 
   const { isCatTheme, isHilalTheme, isSnowTheme, isFoxTheme, isZurafaTheme } = deriveThemeFlags(theme);
+  const isCosmic = theme === 'deneme2';
+  const isUnderwater = theme === 'deneme';
   const isSimpleTheme = theme === "simple";
   const paletteCollection = specialPalettes[theme];
   const specialPalette = paletteCollection?.[color as keyof typeof paletteCollection] || paletteCollection?.default;
@@ -169,6 +174,93 @@ const CategoryButton: React.FC<{ category: CommunicationCategory; onClick: () =>
     : "focus:ring-sky-200/60";
 
   const isSpecialTheme = Boolean(paletteCollection);
+
+  // Cosmic variant: orb-like buttons with glowing rings and compact labels
+  if (isCosmic) {
+    return (
+      <button
+        onClick={onClick}
+        className="group relative flex flex-col items-center justify-start p-3 rounded-2xl bg-white/5 border border-cyan-300/30 hover:border-cyan-300/60 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 hover:scale-[1.02]"
+      >
+        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-br from-cyan-400 via-indigo-500 to-fuchsia-500 shadow-[0_0_28px_rgba(14,165,233,0.35)]">
+          <div className="absolute -inset-1 rounded-full bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-900/60 via-slate-800/35 to-slate-900/60 flex items-center justify-center">
+            <Icon className="w-8 h-8 sm:w-9 sm:h-9 text-white drop-shadow-md" />
+          </div>
+          {/* subtle orbit highlight */}
+          <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-cyan-300/30" />
+        </div>
+        <h2 className="mt-2 text-sm font-bold text-white text-center leading-snug line-clamp-2">
+          {displayedTitle}
+        </h2>
+        {isUnderDevelopment && (
+          <span className="mt-1 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold bg-amber-400/90 text-black shadow-sm">
+            {t("app.developing", "Under development")}
+          </span>
+        )}
+      </button>
+    );
+  }
+
+  // Underwater variant: jellyfish-style buttons matching main menu
+  if (isUnderwater) {
+    const jellyfishColors = [
+      'from-pink-400 to-purple-500',
+      'from-cyan-400 to-blue-500',
+      'from-green-400 to-teal-500',
+      'from-purple-400 to-indigo-500',
+      'from-teal-400 to-cyan-500',
+      'from-blue-400 to-cyan-500',
+    ];
+    // Use category index or hash for consistent color assignment
+    const colorIndex = typeof category === 'object' && 'id' in category 
+      ? (category.id as string).charCodeAt(0) % jellyfishColors.length 
+      : 0;
+    const jellyfishColor = jellyfishColors[colorIndex];
+    
+    return (
+      <button
+        onClick={onClick}
+        className={`group relative flex flex-col items-center transition-all duration-300 ${
+          isUnderDevelopment ? 'opacity-60 cursor-not-allowed' : 'hover:scale-110 cursor-pointer'
+        }`}
+      >
+        {/* Jellyfish body (dome) */}
+        <div className={`w-28 h-14 rounded-t-full bg-gradient-to-b ${jellyfishColor} border-2 border-white/30 backdrop-blur-sm shadow-lg relative overflow-hidden ${!isUnderDevelopment && 'group-hover:shadow-2xl'}`}>
+          {/* Shine effect */}
+          <div className="absolute top-1 left-4 w-5 h-5 bg-white/40 rounded-full blur-sm"></div>
+          <div className="absolute top-2 right-5 w-2 h-2 bg-white/30 rounded-full blur-sm"></div>
+          
+          {/* Icon in center */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Icon className="w-9 h-9 text-white drop-shadow-md" />
+          </div>
+        </div>
+        
+        {/* Tentacles */}
+        <div className="flex gap-0.5 justify-center -mt-1">
+          {[...Array(10)].map((_, i) => (
+            <div 
+              key={i} 
+              className={`w-0.5 h-9 bg-gradient-to-b ${jellyfishColor} opacity-60 rounded-full`}
+              style={{ height: `${28 + Math.random() * 10}px` }}
+            />
+          ))}
+        </div>
+        
+        {/* Title */}
+        <h2 className="mt-2 text-sm font-bold text-cyan-100 text-center leading-snug line-clamp-2 px-1">
+          {displayedTitle}
+        </h2>
+        
+        {isUnderDevelopment && (
+          <span className="mt-1 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold bg-amber-400/90 text-black shadow-sm">
+            {t("app.developing", "Under development")}
+          </span>
+        )}
+      </button>
+    );
+  }
   const baseClasses = isSpecialTheme
     ? `relative w-full flex items-center justify-between text-left px-4 py-4 rounded-3xl shadow-lg transition-all duration-300 transform hover:scale-[1.03] hover:shadow-2xl focus:outline-none focus:ring-4 ${specialFocusRingClass} border backdrop-blur-md`
     : `relative w-full flex items-center justify-start text-left px-4 py-4 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-offset-2 bg-gradient-to-br ${defaultPalette.gradient} ${defaultPalette.ring}`;
@@ -225,8 +317,9 @@ const CommunicationCardMenuScreen: React.FC<CommunicationCardMenuScreenProps> = 
   onBack,
   theme,
 }) => {
-  const { isCatTheme, isHilalTheme, isSnowTheme, isFoxTheme, isZurafaTheme } = deriveThemeFlags(theme);
+  const { isCatTheme, isHilalTheme, isSnowTheme, isFoxTheme, isZurafaTheme, isUnderwater } = deriveThemeFlags(theme);
   const isSimpleTheme = theme === "simple";
+  const isCosmic = theme === 'deneme2';
 
   const specialStyles = isCatTheme
     ? {
@@ -312,7 +405,7 @@ const CommunicationCardMenuScreen: React.FC<CommunicationCardMenuScreenProps> = 
         titleAccentEmoji: "🦊",
         titleAccentClass: "ml-2 text-3xl animate-bounce drop-shadow-[0_4px_12px_rgba(245,158,11,0.28)] text-amber-500",
       }
-    : isZurafaTheme
+  : isZurafaTheme
     ? {
         titleColorClass: "text-cyan-800 drop-shadow-[0_4px_12px_rgba(255,255,255,0.55)]",
         subtitleColorClass: "text-cyan-900 drop-shadow-[0_3px_10px_rgba(255,255,255,0.4)]",
@@ -328,6 +421,42 @@ const CommunicationCardMenuScreen: React.FC<CommunicationCardMenuScreenProps> = 
         titleAccentEmoji: "🦒",
         titleAccentClass: "ml-2 text-3xl animate-bounce drop-shadow-[0_4px_12px_rgba(6,182,212,0.3)] text-cyan-500",
       }
+    : isCosmic
+    ? {
+        titleColorClass: "text-white text-shadow-soft",
+        subtitleColorClass: "text-white/90 text-shadow-soft",
+        headerWrapperClass:
+          "rounded-3xl bg-white/10 px-4 py-3 shadow-[0_18px_42px_rgba(14,165,233,0.25)] backdrop-blur-xl border border-cyan-200/30",
+        backButtonClass: "bg-white/20 text-white hover:bg-white/30",
+        containerClass: "relative w-full flex-grow overflow-y-auto pr-2 pt-2",
+        overlayClass:
+          "absolute inset-0 rounded-[32px] bg-white/5 border border-indigo-300/20 shadow-inner shadow-indigo-900/30 backdrop-blur-sm",
+        overlayTopClass: "hidden",
+        overlayTopEmoji: "",
+        overlayBottomClass: "hidden",
+        overlayBottomEmoji: "",
+        listWrapperClass: "grid grid-cols-2 landscape:grid-cols-3 gap-4 relative px-3 pb-6",
+        titleAccentEmoji: undefined as any,
+        titleAccentClass: "",
+      }
+    : isUnderwater
+    ? {
+        titleColorClass: "text-cyan-100 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]",
+        subtitleColorClass: "text-cyan-200/90 drop-shadow-[0_0_6px_rgba(6,182,212,0.6)]",
+        headerWrapperClass:
+          "rounded-3xl bg-cyan-900/20 px-4 py-3 shadow-[0_18px_42px_rgba(6,182,212,0.25)] backdrop-blur-xl border border-cyan-300/30",
+        backButtonClass: "bg-cyan-400/20 text-cyan-100 hover:bg-cyan-400/30",
+        containerClass: "relative w-full flex-grow overflow-y-auto pr-2 pt-2",
+        overlayClass:
+          "absolute inset-0 rounded-[32px] bg-gradient-to-b from-cyan-900/10 via-teal-900/5 to-blue-900/10 border border-cyan-300/20 shadow-inner shadow-cyan-900/30 backdrop-blur-sm",
+        overlayTopClass: "hidden sm:block absolute -top-8 -left-3 text-4xl opacity-70 drop-shadow-[0_10px_20px_rgba(6,182,212,0.2)]",
+        overlayTopEmoji: "🫧",
+        overlayBottomClass: "hidden sm:block absolute bottom-5 -right-2 text-4xl opacity-60 drop-shadow-[0_10px_20px_rgba(6,182,212,0.18)]",
+        overlayBottomEmoji: "🐠",
+        listWrapperClass: "grid grid-cols-2 landscape:grid-cols-3 gap-4 relative px-3 pb-6",
+        titleAccentEmoji: "🫧",
+        titleAccentClass: "ml-2 text-3xl animate-bounce drop-shadow-[0_4px_12px_rgba(6,182,212,0.3)] text-cyan-400",
+      }
     : null;
 
   const titleColorClass = specialStyles?.titleColorClass ?? "text-white text-shadow-soft";
@@ -340,11 +469,46 @@ const CommunicationCardMenuScreen: React.FC<CommunicationCardMenuScreenProps> = 
   const titleAccentClass = specialStyles?.titleAccentClass ?? "";
 
   return (
-    <div className="flex flex-col items-center justify-start h-full max-w-lg mx-auto p-4 animate-fade-in">
+    <div className="relative flex flex-col items-center justify-start h-full max-w-lg mx-auto p-4 animate-fade-in">
+      {isCosmic && (
+        <>
+          <CosmicBackdrop variant="light" showMeteors={false} />
+        </>
+      )}
+      {isUnderwater && (
+        <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden>
+          {/* Ocean gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
+          
+          {/* Animated bubbles */}
+          <div className="absolute inset-0">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full bg-cyan-400/15 border border-cyan-300/20 animate-bounce"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${10 + Math.random() * 14}px`,
+                  height: `${10 + Math.random() * 14}px`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+          
+          {/* Light rays */}
+          <div className="absolute inset-0 opacity-15">
+            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-300/40 via-transparent to-transparent transform rotate-12" />
+            <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-cyan-200/30 via-transparent to-transparent transform -rotate-6" />
+          </div>
+        </div>
+      )}
       <div className={`w-full flex items-center mb-5 landscape:mb-3 relative ${headerWrapperClass}`}>
         <button
           onClick={onBack}
-          className={`absolute left-0 rounded-full p-2 transition-colors ${backButtonClass}`}
+          className={`absolute left-0 rounded-full p-2 transition-colors z-20 ${backButtonClass}`}
           aria-label={t("app.back", "Go back")}
         >
           <ArrowLeftIcon className="w-7 h-7" />
@@ -367,6 +531,7 @@ const CommunicationCardMenuScreen: React.FC<CommunicationCardMenuScreenProps> = 
             <span className={specialStyles.overlayBottomClass}>{specialStyles.overlayBottomEmoji}</span>
           </>
         )}
+        {isCosmic && <PanelStars count={64} className="rounded-[32px]" />}
         <div className={listWrapperClass}>
           {categories.map((category) => (
             <CategoryButton key={category.id} category={category} onClick={() => onSelectCategory(category)} theme={theme} />

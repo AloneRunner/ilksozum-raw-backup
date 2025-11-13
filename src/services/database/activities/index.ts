@@ -7,7 +7,7 @@ export * from './spatialData';
 export * from './temporalData';
 // Reasoning datasets (split by type)
 export * from './reasoning/whatDoesntBelongData.js';
-export * from './reasoning/functionalMatchingData';
+// functionalMatchingData removed - now integrated into 5N1K "What?" category
 export * from './reasoning/causeEffectData.js';
 export * from './reasoning/fiveWOneHData';
 export * from './reasoning/sequencingStoriesData';

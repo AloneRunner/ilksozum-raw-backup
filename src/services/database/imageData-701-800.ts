@@ -1134,12 +1134,12 @@ export const imageData_701_800: ImageMetadata[] = [
   },
   {
     "id": 786,
-    "word": "uyuyan çocuk",
+    "word": "sıkılmış çocuk",
     "imageUrl": "/images/786.png",
-    "audioKeys": { "default": "uyuyan çocuk" },
+    "audioKeys": { "default": "sıkılmış çocuk" },
     "tags": {
       "category": "none", // Düzeltildi
-      "emotion": "uykulu",
+      "emotion": "sıkılmış",
       "lifeform": "canlı"
     }
   },

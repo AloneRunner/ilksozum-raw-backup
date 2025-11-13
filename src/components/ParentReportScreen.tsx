@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { ActivityStats, ActivityType, ActivityCategory } from '../types.ts';
-import { ALL_SUB_ACHIEVEMENTS, ACHIEVEMENTS } from '../constants.ts';
+import { ALL_SUB_ACHIEVEMENTS, ACHIEVEMENTS, OBJECT_CATEGORIES } from '../constants.ts';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import CheckCircleIcon from './icons/CheckCircleIcon.tsx';
 import XCircleIcon from './icons/XCircleIcon.tsx';
@@ -13,6 +13,8 @@ import { t } from '../i18n/index.ts';
 import { useAppContext } from '../contexts/AppContext.ts';
 import { getUnlockedUnits } from '../services/masteryEngine.ts';
 // getValueFromLocalStorage no longer needed - using unit-based system
+import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import PanelStars from './ui/PanelStars.tsx';
 
 
 interface ParentReportScreenProps {
@@ -46,12 +48,130 @@ const MasteryStars: React.FC<{ completions: number }> = ({ completions }) => {
 const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, onBack }) => {
     const { settings } = useAppContext();
     const isSimpleTheme = settings.theme === 'simple';
+    const isCosmic = settings.theme === 'deneme2';
     const isCatTheme = settings.theme === 'kedi';
     const isHilalTheme = settings.theme === 'ay2';
     const isSnowTheme = settings.theme === 'kar';
     const isFoxTheme = settings.theme === 'tilki';
     const isZurafaTheme = settings.theme === 'zurafa';
     const themeVariant = isCatTheme ? 'cat' : isHilalTheme ? 'hilal' : isSnowTheme ? 'snow' : isFoxTheme ? 'fox' : isZurafaTheme ? 'zurafa' : isSimpleTheme ? 'simple' : undefined;
+
+    // Helper function to translate activity names
+    const getActivityName = (activityType: ActivityType | string): string => {
+        // Letter activities
+        if (activityType === ActivityType.Syllabification) return t('activities.letter.syllabification', 'Heceleme');
+        if (activityType === ActivityType.FindTheLetterInGrid) return t('activities.letter.grid', 'Harf Tablosu');
+        if (activityType === ActivityType.FindTheSoundInImage) return t('activities.letter.findSoundInImage', 'Görselde Sesi Bul');
+        if (activityType === ActivityType.EmbeddedStory) return t('activities.letter.embeddedStory', 'Hikaye Zamanı');
+        if (activityType === ActivityType.SoundPresence) return t('activities.letter.soundPresence', 'Seste Harf Var mı?');
+        if (activityType === ActivityType.FindTheLetter) return t('activities.letter.findTheLetter', 'Harf Bulma');
+        
+    // Concept activities
+    if (activityType === ActivityType.YesNo) return t('concepts.activities.yesNo', 'Evet / Hayır');
+    if (activityType === ActivityType.Colors) return t('concepts.activities.colors', 'Renkler');
+    if (activityType === ActivityType.Shapes) return t('concepts.activities.shapes', 'Şekiller');
+    if (activityType === ActivityType.Emotions) return t('concepts.activities.emotions', 'Duygular');
+    if (activityType === ActivityType.BigSmall) return t('concepts.activities.bigSmall', 'Büyük / Küçük');
+    if (activityType === ActivityType.LongShort) return t('concepts.activities.longShort', 'Uzun / Kısa');
+    if (activityType === ActivityType.ThinThick) return t('concepts.activities.thinThick', 'İnce / Kalın');
+    if (activityType === ActivityType.WideNarrow) return t('concepts.activities.wideNarrow', 'Geniş / Dar');
+    if (activityType === ActivityType.OldNew) return t('concepts.activities.oldNew', 'Eski / Yeni');
+    if (activityType === ActivityType.HardSoft) return t('concepts.activities.hardSoft', 'Sert / Yumuşak');
+    if (activityType === ActivityType.CleanDirty) return t('concepts.activities.cleanDirty', 'Temiz / Kirli');
+    if (activityType === ActivityType.WetDry) return t('concepts.activities.wetDry', 'Islak / Kuru');
+    if (activityType === ActivityType.OpenClosed) return t('concepts.activities.openClosed', 'Açık / Kapalı');
+    if (activityType === ActivityType.StraightCurved) return t('concepts.activities.straightCurved', 'Düz / Eğri');
+    if (activityType === ActivityType.AliveLifeless) return t('concepts.activities.aliveLifeless', 'Canlı / Cansız');
+    if (activityType === ActivityType.BitterSweet) return t('concepts.activities.bitterSweet', 'Acı / Tatlı');
+    if (activityType === ActivityType.HeavyLight) return t('concepts.activities.heavyLight', 'Ağır / Hafif');
+    if (activityType === ActivityType.HotCold) return t('concepts.activities.hotCold', 'Sıcak / Soğuk');
+    if (activityType === ActivityType.RoughSmooth) return t('concepts.activities.roughSmooth', 'Pürüzlü / Pürüzsüz');
+    if (activityType === ActivityType.BrokenIntact) return t('concepts.activities.brokenIntact', 'Sağlam / Kırık');
+    if (activityType === ActivityType.MessyClean) return t('concepts.activities.messyClean', 'Dağınık / Toplu');
+    if (activityType === ActivityType.HungryFull) return t('concepts.activities.hungryFull', 'Aç / Tok');
+    if (activityType === ActivityType.YoungOld) return t('concepts.activities.youngOld', 'Yaşlı / Genç');
+    if (activityType === ActivityType.FewMuch) return t('concepts.activities.fewMuch', 'Az / Çok');
+    if (activityType === ActivityType.HalfQuarterWhole) return t('concepts.activities.halfQuarterWhole', 'Bütün / Yarım / Çeyrek');
+    if (activityType === ActivityType.FullEmpty) return t('concepts.activities.fullEmpty', 'Dolu / Boş');
+    if (activityType === ActivityType.OddEven) return t('concepts.activities.oddEven', 'Tek / Çift');
+    if (activityType === ActivityType.OnUnder) return t('concepts.activities.onUnder', 'Üstünde / Altında');
+    if (activityType === ActivityType.BelowAbove) return t('concepts.activities.belowAbove', 'Aşağıda / Yukarıda');
+    // Additional concept activities (full coverage)
+    if (activityType === ActivityType.NoisyQuiet) return t('concepts.activities.noisyQuiet', 'Gürültülü / Sessiz');
+    if (activityType === ActivityType.TazeBayat) return t('concepts.activities.freshStale', 'Taze / Bayat');
+    if (String(activityType) === String(ActivityType.MessyClean)) return t('concepts.activities.messyTidy', 'Dağınık / Toplu');
+    if (activityType === ActivityType.KirisikDuzgun) return t('concepts.activities.wrinkledSmooth', 'Kırışık / Düzgün');
+    if (activityType === ActivityType.SivriKut) return t('concepts.activities.pointedBlunt', 'Sivri / Küt');
+    if (activityType === ActivityType.ParlakMat) return t('concepts.activities.shinyMatte', 'Parlak / Mat');
+    if (activityType === ActivityType.TembelCaliskan) return t('concepts.activities.lazyHardworking', 'Tembel / Çalışkan');
+    if (activityType === ActivityType.SeffafOpak) return t('concepts.activities.transparentOpaque', 'Şeffaf / Opak');
+    if (activityType === ActivityType.DikenliPuruzsuz) return t('concepts.activities.thornySmooth', 'Dikenli / Pürüzsüz');
+    if (activityType === ActivityType.DerinSig) return t('concepts.activities.deepShallow', 'Derin / Sığ');
+    if (activityType === ActivityType.KalabalikTenha) return t('concepts.activities.crowdedSparse', 'Kalabalık / Tenha');
+    if (activityType === ActivityType.DugumCozuk) return t('concepts.activities.knottedUntied', 'Düğüm / Çözük');
+    if (activityType === ActivityType.TersDuz) return t('concepts.activities.upsideDownUpright', 'Ters / Düz');
+    if (activityType === ActivityType.BesideOpposite) return t('concepts.activities.besideOpposite', 'Yanında / Karşısında');
+    if (activityType === ActivityType.InFrontOfBehind) return t('concepts.activities.inFrontOfBehind', 'Önünde / Arkada');
+    if (activityType === ActivityType.InsideOutside) return t('concepts.activities.insideOutside', 'İçinde / Dışında');
+    if (activityType === ActivityType.Between) return t('concepts.activities.between', 'Arasında');
+    if (activityType === ActivityType.LeftRight) return t('concepts.activities.leftRight', 'Sağ / Sol');
+    if (activityType === ActivityType.NearFar) return t('concepts.activities.nearFar', 'Yakın / Uzak');
+    if (activityType === ActivityType.HighLow) return t('concepts.activities.highLow', 'Yüksek / Alçak');
+    if (activityType === ActivityType.BeforeAfter) return t('concepts.activities.beforeAfter', 'Önce / Sonra');
+    if (activityType === ActivityType.DayNight) return t('concepts.activities.dayNight', 'Gündüz / Gece');
+    if (activityType === ActivityType.FastSlow) return t('concepts.activities.fastSlow', 'Hızlı / Yavaş');
+    if (activityType === ActivityType.Senses) return t('concepts.activities.senses', 'Duyularımız');
+
+    // Relative comparison activities (reuse base concept keys)
+    if (activityType === ActivityType.RelativeBigSmall) return t('concepts.activities.bigSmall', 'Büyük / Küçük');
+    if (activityType === ActivityType.RelativeWideNarrow) return t('concepts.activities.wideNarrow', 'Geniş / Dar');
+    if (activityType === ActivityType.RelativeThinThick) return t('concepts.activities.thinThick', 'İnce / Kalın');
+    if (activityType === ActivityType.RelativeFewMuch) return t('concepts.activities.fewMuch', 'Az / Çok');
+    if (activityType === ActivityType.RelativeLongShort) return t('concepts.activities.longShort', 'Uzun / Kısa');
+    if (activityType === ActivityType.RelativeNearFar) return t('concepts.activities.nearFar', 'Yakın / Uzak');
+    if (activityType === ActivityType.RelativeHighLow) return t('concepts.activities.highLow', 'Yüksek / Alçak');
+
+    // Reasoning activities (new translations)
+    if (activityType === ActivityType.WhatDoesntBelong) return t('activities.reasoning.whatDoesntBelong', 'Hangisi Farklı?');
+    // FunctionalMatching removed - now integrated into 5N1K "What?" category
+    if (activityType === ActivityType.CauseEffect) return t('activities.reasoning.causeEffect', 'Neden & Sonuç');
+    if (activityType === ActivityType.SequencingStories) return t('activities.reasoning.sequencingStories', 'Sıralama');
+    if (activityType === ActivityType.PatternCompletion) return t('activities.reasoning.patternCompletion', 'Örüntü Tamamlama');
+    if (activityType === ActivityType.Sudoku) return t('activities.reasoning.sudoku', 'Sudoku');
+    if (activityType === ActivityType.MemoryCards) return t('activities.reasoning.memoryCards', 'Hafıza Kartları');
+    if (activityType === ActivityType.DragAndDropCounting) return t('activities.reasoning.dragAndDropCounting', 'Nesneleri Taşı');
+    if (activityType === ActivityType.DragAndDropPositioning) return t('activities.reasoning.dragAndDropPositioning', 'Topu Yerleştir');
+    if (activityType === ActivityType.Hangman) return t('activities.reasoning.hangman', 'Adam Asmaca');
+
+    // Fine motor activities
+    if (activityType === ActivityType.LineTracing) return t('activities.fineMotor.lineTracing', 'Çizgi Takip');
+    if (activityType === ActivityType.ShapeColoring) return t('activities.fineMotor.shapeColoring', 'Şekil Boyama');
+    if (activityType === ActivityType.RhythmFollowing) return t('activities.fineMotor.rhythmFollowing', 'Ritim Takip');
+        
+        // If it's a string id matching an object category, translate by id
+        if (typeof activityType === 'string') {
+            const isObjectCategory = OBJECT_CATEGORIES.some(c => c.id === activityType);
+            if (isObjectCategory) {
+                return t(`objects.categories.${activityType}`, activityType);
+            }
+        }
+
+        // For other activities, return the Turkish name as fallback
+        const subAchievement = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(activityType));
+        return subAchievement?.name || String(activityType);
+    };
+
+    // Helper function to translate category names (for headings in full report)
+    const getCategoryName = (category: ActivityCategory): string => {
+        if (category === ActivityCategory.LetterSound) return t('achievements.categories.letterSound', 'Harf ve Sesler');
+        if (category === ActivityCategory.Objects) return t('achievements.categories.objects', 'Nesneleri Tanıyalım');
+        if (category === ActivityCategory.Concept) return t('achievements.categories.concept', 'Kavramları Öğrenelim');
+        if (category === ActivityCategory.Reasoning) return t('achievements.categories.reasoning', 'Akıl Oyunları');
+        if (category === ActivityCategory.FiveWOneH) return t('achievements.categories.fiveWOneH', '5N1K');
+        if (category === ActivityCategory.FineMotor) return t('achievements.categories.fineMotor', 'İnce Motor');
+        if (category === ActivityCategory.RelativeComparison) return t('achievements.categories.relativeComparison', 'Göreceli Karşılaştırma');
+        return String(category);
+    };
 
     const catPalette = {
         containerClass: 'relative flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in overflow-hidden',
@@ -286,7 +406,7 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
             ? simplePalette
             : null;
 
-    const containerClass = palette?.containerClass ?? 'flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in';
+    const containerClass = (palette?.containerClass ?? 'flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in') + ' relative';
     const headerWrapperClass = (palette?.headerWrapperClass ?? 'relative w-full flex items-center justify-between mb-8 gap-3 landscape:mb-4') + ' z-10';
     const backButtonClass =
         palette?.backButtonClass ?? 'flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-md hover:bg-amber-50 transition-colors relative z-20';
@@ -315,10 +435,10 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
                 return null;
             }
 
-            let name = subAchievementInfo.name;
+            let name = getActivityName(subAchievementInfo.id);
             if (subIdentifier) {
                 const isSyllabification = String(subAchievementInfo.id) === String(ActivityType.Syllabification);
-                name = `${name} (${isSyllabification ? 'Grup' : ''} ${subIdentifier})`;
+                name = `${name} (${isSyllabification ? t('parentReport.group', 'Grup') : ''} ${subIdentifier})`;
             }
 
             return {
@@ -384,20 +504,20 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
 
     }, [activityStats, t]);
 
-    const cardClassBase = palette?.cardClass ?? 'bg-white/80 p-4 sm:p-5 rounded-2xl shadow-md w-full';
-    const cardIconClass = palette?.cardIconClass ?? 'w-7 h-7 text-slate-500 mr-3';
-    const cardTitleClass = palette?.cardTitleClass ?? 'text-lg sm:text-xl font-bold text-slate-700';
+    const cardClassBase = palette?.cardClass ?? (isCosmic ? 'relative bg-white/10 border border-cyan-300/30 p-4 sm:p-5 rounded-3xl shadow-[0_18px_38px_rgba(14,165,233,0.18)] backdrop-blur-md w-full overflow-hidden' : 'bg-white/80 p-4 sm:p-5 rounded-2xl shadow-md w-full');
+    const cardIconClass = palette?.cardIconClass ?? (isCosmic ? 'w-7 h-7 text-white mr-3' : 'w-7 h-7 text-slate-500 mr-3');
+    const cardTitleClass = palette?.cardTitleClass ?? (isCosmic ? 'text-lg sm:text-xl font-bold text-white' : 'text-lg sm:text-xl font-bold text-slate-700');
     const cardDecoration = palette?.cardDecoration;
-    const statLabelClass = palette?.statLabelClass ?? 'text-slate-600 font-semibold';
-    const statValueSuccessClass = palette?.statValueSuccessClass ?? 'font-bold text-green-600';
-    const statValueFailClass = palette?.statValueFailClass ?? 'font-bold text-red-600';
-    const categoryBaseClass = palette?.categoryBaseClass ?? 'bg-white/80 p-4 sm:p-5 rounded-2xl shadow-md w-full';
-    const backIconClass = palette?.backIconClass ?? 'text-slate-700';
-    const sectionIconClass = palette?.sectionIconClass ?? 'w-8 h-8 text-slate-500 mr-3';
-    const emptyStateTextClass = palette?.emptyStateTextClass ?? 'text-slate-500 text-sm';
-    const recommendationsListClass = palette?.recommendationsListClass ?? 'list-disc list-inside space-y-2 text-slate-600 text-sm sm:text-base';
-    const recentLabelClass = palette?.recentLabelClass ?? 'text-slate-600 font-semibold';
-    const recentValueClass = palette?.recentValueClass ?? 'font-bold text-slate-500';
+    const statLabelClass = palette?.statLabelClass ?? (isCosmic ? 'text-white/85 font-semibold' : 'text-slate-600 font-semibold');
+    const statValueSuccessClass = palette?.statValueSuccessClass ?? (isCosmic ? 'font-bold text-emerald-300' : 'font-bold text-green-600');
+    const statValueFailClass = palette?.statValueFailClass ?? (isCosmic ? 'font-bold text-rose-300' : 'font-bold text-red-600');
+    const categoryBaseClass = palette?.categoryBaseClass ?? (isCosmic ? 'relative bg-white/10 border border-cyan-300/30 p-4 sm:p-5 rounded-3xl shadow-[0_18px_38px_rgba(14,165,233,0.16)] backdrop-blur-md w-full overflow-hidden' : 'bg-white/80 p-4 sm:p-5 rounded-2xl shadow-md w-full');
+    const backIconClass = palette?.backIconClass ?? (isCosmic ? 'text-white' : 'text-slate-700');
+    const sectionIconClass = palette?.sectionIconClass ?? (isCosmic ? 'w-8 h-8 text-cyan-300 mr-3' : 'w-8 h-8 text-slate-500 mr-3');
+    const emptyStateTextClass = palette?.emptyStateTextClass ?? (isCosmic ? 'text-white/80 text-sm' : 'text-slate-500 text-sm');
+    const recommendationsListClass = palette?.recommendationsListClass ?? (isCosmic ? 'list-disc list-inside space-y-2 text-white/85 text-sm sm:text-base' : 'list-disc list-inside space-y-2 text-slate-600 text-sm sm:text-base');
+    const recentLabelClass = palette?.recentLabelClass ?? (isCosmic ? 'text-white/85 font-semibold' : 'text-slate-600 font-semibold');
+    const recentValueClass = palette?.recentValueClass ?? (isCosmic ? 'font-bold text-cyan-200' : 'font-bold text-slate-500');
 
     const Card: React.FC<{ icon: React.FC<{ className?: string }>, title: string, children: React.ReactNode }> = ({ icon: Icon, title, children }) => {
         return (
@@ -433,7 +553,8 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
     }> = ({ category, activities }) => {
         if (activities.length === 0) return null;
         
-        const { icon: Icon, name, color } = category;
+        const { icon: Icon, color } = category;
+        const localizedName = getCategoryName(category.id);
         const colorClasses = getColorClasses(color);
 
         return (
@@ -462,7 +583,7 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
                     <div className={palette?.categoryIconWrapperClass ?? `p-2 ${colorClasses.bg100} rounded-lg mr-3`}>
                         <Icon className={palette?.categoryIconClass ?? `w-6 h-6 ${colorClasses.text600}`} />
                     </div>
-                    <h2 className={palette?.categoryTitleClass ?? `text-lg sm:text-xl font-bold ${colorClasses.text800}`}>{name}</h2>
+                    <h2 className={palette?.categoryTitleClass ?? `text-lg sm:text-xl font-bold ${colorClasses.text800}`}>{localizedName}</h2>
                 </div>
                 <div className="space-y-4">
                     {activities.map((activity: any) => (
@@ -489,6 +610,11 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
 
     return (
         <div className={containerClass}>
+            {isCosmic && (
+                <>
+                    <CosmicBackdrop variant="rich" />
+                </>
+            )}
             {palette?.overlay && (
                 <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none select-none">
                     <div className={palette.overlay.gradientClass} />
@@ -502,10 +628,10 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
             <div className={headerWrapperClass}>
                 <button 
                     onClick={onBack}
-                    className={backButtonClass}
+                    className={`${backButtonClass} ${isCosmic ? 'bg-white/20 hover:bg-white/30' : ''}`}
                     aria-label={t('parentReport.goBackAria', 'Geri dön')}
                 >
-                    <ArrowLeftIcon className={`w-8 h-8 ${backIconClass}`} />
+                    <ArrowLeftIcon className={`w-8 h-8 ${isCosmic ? 'text-white' : backIconClass}`} />
                 </button>
                 <h1 className={headerTitleClass}>
                     {t('parentReport.title', 'Gelişim Raporu')}
@@ -513,7 +639,8 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
                 <div className="h-12 w-12 shrink-0" aria-hidden="true" />
             </div>
 
-            <div className="w-full flex-grow overflow-y-auto pr-2 space-y-4">
+            <div className="relative w-full flex-grow overflow-y-auto pr-2 space-y-4">
+                {isCosmic && <PanelStars count={80} className="rounded-3xl" />}
                 {/* Program Mode Progress - Unit Based System */}
                 {(() => {
                     const unlockedUnits = getUnlockedUnits(activityStats, new Set<string>());

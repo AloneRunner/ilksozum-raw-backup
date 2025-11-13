@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { speak, cancelSpeech } from '../services/speechService';
+import { getCurrentLanguage } from '../i18n/index.ts';
+import { getSpeechLocale } from '../utils/translate.ts';
 
 export function useAutoSpeak(text: string | null | undefined, enabled: boolean, key?: any, delay: number = 150) {
     const hasSpokenRef = useRef(false);
@@ -16,7 +18,9 @@ export function useAutoSpeak(text: string | null | undefined, enabled: boolean, 
             // This ref is checked again inside the timeout to handle fast-unmounts
             if (!hasSpokenRef.current) { 
                 hasSpokenRef.current = true;
-                await speak(text);
+                const lang = getCurrentLanguage();
+                const locale = getSpeechLocale(lang as any);
+                await speak(text, locale);
             }
         };
 

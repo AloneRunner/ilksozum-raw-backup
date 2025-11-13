@@ -1,0 +1,180 @@
+{
+  "app": {
+    "name": "Autism Games for Kids: ABA",
+    "description": "Interactive educational cards teaching words, concepts and sounds for children with autism.",
+    "printPreview": "Print Preview",
+    "savePdf": "Save PDF",
+    "print": "Print",
+    "back": "Go back",
+    "developing": "Under development",
+    "pdfSavedInfo": "PDF saved. Check your Documents folder or use the share menu.",
+    "pdfSaveError": "An error occurred while saving the PDF. Please try again.",
+    "pdfCreateError": "An error occurred while creating the PDF. Please try again.",
+    "pdfJobName": "My First Words Cards",
+    "shareTitle": "PDF Saved",
+    "shareText": "The PDF file was saved. Would you like to share it?",
+    "shareDialogTitle": "Share PDF",
+    "noContentForActivity": "No content found for this activity.",
+    "noMoreImagesForActivity": "There are no more images to show for this activity.",
+    "noActivitySelected": "No activity selected.",
+    "activityLoadError": "An error occurred while loading the activity.",
+    "randomActivityRestarting": "Restarting current random activity...",
+    "activityRestarting": "Restarting activity..."
+  },
+  "choice": {
+    "readQuestion": "Speak the question",
+    "matchPrompt": "Which one matches this?",
+    "label": "Label",
+    "hint": "Hint",
+    "showLabel": "Show labels",
+    "hideLabel": "Hide labels",
+    "showHint": "Show hint",
+    "learnShapes": "Learn shapes",
+    "learnEmotions": "Learn emotions",
+    "hideHint": "Hide hint",
+    "banImageAria": "Do not show this image again",
+    "learnColors": "Learn colors"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Turn on auto speak",
+    "autoSpeakOff": "Turn off auto speak"
+  },
+  "feedback": {
+    "correctPrefix": "Yes, this is",
+    "wrongPrefix": "No, this is",
+    "rightPrefix": "Correct, this is",
+    "sentence": {
+      "correct": "Yes, this {noun} is {adjective}.",
+      "wrong": "No, this {noun} is {adjective}."
+    }
+  },
+  "settings": {
+    "language": "Language",
+    "languageSubtitle": "Interface and speech language",
+    "languageNote": "Letter activities are available for English (Beta). Content may be limited.",
+    "languageAutoNote": "Note: Some translations were generated with AI and may contain errors. We apologize to any parents affected — please send feedback so we can fix them."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objects",
+      "subtitle": "Curated object sets for non-Turkish languages",
+      "noCuratedSet": "No curated set for this category yet."
+    }
+  },
+  "menu": {
+    "hello": "Hello",
+    "appTitle": "Autism Games for Kids: ABA",
+    "experimentalTag": "Experimental",
+    "random": {
+      "title": "Random Mode",
+      "subtitle": "Play a mix of selected activities"
+    },
+    "parentTips": {
+      "title": "Tips for Parents",
+      "subtitle": "Use the app more effectively"
+    },
+    "letterSound": {
+      "title": "Letters and Sounds",
+      "subtitle": "Learn letters and sounds, spell and read."
+    },
+    "objects": {
+      "title": "Let's Learn Objects",
+      "subtitle": "Learn animals, fruits and more."
+    },
+    "concepts": {
+      "title": "Concept Activities",
+      "subtitle": "Learn colors, shapes and opposite concepts."
+    },
+    "reasoning": {
+      "title": "Reasoning Games",
+      "subtitle": "Play memory, sudoku and logic games."
+    },
+    "fineMotor": {
+      "title": "Fine Motor",
+      "subtitle": "Line Tracing, Coloring, and more",
+      "developingNote": "Under development",
+      "backButton": "Back to Fine Motor Menu"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Fine Motor Skills"
+      },
+      "fineMotor": {
+        "lineTracing": "Line Tracing",
+        "shapeColoring": "Shape Coloring",
+        "rhythmFollowing": "Rhythm Following"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Who • What • Where • When • Why • How",
+      "developingNote": "Under development",
+      "category": {
+        "who": "Who?",
+        "what": "What?",
+        "where": "Where?",
+        "when": "When?",
+        "why": "Why?",
+        "how": "How?",
+        "mixed": "Mixed"
+      }
+    }
+  },
+  "common": {
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "tabs": {
+    "activities": "Activities",
+    "communication": "Communication",
+    "achievements": "Reports",
+    "settings": "Settings"
+  },
+  "consent": {
+    "title": "Privacy Consent",
+    "body": "To continue using the app, please accept our Privacy Policy. We do not collect personal data; your progress and settings stay on your device. Non-personalized ads may be shown in the free version.",
+    "accept": "I Accept",
+    "viewPolicy": "Read Privacy Policy"
+  },
+  "themes": {
+    "simple": "Simple",
+    "balon": "Balloon",
+    "gunes": "Sun",
+    "tilki": "Fox",
+    "ay": "Moon",
+    "geceorman": "Night Forest",
+    "yagmur": "Rain",
+    "kus": "Birds",
+    "tilki2": "Prairie Fox",
+    "kedi": "Cat",
+    "kar": "Snow",
+    "gunbatimi": "Sunset",
+    "ay2": "Crescent",
+    "zurafa": "Giraffe",
+    "geometri": "Geometric",
+    "balloon": "Balloon",
+    "sun": "Sun",
+    "fox": "Fox",
+    "moon": "Moon",
+    "nightForest": "Night Forest",
+    "rain": "Rain",
+    "birds": "Birds",
+    "prairieFox": "Prairie Fox",
+    "cat": "Cat",
+    "snow": "Snow",
+    "sunset": "Sunset",
+    "crescent": "Crescent",
+    "giraffe": "Giraffe",
+    "geometric": "Geometric"
+  },
+  "completion": {
+    "heading": "Congratulations!",
+    "msg": {
+      "low": "How about trying again?",
+      "mid": "You're doing great!",
+      "high": "Awesome job!"
+    },
+    "restart": "Play Again",
+    "home": "Main Menu"
+  }
+}

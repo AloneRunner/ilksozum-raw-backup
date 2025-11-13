@@ -1,0 +1,180 @@
+{
+  "app": {
+    "name": "Autisme: Mots & Routines",
+    "description": "Cartes éducatives interactives enseignant les mots, concepts et sons pour les enfants autistes.",
+    "printPreview": "Aperçu avant impression",
+    "savePdf": "Enregistrer en PDF",
+    "print": "Imprimer",
+    "back": "Retour",
+    "developing": "En développement",
+    "pdfSavedInfo": "PDF enregistré. Consultez votre dossier Documents ou utilisez le menu Partager.",
+    "pdfSaveError": "Une erreur s'est produite lors de l'enregistrement du PDF. Veuillez réessayer.",
+    "pdfCreateError": "Une erreur s'est produite lors de la création du PDF. Veuillez réessayer.",
+    "pdfJobName": "Cartes Mes Premiers Mots",
+    "shareTitle": "PDF enregistré",
+    "shareText": "Le fichier PDF a été enregistré. Voulez-vous le partager ?",
+    "shareDialogTitle": "Partager le PDF",
+    "noContentForActivity": "Aucun contenu trouvé pour cette activité.",
+    "noMoreImagesForActivity": "Il n'y a plus d'images à afficher pour cette activité.",
+    "noActivitySelected": "Aucune activité sélectionnée.",
+    "activityLoadError": "Une erreur s'est produite lors du chargement de l'activité.",
+    "randomActivityRestarting": "Redémarrage de l'activité aléatoire en cours…",
+    "activityRestarting": "Redémarrage de l'activité…"
+  },
+  "choice": {
+    "readQuestion": "Lire la question",
+    "matchPrompt": "Lequel correspond à ceci ?",
+    "label": "Étiquette",
+    "hint": "Indice",
+    "showLabel": "Afficher les étiquettes",
+    "hideLabel": "Masquer les étiquettes",
+    "showHint": "Afficher l'indice",
+    "learnShapes": "Apprendre les formes",
+    "learnEmotions": "Apprendre les émotions",
+    "hideHint": "Masquer l'indice",
+    "banImageAria": "Ne plus afficher cette image",
+    "learnColors": "Apprendre les couleurs"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Activer la lecture automatique",
+    "autoSpeakOff": "Désactiver la lecture automatique"
+  },
+  "feedback": {
+    "correctPrefix": "Oui, c'est",
+    "wrongPrefix": "Non, ce n'est pas",
+    "rightPrefix": "Correct, c'est",
+    "sentence": {
+      "correct": "Oui, le {noun} est {adjective}.",
+      "wrong": "Non, le {noun} n'est pas {adjective}."
+    }
+  },
+  "settings": {
+    "language": "Langue",
+    "languageSubtitle": "Langue de l'interface et de la synthèse vocale",
+    "languageNote": "Les activités sur les lettres sont disponibles pour le français (Bêta). Le contenu peut être limité.",
+    "languageAutoNote": "Remarque : Certaines traductions ont été générées avec l'aide de l'IA et peuvent contenir des erreurs. Nous présentons nos excuses aux parents concernés — envoyez-nous vos retours pour que nous puissions corriger les traductions."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objets",
+      "subtitle": "Ensembles d'objets sélectionnés pour les langues non-turques",
+      "noCuratedSet": "Aucun jeu sélectionné pour cette catégorie pour le moment."
+    }
+  },
+  "menu": {
+    "hello": "Bonjour",
+    "appTitle": "Autisme: Mots & Routines",
+    "experimentalTag": "Expérimental",
+    "random": {
+      "title": "Mode aléatoire",
+      "subtitle": "Jouer un mélange d'activités sélectionnées"
+    },
+    "parentTips": {
+      "title": "Conseils pour les parents",
+      "subtitle": "Utilisez l'application plus efficacement"
+    },
+    "letterSound": {
+      "title": "Lettres et sons",
+      "subtitle": "Apprenez les lettres et les sons, épeler et lire."
+    },
+    "objects": {
+      "title": "Découvrons les objets",
+      "subtitle": "Apprenez les animaux, les fruits et plus encore."
+    },
+    "concepts": {
+      "title": "Activités de concepts",
+      "subtitle": "Apprenez les couleurs, les formes et les concepts opposés."
+    },
+    "reasoning": {
+      "title": "Jeux de logique",
+      "subtitle": "Jouez à des jeux de mémoire, sudoku et logique."
+    },
+    "fineMotor": {
+      "title": "Motricité fine",
+      "subtitle": "Suivi de ligne, coloriage, et plus",
+      "developingNote": "En développement",
+      "backButton": "Retour au menu Motricité fine"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Motricité fine"
+      },
+      "fineMotor": {
+        "lineTracing": "Suivi de ligne",
+        "shapeColoring": "Coloriage de formes",
+        "rhythmFollowing": "Suivi du rythme"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Qui • Quoi • Où • Quand • Pourquoi • Comment",
+      "developingNote": "En développement",
+      "category": {
+        "who": "Qui ?",
+        "what": "Quoi ?",
+        "where": "Où ?",
+        "when": "Quand ?",
+        "why": "Pourquoi ?",
+        "how": "Comment ?",
+        "mixed": "Mélangé"
+      }
+    }
+  },
+  "common": {
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "tabs": {
+    "activities": "Activités",
+    "communication": "Communication",
+    "achievements": "Rapports",
+    "settings": "Paramètres"
+  },
+  "consent": {
+    "title": "Consentement à la confidentialité",
+    "body": "Pour continuer à utiliser l'application, veuillez accepter notre Politique de confidentialité. Nous ne collectons pas de données personnelles ; votre progression et vos réglages restent sur votre appareil. Des publicités non personnalisées peuvent être affichées dans la version gratuite.",
+    "accept": "J'accepte",
+    "viewPolicy": "Lire la politique de confidentialité"
+  },
+  "themes": {
+    "simple": "Simple",
+    "balon": "Ballon",
+    "gunes": "Soleil",
+    "tilki": "Renard",
+    "ay": "Lune",
+    "geceorman": "Forêt nocturne",
+    "yagmur": "Pluie",
+    "kus": "Oiseaux",
+    "tilki2": "Renard des prairies",
+    "kedi": "Chat",
+    "kar": "Neige",
+    "gunbatimi": "Coucher de soleil",
+    "ay2": "Croissant",
+    "zurafa": "Girafe",
+    "geometri": "Géométrique",
+    "balloon": "Ballon",
+    "sun": "Soleil",
+    "fox": "Renard",
+    "moon": "Lune",
+    "nightForest": "Forêt nocturne",
+    "rain": "Pluie",
+    "birds": "Oiseaux",
+    "prairieFox": "Renard des prairies",
+    "cat": "Chat",
+    "snow": "Neige",
+    "sunset": "Coucher de soleil",
+    "crescent": "Croissant",
+    "giraffe": "Girafe",
+    "geometric": "Géométrique"
+  },
+  "completion": {
+    "heading": "Félicitations !",
+    "msg": {
+      "low": "On réessaie ?",
+      "mid": "Tu te débrouilles très bien !",
+      "high": "Excellent travail !"
+    },
+    "restart": "Rejouer",
+    "home": "Menu principal"
+  }
+}

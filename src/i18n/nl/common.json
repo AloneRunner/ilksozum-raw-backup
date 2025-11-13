@@ -1,0 +1,180 @@
+{
+  "app": {
+    "name": "Autisme Spellen: Leren Lezen",
+    "description": "Interactieve educatieve kaarten voor het leren van woorden, concepten en geluiden voor kinderen met autisme.",
+    "printPreview": "Afdrukvoorbeeld",
+    "savePdf": "PDF opslaan",
+    "print": "Afdrukken",
+    "back": "Terug",
+    "developing": "In ontwikkeling",
+    "pdfSavedInfo": "PDF opgeslagen. Kijk in je map Documenten of gebruik het deelmenu.",
+    "pdfSaveError": "Er is een fout opgetreden bij het opslaan van de PDF. Probeer het opnieuw.",
+    "pdfCreateError": "Er is een fout opgetreden bij het maken van de PDF. Probeer het opnieuw.",
+    "pdfJobName": "Mijn Eerste Woorden-kaarten",
+    "shareTitle": "PDF opgeslagen",
+    "shareText": "Het PDF-bestand is opgeslagen. Wil je het delen?",
+    "shareDialogTitle": "PDF delen",
+    "noContentForActivity": "Geen inhoud gevonden voor deze activiteit.",
+    "noMoreImagesForActivity": "Er zijn geen afbeeldingen meer om te tonen voor deze activiteit.",
+    "noActivitySelected": "Geen activiteit geselecteerd.",
+    "activityLoadError": "Er is een fout opgetreden bij het laden van de activiteit.",
+    "randomActivityRestarting": "Huidige willekeurige activiteit opnieuw starten...",
+    "activityRestarting": "Activiteit opnieuw starten..."
+  },
+  "choice": {
+    "readQuestion": "Vraag voorlezen",
+    "matchPrompt": "Welke past hierbij?",
+    "label": "Label",
+    "hint": "Tip",
+    "showLabel": "Labels tonen",
+    "hideLabel": "Labels verbergen",
+    "showHint": "Tip tonen",
+    "learnShapes": "Vormen leren",
+    "learnEmotions": "Emoties leren",
+    "hideHint": "Tip verbergen",
+    "banImageAria": "Deze afbeelding niet meer tonen",
+    "learnColors": "Kleuren leren"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Automatisch voorlezen inschakelen",
+    "autoSpeakOff": "Automatisch voorlezen uitschakelen"
+  },
+  "feedback": {
+    "correctPrefix": "Ja, dit is",
+    "wrongPrefix": "Nee, dit is",
+    "rightPrefix": "Correct, dit is",
+    "sentence": {
+      "correct": "Ja, de {noun} is {adjective}.",
+      "wrong": "Nee, de {noun} is niet {adjective}."
+    }
+  },
+  "settings": {
+    "language": "Taal",
+    "languageSubtitle": "Taal van interface en spraak",
+    "languageNote": "Letteractiviteiten zijn beschikbaar voor Nederlands (Beta). De inhoud kan beperkt zijn.",
+    "languageAutoNote": "Opmerking: Sommige vertalingen zijn met AI gegenereerd en kunnen fouten bevatten. Onze excuses aan ouders voor eventuele onjuiste vertalingen — stuur feedback zodat we ze kunnen verbeteren."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objecten",
+      "subtitle": "Geselecteerde objectensets voor niet-Turkse talen",
+      "noCuratedSet": "Nog geen samengestelde set voor deze categorie."
+    }
+  },
+  "menu": {
+    "hello": "Hallo",
+    "appTitle": "Autisme Spellen: Leren Lezen",
+    "experimentalTag": "Experimenteel",
+    "random": {
+      "title": "Willekeurige modus",
+      "subtitle": "Speel een mix van geselecteerde activiteiten"
+    },
+    "parentTips": {
+      "title": "Tips voor ouders",
+      "subtitle": "Gebruik de app effectiever"
+    },
+    "letterSound": {
+      "title": "Letters en klanken",
+      "subtitle": "Leer letters en klanken, spellen en lezen."
+    },
+    "objects": {
+      "title": "Objecten leren",
+      "subtitle": "Leer dieren, fruit en meer."
+    },
+    "concepts": {
+      "title": "Conceptactiviteiten",
+      "subtitle": "Leer kleuren, vormen en tegenstellingen."
+    },
+    "reasoning": {
+      "title": "Logische spellen",
+      "subtitle": "Speel geheugen-, sudoku- en logicaspellen."
+    },
+    "fineMotor": {
+      "title": "Fijne motoriek",
+      "subtitle": "Lijn volgen, kleuren en meer",
+      "developingNote": "In ontwikkeling",
+      "backButton": "Terug naar het menu Fijne motoriek"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Fijne motoriek"
+      },
+      "fineMotor": {
+        "lineTracing": "Lijnvolgen",
+        "shapeColoring": "Vormen inkleuren",
+        "rhythmFollowing": "Ritme volgen"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Wie • Wat • Waar • Wanneer • Waarom • Hoe",
+      "developingNote": "In ontwikkeling",
+      "category": {
+        "who": "Wie?",
+        "what": "Wat?",
+        "where": "Waar?",
+        "when": "Wanneer?",
+        "why": "Waarom?",
+        "how": "Hoe?",
+        "mixed": "Gemengd"
+      }
+    }
+  },
+  "common": {
+    "previous": "Vorige",
+    "next": "Volgende"
+  },
+  "tabs": {
+    "activities": "Activiteiten",
+    "communication": "Communicatie",
+    "achievements": "Rapporten",
+    "settings": "Instellingen"
+  },
+  "consent": {
+    "title": "Toestemming voor privacy",
+    "body": "Om de app te blijven gebruiken, accepteer ons privacybeleid. We verzamelen geen persoonlijke gegevens; je voortgang en instellingen blijven op je apparaat. In de gratis versie kunnen niet-gepersonaliseerde advertenties worden getoond.",
+    "accept": "Ik accepteer",
+    "viewPolicy": "Privacybeleid lezen"
+  },
+  "themes": {
+    "simple": "Eenvoudig",
+    "balon": "Ballon",
+    "gunes": "Zon",
+    "tilki": "Vos",
+    "ay": "Maan",
+    "geceorman": "Nachtbos",
+    "yagmur": "Regen",
+    "kus": "Vogels",
+    "tilki2": "Prairievos",
+    "kedi": "Kat",
+    "kar": "Sneeuw",
+    "gunbatimi": "Zonsondergang",
+    "ay2": "Halve maan",
+    "zurafa": "Giraf",
+    "geometri": "Geometrisch",
+    "balloon": "Ballon",
+    "sun": "Zon",
+    "fox": "Vos",
+    "moon": "Maan",
+    "nightForest": "Nachtbos",
+    "rain": "Regen",
+    "birds": "Vogels",
+    "prairieFox": "Prairievos",
+    "cat": "Kat",
+    "snow": "Sneeuw",
+    "sunset": "Zonsondergang",
+    "crescent": "Halve maan",
+    "giraffe": "Giraf",
+    "geometric": "Geometrisch"
+  },
+  "completion": {
+    "heading": "Gefeliciteerd!",
+    "msg": {
+      "low": "Nog een keer proberen?",
+      "mid": "Je doet het geweldig!",
+      "high": "Fantastisch gedaan!"
+    },
+    "restart": "Opnieuw spelen",
+    "home": "Hoofdmenu"
+  }
+}

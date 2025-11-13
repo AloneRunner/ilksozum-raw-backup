@@ -3,16 +3,16 @@ import React, { useMemo, useCallback, useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { getCurrentLanguage, setCurrentLanguage, type Locale } from '../i18n/index.ts';
 import { useLocalStorage } from './useLocalStorage.ts';
-import { purchasePremium, getPaywallOptions, purchasePackageByIdentifier, syncPremiumEntitlement } from '../services/monetizationService.ts';
+import { purchasePremium, getPaywallOptions, purchasePackageByIdentifier, syncPremiumEntitlement, restorePurchases } from '../services/monetizationService.ts';
 import { FREE_THEMES } from '../themes/themeManager.ts';
 
 interface UseSettingsProps {
     showToast: (message: string, type?: 'error' | 'info', duration?: number) => void;
     showPremiumToast: () => void;
-    userId?: string; // RevenueCat için kullanıcı ID'si
 }
 
-export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettingsProps) => {
+// Global device-level RC user; we no longer accept per-profile userId.
+export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) => {
     const [hasPurchasedPremium, setHasPurchasedPremium] = useLocalStorage<boolean>('isPremium_v1', false);
     const [trialStartDate, setTrialStartDate] = useLocalStorage<number | null>('trialStartDate_v1', null);
     const [bannedImageIdsArray, setBannedImageIdsArray] = useLocalStorage<number[]>('bannedImageIds_v1', []);
@@ -50,16 +50,12 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         return (Date.now() - trialStartDate) < sevenDaysInMillis;
     }, [trialStartDate]);
 
-    // Special promotion: Give all existing users premium until November 15, 2025
+    // Special promotion: Give everyone premium until November 20, 2025 (regardless of first install date)
+    const promotionEndDate = new Date('2025-11-20T23:59:59');
     const isPromotionActive = useMemo(() => {
-        const promotionEndDate = new Date('2025-11-15T23:59:59');
         const now = new Date();
-        // If user had trialStartDate before today (existing user), give them promotion
-        if (trialStartDate && trialStartDate < Date.now() - (7 * 24 * 60 * 60 * 1000)) {
-            return now < promotionEndDate;
-        }
-        return false;
-    }, [trialStartDate]);
+        return now < promotionEndDate;
+    }, []);
 
     const isPremium = hasPurchasedPremium || isTrialActive || isPromotionActive;
 
@@ -71,7 +67,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
     useEffect(() => {
         (async () => {
             try {
-                const opts = await getPaywallOptions(userId);
+                const opts = await getPaywallOptions();
                 const m = opts.find(o => o.type === 'monthly');
                 const l = opts.find(o => o.type === 'lifetime') || opts.find(o => o.productIdentifier === 'premium_upgrade');
                 setPaywallMonthly(m?.priceString || (m?.price != null ? `${m.price}` : undefined));
@@ -82,7 +78,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
                 // silently ignore
             }
         })();
-    }, [userId]);
+    }, []);
     
     const bannedImageIds = useMemo(() => new Set(bannedImageIdsArray), [bannedImageIdsArray]);
 
@@ -122,7 +118,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
     const handlePurchasePremium = useCallback(async (): Promise<boolean> => {
         try {
             // Try to fetch available packages from RC and present subscription vs lifetime
-            const options = await getPaywallOptions(userId);
+            const options = await getPaywallOptions();
             const monthly = options.find(o => o.type === 'monthly');
             const lifetime = options.find(o => o.type === 'lifetime') || options.find(o => o.productIdentifier === 'premium_upgrade');
 
@@ -131,15 +127,15 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
                 const msg = `Hangisini almak istersiniz?\n\nAylık Abonelik: ${monthly.priceString || monthly.price} / ay\nÖmür Boyu Premium: ${lifetime.priceString || lifetime.price}\n\nAylık için Tamam, Ömür boyu için İptal'e basın.`;
                 const chooseMonthly = window.confirm(msg);
                 const chosen = chooseMonthly ? monthly : lifetime;
-                success = await purchasePackageByIdentifier(chosen.packageIdentifier, userId);
+                success = await purchasePackageByIdentifier(chosen.packageIdentifier);
             } else if (monthly) {
                 // Only monthly available
-                success = await purchasePackageByIdentifier(monthly.packageIdentifier, userId);
+                success = await purchasePackageByIdentifier(monthly.packageIdentifier);
             } else if (lifetime) {
-                success = await purchasePackageByIdentifier(lifetime.packageIdentifier, userId);
+                success = await purchasePackageByIdentifier(lifetime.packageIdentifier);
             } else {
                 // Fallback to legacy purchase flow (selects first available or lifetime by product id)
-                success = await purchasePremium(userId);
+                success = await purchasePremium();
             }
 
             if (success) {
@@ -154,7 +150,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
             showToast('Satın alma işlemi sırasında hata oluştu.', 'error');
             return false;
         }
-    }, [setHasPurchasedPremium, showToast, userId]);
+    }, [setHasPurchasedPremium, showToast]);
 
     // Keep entitlement in sync with RC (covers subscription status changes)
     // This runs on mount, when userId changes, and periodically
@@ -169,7 +165,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
                 // local purchase flag with a false value that causes UI to flicker.
                 if (!Capacitor.isNativePlatform()) return;
 
-                const hasEntitlement = await syncPremiumEntitlement(userId);
+                const hasEntitlement = await syncPremiumEntitlement();
                 if (!active) return;
                 // Only update when true or when we are on native platform; this prevents
                 // toggling from true->false spuriously in web preview.
@@ -207,7 +203,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
                 window.removeEventListener('focus', checkPremiumStatus);
             }
         };
-    }, [userId, setHasPurchasedPremium]);
+    }, [setHasPurchasedPremium]);
 
     const handleBanImage = useCallback((bannedImageId: number, setActivityData: React.Dispatch<React.SetStateAction<any[]>>) => {
         setBannedImageIdsArray(prev => Array.from(new Set(prev).add(bannedImageId)));
@@ -229,9 +225,49 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         showToast("Görsel geri yüklendi.", 'info');
     }, [setBannedImageIdsArray, showToast]);
 
+    const handleRestorePurchases = useCallback(async (profileIds?: string[]): Promise<boolean> => {
+        try {
+            if (!Capacitor.isNativePlatform()) {
+                showToast('Satın alma geri yükleme, yalnızca mağaza uygulamasında çalışır.', 'info');
+                return false;
+            }
+            
+            // First try standard restore with current device user
+            let ok = await restorePurchases();
+            if (ok) {
+                setHasPurchasedPremium(true);
+                showToast('Satın alımlarınız geri yüklendi. Premium özellikler açıldı.', 'info');
+                return true;
+            }
+            
+            // If that failed and we have old profile IDs, try migrating from them
+            if (profileIds && profileIds.length > 0) {
+                const { migrateOldPurchases } = await import('../services/monetizationService.ts');
+                
+                for (const oldId of profileIds) {
+                    console.log(`Trying to migrate purchases from profile: ${oldId}`);
+                    const migrated = await migrateOldPurchases(oldId);
+                    if (migrated) {
+                        setHasPurchasedPremium(true);
+                        showToast('Satın alımlarınız geri yüklendi! Premium özellikler açıldı.', 'info');
+                        return true;
+                    }
+                }
+            }
+            
+            showToast('Geri yükleme yapılamadı ya da etkin satın alma bulunamadı.', 'info');
+            return false;
+        } catch (e) {
+            console.error('handleRestorePurchases error:', e);
+            showToast('Geri yükleme sırasında bir hata oluştu.', 'error');
+            return false;
+        }
+    }, [setHasPurchasedPremium, showToast]);
+
     return {
         isPremium,
         hasPurchasedPremium,
+        promotion: { isActive: isPromotionActive, endsAt: promotionEndDate.toISOString() },
         paywall: { monthlyPrice: paywallMonthly, lifetimePrice: paywallLifetime, hasData: !!(paywallMonthly || paywallLifetime) },
         bannedImageIds,
         isMuted,
@@ -255,7 +291,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         handlePurchasePremium,
         handlePurchaseMonthly: async (): Promise<boolean> => {
             if (paywallMonthlyPkgId) {
-                const ok = await purchasePackageByIdentifier(paywallMonthlyPkgId, userId);
+                const ok = await purchasePackageByIdentifier(paywallMonthlyPkgId);
                 if (ok) {
                     setHasPurchasedPremium(true);
                     showToast('Desteğiniz için teşekkürler! Premium özellikler açıldı.', 'info');
@@ -269,7 +305,7 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         },
         handlePurchaseLifetime: async (): Promise<boolean> => {
             if (paywallLifetimePkgId) {
-                const ok = await purchasePackageByIdentifier(paywallLifetimePkgId, userId);
+                const ok = await purchasePackageByIdentifier(paywallLifetimePkgId);
                 if (ok) {
                     setHasPurchasedPremium(true);
                     showToast('Desteğiniz için teşekkürler! Premium özellikler açıldı.', 'info');
@@ -283,5 +319,6 @@ export const useSettings = ({ showToast, showPremiumToast, userId }: UseSettings
         },
         handleBanImage,
         handleUnbanImage,
+        handleRestorePurchases,
     };
 };

@@ -1,0 +1,15 @@
+﻿ID:  166 - sünger
+ID:  209 - sabun
+ID:  300 - duş başlığı
+ID:  409 - peçete
+ID:  410 - havlu
+ID:  425 - diş macunu
+ID:  426 - şampuan
+ID:  441 - diş fırçası
+ID:  523 - havlu
+ID:  794 - sıvı sabun
+ID:  815 - tuvalet kağıdı
+ID:  816 - havlu
+ID:  855 - ıslak mendil
+ID:  856 - tarak
+ID:  874 - lif

@@ -8,11 +8,19 @@ import {
     fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData,
     onUnderData, belowAboveData, besideOppositeData, inFrontOfBehindData, insideOutsideData, betweenData, leftRightData, nearFarData, highLowData,
     beforeAfterData, dayNightData, fastSlowData,
-    whatDoesntBelongData, functionalMatchingData, causeEffectData, fiveWOneHData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
+    whatDoesntBelongData, causeEffectData, fiveWOneHData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
 } from './database/activities/index.ts';
+import objectCollectorData from './database/activities/games/objectCollectorData.ts';
+import emotionPuppetData from './database/activities/games/emotionPuppetData.ts';
 import { CONCEPT_ACTIVITIES, LETTER_SOUND_ACTIVITIES, REASONING_ACTIVITIES, LETTER_GROUPS, OBJECT_RECOGNITION_ACTIVITIES, ALL_SUB_ACHIEVEMENTS } from '../constants.ts';
+import { getActivityMetadata } from '../constants/activityMetadata';
 import { shuffleArray, getValueFromLocalStorage } from '../utils.ts';
 import { getCurrentLanguage, t } from '../i18n/index.ts';
+import wordmapTrEn from '../utils/wordmap.tr-en.json';
+import wordmapTrDe from '../utils/wordmap.tr-de.json';
+import wordmapTrFr from '../utils/wordmap.tr-fr.json';
+import wordmapTrNl from '../utils/wordmap.tr-nl.json';
+import wordmapTrAz from '../utils/wordmap.tr-az.json';
 
 
 // --- UTILITY FUNCTIONS ---
@@ -422,8 +430,63 @@ export const getActivityUiConfig = (activityType: ActivityType | null): {
 
 
 // --- LETTER & SYLLABLE DATA FETCHERS ---
+// Helper: map accented/special letters to Turkish image dataset equivalents
+const mapLetterForSearch = (lang: string, letter: string): string => {
+    if (lang === 'de') {
+        if (letter === 'Ä' || letter === 'ä') return 'A';
+        if (letter === 'Ö' || letter === 'ö') return 'Ö';
+        if (letter === 'Ü' || letter === 'ü') return 'Ü';
+    }
+    if (lang === 'az') {
+        if (letter === 'Ə' || letter === 'ə') return 'E';
+        // Q, X do not map to Turkish; leave as-is to naturally yield fewer results
+    }
+    return letter;
+};
+
+// Helper: translate Turkish word to target language using wordmaps
+const translateWord = (turkishWord: string, targetLang: string): string => {
+    if (targetLang === 'tr') return turkishWord;
+
+    let wordmap: any = {};
+    switch (targetLang) {
+        case 'en':
+            wordmap = wordmapTrEn;
+            break;
+        case 'de':
+            wordmap = wordmapTrDe;
+            break;
+        case 'fr':
+            wordmap = wordmapTrFr;
+            break;
+        case 'nl':
+            wordmap = wordmapTrNl;
+            break;
+        case 'az':
+            wordmap = wordmapTrAz;
+            break;
+        default:
+            return turkishWord;
+    }
+
+    // Wordmap structure: { "Renkler": {...}, "Nesneler ve Varlıklar": {...}, "Communication": {...}, ... }
+    // Search all categories for the Turkish word
+    for (const category of Object.values(wordmap) as Record<string, string>[]) {
+        if (category && typeof category === 'object') {
+            const translated = category[turkishWord];
+            if (translated) return translated;
+        }
+    }
+
+    // Fallback: return Turkish word if no translation found
+    return turkishWord;
+};
+
 export const fetchWordsForLetter = async (letter: string, count?: number): Promise<Word[]> => {
-  const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+    const lang = getCurrentLanguage();
+    const letterLocale = (lang === 'tr' ? 'tr-TR' : lang === 'de' ? 'de-DE' : lang === 'az' ? 'az-AZ' : 'en-US');
+    const upperDisplayLetter = letter.toLocaleUpperCase(letterLocale);
+    const searchUpperLetter = mapLetterForSearch(lang, upperDisplayLetter);
   const bannedIds = getBannedImageIds();
     // Normalize categories so we correctly match imageData tag.category values
     const norm = (s?: string) => {
@@ -471,19 +534,25 @@ export const fetchWordsForLetter = async (letter: string, count?: number): Promi
   const allWords = Array.from(uniqueWordMap.values());
   const selectedWords = count ? getRandomItems(allWords, count * 3) : allWords; // Fetch more for options
 
-  return selectedWords.map(item => ({
-    id: item.id,
-    word: item.word,
-    imageUrl: item.imageUrl,
-    audioKeys: item.audioKeys,
-    hasLetter: item.word.toLocaleUpperCase('tr-TR').includes(upperCaseLetter),
-    activityType: ActivityType.FindTheLetter, // Placeholder, will be set in fetchLetterActivityData
-  }));
+  return selectedWords.map(item => {
+    const translatedWord = translateWord(item.word, lang);
+    return {
+        id: item.id,
+        word: translatedWord,
+        imageUrl: item.imageUrl,
+        audioKeys: item.audioKeys,
+        hasLetter: translatedWord.toLocaleUpperCase(letterLocale).includes(searchUpperLetter),
+        activityType: ActivityType.FindTheLetter, // Placeholder, will be set in fetchLetterActivityData
+    };
+  });
 };
 
 export const createLetterPresenceRounds = async (letter: string, count?: number): Promise<Word[]> => {
-    const allWords = await fetchWordsForLetter(letter);
-    const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
+        const lang = getCurrentLanguage();
+        const letterLocale = (lang === 'tr' ? 'tr-TR' : lang === 'de' ? 'de-DE' : lang === 'az' ? 'az-AZ' : 'en-US');
+        const upperDisplayLetter = letter.toLocaleUpperCase(letterLocale);
+        const upperCaseLetter = upperDisplayLetter; // UI display
+        const allWords = await fetchWordsForLetter(mapLetterForSearch(lang, letter));
 
     const wordsWithLetter = shuffleArray(allWords.filter(w => w.hasLetter));
     const wordsWithoutLetter = shuffleArray(allWords.filter(w => !w.hasLetter));
@@ -497,7 +566,7 @@ export const createLetterPresenceRounds = async (letter: string, count?: number)
 
     const selectedWithLetter = wordsWithLetter.slice(0, numEach).map(word => ({
         ...word,
-        questionText: `Bu görselde '${upperCaseLetter}' sesi var mı?`,
+        questionText: t('letters.soundPresence.question', `Bu görselde '{letter}' sesi var mı?`).replace('{letter}', upperCaseLetter),
         questionAudioKey: 'q_does_this_have_sound',
         isCorrectAnswer: true,
         activityType: ActivityType.SoundPresence,
@@ -505,7 +574,7 @@ export const createLetterPresenceRounds = async (letter: string, count?: number)
 
     const selectedWithoutLetter = wordsWithoutLetter.slice(0, numEach).map(word => ({
         ...word,
-        questionText: `Bu görselde '${upperCaseLetter}' sesi var mı?`,
+        questionText: t('letters.soundPresence.question', `Bu görselde '{letter}' sesi var mı?`).replace('{letter}', upperCaseLetter),
         questionAudioKey: 'q_does_this_have_sound',
         isCorrectAnswer: false,
         activityType: ActivityType.SoundPresence,
@@ -694,7 +763,8 @@ export const createObjectChoiceRounds = async (categoryId: string, count?: numbe
         !bannedIds.has(item.id) && normalizeCategory(item.tags.category) === targetCategory
     );
 
-    if (itemsInCategory.length < 4) return [];
+    // Önceden 4'ten az öğe varsa hiç tur döndürmüyordu. Artık havuz küçükse de eldeki kadar soru üretelim.
+    if (itemsInCategory.length < 1) return [];
 
     const uniqueWords = [...new Set(itemsInCategory.map(item => item.word))];
     const questionWords = shuffleArray(uniqueWords).slice(0, MAX_QUESTIONS_PER_ROUND);
@@ -1074,7 +1144,7 @@ const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
     [ActivityType.DayNight]: dayNightData,
     [ActivityType.FastSlow]: fastSlowData,
     // WhatDoesntBelong is now handled dynamically
-    [ActivityType.FunctionalMatching]: functionalMatchingData,
+    // FunctionalMatching removed - now integrated into 5N1K "What?" category
     [ActivityType.CauseEffect]: causeEffectData,
     [ActivityType.FiveWOneH]: fiveWOneHData,
     [ActivityType.SequencingStories]: sequencingStoryData,
@@ -1083,7 +1153,12 @@ const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
     [ActivityType.DragAndDropPositioning]: dragAndDropPositioningData,
 };
 
-export const fetchConceptActivityData = async (activity: ActivityType, _activityStats: Record<string, ActivityStats>, count?: number): Promise<any[]> => {
+export const fetchConceptActivityData = async (
+    activity: ActivityType,
+    _activityStats: Record<string, ActivityStats>,
+    count?: number,
+    _isPremium?: boolean
+): Promise<any[]> => {
     const MAX_QUESTIONS_STATIC = count || 8;
     const NUM_ROUNDS_DYNAMIC = count || 4; // Sudoku/Hafıza için 4 tur yeterli 
 
@@ -1094,8 +1169,21 @@ export const fetchConceptActivityData = async (activity: ActivityType, _activity
     if (activity === ActivityType.Emotions) return createEmotionsRounds(MAX_QUESTIONS_STATIC);
     
     if (activity === ActivityType.WhatDoesntBelong) {
-        // Tamamen statik turlar - whatDoesntBelongData'dan
-        const rounds = getRandomItems(whatDoesntBelongData, MAX_QUESTIONS_STATIC).map(round => ({
+        // Erken ünitelerde sadece basit 3 aynı + 1 farklı (ID <=4), ileri (unit >=9) kategori bazlı.
+        // Unlocked en yüksek üniteyi tahmin etmek için stats'tan güncel ilerleme: başarı oranı veya deneme varlığı.
+        const highestUnlockedUnit = (() => {
+            let maxUnit = 1;
+            for (const key of Object.keys(_activityStats)) {
+                const meta = getActivityMetadata(key as any);
+                if (!meta) continue;
+                const s = _activityStats[key];
+                const attempted = s && ((s.totalQuestions || 0) > 0 || (s.history || []).some(h => h.total > 0));
+                if (attempted && meta.unitNumber > maxUnit) maxUnit = meta.unitNumber;
+            }
+            return maxUnit;
+        })();
+        const pool = highestUnlockedUnit >= 9 ? whatDoesntBelongData : whatDoesntBelongData.filter(r => Number(r.id) <= 4);
+        const rounds = getRandomItems(pool, MAX_QUESTIONS_STATIC).map(round => ({
             ...round,
             options: shuffleArray(round.options),
             activityType: activity,
@@ -1107,7 +1195,8 @@ export const fetchConceptActivityData = async (activity: ActivityType, _activity
     // so category filtering can pick sufficient items.
     if (activity === ActivityType.FiveWOneH) {
         const base = fiveWOneHData.map(r => ({ ...r, options: shuffleArray(r.options), activityType: ActivityType.FiveWOneH }));
-        return base;
+        // Shuffle rounds for mixed mode; category filtering happens in AppRouter
+        return shuffleArray(base);
     }
 
 
@@ -1177,6 +1266,28 @@ export const fetchConceptActivityData = async (activity: ActivityType, _activity
             });
         }
         return rounds;
+    }
+
+    if (activity === ActivityType.ObjectCollector) {
+        // Nesne Toplama Oyunu - 8 farklı kategori/senaryo
+        const shuffled = shuffleArray([...objectCollectorData]);
+        const selectedRounds = shuffled.slice(0, Math.min(count || 8, objectCollectorData.length));
+        return selectedRounds.map((round, idx) => ({
+            ...round,
+            id: idx,
+            category: t(round.categoryKey, round.category),
+        }));
+    }
+
+    if (activity === ActivityType.EmotionPuppet) {
+        // Duygu Kuklası Oyunu - 4 farklı duygu senaryosu
+        const shuffled = shuffleArray([...emotionPuppetData]);
+        const selectedRounds = shuffled.slice(0, Math.min(count || 4, emotionPuppetData.length));
+        return selectedRounds.map((round, idx) => ({
+            ...round,
+            id: idx,
+            targetEmotionLabel: t(round.targetEmotionKey, round.targetEmotionLabel),
+        }));
     }
 
     // Provide placeholder rounds for fine motor activities which are UI-driven and
@@ -1315,4 +1426,23 @@ export const fetchLetterActivityData = async (activity: ActivityType, letter: st
         console.error("İçerik yüklenirken hata:", error);
         return [];
     }
+};
+
+// --- 5W1H helpers for sub-ID filtering (Who/What/Where/When/Why/How) ---
+export const fetchFiveWOneHBySubKey = async (subKey: string, count?: number): Promise<ConceptRound[]> => {
+    // Map sub-key to questionAudioKey prefix
+    const prefixMap: Record<string, string> = {
+        'FiveWOneH_Who': 'q_who',
+        'FiveWOneH_What': 'q_what',
+        'FiveWOneH_Where': 'q_where',
+        'FiveWOneH_When': 'q_when',
+        'FiveWOneH_Why': 'q_why',
+        'FiveWOneH_How': 'q_how',
+    };
+    const prefix = prefixMap[subKey] || '';
+    const base = fiveWOneHData
+        .filter(r => !prefix || String(r.questionAudioKey || '').startsWith(prefix))
+        .map(r => ({ ...r, options: shuffleArray(r.options), activityType: ActivityType.FiveWOneH }));
+    const num = count || 6;
+    return getRandomItems(base, num);
 };

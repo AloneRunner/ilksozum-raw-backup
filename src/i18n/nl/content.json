@@ -1,0 +1,939 @@
+{
+  "concepts": {
+    "basic": "Basis",
+    "dimensional": "Dimensioneel",
+    "tactile": "Tactiel",
+    "state": "Toestand",
+    "quantity": "Hoeveelheid",
+    "location": "Locatie",
+    "time": "Tijd",
+    "activities": {
+      "yesNo": "Ja / Nee",
+      "colors": "Kleuren",
+      "shapes": "Vormen",
+      "emotions": "Emoties",
+      "parlakMat": "Glanzend / Mat",
+      "seffafOpak": "Doorzichtig / Ondoorzichtig",
+      "straightCurved": "Recht / Gebogen",
+      "bigSmall": "Groot / Klein",
+      "longShort": "Lang / Kort",
+      "thinThick": "Dun / Dik",
+      "wideNarrow": "Breed / Smal",
+      "heavyLight": "Zwaar / Licht",
+      "derinSig": "Diep / Ondiep",
+      "kalabalikTenha": "Druk / Rustig",
+      "hardSoft": "Hard / Zacht",
+      "roughSmooth": "Ruw / Glad",
+      "dikenliPuruzsuz": "Stekelig / Glad",
+      "kirisikDuzgun": "Gekreukt / Glad",
+      "sivriKut": "Scherp / Stomp",
+      "oldNew": "Oud / Nieuw",
+      "youngOld": "Jong / Oud",
+      "cleanDirty": "Schoon / Vies",
+      "wetDry": "Nat / Droog",
+      "openClosed": "Open / Gesloten",
+      "aliveLifeless": "Levend / Levenloos",
+      "brokenIntact": "Gebroken / Heel",
+      "messyClean": "Rommelig / Netjes",
+      "tazeBayat": "Vers / Oud",
+      "dugumCozuk": "Geknoopt / Losgeknoopt",
+      "hungryFull": "Hongerig / Vol",
+      "tembelCaliskan": "Lui / IJverig",
+      "hotCold": "Heet / Koud",
+      "bitterSweet": "Bitter / Zoet",
+      "tersDuz": "Ondersteboven / Rechtop",
+      "fewMuch": "Weinig / Veel",
+      "halfQuarterWhole": "Heel / Half / Kwart",
+      "fullEmpty": "Vol / Leeg",
+      "oddEven": "Oneven / Even",
+      "onUnder": "Op / Onder",
+      "belowAbove": "Beneden / Boven",
+      "inFrontOfBehind": "Voor / Achter",
+      "insideOutside": "Binnen / Buiten",
+      "besideOpposite": "Naast / Tegenover",
+      "between": "Tussen",
+      "leftRight": "Links / Rechts",
+      "nearFar": "Dichtbij / Ver",
+      "highLow": "Hoog / Laag",
+      "beforeAfter": "Voor / Na",
+      "dayNight": "Dag / Nacht",
+      "fastSlow": "Snel / Langzaam",
+      "senses": "Onze zintuigen",
+      "shinyMatte": "Glanzend / Mat",
+      "transparentOpaque": "Doorzichtig / Ondoorzichtig",
+      "deepShallow": "Diep / Ondiep",
+      "crowdedSparse": "Druk / Schaars",
+      "thornySmooth": "Stekelig / Glad",
+      "wrinkledSmooth": "Gekreukt / Glad",
+      "pointedBlunt": "Scherp / Stomp",
+      "messyTidy": "Rommelig / Netjes",
+      "freshStale": "Vers / Oud",
+      "knottedUntied": "Geknoopt / Losgeknoopt",
+      "lazyHardworking": "Lui / IJverig",
+      "upsideDownUpright": "Ondersteboven / Rechtop",
+      "wholeHalfQuarter": "Heel / Half / Kwart"
+    },
+    "subtitles": {
+      "approveReject": "Afbeelding goedkeuren of afwijzen",
+      "findColor": "Gevraagde kleur vinden",
+      "rightShape": "Juiste vorm kiezen",
+      "recognizeFaces": "Gezichtsuitdrukkingen herkennen",
+      "learnReflections": "Reflecties leren",
+      "understandTransparency": "Transparantie begrijpen",
+      "recognizeLines": "Lijnen herkennen",
+      "compareSizes": "Grootten vergelijken",
+      "tellLengths": "Lengtes onderscheiden",
+      "learnThickness": "Dikte leren",
+      "understandWidth": "Breedte begrijpen",
+      "compareWeights": "Gewichten vergelijken",
+      "measureDepths": "Dieptes meten",
+      "understandCrowding": "Drukte begrijpen",
+      "feelTextures": "Texturen voelen",
+      "knowSurfaces": "Oppervlakken kennen",
+      "plantAnimalTextures": "Plant- en diertexturen",
+      "surfaceConditions": "Oppervlaktetoestanden",
+      "identifyPoints": "Scherpe punten herkennen",
+      "indicatePositions": "Posities aangeven",
+      "understandHeights": "Hoogtes begrijpen",
+      "learnOrder": "Volgorde leren",
+      "indicatePlace": "Plaats aangeven",
+      "learnDirections": "Richtingen leren",
+      "findMiddle": "Degene in het midden vinden",
+      "tellDirections": "Richtingen onderscheiden",
+      "understandDistances": "Afstanden begrijpen",
+      "compareLevels": "Niveaus vergelijken",
+      "learnTimesOfDay": "Dagdelen leren",
+      "orderEvents": "Gebeurtenissen ordenen",
+      "compareSpeeds": "Snelheden vergelijken",
+      "compareQuantities": "Hoeveelheden vergelijken",
+      "learnParts": "Delen leren",
+      "knowContainerStates": "Staat van containers kennen",
+      "groupNumbers": "Getallen groeperen",
+      "untangleConnections": "Verbindingen ontwarren",
+      "understandFullness": "Volheid begrijpen",
+      "understandBehaviors": "Gedragingen begrijpen",
+      "feelTemperatures": "Temperaturen voelen",
+      "learnTastes": "Smaken leren",
+      "findCorrectOne": "De juiste vinden"
+    }
+  },
+  "objects": {
+    "categories": {
+      "hayvan": "Dieren",
+      "meyve": "Fruit",
+      "sebze": "Groenten",
+      "yiyecek": "Voedsel",
+      "giysi": "Kleding",
+      "vücut": "Lichaamsdelen",
+      "mutfak": "Keukengerei",
+      "ev": "Huis",
+      "ev_esya": "Huishoudelijke artikelen",
+      "oyuncak": "Speelgoed",
+      "ulasim": "Vervoer",
+      "muzik_aleti": "Muziekinstrumenten",
+      "tamir_aleti": "Gereedschap",
+      "eglence": "Amusement",
+      "okul_esya": "Schoolspullen",
+      "profession": "Beroepen",
+      "insan": "Mensen",
+      "bitki": "Planten",
+      "doğal yapı": "Natuurlijke structuren",
+      "doğal nesne": "Natuurlijke objecten",
+      "doğa olayı": "Natuurlijke gebeurtenissen",
+      "yer": "Plaatsen",
+      "bina": "Gebouwen",
+      "uzay": "Ruimte",
+      "meyveler": "Fruit",
+      "sebzeler": "Groenten",
+      "icecekler": "Drankjes",
+      "diger_yiyecekler": "Ander voedsel",
+      "ev_esyalari": "Huishoudelijke artikelen",
+      "oyuncaklar": "Speelgoed",
+      "giysiler_aksesuarlar": "Kleding & Accessoires",
+      "okul_ofis": "School- & Kantoorspullen",
+      "okul_ofis_gerecleri": "School- & Kantoorspullen",
+      "mutfak_gerecleri": "Keukengerei",
+      "tasitlar": "Voertuigen",
+      "hayvanlar": "Dieren",
+      "bitkiler": "Planten",
+      "vucudun_bolumleri": "Lichaamsdelen",
+      "meslekler": "Beroepen",
+      "yerler_odalar": "Plaatsen & Kamers",
+      "doga_uzay": "Natuurlijke Structuren & Ruimte",
+      "ev_yapi_insaat": "Huis & Constructie",
+      "aletler": "Gereedschap",
+      "muzik_aletleri": "Muziekinstrumenten",
+      "animal": "Dieren",
+      "fruit": "Fruit",
+      "vegetable": "Groenten",
+      "food": "Voedsel",
+      "clothing": "Kleding",
+      "body": "Lichaamsdelen",
+      "kitchen": "Keukengerei",
+      "home": "Huis",
+      "householdItems": "Huishoudelijke artikelen",
+      "toys": "Speelgoed",
+      "transportation": "Vervoer",
+      "musicalInstruments": "Muziekinstrumenten",
+      "tools": "Gereedschap",
+      "entertainment": "Amusement",
+      "schoolSupplies": "Schoolspullen",
+      "professions": "Beroepen",
+      "people": "Mensen",
+      "plants": "Planten",
+      "naturalStructure": "Natuurlijke structuren",
+      "naturalObject": "Natuurlijke objecten",
+      "naturalEvent": "Natuurlijke gebeurtenissen",
+      "places": "Plaatsen",
+      "buildings": "Gebouwen",
+      "space": "Ruimte",
+      "fruits": "Fruit",
+      "vegetables": "Groenten",
+      "drinks": "Drankjes",
+      "otherFoods": "Ander voedsel",
+      "household_items": "Huishoudelijke artikelen",
+      "toys_games": "Speelgoed",
+      "clothesAccessories": "Kleding & Accessoires",
+      "schoolOffice": "School- & Kantoorspullen",
+      "kitchenUtensils": "Keukengerei",
+      "vehicles": "Voertuigen",
+      "animals": "Dieren",
+      "bodyParts": "Lichaamsdelen",
+      "placesRooms": "Plaatsen & Kamers",
+      "naturalSpace": "Natuurlijke Structuren & Ruimte",
+      "houseConstruction": "Huis & Constructie",
+      "musical_instruments": "Muziekinstrumenten"
+    },
+    "noTestForCategory": "Kon geen test maken voor deze categorie.",
+    "activityRestarting": "Objectactiviteit opnieuw starten..."
+  },
+  "communication": {
+    "title": "Visuele Communicatiekaarten",
+    "subtitle": "Systeem voor communicatie met plaatjes — druk je behoeften uit met afbeeldingen.",
+    "composeHint": "Tik op kaarten om een zin te maken.",
+    "printHint": "Tik op kaarten om ze aan je mandje toe te voegen.",
+    "finishSelection": "Selectie voltooien",
+    "addToBasket": "Toevoegen aan mandje",
+    "finishSelectionAria": "Kaartselectie voltooien",
+    "selectForPrintAria": "Selecteer kaarten om af te drukken",
+    "clearSentenceAria": "Zin wissen",
+    "speakSentenceAria": "Zin uitspreken",
+    "selectCardsForCategory": "Selecteer kaarten voor \"{title}\"",
+    "printSelectionHelp": "Selecteer kaarten om aan je mandje toe te voegen.",
+    "printSelectionCount": "{count} / 9 geselecteerd",
+    "removeFromBasket": "Uit mandje verwijderen",
+    "printBasketTitle": "Afdrukmandje",
+    "basketEmpty": "Je mandje is leeg",
+    "basketEmptyHelp": "Ga terug naar categorieën om kaarten toe te voegen die je wilt afdrukken.",
+    "clear": "Leegmaken",
+    "clearBasketAria": "Mand leegmaken",
+    "printSelectedAria": "Geselecteerde kaarten afdrukken",
+    "printPoolLimitWarning": "Je mand is bijna vol of vol. Je kunt tot 9 kaarten toevoegen.",
+    "printPoolLimitTooMany": "Je kunt maximaal 9 kaarten selecteren om af te drukken. Verwijder er een paar.",
+    "categories": {
+      "ihtiyaclar": "Basisbehoeften",
+      "eylemler": "Acties",
+      "duygular": "Gevoelens",
+      "kisiler": "Mensen",
+      "yerler": "Plaatsen",
+      "esyalar": "Voorwerpen",
+      "hayvanlar": "Dieren",
+      "tasitlar": "Voertuigen",
+      "needs": "Basisbehoeften",
+      "actions": "Acties",
+      "emotions": "Gevoelens",
+      "people": "Mensen",
+      "places": "Plaatsen",
+      "objects": "Voorwerpen",
+      "animals": "Dieren",
+      "vehicles": "Voertuigen"
+    },
+    "subcategories": {
+      "meyveler": "Fruit",
+      "sebzeler": "Groenten",
+      "ana-yemekler": "Hoofdgerechten",
+      "kahvaltiliklar": "Ontbijt",
+      "atistirmaliklar": "Snacks",
+      "icecekler": "Drankjes",
+      "saglik": "Gezondheid",
+      "tuvalet": "Toilet",
+      "temizlik": "Hygiëne",
+      "uyku": "Slapen",
+      "gunluk": "Dagelijkse routines",
+      "hareket": "Beweging en sport",
+      "sosyal": "Sociale interacties",
+      "sanatsal": "Artistiek en creatief",
+      "istekler": "Verzoeken",
+      "pozitif": "Positief",
+      "negatif": "Negatief",
+      "fiziksel": "Fysieke toestanden",
+      "aile": "Familieleden",
+      "okul_kisi": "Schoolomgeving",
+      "meslekler": "Beroepen",
+      "ev_yer": "Thuis",
+      "okul_yer": "School",
+      "dis_mekan": "Buiten",
+      "ev_esya": "Huishoudelijke artikelen",
+      "okul_esya": "Schoolspullen",
+      "kiyafetler": "Kleding",
+      "oyun_esya": "Speelgoed en hobbies",
+      "evcil": "Huisdieren",
+      "ciftlik": "Boerderijdieren",
+      "vahsi": "Wilde dieren",
+      "kara": "Landvoertuigen",
+      "hava": "Luchtvaartuigen",
+      "deniz": "Zeevoertuigen",
+      "fruits": "Fruit",
+      "vegetables": "Groenten",
+      "mainDishes": "Hoofdgerechten",
+      "breakfast": "Ontbijt",
+      "snacks": "Snacks",
+      "drinks": "Drankjes",
+      "health": "Gezondheid",
+      "toilet": "Toilet",
+      "hygiene": "Hygiëne",
+      "sleep": "Slapen",
+      "daily": "Dagelijkse routines",
+      "movement": "Beweging en sport",
+      "social": "Sociale interacties",
+      "artistic": "Artistiek en creatief",
+      "requests": "Verzoeken",
+      "positive": "Positief",
+      "negative": "Negatief",
+      "physical": "Fysieke toestanden",
+      "family": "Familieleden",
+      "schoolPeople": "Schoolomgeving",
+      "professions": "Beroepen",
+      "homePlaces": "Thuis",
+      "schoolPlaces": "School",
+      "outdoors": "Buiten",
+      "householdItems": "Huishoudelijke artikelen",
+      "schoolSupplies": "Schoolspullen",
+      "clothing": "Kleding",
+      "toysAndHobbies": "Speelgoed en hobbies",
+      "pets": "Huisdieren",
+      "farm": "Boerderijdieren",
+      "wild": "Wilde dieren",
+      "land": "Landvoertuigen",
+      "air": "Luchtvaartuigen",
+      "sea": "Zeevoertuigen"
+    }
+  },
+  "questions": {
+    "q_which_is_upsidedown": "Welke is ondersteboven?",
+    "q_which_is_different": "Welke is anders?",
+    "q_which_is_big": "Welke is groot?",
+    "q_which_is_small": "Welke is klein?",
+    "q_which_is_higher": "Welke is hoger?",
+    "q_which_is_lower": "Welke is lager?",
+    "q_which_is_left": "Welke kijkt naar links?",
+    "q_which_is_right": "Welke kijkt naar rechts?",
+    "q_which_is_on": "Welke is bovenop?",
+    "q_which_is_under": "Welke is eronder?",
+    "q_which_is_few": "Welke heeft er weinig?",
+    "q_which_is_many": "Welke heeft er veel?",
+    "q_which_is_odd": "Welke is oneven?",
+    "q_which_is_even": "Welke is even?",
+    "q_which_is_rough": "Welke is ruw?",
+    "q_which_is_smooth": "Welke is glad?",
+    "q_which_is_color": "Welke is {color}?",
+    "q_which_is_shape": "Welke is {shape}?",
+    "q_which_is_object": "Welke is het voorwerp?",
+    "q_does_this_have_sound": "Maakt dit geluid?",
+    "q_what_after_socks": "Wat trekken we aan na de sokken?",
+    "q_where_use_pillow": "Waar gebruiken we het kussen?",
+    "q_what_eat_soup_with": "Waarmee eten we soep?",
+    "q_what_color_picture_with": "Waarmee kleuren we de tekening?",
+    "q_what_write_paper_with": "Waarmee schrijven we op papier?",
+    "q_what_brush_teeth_with": "Waarmee poetsen we onze tanden?",
+    "q_what_hammer_nail_with": "Waarmee slaan we de spijker erin?",
+    "q_what_open_door_with": "Waarmee openen we de deur?",
+    "q_what_eat_pasta_with": "Waarmee eten we pasta?",
+    "q_where_put_money": "Waar stoppen we het geld in?",
+    "q_put_ball_in_box": "Leg de bal in de doos.",
+    "q_put_book_on_table": "Leg het boek op tafel.",
+    "q_put_car_left_of_house": "Zet de auto links van het huis.",
+    "q_put_apple_right_of_basket": "Leg de appel rechts van de mand.",
+    "q_put_shoe_under_bed": "Zet de schoen onder het bed.",
+    "q_which_is_shiny": "Welke is glanzend?",
+    "q_which_is_matte": "Welke is mat?",
+    "q_which_is_transparent": "Welke is doorzichtig?",
+    "q_which_is_opaque": "Welke is ondoorzichtig?",
+    "q_which_is_straight": "Welke is recht?",
+    "q_which_is_curved": "Welke is gebogen?",
+    "q_which_is_crowded": "Welke is druk?",
+    "q_which_is_sparse": "Welke is schaars?",
+    "q_which_is_pointed": "Welke is puntig?",
+    "q_which_is_blunt": "Welke is stomp?",
+    "q_which_is_thick": "Welke is dik?",
+    "q_which_is_thin": "Welke is dun?",
+    "q_which_is_wide": "Welke is breed?",
+    "q_which_is_narrow": "Welke is smal?",
+    "q_which_is_hard": "Welke is hard?",
+    "q_which_is_soft": "Welke is zacht?",
+    "q_which_is_heavy": "Welke is zwaar?",
+    "q_which_is_light": "Welke is licht?",
+    "q_which_is_hot": "Welke is heet?",
+    "q_which_is_cold": "Welke is koud?",
+    "q_which_is_wet": "Welke is nat?",
+    "q_which_is_dry": "Welke is droog?",
+    "q_which_is_wet_person": "Welke is nat?",
+    "q_which_is_dry_person": "Welke is droog?",
+    "q_which_is_open": "Welke is open?",
+    "q_which_is_open_person": "Welke is open?",
+    "q_which_is_closed": "Welke is gesloten?",
+    "q_which_is_closed_person": "Welke is gesloten?",
+    "q_which_is_hungry": "Welke heeft honger?",
+    "q_which_is_hungry_person": "Welke heeft honger?",
+    "q_which_is_full": "Welke is verzadigd?",
+    "q_which_is_satiated_person": "Welke is verzadigd?",
+    "q_which_is_messy": "Welke is rommelig?",
+    "q_which_is_tidy": "Welke is netjes?",
+    "q_which_is_noisy": "Welke is luidruchtig?",
+    "q_which_is_quiet": "Welke is stil?",
+    "q_which_is_old": "Welke is oud?",
+    "q_which_is_new": "Welke is nieuw?",
+    "q_which_is_young": "Welke is jong?",
+    "q_which_is_old_person": "Welke is oud?",
+    "q_which_is_young_person": "Welke is jong?",
+    "q_which_is_lazy": "Welke is lui?",
+    "q_which_is_hardworking": "Welke is hardwerkend?",
+    "q_which_is_fresh": "Welke is vers?",
+    "q_which_is_stale": "Welke is oud?",
+    "q_which_is_upright": "Welke is rechtop?",
+    "q_which_is_upright_person": "Welke is rechtop?",
+    "q_which_is_alive": "Welke is levend?",
+    "q_which_is_upsidedown_person": "Welke is ondersteboven?",
+    "q_which_is_lifeless": "Welke is levenloos?",
+    "q_which_is_bitter": "Welke is bitter?",
+    "q_which_is_sweet": "Welke is zoet?",
+    "q_which_is_sour": "Welke is zuur?",
+    "q_which_is_thorny": "Welke is doornig?",
+    "q_which_is_knotted": "Welke is geknoopt?",
+    "q_which_is_untied": "Welke is losgeknoopt?",
+    "q_which_is_long": "Welke is lang?",
+    "q_which_is_short": "Welke is kort?",
+    "q_which_is_wrinkled": "Welke is gerimpeld?",
+    "q_which_is_broken": "Welke is kapot?",
+    "q_which_is_intact": "Welke is heel?",
+    "q_which_is_clean": "Welke is schoon?",
+    "q_which_is_dirty": "Welke is vies?",
+    "q_which_is_above": "Welke is boven?",
+    "q_which_is_below": "Welke is beneden?",
+    "q_which_are_beside": "Welke zijn naast elkaar?",
+    "q_which_are_opposite": "Welke zijn tegenover elkaar?",
+    "q_which_is_in_front": "Welke is voor?",
+    "q_which_is_behind": "Welke is achter?",
+    "q_which_is_inside": "Welke is binnen?",
+    "q_which_is_outside": "Welke is buiten?",
+    "q_which_is_between": "Welke is tussen?",
+    "q_which_is_near": "Welke is dichtbij?",
+    "q_which_is_far": "Welke is ver?",
+    "q_which_is_deep": "Welke is diep?",
+    "q_which_is_shallow": "Welke is ondiep?",
+    "q_which_faces_left": "Welke kijkt naar links?",
+    "q_which_faces_right": "Welke kijkt naar rechts?",
+    "q_which_is_before": "Welke komt ervoor?",
+    "q_which_is_after": "Welke komt erna?",
+    "q_which_is_day": "Welke is de dag?",
+    "q_which_is_night": "Welke is de nacht?",
+    "q_which_is_fast": "Welke is snel?",
+    "q_which_is_slow": "Welke is traag?",
+    "q_which_sense_see_person": "Welke gebruiken we om te zien?",
+    "q_which_is_cat_person": "Welke is kat?",
+    "q_which_is_lion_person": "Welke is leeuw?",
+    "q_which_is_elephant_person": "Welke is olifant?",
+    "q_which_is_fish_person": "Welke is vis?",
+    "q_which_is_bird_person": "Welke is vogel?",
+    "q_which_is_rabbit_person": "Welke is konijn?",
+    "q_which_is_giraffe_person": "Welke is giraffe?",
+    "q_which_is_butterfly_person": "Welke is vlinder?",
+    "q_which_is_bee_person": "Welke is bij?",
+    "q_which_is_duck_person": "Welke is eend?",
+    "q_which_is_turtle_person": "Welke is schildpad?",
+    "q_which_is_eye_person": "Welke is oog?",
+    "q_which_is_ear_person": "Welke is oor?",
+    "q_which_is_hand_person": "Welke is hand?",
+    "q_which_is_foot_person": "Welke is voet?",
+    "q_which_is_hair_person": "Welke is haar?",
+    "q_which_is_mouth_person": "Welke is mond?",
+    "q_which_is_tongue_person": "Welke is tong?",
+    "q_which_is_arm_person": "Welke is arm?",
+    "q_which_is_leg_person": "Welke is been?",
+    "q_which_is_bagel_person": "Welke is bagel?",
+    "q_which_is_apple_person": "Welke is appel?",
+    "q_which_is_orange_person": "Welke is sinaasappel?",
+    "q_which_is_strawberry_person": "Welke is aardbei?",
+    "q_which_are_grapes_person": "Welke zijn druiven?",
+    "q_which_is_watermelon_person": "Welke is watermeloen?",
+    "q_which_is_lemon_person": "Welke is citroen?",
+    "q_which_is_pear_person": "Welke is peer?",
+    "q_which_is_cherry_person": "Welke is kers?",
+    "q_which_is_pineapple_person": "Welke is ananas?",
+    "q_which_is_melon_person": "Welke is meloen?",
+    "q_which_is_peach_person": "Welke is perzik?",
+    "q_which_is_stone_person": "Welke is steen?",
+    "q_which_is_leaf_person": "Welke is blad?",
+    "q_which_is_ice_person": "Welke is ijs?",
+    "q_which_is_tree_trunk_person": "Welke is boomstam?",
+    "q_which_is_feather_person": "Welke is veer?",
+    "q_which_is_snow_person": "Welke is sneeuw?",
+    "q_which_is_waterfall_person": "Welke is waterval?",
+    "q_which_is_teacher_person": "Welke is leraar?",
+    "q_which_is_baby_person": "Welke is baby?",
+    "q_which_is_family_person": "Welke is familie?",
+    "q_which_is_grandmother_person": "Welke is grootmoeder?",
+    "q_which_is_grandfather_person": "Welke is grootvader?",
+    "q_which_is_king_person": "Welke is koning?",
+    "q_which_is_queen_person": "Welke is koningin?",
+    "q_which_is_tree_person": "Welke is boom?",
+    "q_which_is_cactus_person": "Welke is cactus?",
+    "q_which_is_grass_person": "Welke is gras?",
+    "q_which_is_cotton_person": "Welke is katoen?",
+    "q_which_is_tulip_person": "Welke is tulp?",
+    "q_which_is_daisy_person": "Welke is madeliefje?",
+    "q_which_is_doctor_person": "Welke is dokter?",
+    "q_which_is_firefighter_person": "Welke is brandweerman?",
+    "q_which_is_chef_person": "Welke is kok?",
+    "q_which_is_nurse_person": "Welke is verpleegster?",
+    "q_which_is_pilot_person": "Welke is piloot?",
+    "q_which_is_farmer_person": "Welke is boer?",
+    "q_which_is_postman_person": "Welke is postbode?",
+    "q_which_is_barber_person": "Welke is kapper?",
+    "q_which_is_waiter_person": "Welke is ober?",
+    "q_which_is_astronaut_person": "Welke is astronaut?",
+    "q_which_is_notebook_person": "Welke is schrift?",
+    "q_which_is_kite_person": "Welke is vlieger?",
+    "q_which_is_tomato_person": "Welke is tomaat?",
+    "q_which_is_potato_person": "Welke is aardappel?",
+    "q_which_is_onion_person": "Welke is ui?",
+    "q_which_is_pepper_person": "Welke is paprika?",
+    "q_which_is_lettuce_person": "Welke is sla?",
+    "q_which_is_carrot_person": "Welke is wortel?",
+    "q_which_is_eggplant_person": "Welke is aubergine?",
+    "q_which_is_corn_person": "Welke is maïs?",
+    "q_which_is_broccoli_person": "Welke is broccoli?",
+    "q_which_is_cauliflower_person": "Welke is bloemkool?",
+    "q_which_is_cabbage_person": "Welke is kool?",
+    "q_which_is_alive_person": "Welke is levend?",
+    "q_which_is_big_person": "Welke is groot?",
+    "q_which_is_bitter_person": "Welke is bitter?",
+    "q_which_is_clean_person": "Welke is schoon?",
+    "q_which_is_thorny_person": "Welke is doornig?",
+    "q_which_is_hard_person": "Welke is hard?",
+    "q_which_is_long_person": "Welke is lang?",
+    "q_which_is_noisy_person": "Welke is luidruchtig?",
+    "q_which_is_rough_person": "Welke is ruw?",
+    "q_which_is_lazy_person": "Welke is lui?",
+    "q_which_is_few_person": "Welke heeft er weinig?",
+    "q_which_is_different_person": "Welke is anders?",
+    "q_which_is_on_person": "Welke is bovenop?",
+    "q_which_is_day_person": "Welke is de dag?",
+    "q_which_is_before_person": "Welke komt ervoor?"
+  },
+  "activityFeedback": {
+    "causeEffect": {
+      "1": {
+        "correct": "Correct! Als het regent, openen we een paraplu.",
+        "wrong": "Nee, zonnebrillen worden gebruikt bij zonnig weer."
+      },
+      "2": {
+        "correct": "Correct! IJs smelt in de zon.",
+        "wrong": "Nee, ijs bevriest niet in de sneeuw, het is al koud."
+      },
+      "3": {
+        "correct": "Correct! Een zaad groeit in de grond en wordt een plant.",
+        "wrong": "Nee, een boomstam komt van het kappen van bomen, niet van zaden."
+      },
+      "4": {
+        "correct": "Correct! Handen worden schoongemaakt door ze met zeep te wassen.",
+        "wrong": "Nee, dat zijn vuile handen. Ze moeten worden schoongemaakt."
+      },
+      "5": {
+        "correct": "Correct! Het ei breekt als het wordt laten vallen.",
+        "wrong": "Nee, kuikens komen uit eieren maar niet door te laten vallen, door uitbroeden."
+      },
+      "6": {
+        "correct": "Correct! Vuur brandt door hout te verbranden.",
+        "wrong": "Nee, stenen branden niet, je hebt hout nodig voor vuur."
+      },
+      "7": {
+        "correct": "Correct! De vaas breekt als hij met een hamer wordt geraakt.",
+        "wrong": "Nee, vazen worden gevuld met water, ze breken met hamers."
+      },
+      "8": {
+        "correct": "Correct! We dragen een muts als het sneeuwt, het houdt ons warm.",
+        "wrong": "Nee, shorts worden gedragen bij warm weer, niet in de winter."
+      },
+      "9": {
+        "correct": "Correct! De baby drinkt melk als hij honger heeft.",
+        "wrong": "Nee, speelgoed is voor plezier, melk is nodig voor honger."
+      },
+      "10": {
+        "correct": "Correct! Het overhemd wordt glad gemaakt door het te strijken.",
+        "wrong": "Nee, scharen zijn om te knippen, strijken is nodig om glad te maken."
+      },
+      "11": {
+        "correct": "Correct! Als de nacht komt, gaan we naar bed om te slapen.",
+        "wrong": "Nee, ballen zijn om overdag te spelen, de nacht is om te slapen."
+      },
+      "12": {
+        "correct": "Correct! Bloemen groeien en ontwikkelen zich met water.",
+        "wrong": "Nee, scharen zijn om te knippen, bloemen hebben water nodig om te groeien."
+      },
+      "13": {
+        "correct": "Correct! We leren nieuwe dingen door boeken te lezen.",
+        "wrong": "Nee, spelen met ballen is leuk maar om te leren moet je boeken lezen."
+      },
+      "14": {
+        "correct": "Correct! Ballonnen groeien als ze worden opgeblazen.",
+        "wrong": "Nee, stenen zijn hard en vast, ze kunnen niet worden opgeblazen."
+      },
+      "15": {
+        "correct": "Correct! Deeg wordt brood als het wordt gebakken.",
+        "wrong": "Nee, koelkasten zijn om te koelen, een oven is nodig om te bakken."
+      },
+      "correct": "Goed gedaan!",
+      "wrong": "Probeer het opnieuw."
+    },
+    "functionalMatching": {
+      "1": {
+        "correct": "We slaan spijkers met een hamer."
+      },
+      "2": {
+        "correct": "We poetsen onze tanden met tandpasta."
+      },
+      "3": {
+        "correct": "We dragen schoenen na sokken."
+      },
+      "4": {
+        "correct": "We gebruiken het kussen op het bed."
+      },
+      "5": {
+        "correct": "We eten soep met een lepel."
+      },
+      "6": {
+        "correct": "We schilderen het plaatje met een penseel."
+      },
+      "7": {
+        "correct": "We schrijven op papier met een pen."
+      },
+      "8": {
+        "correct": "We openen de deur met een sleutel."
+      },
+      "9": {
+        "correct": "We eten pasta met een vork."
+      },
+      "10": {
+        "correct": "We stoppen geld in een spaarpot."
+      },
+      "11": {
+        "correct": "We kammen ons haar met een kam."
+      },
+      "12": {
+        "correct": "We lezen het boek op de tafel."
+      },
+      "13": {
+        "correct": "We knippen papier met een schaar."
+      },
+      "14": {
+        "correct": "We snijden brood met een mes."
+      },
+      "15": {
+        "correct": "We wassen onze handen met zeep."
+      },
+      "correct": "Goed zo! Juiste koppeling!",
+      "wrong": "Dat klopt niet."
+    },
+    "whatDoesntBelong": {
+      "1": {
+        "correct": "Ja, {item} is anders.",
+        "wrong": "Nee, dit is hetzelfde."
+      },
+      "2": {
+        "correct": "Ja, {item} is anders.",
+        "wrong": "Nee, dit is hetzelfde."
+      },
+      "3": {
+        "correct": "Ja, {item} is anders.",
+        "wrong": "Nee, dit is hetzelfde."
+      },
+      "4": {
+        "correct": "Ja, {item} is anders.",
+        "wrong": "Nee, dit is hetzelfde."
+      },
+      "5": {
+        "correct": "Ja, {item} is een voertuig; de anderen zijn fruit.",
+        "wrong": "Nee, {item} is fruit."
+      },
+      "6": {
+        "correct": "Ja, {item} is kleding; de anderen zijn dieren.",
+        "wrong": "Nee, {item} is een dier."
+      },
+      "7": {
+        "correct": "Ja, {item} is kleding; de anderen zijn voertuigen.",
+        "wrong": "Nee, {item} is een voertuig."
+      },
+      "8": {
+        "correct": "Ja, {item} is een speeltje; de anderen zijn muziekinstrumenten.",
+        "wrong": "Nee, {item} is een muziekinstrument."
+      },
+      "9": {
+        "correct": "Ja, {item} is fruit; de anderen zijn groenten.",
+        "wrong": "Nee, {item} is een groente."
+      },
+      "10": {
+        "correct": "Ja, {item} is een natuurlijk object; de anderen zijn vormen.",
+        "wrong": "Nee, {item} is een vorm."
+      },
+      "11": {
+        "correct": "Ja, {item} is een kind; de anderen zijn beroepen.",
+        "wrong": "Nee, {item} is een beroep."
+      },
+      "12": {
+        "correct": "Ja, {item} is een voorwerp; de anderen zijn meubels.",
+        "wrong": "Nee, {item} is een meubel."
+      },
+      "13": {
+        "correct": "Ja, {item} is een keukenvoorwerp; de anderen zijn badkamerartikelen.",
+        "wrong": "Nee, {item} is een badkamerartikel."
+      },
+      "14": {
+        "correct": "Ja, {item} is een voorwerp; de anderen zijn levende wezens.",
+        "wrong": "Nee, {item} is een levend wezen."
+      },
+      "15": {
+        "correct": "Ja, {item} is gereedschap; de anderen zijn bestek.",
+        "wrong": "Nee, {item} is bestek."
+      },
+      "16": {
+        "correct": "Ja, {item} is voedsel; de anderen zijn dieren.",
+        "wrong": "Nee, {item} is een dier."
+      },
+      "17": {
+        "correct": "Ja, {item} is een drankje; de anderen zijn fruit.",
+        "wrong": "Nee, {item} is fruit."
+      },
+      "18": {
+        "correct": "Ja, {item} is een kleur; de anderen zijn speelgoed.",
+        "wrong": "Nee, {item} is een speeltje."
+      },
+      "19": {
+        "correct": "Ja, {item} is weer; de anderen zijn kleding.",
+        "wrong": "Nee, {item} is kleding."
+      },
+      "20": {
+        "correct": "Ja, {item} is een gebouw; de anderen zijn voertuigen.",
+        "wrong": "Nee, {item} is een voertuig."
+      },
+      "correct": "Ja, {item} is anders.",
+      "wrong": "Nee, dit is hetzelfde."
+    },
+    "fiveWOneH": {
+      "q_who_to_when_sick": {
+        "correct": "Ja! We gaan naar de dokter als we ziek zijn.",
+        "wrong": "Nee, daar gaan we niet heen als we ziek zijn."
+      },
+      "q_who_to_when_fire": {
+        "correct": "Juist! We bellen de brandweer als er brand is.",
+        "wrong": "Nee, bij brand moeten we de brandweer bellen."
+      },
+      "q_who_uses_this": {
+        "correct": "Ja! Een leraar gebruikt het schoolbord.",
+        "wrong": "Nee, het wordt meestal gebruikt door een leraar."
+      },
+      "q_who_brings_letter": {
+        "correct": "Juist! De postbode brengt de brief.",
+        "wrong": "Nee, de postbode brengt de brief."
+      },
+      "q_what_brush_teeth_with": {
+        "correct": "Ja! We poetsen onze tanden met tandpasta.",
+        "wrong": "Nee, daar poetsen we onze tanden niet mee."
+      },
+      "q_what_eat_with": {
+        "correct": "Juist! We gebruiken een vork om te eten.",
+        "wrong": "Nee, dat gebruiken we niet om te eten."
+      },
+      "q_where_doctor_works": {
+        "correct": "Ja! Een dokter werkt in een ziekenhuis.",
+        "wrong": "Nee, een dokter werkt in een ziekenhuis."
+      },
+      "q_where_is_swing": {
+        "correct": "Juist! De schommel is in de speeltuin.",
+        "wrong": "Nee, de schommel is in de speeltuin."
+      },
+      "q_where_do_we_sleep": {
+        "correct": "Ja! We slapen in een bed.",
+        "wrong": "Nee, daar slapen we niet."
+      },
+      "q_where_fish_lives": {
+        "correct": "Ja! Vissen leven in een aquarium.",
+        "wrong": "Nee, vissen leven daar niet."
+      },
+      "q_when_see_owl": {
+        "correct": "Juist! We zien uilen 's nachts.",
+        "wrong": "Nee, uilen worden meestal 's nachts gezien."
+      },
+      "q_when_use_umbrella": {
+        "correct": "Ja! We gebruiken een paraplu als het regent.",
+        "wrong": "Nee, dan gebruiken we geen paraplu."
+      },
+      "q_when_wear_beanie": {
+        "correct": "Juist! We dragen een muts als het sneeuwt.",
+        "wrong": "Nee, dan dragen we geen muts."
+      },
+      "q_why_icecream_melted": {
+        "correct": "Ja! IJs smelt door de zon.",
+        "wrong": "Nee, daarom smelt ijs niet."
+      },
+      "q_why_clothes_neat": {
+        "correct": "Juist! Omdat ze gestreken zijn.",
+        "wrong": "Nee, daardoor worden ze niet netjes."
+      },
+      "q_how_go_to_school": {
+        "correct": "Ja! We gaan met de schoolbus naar school.",
+        "wrong": "Nee, zo gaan we meestal niet."
+      },
+      "q_how_open_door": {
+        "correct": "Ja! We openen de deur met een sleutel.",
+        "wrong": "Nee, we openen de deur niet daarmee."
+      },
+      "q_how_baby_feels": {
+        "correct": "Juist! De baby voelt zich verdrietig.",
+        "wrong": "Nee, de baby voelt zich niet zo."
+      },
+      "q_where_is_sleeping_child": {
+        "correct": "Ja! We slapen meestal in een bed.",
+        "wrong": "Nee, we slapen meestal in een bed."
+      },
+      "q_why_child_wants_play": {
+        "correct": "Juist! Om plezier te hebben en met vrienden te spelen.",
+        "wrong": "Nee, meestal om plezier te hebben met vrienden."
+      },
+      "q_where_child_wants_to_go_outside": {
+        "correct": "Ja! Het kind wil misschien naar het park.",
+        "wrong": "Nee, meestal is het park gewenst."
+      },
+      "q_why_child_tired": {
+        "correct": "Juist! Door lang spelen of weinig slaap.",
+        "wrong": "Nee, meestal door lange activiteit of weinig slaap."
+      },
+      "q_where_child_wants_go_park": {
+        "correct": "Ja! Het wil naar het park.",
+        "wrong": "Nee, niet naar een andere plek."
+      },
+      "q_how_child_prefers_drive": {
+        "correct": "Juist! Met de autogordel om en met een ouder.",
+        "wrong": "Nee, het moet veilig zijn met een volwassene."
+      },
+      "q_when_rhino_active": {
+        "correct": "Juist! Afhankelijk van de soort, overdag of in de schemering.",
+        "wrong": "Nee, meestal niet 's nachts."
+      },
+      "q_where_camels_live": {
+        "correct": "Ja! In woestijnen en droge gebieden.",
+        "wrong": "Nee, meestal in woestijnen."
+      },
+      "q_where_fish_live_915": {
+        "correct": "Ja! Ze leven in het water.",
+        "wrong": "Nee, ze leven niet buiten het water."
+      },
+      "q_when_bears_hibernate": {
+        "correct": "Juist! Tijdens de winter.",
+        "wrong": "Nee, in het winterseizoen."
+      },
+      "q_who_flies_plane": {
+        "correct": "Ja! Een piloot bestuurt het vliegtuig.",
+        "wrong": "Nee, zij besturen het vliegtuig niet."
+      },
+      "q_who_cuts_hair": {
+        "correct": "Juist! Een kapper knipt ons haar.",
+        "wrong": "Nee, zij knippen ons haar niet."
+      },
+      "q_who_provides_milk": {
+        "correct": "Ja! Een boer zorgt voor melk.",
+        "wrong": "Nee, het wordt meestal verzorgd door een boer."
+      },
+      "q_what_erase_text": {
+        "correct": "Juist! We gebruiken een gum om te wissen.",
+        "wrong": "Nee, daar wissen we niet mee."
+      },
+      "q_what_measure_height": {
+        "correct": "Ja! We gebruiken een liniaal om de lengte te meten.",
+        "wrong": "Nee, daar meten we de lengte niet mee."
+      },
+      "q_what_dry_after_bath": {
+        "correct": "Juist! We drogen ons af met een handdoek na een bad.",
+        "wrong": "Nee, daar drogen we ons niet mee af."
+      },
+      "q_where_to_eat": {
+        "correct": "Ja! We gaan naar een restaurant om te eten.",
+        "wrong": "Nee, daar gaan we niet heen om te eten."
+      },
+      "q_where_to_read_books": {
+        "correct": "Juist! We kunnen naar de bibliotheek gaan om boeken te lezen.",
+        "wrong": "Nee, dat is geen goede plek om boeken te lezen."
+      },
+      "q_where_to_shop": {
+        "correct": "Ja! We doen boodschappen op de markt.",
+        "wrong": "Nee, daar doen we geen boodschappen."
+      },
+      "q_when_go_to_bed": {
+        "correct": "Juist! We gaan 's nachts naar bed.",
+        "wrong": "Nee, dan gaan we niet naar bed."
+      },
+      "q_when_go_to_beach": {
+        "correct": "Ja! We gaan naar het strand als het zonnig is.",
+        "wrong": "Nee, dan gaan we niet naar het strand."
+      },
+      "q_when_make_snowman": {
+        "correct": "Juist! We maken een sneeuwpop als het sneeuwt.",
+        "wrong": "Nee, dan maken we geen sneeuwpop."
+      },
+      "q_why_child_cold": {
+        "correct": "Ja! Omdat het koud is.",
+        "wrong": "Nee, daarom hebben ze het niet koud."
+      },
+      "q_why_hair_wet": {
+        "correct": "Juist! Het is nat door een douche.",
+        "wrong": "Nee, daarom is het niet nat."
+      },
+      "q_how_reach_high_shelf": {
+        "correct": "Ja! We gebruiken een ladder om te bereiken.",
+        "wrong": "Nee, daar kunnen we niet mee bereiken."
+      },
+      "q_how_travel_at_sea": {
+        "correct": "Juist! We reizen per schip op zee.",
+        "wrong": "Nee, zo reizen we meestal niet op zee."
+      },
+      "q_how_clean_room": {
+        "correct": "Ja! We maken de kamer schoon met een schoonmaakemmer en spullen.",
+        "wrong": "Nee, daar maken we de kamer niet mee schoon."
+      },
+      "q_who_teaches_at_school": {
+        "correct": "Juist! De leraar geeft les.",
+        "wrong": "Nee, op school geeft de leraar les."
+      },
+      "q_what_do_we_drink_water_with": {
+        "correct": "Ja! We drinken water met een glas.",
+        "wrong": "Nee, daar drinken we geen water mee."
+      },
+      "q_where_do_we_store_books": {
+        "correct": "Juist! We bewaren ze op een boekenplank.",
+        "wrong": "Nee, we bewaren boeken op een boekenplank."
+      },
+      "q_when_use_sunscreen": {
+        "correct": "Ja! Als het zonnig is.",
+        "wrong": "Nee, we gebruiken het meestal als het zonnig is."
+      },
+      "q_why_wash_hands": {
+        "correct": "Juist! Om schoon te zijn en te beschermen tegen ziektekiemen.",
+        "wrong": "Nee, we wassen onze handen om schoon te zijn."
+      },
+      "q_how_dry_hands": {
+        "correct": "Ja! We drogen ze af met een handdoek.",
+        "wrong": "Nee, we drogen onze handen af met een handdoek."
+      }
+    }
+  }
+}

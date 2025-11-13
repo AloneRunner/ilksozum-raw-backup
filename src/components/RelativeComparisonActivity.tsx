@@ -87,7 +87,8 @@ const generateAllPairs = (n: number): [number, number][] => {
   return pairs;
 };
 
-const MAX_TURNS = 10;
+// Her girişte 8 rasgele soru gelsin
+const MAX_TURNS = 8;
 
 const RelativeComparisonActivity: React.FC<Props> = ({
   data,
@@ -242,15 +243,19 @@ const RelativeComparisonActivity: React.FC<Props> = ({
       
       const newTurnCount = turnCount + 1;
 
+      // Her doğru cevap bir round olarak sayılsın
+      setTimeout(() => {
+        onAdvance(true);
+      }, 500);
+
       if (newTurnCount >= MAX_TURNS) {
-        setTimeout(() => {
-          onAdvance(!mistakeRef.current);
-        }, 500);
+        // 8 soru tamamlandı, aktivite bitti
+        // onAdvance zaten yukarıda çağrıldı
       } else {
         setTurnCount(newTurnCount);
         setTimeout(() => {
           startNewTurn();
-        }, 400);
+        }, 600);
       }
     } else {
       mistakeRef.current = true;

@@ -22,17 +22,21 @@ const NavButton: React.FC<{
     isActive: boolean;
     onClick: () => void;
     isLocked?: boolean;
-  variant: 'default' | 'cosmic';
-}> = ({ icon: Icon, label, isActive, onClick, isLocked, variant }) => {
-  const isCosmic = variant === 'cosmic';
-
-  const activeClasses = isCosmic
+    themeKey: string;
+  }> = ({ icon: Icon, label, isActive, onClick, isLocked, themeKey }) => {
+  const isCosmic = themeKey === 'deneme2';
+  const isUnderwater = themeKey === 'deneme';  const activeClasses = isCosmic
     ? 'text-cyan-300'
+    : isUnderwater
+    ? 'text-cyan-200 drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]'
     : 'text-sky-600 landscape:bg-sky-100/80';
 
   const inactiveClasses = (() => {
     if (isCosmic) {
       return isLocked ? 'text-slate-500/60' : 'text-slate-300 hover:text-white/90';
+    }
+    if (isUnderwater) {
+      return isLocked ? 'text-slate-500/60' : 'text-cyan-100/70 hover:text-cyan-200 hover:drop-shadow-[0_0_6px_rgba(6,182,212,0.4)]';
     }
     return isLocked ? 'text-slate-400' : 'text-slate-500 hover:text-sky-500 landscape:hover:bg-slate-200/50';
   })();
@@ -42,18 +46,31 @@ const NavButton: React.FC<{
             onClick={onClick}
       className={`relative flex flex-col items-center justify-center w-full pt-2 pb-1 transition-colors duration-200 landscape:w-auto landscape:h-auto landscape:p-2 landscape:rounded-lg ${isActive ? activeClasses : inactiveClasses}`}
         >
-      <Icon className={`w-7 h-7 mb-0.5 landscape:w-8 landscape:h-8 ${isCosmic ? 'drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]' : ''}`} />
-      <span className={`text-xs font-bold landscape:text-[10px] landscape:mt-1 ${isCosmic ? 'tracking-wide' : ''}`}>{label}</span>
+      <Icon className={`w-7 h-7 mb-0.5 landscape:w-8 landscape:h-8 ${isCosmic ? 'drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]' : isUnderwater ? 'drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]' : ''}`} />
+      <span className={`text-xs font-bold landscape:text-[10px] landscape:mt-1 ${isCosmic || isUnderwater ? 'tracking-wide' : ''}`}>{label}</span>
             {isLocked && <CrownIcon className="absolute -top-0.5 -right-0.5 w-4 h-4 text-amber-500 bg-white rounded-full p-0.5" />}
         </button>
     );
 };
 
 const BottomNavBar: React.FC<BottomNavBarProps> = ({ activeTab, onSelectTab, onSelectSettings, isPremium, themeKey }) => {
-  const isCosmicTheme = themeKey === 'deneme2';
+  const currentThemeKey = themeKey || 'simple'; // Fallback to simple theme
+  
+  // Determine variant based on themeKey
+  let variant: 'default' | 'cosmic' | 'underwater' = 'default';
+  if (currentThemeKey === 'deneme2') {
+    variant = 'cosmic';
+  } else if (currentThemeKey === 'deneme') {
+    variant = 'underwater';
+  }
+  
+  const isCosmicTheme = variant === 'cosmic';
+  const isUnderwaterTheme = variant === 'underwater';
 
   const baseNavClass = isCosmicTheme
     ? 'bg-slate-900/70 border-sky-500/30 shadow-[0_-8px_24px_rgba(15,118,191,0.25)] text-white'
+    : isUnderwaterTheme
+    ? 'bg-gradient-to-t from-[#001122]/80 via-[#001a2e]/70 to-[#000814]/60 border-cyan-400/30 shadow-[0_-8px_24px_rgba(6,182,212,0.15)] text-cyan-100'
     : 'bg-white/80 border-slate-200 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]';
 
   return (
@@ -63,14 +80,14 @@ const BottomNavBar: React.FC<BottomNavBarProps> = ({ activeTab, onSelectTab, onS
         label={t('tabs.activities', 'Etkinlikler')}
         isActive={activeTab === Tab.Activities}
         onClick={() => onSelectTab(Tab.Activities)}
-        variant={isCosmicTheme ? 'cosmic' : 'default'}
+        themeKey={currentThemeKey}
       />
       <NavButton
         icon={CommunicationIcon}
         label={t('tabs.communication', 'İletişim')}
         isActive={activeTab === Tab.Communication}
         onClick={() => onSelectTab(Tab.Communication)}
-        variant={isCosmicTheme ? 'cosmic' : 'default'}
+        themeKey={currentThemeKey}
       />
       <NavButton
         icon={TrophyIcon}
@@ -78,14 +95,14 @@ const BottomNavBar: React.FC<BottomNavBarProps> = ({ activeTab, onSelectTab, onS
         isActive={activeTab === Tab.Rewards}
         onClick={() => onSelectTab(Tab.Rewards)}
         isLocked={!isPremium}
-        variant={isCosmicTheme ? 'cosmic' : 'default'}
+        themeKey={currentThemeKey}
       />
        <NavButton
         icon={CogIcon}
         label={t('tabs.settings', 'Ayarlar')}
         isActive={false}
         onClick={onSelectSettings}
-        variant={isCosmicTheme ? 'cosmic' : 'default'}
+        themeKey={currentThemeKey}
       />
     </nav>
   );

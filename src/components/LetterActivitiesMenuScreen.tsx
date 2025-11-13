@@ -8,9 +8,12 @@ import ImageIcon from './icons/ImageIcon.tsx';
 import SpeakerIcon from './icons/SpeakerIcon.tsx';
 import SearchIcon from './icons/SearchIcon.tsx';
 import ProgressIndicator from './ui/ProgressIndicator.tsx';
-import { LETTER_GROUPS } from '../constants.ts';
-import { t } from '../i18n/index.ts';
+import { t, getCurrentLanguage } from '../i18n/index.ts';
+import { getAlphabet } from '../data/alphabets.ts';
+import { getLetterActivityPack } from '../data/letterActivityPacks.ts';
 import MenuButton from './ui/MenuButton.tsx';
+import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import PanelStars from './ui/PanelStars.tsx';
 
 interface LetterActivitiesMenuScreenProps {
   onSelectActivity: (activity: ActivityType) => void;
@@ -21,21 +24,31 @@ interface LetterActivitiesMenuScreenProps {
 }
 
 const LetterActivitiesMenuScreen: React.FC<LetterActivitiesMenuScreenProps> = ({ onSelectActivity, onBack, activityStats, theme, enabledActivities }) => {
+  const isCosmic = theme === 'deneme2';
+  const lang = getCurrentLanguage();
+  const pack = getLetterActivityPack(lang);
   
-  const activities = [
+  // Syllabification and Story are TR/AZ only
+  const allActivities = [
     { id: ActivityType.FindTheLetterInGrid, icon: GridIcon, title: t('activities.letter.grid', 'Harf Tablosu'), subtitle: t('activities.letterSubtitles.grid', 'Karışık harflerden isteneni bul.'), color: 'amber' as const, hasSubCategories: true },
     { id: ActivityType.SoundPresence, icon: SpeakerIcon, title: t('activities.letter.soundPresence', 'Seste Harf Var mı?'), subtitle: t('activities.letterSubtitles.soundPresence', 'Görselin adında o ses var mı?'), color: 'teal' as const, hasSubCategories: true },
     { id: ActivityType.FindTheLetter, icon: SearchIcon, title: t('activities.letter.findTheLetter', 'Harf Bulma Oyunu'), subtitle: t('activities.letterSubtitles.findTheLetter', 'Kelimenin içindeki harfleri bul.'), color: 'indigo' as const, hasSubCategories: true },
     { id: ActivityType.FindTheSoundInImage, icon: ImageIcon, title: t('activities.letter.findSoundInImage', 'Görselde Sesi Bul'), subtitle: t('activities.letterSubtitles.findSoundInImage', 'İstenen sesi içeren görseli seç.'), color: 'emerald' as const, hasSubCategories: true },
-    { id: ActivityType.Syllabification, icon: SyllableIcon, title: t('activities.letter.syllabification', 'Heceleme Oyunu'), subtitle: t('activities.letterSubtitles.syllabification', 'Kelimeleri hecelerine ayır.'), color: 'rose' as const, hasSubCategories: true },
-    { id: ActivityType.EmbeddedStory, icon: BookOpenIcon, title: t('activities.letter.embeddedStory', 'Hikaye Zamanı'), subtitle: t('activities.letterSubtitles.embeddedStory', 'Harfle ilgili hikayeleri dinle.'), color: 'purple' as const, hasSubCategories: false },
+    ...(lang === 'tr' || lang === 'az' ? [
+      { id: ActivityType.Syllabification, icon: SyllableIcon, title: t('activities.letter.syllabification', 'Heceleme Oyunu'), subtitle: t('activities.letterSubtitles.syllabification', 'Kelimeleri hecelerine ayır.'), color: 'rose' as const, hasSubCategories: true },
+    ] : []),
+    ...(lang === 'tr' ? [
+      { id: ActivityType.EmbeddedStory, icon: BookOpenIcon, title: t('activities.letter.embeddedStory', 'Hikaye Zamanı'), subtitle: t('activities.letterSubtitles.embeddedStory', 'Harfle ilgili hikayeleri dinle.'), color: 'purple' as const, hasSubCategories: false },
+    ] : []),
   ];
+  const activities = allActivities;
 
   const getAggregateStats = (activityId: ActivityType): ActivityStats => {
       let totalCorrect = 0;
       let totalQuestions = 0;
       let attempts = 0;
       const prefix = String(activityId);
+    const lang = getCurrentLanguage();
 
       // Aggregate stats from sub-categories (letters or groups)
       if (activityId === ActivityType.Syllabification) {
@@ -49,7 +62,7 @@ const LetterActivitiesMenuScreen: React.FC<LetterActivitiesMenuScreenProps> = ({
               }
           }
       } else {
-          const allLetters = LETTER_GROUPS.flatMap(g => g.letters);
+      const allLetters = getAlphabet(lang);
           for (const letter of allLetters) {
               const key = `${prefix}-${letter}`;
               const stats = activityStats[key];
@@ -71,58 +84,165 @@ const LetterActivitiesMenuScreen: React.FC<LetterActivitiesMenuScreenProps> = ({
   };
 
   const isSimpleTheme = theme === 'simple';
-  const titleColorClass = isSimpleTheme ? 'text-purple-900' : 'text-white text-shadow-soft';
-  const subtitleColorClass = isSimpleTheme ? 'text-pink-700' : 'text-white/90 text-shadow-soft';
-  const iconColorClass = isSimpleTheme ? 'text-purple-700' : 'text-white';
+  const titleColorClass = isCosmic 
+    ? 'bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 text-glow-planet drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
+    : isSimpleTheme ? 'text-purple-900' : 'text-white text-shadow-soft';
+  const subtitleColorClass = isCosmic
+    ? 'text-sky-200/90 font-semibold drop-shadow-[0_2px_8px_rgba(15,23,42,0.55)]'
+    : isSimpleTheme ? 'text-pink-700' : 'text-white/90 text-shadow-soft';
+  const iconColorClass = isCosmic ? 'text-sky-300' : isSimpleTheme ? 'text-purple-700' : 'text-white';
+
+  // Cosmic gradient palettes for each activity
+  const cosmicPalettes: Record<string, string> = {
+    [ActivityType.FindTheLetterInGrid]: 'from-amber-400 via-orange-300 to-yellow-200',
+    [ActivityType.SoundPresence]: 'from-teal-400 via-cyan-300 to-sky-200',
+    [ActivityType.FindTheLetter]: 'from-indigo-400 via-purple-300 to-fuchsia-200',
+    [ActivityType.FindTheSoundInImage]: 'from-emerald-400 via-green-300 to-lime-200',
+    [ActivityType.Syllabification]: 'from-rose-400 via-pink-300 to-fuchsia-200',
+    [ActivityType.EmbeddedStory]: 'from-purple-400 via-violet-300 to-indigo-200',
+  };
+
+  // Render cosmic activity card
+  const renderCosmicCard = (activity: typeof activities[0], stats: ActivityStats | undefined, isDisabled: boolean) => {
+    const Icon = activity.icon;
+    const gradient = cosmicPalettes[activity.id];
+    return (
+      <button
+        key={activity.id}
+        onClick={() => !isDisabled && onSelectActivity(activity.id)}
+        disabled={isDisabled}
+        className={`group relative overflow-hidden rounded-3xl p-4 min-h-[180px] flex flex-col transition-all duration-300 ${
+          isDisabled 
+            ? 'opacity-40 cursor-not-allowed' 
+            : 'hover:scale-105 hover:shadow-[0_0_30px_rgba(56,189,248,0.5)] active:scale-95'
+        }`}
+        style={{
+          background: isDisabled 
+            ? 'linear-gradient(135deg, rgba(51,65,85,0.6), rgba(30,41,59,0.6))' 
+            : `linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,41,59,0.85))`,
+          border: '2px solid rgba(56,189,248,0.3)',
+        }}
+      >
+        {/* Inner glow layer */}
+        <div 
+          className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity rounded-3xl"
+          style={{
+            background: `radial-gradient(circle at 30% 30%, ${gradient.split(' ')[0].replace('from-', '')}, transparent 70%)`,
+          }}
+        />
+        
+        {/* Icon orb */}
+        <div className="relative z-10 mb-2 flex justify-center flex-shrink-0">
+          <div 
+            className={`w-14 h-14 rounded-full flex items-center justify-center bg-gradient-to-br ${gradient} shadow-lg ${!isDisabled && 'group-hover:shadow-[0_0_20px_rgba(56,189,248,0.6)]'} transition-shadow`}
+          >
+            <Icon className="w-7 h-7 text-slate-900" />
+          </div>
+        </div>
+        
+        {/* Title */}
+        <h3 className="relative z-10 text-center font-bold text-sm text-sky-100 mb-1 group-hover:text-white transition-colors flex-shrink-0">
+          {activity.title}
+        </h3>
+        
+        {/* Subtitle */}
+        <p className="relative z-10 text-center text-xs text-sky-300/70 mb-2 flex-shrink-0 line-clamp-1">
+          {activity.subtitle}
+        </p>
+        
+        {/* Progress */}
+        {activity.hasSubCategories && stats && (
+          <div className="relative z-10 mt-auto">
+            <ProgressIndicator 
+              mode="aggregate"
+              attempts={stats.attempts} 
+              completions={stats.completions}
+              totalCorrect={stats.totalCorrect}
+              totalQuestions={stats.totalQuestions}
+            />
+          </div>
+        )}
+      </button>
+    );
+  };
 
   return (
-    <div className="flex flex-col items-center justify-start h-full max-w-lg mx-auto p-4 sm-landscape:p-2 animate-fade-in overflow-y-auto">
-      <div className="w-full flex items-center mb-4 sm-landscape:mb-2 relative">
-        <button 
-          onClick={onBack} 
-          className="absolute left-0 p-2 rounded-full bg-black/10 hover:bg-black/20 transition-colors" 
-          aria-label={t('app.back', 'Go back')}
-        >
-          <ArrowLeftIcon className={`w-8 h-8 sm-landscape:w-7 sm-landscape:h-7 ${iconColorClass}`} />
-        </button>
-        <h1 className={`flex-1 text-center text-3xl sm:text-4xl sm-landscape:text-2xl font-black ${titleColorClass}`}>
-          {t('menu.letterSound.title', 'Harf ve Sesler')}
-        </h1>
-      </div>
-
-      <p className={`text-center mb-6 sm-landscape:mb-3 text-lg sm-landscape:text-base ${subtitleColorClass}`}>
-        {t('letters.menuSubtitle', 'Bir etkinlik seç ve harfleri öğrenmeye başla!')}
-      </p>
+    <div className={`relative flex flex-col items-center justify-start h-full max-w-2xl mx-auto p-4 sm-landscape:p-2 animate-fade-in ${isCosmic ? 'overflow-hidden' : 'overflow-y-auto'}`}>
+      {isCosmic && (
+        <CosmicBackdrop variant="light" showMeteors={false} />
+      )}
       
-      <div className="w-full pr-2 animate-fade-in">
-         <div className="grid grid-cols-2 sm-landscape:grid-cols-3 gap-4 sm-landscape:gap-2">
-            {activities.map((activity) => {
+      {/* Cosmic: Wrap in big panel */}
+      <div className={`relative w-full h-full flex flex-col ${isCosmic ? 'bg-slate-900/50 border border-sky-400/20 backdrop-blur-lg rounded-3xl shadow-xl p-4 sm-landscape:p-3 overflow-y-auto' : ''}`}>
+        {isCosmic && (
+          <>
+            <PanelStars count={58} className="rounded-3xl" />
+            <div className="cosmic-panel-nebula rounded-3xl" />
+          </>
+        )}
+        
+        <div className={`relative z-10 w-full flex justify-between items-center mb-4 sm-landscape:mb-2 px-3 py-1.5 ${isCosmic ? 'bg-slate-900/60 border border-sky-400/20 backdrop-blur-sm rounded-full' : ''}`}>
+          <button 
+            onClick={onBack} 
+            className={`p-2 rounded-full ${isCosmic ? 'hover:bg-white/20' : 'bg-black/10 hover:bg-black/20'} transition-colors`} 
+            aria-label={t('app.back', 'Go back')}
+          >
+            <ArrowLeftIcon className={`w-8 h-8 sm-landscape:w-7 sm-landscape:h-7 ${iconColorClass}`} />
+          </button>
+          <h1 className={`flex-1 text-center text-3xl sm:text-4xl sm-landscape:text-2xl font-black ${titleColorClass}`}>
+            {t('menu.letterSound.title', 'Harf ve Sesler')}
+          </h1>
+          <div className="w-12 h-12 sm-landscape:w-11 sm-landscape:h-11" />
+        </div>
+
+        <p className={`relative z-10 text-center mb-3 sm-landscape:mb-2 text-lg sm-landscape:text-base ${subtitleColorClass}`}>
+          {t('letters.menuSubtitle', 'Bir etkinlik seç ve harfleri öğrenmeye başla!')}
+        </p>
+        {pack?.notes && (
+          <div className={`relative z-10 mb-5 sm-landscape:mb-3 px-4 py-2 rounded-xl text-xs shadow ${isCosmic ? 'bg-slate-800/70 border border-sky-400/30 text-sky-200' : 'bg-amber-50 border border-amber-200 text-amber-800'}`}> 
+            {t('activities.letter.betaNotice', pack.notes)}
+          </div>
+        )}
+        
+        <div className="relative z-10 w-full animate-fade-in">
+          {isCosmic ? (
+            <div className="grid grid-cols-2 sm-landscape:grid-cols-3 gap-4 sm-landscape:gap-3">
+              {activities.map((activity) => {
+                const stats = activity.hasSubCategories ? getAggregateStats(activity.id) : activityStats[String(activity.id)];
+                const isDisabled = !enabledActivities.has(String(activity.id));
+                return renderCosmicCard(activity, stats, isDisabled);
+              })}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm-landscape:grid-cols-3 gap-4 sm-landscape:gap-2">
+              {activities.map((activity) => {
                 const stats = activity.hasSubCategories ? getAggregateStats(activity.id) : activityStats[String(activity.id)];
                 const isDisabled = !enabledActivities.has(String(activity.id));
                 return (
                   <MenuButton
-                      key={activity.id}
-                      icon={activity.icon}
-                      title={activity.title}
-                      subtitle={activity.subtitle}
-                      onClick={() => onSelectActivity(activity.id)}
-                      color={activity.color}
-                      theme={theme}
-                      disabled={isDisabled}
+                    key={activity.id}
+                    icon={activity.icon}
+                    title={activity.title}
+                    subtitle={activity.subtitle}
+                    onClick={() => onSelectActivity(activity.id)}
+                    color={activity.color}
+                    theme={theme}
+                    disabled={isDisabled}
                   >
-                      {activity.hasSubCategories && stats && (
-                        <ProgressIndicator 
-                            mode="aggregate"
-                            attempts={stats.attempts} 
-                            completions={stats.completions}
-                            totalCorrect={stats.totalCorrect}
-                            totalQuestions={stats.totalQuestions}
-                        />
-                      )}
+                    {activity.hasSubCategories && stats && (
+                      <ProgressIndicator 
+                        mode="aggregate"
+                        attempts={stats.attempts} 
+                        completions={stats.completions}
+                        totalCorrect={stats.totalCorrect}
+                        totalQuestions={stats.totalQuestions}
+                      />
+                    )}
                   </MenuButton>
                 );
-              }
-            )}
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,0 +1,460 @@
+{
+  "achievements": {
+    "title": "Erfolge",
+    "subtitle": "Erhalte ein Abzeichen, wenn du eine Aktivität 3-mal perfekt abschließt!",
+    "viewReportAria": "Fortschrittsbericht ansehen",
+    "completed": "Abgeschlossen",
+    "categories": {
+      "letterSound": "Buchstaben und Laute",
+      "objects": "Gegenstände lernen",
+      "concept": "Konzepte lernen",
+      "reasoning": "Logik- und Denkspiele",
+      "fiveWOneH": "5W1H",
+      "relativeComparison": "Relativer Vergleich"
+    }
+  },
+  "activities": {
+    "reasoning": {
+      "whatDoesntBelong": "Was passt nicht?",
+      "functionalMatching": "Funktionale Zuordnung",
+      "causeEffect": "Ursache & Wirkung",
+      "sequencingStories": "Geschichtenreihenfolge",
+      "patternCompletion": "Muster vervollständigen",
+      "sudoku": "Sudoku",
+      "memoryCards": "Memory-Karten",
+      "dragAndDropCounting": "Objekte verschieben",
+      "dragAndDropPositioning": "Ball platzieren",
+      "hangman": "Galgenmännchen"
+    },
+    "fineMotor": {
+      "lineTracing": "Linien nachzeichnen",
+      "shapeColoring": "Formen ausmalen",
+      "rhythmFollowing": "Rhythmus folgen"
+    },
+    "fiveWOneH": {
+      "who": "5W1H - Wer?",
+      "what": "5W1H - Was?",
+      "where": "5W1H - Wo?",
+      "when": "5W1H - Wann?",
+      "why": "5W1H - Warum?",
+      "how": "5W1H - Wie?"
+    }
+  },
+  "settingsEx": {
+    "title": "Einstellungen",
+    "premium": {
+      "title": "Premium-Funktionen",
+      "desc": "Alle Werbung entfernen, Themen-UI freischalten, Fortschrittsbericht ansehen und mehr!",
+      "cta": "Premium holen & unterstützen",
+      "mathQuestion": "Elternbestätigung:\n\nBitte beantworten Sie diese Frage:\n\n{num1} + {num2} = ?",
+      "wrongAnswer": "Falsche Antwort. Bitte versuchen Sie es erneut.",
+      "confirmPurchase": "Kauf bestätigen?\n\nDieser Vorgang ist kostenpflichtig.",
+      "holdToPurchaseAria": "2 Sekunden gedrückt halten zum Kaufen",
+      "monthly": "Monatlich",
+      "lifetime": "Lebenslang"
+    },
+    "profile": {
+      "title": "Profil",
+      "active": "Aktives Profil",
+      "manage": "Verwalten"
+    },
+    "achievements": {
+      "title": "Erfolge",
+      "subtitle": "Abzeichen ansehen",
+      "view": "Ansehen"
+    },
+    "theme": {
+      "title": "App-Thema"
+    },
+    "general": {
+      "title": "Allgemeine Einstellungen"
+    },
+    "mute": {
+      "title": "Stummmodus",
+      "subtitle": "Schaltet alle Töne aus"
+    },
+    "autoSpeak": {
+      "title": "Automatisch vorlesen",
+      "subtitle": "Fragen werden automatisch vorgelesen"
+    },
+    "fastMode": {
+      "title": "Schnellmodus",
+      "subtitle": "Beschleunigt Übergänge"
+    },
+    "content": {
+      "title": "Inhaltseinstellungen"
+    },
+    "banButton": {
+      "title": "Schaltfläche „Bild verbannen“",
+      "subtitle": "Zeigt die „Verbannen“-Schaltfläche"
+    },
+    "manageBanned": {
+      "title": "Verbotene Bilder verwalten",
+      "subtitle": "Gesperrte Bilder bearbeiten"
+    },
+    "activityManagement": {
+      "title": "Aktivitätsverwaltung"
+    },
+    "data": {
+      "title": "Datenverwaltung"
+    },
+    "reset": {
+      "title": "Fortschritt zurücksetzen",
+      "subtitle": "Löscht alle Daten von {name}",
+      "confirm": "Möchtest du wirklich den gesamten Fortschritt für {name} zurücksetzen? Dies kann nicht rückgängig gemacht werden."
+    },
+    "about": {
+      "title": "Über"
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "subtitle": "Datennutzung und deine Rechte",
+      "read": "Lesen"
+    },
+    "backToSettingsAria": "Zurück zu den Einstellungen"
+  },
+  "parentReport": {
+    "title": "Fortschrittsbericht",
+    "goBackAria": "Zurück",
+    "group": "Gruppe",
+    "viewAchievementsAria": "Erfolge anzeigen",
+    "mostChallenging": "Herausforderndste Bereiche (Zusammenfassung)",
+    "bestPerforming": "Beste Leistungsbereiche (Zusammenfassung)",
+    "recommendations": "Empfehlungen",
+    "fullReport": "Vollständiger Aktivitätsbericht",
+    "recentActivities": "Aktuelle Aktivitäten",
+    "successLabel": "Erfolg",
+    "errorLabel": "Fehler",
+    "attemptsLabel": "Versuche",
+    "noChallengesFound": "Keine bedeutenden Problemgebiete gefunden. Großartige Arbeit!",
+    "noSuccessDataYet": "Weitere Aktivitäten müssen abgeschlossen werden, um Erfolgsdaten zu sammeln.",
+    "noRecentActivities": "Noch keine Aktivitäten abgeschlossen.",
+    "recommendationFocusOn": "Du kannst mit der Aktivität „{activityName}“ beginnen, mit der sich dein Kind am schwersten tut.",
+    "recommendationModel": "Wenn du diese Aktivität erneut spielst, kannst du ein Vorbild sein und gemeinsam die richtigen Antworten finden.",
+    "recommendationReinforce": "Dein Kind ist bei „{activityName}“ sehr erfolgreich! Du kannst ähnliche Aktivitäten versuchen, um das Vertrauen in diesem Bereich zu stärken.",
+    "recommendationGeneral": "Setze die Lernreise fort! Du kannst ihnen helfen, neue Fähigkeiten zu erwerben, indem du Aktivitäten aus verschiedenen Kategorien ausprobierst."
+  },
+  "programReport": {
+    "title": "Fortschritt im Programmmodus",
+    "currentUnit": "Aktuelle Einheit",
+    "unlockedUnits": "Freigeschaltete Einheiten",
+    "progress": "Fortschritt",
+    "completed": "Alle Einheiten abgeschlossen! Großartig!",
+    "advanced": "Fortgeschrittenes Niveau! Du bist in Einheit {unit}.",
+    "progressing": "Schöner Fortschritt! Du bist in Einheit {unit}.",
+    "beginning": "Anfangsphase. Weiter so!",
+    "notStarted": "Noch nicht gestartet",
+    "paceHint": "Empfohlenes Tempo: maximal 3 Einheiten pro Tag."
+  },
+  "activityMgmt": {
+    "enableAll": "Alle aktivieren",
+    "enableAllHelp": "Alle Aktivitäten in dieser Kategorie ein-/ausschalten",
+    "title": "Aktivitätsverwaltung",
+    "objects": "Gegenstände lernen",
+    "concepts": "Konzepte lernen",
+    "reasoning": "Logik- und Denkspiele",
+    "fineMotor": "Feinmotorik",
+    "lineTracing": "Linien Nachzeichnen",
+    "shapeColoring": "Formen Ausmalen",
+    "rhythmFollowing": "Rhythmus Nachahmen"
+  },
+  "parentTips": {
+    "guide": "App-Leitfaden",
+    "learnTogether": {
+      "title": "Gemeinsam lernen",
+      "text": "Macht die Aktivitäten gemeinsam. Wiederholt die Namen der Gegenstände und stellt Fragen dazu (\"Wo lebt dieses Tier?\", \"Wie schmeckt diese Frucht?\"). Das unterstützt die Sprachentwicklung und stärkt eure Bindung."
+    },
+    "profile": {
+      "title": "Profilverwaltung (Optional)",
+      "text": "Beim ersten Start erstellt die App automatisch ein \"Gast\"-Profil. Wenn du mehrere Kinder getrennt verfolgen möchtest, kannst du in den Einstellungen neue Profile anlegen oder zwischen bestehenden wechseln."
+    },
+    "settings": {
+      "title": "Einstellungen entdecken",
+      "themed": {
+        "title": "Themen-Oberfläche",
+        "text": "Ändere das Aussehen der App. Der „Themen“-Modus hat lebendige Hintergründe, der „Einfache“ Modus bietet eine sanftere Palette."
+      },
+      "fastMode": {
+        "title": "Schnellmodus",
+        "text": "Verkürzt Rückmeldungen und beschleunigt Übergänge zwischen Aktivitäten."
+      },
+      "ban": {
+        "title": "Bild verbannen",
+        "text": "Mag dein Kind ein Bild nicht, aktiviere in den Einstellungen „Bild verbannen“ und nutze während der Aktivität die Verbannen-Schaltfläche, um es zukünftig auszublenden."
+      }
+    },
+    "progress": {
+      "title": "Fortschritt verfolgen",
+      "achievements": {
+        "title": "Erfolge-Tab",
+        "text": "Zeigt, in welchen Kategorien dein Kind sicher ist. Ein Abzeichen gibt es nach 3 perfekten Durchläufen derselben Aktivität!"
+      },
+      "report": {
+        "title": "Fortschrittsbericht",
+        "text": "Hebt die schwierigsten und die erfolgreichsten Aktivitäten deines Kindes hervor."
+      }
+    },
+    "communication": {
+      "title": "Kommunikationskarten",
+      "text": "Hilf deinem Kind, Bedürfnisse, Gefühle oder Wünsche mit den Kommunikationskarten auszudrücken."
+    },
+    "customize": {
+      "title": "Aktivitäten anpassen",
+      "text": "Nutze die Aktivitätsverwaltung in den Einstellungen, um bestimmte Fähigkeiten zu fokussieren oder vorübergehend Aktivitäten zu deaktivieren, für die dein Kind noch nicht bereit ist."
+    },
+    "randomMode": {
+      "title": "Zufallsmodus ausprobieren",
+      "text": "Zeigt eine gemischte Auswahl aller aktivierten Übungen aus verschiedenen Kategorien – spielerische Wiederholung inklusive."
+    },
+    "extra": {
+      "title": "Weitere Tipps",
+      "practice": {
+        "title": "Übungsmodus (Bald)",
+        "text": "Bald kannst du eine „Übungssitzung“ basierend auf den Bereichen starten, in denen dein Kind sich am schwersten tut."
+      }
+    }
+  },
+  "programMode": {
+    "menuTitle": "Programmmodus",
+    "menuSubtitle": "Geführte tägliche Sitzung starten",
+    "title": "Programmmodus",
+    "subtitle": "Entwickle Fähigkeiten in 10 Einheiten mit einem geführten Plan.",
+    "devWarningTitle": "Experimentell: Programmmodus",
+    "devWarningDesc": "Dieser Modus befindet sich noch in Entwicklung. Der Einheitenfortschritt kann gelegentlich unerwartet sein. Bitte melde Probleme oder Feedback.",
+    "betaTag": "Experimentell",
+    "forParents": "Kurzer Hinweis für Eltern",
+    "unitShort": "Einheit",
+    "start": "Programmmodus starten",
+    "badge": "Programmmodus",
+    "unitProgress": "Einheitenfortschritt",
+    "completed": "Abgeschlossen",
+    "dailyLimitReached": "Tageslimit erreicht",
+    "dailyLimitMessage": "Du kannst maximal 3 Einheiten pro Tag voranschreiten. Komm morgen wieder!",
+    "dailyLimitNote": "Tägliches Einheitenlimit (3) erreicht. Heute mit Festigung fortfahren.",
+    "dailyLimitRemaining": "Täglicher Fortschritt: {used}/3",
+    "minutesAbbrev": "Min.",
+    "jokerActive": "Joker Recht Aktiv",
+    "todaySession": "Heutiges Programm",
+    "alreadyDone": "Heute erledigt",
+    "warmup": "Aufwärmen",
+    "newContent": "Neuer Inhalt",
+    "reinforcement": "Festigung",
+    "noReinforcementToday": "Heute keine Festigung (keine schwachen Aktivitäten gefunden).",
+    "allComplete": "Glückwunsch!",
+    "allCompleteDesc": "Alle Aktivitäten abgeschlossen!",
+    "noActivities": "Alle Aktivitäten abgeschlossen!",
+    "sessionRulesTitle": "Sitzungsregeln",
+    "unitDetails": "Einheitsdetails",
+    "unlockHint": "Wird freigeschaltet, wenn die vorherige Einheit 80% erreicht",
+    "activityCountLabel": "{count} Aktivitäten",
+    "tabs": {
+      "today": "Heute",
+      "progress": "Fortschritt",
+      "units": "Einheiten"
+    },
+    "progress": {
+      "activity": "Aktivität {current}/{total}",
+      "round": "Runde {current}/{total}"
+    },
+    "explainer": {
+      "point1": "Bietet einen kurzen, fokussierten Ablauf vom Konkreten zum Abstrakten.",
+      "point2": "10-Einheiten-Pyramide: Hallo Welt (Einheit 1) → Meisterschaft (Einheit 10).",
+      "point3": "Jede Aktivität wird mit breitem Pool (15 Versuche, 80%) und engem Pool (2 perfekt) bewertet.",
+      "point4": "Maximal 3 Einheiten pro Tag möglich. Freier Modus wird mit 50% Gewichtung bewertet.",
+      "point5": "Eltern können mit 'Joker Recht' temporär freischalten (kostenlos für alle Nutzer)."
+    },
+    "sessionRules": {
+      "title": "Regeln des Programmmodus",
+      "warmup": "Aufwärmen: 1-2 gemeisterte Aktivitäten",
+      "newContent": "Neuer Inhalt: 2-3 freigeschaltete Aktivitäten",
+      "reinforcement": "Festigung: 1-2 fast gemeisterte Aktivitäten",
+      "dailyLimit": "Tageslimit: Maximal 3 Einheiten Fortschritt",
+      "jokerInfo": "Joker Recht: Temporäre Freischaltung (4/12/24/48/72 Stunden)",
+      "freeMode": "Freier Modus: Mit 50% Gewichtung bewertet"
+    },
+    "rules": {
+      "count": "Aktivitäten pro Sitzung:",
+      "activityWord": "Aktivitäten",
+      "warmupWord": "Aufwärmen",
+      "newWord": "neuer Inhalt",
+      "reinforcementWord": "Festigung",
+      "selection": "Auswahllogik:",
+      "selectionDesc": "Aufwärmen (1 gemeistert) → Neuer Inhalt (Fokuseinheit, nie versucht priorisieren) → Festigung (0–2 schwächste aus früheren Einheiten)",
+      "coverageFirst": "Abdeckung zuerst:",
+      "coverageFirstDesc": "Wenn die Fokuseinheit noch unversuchte Inhalte enthält, Neuer Inhalt +1 und Festigung −1. Sichert den Erstkontakt mit jeder Fähigkeit.",
+      "failure": "Bei Misserfolg:",
+      "failureDesc": "Aktivität wird abgeschlossen, Ergebnis wird gespeichert. Wenn nicht gemeistert, erscheint sie an künftigen Tagen erneut.",
+      "unlocking": "Bedingung zum Freischalten der Einheit:",
+      "unlockingDesc": "Jede Aktivität der Einheit muss mindestens einmal versucht werden und durchschnittlicher Erfolg ≥ 80% (Frei + Programm zusammen).",
+      "mastery": "Meisterschaftsregeln:",
+      "widePool": "Breiter Pool",
+      "widePoolDesc": "(Farben, Formen usw.): 80% Erfolg in den letzten 5 Versuchen",
+      "narrowPool": "Enger Pool",
+      "narrowPoolDesc": "(5W1H, Ähnlich/Verschieden usw.): 2 perfekte Sitzungen (100%)",
+      "daily": "Tageslimit:",
+      "dailyDesc": "Bis zu 3 Einheitenfortschritte pro Tag (empfohlene Obergrenze, um Hetze zu vermeiden)",
+      "dailyPremium": "Premium:",
+      "dailyPremiumDesc": "Kein tägliches Fortschrittslimit; freigeschaltete Einheiten frei spielbar.",
+      "joker": "Joker:",
+      "jokerDesc": "Eltern können eine gesperrte Aktivität vorübergehend freischalten; die Meisterungsregeln bleiben bestehen.",
+      "progressDisplay": "Angezeigte %:",
+      "progressDisplayDesc": "Der Einheiten‑Prozentsatz entspricht der gemischten Erfolgsanzeige im Elternbericht (Frei + Programm summiert).",
+      "progressFormula": "Frühe Fortschrittsformel:",
+      "progressFormulaDesc": "40% Abdeckung + 30% Genauigkeit + 30% Meisterung (Teilmeisterung = Fensterfüllung × Erfolg). Beispiel: 76 → 82 → 88 → 94 → 100."
+    },
+    "unitNames": {
+      "1": "Hallo Welt",
+      "2": "Physische Welt",
+      "3": "Gedächtnis & Aufmerksamkeit",
+      "4": "Eigenschaften I",
+      "5": "Eigenschaften II",
+      "6": "Muster & Beziehungen",
+      "7": "Relative Konzepte",
+      "8": "Ursache‑Wirkung & Reihenfolge",
+      "9": "Erforschung & Analyse",
+      "10": "Meisterschaft"
+    },
+    "activityNames": {
+      "hayvanlar": "Tiere",
+      "meyveler": "Früchte",
+      "tasitlar": "Fahrzeuge",
+      "oyuncaklar": "Spielzeug",
+      "vucudun_bolumleri": "Körperteile",
+      "giysiler_aksesuarlar": "Kleidung & Accessoires",
+      "ev_esyalari": "Haushaltsgegenstände",
+      "mutfak_gerecleri": "Küchengeräte",
+      "icecekler": "Getränke",
+      "sebzeler": "Gemüse",
+      "diger_yiyecekler": "Andere Lebensmittel",
+      "bitkiler": "Pflanzen",
+      "aile_uyeleri": "Familienmitglieder",
+      "meslekler": "Berufe",
+      "mekanlar_odalar": "Orte & Räume",
+      "aletler": "Werkzeuge",
+      "muzik_aletleri": "Musikinstrumente",
+      "okul_ofis_gerecleri": "Schul‑ & Bürobedarf",
+      "dogal_yapilar_uzay": "Naturstrukturen & Weltraum",
+      "FiveWOneH_Who": "5W1W - Wer?",
+      "FiveWOneH_What": "5W1W - Was?",
+      "FiveWOneH_Where": "5W1W - Wo?",
+      "FiveWOneH_When": "5W1W - Wann?",
+      "FiveWOneH_Why": "5W1W - Warum?",
+      "FiveWOneH_How": "5W1W - Wie?",
+      "Colors": "Farben",
+      "Shapes": "Formen",
+      "LineTracing": "Linienverfolgung",
+      "BigSmall": "Groß / Klein",
+      "InsideOutside": "Innen / Außen",
+      "OnUnder": "Auf / Unter",
+      "ShapeColoring": "Formen ausmalen",
+      "MemoryCards": "Memory‑Karten",
+      "WhatDoesntBelong": "Was passt nicht?",
+      "FullEmpty": "Voll / Leer",
+      "LongShort": "Lang / Kurz",
+      "ThinThick": "Dünn / Dick",
+      "WideNarrow": "Breit / Schmal",
+      "FewMuch": "Wenig / Viel",
+      "OpenClosed": "Offen / Geschlossen",
+      "WetDry": "Nass / Trocken",
+      "CleanDirty": "Sauber / Schmutzig",
+      "HotCold": "Heiß / Kalt",
+      "HardSoft": "Hart / Weich",
+      "Emotions": "Emotionen",
+      "DayNight": "Tag / Nacht",
+      "DikenliPuruzsuz": "Stachelig / Glatt",
+      "DugumCozuk": "Knoten / Gelöst",
+      "PatternCompletion": "Muster vervollständigen",
+      "FunctionalMatching": "Funktionale Zuordnung",
+      "RhythmFollowing": "Rhythmus folgen",
+      "BrokenIntact": "Kaputt / Intakt",
+      "RoughSmooth": "Rau / Glatt",
+      "HeavyLight": "Schwer / Leicht",
+      "BitterSweet": "Bitter / Süß",
+      "RelativeBigSmall": "Relativ Groß / Klein",
+      "RelativeLongShort": "Relativ Lang / Kurz",
+      "RelativeThinThick": "Relativ Dünn / Dick",
+      "RelativeWideNarrow": "Relativ Breit / Schmal",
+      "RelativeFewMuch": "Relativ Wenig / Viel",
+      "BeforeAfter": "Vorher / Nachher",
+      "BelowAbove": "Unten / Oben",
+      "BesideOpposite": "Neben / Gegenüber",
+      "InFrontOfBehind": "Vor / Hinter",
+      "NearFar": "Nah / Fern",
+      "HighLow": "Hoch / Niedrig",
+      "YesNo": "Ja / Nein",
+      "TazeBayat": "Frisch / Altbacken",
+      "KirisikDuzgun": "Zerknittert / Glatt",
+      "SivriKut": "Spitz / Stumpf",
+      "ParlakMat": "Glänzend / Matt",
+      "OldNew": "Alt / Neu",
+      "CauseEffect": "Ursache & Wirkung",
+      "SequencingStories": "Geschichtenreihenfolge",
+      "DragAndDropCounting": "Ziehen & Ablegen Zählen",
+      "DragAndDropPositioning": "Ziehen & Ablegen Positionierung",
+      "HalfQuarterWhole": "Ganz / Halb / Viertel",
+      "MessyClean": "Unordentlich / Ordentlich",
+      "StraightCurved": "Gerade / Gebogen",
+      "Sudoku": "Visuelles Sudoku",
+      "AliveLifeless": "Lebend / Unbelebt",
+      "Between": "Zwischen",
+      "OddEven": "Ungerade / Gerade",
+      "RelativeNearFar": "Relativ Nah / Fern",
+      "RelativeHighLow": "Relativ Hoch / Niedrig",
+      "DerinSig": "Tief / Flach",
+      "KalabalikTenha": "Überfüllt / Leer",
+      "HungryFull": "Hungrig / Satt",
+      "YoungOld": "Jung / Alt",
+      "LeftRight": "Links / Rechts",
+      "Senses": "Unsere Sinne",
+      "TembelCaliskan": "Faul / Fleißig",
+      "SeffafOpak": "Transparent / Undurchsichtig",
+      "FastSlow": "Schnell / Langsam",
+      "FindTheSoundInImage": "Finde den Laut",
+      "FindTheLetter": "Finde den Buchstaben",
+      "FindTheLetterInGrid": "Buchstaben‑Gitter",
+      "SoundPresence": "Lautpräsenz",
+      "Syllabification": "Silbentrennung",
+      "EmbeddedStory": "Eingebettete Geschichte"
+    },
+    "planPreview": {
+      "title": "Heutiger Ablauf",
+      "thisSession": "In dieser Sitzung der Reihe nach:",
+      "ifGood": "Wenn es gut läuft, in der nächsten Sitzung:"
+    }
+  },
+  "developmentNotes": {
+    "title": "Geplante Updates",
+    "subtitle": "Unsere App wächst weiter! Vielen Dank für Ihre Geduld.",
+    "modes": {
+      "title": "Modus-Verbesserungen",
+      "programMode": "Programmmodus wird erweitert",
+      "reinforcementMode": "Wiederholungsmodus wird hinzugefügt",
+      "angerMode": "Sanfter Hinweis-Modus: Bei sehr häufiger Wiederholung wird die Rückmeldung schrittweise und ruhig etwas bestimmter"
+    },
+    "content": {
+      "title": "Inhalts- und Aktivitätserweiterungen",
+      "newObjects": "Neue Objekte werden hinzugefügt",
+      "objectCategories": "Objektkategorien werden in Unterkategorien unterteilt",
+      "activityAudio": "Aktivitätserzählungen werden erklärender gestaltet",
+      "letterActivities": "Buchstabenaktivitäten werden verbessert",
+      "letterDrawing": "Buchstaben-Zeichenübungen werden hinzugefügt",
+      "freeGames": "Freie Spiele wie Galgenmännchen werden hinzugefügt",
+      "fineMotor": "Feinmotorik- und Denkspiele werden verbessert"
+    },
+    "languages": {
+      "title": "Sprachstruktur und mehrsprachige Unterstützung",
+      "existingReview": "Vorhandene Fremdsprachen werden überarbeitet",
+      "newLanguages": "Neue Sprachen werden hinzugefügt",
+      "learningActivities": "Mehrsprachige Struktur wird in Fremdsprachenlernaktivitäten umgewandelt"
+    },
+    "themes": {
+      "title": "Themen- und visuelle Anpassungen",
+      "redesign": "Themen werden neu gestaltet"
+    },
+    "reports": {
+      "title": "Berichts- und Feedbacksystem",
+      "improvedReports": "Berichtsebene wird verbessert",
+      "detailedFeedback": "Nicht nur Aktivitätserfolg, sondern auch spezifische schwierige Objekte/Konzepte werden angegeben"
+    }
+  }
+}

@@ -45,7 +45,7 @@ const themeConfig: Record<ThemeKey, any> = {
   ay2:       { bg: 'bg-indigo-900/70',     iconBg: 'bg-yellow-400/20',  iconText: 'text-yellow-300', title: 'text-white',     subtitle: 'text-indigo-200',ring: 'focus:ring-yellow-300' },
   zurafa:    { bg: 'bg-white/60',          iconBg: 'bg-cyan-200/50',    iconText: 'text-cyan-700',   title: 'text-cyan-900',  subtitle: 'text-cyan-800',  ring: 'focus:ring-cyan-300' },
   geometri:  { bg: 'bg-rose-900/10',       iconBg: 'bg-rose-200/40',    iconText: 'text-rose-800',   title: 'text-rose-900',  subtitle: 'text-rose-700',  ring: 'focus:ring-rose-300' },
-  deneme:    { bg: 'bg-gradient-to-br from-purple-200/90 via-pink-200/85 to-red-200/80', iconBg: 'bg-gradient-to-br from-purple-400 to-pink-500', iconText: 'text-white', title: 'text-purple-900', subtitle: 'text-purple-700', ring: 'focus:ring-purple-300', border: 'border-purple-300/60', glow: 'shadow-[0_10px_28px_rgba(168,85,247,0.35)]', hoverGlow: 'hover:shadow-[0_16px_38px_rgba(168,85,247,0.45)]' },
+  deneme:    { bg: 'bg-gradient-to-br from-cyan-500/20 via-blue-500/15 to-teal-500/20 backdrop-blur-sm', iconBg: 'bg-gradient-to-br from-cyan-400/60 via-blue-500/60 to-teal-600/60', iconText: 'text-white', title: 'text-cyan-100 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]', subtitle: 'text-cyan-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]', ring: 'focus:ring-cyan-300', border: 'border-cyan-300/30', glow: 'shadow-[0_8px_20px_rgba(6,182,212,0.15)]', hoverGlow: 'hover:shadow-[0_12px_28px_rgba(6,182,212,0.25)]' },
 };
 
 

@@ -1,0 +1,459 @@
+{
+  "achievements": {
+    "title": "Başarımlar",
+    "subtitle": "Bir etkinliği 3 kez hatasız tamamlayarak rozetini kazan!",
+    "viewReportAria": "Gelişim Raporunu Görüntüle",
+    "completed": "Tamamlandı",
+    "categories": {
+      "letterSound": "Harf ve Sesler",
+      "objects": "Nesneleri Tanıyalım",
+      "concept": "Kavramları Öğrenelim",
+      "reasoning": "Akıl Oyunları",
+      "fiveWOneH": "5N1K",
+      "relativeComparison": "Göreceli Karşılaştırma"
+    }
+  },
+  "activities": {
+    "reasoning": {
+      "whatDoesntBelong": "Hangisi Uymuyor?",
+      "functionalMatching": "İşlevsel Eşleştirme",
+      "causeEffect": "Sebep ve Sonuç",
+      "sequencingStories": "Sıralama",
+      "patternCompletion": "Örüntüyü Tamamla",
+      "sudoku": "Sudoku",
+      "memoryCards": "Hafıza Kartları",
+      "dragAndDropCounting": "Nesneleri Taşı",
+      "dragAndDropPositioning": "Topu Yerleştir",
+      "hangman": "Adam Asmaca"
+    },
+    "fineMotor": {
+      "lineTracing": "Çizgi Takip",
+      "shapeColoring": "Şekil Boyama",
+      "rhythmFollowing": "Ritim Takip"
+    },
+    "fiveWOneH": {
+      "who": "5N1K - Kim?",
+      "what": "5N1K - Ne?",
+      "where": "5N1K - Nerede?",
+      "when": "5N1K - Ne Zaman?",
+      "why": "5N1K - Neden?",
+      "how": "5N1K - Nasıl?"
+    }
+  },
+  "settingsEx": {
+    "title": "Ayarlar",
+    "premium": {
+      "title": "Premium Özellikler",
+      "desc": "Reklamları kaldırın, temalı arayüzü (canlı arka planlar) açın, veli gelişim raporlarını görüntüleyin ve gelişimimizi destekleyin.",
+      "cta": "Premium'a Geç & Destek Ol",
+      "mathQuestion": "Ebeveyn Onayı:\n\nDevam etmek için bu soruyu cevaplayın:\n\n{num1} + {num2} = ?",
+      "wrongAnswer": "Yanlış cevap. Lütfen tekrar deneyin.",
+      "confirmPurchase": "Satın almayı onaylıyor musunuz?\n\nBu işlem ücretlendirilecektir.",
+      "holdToPurchaseAria": "Satın almak için 2 saniye basılı tutun",
+      "monthly": "Aylık",
+      "lifetime": "Ömür Boyu"
+    },
+    "profile": {
+      "title": "Profil",
+      "active": "Aktif Profil",
+      "manage": "Yönet"
+    },
+    "achievements": {
+      "title": "Başarımlar",
+      "subtitle": "Rozetleri görüntüle",
+      "view": "Görüntüle"
+    },
+    "theme": {
+      "title": "Uygulama Teması"
+    },
+    "general": {
+      "title": "Genel Ayarlar"
+    },
+    "mute": {
+      "title": "Sessiz Mod",
+      "subtitle": "Tüm sesleri kapatır"
+    },
+    "autoSpeak": {
+      "title": "Otomatik Seslendirme",
+      "subtitle": "Sorular otomatik okunur"
+    },
+    "fastMode": {
+      "title": "Hızlı Mod",
+      "subtitle": "Geçişleri hızlandırır"
+    },
+    "content": {
+      "title": "İçerik Ayarları"
+    },
+    "banButton": {
+      "title": "Görsel Yasaklama",
+      "subtitle": "'Yasakla' düğmesini gösterir"
+    },
+    "manageBanned": {
+      "title": "Yasaklı Görselleri Yönet",
+      "subtitle": "Yasakladıklarınızı düzenleyin"
+    },
+    "activityManagement": {
+      "title": "Etkinlik Yönetimi"
+    },
+    "data": {
+      "title": "Veri Yönetimi"
+    },
+    "reset": {
+      "title": "İlerlemeyi Sıfırla",
+      "subtitle": "{name}'in tüm verilerini siler",
+      "confirm": "{name} için tüm ilerlemeyi sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz."
+    },
+    "about": {
+      "title": "Hakkında"
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "subtitle": "Veri kullanımı ve haklarınız",
+      "read": "Oku"
+    },
+    "backToSettingsAria": "Ayarlara dön"
+  },
+  "parentReport": {
+    "title": "Gelişim Raporu",
+    "goBackAria": "Geri dön",
+    "group": "Grup",
+    "viewAchievementsAria": "Başarıları Görüntüle",
+    "mostChallenging": "En Çok Zorlanılanlar (Özet)",
+    "bestPerforming": "En Başarılı Alanlar (Özet)",
+    "recommendations": "Öneriler",
+    "fullReport": "Tüm Etkinlik Raporu",
+    "recentActivities": "Son Aktiviteler",
+    "successLabel": "Başarı",
+    "errorLabel": "Hata",
+    "attemptsLabel": "deneme",
+    "noChallengesFound": "Belirgin bir zorluk alanı bulunamadı. Harika gidiyor!",
+    "noSuccessDataYet": "Başarı verileri toplamak için daha fazla etkinlik tamamlanmalı.",
+    "noRecentActivities": "Henüz bir etkinlik tamamlanmadı.",
+    "recommendationFocusOn": "Çocuğunuzun en çok zorlandığı \"{activityName}\" etkinliği üzerine odaklanarak başlayabilirsiniz.",
+    "recommendationModel": "Bu etkinliği tekrar oynarken ona model olabilir ve doğru cevapları birlikte bulabilirsiniz.",
+    "recommendationReinforce": "Çocuğunuz \"{activityName}\" konusunda çok başarılı! Bu alandaki özgüvenini pekiştirmek için benzer etkinlikleri deneyebilirsiniz.",
+    "recommendationGeneral": "Öğrenme yolculuğuna devam edin! Farklı kategorilerden etkinlikler deneyerek yeni beceriler kazanmasına yardımcı olabilirsiniz."
+  },
+  "programReport": {
+    "title": "Program Modu İlerlemesi",
+    "currentUnit": "Mevcut Ünite",
+    "unlockedUnits": "Açılan Üniteler",
+    "progress": "İlerleme",
+    "completed": "Tüm üniteleri tamamladınız! Harika bir başarı!",
+    "advanced": "İleri seviyedesiniz! {unit}. ünitede devam ediyorsunuz.",
+    "progressing": "Güzel ilerliyorsunuz! {unit}. ünitede çalışıyorsunuz.",
+    "beginning": "Başlangıç aşamasındasınız. {unit}. ünite ile devam edin!",
+    "notStarted": "Plan henüz başlatılmadı. Program modunu başlatınca burada ilerlemeyi göreceksiniz.",
+    "paceHint": "Günde en fazla 3 ünite ilerleyebilirsiniz. Bu, sağlam öğrenme için önerilen tempodur."
+  },
+  "activityMgmt": {
+    "enableAll": "Tümünü Etkinleştir",
+    "enableAllHelp": "Bu kategorideki tüm etkinlikleri aç/kapat",
+    "title": "Etkinlik Yönetimi",
+    "objects": "Nesneleri Tanıyalım",
+    "concepts": "Kavram Etkinlikleri",
+    "reasoning": "Akıl Oyunları",
+    "fineMotor": "İnce Motor Beceriler",
+    "lineTracing": "Çizgi Takip",
+    "shapeColoring": "Şekil Boyama",
+    "rhythmFollowing": "Ritim Takip"
+  },
+  "parentTips": {
+    "guide": "Uygulama Rehberi",
+    "learnTogether": {
+      "title": "Birlikte Öğrenin",
+      "text": "Etkinlikleri çocuğunuzla birlikte yapın. Nesnelerin isimlerini tekrar edin ve onlar hakkında sorular sorun (\"Bu hayvan nerede yaşar?\", \"Bu meyvenin tadı nasıldır?\"). Bu, dil gelişimini destekler ve bağınızı güçlendirir."
+    },
+    "profile": {
+      "title": "Profil Yönetimi (Opsiyonel)",
+      "text": "Uygulama ilk açılışta otomatik olarak \"Misafir\" profili oluşturur. Birden fazla çocuğu ayrı ayrı takip etmek isterseniz, Ayarlar menüsünden yeni profiller oluşturabilir veya mevcut profiller arasında geçiş yapabilirsiniz."
+    },
+    "settings": {
+      "title": "Ayarları Keşfedin",
+      "themed": {
+        "title": "Temalı Arayüz",
+        "text": "Uygulamanın görünümünü değiştirin. 'Temalı' mod hareketli arka planlara sahiptir, 'Sade' mod ise daha yumuşak bir palet sunar."
+      },
+      "fastMode": {
+        "title": "Hızlı Mod",
+        "text": "Geri bildirimleri kısaltır ve etkinlikler arasındaki geçişleri hızlandırır."
+      },
+      "ban": {
+        "title": "Görseli Yasakla",
+        "text": "Çocuğunuz bir görseli sevmiyorsa, Ayarlar'dan \"Görseli Yasakla\" seçeneğini etkinleştirip etkinliklerdeki yasakla düğmesini kullanarak o görseli daha sonra gizleyebilirsiniz."
+      }
+    },
+    "progress": {
+      "title": "İlerlemeyi Takip Edin",
+      "achievements": {
+        "title": "Başarımlar Sekmesi",
+        "text": "Çocuğunuzun hangi kategorilerde ustalaştığını gösterir. Bir etkinliği 3 kez mükemmel tamamlayarak rozet kazanın!"
+      },
+      "report": {
+        "title": "İlerleme Raporu",
+        "text": "Çocuğunuz için en zorlayıcı ve en başarılı etkinlikleri vurgular."
+      }
+    },
+    "communication": {
+      "title": "İletişim Kartları",
+      "text": "Çocuğunuzun ihtiyaçlarını, duygularını veya isteklerini ifade etmesine yardımcı olmak için İletişim Kartları bölümünü kullanın."
+    },
+    "customize": {
+      "title": "Etkinlikleri Özelleştirin",
+      "text": "Ayarlar'daki Etkinlik Yönetimi'ni kullanarak belirli becerilere odaklanın veya çocuğunuzun henüz hazır olmadığı etkinlikleri geçici olarak devre dışı bırakın."
+    },
+    "randomMode": {
+      "title": "Rastgele Modu Deneyin",
+      "text": "Farklı kategorilerden tüm etkinleştirilmiş egzersizlerin karışık bir seçkisini sunar ve öğrenmeyi eğlenceli bir şekilde pekiştirir."
+    },
+    "extra": {
+      "title": "Ek İpuçları",
+      "practice": {
+        "title": "Alıştırma Modu (Yakında)",
+        "text": "Yakında çocuğunuzun en çok zorlandığı etkinliklere göre bir 'Alıştırma Oturumu' başlatabileceksiniz."
+      }
+    }
+  },
+  "programMode": {
+    "menuTitle": "Program Modu",
+    "menuSubtitle": "Uzman planıyla günlük oturum başlat",
+    "title": "Program Modu",
+    "subtitle": "Uzman planıyla 10 ünitede beceri geliştirin.",
+    "devWarningTitle": "Deneysel: Program Modu",
+    "devWarningDesc": "Bu mod hâlâ geliştirme aşamasında. Ünite ilerleme davranışı zaman zaman beklenmedik olabilir. Karşılaştığınız sorunları veya geri bildirimleri bizimle paylaşın.",
+    "betaTag": "Deneysel",
+    "forParents": "Veliler için kısa açıklama",
+    "unitShort": "Ünite",
+    "unitProgress": "Ünite İlerlemesi",
+    "start": "Program Modunu Başlat",
+    "badge": "Program Modu",
+    "completed": "Tamamlandı",
+    "dailyLimitReached": "Günlük ilerleme limitine ulaştınız",
+    "dailyLimitMessage": "Günde en fazla 3 ünite ilerleyebilirsiniz. Yarın yeni bir ünite açılacak!",
+    "dailyLimitNote": "Günlük ünite ilerleme limitiniz (3) doldu. Bugün pekiştirme ve tekrarlarla devam edelim.",
+    "dailyLimitRemaining": "Günlük ilerleme hakkı: {used}/3",
+    "minutesAbbrev": "dk",
+    "todaySession": "Bugünün Programı",
+    "alreadyDone": "Bugün yapıldı",
+    "warmup": "Isınma",
+    "newContent": "Yeni İçerik",
+    "reinforcement": "Pekiştirme",
+    "noReinforcementToday": "Bugün pekiştirme yok (zayıf etkinlik bulunamadı).",
+    "tabs": {
+      "today": "Bugün",
+      "progress": "İlerleme",
+      "units": "Üniteler"
+    },
+    "allComplete": "Tebrikler!",
+    "allCompleteDesc": "Tüm aktiviteler tamamlandı!",
+    "noActivities": "Tüm etkinlikler tamamlandı!",
+    "sessionRulesTitle": "Oturum Kuralları",
+    "unitDetails": "Ünite Detayları",
+    "unlockHint": "Bir önceki üniteyi %80 tamamlayınca açılır",
+    "activityCountLabel": "{count} etkinlik",
+    "jokerActive": "Joker Hakkı Aktif",
+    "progress": {
+      "activity": "Etkinlik {current}/{total}",
+      "round": "Tur {current}/{total}"
+    },
+    "explainer": {
+      "point1": "Çocuğunuz için somuttan soyuta giden, kısa ve odaklı bir akış sunar.",
+      "point2": "10 üniteli bir yapı ile ilerler. Her ünite, belirli kavramları içerir.",
+      "point3": "Ustalaşma durumuna göre içerikler dinamik olarak seçilir: ısınma, yeni içerik ve pekiştirme.",
+      "point4": "Günde en fazla 3 ünite ilerleyebilirsiniz. Bu üst sınır, çok hızlı geçişi önler ve erken dönemde görünür ilerleme sağlar.",
+      "point5": "Joker Hakkı ile ebeveynler, geçici olarak kilidi açabilir."
+    },
+    "sessionRules": {
+      "title": "Program Modu Kuralları",
+      "warmup": "Isınma: Ustalaştığınız 1-2 aktivite",
+      "newContent": "Yeni İçerik: Kilidi açılmış 2-3 yeni aktivite",
+      "reinforcement": "Pekiştirme: Neredeyse ustalaştığınız 1-2 aktivite",
+      "dailyLimit": "Günlük limit: En fazla 3 ünite ilerleyebilirsiniz",
+      "jokerInfo": "Joker Hakkı: Ebeveynler geçici olarak aktivite kilidini açabilir"
+    },
+    "rules": {
+      "count": "Oturum başına etkinlik sayısı:",
+      "activityWord": "etkinlik",
+      "warmupWord": "ısınma",
+      "newWord": "yeni içerik",
+      "reinforcementWord": "pekiştirme",
+      "selection": "Seçim mantığı:",
+      "selectionDesc": "Isınma (1 ustalaşılmış) → Yeni içerik (odak ünite, hiç denenmemişe öncelik) → Pekiştirme (önceki ünitelerden 0–2 en zayıf)",
+      "coverageFirst": "Kapsam-öncelikli:",
+      "coverageFirstDesc": "Odak ünitede hâlâ hiç denenmemiş içerik varsa, Yeni İçerik +1 ve Pekiştirme -1. Böylece her beceriye ilk temas garanti edilir.",
+      "failure": "Başarısızlık durumu:",
+      "failureDesc": "Etkinlik tamamlanır, skor kaydedilir. Ustalaşılmadıysa sonraki günlerde tekrar gelir.",
+      "unlocking": "Ünite açma koşulu:",
+      "unlockingDesc": "Ünitedeki her etkinlik en az bir kez denenmiş olmalı ve ortalama başarı ≥ %80 olmalı (Serbest + Program denemelerinin toplamı).",
+      "mastery": "Ustalaşma kuralları:",
+      "widePool": "Geniş havuz",
+      "widePoolDesc": "(Renkler, Şekiller vb.): 5 denemede %80 başarı",
+      "narrowPool": "Dar havuz",
+      "narrowPoolDesc": "(5N1K, Benzer Farklı vb.): 2 mükemmel seans (%100)",
+      "daily": "Günlük limit:",
+      "dailyDesc": "Günde en fazla 3 ünite ilerleme hakkı (aşırı hızlı geçişi önlemek için önerilen üst sınır)",
+      "dailyPremium": "Premium:",
+      "dailyPremiumDesc": "Günlük ilerleme üst sınırı yok; açılmış üniteler serbestçe oynanabilir.",
+      "joker": "Joker Hakkı:",
+      "jokerDesc": "Ebeveynler kilitli bir etkinliği süreli olarak açabilir; bu, ustalaşma kurallarını atlamaz, sadece erişime izin verir.",
+      "progressDisplay": "Gösterilen %:",
+      "progressDisplayDesc": "Ünite yüzdesi, veli raporunda gösterilen harmanlanmış başarıyı (Serbest + Program toplamları) yansıtır.",
+      "progressFormula": "Erken ilerleme formülü:",
+      "progressFormulaDesc": "%40 Kapsam + %30 Doğruluk + %30 Ustalık (kısmi ustalık = pencere dolumu × başarı). Örnek artış: 76 → 82 → 88 → 94 → 100."
+    },
+    "unitNames": {
+      "1": "Merhaba Dünya",
+      "2": "Fiziksel Dünya",
+      "3": "Bellek ve Dikkat",
+      "4": "Nitelikler I",
+      "5": "Nitelikler II",
+      "6": "Örüntüler ve İlişkiler",
+      "7": "Göreceli Kavramlar",
+      "8": "Neden-Sonuç ve Sıralama",
+      "9": "Sorgulama ve Analiz",
+      "10": "Ustalık"
+    },
+    "activityNames": {
+      "hayvanlar": "Hayvanlar",
+      "meyveler": "Meyveler",
+      "tasitlar": "Taşıtlar",
+      "oyuncaklar": "Oyuncaklar",
+      "vucudun_bolumleri": "Vücudun Bölümleri",
+      "giysiler_aksesuarlar": "Giysiler ve Aksesuarlar",
+      "ev_esyalari": "Ev Eşyaları",
+      "mutfak_gerecleri": "Mutfak Gereçleri",
+      "icecekler": "İçecekler",
+      "sebzeler": "Sebzeler",
+      "diger_yiyecekler": "Diğer Yiyecekler",
+      "bitkiler": "Bitkiler",
+      "aile_uyeleri": "Aile Üyeleri",
+      "meslekler": "Meslekler",
+      "mekanlar_odalar": "Mekânlar ve Odalar",
+      "aletler": "Aletler",
+      "muzik_aletleri": "Müzik Aletleri",
+      "okul_ofis_gerecleri": "Okul ve Ofis Gereçleri",
+      "dogal_yapilar_uzay": "Doğal Yapılar ve Uzay",
+      "FiveWOneH_Who": "5N1K - Kim?",
+      "FiveWOneH_What": "5N1K - Ne?",
+      "FiveWOneH_Where": "5N1K - Nerede?",
+      "FiveWOneH_When": "5N1K - Ne Zaman?",
+      "FiveWOneH_Why": "5N1K - Neden?",
+      "FiveWOneH_How": "5N1K - Nasıl?",
+      "Colors": "Renkler",
+      "Shapes": "Şekiller",
+      "LineTracing": "Çizgi Takip",
+      "BigSmall": "Büyük / Küçük",
+      "InsideOutside": "İçeride / Dışarıda",
+      "OnUnder": "Üstünde / Altında",
+      "ShapeColoring": "Şekil Boyama",
+      "MemoryCards": "Hafıza Kartları",
+      "WhatDoesntBelong": "Hangisi Farklı",
+      "FullEmpty": "Dolu / Boş",
+      "LongShort": "Uzun / Kısa",
+      "ThinThick": "İnce / Kalın",
+      "WideNarrow": "Geniş / Dar",
+      "FewMuch": "Az / Çok",
+      "OpenClosed": "Açık / Kapalı",
+      "WetDry": "Islak / Kuru",
+      "CleanDirty": "Temiz / Kirli",
+      "HotCold": "Sıcak / Soğuk",
+      "HardSoft": "Sert / Yumuşak",
+      "Emotions": "Duygular",
+      "DayNight": "Gündüz / Gece",
+      "DikenliPuruzsuz": "Dikenli / Pürüzsüz",
+      "DugumCozuk": "Düğüm / Çözük",
+      "PatternCompletion": "Örüntü Tamamlama",
+      "FunctionalMatching": "İşlevsel Eşleştirme",
+      "RhythmFollowing": "Ritim Takip",
+      "BrokenIntact": "Kırık / Sağlam",
+      "RoughSmooth": "Pürüzlü / Pürüzsüz",
+      "HeavyLight": "Ağır / Hafif",
+      "BitterSweet": "Acı / Tatlı",
+      "RelativeBigSmall": "Göreceli Büyük / Küçük",
+      "RelativeLongShort": "Göreceli Uzun / Kısa",
+      "RelativeThinThick": "Göreceli İnce / Kalın",
+      "RelativeWideNarrow": "Göreceli Geniş / Dar",
+      "RelativeFewMuch": "Göreceli Az / Çok",
+      "BeforeAfter": "Önce / Sonra",
+      "BelowAbove": "Aşağıda / Yukarıda",
+      "BesideOpposite": "Yanında / Karşısında",
+      "InFrontOfBehind": "Önünde / Arkasında",
+      "NearFar": "Yakın / Uzak",
+      "HighLow": "Yüksek / Alçak",
+      "YesNo": "Evet / Hayır",
+      "TazeBayat": "Taze / Bayat",
+      "KirisikDuzgun": "Kırışık / Düzgün",
+      "SivriKut": "Sivri / Küt",
+      "ParlakMat": "Parlak / Mat",
+      "OldNew": "Eski / Yeni",
+      "CauseEffect": "Neden - Sonuç",
+      "SequencingStories": "Olay Sıralama",
+      "DragAndDropCounting": "Sürükle-Bırak Sayma",
+      "DragAndDropPositioning": "Sürükle-Bırak Konumlandırma",
+      "HalfQuarterWhole": "Bütün / Yarım / Çeyrek",
+      "MessyClean": "Dağınık / Düzgün",
+      "StraightCurved": "Düz / Eğri",
+      "Sudoku": "Görsel Sudoku",
+      "AliveLifeless": "Canlı / Cansız",
+      "Between": "Arasında",
+      "OddEven": "Tek / Çift",
+      "RelativeNearFar": "Göreceli Yakın / Uzak",
+      "RelativeHighLow": "Göreceli Yüksek / Alçak",
+      "DerinSig": "Derin / Sığ",
+      "KalabalikTenha": "Kalabalık / Tenha",
+      "HungryFull": "Aç / Tok",
+      "YoungOld": "Genç / Yaşlı",
+      "LeftRight": "Sol / Sağ",
+      "Senses": "Duyularımız",
+      "TembelCaliskan": "Tembel / Çalışkan",
+      "SeffafOpak": "Şeffaf / Opak",
+      "FastSlow": "Hızlı / Yavaş",
+      "FindTheSoundInImage": "Görselde Sesi Bul",
+      "FindTheLetter": "Harfi Bul",
+      "FindTheLetterInGrid": "Harf Izgarası",
+      "SoundPresence": "Ses Var mı?",
+      "Syllabification": "Heceleme",
+      "EmbeddedStory": "Gömülü Hikaye"
+    },
+    "planPreview": {
+      "title": "Bugünün Akışı",
+      "thisSession": "Bu oturumda sırasıyla:",
+      "ifGood": "İyi giderse bir sonraki oturumda:"
+    }
+  },
+  "developmentNotes": {
+    "title": "Gelecek Güncellemeler",
+    "subtitle": "Uygulamamız büyümeye devam ediyor! Sabırlarınız için teşekkürler.",
+    "modes": {
+      "title": "Mod Geliştirmeleri",
+      "programMode": "Program modu geliştirilecek",
+      "reinforcementMode": "Pekiştirme modu eklenecek",
+      "angerMode": "Nazik uyarı modu: aşırı tekrar algılandığında geri bildirim kademeli ve sakin şekilde güçlenecek"
+    },
+    "content": {
+      "title": "İçerik ve Etkinlik Genişletmeleri",
+      "newObjects": "Yeni nesneler eklenecek",
+      "objectCategories": "Nesne kategorileri alt dallara ayrılacak",
+      "activityAudio": "Etkinlik seslendirmeleri daha açıklayıcı hale getirilecek",
+      "letterActivities": "Harf etkinlikleri geliştirilecek",
+      "letterDrawing": "Harf çizim çalışmaları eklenecek",
+      "freeGames": "Adam asmaca gibi serbest oyunlar eklenecek",
+      "fineMotor": "İnce motor ve akıl oyunları geliştirilecek"
+    },
+    "languages": {
+      "title": "Dil Yapısı ve Çoklu Dil Desteği",
+      "existingReview": "Mevcut yabancı diller elden geçirilecek",
+      "newLanguages": "Yeni diller eklenecek",
+      "learningActivities": "Çoklu dil yapısı, yabancı dil öğrenme aktivitelerine dönüştürülecek"
+    },
+    "themes": {
+      "title": "Tema ve Görsel Düzenlemeler",
+      "redesign": "Temalar yeniden düzenlenecek"
+    },
+    "reports": {
+      "title": "Raporlama ve Geri Bildirim Sistemi",
+      "improvedReports": "Raporlar seviyesi geliştirilecek",
+      "detailedFeedback": "Sadece etkinlik başarısı değil, etkinlik içindeki zorlanılan nesne/kavram da belirtilecek"
+    }
+  }
+}

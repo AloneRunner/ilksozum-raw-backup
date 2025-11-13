@@ -38,8 +38,9 @@ export function isMasteryAchieved(
   const { poolType } = masteryRule;
 
   if (poolType === MasteryPoolType.WIDE) {
-    // WIDE POOL: Check last N attempts for success rate with mode weighting
-    const window = masteryRule.recentAttemptsWindow || 15;
+  // WIDE POOL: Check last N attempts for success rate with mode weighting
+  // Updated: Reduced from 15 to 5 for more reasonable child progression
+  const window = masteryRule.recentAttemptsWindow || 5;
     const threshold = masteryRule.masteryThreshold || 0.8;
     
     const recentAttempts = stats.history.slice(-window);
@@ -197,7 +198,8 @@ export function isUnitUnlocked(
 }
 
 /**
- * Check if a unit is complete (80% of activities mastered)
+ * Check if a unit is complete (ready to unlock next unit)
+ * Uses early progress percentage to match what the user sees in UI
  */
 export function isUnitComplete(
   unitNumber: number,
@@ -209,19 +211,16 @@ export function isUnitComplete(
     return false;
   }
 
-  const masteredCount = unitDef.activities.filter((activityId) => {
-    // Check if it's an object category
-    if (typeof activityId === 'string' && masteredObjectCategories.has(activityId)) {
-      return true;
-    }
-    
-    // Check if it's a regular activity
-    const stats = allStats[activityId as string];
-    return isMasteryAchieved(activityId, stats);
-  }).length;
+  // New rule: must attempt every activity in the unit at least once
+  if (!hasUnitMinimumCoverage(unitNumber, allStats, masteredObjectCategories)) {
+    return false;
+  }
 
-  const completionRate = masteredCount / unitDef.activities.length;
-  return completionRate >= unitDef.completionThreshold;
+  // Use display-oriented success (parents' report logic; ignores unattempted items)
+  const progressPercent = getUnitDisplaySuccessPercentage(unitNumber, allStats, masteredObjectCategories);
+  const thresholdPercent = unitDef.completionThreshold * 100;
+  
+  return progressPercent >= thresholdPercent;
 }
 
 /**
@@ -267,6 +266,146 @@ export function getUnitCompletionPercentage(
   }).length;
 
   return Math.round((masteredCount / unitDef.activities.length) * 100);
+}
+
+/**
+ * Early progress metric to avoid showing 0% at the beginning.
+ * Calculates an average success rate across all activities in the unit, using
+ * the same aggregated correctness data surfaced in the parent report. Mastered
+ * activities (including mastered object categories) count as 100%.
+ */
+export function getUnitEarlyProgressPercentage(
+  unitNumber: number,
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>
+): number {
+  const unitDef = getUnitDefinition(unitNumber);
+  if (!unitDef) return 0;
+
+  const totalActivities = unitDef.activities.length || 1;
+  let cumulativeSuccess = 0;
+
+  for (const activityId of unitDef.activities) {
+    // Mastered object categories carry over a perfect success score
+    if (typeof activityId === 'string' && masteredObjectCategories.has(activityId)) {
+      cumulativeSuccess += 1;
+      continue;
+    }
+
+    const statsKey = typeof activityId === 'string' ? activityId : String(activityId);
+    const stats = allStats[statsKey];
+    if (!stats) {
+      continue; // No attempts logged yet
+    }
+
+    if (isMasteryAchieved(activityId, stats)) {
+      cumulativeSuccess += 1;
+      continue;
+    }
+
+    // Derive success directly from recorded attempts (mirrors parent report logic)
+    let correctSum = stats.totalCorrect || 0;
+    let questionSum = stats.totalQuestions || 0;
+
+    if (questionSum === 0) {
+      const attemptHistory = (stats.history || []).filter((entry) => entry.total > 0);
+      for (const attempt of attemptHistory) {
+        correctSum += attempt.score;
+        questionSum += attempt.total;
+      }
+    }
+
+    if (questionSum > 0) {
+      const successRate = Math.min(Math.max(correctSum / questionSum, 0), 1);
+      cumulativeSuccess += successRate;
+    } else if (stats.attempts > 0) {
+      // Fallback: if attempts exist but totals were not captured, grant minimal visible progress
+      cumulativeSuccess += 0.2;
+    }
+  }
+
+  const progressPercent = Math.round((cumulativeSuccess / totalActivities) * 100);
+  return Math.max(0, Math.min(100, progressPercent));
+}
+
+/**
+ * Display-oriented success percentage for a unit (0-100).
+ * Averages only over activities that have any recorded questions/attempts,
+ * mirroring what parents see in detailed reports. Unattempted items are ignored
+ * for the display to prevent artificially low percentages at the start.
+ */
+export function getUnitDisplaySuccessPercentage(
+  unitNumber: number,
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>
+): number {
+  const unitDef = getUnitDefinition(unitNumber);
+  if (!unitDef) return 0;
+
+  let included = 0;
+  let cumulative = 0;
+
+  for (const activityId of unitDef.activities) {
+    if (typeof activityId === 'string' && masteredObjectCategories.has(activityId)) {
+      cumulative += 1;
+      included += 1;
+      continue;
+    }
+
+    const key = typeof activityId === 'string' ? activityId : String(activityId);
+    const stats = allStats[key];
+    if (!stats) continue;
+
+    // Prefer aggregated totals; fall back to history
+    let correct = stats.totalCorrect || 0;
+    let total = stats.totalQuestions || 0;
+    if (total === 0) {
+      const history = (stats.history || []).filter(h => h.total > 0);
+      for (const h of history) {
+        correct += h.score;
+        total += h.total;
+      }
+    }
+
+    if (total > 0) {
+      cumulative += Math.min(Math.max(correct / total, 0), 1);
+      included += 1;
+    } else if (stats.attempts > 0) {
+      // If there were attempts but no totals captured, show a small placeholder progress
+      cumulative += 0.2;
+      included += 1;
+    }
+  }
+
+  if (included === 0) return 0;
+  return Math.round((cumulative / included) * 100);
+}
+
+/**
+ * Coverage rule: a unit has minimum coverage when each activity has been
+ * attempted at least once (has any recorded questions/answers) or is already
+ * mastered/marked via object categories.
+ */
+export function hasUnitMinimumCoverage(
+  unitNumber: number,
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>
+): boolean {
+  const unitDef = getUnitDefinition(unitNumber);
+  if (!unitDef) return false;
+
+  const hasAttempt = (id: ActivityType | string): boolean => {
+    // Object categories can be counted via mastered set
+    if (typeof id === 'string' && masteredObjectCategories.has(id)) return true;
+    const key = typeof id === 'string' ? id : String(id);
+    const stats = allStats[key];
+    if (!stats) return false;
+    if ((stats.totalQuestions || 0) > 0) return true;
+    const hist = (stats.history || []).filter(h => h.total > 0);
+    return hist.length > 0;
+  };
+
+  return unitDef.activities.every((a) => hasAttempt(a));
 }
 
 /**

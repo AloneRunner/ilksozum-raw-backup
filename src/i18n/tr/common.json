@@ -1,0 +1,181 @@
+{
+  "app": {
+    "name": "İlk Sözüm: Otizm & Okul Öncesi",
+    "description": "Çocuklar için kelimeleri, kavramları ve sesleri öğreten interaktif eğitici kartlar.",
+    "printPreview": "Yazdırma Önizlemesi",
+    "savePdf": "PDF Kaydet",
+    "print": "Yazdır",
+    "back": "Geri dön",
+    "developing": "Geliştiriliyor",
+    "pdfSavedInfo": "PDF kaydedildi. Cihazınızın Belgeler klasörünü kontrol edin veya paylaşım menüsünü kullanın.",
+    "pdfSaveError": "PDF kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "pdfCreateError": "PDF oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.",
+    "pdfJobName": "İlk Sözüm: Otizm & Okul Öncesi",
+    "shareTitle": "PDF Kaydedildi",
+    "shareText": "PDF dosyası kaydedildi. Paylaşmak ister misiniz?",
+    "shareDialogTitle": "PDF Paylaş",
+    "noContentForActivity": "Bu etkinlik için içerik bulunamadı.",
+    "noMoreImagesForActivity": "Bu etkinlik için gösterilecek başka görsel kalmadı.",
+    "noActivitySelected": "Etkinlik seçimi bulunamadı.",
+    "activityLoadError": "Etkinlik yüklenirken bir hata oluştu.",
+    "randomActivityRestarting": "Mevcut rastgele etkinlik yeniden başlatılıyor...",
+    "activityRestarting": "Etkinlik yeniden başlatılıyor..."
+  },
+  "choice": {
+    "readQuestion": "Soruyu seslendir",
+    "matchPrompt": "Buna uygun olan hangisi?",
+    "label": "Etiket",
+    "hint": "İpucu",
+    "showLabel": "Etiketleri göster",
+    "hideLabel": "Etiketleri gizle",
+    "showHint": "İpucu göster",
+    "learnShapes": "Şekilleri öğren",
+    "learnEmotions": "Duyguları öğren",
+    "hideHint": "İpucunu gizle",
+    "banImageAria": "Bu görseli bir daha gösterme",
+    "learnColors": "Renkleri öğren"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Otomatik seslendirmeyi aç",
+    "autoSpeakOff": "Otomatik seslendirmeyi kapat"
+  },
+  "feedback": {
+    "correctPrefix": "Evet, bu",
+    "wrongPrefix": "Hayır, bu",
+    "rightPrefix": "Doğru, bu",
+    "sentence": {
+      "correct": "Evet, bu {adjective} {noun}.",
+      "wrong": "Hayır, bu {adjective} {noun} değil."
+    }
+  },
+  "settings": {
+    "language": "Dil",
+    "languageSubtitle": "Arayüz ve konuşma dili",
+    "languageNote": "Harf etkinlikleri şimdilik yalnızca Türkçe.",
+    "languageAutoNote": "Not: Bazı çeviriler yapay zeka yardımıyla oluşturuldu ve hatalar içerebilir. Yanlış görünen ifadeler için velilerden özür dileriz — geri bildiriminizle düzeltebiliriz."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Nesneler",
+      "subtitle": "Türkçe dışındaki diller için özenle hazırlanmış nesne setleri",
+      "noCuratedSet": "Bu kategori için henüz özel bir set yok."
+    }
+  },
+  "menu": {
+    "hello": "Merhaba",
+    "appTitle": "İlk Sözüm: Otizm & Okul Öncesi",
+    "experimentalTag": "Deneme",
+    "random": {
+      "title": "Rastgele Mod",
+      "subtitle": "Seçili etkinliklerden karışık oyna"
+    },
+    "parentTips": {
+      "title": "Ebeveynler İçin İpuçları",
+      "subtitle": "Uygulamayı daha verimli kullanın"
+    },
+    "letterSound": {
+      "title": "Harf ve Sesler",
+      "subtitle": "Harfleri ve sesleri öğren, hecele ve oku."
+    },
+    "objects": {
+      "title": "Nesneleri Tanıyalım",
+      "subtitle": "Hayvanları, meyveleri ve daha fazlasını öğren."
+    },
+    "concepts": {
+      "title": "Kavram Etkinlikleri",
+      "subtitle": "Renkleri, şekilleri ve zıt kavramları öğren."
+    },
+    "reasoning": {
+      "title": "Akıl Oyunları",
+      "subtitle": "Hafıza, sudoku ve mantık oyunları oyna."
+    },
+    "fineMotor": {
+      "title": "İnce Motor",
+      "subtitle": "Çizgi Takip, Boyama ve daha fazlası",
+      "developingNote": "Geliştiriliyor",
+      "backButton": "İnce Motor Menüsüne Dön"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "İnce Motor Beceriler"
+      },
+      "fineMotor": {
+        "lineTracing": "Çizgi Takip",
+        "shapeColoring": "Şekil Boyama",
+        "rhythmFollowing": "Ritim Takip"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5N1K",
+      "subtitle": "Kim • Ne • Nerede • Ne Zaman • Neden • Nasıl",
+      "developingNote": "Geliştiriliyor",
+      "category": {
+        "who": "Kim?",
+        "what": "Ne?",
+        "where": "Nerede?",
+        "when": "Ne Zaman?",
+        "why": "Neden?",
+        "how": "Nasıl?",
+        "mixed": "Karışık"
+      }
+    }
+  },
+  "common": {
+    "previous": "Önceki",
+    "next": "Sonraki"
+  },
+  "tabs": {
+    "activities": "Etkinlikler",
+    "communication": "İletişim",
+    "achievements": "Raporlar",
+    "settings": "Ayarlar"
+  },
+  "consent": {
+    "title": "Gizlilik Sözleşmesi",
+    "body": "Uygulamayı kullanmaya devam etmek için Gizlilik Politikası'nı kabul etmeniz gerekir. Kişisel veriler toplamıyoruz; oyun ilerlemeniz ve ayarlarınız yalnızca cihazınızda saklanır. Ücretsiz sürümde kişiselleştirilmemiş reklamlar gösterilebilir.",
+    "accept": "Kabul Ediyorum",
+    "viewPolicy": "Gizlilik Politikası'nı Oku"
+  },
+  "themes": {
+    "simple": "Sade",
+    "deneme": "🎨 Deneme",
+    "balon": "Balon",
+    "gunes": "Güneş",
+    "tilki": "Tilki",
+    "ay": "Ay",
+    "geceorman": "Gece Ormanı",
+    "yagmur": "Yağmur",
+    "kus": "Kuşlar",
+    "tilki2": "Çayır Tilkisi",
+    "kedi": "Kedi",
+    "kar": "Kar",
+    "gunbatimi": "Gün Batımı",
+    "ay2": "Hilal",
+    "zurafa": "Zürafa",
+    "geometri": "Geometrik",
+    "balloon": "Balon",
+    "sun": "Güneş",
+    "fox": "Tilki",
+    "moon": "Ay",
+    "nightForest": "Gece Ormanı",
+    "rain": "Yağmur",
+    "birds": "Kuşlar",
+    "prairieFox": "Çayır Tilkisi",
+    "cat": "Kedi",
+    "snow": "Kar",
+    "sunset": "Gün Batımı",
+    "crescent": "Hilal",
+    "giraffe": "Zürafa",
+    "geometric": "Geometrik"
+  },
+  "completion": {
+    "heading": "Tebrikler!",
+    "msg": {
+      "low": "Tekrar denemeye ne dersin?",
+      "mid": "Çok iyi gidiyorsun!",
+      "high": "Harika iş çıkardın!"
+    },
+    "restart": "Tekrar Oyna",
+    "home": "Ana Menü"
+  }
+}

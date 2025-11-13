@@ -3,8 +3,12 @@ import rawWordmapDE from "./wordmap.tr-de.json";
 import rawWordmapFR from "./wordmap.tr-fr.json";
 import rawWordmapNL from "./wordmap.tr-nl.json";
 import rawWordmapAZ from "./wordmap.tr-az.json";
-// Bu dosyanın Copilot tarafından oluşturulduğunu varsayıyoruz:
-import supplementalTranslations from "../i18n/tr_en.json";
+// Modular i18n dosyalarından ek çevirileri al
+import enCommon from "../i18n/en/common.json";
+import enScreens from "../i18n/en/screens.json";
+import enLetterActivities from "../i18n/en/letterActivities.json";
+import enGameActivities from "../i18n/en/gameActivities.json";
+import enContent from "../i18n/en/content.json";
 
 type WordMap = Record<string, string>;
 type NestedWordMap = Record<string, WordMap>;
@@ -63,24 +67,27 @@ const mergeTranslations = (flat: WordMap, entries: WordMap) => {
     }
   }
 };
-// Merge additional EN-only translations into EN map
-// The supplemental file may contain nested sections (e.g. a `questions` object).
-// Recursively extract all string leaf values found anywhere in the object so
-// we preserve useful translations while keeping a flat WordMap for merging.
+mergeTranslations(wordMapFlatEN, baseFallbackMap);
+
+// Modular i18n dosyalarındaki tüm string değerleri ek çeviri olarak ekle
+const supplementalTranslations = {
+  ...enCommon,
+  ...enScreens,
+  ...enLetterActivities,
+  ...enGameActivities,
+  ...enContent
+};
+
 const supplementalFlat: WordMap = {};
 
 const extractStrings = (obj: unknown) => {
   if (!obj || typeof obj !== "object") return;
   for (const [k, v] of Object.entries(obj as Record<string, unknown>)) {
     if (typeof v === "string") {
-      // top-level string or leaf string -> keep it
       supplementalFlat[k] = v;
       continue;
     }
-    // if it's an object, recurse and attempt to capture its string leaves
     if (typeof v === "object" && v !== null) {
-      // If the nested object itself contains string values with Turkish text as keys,
-      // extracting inner keys (like question ids) is useful. Recurse into it.
       extractStrings(v);
     }
   }
@@ -88,7 +95,6 @@ const extractStrings = (obj: unknown) => {
 
 extractStrings(supplementalTranslations);
 mergeTranslations(wordMapFlatEN, supplementalFlat);
-mergeTranslations(wordMapFlatEN, baseFallbackMap);
 
 const tokenize = (value: string): string[] =>
   normalize(value)

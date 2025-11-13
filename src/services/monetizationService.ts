@@ -293,3 +293,68 @@ export const syncPremiumEntitlement = async (userId?: string): Promise<boolean> 
   }
 };
 
+// Migration helper: Transfer purchases from old profile-based user ID to new device-based ID
+export const migrateOldPurchases = async (oldUserId: string): Promise<boolean> => {
+  if (!Capacitor.isNativePlatform()) return false;
+  
+  try {
+    // First ensure RC is initialized
+    if (!rcInitialized) {
+      await Purchases.configure({ apiKey: RC_PUBLIC_SDK_KEY });
+      rcInitialized = true;
+    }
+
+    // Log in with the OLD user ID to access old purchases
+    console.log(`Attempting to restore old purchases for user: ${oldUserId}`);
+    await Purchases.logIn({ appUserID: oldUserId });
+    
+    // Restore purchases for old user
+    const { customerInfo: oldInfo } = await Purchases.restorePurchases();
+    const hadOldPremium = !!oldInfo?.entitlements?.active?.[PREMIUM_ENTITLEMENT_ID];
+    
+    if (!hadOldPremium) {
+      console.log('No active premium found on old user ID');
+      // Switch back to device user
+      const deviceId = getOrCreateFallbackUserId();
+      await Purchases.logIn({ appUserID: deviceId });
+      currentRcUserId = deviceId;
+      return false;
+    }
+
+    console.log('Found premium on old user! Transferring to device user...');
+    
+    // Now switch to device ID - RC will automatically merge the purchase history
+    const deviceId = getOrCreateFallbackUserId();
+    await Purchases.logIn({ appUserID: deviceId });
+    currentRcUserId = deviceId;
+    
+    // Verify the transfer worked
+    const { customerInfo: newInfo } = await Purchases.restorePurchases();
+    const hasNewPremium = !!newInfo?.entitlements?.active?.[PREMIUM_ENTITLEMENT_ID];
+    
+    if (hasNewPremium) {
+      console.log('✅ Successfully migrated purchases to device user!');
+      await hideBanner();
+      
+      // Mark migration as complete
+      try {
+        window.localStorage.setItem('rc_migration_complete_v1', 'true');
+      } catch {}
+      
+      return true;
+    } else {
+      console.warn('⚠️ Migration may have failed - premium not found on new user');
+      return false;
+    }
+  } catch (e) {
+    console.error('migrateOldPurchases error:', e);
+    // Try to recover to device user
+    try {
+      const deviceId = getOrCreateFallbackUserId();
+      await Purchases.logIn({ appUserID: deviceId });
+      currentRcUserId = deviceId;
+    } catch {}
+    return false;
+  }
+};
+

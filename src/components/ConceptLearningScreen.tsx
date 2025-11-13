@@ -12,6 +12,9 @@ import { LETTER_SOUND_ACTIVITIES } from '../constants.ts';
 import { t, getCurrentLanguage } from '../i18n/index.ts';
 import { translateLabel, getSpeechLocale, withIndefiniteArticle } from '../utils/translate.ts';
 import { AppColor, getColorClasses } from '../themes/colorManager.ts';
+import { useAppContext } from '../contexts/AppContext.ts';
+import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import PanelStars from './ui/PanelStars.tsx';
 
 interface ConceptLearningScreenProps {
     word: Word;
@@ -104,7 +107,19 @@ const ConceptLearningScreen: React.FC<ConceptLearningScreenProps> = ({
     };
 
     const localizedQuestion = currentLang === 'tr' ? canonicalTrQuestion : buildLocalizedQuestion();
-    useAutoSpeak(localizedQuestion, isAutoSpeakEnabled, word.id);
+    
+    // For letter activities (Sound Presence), build the proper question for TTS
+    const getSpokenQuestion = () => {
+        if (isLetterActivity && letter) {
+            const locale = currentLang === 'tr' ? 'tr-TR' : currentLang === 'de' ? 'de-DE' : currentLang === 'az' ? 'az-AZ' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'nl' ? 'nl-NL' : 'en-US';
+            const upperCaseLetter = letter.toLocaleUpperCase(locale);
+            const questionTemplate = t('letters.soundPresence.question', "Bu görselde '{letter}' sesi var mı?");
+            return questionTemplate.replace('{letter}', upperCaseLetter);
+        }
+        return localizedQuestion;
+    };
+    
+    useAutoSpeak(getSpokenQuestion(), isAutoSpeakEnabled, word.id);
 
     const isCorrect = answer !== null && ((answer === 'yes' && word.isCorrectAnswer) || (answer === 'no' && !word.isCorrectAnswer));
     const isWrong = answer !== null && !isCorrect;
@@ -113,16 +128,24 @@ const ConceptLearningScreen: React.FC<ConceptLearningScreenProps> = ({
         if (!letter || !word.questionText) {
             return localizedQuestion;
         }
-        const upperCaseLetter = letter.toLocaleUpperCase('tr-TR');
-        const parts = word.questionText.split(`'${upperCaseLetter}'`);
+        // Use locale-specific casing for letter
+        const locale = currentLang === 'tr' ? 'tr-TR' : currentLang === 'de' ? 'de-DE' : currentLang === 'az' ? 'az-AZ' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'nl' ? 'nl-NL' : 'en-US';
+        const upperCaseLetter = letter.toLocaleUpperCase(locale);
+        
+        // Use i18n for Sound Presence question
+        const questionTemplate = t('letters.soundPresence.question', "Bu görselde '{letter}' sesi var mı?");
+        const questionText = questionTemplate.replace('{letter}', upperCaseLetter);
+        
+        // Split to highlight the letter
+        const parts = questionText.split(upperCaseLetter);
         if (parts.length !== 2) {
-            return localizedQuestion;
+            return questionText;
         }
         return (
             <>
                 {parts[0]}
                 <span className={`text-red-500 font-black`}>
-                    "{upperCaseLetter}"
+                    {upperCaseLetter}
                 </span>
                 {parts[1]}
             </>
@@ -182,16 +205,21 @@ const ConceptLearningScreen: React.FC<ConceptLearningScreenProps> = ({
     
     const themeColor = (activityType === ActivityType.SoundPresence ? 'cyan' : 'teal') as AppColor;
     const colorClasses = getColorClasses(themeColor);
+    const { settings } = useAppContext();
+    const isCosmic = settings.theme === 'deneme2';
 
     return (
         <div 
          ref={cardRef}
          tabIndex={-1}
-         className="flex flex-col items-center justify-start h-full w-full max-w-4xl mx-auto p-2 sm:p-4 animate-fade-in outline-none landscape:pt-0" 
+         className="relative overflow-hidden flex flex-col items-center justify-start h-full w-full max-w-4xl mx-auto p-2 sm:p-4 animate-fade-in outline-none landscape:pt-0" 
          aria-live="polite">
+            {isCosmic && (
+                <CosmicBackdrop variant="light" showMeteors={true} />
+            )}
             
             {/* Header */}
-             <div className="w-full flex justify-between items-center mb-2 sm:mb-4 p-2 bg-white/50 backdrop-blur-sm rounded-full">
+             <div className={`w-full flex justify-between items-center mb-2 sm:mb-4 p-2 ${isCosmic ? 'bg-slate-900/60 border border-sky-400/20' : 'bg-white/50'} backdrop-blur-sm rounded-full`}>
                 <button onClick={onBack} className={`p-2 rounded-full hover:bg-white/50 transition-colors`} aria-label="Geri dön">
                     <ArrowLeftIcon className={`w-8 h-8 ${colorClasses.text700}`} />
                 </button>
@@ -203,11 +231,17 @@ const ConceptLearningScreen: React.FC<ConceptLearningScreenProps> = ({
                 </button>
             </div>
             
-            <div className="flex-grow w-full flex flex-col items-center justify-center p-4 sm:p-6 sm-landscape:p-2 bg-white/60 backdrop-blur-lg rounded-3xl shadow-xl">
+                        <div className={`relative flex-grow w-full flex flex-col items-center justify-center p-4 sm:p-6 sm-landscape:p-2 ${isCosmic ? 'bg-slate-900/50 border border-sky-400/20' : 'bg-white/60'} backdrop-blur-lg rounded-3xl shadow-xl`}>
+                                {isCosmic && (
+                                    <>
+                                        <PanelStars count={48} className="rounded-3xl" />
+                                        <div className="cosmic-panel-nebula rounded-3xl" />
+                                    </>
+                                )}
                 <div className="flex-grow w-full flex flex-col landscape:flex-row landscape:items-center landscape:justify-center landscape:gap-8">
                     {/* Left Side (Image & Question) */}
                     <div className="w-full flex-grow flex flex-col items-center justify-center landscape:w-7/12 landscape:flex-grow-0 landscape:max-w-md">
-                        <h1 className={`text-2xl sm:text-3xl landscape:text-xl font-bold text-center ${colorClasses.text800} mb-4 sm-landscape:mb-2`}>
+                        <h1 className={`text-2xl sm:text-3xl landscape:text-xl font-bold text-center ${isCosmic ? 'bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 text-glow-planet' : colorClasses.text800} mb-4 sm-landscape:mb-2`}>
                             {renderQuestion()}
                         </h1>
                         <Card
