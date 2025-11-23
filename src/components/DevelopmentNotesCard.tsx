@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { t } from '../i18n/index.ts';
+import { t, getRaw } from '../i18n/index.ts';
 
 interface DevelopmentNotesCardProps {
   theme: string;
@@ -10,6 +10,15 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
   
   const isCosmic = theme === 'deneme2';
   const isSimple = theme === 'simple';
+  // safely read 'thisUpdate' items from i18n (may be missing or a string)
+  const _rawThisUpdateItems = getRaw('developmentNotes.thisUpdate.items');
+  const thisUpdateItems: string[] = Array.isArray(_rawThisUpdateItems) ? _rawThisUpdateItems : [];
+  const fallbackThisUpdate = [
+    'Küçük-Büyük etkinliğinde varlık görsellerinin boyutları, çocukların kullanımını kolaylaştırmak için yeniden düzenlendi.',
+    'Pekiştirme modu eklendi: Pekiştirme oturumları artık program ilerlemesine katkı sağlıyor. Ayrıca pekiştirme adayları sıfır başarı gösteren etkinlikleri de kapsayacak şekilde genişletildi ve ebeveynlerin manuel olarak etkinlik ekleyip çıkarabileceği bir "Pekiştirmeye Ekle/Çıkar" düğmesi eklendi.',
+    'Program modu artık son denemelere öncelik veriyor: ünite başarı hesaplamalarında son 6 deneme dikkate alınıyor (eski toplam raporlama değişmeden kalır). Joker Hakkı (ebeveyn geçici açma) davranışı da güncellendi; istenirse jokeri "ünite ilerlemesinden sayma" seçeneği ile kullanabilirsiniz. Aktif joker limiti ücretsiz kullanımda 3, premium için 15 olarak belirlendi.'
+  ];
+  const itemsToShow = thisUpdateItems.length ? thisUpdateItems : fallbackThisUpdate;
   
   // Cosmic tema stil
   if (isCosmic) {
@@ -23,20 +32,29 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
             <div className="flex items-center gap-2">
               <span className="text-2xl">🚀</span>
               <h3 className="text-lg font-bold text-white drop-shadow-lg">
-                {t('developmentNotes.title', 'Gelecek Güncellemeler')}
+                {t('developmentNotes.title', 'Güncelleme Bilgileri')}
               </h3>
             </div>
             <span className={`text-white text-xl transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
               ▼
             </span>
           </div>
-          <p className="text-sm text-cyan-200 mt-1 drop-shadow-md">
+          <p className={`text-sm text-cyan-200 mt-1 drop-shadow-md`}>
             {t('developmentNotes.subtitle', 'Uygulamamız büyümeye devam ediyor! Sabırlarınız için teşekkürler.')}
           </p>
         </button>
         
         {isExpanded && (
           <div className="mt-2 px-4 py-3 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-cyan-400/20 text-white animate-fade-in">
+            {/* This update / release notes section (if present) */}
+            <div className="mb-3">
+              <h4 className="font-bold text-base mb-2 flex items-center gap-2">🛠 {t('developmentNotes.thisUpdate.title', 'Bu güncellemede')}</h4>
+              <ul className="text-sm space-y-1 ml-7 opacity-95">
+                {itemsToShow.map((it: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2"><span className="mt-1">•</span><span>{it}</span></li>
+                ))}
+              </ul>
+            </div>
             <Section
               icon="🎮"
               title={t('developmentNotes.modes.title', 'Mod Geliştirmeleri')}
@@ -108,10 +126,10 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
         className={`w-full text-left px-4 py-3 rounded-2xl border-2 ${bgClass} shadow-md hover:shadow-lg transition-all duration-300`}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
             <span className="text-2xl">🚀</span>
             <h3 className={`text-lg font-bold ${textClass}`}>
-              {t('developmentNotes.title', 'Gelecek Güncellemeler')}
+              {t('developmentNotes.title', 'Güncelleme Bilgileri')}
             </h3>
           </div>
           <span className={`${textClass} text-xl transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
@@ -121,10 +139,22 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
         <p className={`text-sm ${subtitleClass} mt-1`}>
           {t('developmentNotes.subtitle', 'Uygulamamız büyümeye devam ediyor! Sabırlarınız için teşekkürler.')}
         </p>
+        {/* developer short message removed from collapsed view to avoid duplication; see expanded 'Geliştirici Notu' */}
       </button>
       
       {isExpanded && (
         <div className={`mt-2 px-4 py-3 rounded-2xl border-2 ${bgClass} animate-fade-in`}>
+          {/* This update / release notes section (if present) */}
+          <div className="mb-3">
+            <h4 className={`font-bold text-base mb-2 flex items-center gap-2 ${textClass}`}>
+              🛠 {t('developmentNotes.thisUpdate.title', 'Bu güncellemede')}
+            </h4>
+            <ul className={`text-sm space-y-1 ml-7 ${textClass} opacity-95`}>
+              {itemsToShow.map((it: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-2"><span className="mt-1">•</span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
           <Section
             icon="🎮"
             title={t('developmentNotes.modes.title', 'Mod Geliştirmeleri')}
@@ -180,6 +210,16 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
             ]}
             textClass={textClass}
           />
+          {/* Developer long message shown in expanded view */}
+          <div className="mt-3">
+            <h4 className={`font-bold text-base mb-2 flex items-center gap-2 ${textClass}`}>
+              <span>👩‍👦</span>
+              {t('developmentNotes.developerMessage.title', 'Geliştirici Notu')}
+            </h4>
+            <p className={`text-sm ${textClass}`}>
+              {t('developmentNotes.developerMessage.long', '')}
+            </p>
+          </div>
         </div>
       )}
     </div>

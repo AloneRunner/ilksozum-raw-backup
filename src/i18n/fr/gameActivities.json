@@ -1,14 +1,17 @@
 {
+  "app": {
+    "back": "Retour"
+  },
   "reasoning": {
     "title": "Jeux de logique",
     "activities": {
       "whatDoesntBelong": {
-        "title": "Lequel ne correspond pas ?",
-        "subtitle": "Trouve ce qui ne va pas ensemble"
+        "title": "Lequel est l'intrus ?",
+        "subtitle": "Trouve ce qui n'appartient pas au groupe"
       },
       "functionalMatching": {
         "title": "Association fonctionnelle",
-        "subtitle": "Associer les objets à leur fonction"
+        "subtitle": "Associer les objets par fonction"
       },
       "causeEffect": {
         "title": "Cause et effet",
@@ -27,24 +30,24 @@
         "subtitle": "Compléter la pièce manquante"
       },
       "memoryCards": {
-        "title": "Cartes mémoire",
+        "title": "Cartes Mémoire",
         "subtitle": "Trouver les paires correspondantes",
         "instruction": "Mémorise les positions et trouve les paires correspondantes.",
-        "remainingLabel": "Comparaisons restantes",
-        "memorizeTitle": "Mémorise !",
-        "playTitle": "Trouve les paires"
+        "remainingLabel": "Paires restantes",
+        "memorizeTitle": "Regarde bien !",
+        "playTitle": "Trouve la Paire"
       },
       "dragAndDropCounting": {
-        "title": "Déplacer des objets",
-        "subtitle": "Déplacer le nombre demandé d'objets"
+        "title": "Déplacer et Compter",
+        "subtitle": "Déplacer le nombre d'objets demandé"
       },
       "dragAndDropPositioning": {
-        "title": "Placer l'objet",
+        "title": "Placer l'Objet",
         "subtitle": "Placer l'objet au bon endroit",
         "boxLabel": "BOÎTE"
       },
       "hangman": {
-        "title": "Pendu",
+        "title": "Le Pendu",
         "subtitle": "Devine le mot"
       }
     },
@@ -54,19 +57,19 @@
           "question": "Que faisons-nous quand il pleut ?"
         },
         "2": {
-          "question": "Pourquoi la glace fond-elle ?"
+          "question": "Pourquoi la crème glacée fond-elle ?"
         },
         "3": {
           "question": "Que devient une graine ?"
         },
         "4": {
-          "question": "Comment nettoyons-nous nos mains ?"
+          "question": "Comment nous lavons-nous les mains ?"
         },
         "5": {
           "question": "Que se passe-t-il si tu laisses tomber ceci ?"
         },
         "6": {
-          "question": "Qu'est-ce qui fait brûler le feu ?"
+          "question": "Qu'est-ce qui fait brûler un feu ?"
         },
         "7": {
           "question": "Que se passe-t-il si tu casses un vase avec un marteau ?"
@@ -78,13 +81,13 @@
           "question": "Que fait un bébé quand il a faim ?"
         },
         "10": {
-          "question": "Comment défroisse-t-on une chemise ?"
+          "question": "Comment repasse-t-on une chemise ?"
         },
         "11": {
-          "question": "Que faisons-nous quand la nuit arrive ?"
+          "question": "Que faisons-nous quand la nuit tombe ?"
         },
         "12": {
-          "question": "Comment une fleur pousse-t-elle ?"
+          "question": "Comment pousse une fleur ?"
         },
         "13": {
           "question": "Que se passe-t-il quand on lit un livre ?"
@@ -98,23 +101,580 @@
       }
     }
   },
+  "fiveWOneH": {
+    "instructions": "Sélectionnez une catégorie en cliquant sur un élément",
+    "category": {
+      "who": "Qui ?",
+      "what": "Quoi ?",
+      "where": "Où ?",
+      "when": "Quand ?",
+      "why": "Pourquoi ?",
+      "how": "Comment ?",
+      "mixed": "Mélangé"
+    },
+    "q_who_to_when_sick": {
+      "question": "Chez qui allons-nous quand nous tombons malades ?",
+      "correct": "Oui ! Nous allons chez le médecin quand nous sommes malades.",
+      "wrong": "Non, ce n'est pas là que nous allons quand nous sommes malades."
+    },
+    "q_who_to_when_fire": {
+      "question": "Qui appelons-nous en cas d'incendie ?",
+      "correct": "Correct ! Nous appelons les pompiers en cas d'incendie.",
+      "wrong": "Non, en cas d'incendie, nous devrions appeler les pompiers."
+    },
+    "q_who_teaches_at_school": {
+      "question": "Qui nous enseigne à l'école ?",
+      "correct": "Correct ! Le professeur enseigne.",
+      "wrong": "Non, à l'école, c'est le professeur qui enseigne."
+    },
+    "q_who_brings_letter": {
+      "question": "Qui apporte la lettre ?",
+      "correct": "Correct ! Le facteur apporte la lettre.",
+      "wrong": "Non, c'est le facteur qui apporte la lettre."
+    },
+    "q_who_flies_plane": {
+      "question": "Qui pilote l'avion ?",
+      "correct": "Oui ! Un pilote pilote l'avion.",
+      "wrong": "Non, ce n'est pas lui qui pilote l'avion."
+    },
+    "q_who_cuts_hair": {
+      "question": "Chez qui allons-nous pour une coupe de cheveux ?",
+      "correct": "Correct ! Un coiffeur nous coupe les cheveux.",
+      "wrong": "Non, ce n'est pas lui qui nous coupe les cheveux."
+    },
+    "q_who_cooks_food": {
+      "question": "Qui cuisine la nourriture ?",
+      "correct": "Oui ! Un cuisinier prépare la nourriture.",
+      "wrong": "Non, c'est un cuisinier qui prépare la nourriture."
+    },
+    "q_who_provides_milk": {
+      "question": "Qui nous fournit du lait ?",
+      "correct": "Oui ! Une vache fournit du lait.",
+      "wrong": "Non, il est généralement fourni par une vache."
+    },
+    "q_who_makes_honey": {
+      "question": "Qui fait le miel ?",
+      "correct": "Oui ! Une abeille fait le miel.",
+      "wrong": "Non, c'est une abeille qui fait le miel."
+    },
+    "q_who_reads_bedtime_stories": {
+      "question": "Qui nous lit des histoires pour s'endormir ?",
+      "correct": "Oui ! Notre mère nous lit des histoires.",
+      "wrong": "Non, pas eux."
+    },
+    "q_who_do_we_play_with": {
+      "question": "Avec qui jouons-nous ?",
+      "correct": "Oui ! Nous jouons avec notre ami.",
+      "wrong": "Non, pas avec eux."
+    },
+    "q_who_is_sad_about_broken_toy": {
+      "question": "Qui est triste à cause du jouet cassé ?",
+      "correct": "Oui ! L'enfant avec le jouet cassé est triste.",
+      "wrong": "Non, pas eux."
+    },
+    "q_who_is_happy_to_see_food": {
+      "question": "Qui est heureux de voir de la nourriture ?",
+      "correct": "Oui ! Le bébé affamé est heureux de voir de la nourriture.",
+      "wrong": "Non, pas eux."
+    },
+    "q_who_is_playing_with_ball": {
+      "question": "Qui joue avec le ballon ?",
+      "correct": "Oui ! Cet enfant joue avec un ballon.",
+      "wrong": "Non, pas lui."
+    },
+    "q_who_is_driving_car": {
+      "question": "Qui conduit la voiture ?",
+      "correct": "Oui ! Son père conduit la voiture.",
+      "wrong": "Non, pas lui."
+    },
+    "q_who_plows_field_and_grows_vegetables": {
+      "question": "Qui laboure le champ et cultive les légumes ?",
+      "correct": "Oui ! Le fermier laboure le champ et cultive les légumes et les fruits.",
+      "wrong": "Non, pas lui."
+    },
+    "q_who_goes_to_space_in_rocket": {
+      "question": "Qui va dans l'espace en fusée ?",
+      "correct": "Oui ! L'astronaute va dans l'espace.",
+      "wrong": "Non, pas lui."
+    },
+    "q_who_wears_crown_and_lives_in_palace": {
+      "question": "Qui porte une couronne et vit dans un palais ?",
+      "correct": "Oui ! Le roi vit dans le palais et porte une couronne.",
+      "wrong": "Non, pas lui."
+    },
+    "q_who_gives_first_aid": {
+      "question": "Qui donne les premiers secours ?",
+      "correct": "Oui ! L'infirmière donne les premiers secours.",
+      "wrong": "Non, pas elle."
+    },
+    "q_who_studies_and_learns_at_school": {
+      "question": "Qui étudie et apprend à l'école ?",
+      "correct": "Oui ! L'étudiant étudie à l'école.",
+      "wrong": "Non, pas lui."
+    },
+    "q_what_brush_teeth_with": {
+      "question": "Quand nous nous brossons les dents, que mettons-nous sur la brosse à dents ?",
+      "correct": "Oui ! Nous mettons du dentifrice sur la brosse à dents quand nous nous brossons les dents.",
+      "wrong": "Non, nous ne mettons pas ça sur la brosse à dents."
+    },
+    "q_what_use_for_soup": {
+      "question": "Qu'utilisons-nous pour manger la soupe ?",
+      "correct": "Correct ! Nous utilisons une cuillère pour manger la soupe.",
+      "wrong": "Non, nous n'utilisons pas ça pour la soupe."
+    },
+    "q_what_erase_with": {
+      "question": "Avec quoi effaçons-nous quelque chose que nous avons écrit ?",
+      "correct": "Oui ! Nous utilisons une gomme pour effacer.",
+      "wrong": "Non, nous n'effaçons pas avec ça."
+    },
+    "q_what_dry_after_bath": {
+      "question": "Avec quoi nous séchons-nous après un bain ?",
+      "correct": "Correct ! Nous nous séchons avec une serviette après un bain.",
+      "wrong": "Non, nous ne nous séchons pas avec ça."
+    },
+    "q_what_chickens_give_us_for_breakfast": {
+      "question": "Que nous donnent les poules que nous mangeons au petit-déjeuner ?",
+      "correct": "Oui ! Les poules nous donnent des œufs.",
+      "wrong": "Non, elles ne donnent pas ça."
+    },
+    "q_what_wash_hands_with": {
+      "question": "Avec quoi nous lavons-nous les mains ?",
+      "correct": "Oui ! Nous nous lavons les mains avec du savon.",
+      "wrong": "Non, nous ne nous lavons pas les mains avec ça."
+    },
+    "q_what_use_to_paint": {
+      "question": "Qu'utilisons-nous pour peindre ?",
+      "correct": "Oui ! Nous utilisons des crayons de couleur pour peindre.",
+      "wrong": "Non, nous n'utilisons pas ça pour peindre."
+    },
+    "q_what_use_to_tie_hair": {
+      "question": "Qu'utilisons-nous pour attacher nos cheveux ?",
+      "correct": "Oui ! Nous utilisons une pince à cheveux pour attacher les cheveux.",
+      "wrong": "Non, ce n'est pas correct."
+    },
+    "q_what_put_under_head_when_sleeping": {
+      "question": "Que mettons-nous sous notre tête en dormant ?",
+      "correct": "Oui ! Nous mettons un oreiller sous notre tête.",
+      "wrong": "Non, nous ne mettons pas ça sous notre tête."
+    },
+    "q_what_wear_on_feet_when_going_out": {
+      "question": "Que portons-nous aux pieds quand nous sortons ?",
+      "correct": "Oui ! Nous portons des chaussures.",
+      "wrong": "Non, nous ne portons pas ça."
+    },
+    "q_what_people_who_cant_see_far_wear": {
+      "question": "Que portent les personnes qui ne voient pas de loin ?",
+      "correct": "Oui ! Elles portent des lunettes.",
+      "wrong": "Non, elles ne portent pas ça."
+    },
+    "q_what_put_on_birthday_cake_and_blow": {
+      "question": "Que mettons-nous sur un gâteau d'anniversaire et que soufflons-nous ?",
+      "correct": "Oui ! Nous mettons des bougies et nous les soufflons.",
+      "wrong": "Non, nous ne mettons pas ça."
+    },
+    "q_what_squeeze_on_salad_for_sour_taste": {
+      "question": "Que pressons-nous sur une salade pour un goût acide ?",
+      "correct": "Oui ! Nous pressons du citron.",
+      "wrong": "Non, nous ne pressons pas ça."
+    },
+    "q_what_use_to_hammer_nail_on_wall": {
+      "question": "Qu'utilisons-nous pour planter un clou dans le mur ?",
+      "correct": "Oui ! Nous utilisons un marteau.",
+      "wrong": "Non, nous n'utilisons pas ça."
+    },
+    "q_what_burn_to_get_warm": {
+      "question": "Que brûlons-nous pour nous réchauffer ?",
+      "correct": "Oui ! Nous brûlons du bois.",
+      "wrong": "Non, nous ne brûlons pas ça."
+    },
+    "q_what_put_stuff_in_when_going_to_school": {
+      "question": "Dans quoi mettons-nous nos affaires en allant à l'école ?",
+      "correct": "Oui ! Nous les mettons dans le sac d'école.",
+      "wrong": "Non, nous ne les mettons pas là-dedans."
+    },
+    "q_what_is_crispy_snack_made_of_potatoes": {
+      "question": "Quel est le snack croustillant à base de pommes de terre ?",
+      "correct": "Oui ! Les chips sont faites de pommes de terre.",
+      "wrong": "Non, pas ça."
+    },
+    "q_what_drink_water_with": {
+      "question": "Avec quoi buvons-nous de l'eau ?",
+      "correct": "Oui ! Nous buvons de l'eau avec un verre.",
+      "wrong": "Non, nous ne buvons pas d'eau avec ça."
+    },
+    "q_what_stick_on_letter_to_mail": {
+      "question": "Que collons-nous sur une lettre pour l'envoyer ?",
+      "correct": "Oui ! Nous collons un timbre.",
+      "wrong": "Non, nous ne collons pas ça."
+    },
+    "q_what_babies_drink_milk_with": {
+      "question": "Avec quoi les bébés boivent-ils du lait ?",
+      "correct": "Oui ! Les bébés boivent du lait avec un biberon.",
+      "wrong": "Non, ils ne boivent pas avec ça."
+    },
+    "q_what_use_to_fix_messy_hair": {
+      "question": "Qu'utilisons-nous pour coiffer des cheveux en désordre ?",
+      "correct": "Oui ! Nous utilisons un peigne.",
+      "wrong": "Non, nous n'utilisons pas ça."
+    },
+    "q_what_spread_on_bread_for_breakfast": {
+      "question": "Que tartinons-nous sur le pain au petit-déjeuner ?",
+      "correct": "Oui ! Nous tartinons du beurre.",
+      "wrong": "Non, nous ne tartinons pas ça."
+    },
+    "q_where_doctors_work": {
+      "question": "Où travaillent les médecins ?",
+      "correct": "Oui ! Les médecins travaillent à l'hôpital.",
+      "wrong": "Non, ils ne travaillent pas là."
+    },
+    "q_where_go_to_swing": {
+      "question": "Où allons-nous pour faire de la balançoire ?",
+      "correct": "Oui ! Nous allons au terrain de jeu.",
+      "wrong": "Non, nous n'allons pas là."
+    },
+    "q_where_sleep_at_night": {
+      "question": "Où dormons-nous la nuit ?",
+      "correct": "Oui ! Nous dormons dans un lit.",
+      "wrong": "Non, nous ne dormons pas là."
+    },
+    "q_where_fish_live": {
+      "question": "Où vivent les poissons ?",
+      "correct": "Oui ! Les poissons vivent dans la mer.",
+      "wrong": "Non, ils ne vivent pas là."
+    },
+    "q_where_teachers_teach": {
+      "question": "Où enseignent les professeurs ?",
+      "correct": "Oui ! Les professeurs enseignent à l'école.",
+      "wrong": "Non, ils n'enseignent pas là."
+    },
+    "q_where_planes_fly": {
+      "question": "Où volent les avions ?",
+      "correct": "Oui ! Les avions volent dans le ciel.",
+      "wrong": "Non, ils ne volent pas là."
+    },
+    "q_where_ships_sail": {
+      "question": "Où naviguent les bateaux ?",
+      "correct": "Oui ! Les bateaux naviguent sur la mer.",
+      "wrong": "Non, ils ne naviguent pas là."
+    },
+    "q_where_cars_go": {
+      "question": "Où vont les voitures ?",
+      "correct": "Oui ! Les voitures vont sur la route.",
+      "wrong": "Non, elles ne vont pas là."
+    },
+    "q_where_eat_out_with_family": {
+      "question": "Où pouvons-nous manger au restaurant en famille ?",
+      "correct": "Oui ! Nous pouvons aller au restaurant.",
+      "wrong": "Non, nous n'allons pas là."
+    },
+    "q_where_buy_food_for_home": {
+      "question": "Où achetons-nous de la nourriture pour la maison ?",
+      "correct": "Oui ! Nous allons au marché.",
+      "wrong": "Non, nous n'allons pas là."
+    },
+    "q_where_is_place_with_lots_of_books": {
+      "question": "Où est l'endroit avec beaucoup de livres ?",
+      "correct": "Oui ! C'est la bibliothèque.",
+      "wrong": "Non, pas là."
+    },
+    "q_where_camels_usually_live": {
+      "question": "Où vivent habituellement les chameaux ?",
+      "correct": "Oui ! Les chameaux vivent dans le désert.",
+      "wrong": "Non, ils ne vivent pas là."
+    },
+    "q_where_bears_usually_live": {
+      "question": "Où vivent habituellement les ours ?",
+      "correct": "Oui ! Les ours vivent dans la forêt.",
+      "wrong": "Non, ils ne vivent pas là."
+    },
+    "q_where_put_clean_clothes": {
+      "question": "Où mettons-nous les vêtements propres ?",
+      "correct": "Oui ! Nous les mettons dans l'armoire.",
+      "wrong": "Non, nous ne les mettons pas là."
+    },
+    "q_where_go_to_sunbathe_and_swim_in_summer": {
+      "question": "Où allons-nous pour bronzer et nager en été ?",
+      "correct": "Oui ! Nous allons à la plage.",
+      "wrong": "Non, nous n'allons pas là."
+    },
+    "q_where_birds_lay_eggs": {
+      "question": "Où les oiseaux pondent-ils leurs œufs ?",
+      "correct": "Oui ! Ils les pondent dans un nid d'oiseau.",
+      "wrong": "Non, ils ne les pondent pas là."
+    },
+    "q_where_cook_cooks": {
+      "question": "Où cuisine un cuisinier ?",
+      "correct": "Oui ! Le cuisinier cuisine au restaurant.",
+      "wrong": "Non, il ne cuisine pas là."
+    },
+    "q_where_set_up_tent_for_camping": {
+      "question": "Où installons-nous une tente pour camper ?",
+      "correct": "Oui ! Nous campons dans la forêt.",
+      "wrong": "Non, nous ne campons pas là."
+    },
+    "q_when_use_umbrella": {
+      "question": "Quand utilisons-nous un parapluie ?",
+      "correct": "Oui ! Nous utilisons un parapluie quand il pleut.",
+      "wrong": "Non, nous n'utilisons pas de parapluie à ce moment-là."
+    },
+    "q_when_make_snowman": {
+      "question": "Quand faisons-nous un bonhomme de neige ?",
+      "correct": "Correct ! Nous faisons un bonhomme de neige quand il neige.",
+      "wrong": "Non, nous ne faisons pas de bonhomme de neige à ce moment-là."
+    },
+    "q_when_see_owls": {
+      "question": "Quand voyons-nous habituellement des hiboux ?",
+      "correct": "Correct ! Nous voyons des hiboux la nuit.",
+      "wrong": "Non, les hiboux sont habituellement vus la nuit."
+    },
+    "q_when_see_stars_in_sky": {
+      "question": "Quand voyons-nous des étoiles dans le ciel ?",
+      "correct": "Oui ! Nous les voyons la nuit.",
+      "wrong": "Non, nous ne les voyons pas à ce moment-là."
+    },
+    "q_when_roosters_crow": {
+      "question": "Quand chantent les coqs ?",
+      "correct": "Oui ! Ils chantent le matin.",
+      "wrong": "Non, ils ne chantent pas à ce moment-là."
+    },
+    "q_when_wear_beanie_when_cold": {
+      "question": "Quand portons-nous un bonnet quand il fait froid ?",
+      "correct": "Oui ! Nous portons un bonnet quand il fait froid.",
+      "wrong": "Non, nous ne portons pas de bonnet à ce moment-là."
+    },
+    "q_when_usually_go_to_beach": {
+      "question": "Quand allons-nous habituellement à la plage ?",
+      "correct": "Oui ! Nous y allons quand il fait beau.",
+      "wrong": "Non, nous n'y allons pas à ce moment-là."
+    },
+    "q_when_blow_out_candles_on_cake": {
+      "question": "Quand soufflons-nous les bougies sur un gâteau ?",
+      "correct": "Oui ! Nous les soufflons le jour de notre anniversaire.",
+      "wrong": "Non, nous ne les soufflons pas à ce moment-là."
+    },
+    "q_when_eat": {
+      "question": "Quand mangeons-nous ?",
+      "correct": "Oui ! Nous mangeons quand nous avons faim.",
+      "wrong": "Non, nous ne mangeons pas à ce moment-là."
+    },
+    "q_when_sleep": {
+      "question": "Quand dormons-nous ?",
+      "correct": "Oui ! Nous dormons quand nous sommes fatigués.",
+      "wrong": "Non, nous ne dormons pas à ce moment-là."
+    },
+    "q_when_bears_hibernate": {
+      "question": "Quand les ours hibernent-ils ?",
+      "correct": "Correct ! Ils hibernent en hiver.",
+      "wrong": "Non, ils n'hibernent pas à ce moment-là."
+    },
+    "q_when_usually_go_to_bed": {
+      "question": "Quand allons-nous habituellement au lit ?",
+      "correct": "Oui ! Nous allons au lit la nuit.",
+      "wrong": "Non, nous n'y allons pas à ce moment-là."
+    },
+    "q_when_see_sun_in_sky": {
+      "question": "Quand voyons-nous le soleil dans le ciel ?",
+      "correct": "Oui ! Nous le voyons pendant la journée.",
+      "wrong": "Non, nous ne le voyons pas à ce moment-là."
+    },
+    "q_when_turn_on_light_in_room": {
+      "question": "Quand allumons-nous la lumière dans une pièce ?",
+      "correct": "Oui ! Nous l'allumons la nuit ou quand il fait sombre.",
+      "wrong": "Non, nous ne l'allumons pas à ce moment-là."
+    },
+    "q_when_wear_gloves_when_hands_cold": {
+      "question": "Quand portons-nous des gants quand nos mains sont froides ?",
+      "correct": "Oui ! Nous les portons quand il neige.",
+      "wrong": "Non, nous ne les portons pas à ce moment-là."
+    },
+    "q_when_usually_wear_shorts": {
+      "question": "Quand portons-nous habituellement des shorts ?",
+      "correct": "Oui ! Nous les portons quand il fait chaud ou ensoleillé.",
+      "wrong": "Non, nous ne les portons pas à ce moment-là."
+    },
+    "q_when_wash_hands": {
+      "question": "Quand nous lavons-nous les mains ?",
+      "correct": "Oui ! Nous les lavons quand elles sont sales.",
+      "wrong": "Non, nous ne les lavons pas à ce moment-là."
+    },
+    "q_why_ice_cream_melted": {
+      "question": "Pourquoi la crème glacée a-t-elle fondu ?",
+      "correct": "Oui ! Elle a peut-être fondu à cause du soleil.",
+      "wrong": "Non, elle n'a pas fondu à cause de ça."
+    },
+    "q_why_hair_is_wet": {
+      "question": "Pourquoi ces cheveux sont-ils mouillés ?",
+      "correct": "Oui ! Ils sont mouillés à cause d'une douche.",
+      "wrong": "Non, ils ne sont pas mouillés à cause de ça."
+    },
+    "q_why_child_is_cold": {
+      "question": "Pourquoi l'enfant a-t-il froid ?",
+      "correct": "Oui ! Il pourrait avoir froid parce qu'il neige.",
+      "wrong": "Non, il n'a pas froid à cause de ça."
+    },
+    "q_why_child_is_crying": {
+      "question": "Pourquoi l'enfant pleure-t-il ?",
+      "correct": "Oui ! Il pourrait pleurer parce qu'il est blessé.",
+      "wrong": "Non, il ne pleure pas à cause de ça."
+    },
+    "q_why_child_holds_umbrella": {
+      "question": "Pourquoi l'enfant tient-il un parapluie ?",
+      "correct": "Oui ! Il tient un parapluie parce qu'il pleut.",
+      "wrong": "Non, il ne le tient pas pour cette raison."
+    },
+    "q_why_wrinkled_clothes_became_smooth": {
+      "question": "Pourquoi les vêtements froissés sont-ils devenus lisses ?",
+      "correct": "Oui ! Ils sont devenus lisses parce qu'ils ont été repassés.",
+      "wrong": "Non, pas à cause de ça."
+    },
+    "q_why_hands_get_dirty": {
+      "question": "Pourquoi les mains se salissent-elles ?",
+      "correct": "Oui ! Elles se salissent quand nous jouons.",
+      "wrong": "Non, elles ne se salissent pas à cause de ça."
+    },
+    "q_why_child_is_tired": {
+      "question": "Pourquoi l'enfant est-il fatigué ?",
+      "correct": "Oui ! Il pourrait être fatigué parce qu'il a fait du vélo.",
+      "wrong": "Non, il n'est pas fatigué à cause de ça."
+    },
+    "q_why_child_is_lying_down": {
+      "question": "Pourquoi l'enfant est-il allongé ?",
+      "correct": "Oui ! Il pourrait être allongé parce qu'il a de la fièvre.",
+      "wrong": "Non, il n'est pas allongé pour cette raison."
+    },
+    "q_why_vase_is_broken": {
+      "question": "Pourquoi le vase est-il cassé ?",
+      "correct": "Oui ! Il a peut-être été cassé en jouant avec un ballon.",
+      "wrong": "Non, il n'a pas été cassé par ça."
+    },
+    "q_why_room_is_bright": {
+      "question": "Pourquoi la pièce est-elle lumineuse ?",
+      "correct": "Oui ! Elle est lumineuse parce que la lampe est allumée.",
+      "wrong": "Non, elle n'est pas lumineuse à cause de ça."
+    },
+    "q_why_floor_is_wet": {
+      "question": "Pourquoi le sol est-il mouillé ?",
+      "correct": "Oui ! Il pourrait être mouillé parce qu'il pleut.",
+      "wrong": "Non, il n'est pas mouillé à cause de ça."
+    },
+    "q_why_room_is_dark": {
+      "question": "Pourquoi la pièce est-elle sombre ?",
+      "correct": "Oui ! Elle est sombre parce qu'il fait nuit.",
+      "wrong": "Non, elle n'est pas sombre à cause de ça."
+    },
+    "q_why_child_is_happy": {
+      "question": "Pourquoi l'enfant est-il heureux ?",
+      "correct": "Oui ! Il pourrait être heureux parce qu'il a reçu un cadeau.",
+      "wrong": "Non, il n'est pas heureux à cause de ça."
+    },
+    "q_why_dirty_dishes_are_clean": {
+      "question": "Pourquoi la vaisselle sale est-elle maintenant propre ?",
+      "correct": "Oui ! Elle a été nettoyée parce qu'elle a été lavée au lave-vaisselle.",
+      "wrong": "Non, elle n'a pas été nettoyée par ça."
+    },
+    "q_why_some_people_wear_glasses": {
+      "question": "Pourquoi certaines personnes portent-elles des lunettes ?",
+      "correct": "Oui ! Elles les portent parce qu'elles ne voient pas de loin.",
+      "wrong": "Non, elles ne les portent pas pour cette raison."
+    },
+    "q_how_go_to_school": {
+      "question": "Comment allons-nous à l'école ?",
+      "correct": "Oui ! Nous allons à l'école en bus scolaire.",
+      "wrong": "Non, nous n'y allons généralement pas de cette façon."
+    },
+    "q_how_open_door": {
+      "question": "Comment ouvrons-nous la porte ?",
+      "correct": "Oui ! Nous ouvrons la porte avec une clé.",
+      "wrong": "Non, nous n'ouvrons pas la porte avec ça."
+    },
+    "q_how_baby_feels": {
+      "question": "Comment se sent le bébé ?",
+      "correct": "Correct ! Le bébé se sent triste.",
+      "wrong": "Non, le bébé ne se sent pas comme ça."
+    },
+    "q_how_reach_high_place": {
+      "question": "Comment atteignons-nous un endroit élevé ?",
+      "correct": "Oui ! Nous utilisons une échelle pour l'atteindre.",
+      "wrong": "Non, nous ne pouvons pas l'atteindre avec ça."
+    },
+    "q_how_travel_at_sea": {
+      "question": "Comment voyageons-nous en mer ?",
+      "correct": "Correct ! Nous voyageons en bateau en mer.",
+      "wrong": "Non, nous ne voyageons généralement pas avec ça en mer."
+    },
+    "q_how_clean_room": {
+      "question": "Comment nettoyons-nous la pièce ?",
+      "correct": "Oui ! Nous nettoyons la pièce avec un seau et des produits de nettoyage.",
+      "wrong": "Non, nous ne nettoyons pas la pièce avec ça."
+    },
+    "q_how_dry_hands_after_washing": {
+      "question": "Comment nous séchons-nous les mains après les avoir lavées ?",
+      "correct": "Oui ! Nous les séchons avec une serviette.",
+      "wrong": "Non, nous séchons les mains avec une serviette."
+    },
+    "q_how_child_feels": {
+      "question": "Comment se sent l'enfant ?",
+      "correct": "Correct ! L'enfant se sent heureux.",
+      "wrong": "Non, l'enfant ne se sent pas comme ça."
+    },
+    "q_how_eat_pasta": {
+      "question": "Comment mangeons-nous les pâtes ?",
+      "correct": "Oui ! Nous mangeons les pâtes avec une fourchette.",
+      "wrong": "Non, nous ne mangeons pas avec ça."
+    },
+    "q_how_comb_hair": {
+      "question": "Comment nous peignons-nous les cheveux ?",
+      "correct": "Oui ! Nous nous peignons les cheveux avec un peigne.",
+      "wrong": "Non, nous ne nous peignons pas avec ça."
+    },
+    "q_how_cut_paper": {
+      "question": "Comment coupons-nous le papier ?",
+      "correct": "Oui ! Nous coupons le papier avec des ciseaux.",
+      "wrong": "Non, nous ne coupons pas avec ça."
+    },
+    "q_how_measure_height": {
+      "question": "Comment mesurons-nous notre taille ?",
+      "correct": "Oui ! Nous mesurons notre taille avec une règle.",
+      "wrong": "Non, nous ne mesurons pas avec ça."
+    },
+    "q_how_talk_to_someone_far_away": {
+      "question": "Comment parlons-nous à quelqu'un de loin ?",
+      "correct": "Oui ! Nous parlons avec un smartphone.",
+      "wrong": "Non, nous ne parlons pas avec ça."
+    },
+    "q_how_light_a_dark_room": {
+      "question": "Comment éclairons-nous une pièce sombre ?",
+      "correct": "Oui ! Nous l'éclairons avec une lampe.",
+      "wrong": "Non, nous ne l'éclairons pas avec ça."
+    },
+    "q_how_cook_food": {
+      "question": "Comment cuisinons-nous la nourriture ?",
+      "correct": "Oui ! Nous la cuisinons au four.",
+      "wrong": "Non, nous ne la cuisinons pas là-dedans."
+    },
+    "q_how_rabbit_moves": {
+      "question": "Comment se déplace un lapin ?",
+      "correct": "Oui ! Le lapin se déplace rapidement.",
+      "wrong": "Non, il ne se déplace pas comme ça."
+    }
+  },
   "fineMotor": {
     "activities": {
       "lineTracing": {
-        "title": "Suivi de ligne",
-        "subtitle": "Suivre le chemin avec le doigt"
+        "title": "Traçage de Lignes",
+        "subtitle": "Suis le chemin avec ton doigt"
       },
       "coloring": {
-        "title": "Coloriage de formes",
-        "subtitle": "Appuie pour colorier les formes"
+        "title": "Coloriage de Formes",
+        "subtitle": "Touche pour colorier les formes"
       },
       "puzzle": {
-        "title": "Puzzle simple",
-        "subtitle": "Faites glisser les pièces pour compléter l'image"
+        "title": "Puzzle Simple",
+        "subtitle": "Fais glisser les pièces pour compléter l'image"
       },
       "rhythm": {
-        "title": "Suivi du Rythme",
-        "subtitle": "Regardez et répétez le rythme"
+        "title": "Suivi de Rythme",
+        "subtitle": "Regarde et répète le rythme"
       }
     }
   },
@@ -122,8 +682,8 @@
     "menuTitle": "Activités Conceptuelles Expérimentales",
     "relativeComparison": {
       "title": "Comparaison Relative",
-      "menuSubtitle": "Sélectionnez une activité de comparaison.",
-      "instruction": "Comparez les deux cartes ouvertes et répondez à la question.",
+      "menuSubtitle": "Choisis une activité de comparaison.",
+      "instruction": "Compare les deux cartes révélées et réponds à la question.",
       "remainingLabel": "Comparaisons restantes",
       "images": {
         "950": "Le plus petit",
@@ -134,7 +694,7 @@
         "955": "Exemple 955",
         "956": "Exemple 956",
         "957": "Le plus étroit",
-        "958": "Le plus mince",
+        "958": "Le plus fin",
         "959": "Exemple 959",
         "960": "Exemple 960",
         "961": "Le plus épais",
@@ -158,127 +718,88 @@
     }
   },
   "lineTracing": {
-    "instruction": "Suis la ligne avec ton doigt. Reste sur la ligne !"
+    "instruction": "Suis la ligne avec ton doigt. Essaie de rester sur la ligne !"
   },
   "rhythmFollowing": {
-    "instruction": "Regarde d'abord le rythme, puis touche/appuie longtemps de la même manière.",
+    "instruction": "Regarde d'abord le rythme, puis touche/maintiens de la même manière pour le répéter.",
     "fail": "Réessaie !",
-    "watch": "Regarde d'abord le rythme…",
-    "go": "À toi de jouer !"
+    "watch": "Regarde maintenant…",
+    "go": "À ton tour !"
   },
   "simplePuzzle": {
-    "comingSoon": "Cette activité sera bientôt ajoutée."
+    "comingSoon": "Cette activité sera bientôt disponible."
   },
   "games": {
     "hangman": {
-      "pickLetter": "Choisis une lettre",
+      "pickLetter": "Choisir une lettre",
       "remainingLives": "Vies restantes",
       "category": "Catégorie",
-      "newGame": "Nouvelle partie",
-      "youWinTitle": "Bravo !",
+      "newGame": "Nouveau Jeu",
+      "youWinTitle": "Félicitations !",
       "youWinDesc": "Tu as trouvé le mot !",
-      "youLoseTitle": "Perdu",
+      "youLoseTitle": "Tu as perdu",
       "wordLabel": "Mot",
       "speak": {
-        "win": "Bravo ! Tu as trouvé le mot !",
-        "wordWas": "Le mot était"
+        "win": "Félicitations ! Tu as trouvé le mot !",
+        "wordWas": "Le mot était :"
       }
-    }
-  },
-  "fiveWOneH": {
-    "category": {
-      "who": "Qui ?",
-      "what": "Quoi ?",
-      "where": "Où ?",
-      "when": "Quand ?",
-      "why": "Pourquoi ?",
-      "how": "Comment ?",
-      "mixed": "Mixte"
     },
-    "q_who_to_when_sick": {
-      "question": "Chez qui allons-nous quand nous sommes malades ?",
-      "correct": "Oui ! Nous allons chez le médecin quand nous sommes malades.",
-      "wrong": "Non, ce n'est pas là que nous allons quand nous sommes malades."
+    "objectCollector": {
+      "title": "Collecteur d'objets",
+      "subtitle": "Collectionne les bons objets dans le panier",
+      "instructions": "Utilise les touches fléchées ou ton doigt pour déplacer le panier",
+      "youWin": "Félicitations !",
+      "gameOver": "Partie Terminée",
+      "finalScore": "Score",
+      "collectFruits": "Collectionne uniquement les fruits !",
+      "collectAnimals": "Collectionne uniquement les animaux !",
+      "collectVehicles": "Collectionne uniquement les véhicules !",
+      "collectRed": "Collectionne uniquement les objets rouges !",
+      "collectFood": "Collectionne uniquement la nourriture !",
+      "collectSchoolItems": "Collectionne uniquement les fournitures scolaires !",
+      "collectToys": "Collectionne uniquement les jouets !",
+      "collectLargeAnimals": "Collectionne uniquement les grands animaux !"
     },
-    "q_who_to_when_fire": {
-      "question": "Qui appelons-nous en cas d'incendie ?",
-      "correct": "Correct ! Nous appelons les pompiers en cas d'incendie.",
-      "wrong": "Non, en cas d'incendie, nous devrions appeler les pompiers."
-    },
-    "q_who_brings_letter": {
-      "question": "Qui apporte la lettre ?",
-      "correct": "Correct ! Le facteur apporte la lettre.",
-      "wrong": "Non, le facteur apporte la lettre."
-    },
-    "q_what_brush_teeth_with": {
-      "question": "Avec quoi nous brossons-nous les dents ?",
-      "correct": "Oui ! Nous nous brossons les dents avec du dentifrice.",
-      "wrong": "Non, nous ne nous brossons pas les dents avec ça."
-    },
-    "q_when_use_umbrella": {
-      "question": "Quand utilisons-nous un parapluie ?",
-      "correct": "Oui ! Nous utilisons un parapluie quand il pleut.",
-      "wrong": "Non, nous n'utilisons pas de parapluie à ce moment-là."
-    },
-    "q_how_go_to_school": {
-      "question": "Comment allons-nous à l'école ?",
-      "correct": "Oui ! Nous allons à l'école en bus scolaire.",
-      "wrong": "Non, nous n'y allons généralement pas de cette façon."
-    },
-    "q_how_open_door": {
-      "question": "Comment ouvrons-nous la porte ?",
-      "correct": "Oui ! Nous ouvrons la porte avec une clé.",
-      "wrong": "Non, nous n'ouvrons pas la porte avec ça."
-    },
-    "q_how_baby_feels": {
-      "question": "Comment se sent le bébé ?",
-      "correct": "Correct ! Le bébé se sent triste.",
-      "wrong": "Non, le bébé ne se sent pas comme ça."
-    },
-    "q_when_bears_hibernate": {
-      "question": "Quand les ours hibernent-ils ?",
-      "correct": "Correct ! Pendant l'hiver.",
-      "wrong": "Non, pendant la saison d'hiver."
-    },
-    "q_who_flies_plane": {
-      "question": "Qui pilote l'avion ?",
-      "correct": "Oui ! Un pilote pilote l'avion.",
-      "wrong": "Non, ils ne pilotent pas l'avion."
-    },
-    "q_who_cuts_hair": {
-      "question": "Chez qui allons-nous pour nous faire couper les cheveux ?",
-      "correct": "Correct ! Un coiffeur nous coupe les cheveux.",
-      "wrong": "Non, ils ne nous coupent pas les cheveux."
-    },
-    "q_who_provides_milk": {
-      "question": "Qui nous fournit du lait ?",
-      "correct": "Oui ! Un agriculteur fournit du lait.",
-      "wrong": "Non, il est généralement fourni par un agriculteur."
-    },
-    "q_what_dry_after_bath": {
-      "question": "Avec quoi nous séchons-nous après un bain ?",
-      "correct": "Correct ! Nous nous séchons avec une serviette après un bain.",
-      "wrong": "Non, nous ne nous séchons pas avec ça."
-    },
-    "q_when_make_snowman": {
-      "question": "Quand faisons-nous un bonhomme de neige ?",
-      "correct": "Correct ! Nous faisons un bonhomme de neige quand il neige.",
-      "wrong": "Non, nous ne faisons pas de bonhomme de neige à ce moment-là."
-    },
-    "q_how_travel_at_sea": {
-      "question": "Comment voyageons-nous en mer ?",
-      "correct": "Correct ! Nous voyageons en bateau en mer.",
-      "wrong": "Non, nous ne voyageons généralement pas comme ça en mer."
-    },
-    "q_how_clean_room": {
-      "question": "Comment nettoyons-nous la chambre ?",
-      "correct": "Oui ! Nous nettoyons la chambre avec un seau et des produits de nettoyage.",
-      "wrong": "Non, nous ne nettoyons pas la chambre avec ça."
-    },
-    "q_who_teaches_at_school": {
-      "question": "Regarde l'image. Qui nous enseigne à l'école ? Choisis la bonne personne.",
-      "correct": "Correct ! C'est le professeur qui enseigne.",
-      "wrong": "Non, à l'école, c'est le professeur qui enseigne."
+    "emotionPuppet": {
+      "title": "Marionnette d'Émotions",
+      "subtitle": "Crée des émotions en combinant des parties du visage",
+      "instruction": "Fais un visage {emotion} !",
+      "facePreview": "Aperçu du Visage",
+      "targetEmotion": "Émotion Cible",
+      "selectEyebrows": "Choisir les Sourcils",
+      "selectEyes": "Choisir les Yeux",
+      "selectMouth": "Choisir la Bouche",
+      "checkButton": "Vérifier",
+      "emotions": {
+        "happy": "Heureux",
+        "sad": "Triste",
+        "angry": "En colère",
+        "surprised": "Surpris"
+      },
+      "feedback": {
+        "correct": "Super ! Tu as fait un visage {emotion} !",
+        "incorrect": "On essaie encore ?"
+      },
+      "parts": {
+        "eyes": {
+          "happy": "Yeux Heureux",
+          "sad": "Yeux Tristes",
+          "angry": "Yeux en Colère",
+          "surprised": "Yeux Surpris"
+        },
+        "mouth": {
+          "happy": "Bouche Souriante",
+          "sad": "Bouche Triste",
+          "angry": "Bouche en Colère",
+          "surprised": "Bouche Surprise"
+        },
+        "eyebrows": {
+          "happy": "Sourcils Normaux",
+          "sad": "Sourcils Tristes",
+          "angry": "Sourcils FrCncés",
+          "surprised": "Sourcils Relevés"
+        }
+      }
     }
   }
 }

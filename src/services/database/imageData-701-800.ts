@@ -818,7 +818,7 @@ export const imageData_701_800: ImageMetadata[] = [
     "imageUrl": "/images/759.png",
     "audioKeys": { "default": "küpeler", "concept": "çift" },
     "tags": {
-      "category": "none",
+      "category": "Giysiler & Aksesuarlar",
       "concept": ["tek-çift"],
       "quantity_type": "çift",
       "lifeform": "cansız",

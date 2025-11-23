@@ -9,6 +9,9 @@ import { t, getCurrentLanguage } from '../../i18n/index.ts';
 const ProfileSelectionScreen = lazy(() => import('../ProfileSelectionScreen.tsx'));
 const MainMenuScreen = lazy(() => import('../MainMenuScreen.tsx'));
 const CommunicationCardMenuScreen = lazy(() => import('../CommunicationCardMenuScreen.tsx'));
+const SoundImitationMenuScreen = lazy(() => import('../SoundImitationMenu.tsx'));
+const SoundImitationScreen = lazy(() => import('../SoundImitationScreen.tsx'));
+const SoundImitationVideoScreen = lazy(() => import('../SoundImitationVideoScreen.tsx'));
 const LetterSelectionScreen = lazy(() => import('../LetterSelectionScreen.tsx'));
 const GroupSelectionScreen = lazy(() => import('../GroupSelectionScreen.tsx'));
 const SyllableCard = lazy(() => import('../SyllableCard.tsx'));
@@ -338,6 +341,7 @@ export const AppRouter = () => {
         
         case ScreenState.MainMenu: return <MainMenuScreen 
             onSelectCategory={async (category) => {
+                if (category === 'soundImitation') { setScreenState(ScreenState.SoundImitationMenu); return; }
                 if (category === 'letterSound') {
                     const lang = getCurrentLanguage();
                     const allowed = new Set(['tr','de','az','en','fr','nl']);
@@ -416,6 +420,9 @@ export const AppRouter = () => {
                 theme={ctx.settings.theme}
             />;
         }
+        case ScreenState.SoundImitationMenu: return <SoundImitationMenuScreen onBack={() => setScreenState(ScreenState.MainMenu)} onSelectSadece={() => setScreenState(ScreenState.SoundImitationSadeceGorsel)} onSelectVideo={() => setScreenState(ScreenState.SoundImitationUfakVideolar)} />;
+        case ScreenState.SoundImitationSadeceGorsel: return <SoundImitationScreen onBack={() => setScreenState(ScreenState.SoundImitationMenu)} />;
+        case ScreenState.SoundImitationUfakVideolar: return <SoundImitationVideoScreen onBack={() => setScreenState(ScreenState.SoundImitationMenu)} />;
         case ScreenState.LetterActivitiesMenu: {
             return <LetterActivitiesMenuScreen onSelectActivity={(act) => {
             if (act === ActivityType.Syllabification) {
@@ -668,6 +675,12 @@ export const AppRouter = () => {
                 if (started) setScreenState(ScreenState.Playing);
                 else setScreenState(ScreenState.MainMenu);
             }} 
+            onStartReinforcementMode={async () => {
+                setScreenState(ScreenState.Loading);
+                const started = await ctx.activity.handleStartReinforcementMode?.();
+                if (started) setScreenState(ScreenState.Playing);
+                else setScreenState(ScreenState.MainMenu);
+            }}
             theme={ctx.settings.theme} 
             activityStats={ctx.profile.activityStats}
             masteredObjectCategories={new Set()}
@@ -692,7 +705,7 @@ export const AppRouter = () => {
         }} activityType={ctx.activity.activityType} />;
         
         // Other Screens
-        case ScreenState.Settings: return <SettingsScreen onBack={() => setScreenState(ScreenState.MainMenu)} isMuted={ctx.settings.isMuted} onToggleMute={ctx.settings.handleToggleMute} isAutoSpeakEnabled={ctx.settings.isAutoSpeakEnabled} onToggleAutoSpeak={ctx.settings.handleToggleAutoSpeak} isBanButtonEnabled={ctx.settings.isBanButtonEnabled} onToggleBanButton={ctx.settings.handleToggleBanButton} isFastTransitionEnabled={ctx.settings.isFastTransitionEnabled} onToggleFastTransition={ctx.settings.handleToggleFastTransition} 
+        case ScreenState.Settings: return <SettingsScreen onBack={() => setScreenState(ScreenState.MainMenu)} isMuted={ctx.settings.isMuted} onToggleMute={ctx.settings.handleToggleMute} isAutoSpeakEnabled={ctx.settings.isAutoSpeakEnabled} onToggleAutoSpeak={ctx.settings.handleToggleAutoSpeak} isBanButtonEnabled={ctx.settings.isBanButtonEnabled} onToggleBanButton={ctx.settings.handleToggleBanButton} isFastTransitionEnabled={ctx.settings.isFastTransitionEnabled} onToggleFastTransition={ctx.settings.handleToggleFastTransition} isUnderwaterMusicEnabled={ctx.settings.isUnderwaterMusicEnabled} onToggleUnderwaterMusic={ctx.settings.handleToggleUnderwaterMusic} 
             onSelectPrivacyPolicy={() => setScreenState(ScreenState.PrivacyPolicy)} onManageBannedImages={()=>setScreenState(ScreenState.BannedImages)} isPremium={ctx.settings.isPremium} hasPurchasedPremium={ctx.settings.hasPurchasedPremium} onPurchaseMonthly={async () => {
             const success = await ctx.settings.handlePurchaseMonthly();
             if (success) setScreenState(ScreenState.Settings);
@@ -714,7 +727,7 @@ export const AppRouter = () => {
             return await ctx.settings.handleRestorePurchases(profileIds);
         }}
         parentOverrides={ctx.profile.parentOverrides}
-        onAddParentOverride={ctx.profile.handleAddParentOverride}
+        onAddParentOverride={(activityId: string, durationHours: number, reason?: string, ignoreForProgress?: boolean) => ctx.profile.handleAddParentOverride(activityId, durationHours, reason, ctx.settings.isPremium, !!ignoreForProgress)}
         onRemoveParentOverride={ctx.profile.handleRemoveParentOverride}
         />;
         

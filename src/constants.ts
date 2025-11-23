@@ -360,7 +360,6 @@ export const ACTIVITY_DEPENDENCIES: Partial<Record<ActivityType, ActivityType>> 
 
     // Reasoning
     // FunctionalMatching removed - now integrated into 5N1K "What?" category
-    [ActivityType.CauseEffect]: ActivityType.WhatDoesntBelong,
     [ActivityType.FiveWOneH]: ActivityType.WhatDoesntBelong,
     [ActivityType.SequencingStories]: ActivityType.BeforeAfter,
     [ActivityType.PatternCompletion]: ActivityType.Shapes,

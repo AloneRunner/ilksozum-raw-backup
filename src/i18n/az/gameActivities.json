@@ -1,4 +1,7 @@
 {
+  "app": {
+    "back": "Geri Qayıt"
+  },
   "reasoning": {
     "title": "Məntiq Oyunları",
     "activities": {
@@ -11,7 +14,7 @@
         "subtitle": "Əşyaları funksiyalarına görə uyğunlaşdır"
       },
       "causeEffect": {
-        "title": "Səbəb və Nəticə",
+        "title": "Səbəb - Nəticə",
         "subtitle": "Hadisələr arasındakı əlaqəni tap"
       },
       "sequencingStories": {
@@ -29,22 +32,22 @@
       "memoryCards": {
         "title": "Yaddaş Kartları",
         "subtitle": "Uyğun kartları tap",
-        "instruction": "Mövqeləri yadda saxla və uyğun cütləri tap.",
-        "remainingLabel": "Qalan müqayisələr",
+        "instruction": "Kartların yerini yadında saxla və cütlərini tap.",
+        "remainingLabel": "Qalan müqayisə",
         "memorizeTitle": "Əzbərlə!",
-        "playTitle": "Cütü Tap"
+        "playTitle": "Cütünü Tap"
       },
       "dragAndDropCounting": {
-        "title": "Əşyaları Hərəkət Etdir",
-        "subtitle": "Tələb olunan sayda əşyanı hərəkət etdir"
+        "title": "Əşyaları Daşı",
+        "subtitle": "İstənilən sayda əşyanı daşı"
       },
       "dragAndDropPositioning": {
         "title": "Əşyanı Yerləşdir",
-        "subtitle": "Əşyanı düzgün yerə qoy",
+        "subtitle": "Əşyanı düzgün yerə yerləşdir",
         "boxLabel": "QUTU"
       },
       "hangman": {
-        "title": "Hangman",
+        "title": "Adam Asmaca",
         "subtitle": "Sözü təxmin et"
       }
     },
@@ -60,31 +63,31 @@
           "question": "Toxum nə olur?"
         },
         "4": {
-          "question": "Əlləri necə təmizləyirik?"
+          "question": "Əllər necə təmizlənir?"
         },
         "5": {
-          "question": "Bunu salarsan nə olar?"
+          "question": "Bunu yerə atsan nə olar?"
         },
         "6": {
           "question": "Od necə yanır?"
         },
         "7": {
-          "question": "Çəkiclə vaza sındırsan nə olar?"
+          "question": "Çəkiclə vazanı sındırsan nə olar?"
         },
         "8": {
           "question": "Qar yağanda nə geyinirik?"
         },
         "9": {
-          "question": "Körpə acanda nə edir?"
+          "question": "Körpə ac olanda nə edir?"
         },
         "10": {
-          "question": "Köynəyi necə düzləşdiririk?"
+          "question": "Köynək necə hamarlanır?"
         },
         "11": {
-          "question": "Gecə olanda nə edirik?"
+          "question": "Gecə düşəndə nə edirik?"
         },
         "12": {
-          "question": "Çiçək necə böyüyür?"
+          "question": "Gül necə böyüyür?"
         },
         "13": {
           "question": "Kitab oxuyanda nə olur?"
@@ -98,6 +101,563 @@
       }
     }
   },
+  "fiveWOneH": {
+    "instructions": "Kateqoriya seçmək üçün bir əşyaya klikləyin",
+    "category": {
+      "who": "Kim?",
+      "what": "Nə?",
+      "where": "Harada?",
+      "when": "Nə Zaman?",
+      "why": "Niyə?",
+      "how": "Necə?",
+      "mixed": "Qarışıq"
+    },
+    "q_who_to_when_sick": {
+      "question": "Xəstələnəndə kimin yanına gedirik?",
+      "correct": "Bəli! Xəstələnəndə həkimin yanına gedirik.",
+      "wrong": "Xeyr, xəstələnəndə ora getmirik."
+    },
+    "q_who_to_when_fire": {
+      "question": "Yanğın çıxanda kimə zəng edirik?",
+      "correct": "Düzdür! Yanğın çıxanda yanğınsöndürənlərə zəng edirik.",
+      "wrong": "Xeyr, yanğında yanğınsöndürənlərə zəng etməliyik."
+    },
+    "q_who_teaches_at_school": {
+      "question": "Məktəbdə bizə kim dərs keçir?",
+      "correct": "Düzdür! Müəllim dərs keçir.",
+      "wrong": "Xeyr, məktəbdə dərsi müəllim keçir."
+    },
+    "q_who_brings_letter": {
+      "question": "Məktubları kim gətirir?",
+      "correct": "Düzdür! Məktubu poçtalyon gətirir.",
+      "wrong": "Xeyr, məktubu poçtalyon gətirir."
+    },
+    "q_who_flies_plane": {
+      "question": "Təyyarəni kim idarə edir?",
+      "correct": "Bəli! Təyyarəni pilot idarə edir.",
+      "wrong": "Xeyr, təyyarəni o idarə etmir."
+    },
+    "q_who_cuts_hair": {
+      "question": "Saçımızı kəsdirmək üçün kimin yanına gedirik?",
+      "correct": "Düzdür! Saçımızı bərbər kəsir.",
+      "wrong": "Xeyr, saçımızı o kəsmir."
+    },
+    "q_who_cooks_food": {
+      "question": "Yeməyi kim bişirir?",
+      "correct": "Bəli! Yeməyi aşpaz bişirir.",
+      "wrong": "Xeyr, yeməyi aşpaz bişirir."
+    },
+    "q_who_provides_milk": {
+      "question": "Südü bizə kim verir?",
+      "correct": "Bəli! Südü inək verir.",
+      "wrong": "Xeyr, südü adətən inək verir."
+    },
+    "q_who_makes_honey": {
+      "question": "Balı kim hazırlayır?",
+      "correct": "Bəli! Balı arı hazırlayır.",
+      "wrong": "Xeyr, balı arı hazırlayır."
+    },
+    "q_who_reads_bedtime_stories": {
+      "question": "Gecələr bizə nağıl danışıb bizi kim yatırır?",
+      "correct": "Bəli! Anamız bizə nağıl danışır.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_do_we_play_with": {
+      "question": "Birlikdə oyun oynadığımız şəxs kimdir?",
+      "correct": "Bəli! Dostumuzla oyun oynayırıq.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_is_sad_about_broken_toy": {
+      "question": "Oyuncağı qırıldığı üçün kim kədərli ola bilər?",
+      "correct": "Bəli! Oyuncağı qırılan uşaq kədərli olar.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_is_happy_to_see_food": {
+      "question": "Yeməyini görəndə kim sevinir?",
+      "correct": "Bəli! Ac körpə yeməyini görəndə sevinir.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_is_playing_with_ball": {
+      "question": "Topla oynayan kimdir?",
+      "correct": "Bəli! Bu uşaq topla oynayır.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_is_driving_car": {
+      "question": "Maşını sürən kimdir?",
+      "correct": "Bəli! Atası maşını sürür.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_plows_field_and_grows_vegetables": {
+      "question": "Tarlanı şumlayıb tərəvəz və meyvələri kim yetişdirir?",
+      "correct": "Bəli! Fermer tarlanı şumlayır və tərəvəz, meyvə yetişdirir.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_goes_to_space_in_rocket": {
+      "question": "Raketə minib kosmosa kim gedir?",
+      "correct": "Bəli! Astronavt kosmosa gedir.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_wears_crown_and_lives_in_palace": {
+      "question": "Nağıllarda tacı olan və sarayda yaşayan kimdir?",
+      "correct": "Bəli! Kral sarayda yaşayır və tac taxır.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_gives_first_aid": {
+      "question": "Yaralanan və ya xəstə olan birinə ilk yardımı kim edir?",
+      "correct": "Bəli! Tibb bacısı ilk yardım edir.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_who_studies_and_learns_at_school": {
+      "question": "Məktəbdə dərs oxuyub yeni şeylər öyrənən kimdir?",
+      "correct": "Bəli! Şagird məktəbdə dərs oxuyur.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_what_brush_teeth_with": {
+      "question": "Dişlərimizi fırçalayarkən fırçanın üzərinə nə sürtürük?",
+      "correct": "Bəli! Dişlərin fırçasının üzərinə diş pastası sürtürük.",
+      "wrong": "Xeyr, fırçanın üzərinə o sürtülməz."
+    },
+    "q_what_use_for_soup": {
+      "question": "Şorbanı içmək üçün nədən istifadə edirik?",
+      "correct": "Düzdür! Şorba içmək üçün qaşıqdan istifadə edirik.",
+      "wrong": "Xeyr, şorba üçün o istifadə edilməz."
+    },
+    "q_what_erase_with": {
+      "question": "Səhv yazanda nə ilə silirik?",
+      "correct": "Bəli! Səhv yazanda pozan ilə silirik.",
+      "wrong": "Xeyr, onunla silmirik."
+    },
+    "q_what_dry_after_bath": {
+      "question": "Hamamdan sonra nə ilə qurulanırıq?",
+      "correct": "Düzdür! Hamamdan sonra dəsmalla qurulanırıq.",
+      "wrong": "Xeyr, onunla qurulanmırıq."
+    },
+    "q_what_chickens_give_us_for_breakfast": {
+      "question": "Toyuqlar bizə səhər yeməyində yediyimiz nəyi verir?",
+      "correct": "Bəli! Toyuqlar yumurta verir.",
+      "wrong": "Xeyr, onu vermirlər."
+    },
+    "q_what_wash_hands_with": {
+      "question": "Əllərimizi yuyarkən nə istifadə edirik?",
+      "correct": "Bəli! Əllərimizi sabunla yuyuruq.",
+      "wrong": "Xeyr, onunla yumuruq."
+    },
+    "q_what_use_to_paint": {
+      "question": "Rəsm çəkmək üçün nə istifadə edirik?",
+      "correct": "Bəli! Rəsm çəkmək üçün rəngli karandaşlardan istifadə edirik.",
+      "wrong": "Xeyr, onu rəsm üçün istifadə etmirik."
+    },
+    "q_what_use_to_tie_hair": {
+      "question": "Saçımızı bağlamaq üçün nə istifadə edirik?",
+      "correct": "Bəli! Saç sancağı ilə saçımızı bağlayırıq.",
+      "wrong": "Xeyr, onu saç üçün istifadə etmirik."
+    },
+    "q_what_put_under_head_when_sleeping": {
+      "question": "Yatarkən başımızın altına nə qoyuruq?",
+      "correct": "Bəli! Yastıq qoyuruq.",
+      "wrong": "Xeyr, onu qoymuruq."
+    },
+    "q_what_wear_on_feet_when_going_out": {
+      "question": "Çölə çıxarkən ayağımıza nə geyinirik?",
+      "correct": "Bəli! Ayaqqabı geyinirik.",
+      "wrong": "Xeyr, onu geyinmirik."
+    },
+    "q_what_people_who_cant_see_far_wear": {
+      "question": "Uzağı yaxşı görə bilməyənlər nə taxır?",
+      "correct": "Bəli! Eynək taxırlar.",
+      "wrong": "Xeyr, onu taxmırlar."
+    },
+    "q_what_put_on_birthday_cake_and_blow": {
+      "question": "Ad günü tortunun üzərinə nə qoyub üfürürük?",
+      "correct": "Bəli! Şam qoyub üfürürük.",
+      "wrong": "Xeyr, onu qoymuruq."
+    },
+    "q_what_squeeze_on_salad_for_sour_taste": {
+      "question": "Salata turş dad verməsi üçün nə sıxırıq?",
+      "correct": "Bəli! Limon sıxırıq.",
+      "wrong": "Xeyr, onu sıxmırıq."
+    },
+    "q_what_use_to_hammer_nail_on_wall": {
+      "question": "Divara mismar vurmaq üçün nədən istifadə edirik?",
+      "correct": "Bəli! Çəkicdən istifadə edirik.",
+      "wrong": "Xeyr, ondan istifadə etmirik."
+    },
+    "q_what_burn_to_get_warm": {
+      "question": "İsinmək üçün nə yandırırıq?",
+      "correct": "Bəli! Odun yandırırıq.",
+      "wrong": "Xeyr, onu yandırmırıq."
+    },
+    "q_what_put_stuff_in_when_going_to_school": {
+      "question": "Məktəbə gedərkən əşyalarımızı nəyin içinə qoyuruq?",
+      "correct": "Bəli! Məktəb çantasına qoyuruq.",
+      "wrong": "Xeyr, ona qoymuruq."
+    },
+    "q_what_is_crispy_snack_made_of_potatoes": {
+      "question": "Çox sevdiyimiz, xırt-xırt yeyilən, kartofdan hazırlanan qəlyanaltı nədir?",
+      "correct": "Bəli! Cips kartofdan hazırlanır.",
+      "wrong": "Xeyr, o deyil."
+    },
+    "q_what_drink_water_with": {
+      "question": "Suyu nə ilə içirik?",
+      "correct": "Bəli! Suyu stəkanla içirik.",
+      "wrong": "Xeyr, onunla içmirik."
+    },
+    "q_what_stick_on_letter_to_mail": {
+      "question": "Məktubu poçtla göndərmək üçün üzərinə nə yapışdırırıq?",
+      "correct": "Bəli! Marka yapışdırırıq.",
+      "wrong": "Xeyr, onu yapışdırmırıq."
+    },
+    "q_what_babies_drink_milk_with": {
+      "question": "Körpələr südü nə ilə içir?",
+      "correct": "Bəli! Körpələr südü butulka ilə içir.",
+      "wrong": "Xeyr, onunla içmirlər."
+    },
+    "q_what_use_to_fix_messy_hair": {
+      "question": "Dağınıq saçlarımızı düzəltmək üçün nə istifadə edirik?",
+      "correct": "Bəli! Daraq istifadə edirik.",
+      "wrong": "Xeyr, onu istifadə etmirik."
+    },
+    "q_what_spread_on_bread_for_breakfast": {
+      "question": "Səhər yeməyində çörəyin üzərinə nə sürtürük?",
+      "correct": "Bəli! Kərə yağı sürtürük.",
+      "wrong": "Xeyr, onu sürtmürük."
+    },
+    "q_where_doctors_work": {
+      "question": "Həkimlər harada işləyir?",
+      "correct": "Bəli! Həkimlər xəstəxanada işləyir.",
+      "wrong": "Xeyr, orada işləmirlər."
+    },
+    "q_where_go_to_swing": {
+      "question": "Yelləncəkdə yellənmək üçün haraya gedirik?",
+      "correct": "Bəli! Uşaq parkına gedirik.",
+      "wrong": "Xeyr, oraya getmirik."
+    },
+    "q_where_sleep_at_night": {
+      "question": "Gecə olanda harada yatırıq?",
+      "correct": "Bəli! Yataqda yatırıq.",
+      "wrong": "Xeyr, orada yatmırıq."
+    },
+    "q_where_fish_live": {
+      "question": "Balıqlar harada yaşayır?",
+      "correct": "Bəli! Balıqlar dənizdə yaşayır.",
+      "wrong": "Xeyr, orada yaşamırlar."
+    },
+    "q_where_teachers_teach": {
+      "question": "Müəllimlər harada dərs keçir?",
+      "correct": "Bəli! Müəllimlər məktəbdə dərs keçir.",
+      "wrong": "Xeyr, orada keçmirlər."
+    },
+    "q_where_planes_fly": {
+      "question": "Təyyarələr harada uçur?",
+      "correct": "Bəli! Təyyarələr səmada uçur.",
+      "wrong": "Xeyr, orada uçmurlar."
+    },
+    "q_where_ships_sail": {
+      "question": "Gəmilər harada üzür?",
+      "correct": "Bəli! Gəmilər dənizdə üzür.",
+      "wrong": "Xeyr, orada üzmürlər."
+    },
+    "q_where_cars_go": {
+      "question": "Maşınlar harada gedir?",
+      "correct": "Bəli! Maşınlar yolda gedir.",
+      "wrong": "Xeyr, orada getmirlər."
+    },
+    "q_where_eat_out_with_family": {
+      "question": "Ailəmizlə çöldə yemək yemək üçün haraya gedə bilərik?",
+      "correct": "Bəli! Restorana gedə bilərik.",
+      "wrong": "Xeyr, oraya getmirik."
+    },
+    "q_where_buy_food_for_home": {
+      "question": "Evə ərzaq almaq üçün haraya gedirik?",
+      "correct": "Bəli! Marketə gedirik.",
+      "wrong": "Xeyr, oraya getmirik."
+    },
+    "q_where_is_place_with_lots_of_books": {
+      "question": "Bir çox kitabın olduğu və kitab oxuya bildiyimiz yer haradır?",
+      "correct": "Bəli! Kitabxanadır.",
+      "wrong": "Xeyr, ora deyil."
+    },
+    "q_where_camels_usually_live": {
+      "question": "Dəvələr adətən harada yaşayır?",
+      "correct": "Bəli! Dəvələr səhrada yaşayır.",
+      "wrong": "Xeyr, orada yaşamırlar."
+    },
+    "q_where_bears_usually_live": {
+      "question": "Ayılar adətən harada yaşayır?",
+      "correct": "Bəli! Ayılar meşədə yaşayır.",
+      "wrong": "Xeyr, orada yaşamırlar."
+    },
+    "q_where_put_clean_clothes": {
+      "question": "Təmiz paltarlarımızı haraya qoyuruq?",
+      "correct": "Bəli! Paltar şkafına qoyuruq.",
+      "wrong": "Xeyr, oraya qoymuruq."
+    },
+    "q_where_go_to_sunbathe_and_swim_in_summer": {
+      "question": "Yayda günəşlənmək və üzmək üçün haraya gedirik?",
+      "correct": "Bəli! Çimərliyə gedirik.",
+      "wrong": "Xeyr, oraya getmirik."
+    },
+    "q_where_birds_lay_eggs": {
+      "question": "Quşlar yumurtalarını haraya qoyur?",
+      "correct": "Bəli! Quş yuvasına qoyurlar.",
+      "wrong": "Xeyr, oraya qoymurlar."
+    },
+    "q_where_cook_cooks": {
+      "question": "Aşpaz yeməkləri harada bişirir?",
+      "correct": "Bəli! Aşpaz restoranda yemək bişirir.",
+      "wrong": "Xeyr, orada bişirmir."
+    },
+    "q_where_set_up_tent_for_camping": {
+      "question": "Düşərgə üçün çadırımızı harada qururuq?",
+      "correct": "Bəli! Meşədə düşərgə salırıq.",
+      "wrong": "Xeyr, orada düşərgə salmırıq."
+    },
+    "q_when_use_umbrella": {
+      "question": "Çətirdən nə vaxt istifadə edirik?",
+      "correct": "Bəli! Yağışda çətirdən istifadə edirik.",
+      "wrong": "Xeyr, o zamanda çətirdən istifadə etmirik."
+    },
+    "q_when_make_snowman": {
+      "question": "Qar adamını nə vaxt düzəldirik?",
+      "correct": "Düzdür! Qar yağanda qar adamı düzəldirik.",
+      "wrong": "Xeyr, o zaman qar adamı düzəltmirik."
+    },
+    "q_when_see_owls": {
+      "question": "Bayquşları adətən nə vaxt görürük?",
+      "correct": "Düzdür! Bayquşu gecə görürük.",
+      "wrong": "Xeyr, bayquş adətən gecə görünür."
+    },
+    "q_when_see_stars_in_sky": {
+      "question": "Səmada ulduzları nə vaxt görürük?",
+      "correct": "Bəli! Gecə görürük.",
+      "wrong": "Xeyr, o zaman görmürük."
+    },
+    "q_when_roosters_crow": {
+      "question": "Xoruzlar adətən nə vaxt banlayır?",
+      "correct": "Bəli! Səhər banlayırlar.",
+      "wrong": "Xeyr, o zaman banlamırlar."
+    },
+    "q_when_wear_beanie_when_cold": {
+      "question": "Başımız üşüyəndə papağı nə vaxt taxırıq?",
+      "correct": "Düzdür! Qarlı havada papaq taxırıq.",
+      "wrong": "Xeyr, o zaman papaq taxmırıq."
+    },
+    "q_when_usually_go_to_beach": {
+      "question": "Çimərliyə adətən nə vaxt gedirik?",
+      "correct": "Bəli! Günəşli havada gedirik.",
+      "wrong": "Xeyr, o zaman getmirik."
+    },
+    "q_when_blow_out_candles_on_cake": {
+      "question": "Tortun üzərindəki şamları nə vaxt üfürürük?",
+      "correct": "Bəli! Ad günümüzdə üfürürük.",
+      "wrong": "Xeyr, o zaman üfürmürük."
+    },
+    "q_when_eat": {
+      "question": "Nə vaxt yemək yeyirik?",
+      "correct": "Bəli! Ac olanda yemək yeyirik.",
+      "wrong": "Xeyr, o zaman yemirik."
+    },
+    "q_when_sleep": {
+      "question": "Nə vaxt yatırıq?",
+      "correct": "Bəli! Yorulanda yatırıq.",
+      "wrong": "Xeyr, o zaman yatmırıq."
+    },
+    "q_when_bears_hibernate": {
+      "question": "Ayılar nə vaxt qış yuxusuna gedir?",
+      "correct": "Düzdür! Qışda qış yuxusuna gedirlər.",
+      "wrong": "Xeyr, o zaman getmirlər."
+    },
+    "q_when_usually_go_to_bed": {
+      "question": "Adətən nə vaxt yatağımıza gedirik?",
+      "correct": "Bəli! Gecə yatağımıza gedirik.",
+      "wrong": "Xeyr, o zaman getmirik."
+    },
+    "q_when_see_sun_in_sky": {
+      "question": "Səmada günəşi nə vaxt görürük?",
+      "correct": "Bəli! Gündüz görürük.",
+      "wrong": "Xeyr, o zaman görmürük."
+    },
+    "q_when_turn_on_light_in_room": {
+      "question": "Otağın işığını nə vaxt yandırırıq?",
+      "correct": "Bəli! Gecə və ya qaranlıq olanda yandırırıq.",
+      "wrong": "Xeyr, o zaman yandırmırıq."
+    },
+    "q_when_wear_gloves_when_hands_cold": {
+      "question": "Əllərimiz üşüyəndə əlcəklərimizi nə vaxt geyinirik?",
+      "correct": "Bəli! Qarlı havada geyinirik.",
+      "wrong": "Xeyr, o zaman geyinmirik."
+    },
+    "q_when_usually_wear_shorts": {
+      "question": "Adətən nə vaxt şort geyinirik?",
+      "correct": "Bəli! İsti və ya günəşli havada geyinirik.",
+      "wrong": "Xeyr, o zaman geyinmirik."
+    },
+    "q_when_wash_hands": {
+      "question": "Əllərimizi nə vaxt yuyuruq?",
+      "correct": "Bəli! Çirklənəndə yuyuruq.",
+      "wrong": "Xeyr, o zaman yumuruq."
+    },
+    "q_why_ice_cream_melted": {
+      "question": "Dondurma niyə ərimiş ola bilər?",
+      "correct": "Bəli! Günəşdən ərimiş ola bilər.",
+      "wrong": "Xeyr, ondan əriməyib."
+    },
+    "q_why_hair_is_wet": {
+      "question": "Bu saç niyə yaşdır?",
+      "correct": "Bəli! Duş qəbul etdiyi üçün yaşdır.",
+      "wrong": "Xeyr, ondan yaş deyil."
+    },
+    "q_why_child_is_cold": {
+      "question": "Uşaq niyə üşüyə bilər?",
+      "correct": "Bəli! Qar yağdığı üçün üşüyə bilər.",
+      "wrong": "Xeyr, ondan üşümür."
+    },
+    "q_why_child_is_crying": {
+      "question": "Bu uşaq niyə ağlaya bilər?",
+      "correct": "Bəli! Canı yandığı üçün ağlaya bilər.",
+      "wrong": "Xeyr, ondan ağlamır."
+    },
+    "q_why_child_holds_umbrella": {
+      "question": "Uşaq niyə çətir tutur?",
+      "correct": "Bəli! Yağış yağdığı üçün çətir tutur.",
+      "wrong": "Xeyr, ondan tutmur."
+    },
+    "q_why_wrinkled_clothes_became_smooth": {
+      "question": "Qırışmış paltarlar niyə bu qədər səliqəli oldu?",
+      "correct": "Bəli! Ütüləndiyi üçün səliqəli oldu.",
+      "wrong": "Xeyr, ondan deyil."
+    },
+    "q_why_hands_get_dirty": {
+      "question": "Əllərimiz niyə çirklənir?",
+      "correct": "Bəli! Oyun oynayanda çirklənir.",
+      "wrong": "Xeyr, ondan çirklənmir."
+    },
+    "q_why_child_is_tired": {
+      "question": "Bu uşaq niyə yorulmuş ola bilər?",
+      "correct": "Bəli! Velosiped sürdüyü üçün yorulmuş ola bilər.",
+      "wrong": "Xeyr, ondan yorulmayıb."
+    },
+    "q_why_child_is_lying_down": {
+      "question": "Bu uşaq niyə uzanıb?",
+      "correct": "Bəli! Qızdırması olduğu üçün uzanıb ola bilər.",
+      "wrong": "Xeyr, ondan uzanmır."
+    },
+    "q_why_vase_is_broken": {
+      "question": "Vaza niyə qırılmış ola bilər?",
+      "correct": "Bəli! Top oynayarkən qırılmış ola bilər.",
+      "wrong": "Xeyr, ondan qırılmayıb."
+    },
+    "q_why_room_is_bright": {
+      "question": "Otaq niyə işıqlıdır?",
+      "correct": "Bəli! Lampa yandığı üçün işıqlıdır.",
+      "wrong": "Xeyr, ondan işıqlı deyil."
+    },
+    "q_why_floor_is_wet": {
+      "question": "Yerler niyə yaş ola bilər?",
+      "correct": "Bəli! Yağış yağdığı üçün yaş ola bilər.",
+      "wrong": "Xeyr, ondan yaş deyil."
+    },
+    "q_why_room_is_dark": {
+      "question": "Otaq niyə qaranlıqdır?",
+      "correct": "Bəli! Gecə olduğu üçün qaranlıqdır.",
+      "wrong": "Xeyr, ondan qaranlıq deyil."
+    },
+    "q_why_child_is_happy": {
+      "question": "Uşaq niyə sevinmiş ola bilər?",
+      "correct": "Bəli! Hədiyyə aldığı üçün sevinmiş ola bilər.",
+      "wrong": "Xeyr, ondan sevinməyib."
+    },
+    "q_why_dirty_dishes_are_clean": {
+      "question": "Çirkli qablar niyə təmizləndi?",
+      "correct": "Bəli! Qabyuyan maşında yuyulduğu üçün təmizləndi.",
+      "wrong": "Xeyr, ondan təmizlənmədi."
+    },
+    "q_why_some_people_wear_glasses": {
+      "question": "Bəzi insanlar niyə eynək taxır?",
+      "correct": "Bəli! Uzağı yaxşı görə bilmədikləri üçün taxırlar.",
+      "wrong": "Xeyr, ondan taxmırlar."
+    },
+    "q_how_go_to_school": {
+      "question": "Məktəbə necə gedirik?",
+      "correct": "Bəli! Məktəbə məktəb avtobusu ilə gedirik.",
+      "wrong": "Xeyr, adətən elə getmirik."
+    },
+    "q_how_open_door": {
+      "question": "Qapını necə açırıq?",
+      "correct": "Bəli! Qapını açarla açırıq.",
+      "wrong": "Xeyr, qapını onunla açmırıq."
+    },
+    "q_how_baby_feels": {
+      "question": "Bu körpə özünü necə hiss edir?",
+      "correct": "Düzdür! Körpə kədərli hiss edir.",
+      "wrong": "Xeyr, körpə elə hiss etmir."
+    },
+    "q_how_reach_high_place": {
+      "question": "Yüksək bir yerə necə çatırıq?",
+      "correct": "Bəli! Nərdivanla çatırıq.",
+      "wrong": "Xeyr, onunla çata bilmərik."
+    },
+    "q_how_travel_at_sea": {
+      "question": "Dənizdə necə səyahət edirik?",
+      "correct": "Düzdür! Dənizdə gəmi ilə səyahət edirik.",
+      "wrong": "Xeyr, dənizdə adətən onunla getmirik."
+    },
+    "q_how_clean_room": {
+      "question": "Otağı necə təmizləyirik?",
+      "correct": "Bəli! Otağı təmizlik vedrəsi və ləvazimatları ilə təmizləyirik.",
+      "wrong": "Xeyr, otağı onunla təmizləmirik."
+    },
+    "q_how_dry_hands_after_washing": {
+      "question": "Əllərimizi yuduqdan sonra necə qurulayırıq?",
+      "correct": "Bəli! Dəsmalla qurulayırıq.",
+      "wrong": "Xeyr, əllər dəsmalla qurulanır."
+    },
+    "q_how_child_feels": {
+      "question": "Bu uşaq özünü necə hiss edir?",
+      "correct": "Düzdür! Uşaq xoşbəxt hiss edir.",
+      "wrong": "Xeyr, uşaq elə hiss etmir."
+    },
+    "q_how_eat_pasta": {
+      "question": "Makaronu necə yeyirik?",
+      "correct": "Bəli! Makaronu çəngəllə yeyirik.",
+      "wrong": "Xeyr, onunla yemirik."
+    },
+    "q_how_comb_hair": {
+      "question": "Saçımızı necə darayırıq?",
+      "correct": "Bəli! Saçımızı daraqla darayırıq.",
+      "wrong": "Xeyr, onunla daramırıq."
+    },
+    "q_how_cut_paper": {
+      "question": "Kağızı necə kəsirik?",
+      "correct": "Bəli! Kağızı qayçı ilə kəsirik.",
+      "wrong": "Xeyr, onunla kəsmirik."
+    },
+    "q_how_measure_height": {
+      "question": "Boyumuzu necə ölçürük?",
+      "correct": "Bəli! Boyumuzu xətkeşlə ölçürük.",
+      "wrong": "Xeyr, onunla ölçmürük."
+    },
+    "q_how_talk_to_someone_far_away": {
+      "question": "Uzaqdakı biri ilə necə danışırıq?",
+      "correct": "Bəli! Ağıllı telefonla danışırıq.",
+      "wrong": "Xeyr, onunla danışmırıq."
+    },
+    "q_how_light_a_dark_room": {
+      "question": "Qaranlıq bir otağı necə işıqlandırırıq?",
+      "correct": "Bəli! Lampa ilə işıqlandırırıq.",
+      "wrong": "Xeyr, onunla işıqlandırmırıq."
+    },
+    "q_how_cook_food": {
+      "question": "Yeməkləri necə bişiririk?",
+      "correct": "Bəli! Sobada bişiririk.",
+      "wrong": "Xeyr, onda bişirmirik."
+    },
+    "q_how_rabbit_moves": {
+      "question": "Dovşan necə hərəkət edir?",
+      "correct": "Bəli! Dovşan sürətli hərəkət edir.",
+      "wrong": "Xeyr, elə hərəkət etmir."
+    }
+  },
   "fineMotor": {
     "activities": {
       "lineTracing": {
@@ -105,8 +665,8 @@
         "subtitle": "Barmağınla yolu izlə"
       },
       "coloring": {
-        "title": "Forma Rəngləmə",
-        "subtitle": "Formaları rəngləmək üçün toxun"
+        "title": "Fiqur Rəngləmə",
+        "subtitle": "Fiqurları rəngləmək üçün toxun"
       },
       "puzzle": {
         "title": "Sadə Tapmaca",
@@ -114,17 +674,17 @@
       },
       "rhythm": {
         "title": "Ritm İzləmə",
-        "subtitle": "Baxın və ritmi təkrarlayın"
+        "subtitle": "İzlə və ritmi təkrar et"
       }
     }
   },
   "experimental": {
-    "menuTitle": "Eksperimental Konseptual Fəaliyyətlər",
+    "menuTitle": "Eksperimental Anlayış Fəaliyyətləri",
     "relativeComparison": {
       "title": "Nisbi Müqayisə",
-      "menuSubtitle": "Müqayisə fəaliyyəti seçin.",
-      "instruction": "İki açıq kartı müqayisə edin və suala cavab verin.",
-      "remainingLabel": "Qalan müqayisələr",
+      "menuSubtitle": "Bir müqayisə fəaliyyəti seçin.",
+      "instruction": "Açılan iki kartı müqayisə et və suala cavab ver.",
+      "remainingLabel": "Qalan müqayisə",
       "images": {
         "950": "Ən kiçik",
         "951": "Nümunə 951",
@@ -150,7 +710,7 @@
         "971": "Nümunə 971",
         "972": "Nümunə 972",
         "973": "Ən uzaq",
-        "974": "Ən aşağı",
+        "974": "Ən alçaq",
         "975": "Nümunə 975",
         "976": "Nümunə 976",
         "977": "Ən yüksək"
@@ -161,9 +721,9 @@
     "instruction": "Barmağınla xətti izlə. Xəttin üzərində qal!"
   },
   "rhythmFollowing": {
-    "instruction": "Əvvəlcə ritmə baxın, sonra eyni şəkildə toxunun/basıb saxlayın.",
-    "fail": "Yenidən cəhd edin!",
-    "watch": "Əvvəlcə ritmə baxın...",
+    "instruction": "Əvvəlcə ritmi izlə, sonra eyni şəkildə toxun/basılı tut.",
+    "fail": "Yenidən cəhd et!",
+    "watch": "Əvvəlcə ritmi izlə…",
     "go": "Sənin növbəndir!"
   },
   "simplePuzzle": {
@@ -172,9 +732,9 @@
   "games": {
     "hangman": {
       "pickLetter": "Hərf seç",
-      "remainingLives": "Qalan həyat",
+      "remainingLives": "Qalan Can",
       "category": "Kateqoriya",
-      "newGame": "Yeni oyun",
+      "newGame": "Yeni Oyun",
       "youWinTitle": "Təbriklər!",
       "youWinDesc": "Sözü tapdın!",
       "youLoseTitle": "Uduzdun",
@@ -183,102 +743,63 @@
         "win": "Təbriklər! Sözü tapdın!",
         "wordWas": "Söz bu idi"
       }
-    }
-  },
-  "fiveWOneH": {
-    "category": {
-      "who": "Kim?",
-      "what": "Nə?",
-      "where": "Harada?",
-      "when": "Nə vaxt?",
-      "why": "Niyə?",
-      "how": "Necə?",
-      "mixed": "Qarışıq"
     },
-    "q_who_to_when_sick": {
-      "question": "Xəstələnəndə kimə gedirik?",
-      "correct": "Bəli! Xəstələnəndə həkimə gedirik.",
-      "wrong": "Xeyr, xəstələnəndə ora getmirik."
+    "objectCollector": {
+      "title": "Əşya Toplama",
+      "subtitle": "Düzgün əşyaları səbətə topla",
+      "instructions": "← → ox düymələri və ya siçan/barmağınla səbəti hərəkət etdir",
+      "youWin": "Təbriklər!",
+      "gameOver": "Oyun Bitdi",
+      "finalScore": "Xal",
+      "collectFruits": "Yalnız meyvələri topla!",
+      "collectAnimals": "Yalnız heyvanları topla!",
+      "collectVehicles": "Yalnız nəqliyyat vasitələrini topla!",
+      "collectRed": "Yalnız qırmızı olanları topla!",
+      "collectFood": "Yalnız yeməkləri topla!",
+      "collectSchoolItems": "Yalnız məktəb ləvazimatlarını topla!",
+      "collectToys": "Yalnız oyuncaqları topla!",
+      "collectLargeAnimals": "Yalnız böyük heyvanları topla!"
     },
-    "q_who_to_when_fire": {
-      "question": "Yanğın çıxanda kimə zəng edirik?",
-      "correct": "Doğru! Yanğın çıxanda yanğınsöndürənlərə zəng edirik.",
-      "wrong": "Xeyr, yanğın zamanı yanğınsöndürənlərə zəng etməliyik."
-    },
-    "q_who_brings_letter": {
-      "question": "Məktubu kim gətirir?",
-      "correct": "Doğru! Məktubu poçtalyon gətirir.",
-      "wrong": "Xeyr, məktubu poçtalyon gətirir."
-    },
-    "q_what_brush_teeth_with": {
-      "question": "Dişlərimizi nə ilə fırçalayırıq?",
-      "correct": "Bəli! Dişlərimizi diş məcunu ilə fırçalayırıq.",
-      "wrong": "Xeyr, dişlərimizi onunla fırçalamırıq."
-    },
-    "q_when_use_umbrella": {
-      "question": "Nə vaxt çətirdən istifadə edirik?",
-      "correct": "Bəli! Yağışda çətirdən istifadə edirik.",
-      "wrong": "Xeyr, o zaman çətirdən istifadə etmirik."
-    },
-    "q_how_go_to_school": {
-      "question": "Məktəbə necə gedirik?",
-      "correct": "Bəli! Məktəbə məktəb avtobusu ilə gedirik.",
-      "wrong": "Xeyr, adətən elə getmirik."
-    },
-    "q_how_open_door": {
-      "question": "Qapını necə açırıq?",
-      "correct": "Bəli! Qapını açarla açırıq.",
-      "wrong": "Xeyr, qapını onunla açmırıq."
-    },
-    "q_how_baby_feels": {
-      "question": "Körpə özünü necə hiss edir?",
-      "correct": "Doğru! Körpə kədərli hiss edir.",
-      "wrong": "Xeyr, körpə elə hiss etmir."
-    },
-    "q_when_bears_hibernate": {
-      "question": "Ayılar nə vaxt qış yuxusuna gedir?",
-      "correct": "Doğru! Qış gələndə.",
-      "wrong": "Xeyr, qış dövründə olur."
-    },
-    "q_who_flies_plane": {
-      "question": "Təyyarəni kim idarə edir?",
-      "correct": "Bəli! Təyyarəni pilot idarə edir.",
-      "wrong": "Xeyr, təyyarəni o idarə etmir."
-    },
-    "q_who_cuts_hair": {
-      "question": "Saçımızı kəsdirmək üçün kimə gedirik?",
-      "correct": "Doğru! Saçımızı bərbər kəsir.",
-      "wrong": "Xeyr, saçımızı o kəsmir."
-    },
-    "q_who_provides_milk": {
-      "question": "Bizi südlə kim təmin edir?",
-      "correct": "Bəli! Südü fermer təmin edir.",
-      "wrong": "Xeyr, südü adətən fermer təmin edir."
-    },
-    "q_what_dry_after_bath": {
-      "question": "Hamamdan sonra nə ilə qurulanırıq?",
-      "correct": "Doğru! Hamamdan sonra dəsmalla qurulanırıq.",
-      "wrong": "Xeyr, onunla qurulanmırıq."
-    },
-    "q_when_make_snowman": {
-      "question": "Nə vaxt qar adamı düzəldirik?",
-      "correct": "Doğru! Qar yağanda qar adamı düzəldirik.",
-      "wrong": "Xeyr, o zaman qar adamı düzəltmirik."
-    },
-    "q_how_travel_at_sea": {
-      "question": "Dənizdə necə səyahət edirik?",
-      "correct": "Doğru! Dənizdə gəmi ilə səyahət edirik.",
-      "wrong": "Xeyr, dənizdə adətən onunla getmirik."
-    },
-    "q_how_clean_room": {
-      "question": "Otağı necə təmizləyirik?",
-      "correct": "Bəli! Otağı təmizlik vedrəsi və ləvazimatları ilə təmizləyirik.",
-      "wrong": "Xeyr, otağı onunla təmizləmirik."
-    },
-    "q_who_teaches_at_school": {
-      "question": "Şəklə bax. Məktəbdə bizə kim dərs deyir? Düzgün adamı seç.",
-      "correct": "Doğru! Müəllim dərs deyir.",
-      "wrong": "Xeyr, məktəbdə dərsi müəllim deyir."
+    "emotionPuppet": {
+      "title": "Hiss Kuklası",
+      "subtitle": "Üz hissələrini birləşdir",
+      "instruction": "{emotion} bir üz düzəlt!",
+      "facePreview": "Üzə Baxış",
+      "targetEmotion": "Hədəf",
+      "selectEyebrows": "Qaşları Seç",
+      "selectEyes": "Gözləri Seç",
+      "selectMouth": "Ağzı Seç",
+      "checkButton": "Yoxla",
+      "emotions": {
+        "happy": "xoşbəxt",
+        "sad": "qəmgin",
+        "angry": "əsəbi",
+        "surprised": "təəccüblü"
+      },
+      "feedback": {
+        "correct": "Əla! {emotion} üz düzəltdin!",
+        "incorrect": "Yenidən cəhd et!"
+      },
+      "parts": {
+        "eyes": {
+          "happy": "Şən Gözlər",
+          "sad": "Qəmgin Gözlər",
+          "angry": "Əsəbi Gözlər",
+          "surprised": "Təəccüblü Gözlər"
+        },
+        "mouth": {
+          "happy": "Gülən Ağız",
+          "sad": "Qəmgin Ağız",
+          "angry": "Əsəbi Ağız",
+          "surprised": "Təəccüblü Ağız"
+        },
+        "eyebrows": {
+          "happy": "Şən Qaşlar",
+          "sad": "Qəmgin Qaşlar",
+          "angry": "Əsəbi Qaşlar",
+          "surprised": "Təəccüblü Qaşlar"
+        }
+      }
     }
   }
 }

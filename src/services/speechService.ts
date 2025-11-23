@@ -195,3 +195,49 @@ export const playEffect = (effect: 'correct' | 'incorrect' | 'finish' | 'softinc
     };
   });
 };
+
+/**
+ * Play an arbitrary named audio file from /audio/<key>.mp3 (e.g. audioKeys.default values).
+ * Returns a promise that resolves when the sound finishes or fails.
+ */
+export const playNamedAudio = (key: string, options?: { volume?: number; fallbackText?: string }): Promise<void> => {
+    return new Promise((resolve) => {
+        if (isMuted || !key) return resolve();
+        stopCurrentEffect();
+
+        const audioSrc = `/audio/${key}.mp3`;
+        const audio = new Audio(audioSrc);
+        if (typeof options?.volume === 'number') {
+            audio.volume = Math.max(0, Math.min(1, options.volume));
+        }
+        currentEffect = audio;
+
+        audio.play().catch(async (error) => {
+            console.warn(`Error playing audio key '${key}', falling back to TTS:`, error);
+            currentEffect = null;
+            // fallback to TTS; speak fallbackText if provided, otherwise the key
+            try {
+                await speak(options?.fallbackText ?? key);
+            } catch (e) {
+                // ignore failures
+            }
+            resolve();
+        });
+
+        audio.onended = () => {
+            currentEffect = null;
+            resolve();
+        };
+
+        audio.onerror = async () => {
+            console.warn(`Error loading audio key '${key}', falling back to TTS`);
+            currentEffect = null;
+            try {
+                await speak(options?.fallbackText ?? key);
+            } catch (e) {
+                // ignore
+            }
+            resolve();
+        };
+    });
+};

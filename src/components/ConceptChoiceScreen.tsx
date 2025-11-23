@@ -16,7 +16,7 @@ import SnowflakeIcon from './icons/SnowflakeIcon.tsx';
 import HouseIconSimple from './icons/HouseIconSimple.tsx';
 import LightBulbIcon from './icons/LightBulbIcon.tsx';
 import useWindowSize from '../hooks/useWindowSize.ts';
-import { t, getCurrentLanguage } from '../i18n/index.ts';
+import { t, getCurrentLanguage, lookupLocale } from '../i18n/index.ts';
 import { translateLabel, getSpeechLocale, translateQuestion } from '../utils/translate.ts';
 import { useAppContext } from '../contexts/AppContext.ts';
 import { getFriendlyCategoryLabelByImageId, getFriendlyCategoryLabelSingularFromRaw } from '../utils/groupLabels.ts';
@@ -255,6 +255,27 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
 function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof getCurrentLanguage>): string {
     const key = roundData.questionAudioKey;
     if (!key) return roundData.question;
+    // Prefer static spatial i18n keys when available: questions.sp_<prefix>_<id>_question
+    const spatialPrefixForType = (type: ActivityType): string | null => {
+        switch (type) {
+            case ActivityType.OnUnder: return 'onunder';
+            case ActivityType.BelowAbove: return 'belowabove';
+            case ActivityType.BesideOpposite: return 'beside';
+            case ActivityType.InFrontOfBehind: return 'infront';
+            case ActivityType.InsideOutside: return 'inside';
+            case ActivityType.Between: return 'between';
+            case ActivityType.LeftRight: return 'leftRight';
+            case ActivityType.NearFar: return 'nearfar';
+            case ActivityType.HighLow: return 'highlow';
+            default: return null;
+        }
+    };
+    const spatialPrefix = spatialPrefixForType(roundData.activityType);
+    if (spatialPrefix) {
+        const spKey = `questions.sp_${spatialPrefix}_${roundData.id}_question`;
+        const spVal = lookupLocale(spKey, lang);
+        if (spVal) return spVal;
+    }
     // Per-round override for Cause & Effect questions via i18n (reasoning.causeEffect.rounds.{id}.question)
     if (roundData.activityType === ActivityType.CauseEffect) {
         const perRoundKey = `reasoning.causeEffect.rounds.${roundData.id}.question`;
@@ -282,10 +303,11 @@ function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof g
         // If we don't have a correct option for some reason, fall back to provided question or i18n below
     }
     
-    // Try to get question from i18n first
+    // Try to get question from i18n first. Use a locale-only lookup so we
+    // can distinguish a true locale translation from the Turkish fallback.
     const i18nKey = `questions.${key}`;
-    const translatedQuestion = t(i18nKey);
-        if (translatedQuestion !== i18nKey) {
+    const translatedQuestion = lookupLocale(i18nKey, lang);
+    if (translatedQuestion) {
         // Special handling for dynamic questions with placeholders
         if (key === 'q_which_is_color' || key === 'q_which_is_shape' || key === 'q_which_is_emotion') {
             const extractTargetFromQuestion = (q?: string) => {
@@ -333,6 +355,67 @@ function getQuestionTtsText(roundData: ConceptRound, lang: ReturnType<typeof get
     const speechAny = roundData.speech as any;
     const override: string | undefined = speechAny?.[lang]?.question;
     if (override && override.trim().length > 0) return override.trim();
+    // If this is a spatial concept and there is no per-round speech override,
+    // try to synthesize a clearer question that includes the noun (Turkish preferred).
+    const spatialTypes = new Set([
+        ActivityType.OnUnder,
+        ActivityType.BelowAbove,
+        ActivityType.InFrontOfBehind,
+        ActivityType.InsideOutside,
+        ActivityType.Between,
+        ActivityType.BesideOpposite,
+        ActivityType.LeftRight,
+        ActivityType.NearFar,
+        ActivityType.HighLow,
+    ]);
+
+    // Prefer static spatial i18n question keys when available
+    const spatialPrefixForType = (type: ActivityType): string | null => {
+        switch (type) {
+            case ActivityType.OnUnder: return 'onunder';
+            case ActivityType.BelowAbove: return 'belowabove';
+            case ActivityType.BesideOpposite: return 'beside';
+            case ActivityType.InFrontOfBehind: return 'infront';
+            case ActivityType.InsideOutside: return 'inside';
+            case ActivityType.Between: return 'between';
+            case ActivityType.LeftRight: return 'leftRight';
+            case ActivityType.NearFar: return 'nearfar';
+            case ActivityType.HighLow: return 'highlow';
+            default: return null;
+        }
+    };
+    const spatialPrefix = spatialPrefixForType(roundData.activityType);
+    if (spatialPrefix) {
+        const spKey = `questions.sp_${spatialPrefix}_${roundData.id}_question`;
+        const spQuestion = lookupLocale(spKey, lang);
+        if (spQuestion) return spQuestion;
+    }
+
+    const tryBuildExplicitTR = (): string | undefined => {
+        if (!spatialTypes.has(roundData.activityType)) return undefined;
+        const opt = roundData.options?.find(o => o.isCorrect) || roundData.options?.[0];
+        if (!opt) return undefined;
+        const spoken = (opt.spokenText || opt.word || '').trim();
+        if (!spoken) return undefined;
+        const parts = spoken.split(/\s+/);
+        if (parts.length < 2) return undefined;
+        const noun = parts[parts.length - 1];
+        const prefix = parts.slice(0, -1).join(' ');
+        // Remove trailing Turkish '-ki' from the prefix if present: 'üstündeki' -> 'üstünde'
+        const prefixClean = prefix.replace(/ki$/i, '').trim();
+        // Basic sanity: prefixClean should contain a positional token (üstünde/altında/aşağıda/etc.)
+        if (!/üstünde|altında|aşağıda|yukarıda|önünde|arkasında|içinde|dışında|arasında|yanında|sağında|solunda|yüksek|alçak/i.test(prefixClean)) {
+            // If we don't recognize a spatial token, bail out to avoid unnatural phrasing
+            return undefined;
+        }
+        return `Hangi ${noun} ${prefixClean}?`;
+    };
+
+    if (lang === 'tr') {
+        const explicit = tryBuildExplicitTR();
+        if (explicit) return explicit;
+    }
+
     const q = getLocalizedQuestion(roundData, lang);
     if (roundData.activityType === ActivityType.FiveWOneH) {
         return q;
@@ -1035,6 +1118,31 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                         setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
                         return;
                     }
+                // Prefer static spatial i18n answer keys when available
+                const spatialPrefixForType_local = (type: ActivityType): string | null => {
+                    switch (type) {
+                        case ActivityType.OnUnder: return 'onunder';
+                        case ActivityType.BelowAbove: return 'belowabove';
+                        case ActivityType.BesideOpposite: return 'beside';
+                        case ActivityType.InFrontOfBehind: return 'infront';
+                        case ActivityType.InsideOutside: return 'inside';
+                        case ActivityType.Between: return 'between';
+                        case ActivityType.LeftRight: return 'leftRight';
+                        case ActivityType.NearFar: return 'nearfar';
+                        case ActivityType.HighLow: return 'highlow';
+                        default: return null;
+                    }
+                };
+                const spatialPrefix_local = spatialPrefixForType_local(roundData.activityType);
+                if (spatialPrefix_local) {
+                    const answerKey = `questions.sp_${spatialPrefix_local}_${roundData.id}_answer`;
+                    const answerMsg = t(answerKey);
+                    if (answerMsg && answerMsg !== answerKey) {
+                        await speak(answerMsg, getSpeechLocale(currentLang));
+                        setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
+                        return;
+                    }
+                }
                 const correctPrefix = t('feedback.correctPrefix');
                 // For Turkish, strip leading determiners from base before composing speech to avoid "bu bu ..."
                 const rawBase = spokenText;
@@ -1243,6 +1351,39 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                         }
                     }
                 } else {
+                    // For spatial activities prefer explicit i18n answer to avoid mixed-language composition
+                    const spatialPrefixForType_local = (type: ActivityType): string | null => {
+                        switch (type) {
+                            case ActivityType.OnUnder: return 'onunder';
+                            case ActivityType.BelowAbove: return 'belowabove';
+                            case ActivityType.BesideOpposite: return 'beside';
+                            case ActivityType.InFrontOfBehind: return 'infront';
+                            case ActivityType.InsideOutside: return 'inside';
+                            case ActivityType.Between: return 'between';
+                            case ActivityType.LeftRight: return 'leftRight';
+                            case ActivityType.NearFar: return 'nearfar';
+                            case ActivityType.HighLow: return 'highlow';
+                            default: return null;
+                        }
+                    };
+                    const spatialPrefix_local = spatialPrefixForType_local(roundData.activityType);
+                    if (spatialPrefix_local) {
+                        const answerKey = `questions.sp_${spatialPrefix_local}_${roundData.id}_answer`;
+                        const correctAnswer = lookupLocale(answerKey, currentLang);
+                        if (correctAnswer) {
+                            // Remove leading 'Yes,' / 'Evet,' if present to avoid 'No, Yes,...' when prefixed
+                            const stripYes = (s: string) => s.replace(/^\s*(Yes,|Yes\.|Evet,|Evet\.|Hayır,|No,|No\.)\s*/i, '').trim();
+                            const core = stripYes(correctAnswer);
+                            const wrongPrefix = t('feedback.wrongPrefix');
+                            const final = `${wrongPrefix} ${core}`.replace(/\s+/g, ' ').trim();
+                            await speak(final, getSpeechLocale(currentLang));
+                            setTimeout(() => {
+                                setIsWrong(null);
+                                setSelectedId(null);
+                            }, 800);
+                            return;
+                        }
+                    }
                     // Diğer etkinlikler için mevcut mantık
                     const oppositeConcept = oppositeConcepts[questionConcept];
                     const wrongPrefix = t('feedback.wrongPrefix');
@@ -1349,9 +1490,12 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
     const optionsGrid = (
         <div className={`w-full grid ${gridColsClass} gap-3 sm:gap-4 sm-landscape:gap-2`}>
             {displayOptions.map((option, index) => {
-                const sourceWord = option.spokenText || option.word;
-                const displayWord = currentLang === 'tr' ? option.word : translateLabel(sourceWord, currentLang);
-                const spokenWord = currentLang === 'tr' ? sourceWord : displayWord;
+                // Prefer canonical object label from i18n using the image's audioKey.
+                // Fallback order: i18n objects.<audioKey> -> translateLabel(option.word) -> raw option.word
+                const i18nObjKey = `objects.${option.audioKey}`;
+                const i18nLabel = lookupLocale(i18nObjKey, currentLang as any);
+                const displayWord = i18nLabel || (currentLang === 'tr' ? option.word : translateLabel(option.word, currentLang));
+                const spokenWord = i18nLabel || (currentLang === 'tr' ? option.word : translateLabel(option.word, currentLang));
                 return (
                     <Card
                         key={`${option.id}-${index}`}
@@ -1464,9 +1608,11 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                                 backgroundColor: '#dcfce7' // açık yeşil arka plan
                               }
                             : {};
-                        const hintSourceWord = option.spokenText || option.word;
-                        const hintDisplayWord = currentLang === 'tr' ? option.word : translateLabel(hintSourceWord, currentLang);
-                        const hintSpokenWord = currentLang === 'tr' ? hintSourceWord : hintDisplayWord;
+                        // Prefer canonical object label from i18n using the image's audioKey.
+                        const i18nObjKey = `objects.${option.audioKey}`;
+                        const i18nLabel = lookupLocale(i18nObjKey, currentLang as any);
+                        const hintDisplayWord = i18nLabel || (currentLang === 'tr' ? option.word : translateLabel(option.word, currentLang));
+                        const hintSpokenWord = i18nLabel || (currentLang === 'tr' ? option.word : translateLabel(option.word, currentLang));
 
                         return (
                             <div

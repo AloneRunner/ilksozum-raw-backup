@@ -87,8 +87,9 @@ const generateAllPairs = (n: number): [number, number][] => {
   return pairs;
 };
 
-// Her girişte 8 rasgele soru gelsin
-const MAX_TURNS = 8;
+// Per-round turns should match the number of unique pairs for the current
+// set of items (e.g., for 4 items there are 6 pairs). Compute dynamically
+// so the UI and logic reflect actual available comparisons.
 
 const RelativeComparisonActivity: React.FC<Props> = ({
   data,
@@ -113,6 +114,10 @@ const RelativeComparisonActivity: React.FC<Props> = ({
     if (items.length < 2) return [];
     return generateAllPairs(items.length);
   }, [items.length]);
+
+  const maxTurns = useMemo(() => {
+    return allPossiblePairs.length || 1;
+  }, [allPossiblePairs.length]);
 
   const startNewTurn = useCallback(() => {
     if (allPossiblePairs.length === 0) return;
@@ -248,7 +253,7 @@ const RelativeComparisonActivity: React.FC<Props> = ({
         onAdvance(true);
       }, 500);
 
-      if (newTurnCount >= MAX_TURNS) {
+      if (newTurnCount >= maxTurns) {
         // 8 soru tamamlandı, aktivite bitti
         // onAdvance zaten yukarıda çağrıldı
       } else {
@@ -339,7 +344,7 @@ const RelativeComparisonActivity: React.FC<Props> = ({
         </p>
         <p className="text-base font-medium text-teal-700">{questionText}</p>
         <p className="text-xs text-slate-500">
-          {currentCard}/{totalCards} | {t('app.turn', 'Tur')}: {turnCount + 1} / {MAX_TURNS}
+          {t('experimental.relativeComparison.activityLabel', 'Etkinlik')}: {currentCard}/{totalCards}
         </p>
       </div>
 

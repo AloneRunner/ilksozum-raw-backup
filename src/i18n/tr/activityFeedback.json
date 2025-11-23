@@ -1,0 +1,414 @@
+{
+  "activityFeedback": {
+    "correct": "Doğru",
+    "incorrect": "Yanlış",
+    "goodJob": "Aferin!",
+    "tryAgain": "Tekrar dene",
+    "wellDone": "İyi iş",
+    "almost": "Neredeyse",
+    "keepGoing": "Devam et",
+    "notQuite": "Henüz değil",
+    "excellent": "Mükemmel",
+    "nice": "Güzel",
+    "oops": "Hop",
+    "causeEffect": {
+      "1": {
+        "correct": "Doğru! Yağmur yağdığında şemsiye açarız.",
+        "wrong": "Hayır, güneş gözlüğü güneşli havalarda kullanılır."
+      },
+      "2": {
+        "correct": "Doğru! Dondurma güneşte erir.",
+        "wrong": "Hayır, dondurma karda donmaz; zaten soğuktur."
+      },
+      "3": {
+        "correct": "Doğru! Bir tohum toprakta büyür ve bitki olur.",
+        "wrong": "Hayır, kütük ağaçların kesilmesiyle elde edilir, tohumdan olmaz."
+      },
+      "4": {
+        "correct": "Doğru! Eller sabunla yıkanarak temizlenir.",
+        "wrong": "Hayır, onlar kirli eller; temizlenmeleri gerekir."
+      },
+      "5": {
+        "correct": "Doğru! Yumurta düşerse kırılır.",
+        "wrong": "Hayır, civcivler yumurtadan düşerek değil, kuluçka ile çıkar."
+      },
+      "6": {
+        "correct": "Doğru! Ateş odun yakarak yanar.",
+        "wrong": "Hayır, taşlar yanmaz; ateş için odun gerekir."
+      },
+      "7": {
+        "correct": "Doğru! Vazo çekiçle vurulunca kırılır.",
+        "wrong": "Hayır, vazolara su doldurulur; çekiçle kırılmazlar amaçlı olarak."
+      },
+      "8": {
+        "correct": "Doğru! Kar yağdığında bere takarız; bizi sıcak tutar.",
+        "wrong": "Hayır, şort sıcak havalarda giyilir; kışın değil."
+      },
+      "9": {
+        "correct": "Doğru! Bebek acıktığında süt içer.",
+        "wrong": "Hayır, oyuncaklar eğlence içindir; açlık için süt gerekir."
+      },
+      "10": {
+        "correct": "Doğru! Gömlek ütülenerek düzeltilir.",
+        "wrong": "Hayır, makas kesmek içindir; düzeltmek için ütü gerekir."
+      },
+      "11": {
+        "correct": "Doğru! Gece olunca uyumak için yatağa gideriz.",
+        "wrong": "Hayır, toplar gündüz oyun içindir; gece uyumak içindir."
+      },
+      "12": {
+        "correct": "Doğru! Çiçekler su ile büyür ve gelişir.",
+        "wrong": "Hayır, makas kesmek içindir; çiçeklerin büyümesi için su gereklidir."
+      },
+      "13": {
+        "correct": "Doğru! Kitap okuyarak yeni şeyler öğreniriz.",
+        "wrong": "Hayır, topla oynamak eğlencelidir ama öğrenmek için kitap okumak gerekir."
+      },
+      "14": {
+        "correct": "Doğru! Balon şişirildiğinde büyür.",
+        "wrong": "Hayır, taşlar serttir; şişirilemezler."
+      },
+      "15": {
+        "correct": "Doğru! Hamur pişirildiğinde ekmek olur.",
+        "wrong": "Hayır, buzdolapları soğutmak için kullanılır; pişirmek için fırın gerekir."
+      },
+      "correct": "Harika iş!",
+      "wrong": "Tekrar dene."
+    },
+    "functionalMatching": {
+      "1": {
+        "correct": "Çekiçle çivi çakarız."
+      },
+      "2": {
+        "correct": "Dişlerimizi diş macunu ile fırçalarız."
+      },
+      "3": {
+        "correct": "Çoraptan sonra ayakkabı giyeriz."
+      },
+      "4": {
+        "correct": "Yastığı yatakta kullanırız."
+      },
+      "5": {
+        "correct": "Çorbayı kaşıkla içeriz."
+      },
+      "6": {
+        "correct": "Resmi fırça ile boyarız."
+      },
+      "7": {
+        "correct": "Kağıda kalemle yazarız."
+      },
+      "8": {
+        "correct": "Kapıyı anahtarla açarız."
+      },
+      "9": {
+        "correct": "Makarna çatalla yenir."
+      },
+      "10": {
+        "correct": "Parayı kumbaraya koyarız."
+      },
+      "11": {
+        "correct": "Saçımızı tarakla tararız."
+      },
+      "12": {
+        "correct": "Kitabı masada okuruz."
+      },
+      "13": {
+        "correct": "Kağıdı makasla keseriz."
+      },
+      "14": {
+        "correct": "Ekmeği bıçakla keseriz."
+      },
+      "15": {
+        "correct": "Ellerimizi sabunla yıkarız."
+      },
+      "correct": "Harika iş! Doğru eşleştirme!",
+      "wrong": "Bu doğru değil."
+    },
+    "whatDoesntBelong": {
+      "1": {
+        "correct": "Evet, {item} farklı.",
+        "wrong": "Hayır, bu aynı."
+      },
+      "2": {
+        "correct": "Evet, {item} farklı.",
+        "wrong": "Hayır, bu aynı."
+      },
+      "3": {
+        "correct": "Evet, {item} farklı.",
+        "wrong": "Hayır, bu aynı."
+      },
+      "4": {
+        "correct": "Evet, {item} farklı.",
+        "wrong": "Hayır, bu aynı."
+      },
+      "5": {
+        "correct": "Evet, {item} bir taşıt; diğerleri meyve.",
+        "wrong": "Hayır, {item} bir meyve."
+      },
+      "6": {
+        "correct": "Evet, {item} bir giysi; diğerleri hayvan.",
+        "wrong": "Hayır, {item} bir hayvan."
+      },
+      "7": {
+        "correct": "Evet, {item} bir giysi; diğerleri taşıt.",
+        "wrong": "Hayır, {item} bir taşıt."
+      },
+      "8": {
+        "correct": "Evet, {item} bir oyuncak; diğerleri müzik aleti.",
+        "wrong": "Hayır, {item} bir müzik aleti."
+      },
+      "9": {
+        "correct": "Evet, {item} bir meyve; diğerleri sebze.",
+        "wrong": "Hayır, {item} bir sebze."
+      },
+      "10": {
+        "correct": "Evet, {item} doğal bir nesne; diğerleri şekil.",
+        "wrong": "Hayır, {item} bir şekil."
+      },
+      "11": {
+        "correct": "Evet, {item} bir çocuk; diğerleri meslek.",
+        "wrong": "Hayır, {item} bir meslek."
+      },
+      "12": {
+        "correct": "Evet, {item} bir nesne; diğerleri mobilya.",
+        "wrong": "Hayır, {item} bir mobilya."
+      },
+      "13": {
+        "correct": "Evet, {item} bir mutfak eşyası; diğerleri banyo eşyası.",
+        "wrong": "Hayır, {item} bir banyo eşyası."
+      },
+      "14": {
+        "correct": "Evet, {item} bir nesne; diğerleri canlı varlık.",
+        "wrong": "Hayır, {item} bir canlı varlık."
+      },
+      "15": {
+        "correct": "Evet, {item} bir alet; diğerleri çatal-bıçak takımı.",
+        "wrong": "Hayır, {item} çatal-bıçak takımına aittir."
+      },
+      "16": {
+        "correct": "Evet, {item} bir yiyecek; diğerleri hayvan.",
+        "wrong": "Hayır, {item} bir hayvan."
+      },
+      "17": {
+        "correct": "Evet, {item} bir içecek; diğerleri meyve.",
+        "wrong": "Hayır, {item} bir meyve."
+      },
+      "18": {
+        "correct": "Evet, {item} bir renk; diğerleri oyuncak.",
+        "wrong": "Hayır, {item} bir oyuncak."
+      },
+      "19": {
+        "correct": "Evet, {item} bir hava durumu; diğerleri giysi.",
+        "wrong": "Hayır, {item} bir giysi."
+      },
+      "20": {
+        "correct": "Evet, {item} bir bina; diğerleri taşıt.",
+        "wrong": "Hayır, {item} bir taşıt."
+      },
+      "correct": "Evet, {item} farklı.",
+      "wrong": "Hayır, bu aynı."
+    },
+    "fiveWOneH": {
+      "q_who_to_when_sick": {
+        "correct": "Evet! Hasta olduğumuzda doktora gideriz.",
+        "wrong": "Hayır, hasta olduğumuzda oraya gitmeyiz."
+      },
+      "q_who_to_when_fire": {
+        "correct": "Doğru! Yangında itfaiyeyi ararız.",
+        "wrong": "Hayır, yangında itfaiyeyi aramalıyız."
+      },
+      "q_who_uses_this": {
+        "correct": "Evet! Bir öğretmen kara tahtayı kullanır.",
+        "wrong": "Hayır, genellikle bir öğretmen tarafından kullanılır."
+      },
+      "q_who_brings_letter": {
+        "correct": "Doğru! Postacı mektubu getirir.",
+        "wrong": "Hayır, postacı mektubu getirir."
+      },
+      "q_what_brush_teeth_with": {
+        "correct": "Evet! Dişlerimizi diş macunu ile fırçalarız.",
+        "wrong": "Hayır, dişlerimizi onunla fırçalamayız."
+      },
+      "q_what_eat_with": {
+        "correct": "Doğru! Yemek için çatal kullanırız.",
+        "wrong": "Hayır, yemek için onu kullanmayız."
+      },
+      "q_where_doctor_works": {
+        "correct": "Evet! Bir doktor hastanede çalışır.",
+        "wrong": "Hayır, bir doktor hastanede çalışır."
+      },
+      "q_where_is_swing": {
+        "correct": "Doğru! Salıncak oyun parkındadır.",
+        "wrong": "Hayır, salıncak oyun parkındadır."
+      },
+      "q_where_do_we_sleep": {
+        "correct": "Evet! Bir yatakta uyuruz.",
+        "wrong": "Hayır, orada uyumayız."
+      },
+      "q_where_fish_lives": {
+        "correct": "Evet! Balıklar bir akvaryumda yaşar.",
+        "wrong": "Hayır, balıklar orada yaşamaz."
+      },
+      "q_when_see_owl": {
+        "correct": "Doğru! Baykuşları gece görürüz.",
+        "wrong": "Hayır, baykuşlar genellikle gece görülür."
+      },
+      "q_when_use_umbrella": {
+        "correct": "Evet! Yağmur yağdığında şemsiye kullanırız.",
+        "wrong": "Hayır, o zaman şemsiye kullanmayız."
+      },
+      "q_when_wear_beanie": {
+        "correct": "Doğru! Kar yağdığında bere takarız.",
+        "wrong": "Hayır, o zaman bere takmayız."
+      },
+      "q_why_icecream_melted": {
+        "correct": "Evet! Dondurma güneş yüzünden erir.",
+        "wrong": "Hayır, dondurmanın erime sebebi bu değil."
+      },
+      "q_why_clothes_neat": {
+        "correct": "Doğru! Çünkü ütülendiler.",
+        "wrong": "Hayır, bu onları düzgün yapmaz."
+      },
+      "q_how_go_to_school": {
+        "correct": "Evet! Okula okul otobüsüyle gideriz.",
+        "wrong": "Hayır, genellikle o şekilde gitmeyiz."
+      },
+      "q_how_open_door": {
+        "correct": "Evet! Kapıyı bir anahtarla açarız.",
+        "wrong": "Hayır, kapıyı onunla açmayız."
+      },
+      "q_how_baby_feels": {
+        "correct": "Doğru! Bebek üzgün hissediyor.",
+        "wrong": "Hayır, bebek o şekilde hissetmiyor."
+      },
+      "q_where_is_sleeping_child": {
+        "correct": "Evet! Genellikle bir yatakta uyuruz.",
+        "wrong": "Hayır, genellikle bir yatakta uyuruz."
+      },
+      "q_why_child_wants_play": {
+        "correct": "Doğru! Eğlenmek ve arkadaşlarla oynamak için.",
+        "wrong": "Hayır, genellikle arkadaşlarla eğlenmek için."
+      },
+      "q_where_child_wants_to_go_outside": {
+        "correct": "Evet! Çocuk parka gitmek isteyebilir.",
+        "wrong": "Hayır, genellikle park istenir."
+      },
+      "q_why_child_tired": {
+        "correct": "Doğru! Uzun süre oyun oynamaktan veya az uyumaktan.",
+        "wrong": "Hayır, genellikle uzun aktivite veya az uykudan."
+      },
+      "q_where_child_wants_go_park": {
+        "correct": "Evet! Parka gitmek istiyor.",
+        "wrong": "Hayır, farklı bir yere değil."
+      },
+      "q_how_child_prefers_drive": {
+        "correct": "Doğru! Emniyet kemeri takarak ve bir ebeveynle.",
+        "wrong": "Hayır, bir yetişkinle güvenli bir şekilde olmalı."
+      },
+      "q_when_rhino_active": {
+        "correct": "Doğru! Türüne bağlı olarak, gündüz veya alacakaranlıkta.",
+        "wrong": "Hayır, genellikle gece değil."
+      },
+      "q_where_camels_live": {
+        "correct": "Evet! Çöllerde ve kurak bölgelerde yaşarlar.",
+        "wrong": "Hayır, genellikle çöllerde yaşarlar."
+      },
+      "q_where_fish_live_915": {
+        "correct": "Evet! Suda yaşarlar.",
+        "wrong": "Hayır, su dışında yaşayamazlar."
+      },
+      "q_when_bears_hibernate": {
+        "correct": "Doğru! Kış boyunca uyurlar.",
+        "wrong": "Hayır, kış mevsiminde uyurlar."
+      },
+      "q_who_flies_plane": {
+        "correct": "Evet! Bir pilot uçağı kullanır.",
+        "wrong": "Hayır, onlar uçağı kullanmaz."
+      },
+      "q_who_cuts_hair": {
+        "correct": "Doğru! Bir berber saçımızı keser.",
+        "wrong": "Hayır, onlar saçımızı kesmez."
+      },
+      "q_who_provides_milk": {
+        "correct": "Evet! Sütü bir çiftçi sağlar.",
+        "wrong": "Hayır, genellikle bir çiftçi tarafından sağlanır."
+      },
+      "q_what_erase_text": {
+        "correct": "Doğru! Silmek için bir silgi kullanırız.",
+        "wrong": "Hayır, onunla silmeyiz."
+      },
+      "q_what_measure_height": {
+        "correct": "Evet! Boyu ölçmek için bir cetvel kullanırız.",
+        "wrong": "Hayır, boyu onunla ölçmeyiz."
+      },
+      "q_what_dry_after_bath": {
+        "correct": "Doğru! Banyodan sonra bir havlu ile kurulanırız.",
+        "wrong": "Hayır, onunla kurulanmayız."
+      },
+      "q_where_to_eat": {
+        "correct": "Evet! Yemek için bir restorana gideriz.",
+        "wrong": "Hayır, yemek için oraya gitmeyiz."
+      },
+      "q_where_to_read_books": {
+        "correct": "Doğru! Kitap okumak için kütüphaneye gidebiliriz.",
+        "wrong": "Hayır, kitap okumak için iyi bir yer değil."
+      },
+      "q_where_to_shop": {
+        "correct": "Evet! Marketten alışveriş yaparız.",
+        "wrong": "Hayır, orada alışveriş yapmayız."
+      },
+      "q_when_go_to_bed": {
+        "correct": "Doğru! Gece yatağa gideriz.",
+        "wrong": "Hayır, o zaman yatağa gitmeyiz."
+      },
+      "q_when_go_to_beach": {
+        "correct": "Evet! Hava güneşliyken plaja gideriz.",
+        "wrong": "Hayır, o zaman plaja gitmeyiz."
+      },
+      "q_when_make_snowman": {
+        "correct": "Doğru! Kar yağdığında kardan adam yaparız.",
+        "wrong": "Hayır, o zaman kardan adam yapmayız."
+      },
+      "q_why_child_cold": {
+        "correct": "Evet! Çünkü hava soğuk.",
+        "wrong": "Hayır, üşümelerinin sebebi bu değil."
+      },
+      "q_why_hair_wet": {
+        "correct": "Doğru! Duş aldığı için ıslak.",
+        "wrong": "Hayır, ıslak olmasının sebebi bu değil."
+      },
+      "q_how_reach_high_shelf": {
+        "correct": "Evet! Ulaşmak için bir merdiven kullanırız.",
+        "wrong": "Hayır, onunla ulaşamayız."
+      },
+      "q_how_travel_at_sea": {
+        "correct": "Doğru! Denizde gemiyle seyahat ederiz.",
+        "wrong": "Hayır, genellikle denizde onunla seyahat etmeyiz."
+      },
+      "q_how_clean_room": {
+        "correct": "Evet! Odayı bir temizlik kovası ve malzemeleriyle temizleriz.",
+        "wrong": "Hayır, odayı onunla temizlemeyiz."
+      },
+      "q_what_do_we_drink_water_with": {
+        "correct": "Evet! Suyu bir bardakla içeriz.",
+        "wrong": "Hayır, suyu onunla içmeyiz."
+      },
+      "q_where_do_we_store_books": {
+        "correct": "Doğru! Onları bir kitaplığa koyarız.",
+        "wrong": "Hayır, kitapları bir kitaplığa koyarız."
+      },
+      "q_when_use_sunscreen": {
+        "correct": "Evet! Hava güneşliyken kullanırız.",
+        "wrong": "Hayır, genellikle hava güneşliyken kullanırız."
+      },
+      "q_why_wash_hands": {
+        "correct": "Doğru! Temiz olmak ve mikroplardan korunmak için.",
+        "wrong": "Hayır, ellerimizi temiz olmak için yıkarız."
+      },
+      "q_how_dry_hands": {
+        "correct": "Evet! Onları bir havlu ile kurularız.",
+        "wrong": "Hayır, elleri bir havlu ile kurularız."
+      }
+    }
+  }
+}

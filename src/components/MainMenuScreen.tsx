@@ -11,6 +11,7 @@ import DevelopmentNotesCard from "./DevelopmentNotesCard.tsx";
 import StoryIcon from "./icons/StoryIcon.tsx";
 import BasketIcon from "./icons/BasketIcon.tsx";
 import SparklesIcon from "./icons/SparklesIcon.tsx";
+import SpeakerIcon from "./icons/SpeakerIcon.tsx";
 import SudokuIcon from "./icons/SudokuIcon.tsx";
 import EyeIcon from "./icons/EyeIcon.tsx";
 import StarIcon from "./icons/StarIcon.tsx";
@@ -27,7 +28,8 @@ type MainMenuCategory =
   | "fiveWOneH"
   | "fineMotor"
   | "relativeComparison"
-  | "programMode";
+  | "programMode"
+  | "soundImitation";
 
 interface MainMenuScreenProps {
   onSelectCategory: (category: MainMenuCategory) => void;
@@ -279,6 +281,14 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
       subtitle: t('experimental.relativeComparison.instruction', 'Açılan iki kartı karşılaştır ve soruyu cevapla.'),
       color: 'teal' as const,
     },
+    {
+      id: 'soundImitation' as const,
+      icon: SpeakerIcon,
+      title: t('menu.soundImitation.title', 'Ses Taklit Kartları'),
+      subtitle: t('menu.soundImitation.subtitle', 'Konuşamayan çocuklar için ses taklit kartları'),
+      badge: t('menu.soundImitation.badge', 'Yeni — Deneme Etkinliği'),
+      color: 'sky' as const,
+    },
   ];
 
   const textColorClass = specialPalette
@@ -366,16 +376,22 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
             <div className="grid grid-cols-2 gap-6 sm:gap-8 justify-items-center items-start">
             {/* Random Mode */}
             <CosmicOrb icon={StarIcon} title={t('menu.random.title','Rastgele Mod')} onClick={onStartRandomMode} palette={'sun' as any} size="xl" showOrbit />
-            {menuItems.map((item) => (
-              <CosmicOrb
-                key={item.id}
-                icon={item.icon}
-                title={item.title}
-                onClick={() => onSelectCategory(item.id)}
-                palette={paletteFor(item.id)}
-                size="xl"
-                showOrbit
-              />
+            {/* Explicit Program Mode orb so it always appears */}
+            <CosmicOrb icon={AcademicCapIcon} title={t('programMode.menuTitle','Program Modu (Deneme)')} onClick={() => onSelectCategory('programMode')} palette={paletteFor('programMode')} size="xl" showOrbit />
+            {menuItems.filter(i => i.id !== 'programMode').map((item) => (
+              <div key={item.id} className="relative">
+                <CosmicOrb
+                  icon={item.icon}
+                  title={item.title}
+                  onClick={() => onSelectCategory(item.id)}
+                  palette={paletteFor(item.id)}
+                  size="xl"
+                  showOrbit
+                />
+                {item.id === 'soundImitation' && item.badge && (
+                  <span className="absolute -top-2 -right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow">{item.badge}</span>
+                )}
+              </div>
             ))}
             <CosmicOrb icon={PersonIcon} title={t('menu.parentTips.title','Ebeveyn İpuçları')} onClick={onSelectParentTips} palette={'galaxy' as any} size="xl" showOrbit />
             </div>
@@ -444,7 +460,7 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                 <div className="relative cursor-pointer" onClick={onStartRandomMode}>
                   {/* Jellyfish body - bell shape */}
                   <div className="relative w-32 h-24 sm:w-36 sm:h-28">
-                    <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-rose-400/80 via-pink-500/80 to-purple-600/80 rounded-t-full blur-sm animate-pulse" />
+                    <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-cyan-400/80 via-blue-500/80 to-teal-600/80 rounded-t-full blur-sm animate-pulse" />
                     <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-rose-300/60 via-pink-400/60 to-purple-500/60 rounded-t-full border-t border-rose-200/30" />
                   </div>
                   <div className="absolute inset-x-0 top-4 flex items-center justify-center">
@@ -473,7 +489,38 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                 </div>
               </div>
 
-              {menuItems.map((item, idx) => (
+                {/* Program Mode (explicit) */}
+                <div className="flex flex-col items-center">
+                  <div className="relative cursor-pointer" onClick={() => onSelectCategory('programMode')}>
+                    <div className="relative w-32 h-24 sm:w-36 sm:h-28">
+                      <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-amber-400/80 via-amber-500/80 to-rose-500/80 rounded-t-full blur-sm animate-pulse" />
+                      <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-br from-amber-300/60 via-amber-400/60 to-rose-400/60 rounded-t-full border-t border-amber-200/30" />
+                    </div>
+                    <div className="absolute inset-x-0 top-4 flex items-center justify-center">
+                      <AcademicCapIcon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]" />
+                    </div>
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-20 h-12">
+                      {Array.from({ length: 8 }, (_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-0.5 bg-gradient-to-b from-amber-400/60 via-amber-300/40 to-transparent animate-tentacle"
+                          style={{
+                            left: `${i * 12.5 + 6}%`,
+                            height: `${25 + Math.random() * 15}px`,
+                            animationDelay: `${i * 0.15}s`,
+                            transformOrigin: 'top',
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <div className="absolute inset-0 -m-4 rounded-2xl hover:bg-cyan-400/10 transition-colors duration-200" />
+                  </div>
+                  <div className="mt-2 px-3 py-1 bg-amber-500/20 rounded-full text-xs text-amber-200">
+                    {t('programMode.menuTitle','Program Modu')}
+                  </div>
+                </div>
+
+                {menuItems.filter(i => i.id !== 'programMode').map((item, idx) => (
                 <div key={item.id} className="flex flex-col items-center">
                   <div className="relative cursor-pointer" onClick={() => onSelectCategory(item.id)}>
                     {/* Jellyfish body - bell shape */}
@@ -485,8 +532,8 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                         idx === 3 ? 'bg-gradient-to-br from-emerald-400/80 via-teal-500/80 to-cyan-600/80' :
                         idx === 4 ? 'bg-gradient-to-br from-indigo-400/80 via-purple-500/80 to-blue-600/80' :
                         idx === 5 ? 'bg-gradient-to-br from-purple-400/80 via-violet-500/80 to-indigo-600/80' :
-                        idx === 6 ? 'bg-gradient-to-br from-violet-400/80 via-fuchsia-500/80 to-purple-600/80' :
-                        'bg-gradient-to-br from-fuchsia-400/80 via-rose-500/80 to-pink-600/80'
+                        idx === 6 ? 'bg-gradient-to-br from-indigo-400/80 via-blue-500/80 to-cyan-600/80' :
+                        'bg-gradient-to-br from-cyan-400/80 via-blue-500/80 to-teal-600/80'
                       }`} style={{ animationDelay: `${idx * 0.5}s` }} />
                       <div className={`absolute inset-x-0 top-0 h-16 sm:h-20 rounded-t-full border-t border-white/20 ${
                         idx === 0 ? 'bg-gradient-to-br from-cyan-300/60 via-blue-400/60 to-teal-500/60' :
@@ -528,6 +575,9 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                     </div>
                     {/* Invisible overlay for better click area */}
                     <div className="absolute inset-0 -m-4 rounded-2xl hover:bg-cyan-400/10 transition-colors duration-200" />
+                    {item.id === 'soundImitation' && item.badge && (
+                      <span className="absolute -top-2 -right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow">{item.badge}</span>
+                    )}
                   </div>
                   <div className="mt-2 px-3 py-1 bg-cyan-500/20 rounded-full text-xs text-cyan-200">
                     {item.title.split(' ')[0]}
@@ -641,25 +691,37 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
             color="rose"
             theme={theme}
           />
-          {menuItems.map((item) => (
-            <MenuButton
-              key={item.id}
-              icon={item.icon}
-              title={item.title}
-              subtitle={item.subtitle}
-              onClick={() => onSelectCategory(item.id)}
-              color={item.color}
-              theme={theme}
+          {/* Explicit Program Mode button placed directly under Random Mode */}
+          <MenuButton
+            icon={AcademicCapIcon}
+            title={t('programMode.menuTitle', 'Program Modu (Deneme)')}
+            subtitle={t('programMode.menuSubtitle', 'Uzman planıyla günlük oturum başlat')}
+            onClick={() => onSelectCategory('programMode')}
+            color="emerald"
+            theme={theme}
+          >
+            <span
+              className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-white/85 border border-emerald-200 px-2 py-0.5 text-xs font-semibold text-emerald-700 shadow-sm"
+              aria-label={t('programMode.units', 'Üniteler')}
             >
-              {item.id === 'programMode' && (
-                <span
-                  className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-white/85 border border-emerald-200 px-2 py-0.5 text-xs font-semibold text-emerald-700 shadow-sm"
-                  aria-label={t('programMode.units', 'Üniteler')}
-                >
-                  📚 {t('programMode.unitsCount', '{count} Ünite').replace('{count}', '10')}
-                </span>
+              📚 {t('programMode.unitsCount', '{count} Ünite').replace('{count}', '10')}
+            </span>
+          </MenuButton>
+
+          {menuItems.filter(i => i.id !== 'programMode').map((item) => (
+            <div key={item.id} className="relative">
+              <MenuButton
+                icon={item.icon}
+                title={item.title}
+                subtitle={item.subtitle}
+                onClick={() => onSelectCategory(item.id)}
+                color={item.color}
+                theme={theme}
+              />
+              {item.id === 'soundImitation' && item.badge && (
+                <span className="absolute top-2 right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow">{item.badge}</span>
               )}
-            </MenuButton>
+            </div>
           ))}
           {lang !== "tr" && (
             <div className="col-span-1 sm:col-span-2 landscape:col-span-3 text-center text-xs text-slate-500 mt-1">

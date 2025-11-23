@@ -65,37 +65,34 @@ self.addEventListener('fetch', (event) => {
         }
 
         return fetch(event.request).then((networkResponse) => {
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-                // For non-basic requests (like from CDNs), we can't cache them but should still return them.
-                if (event.request.url.startsWith('https://')) {
-                   return networkResponse;
+            if (!networkResponse) return networkResponse;
+
+            // Only cache full 200 OK responses from http(s) origins.
+            // Skip partial (206) responses or other non-OK statuses which may
+            // cause cache.put to throw in some browsers.
+            const shouldCache = networkResponse.status === 200 && (networkResponse.type === 'basic' || networkResponse.type === 'cors');
+
+            if (shouldCache) {
+                const responseToCache = networkResponse.clone();
+                try {
+                    const reqUrl = new URL(event.request.url);
+                    if (reqUrl.protocol === 'http:' || reqUrl.protocol === 'https:') {
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, responseToCache).catch((err) => {
+                                console.warn('[Service Worker] cache.put failed, skipping:', err);
+                            });
+                        }).catch(err => {
+                            console.warn('[Service Worker] open cache failed:', err);
+                        });
+                    }
+                } catch (err) {
+                    console.warn('[Service Worker] Skipping cache for request:', event.request.url, err);
                 }
+            } else {
+                // Don't attempt to cache partial or non-OK responses (206, 302, 404, etc.)
+                // Return them directly to the page without caching.
             }
 
-            const responseToCache = networkResponse.clone();
-
-            // Only attempt to cache http(s) requests. Some requests may come from
-            // chrome-extension:// or other unsupported schemes which will throw
-            // when passed to Cache.put. Skip those and swallow cache errors.
-            try {
-              const reqUrl = new URL(event.request.url);
-              if (reqUrl.protocol === 'http:' || reqUrl.protocol === 'https:') {
-                caches.open(CACHE_NAME).then((cache) => {
-                  cache.put(event.request, responseToCache).catch((err) => {
-                    console.warn('[Service Worker] cache.put failed, skipping:', err);
-                  });
-                }).catch(err => {
-                  console.warn('[Service Worker] open cache failed:', err);
-                });
-              } else {
-                // Non-http(s) scheme — skip caching.
-                // This avoids errors like: Request scheme 'chrome-extension' is unsupported
-              }
-            } catch (err) {
-              // If URL parsing fails or cache operations throw synchronously, ignore.
-              console.warn('[Service Worker] Skipping cache for request:', event.request.url, err);
-            }
-            
             return networkResponse;
         });
       })

@@ -1,11 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { ActivityType, ActivityStats, AttemptRecord, ActivityCategory } from '../types.ts';
 import { ALL_SUB_ACHIEVEMENTS, LETTER_GROUPS, OBJECT_CATEGORIES, LETTER_SOUND_ACTIVITIES } from '../constants.ts';
+import { getActivityMetadata } from '../constants/activityMetadata';
 import { createObjectChoiceRounds, fetchConceptActivityData, fetchLetterActivityData, fetchSyllableWordsForGroup, fetchFiveWOneHBySubKey } from '../services/contentService.ts';
 import { shuffleArray } from '../utils.ts';
 import { t, getCurrentLanguage } from '../i18n/index.ts';
 import { buildDailySession, getRecommendedSessionLength } from '../services/sessionBuilder';
-import { getUnlockedUnits } from '../services/masteryEngine';
+import { getUnitDefinition } from '../constants/unitDefinitions';
+import { getUnlockedUnits, getUnlockedUnitsForProgramMode } from '../services/masteryEngine';
 import { getAllowedUnitCeiling, recordUnitAdvanced } from '../services/progressionPolicy';
 
 interface UseActivityProps {
@@ -23,6 +25,7 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
     const [activityData, setActivityData] = useState<any[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
+    const [advanceCount, setAdvanceCount] = useState(0);
     const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
     const [selectedGroup, setSelectedGroup] = useState<number | null>(null);
     const [selectedObjectCategory, setSelectedObjectCategory] = useState<{ id: string; title: string } | null>(null);
@@ -46,6 +49,7 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         setActivityData([]);
         setCurrentIndex(0);
         setScore(0);
+        setAdvanceCount(0);
         setSelectedLetter(null);
         setSelectedGroup(null);
         setSelectedObjectCategory(null);
@@ -213,10 +217,10 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
             Object.keys(activityStats).filter(id => activityStats[id]?.completions > 0).length
         );
         const masteredObjectCategories = new Set<string>(); // TODO: derive from stats if needed
-        const unlockedUnits = getUnlockedUnits(activityStats, masteredObjectCategories);
-        const ceiling = activeProfileId ? getAllowedUnitCeiling(activeProfileId, unlockedUnits) : undefined;
-        
         const parentOverrides = activeProfileId ? JSON.parse(window.localStorage.getItem(`parentOverrides_profile_${activeProfileId}`) || '[]') : undefined;
+        const unlockedUnits = getUnlockedUnitsForProgramMode(activityStats, masteredObjectCategories, parentOverrides, 6);
+        const ceiling = activeProfileId ? getAllowedUnitCeiling(activeProfileId, unlockedUnits) : undefined;
+
         const session = buildDailySession(
             activityStats,
             masteredObjectCategories,
@@ -248,7 +252,151 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         return true;
     }, [showToast, startNextRandomActivity, handleGoToMenu, activityStats, activeProfileId]);
 
+    // Reinforcement-only starter: prefer weak items from focus unit, fallback to previous weak candidates
+    const handleStartReinforcementMode = useCallback(async () => {
+        // Build a session to learn the focus unit
+        const sessionLength = getRecommendedSessionLength(
+            Object.keys(activityStats).filter(id => activityStats[id]?.completions > 0).length
+        );
+        const masteredObjectCategories = new Set<string>();
+        const parentOverrides = activeProfileId ? JSON.parse(window.localStorage.getItem(`parentOverrides_profile_${activeProfileId}`) || '[]') : undefined;
+        const unlockedUnits = getUnlockedUnitsForProgramMode(activityStats, masteredObjectCategories, parentOverrides, 6);
+        const ceiling = activeProfileId ? getAllowedUnitCeiling(activeProfileId, unlockedUnits) : undefined;
+        const session = buildDailySession(
+            activityStats,
+            masteredObjectCategories,
+            undefined,
+            sessionLength,
+            isPremium ? undefined : ceiling,
+            parentOverrides
+        );
+
+        // Helper: success rate computation (mirror of sessionBuilder)
+        const successOf = (id: ActivityType | string): number => {
+            const stats = activityStats[String(id)];
+            if (!stats) return 0;
+            let correct = stats.totalCorrect || 0;
+            let total = stats.totalQuestions || 0;
+            if (total === 0) {
+                const hist = (stats.history || []).filter(h => h.total > 0);
+                for (const h of hist) { correct += h.score; total += h.total; }
+            }
+            return total > 0 ? correct / total : 0;
+        };
+
+        const focusUnit = session.focusUnit || 1;
+        const unitDef = getUnitDefinition(focusUnit);
+        const focusActivities = (unitDef?.activities || []) as (ActivityType | string)[];
+
+                // Weak candidates from focus unit: success < 0.80 (include zeros so reinforcement appears
+                // even when a child kept failing and the percentage stuck just below threshold).
+                const weakFocus = focusActivities.filter(a => {
+                        const s = successOf(a);
+                        return s < 0.80;
+                }).sort((a,b) => successOf(b) - successOf(a));
+
+                // Debugging: log per-activity success to help trace why reinforcement may not appear
+                try {
+                    console.debug('[Reinforcement] focusUnit', focusUnit, 'focusActivities', focusActivities.map(a => ({ id: String(a), success: successOf(a) })));
+                } catch (e) {
+                    // ignore debug failures in older environments
+                }
+
+        // Check for parent/manual reinforcement selections persisted by ProgramModeIntroScreen
+        let queue: (ActivityType | string)[] = [];
+        try {
+            const manualKey = activeProfileId ? `manual_reinforcement_profile_${activeProfileId}` : null;
+            if (manualKey) {
+                const raw = window.localStorage.getItem(manualKey);
+                if (raw) {
+                    const arr = JSON.parse(raw) as string[];
+                    if (Array.isArray(arr) && arr.length > 0) {
+                        // Resolve stored values to canonical activity ids where possible
+                        const resolved: (ActivityType | string)[] = [];
+                        const invalid: string[] = [];
+                        for (const entry of arr) {
+                            // Try to match by id or by name
+                            const found = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(entry) || String(sa.name) === String(entry));
+                            if (found) resolved.push(found.id);
+                            else {
+                                // If the entry looks like a numeric id that exists as metadata, keep it; otherwise mark invalid
+                                const maybe = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(Number(entry)));
+                                if (maybe) resolved.push(maybe.id);
+                                else invalid.push(String(entry));
+                            }
+                        }
+                        if (invalid.length > 0) {
+                            console.warn('[Reinforcement] Ignoring unrecognized manual reinforcement ids:', invalid);
+                        }
+                        // Filter manual picks to unlocked units only (allow previous unit activities if unlocked)
+                        const filteredByUnit: (ActivityType | string)[] = [];
+                        const ignoredByUnit: string[] = [];
+                        for (const r of resolved) {
+                            const md = getActivityMetadata(r as any);
+                            if (md && unlockedUnits.has(md.unitNumber)) filteredByUnit.push(r);
+                            else ignoredByUnit.push(String(r));
+                        }
+                        if (ignoredByUnit.length > 0) {
+                            console.warn('[Reinforcement] Manual picks ignored because not in unlocked units', ignoredByUnit);
+                            try {
+                                showToast(`Bazı manuel seçimler kilitli ünitelerde ve dikkate alınmadı.`, 'info', 3500);
+                            } catch (e) {}
+                        }
+                        if (filteredByUnit.length > 0) queue = filteredByUnit;
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('Failed to read manual reinforcement from localStorage in reinforcement starter', e);
+        }
+
+        if (queue.length === 0) {
+            if (weakFocus.length > 0) {
+                queue = weakFocus.slice(0, 3).map(a => a);
+            } else {
+                // fallback to session reinforcement roles (previous units)
+                const fallback = session.activities.filter(a => a.sessionRole === 'reinforcement').map(a => a.activityId);
+                if (fallback.length > 0) queue = fallback;
+            }
+        }
+
+        // Debug: log what queue we will start reinforcement with and show a short toast for visibility
+        try {
+            const resolvedNames = queue.map(q => {
+                const found = ALL_SUB_ACHIEVEMENTS.find(sa => String(sa.id) === String(q));
+                return found ? (found.name || String(found.id)) : String(q);
+            });
+            console.debug('[Reinforcement] final queue (ids):', queue, 'names:', resolvedNames, 'weakFocus:', weakFocus.map(a=>({id:String(a), success: successOf(a)})));
+            // Show a short info toast so parent can see what was chosen
+            if (resolvedNames.length > 0) showToast(`Pekiştirme başlıyor: ${resolvedNames.join(', ')}`, 'info', 4000);
+            else showToast(t('programMode.noReinforcementToday', 'No reinforcement candidates found.'), 'info', 3000);
+        } catch (e) {
+            console.debug('Reinforcement: debug log failed', e);
+        }
+
+        if (queue.length === 0) {
+            showToast(t('programMode.noReinforcementToday', 'No reinforcement candidates found.'), 'info');
+            return false;
+        }
+
+        setRandomModeQueue(queue);
+        setCurrentRandomActivityIndex(0);
+        setRandomModeAttemptCount({});
+        setIsRandomMode(true);
+        setIsProgramMode(true); // reinforcement now counts as program progress (affects unit advancement)
+
+        const started = await startNextRandomActivity(queue, 0);
+        if (!started) {
+            showToast('Pekiştirme modu için uygun içerik bulunamadı.', 'info');
+            handleGoToMenu();
+            return false;
+        }
+        return true;
+    }, [activityStats, activeProfileId, isPremium, showToast, startNextRandomActivity, handleGoToMenu]);
+
     const handleAdvance = useCallback(async (isCorrect: boolean) => {
+        // Track total number of advance attempts (used for overall question progress)
+        setAdvanceCount(prev => prev + 1);
         const newScore = isCorrect ? score + 1 : score;
         if (isCorrect) setScore(newScore);
 
@@ -285,9 +433,13 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
             if (genericKey) {
                 const newRecord: AttemptRecord = { timestamp: Date.now(), score: finalScore, total: totalQuestions, mode: isProgramMode ? 'program' : 'free' };
                 
-                // Check units before stats update (for detecting new unlocks)
-                const emptyMasteredCats = new Set<string>();
-                const previousUnlockedUnits = getUnlockedUnits(activityStats, emptyMasteredCats);
+                                // Check units before stats update (for detecting new unlocks)
+                                const emptyMasteredCats = new Set<string>();
+                                // Use program-mode unlocked check when current session is program mode
+                                const parentOverrides = activeProfileId ? JSON.parse(window.localStorage.getItem(`parentOverrides_profile_${activeProfileId}`) || '[]') : undefined;
+                                const previousUnlockedUnits = isProgramMode
+                                    ? getUnlockedUnitsForProgramMode(activityStats, emptyMasteredCats, parentOverrides, 6)
+                                    : getUnlockedUnits(activityStats, emptyMasteredCats);
                 
                 setActivityStats(prev => {
                     const updatedStats = { ...prev };
@@ -320,8 +472,8 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
                     }
                     
                     // Check if new unit unlocked after this activity (Program Mode only)
-                    if (isProgramMode && activeProfileId) {
-                        const currentUnlockedUnits = getUnlockedUnits(updatedStats, emptyMasteredCats);
+                        if (isProgramMode && activeProfileId) {
+                        const currentUnlockedUnits = getUnlockedUnitsForProgramMode(updatedStats, emptyMasteredCats, parentOverrides, 6);
                         
                         // Find newly unlocked units
                         currentUnlockedUnits.forEach(unitNum => {
@@ -382,6 +534,8 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         setCurrentIndex,
         score,
         setScore,
+        advanceCount,
+        setAdvanceCount,
         selectedLetter,
         setSelectedLetter,
         selectedGroup,
@@ -398,6 +552,7 @@ export const useActivity = ({ activityStats, setActivityStats, showToast, handle
         handleAdvance,
         handleStartRandomMode,
         handleStartProgramMode,
+        handleStartReinforcementMode,
         randomModeQueue,
         currentRandomActivityIndex,
         startSpecificRandomActivity,

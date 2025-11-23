@@ -1,88 +1,92 @@
 {
   "app": {
-    "name": "İlk Sözüm: Otizm & Okul Öncesi",
-    "description": "Çocuklar için kelimeleri, kavramları ve sesleri öğreten interaktif eğitici kartlar.",
-    "printPreview": "Yazdırma Önizlemesi",
-    "savePdf": "PDF Kaydet",
+    "name": "İlk Sözüm: Otizm ve Okul Öncesi",
+    "description": "Otizmli çocuklar için kelimeleri, kavramları ve sesleri öğreten interaktif eğitim kartları.",
+    "printPreview": "Baskı Önizleme",
+    "savePdf": "PDF'i Kaydet",
     "print": "Yazdır",
-    "back": "Geri dön",
-    "developing": "Geliştiriliyor",
-    "pdfSavedInfo": "PDF kaydedildi. Cihazınızın Belgeler klasörünü kontrol edin veya paylaşım menüsünü kullanın.",
+    "back": "Geri Dön",
+    "developing": "Geliştirme Aşamasında",
+    "pdfSavedInfo": "PDF kaydedildi. Belgeler klasörünüzü kontrol edin veya paylaş menüsünü kullanın.",
     "pdfSaveError": "PDF kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.",
     "pdfCreateError": "PDF oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.",
-    "pdfJobName": "İlk Sözüm: Otizm & Okul Öncesi",
+    "pdfJobName": "İlk Kelimelerim Kartları",
     "shareTitle": "PDF Kaydedildi",
     "shareText": "PDF dosyası kaydedildi. Paylaşmak ister misiniz?",
-    "shareDialogTitle": "PDF Paylaş",
-    "noContentForActivity": "Bu etkinlik için içerik bulunamadı.",
-    "noMoreImagesForActivity": "Bu etkinlik için gösterilecek başka görsel kalmadı.",
-    "noActivitySelected": "Etkinlik seçimi bulunamadı.",
-    "activityLoadError": "Etkinlik yüklenirken bir hata oluştu.",
-    "randomActivityRestarting": "Mevcut rastgele etkinlik yeniden başlatılıyor...",
-    "activityRestarting": "Etkinlik yeniden başlatılıyor..."
+    "shareDialogTitle": "PDF'i Paylaş",
+    "noContentForActivity": "Bu aktivite için içerik bulunamadı.",
+    "noMoreImagesForActivity": "Bu aktivite için gösterilecek başka resim kalmadı.",
+    "noActivitySelected": "Aktivite seçilmedi.",
+    "activityLoadError": "Aktivite yüklenirken bir hata oluştu.",
+    "randomActivityRestarting": "Mevcut rastgele aktivite yeniden başlatılıyor...",
+    "activityRestarting": "Aktivite yeniden başlatılıyor..."
   },
   "choice": {
-    "readQuestion": "Soruyu seslendir",
-    "matchPrompt": "Buna uygun olan hangisi?",
+    "readQuestion": "Soruyu Seslendir",
+    "matchPrompt": "Hangisi bununla eşleşiyor?",
     "label": "Etiket",
     "hint": "İpucu",
-    "showLabel": "Etiketleri göster",
-    "hideLabel": "Etiketleri gizle",
-    "showHint": "İpucu göster",
-    "learnShapes": "Şekilleri öğren",
-    "learnEmotions": "Duyguları öğren",
-    "hideHint": "İpucunu gizle",
-    "banImageAria": "Bu görseli bir daha gösterme",
-    "learnColors": "Renkleri öğren"
+    "showLabel": "Etiketleri Göster",
+    "hideLabel": "Etiketleri Gizle",
+    "showHint": "İpucunu Göster",
+    "learnShapes": "Şekilleri Öğren",
+    "learnEmotions": "Duyguları Öğren",
+    "hideHint": "İpucunu Gizle",
+    "banImageAria": "Bu resmi bir daha gösterme",
+    "learnColors": "Renkleri Öğren"
   },
   "accessibility": {
-    "autoSpeakOn": "Otomatik seslendirmeyi aç",
-    "autoSpeakOff": "Otomatik seslendirmeyi kapat"
+    "autoSpeakOn": "Otomatik Seslendirmeyi Aç",
+    "autoSpeakOff": "Otomatik Seslendirmeyi Kapat"
   },
   "feedback": {
     "correctPrefix": "Evet, bu",
     "wrongPrefix": "Hayır, bu",
     "rightPrefix": "Doğru, bu",
     "sentence": {
-      "correct": "Evet, bu {adjective} {noun}.",
-      "wrong": "Hayır, bu {adjective} {noun} değil."
+      "correct": "Evet, bu {noun} {adjective}.",
+      "wrong": "Hayır, bu {noun} {adjective} değil."
     }
   },
   "settings": {
     "language": "Dil",
     "languageSubtitle": "Arayüz ve konuşma dili",
-    "languageNote": "Harf etkinlikleri şimdilik yalnızca Türkçe.",
-    "languageAutoNote": "Not: Bazı çeviriler yapay zeka yardımıyla oluşturuldu ve hatalar içerebilir. Yanlış görünen ifadeler için velilerden özür dileriz — geri bildiriminizle düzeltebiliriz."
+    "languageNote": "Harf aktiviteleri Beta aşamasındadır. Hatalar olabilir.",
+    "languageAutoNote": "Not: Bazı çeviriler YZ ile oluşturulmuştur ve hata içerebilir. Etkilenen ebeveynlerden özür dileriz — düzeltmemiz için lütfen geri bildirim gönderin."
   },
   "categories": {
     "objectsIntl": {
       "title": "Nesneler",
-      "subtitle": "Türkçe dışındaki diller için özenle hazırlanmış nesne setleri",
-      "noCuratedSet": "Bu kategori için henüz özel bir set yok."
+      "subtitle": "Türkçe dışındaki diller için seçilmiş nesne setleri",
+      "noCuratedSet": "Bu kategori için henüz seçilmiş bir set yok."
     }
   },
   "menu": {
     "hello": "Merhaba",
-    "appTitle": "İlk Sözüm: Otizm & Okul Öncesi",
-    "experimentalTag": "Deneme",
+    "appTitle": "İlk Sözüm: Eğitim Kartları",
+    "experimentalTag": "Deneysel",
     "random": {
       "title": "Rastgele Mod",
-      "subtitle": "Seçili etkinliklerden karışık oyna"
+      "subtitle": "Seçili aktivitelerden karışık oyna"
+    },
+    "programMode": {
+      "title": "Program Modu",
+      "subtitle": "Uzman planı ile günlük seans başlat"
     },
     "parentTips": {
-      "title": "Ebeveynler İçin İpuçları",
-      "subtitle": "Uygulamayı daha verimli kullanın"
+      "title": "Ebeveyn İpuçları",
+      "subtitle": "Uygulamayı daha etkili kullanın"
     },
     "letterSound": {
-      "title": "Harf ve Sesler",
+      "title": "Harfler ve Sesler",
       "subtitle": "Harfleri ve sesleri öğren, hecele ve oku."
     },
     "objects": {
-      "title": "Nesneleri Tanıyalım",
+      "title": "Nesneleri Öğrenelim",
       "subtitle": "Hayvanları, meyveleri ve daha fazlasını öğren."
     },
     "concepts": {
-      "title": "Kavram Etkinlikleri",
+      "title": "Kavram Aktiviteleri",
       "subtitle": "Renkleri, şekilleri ve zıt kavramları öğren."
     },
     "reasoning": {
@@ -91,24 +95,24 @@
     },
     "fineMotor": {
       "title": "İnce Motor",
-      "subtitle": "Çizgi Takip, Boyama ve daha fazlası",
-      "developingNote": "Geliştiriliyor",
-      "backButton": "İnce Motor Menüsüne Dön"
+      "subtitle": "Çizgi Takibi, Boyama ve daha fazlası",
+      "developingNote": "Geliştirme Aşamasında",
+      "backButton": "İnce Motor Menüsüne Geri Dön"
     },
     "achievements": {
       "categories": {
-        "fineMotor": "İnce Motor Beceriler"
+        "fineMotor": "İnce Motor Becerileri"
       },
       "fineMotor": {
-        "lineTracing": "Çizgi Takip",
+        "lineTracing": "Çizgi Takibi",
         "shapeColoring": "Şekil Boyama",
-        "rhythmFollowing": "Ritim Takip"
+        "rhythmFollowing": "Ritim Takibi"
       }
     },
     "fiveWOneH": {
       "title": "5N1K",
       "subtitle": "Kim • Ne • Nerede • Ne Zaman • Neden • Nasıl",
-      "developingNote": "Geliştiriliyor",
+      "developingNote": "Geliştirme Aşamasında",
       "category": {
         "who": "Kim?",
         "what": "Ne?",
@@ -125,20 +129,19 @@
     "next": "Sonraki"
   },
   "tabs": {
-    "activities": "Etkinlikler",
-    "communication": "İletişim",
+    "activities": "Aktiviteler",
+    "communication": "İfade Kartları",
     "achievements": "Raporlar",
     "settings": "Ayarlar"
   },
   "consent": {
-    "title": "Gizlilik Sözleşmesi",
-    "body": "Uygulamayı kullanmaya devam etmek için Gizlilik Politikası'nı kabul etmeniz gerekir. Kişisel veriler toplamıyoruz; oyun ilerlemeniz ve ayarlarınız yalnızca cihazınızda saklanır. Ücretsiz sürümde kişiselleştirilmemiş reklamlar gösterilebilir.",
+    "title": "Gizlilik Onayı",
+    "body": "Uygulamayı kullanmaya devam etmek için Gizlilik Politikamızı kabul etmelisiniz. Kişisel veri toplamıyoruz; ilerlemeniz ve ayarlarınız cihazınızda kalır. Ücretsiz sürümde kişiselleştirilmemiş reklamlar gösterilebilir.",
     "accept": "Kabul Ediyorum",
-    "viewPolicy": "Gizlilik Politikası'nı Oku"
+    "viewPolicy": "Gizlilik Politikasını Oku"
   },
   "themes": {
-    "simple": "Sade",
-    "deneme": "🎨 Deneme",
+    "simple": "Basit",
     "balon": "Balon",
     "gunes": "Güneş",
     "tilki": "Tilki",
@@ -146,7 +149,7 @@
     "geceorman": "Gece Ormanı",
     "yagmur": "Yağmur",
     "kus": "Kuşlar",
-    "tilki2": "Çayır Tilkisi",
+    "tilki2": "Çöl Tilkisi",
     "kedi": "Kedi",
     "kar": "Kar",
     "gunbatimi": "Gün Batımı",
@@ -160,7 +163,7 @@
     "nightForest": "Gece Ormanı",
     "rain": "Yağmur",
     "birds": "Kuşlar",
-    "prairieFox": "Çayır Tilkisi",
+    "prairieFox": "Çöl Tilkisi",
     "cat": "Kedi",
     "snow": "Kar",
     "sunset": "Gün Batımı",
@@ -173,9 +176,9 @@
     "msg": {
       "low": "Tekrar denemeye ne dersin?",
       "mid": "Çok iyi gidiyorsun!",
-      "high": "Harika iş çıkardın!"
+      "high": "Harika bir iş çıkardın!"
     },
-    "restart": "Tekrar Oyna",
+    "restart": "Yeniden Oyna",
     "home": "Ana Menü"
   }
 }

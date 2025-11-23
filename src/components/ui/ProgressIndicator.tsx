@@ -47,7 +47,8 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
       ay2: { bg: 'bg-indigo-100/80 backdrop-blur-md border border-indigo-300/60', text: 'text-indigo-900', progressBg: 'bg-indigo-200/50', barLow: 'bg-red-500', barMid: 'bg-violet-400', barHigh: 'bg-indigo-500' },
       zurafa: { bg: 'bg-cyan-100/80 backdrop-blur-md border border-cyan-300/60', text: 'text-cyan-900', progressBg: 'bg-cyan-200/50', barLow: 'bg-red-500', barMid: 'bg-teal-400', barHigh: 'bg-cyan-500' },
       geometri: { bg: 'bg-rose-100/80 backdrop-blur-md border border-rose-300/60', text: 'text-rose-900', progressBg: 'bg-rose-200/50', barLow: 'bg-red-500', barMid: 'bg-pink-400', barHigh: 'bg-rose-500' },
-      deneme: { bg: 'bg-gradient-to-r from-purple-200/90 via-pink-200/85 to-red-200/80 backdrop-blur-md border border-purple-400/70 shadow-lg shadow-purple-300/40', text: 'text-purple-900 font-bold', progressBg: 'bg-purple-300/60', barLow: 'bg-red-500', barMid: 'bg-pink-500', barHigh: 'bg-purple-500' },
+      // Underwater 'Deneme' palette — ocean blues/teal for contrast and readability
+      deneme: { bg: 'bg-gradient-to-r from-blue-900/85 via-cyan-800/80 to-teal-700/85 backdrop-blur-md border border-cyan-400/30 shadow-lg shadow-cyan-700/30', text: 'text-cyan-100 font-bold', progressBg: 'bg-cyan-700/40', barLow: 'bg-amber-500', barMid: 'bg-cyan-400', barHigh: 'bg-blue-400' },
     };
     return themeColors[settings.theme] || { bg: 'bg-black/20 backdrop-blur-sm', text: 'text-white/90', progressBg: 'bg-black/20', barLow: 'bg-red-400', barMid: 'bg-yellow-400', barHigh: 'bg-green-400' };
   };

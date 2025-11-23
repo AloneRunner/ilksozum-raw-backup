@@ -3,6 +3,7 @@ import { FiveWOneHCategory } from '../services/database/activities/reasoning/fiv
 import { t } from '../i18n/index';
 import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
 import PanelStars from './ui/PanelStars.tsx';
+import UnderwaterBackdrop from './ui/UnderwaterBackdrop.tsx';
 import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 
 interface FiveWOneHMenuScreenProps {
@@ -172,136 +173,43 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
   if (isUnderwater) {
     return (
       <>
-        {/* Underwater backdrop */}
-        <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden>
-          {/* Ocean gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
-          
-          {/* Animated bubbles */}
-          <div className="absolute inset-0">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full bg-cyan-400/15 border border-cyan-300/20 animate-bounce"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: `${12 + Math.random() * 16}px`,
-                  height: `${12 + Math.random() * 16}px`,
-                  animationDelay: `${Math.random() * 4}s`,
-                  animationDuration: `${3 + Math.random() * 3}s`,
-                }}
-              />
-            ))}
-          </div>
-          
-          {/* Light rays */}
-          <div className="absolute inset-0 opacity-15">
-            <div className="absolute top-0 left-1/5 w-px h-full bg-gradient-to-b from-cyan-300/40 via-transparent to-transparent transform rotate-12" />
-            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-cyan-200/30 via-transparent to-transparent transform -rotate-8" />
-            <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-teal-300/35 via-transparent to-transparent transform rotate-6" />
-          </div>
-        </div>
+        <UnderwaterBackdrop count={12} className="-z-20 opacity-90" />
 
-        <div className="relative z-10 flex flex-col items-center justify-center h-full max-w-4xl mx-auto p-4 animate-fade-in overflow-hidden">
-          {/* Decorative elements */}
+        <div className="relative z-10 flex flex-col items-center justify-start h-full max-w-4xl mx-auto p-4 animate-fade-in overflow-hidden">
           <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
-            {/* Jellyfish */}
-            <div className="absolute top-12 right-16 w-12 h-12 opacity-20">
-              <div className="w-full h-full bg-cyan-400/20 rounded-full relative animate-pulse">
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-8 h-5 bg-cyan-400/20 rounded-b-full"></div>
-                <div className="absolute top-1.5 left-1.5 w-1.5 h-3 bg-cyan-300/30 rounded-full"></div>
-                <div className="absolute top-1.5 right-1.5 w-1.5 h-3 bg-cyan-300/30 rounded-full"></div>
-              </div>
-            </div>
-            {/* Fish */}
-            <div className="absolute bottom-16 left-12 text-cyan-300/15 text-xl animate-pulse">🐠</div>
-            <div className="absolute top-1/3 left-8 text-teal-300/10 text-lg animate-pulse" style={{ animationDelay: '1s' }}>🐟</div>
+            <div className="absolute top-10 right-12 w-12 h-12 opacity-14">🪼</div>
+            <div className="absolute bottom-12 left-8 text-cyan-300/12 text-xl">🐠</div>
           </div>
-          
-          {/* Back button */}
+
           <div className="absolute top-4 left-4 z-20">
-            <button 
-              onClick={onBack} 
-              className="p-2 rounded-full bg-cyan-400/20 hover:bg-cyan-400/30 backdrop-blur-sm border border-cyan-300/40 transition-all duration-200" 
+            <button
+              onClick={onBack}
+              className="p-2 rounded-full bg-cyan-400/20 hover:bg-cyan-400/30 backdrop-blur-sm border border-cyan-300/40 transition-all duration-200"
               aria-label={t('app.back', 'Geri Dön')}
             >
               <ArrowLeftIcon className="w-8 h-8 text-cyan-100 drop-shadow-md" />
             </button>
           </div>
 
-          {/* Title */}
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500/80 via-teal-400/80 to-cyan-500/80 backdrop-blur-sm border border-cyan-300/40 shadow-lg shadow-cyan-400/30">
-              <h1 className="text-3xl sm:text-4xl font-black text-cyan-100 drop-shadow-lg">
-                5N1K
-              </h1>
+            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/80 to-teal-500/80 drop-shadow-lg border border-cyan-300/40">
+              <h1 className="text-3xl font-black text-cyan-100">5N1K</h1>
             </div>
           </div>
 
-          {/* Underwater themed container */}
-          <div className="relative z-10 flex items-center justify-center mt-20" style={{ width: `${containerSize}px`, height: `${containerSize}px` }}>
-            {/* Central bubble */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-300/60 via-teal-400/60 to-cyan-500/60 shadow-2xl shadow-cyan-400/30 animate-pulse flex items-center justify-center text-6xl border-4 border-cyan-200/50 backdrop-blur-sm">
-                🫧
-              </div>
-            </div>
-
-            {/* Orbiting bubbles with categories */}
-            {planets.map((planet) => {
-              const orbitScaled = Math.round(planet.orbit * scale);
-              const size = planet.sizePx;
-              const half = Math.floor(size / 2);
-              const base = 18 + (planet.orbit / 385) * 12;
-              const dur = Math.round(jitter(planet.category, base, base + 10));
-              const delay = -Math.round(jitter(planet.category + '-d', 0, 12));
-              
-              return (
-                <div
+          <div className="relative z-10 w-full flex-grow overflow-y-auto">
+            <div className="grid grid-cols-2 gap-4 landscape:grid-cols-3 sm-landscape:grid-cols-4">
+              {planets.map((planet) => (
+                <button
                   key={planet.category}
-                  className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                  style={{
-                    animation: `spin ${dur}s linear infinite`,
-                    animationDelay: `${delay}s`,
-                  }}
+                  onClick={() => onSelectCategory(planet.category as FiveWOneHCategory | 'Karışık')}
+                  className={`w-full p-4 rounded-2xl flex flex-col items-center justify-center gap-2 transition-all duration-200 hover:scale-105 border border-cyan-300/10`}
                 >
-                  <button
-                    onClick={() => onSelectCategory(planet.category as FiveWOneHCategory | 'Karışık')}
-                    className={`absolute rounded-full bg-gradient-to-br ${planet.color} shadow-2xl border-2 border-cyan-200/40 flex items-center justify-center text-2xl hover:scale-125 transition-transform duration-300 cursor-pointer pointer-events-auto group backdrop-blur-sm`}
-                    style={{
-                      width: `${size}px`,
-                      height: `${size}px`,
-                      left: `calc(50% + ${orbitScaled}px - ${half}px)`,
-                      top: `calc(50% - ${half}px)`,
-                      boxShadow: '0 0 20px rgba(6, 182, 212, 0.3)',
-                    }}
-                    title={planet.label}
-                  >
-                    <span className="drop-shadow-lg">{planet.emoji}</span>
-                    <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-bold text-cyan-100 bg-slate-900/80 px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                      {planet.label}
-                    </span>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Legend + Instructions */}
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 w-[92%] max-w-[920px] flex flex-col items-center gap-2">
-            <div className="flex flex-wrap items-center justify-center gap-3 bg-slate-900/40 text-cyan-100/85 px-3 py-2 rounded-xl backdrop-blur-sm text-[11px] sm:text-xs">
-              <span className="flex items-center gap-1"><span>👤</span><span>Kim</span></span>
-              <span className="flex items-center gap-1"><span>📦</span><span>Ne</span></span>
-              <span className="flex items-center gap-1"><span>📍</span><span>Nerede</span></span>
-              <span className="flex items-center gap-1"><span>⏰</span><span>Ne Zaman</span></span>
-              <span className="flex items-center gap-1"><span>💡</span><span>Neden</span></span>
-              <span className="flex items-center gap-1"><span>🛠️</span><span>Nasıl</span></span>
-              <span className="flex items-center gap-1"><span>🔀</span><span>Karışık</span></span>
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center bg-gradient-to-br ${planet.color} shadow-lg`}>{planet.emoji}</div>
+                  <div className="mt-2 text-sm font-bold text-cyan-100">{planet.label}</div>
+                </button>
+              ))}
             </div>
-            <p className="text-[11px] sm:text-xs text-cyan-100/70 text-center bg-slate-900/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-              {t('fiveWOneH.instructions', 'Bir kabarcığa tıklayarak kategoriyi seç')}
-            </p>
           </div>
         </div>
       </>

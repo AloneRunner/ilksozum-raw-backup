@@ -1,4 +1,235 @@
 {
+  "app": {
+    "name": "Autisme Spellen: Leren Lezen",
+    "description": "Interactieve educatieve kaarten voor het leren van woorden, concepten en geluiden voor kinderen met autisme.",
+    "printPreview": "Afdrukvoorbeeld",
+    "savePdf": "PDF opslaan",
+    "print": "Afdrukken",
+    "back": "Terug",
+    "developing": "In ontwikkeling",
+    "pdfSavedInfo": "PDF opgeslagen. Kijk in je map Documenten of gebruik het deelmenu.",
+    "pdfSaveError": "Er is een fout opgetreden bij het opslaan van de PDF. Probeer het opnieuw.",
+    "pdfCreateError": "Er is een fout opgetreden bij het maken van de PDF. Probeer het opnieuw.",
+    "pdfJobName": "Mijn Eerste Woorden-kaarten",
+    "shareTitle": "PDF opgeslagen",
+    "shareText": "Het PDF-bestand is opgeslagen. Wil je het delen?",
+    "shareDialogTitle": "PDF delen",
+    "noContentForActivity": "Geen inhoud gevonden voor deze activiteit.",
+    "noMoreImagesForActivity": "Er zijn geen afbeeldingen meer om te tonen voor deze activiteit.",
+    "noActivitySelected": "Geen activiteit geselecteerd.",
+    "activityLoadError": "Er is een fout opgetreden bij het laden van de activiteit.",
+    "randomActivityRestarting": "Huidige willekeurige activiteit opnieuw starten...",
+    "activityRestarting": "Activiteit opnieuw starten..."
+  },
+  "choice": {
+    "readQuestion": "Vraag voorlezen",
+    "matchPrompt": "Welke past hierbij?",
+    "label": "Label",
+    "hint": "Tip",
+    "showLabel": "Labels tonen",
+    "hideLabel": "Labels verbergen",
+    "showHint": "Tip tonen",
+    "learnShapes": "Vormen leren",
+    "learnEmotions": "Emoties leren",
+    "hideHint": "Tip verbergen",
+    "banImageAria": "Deze afbeelding niet meer tonen",
+    "learnColors": "Kleuren leren"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Automatisch voorlezen inschakelen",
+    "autoSpeakOff": "Automatisch voorlezen uitschakelen"
+  },
+  "feedback": {
+    "correctPrefix": "Ja, dit is",
+    "wrongPrefix": "Nee, dit is",
+    "rightPrefix": "Correct, dit is",
+    "sentence": {
+      "correct": "Ja, de {noun} is {adjective}.",
+      "wrong": "Nee, de {noun} is niet {adjective}."
+    }
+  },
+  "settings": {
+    "language": "Taal",
+    "languageSubtitle": "Taal van interface en spraak",
+    "languageNote": "Letteractiviteiten zijn beschikbaar voor Nederlands (Beta). De inhoud kan beperkt zijn.",
+    "languageAutoNote": "Opmerking: Sommige vertalingen zijn met AI gegenereerd en kunnen fouten bevatten. Onze excuses aan ouders voor eventuele onjuiste vertalingen — stuur feedback zodat we ze kunnen verbeteren."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objecten",
+      "subtitle": "Geselecteerde objectensets voor niet-Turkse talen",
+      "noCuratedSet": "Nog geen samengestelde set voor deze categorie."
+    }
+  },
+  "menu": {
+    "hello": "Hallo",
+    "appTitle": "Autisme Spellen: Leren Lezen",
+    "experimentalTag": "Experimenteel",
+    "random": {
+      "title": "Willekeurige modus",
+      "subtitle": "Speel een mix van geselecteerde activiteiten"
+    },
+    "programMode": {
+      "title": "Programmamodus",
+      "subtitle": "Start een begeleide dagelijkse sessie"
+    },
+    "parentTips": {
+      "title": "Tips voor ouders",
+      "subtitle": "Gebruik de app effectiever"
+    },
+    "letterSound": {
+      "title": "Letters en klanken",
+      "subtitle": "Leer letters en klanken, spellen en lezen."
+    },
+    "objects": {
+      "title": "Objecten leren",
+      "subtitle": "Leer dieren, fruit en meer."
+    },
+    "concepts": {
+      "title": "Conceptactiviteiten",
+      "subtitle": "Leer kleuren, vormen en tegenstellingen."
+    },
+    "reasoning": {
+      "title": "Logische spellen",
+      "subtitle": "Speel geheugen-, sudoku- en logicaspellen."
+    },
+    "fineMotor": {
+      "title": "Fijne motoriek",
+      "subtitle": "Lijn volgen, kleuren en meer",
+      "developingNote": "In ontwikkeling",
+      "backButton": "Terug naar het menu Fijne motoriek"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Fijne motoriek"
+      },
+      "fineMotor": {
+        "lineTracing": "Lijnvolgen",
+        "shapeColoring": "Vormen inkleuren",
+        "rhythmFollowing": "Ritme volgen"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Wie • Wat • Waar • Wanneer • Waarom • Hoe",
+      "developingNote": "In ontwikkeling",
+      "category": {
+        "who": "Wie?",
+        "what": "Wat?",
+        "where": "Waar?",
+        "when": "Wanneer?",
+        "why": "Waarom?",
+        "how": "Hoe?",
+        "mixed": "Gemengd"
+      }
+    }
+    ,
+    "soundImitation": {
+      "title": "Geluidsnasilatie Kaarten",
+      "subtitle": "Kaarten voor geluidsnasilatie voor niet‑verbale kinderen",
+      "badge": "Nieuw — Experimentele Activiteit",
+      "imagesTitle": "Beeldkaarten",
+      "imagesDesc": "Bekijk beeldkaarten; tik om te vergroten en veeg om te navigeren.",
+      "videosTitle": "Korte Video's",
+      "videosTitleShort": "Korte Video's (Experimenteel)",
+      "videosDesc": "Korte video's — experimenteel. Video's kunnen schijfruimte innemen.",
+      "experimentalNoteTitle": "Experimentele Opmerking",
+      "experimentalNote": "Het video-gedeelte is experimenteel en mogelijk niet permanent. Video's kunnen groot zijn en ruimte op uw apparaat innemen; we passen dit gedeelte aan op basis van feedback.",
+      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
+      "feedbackRequest": "Laat alstublieft feedback (goed of slecht) achter in de app store-recensies.",
+      "themeTextColors": {
+        "simple": "#ffffff",
+        "deneme": "#000000",
+        "balon": "#000000",
+        "gunes": "#000000",
+        "tilki": "#000000",
+        "ay": "#000000",
+        "geceorman": "#ffffff",
+        "yagmur": "#000000",
+        "kus": "#000000",
+        "tilki2": "#000000",
+        "kedi": "#000000",
+        "kar": "#ffffff",
+        "gunbatimi": "#000000",
+        "ay2": "#000000",
+        "zurafa": "#000000",
+        "geometri": "#000000",
+        "kozmik": "#ffffff",
+        "balloon": "#000000",
+        "sun": "#000000",
+        "fox": "#000000",
+        "moon": "#000000",
+        "nightForest": "#ffffff",
+        "rain": "#000000",
+        "birds": "#000000",
+        "prairieFox": "#000000",
+        "cat": "#000000",
+        "snow": "#ffffff",
+        "sunset": "#000000",
+        "crescent": "#000000",
+        "giraffe": "#000000",
+        "geometric": "#000000"
+      }
+    }
+  },
+  "common": {
+    "previous": "Vorige",
+    "next": "Volgende"
+  },
+  "tabs": {
+    "activities": "Activiteiten",
+    "communication": "Expressiekaarten",
+    "achievements": "Rapporten",
+    "settings": "Instellingen"
+  },
+  "consent": {
+    "title": "Toestemming voor privacy",
+    "body": "Om de app te blijven gebruiken, accepteer ons privacybeleid. We verzamelen geen persoonlijke gegevens; je voortgang en instellingen blijven op je apparaat. In de gratis versie kunnen niet-gepersonaliseerde advertenties worden getoond.",
+    "accept": "Ik accepteer",
+    "viewPolicy": "Privacybeleid lezen"
+  },
+  "themes": {
+    "simple": "Eenvoudig",
+    "deneme": "🎨 Test",
+    "balon": "Ballon",
+    "gunes": "Zon",
+    "tilki": "Vos",
+    "ay": "Maan",
+    "geceorman": "Nachtbos",
+    "yagmur": "Regen",
+    "kus": "Vogels",
+    "tilki2": "Prairievos",
+    "kedi": "Kat",
+    "kar": "Sneeuw",
+    "gunbatimi": "Zonsondergang",
+    "ay2": "Halve maan",
+    "zurafa": "Giraf",
+    "geometri": "Geometrisch",
+    "balloon": "Ballon",
+    "sun": "Zon",
+    "fox": "Vos",
+    "moon": "Maan",
+    "nightForest": "Nachtbos",
+    "rain": "Regen",
+    "birds": "Vogels",
+    "prairieFox": "Prairievos",
+    "cat": "Kat",
+    "snow": "Sneeuw",
+    "sunset": "Zonsondergang",
+    "crescent": "Halve maan",
+    "giraffe": "Giraf",
+    "geometric": "Geometrisch"
+  },
+  "completion": {
+    "heading": "Gefeliciteerd!",
+    "msg": {
+      "low": "Nog een keer proberen?",
+      "mid": "Je doet het geweldig!",
+      "high": "Fantastisch gedaan!"
+    },
+    "restart": "Opnieuw spelen",
+    "home": "Hoofdmenu"
+  },
   "achievements": {
     "title": "Prestaties",
     "subtitle": "Verdien een badge door een activiteit 3 keer perfect te voltooien!",
@@ -202,6 +433,10 @@
       "title": "Activiteiten aanpassen",
       "text": "Gebruik Activiteitenbeheer in Instellingen om je te richten op specifieke vaardigheden of tijdelijk activiteiten uit te schakelen waarvoor je kind nog niet klaar is."
     },
+    "programMode": {
+      "title": "Over de Programmamodus",
+      "text": "De Programmamodus biedt korte, door experts ontworpen dagelijkse sessies. Elke sessie omvat opwarming, nieuwe inhoud en versterking — modelleer antwoorden samen met je kind en gebruik de Jokerpas om indien nodig activiteiten tijdelijk te ontgrendelen."
+    },
     "randomMode": {
       "title": "Probeer Willekeurige modus",
       "text": "Biedt een willekeurige mix van alle ingeschakelde oefeningen uit verschillende categorieën om het leren op een leuke manier te versterken."
@@ -209,8 +444,8 @@
     "extra": {
       "title": "Extra tips",
       "practice": {
-        "title": "Oefenmodus (binnenkort)",
-        "text": "Binnenkort kun je een 'Oefensessie' starten op basis van de activiteiten waar je kind het meest moeite mee heeft."
+        "title": "Versterkingsmodus",
+        "text": "Start gerichte oefening op de activiteiten waar je kind het meest moeite mee heeft. In deze modus worden zwakkere taken herhaald zonder de eenheidsvoortgang te vergroten."
       }
     }
   },
@@ -261,7 +496,7 @@
       "point2": "10-eenheden piramide: Hallo Wereld (Eenheid 1) → Meesterschap (Eenheid 10).",
       "point3": "Elke activiteit wordt beoordeeld met brede pool (15 pogingen, 80%) en smalle pool (2 perfect).",
       "point4": "Maximum 3 eenheden per dag mogelijk. Vrije modus weegt voor 50% mee.",
-      "point5": "Ouders kunnen tijdelijk deblokkeren met 'Joker Recht' (gratis voor alle gebruikers)."
+      "point5": "Ouders kunnen tijdelijk activiteiten deblokkeren met het 'Joker Recht'; ze kunnen ook 'Niet meetellen voor voortgang' kiezen zodat de activiteit tijdens de override de eenheidsvoltooiing niet blokkeert."
     },
     "sessionRules": {
       "title": "Regels van Programma‑modus",
@@ -269,7 +504,7 @@
       "newContent": "Nieuwe inhoud: 2-3 gedeblokkeerde activiteiten",
       "reinforcement": "Versterking: 1-2 bijna beheerste activiteiten",
       "dailyLimit": "Dagelijkse limiet: Maximaal 3 eenheden vooruitgang",
-      "jokerInfo": "Joker Recht: Tijdelijke deblokkering (4/12/24/48/72 uur)",
+      "jokerInfo": "Joker Recht: Ouders kunnen activiteiten tijdelijk deblokkeren. Kies 'Niet meetellen voor voortgang' om te voorkomen dat de activiteit tijdens de override meeweegt voor unit‑voltooiing. Actieve limieten: 3 voor niet‑premium, 15 voor premium.",
       "freeMode": "Vrije modus: Beoordeeld met 50% weging"
     },
     "rules": {
@@ -277,8 +512,15 @@
       "activityWord": "activiteiten",
       "warmupWord": "opwarming",
       "newWord": "nieuwe inhoud",
+      "count": "Activiteiten per sessie: 8 activiteiten (1 opwarming, 7 nieuwe inhoud, 0 versterking)",
+      "activityWord": "activiteit",
+      "warmupWord": "opwarming",
+      "newWord": "nieuwe inhoud",
       "reinforcementWord": "versterking",
-      "selection": "Selectielogica:",
+      "reinforcementProgress": "Versterking en voortgang:",
+      "reinforcementProgressDesc": "Versterkingssessies tellen nu als programma-pogingen; deze pogingen dragen bij aan de voortgangsberekening van de eenheid. Kandidaten voor versterking kunnen activiteiten met nul succes bevatten, en ouders kunnen handmatig kandidaten toevoegen of verwijderen.",
+      "reinforcementScope": "Versterkingsbereik:",
+      "reinforcementScopeDesc": "Kandidaten voor versterking kunnen handmatig worden geselecteerd uit activiteiten in alle ontgrendelde eenheden; succespercentage is het gemiddelde van de laatste 6 pogingen. (Gebruik de knop \"Handmatige selecties wissen\" om handmatige selecties te wissen.)",
       "selectionDesc": "Opwarming (1 beheerst) → Nieuwe inhoud (focus‑eenheid, nooit geprobeerd krijgt prioriteit) → Versterking (0–2 zwakste uit vorige eenheden)",
       "coverageFirst": "Dekking eerst:",
       "coverageFirstDesc": "Als de focus‑eenheid nog ongeprobeerde inhoud bevat, Nieuwe inhoud +1 en Versterking −1. Zorgt voor eerste blootstelling aan elke vaardigheid.",
@@ -296,7 +538,7 @@
       "dailyPremium": "Premium:",
       "dailyPremiumDesc": "Geen dagelijkse limiet; gedeblokkeerde eenheden vrij speelbaar.",
       "joker": "Joker:",
-      "jokerDesc": "Ouders kunnen tijdelijk een vergrendelde activiteit ontgrendelen; de beheersingsregels blijven gelden.",
+      "jokerDesc": "Ouders kunnen tijdelijk een vergrendelde activiteit met succes onder de 80% ontgrendelen. Als 'Niet meetellen voor voortgang' is geselecteerd bij het aanmaken, telt de activiteit tijdens de override niet mee voor unit‑voltooiing (voor weergave en berekeningen wordt het als gedekt/momentum gezien). Actieve limieten: 3 niet‑premium, 15 premium.",
       "progressDisplay": "Weergegeven %:",
       "progressDisplayDesc": "Het eenheidspercentage volgt het gecombineerde succes in het ouderrapport (Vrij + Programma totaal).",
       "progressFormula": "Vroege voortgangsformule:",
@@ -423,38 +665,60 @@
     }
   },
   "developmentNotes": {
-    "title": "Geplande updates",
+    "title": "Update-informatie",
     "subtitle": "Onze app blijft groeien! Bedankt voor je geduld.",
+    "thisUpdate": {
+      "title": "In deze update",
+      "items": [
+        "Een bug in de Programmamodus is opgelost die bij sommige bestaande gebruikers de voortgang terugzette naar Eenheid 1. Onze excuses voor het ongemak — getroffen oude gebruikers krijgen als Lerarendag‑cadeau gratis Premium tot en met 30 november 2025. Bestaande of voormalige Premium‑gebruikers kregen bovendien 1 extra maand Premium cadeau."
+      ],
+      "_tempNotes": [
+        "OPMERKING: De volgende items zijn tijdelijke notities — ze worden in de volgende update uit de i18n-bestanden verwijderd."
+      ]
+    },
+    "programMode": {
+      "menuTitle": "Programmamodus",
+      "menuSubtitle": "Start een begeleide dagelijkse sessie",
+      "units": "Eenheden",
+      "unitsCount": "{count} Eenheden"
+    },
+    "thisUpdateAddendum": {
+      "smallVisuals": "In de Groot/Klein-conceptparen zijn afbeeldingen van echt kleine items iets verkleind zodat ze het kind niet in verwarring brengen."
+    },
+    "developerMessage": {
+      "short": "Opmerking: ik test en verfijn deze app met mijn 6-jarige kind met autisme; je feedback is welkom.",
+      "long": "Opmerking: ik ontwikkel deze app door deze te testen met mijn 6-jarige zoon met autisme. Ik houd ook rekening met onderwerpen die op school worden behandeld en feedback van leraren. Stuur feedback als je suggesties of observaties hebt."
+    },
     "modes": {
-      "title": "Modusontwikkelingen",
+      "title": "Modusverbeteringen",
       "programMode": "Programmamodus wordt uitgebreid",
       "reinforcementMode": "Versterkingsmodus wordt toegevoegd",
-      "angerMode": "Zachte begeleidingsmodus: bij overmatige herhaling wordt de feedback geleidelijk en rustig wat steviger"
+      "angerMode": "Zachte begeleidingsmodus: wanneer overmatige herhaling wordt gedetecteerd, wordt de feedback geleidelijk en kalm wat steviger"
     },
     "content": {
       "title": "Inhoud- en activiteitsuitbreidingen",
       "newObjects": "Nieuwe objecten worden toegevoegd",
       "objectCategories": "Objectcategorieën worden onderverdeeld in subcategorieën",
-      "activityAudio": "Activiteitsverhalen worden verhelderd",
+      "activityAudio": "Activiteitsvertellingen worden duidelijker gemaakt",
       "letterActivities": "Letteractiviteiten worden verbeterd",
-      "letterDrawing": "Letteroefeningen worden toegevoegd",
+      "letterDrawing": "Lettertekenoefeningen worden toegevoegd",
       "freeGames": "Vrije spellen zoals galgje worden toegevoegd",
-      "fineMotor": "Fijne motoriek en hersenpellen worden verbeterd"
+      "fineMotor": "Fijne motoriek en hersenspellen worden verbeterd"
     },
     "languages": {
       "title": "Taalstructuur en meertalige ondersteuning",
       "existingReview": "Bestaande vreemde talen worden herzien",
       "newLanguages": "Nieuwe talen worden toegevoegd",
-      "learningActivities": "Meertalige structuur wordt omgezet naar vreemde taal leeractiviteiten"
+      "learningActivities": "Meertalige structuur wordt omgezet in leeractiviteiten voor vreemde talen"
     },
     "themes": {
       "title": "Thema- en visuele aanpassingen",
-      "redesign": "Thema's worden herontworpen"
+      "redesign": "Thema's worden opnieuw ontworpen"
     },
     "reports": {
       "title": "Rapportage- en feedbacksysteem",
       "improvedReports": "Rapportageniveau wordt verbeterd",
-      "detailedFeedback": "Niet alleen activiteitssucces, maar ook specifieke moeilijke objecten/concepten worden aangegeven"
+      "detailedFeedback": "Niet alleen het succes van de activiteit, maar ook specifieke moeilijke objecten/concepten worden aangegeven"
     }
   }
 }

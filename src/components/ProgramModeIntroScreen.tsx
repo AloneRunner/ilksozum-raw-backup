@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { t } from '../i18n';
 import { ActivityType } from '../types';
-import { SimpleThemeWrapper, SIMPLE_THEME_ACTION_BUTTON, SIMPLE_THEME_TEXT_PRIMARY, SIMPLE_THEME_TEXT_SECONDARY } from '../themes/simpleTheme.tsx';
+import { SimpleThemeWrapper, SIMPLE_THEME_ACTION_BUTTON, SIMPLE_THEME_TEXT_PRIMARY, SIMPLE_THEME_TEXT_SECONDARY } from '../themes/simpleTheme';
 import AcademicCapIcon from './icons/AcademicCapIcon.tsx';
 import { ActivityStats, ParentOverride } from '../types.ts';
 import { UNIT_DEFINITIONS } from '../constants/unitDefinitions';
-import { getUnitCompletionPercentage, getUnitDisplaySuccessPercentage, isUnitUnlocked, getUnlockedUnits } from '../services/masteryEngine';
+import { getUnitCompletionPercentage, getUnitDisplaySuccessPercentage, isUnitUnlocked, getUnlockedUnits, getActivityProgramSuccessPercentage } from '../services/masteryEngine';
 import { buildDailySession, getRecommendedSessionLength, shouldShowNewSession } from '../services/sessionBuilder';
 import { getActivityMetadata } from '../constants/activityMetadata';
 import { getAllowedUnitCeiling, getPolicyToday } from '../services/progressionPolicy';
@@ -15,6 +15,7 @@ import CheckCircleIcon from './icons/CheckCircleIcon';
 interface ProgramModeIntroScreenProps {
   onBack: () => void;
   onStartProgramMode: () => void | Promise<void>;
+  onStartReinforcementMode?: () => void | Promise<void>;
   theme: string;
   activityStats: Record<string, ActivityStats>;
   masteredObjectCategories?: Set<string>;
@@ -29,6 +30,7 @@ type TabType = 'progress' | 'units' | 'today';
 const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({ 
   onBack, 
   onStartProgramMode, 
+  onStartReinforcementMode,
   activityStats,
   masteredObjectCategories = new Set(),
   lastSessionDate,
@@ -37,6 +39,74 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
   parentOverrides
 }) => {
   const [activeTab, setActiveTab] = useState<TabType>('today');
+  // Manual reinforcement selections per-profile (persisted in localStorage)
+  const [manualReinforcement, setManualReinforcement] = useState<Set<string>>(new Set());
+
+  const manualKey = profileId ? `manual_reinforcement_profile_${profileId}` : null;
+
+  React.useEffect(() => {
+    if (!manualKey) return;
+    try {
+      const raw = localStorage.getItem(manualKey);
+      if (raw) {
+        const arr = JSON.parse(raw) as string[];
+        setManualReinforcement(new Set(arr));
+      } else {
+        setManualReinforcement(new Set());
+      }
+    } catch (e) {
+      console.warn('Failed to read manual reinforcement from localStorage', e);
+      setManualReinforcement(new Set());
+    }
+  }, [manualKey]);
+
+  const persistManualReinforcement = (set: Set<string>) => {
+    if (!manualKey) return;
+    const arr = Array.from(set);
+    try {
+      localStorage.setItem(manualKey, JSON.stringify(arr));
+    } catch (e) {
+      console.warn('Failed to persist manual reinforcement', e);
+    }
+  };
+
+  const toggleManualReinforcement = (activityId: string) => {
+    setManualReinforcement(prev => {
+      const next = new Set(prev);
+      if (next.has(activityId)) next.delete(activityId);
+      else next.add(activityId);
+      persistManualReinforcement(next);
+      return next;
+    });
+  };
+
+  const clearManualReinforcement = () => {
+    setManualReinforcement(new Set());
+    persistManualReinforcement(new Set());
+  };
+
+  // Small inner component to render the activity dot + manual toggle button
+  const ActivityProgramDot: React.FC<{ activityId: string }> = ({ activityId }) => {
+    const prog = getActivityProgramSuccessPercentage(activityId, activityStats, 6);
+    const isGood = prog >= 100;
+    const isManual = manualReinforcement.has(activityId);
+    return (
+      <>
+        <div className="h-2 w-2 rounded-full flex-shrink-0" style={{ backgroundColor: isGood ? '#16a34a' : '#d1d5db' }} />
+        <span className="text-xs text-gray-600 ml-1">{prog}%</span>
+        {/* Manual toggle shown only when activity is not successful (grey) */}
+        {!isGood && (
+          <button
+            type="button"
+            onClick={() => toggleManualReinforcement(activityId)}
+            className={`ml-2 text-[11px] px-2 py-0.5 rounded-md font-medium ${isManual ? 'bg-violet-600 text-white' : 'bg-violet-50 text-violet-700 border border-violet-100'}`}
+          >
+            {isManual ? t('programMode.removeFromReinforcement', 'Çıkar') : t('programMode.addToReinforcement', 'Ekle')}
+          </button>
+        )}
+      </>
+    );
+  };
   
   // Calculate unit progress
   const unitProgress = useMemo(() =>
@@ -45,11 +115,13 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
       // Always use display-oriented success that blends Program + Free mode stats,
       // but does not penalize for completely unattempted activities.
       const display = getUnitDisplaySuccessPercentage(unit.unitNumber, activityStats, masteredObjectCategories);
+      // NOTE: removed additional per-unit program dots here (user requested to delete initial green dots).
       return {
         ...unit,
         isUnlocked: isUnitUnlocked(unit.unitNumber, activityStats, masteredObjectCategories),
         completionPercentage: completion,
-        displayPercentage: display
+        displayPercentage: display,
+        // keep activity list; per-activity indicators render in unit details
       };
     }),
     [activityStats, masteredObjectCategories]
@@ -235,27 +307,56 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                   </div>
                 )}
 
-                {/* Reinforcement (always render a block) */}
+                {/* Reinforcement (always render a block). If user manually selected activities for reinforcement,
+                    show those instead of automatic candidates. */}
                 <div>
                   <p className="text-xs font-bold text-purple-600 mb-1">
                     💪 {t('programMode.reinforcement', 'Pekiştirme')}
                   </p>
-                  {todaySession.activities.filter(a => a.sessionRole === 'reinforcement').length > 0 ? (
-                    <ul className="space-y-1 text-sm">
-                      {todaySession.activities
-                        .filter(a => a.sessionRole === 'reinforcement')
-                        .map((activity, idx) => (
-                          <li key={idx} className="flex items-center gap-2">
-                            <span className="text-purple-500">•</span>
-                            <span>{getActivityName(String(activity.activityId))}</span>
-                          </li>
-                        ))}
-                    </ul>
-                  ) : (
-                    <p className="text-[11px] text-purple-700 bg-purple-50 border border-purple-200 rounded-md px-2 py-1 inline-block">
-                      {t('programMode.noReinforcementToday', 'Bugün pekiştirme yok (zayıf etkinlik bulunamadı).')}
-                    </p>
-                  )}
+                  {
+                    (() => {
+                      const manualList = Array.from(manualReinforcement);
+                      if (manualList.length > 0) {
+                        return (
+                          <div>
+                            <div className="flex items-center justify-between">
+                              <ul className="space-y-1 text-sm">
+                                {manualList.map((aid, idx) => (
+                                  <li key={idx} className="flex items-center gap-2">
+                                    <span className="text-purple-500">•</span>
+                                    <span>{getActivityName(String(aid))}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                              <button type="button" onClick={clearManualReinforcement} className="ml-4 text-xs px-2 py-1 rounded-md bg-red-50 text-red-700 border border-red-100">
+                                {t('programMode.clearManualReinforcement', 'Manuel Seçimleri Temizle')}
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      const autoReinf = todaySession.activities.filter(a => a.sessionRole === 'reinforcement');
+                      if (autoReinf.length > 0) {
+                        return (
+                          <ul className="space-y-1 text-sm">
+                            {autoReinf.map((activity, idx) => (
+                              <li key={idx} className="flex items-center gap-2">
+                                <span className="text-purple-500">•</span>
+                                <span>{getActivityName(String(activity.activityId))}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        );
+                      }
+
+                      return (
+                        <p className="text-[11px] text-purple-700 bg-purple-50 border border-purple-200 rounded-md px-2 py-1 inline-block">
+                          {t('programMode.noReinforcementToday', 'Bugün pekiştirme yok (zayıf etkinlik bulunamadı).')}
+                        </p>
+                      );
+                    })()
+                  }
                 </div>
               </div>
             </section>
@@ -291,6 +392,12 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
               </li>
               <li>
                 <strong>{t('programMode.rules.failure', 'Başarı düşük olursa:')}</strong> {t('programMode.rules.failureDesc', 'Etkinlik tamamlanır, puan kaydedilir. Başarı yeterli değilse ilerleyen günlerde yeniden çalışılır.')}
+              </li>
+              <li>
+                <strong>{t('programMode.rules.reinforcementCounts', 'Pekiştirme ve ilerleme:')}</strong> {t('programMode.rules.reinforcementCountsDesc', 'Pekiştirme oturumları artık program denemesi olarak sayılır; bu denemeler ünitenin ilerleme hesabına katkı sağlar. Pekiştirme adayları sıfır başarı gösteren etkinlikleri de içerebilir ve ebeveynler manuel olarak aday ekleyip çıkarabilir.')}
+              </li>
+              <li>
+                <strong>{t('programMode.rules.reinforcementScope', 'Pekiştirme kapsamı:')}</strong> {t('programMode.rules.reinforcementScopeDesc', 'Pekiştirme normalde oturumun odak ünitelerindeki etkinliklerle sınırlıdır; başka ünitelerden manuel eklenen seçimler odak üniteyle uyuşmuyorsa dikkate alınmaz. (Manuel seçimleri temizlemek için "Manuel Seçimleri Temizle" düğmesini kullanın.)')}
               </li>
               <li>
                 <strong>{t('programMode.rules.unlocking', 'Ünite açma şartı:')}</strong> {t('programMode.rules.unlockingDesc', 'O ünitedeki her etkinlik en az 1 kez çözülmüş olmalı ve genel başarı ≥ %80 olmalı (Serbest + Program denemeleri birlikte hesaplanır).')}
@@ -336,7 +443,7 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                         {unit.displayPercentage === 100 ? (
                           <CheckCircleIcon className="h-4 w-4 inline text-emerald-600" />
                         ) : (
-                          `%${unit.displayPercentage}`
+                            `%${unit.displayPercentage}`
                         )}
                       </span>
                     ) : (
@@ -383,10 +490,11 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
                   </div>
                 </summary>
                 <div className="p-4 bg-white border-t border-gray-100">
-                  <ul className="space-y-2 text-sm">
+                    <ul className="space-y-2 text-sm">
                     {unit.activities.map((activityId, idx) => (
                       <li key={idx} className="flex items-center gap-2">
-                        <span className="text-gray-400">•</span>
+                        {/* per-activity program-mode success indicator */}
+                        <ActivityProgramDot activityId={String(activityId)} />
                         <span className={unit.isUnlocked ? SIMPLE_THEME_TEXT_SECONDARY : 'text-gray-400'}>
                           {getActivityName(activityId as string)}
                         </span>
@@ -409,16 +517,28 @@ const ProgramModeIntroScreen: React.FC<ProgramModeIntroScreenProps> = ({
         <button type="button" onClick={onBack} className={SIMPLE_THEME_ACTION_BUTTON}>
           {t('app.back', 'Back')}
         </button>
-        <button
-          type="button"
-          onClick={onStartProgramMode}
-          disabled={todaySession.activities.length === 0}
-          className={`${SIMPLE_THEME_ACTION_BUTTON} !bg-emerald-600 !text-white border-emerald-500 hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed`}
-        >
-          {todaySession.activities.length === 0 
-            ? t('programMode.noActivities', 'All activities completed!')
-            : t('programMode.start', 'Start Program Mode')}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onStartProgramMode}
+            disabled={todaySession.activities.length === 0}
+            className={`${SIMPLE_THEME_ACTION_BUTTON} !bg-emerald-600 !text-white border-emerald-500 hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed`}
+          >
+            {todaySession.activities.length === 0 
+              ? t('programMode.noActivities', 'All activities completed!')
+              : t('programMode.start', 'Start Program Mode')}
+          </button>
+
+          {/* Reinforcement Mode button - starts a session focused on reinforcement candidates only */}
+          <button
+            type="button"
+            onClick={onStartReinforcementMode}
+            disabled={(Array.from(manualReinforcement).length === 0) && (todaySession.activities.filter(a => a.sessionRole === 'reinforcement').length === 0)}
+            className={`${SIMPLE_THEME_ACTION_BUTTON} !bg-violet-600 !text-white border-violet-500 hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed`}
+          >
+            {t('programMode.reinforcement', 'Pekiştirme')}
+          </button>
+        </div>
       </div>
     </SimpleThemeWrapper>
   );

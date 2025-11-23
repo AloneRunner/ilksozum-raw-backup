@@ -126,11 +126,20 @@ export function buildDailySession(
   // Filter previous activities:
   // Isınma adayları: başarı >= 0.80 (ustalaşmış). EN DÜŞÜK başarıyı seçmek için sıralama ascending.
   const warmupCandidates = previousActivities.filter(id => successOf(id) >= 0.80);
-  // Pekiştirme adayları: başarı >0 && <0.80. Eşiğe yakın olanı öncelemek için descending sıralama.
+  // Pekiştirme adayları: başarı < 0.80 (include zeros so reinforcement appears even
+  // when the child repeatedly failed and their percentage stuck below threshold).
+  // Eşiğe yakın olanı öncelemek için descending sıralama.
   const weakCandidates = previousActivities.filter(id => {
     const s = successOf(id);
-    return s > 0 && s < 0.80; // yeni zayıf eşiği
+    return s < 0.80; // include zero-success activities
   }).sort((a,b) => successOf(b) - successOf(a));
+
+  // Debug logging to help trace why reinforcement may or may not be selected
+  try {
+    console.debug('[SessionBuilder] focusUnit', focusUnit, 'previousActivities', previousActivities.length, 'weakCandidates', weakCandidates.map(w => ({ id: String(w), success: successOf(w) })));
+  } catch (e) {
+    // ignore in environments without console
+  }
 
   // --- Session Construction ---
   const session: SessionActivity[] = [];

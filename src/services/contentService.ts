@@ -8,7 +8,7 @@ import {
     fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData,
     onUnderData, belowAboveData, besideOppositeData, inFrontOfBehindData, insideOutsideData, betweenData, leftRightData, nearFarData, highLowData,
     beforeAfterData, dayNightData, fastSlowData,
-    whatDoesntBelongData, causeEffectData, fiveWOneHData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
+    whatDoesntBelongData, fiveWOneHData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
 } from './database/activities/index.ts';
 import objectCollectorData from './database/activities/games/objectCollectorData.ts';
 import emotionPuppetData from './database/activities/games/emotionPuppetData.ts';
@@ -1145,7 +1145,6 @@ const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
     [ActivityType.FastSlow]: fastSlowData,
     // WhatDoesntBelong is now handled dynamically
     // FunctionalMatching removed - now integrated into 5N1K "What?" category
-    [ActivityType.CauseEffect]: causeEffectData,
     [ActivityType.FiveWOneH]: fiveWOneHData,
     [ActivityType.SequencingStories]: sequencingStoryData,
     [ActivityType.PatternCompletion]: patternCompletionData,
@@ -1317,6 +1316,81 @@ export const fetchConceptActivityData = async (
             }
         };
 
+        // Helper to synthesize items from imageData when payload is missing/insufficient
+        // Prefer picking 4 visually-comparable items from the same category to avoid
+        // totally unrelated images being compared.
+        const synthesizeItems = (): any[] => {
+            const bannedIds = getBannedImageIds();
+            const candidates = imageData.filter(item => !bannedIds.has(item.id));
+
+            // Group candidates by normalized category
+            const normalize = (s?: string) => (s || '').toString().toLowerCase().trim();
+            const bucket: Record<string, any[]> = {};
+            for (const c of candidates) {
+                const key = normalize(c.tags && (c.tags.category || '')) || 'uncategorized';
+                if (!bucket[key]) bucket[key] = [];
+                bucket[key].push(c);
+            }
+
+            // Prefer a category that has at least 4 distinct words
+            let chosenGroup: any[] | null = null;
+            const keys = Object.keys(bucket).filter(k => bucket[k] && bucket[k].length > 0);
+            // Shuffle keys to pick a random category each time
+            const shuffledKeys = shuffleArray(keys);
+            for (const k of shuffledKeys) {
+                const uniqueByWord = Array.from(new Map(bucket[k].map(it => [it.word && it.word.toLowerCase() || String(it.id), it])).values());
+                if (uniqueByWord.length >= 4) { chosenGroup = uniqueByWord; break; }
+            }
+
+            // If no category has 4, pick the largest category
+            if (!chosenGroup && keys.length > 0) {
+                const largestKey = keys.reduce((a, b) => (bucket[a].length > bucket[b].length ? a : b));
+                chosenGroup = Array.from(new Map(bucket[largestKey].map(it => [it.word && it.word.toLowerCase() || String(it.id), it])).values());
+            }
+
+            // Fallback: sample unique words from the whole candidate pool
+            let selected: any[] = [];
+            if (chosenGroup) {
+                selected = getRandomItems(chosenGroup, Math.min(8, chosenGroup.length));
+            } else {
+                const uniquePool = Array.from(new Map(candidates.map(it => [it.word && it.word.toLowerCase() || String(it.id), it])).values());
+                selected = getRandomItems(uniquePool, Math.min(8, uniquePool.length));
+            }
+
+            const unique: any[] = [];
+            const seen = new Set<string>();
+            for (const s of selected) {
+                const key = (s.word || String(s.id)).toLowerCase();
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    // Prefer mainVisualMap match if exists
+                    const mainId = mainVisualMap[key];
+                    const imageId = mainId && !bannedIds.has(mainId) ? mainId : s.id;
+                    unique.push({ imageId: imageId, labelKey: s.word || String(s.id), rank: undefined });
+                }
+                if (unique.length >= 4) break;
+            }
+
+            // Ensure we have 4 items; try to fill from other candidates
+            if (unique.length < 4) {
+                for (const c of candidates) {
+                    const key = (c.word || String(c.id)).toLowerCase();
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        unique.push({ imageId: c.id, labelKey: c.word || String(c.id), rank: undefined });
+                    }
+                    if (unique.length >= 4) break;
+                }
+            }
+
+            // Final fallback: pad with placeholders (should be rare)
+            while (unique.length < 4) unique.push({ imageId: 0, labelKey: `placeholder_${unique.length}`, rank: undefined });
+
+            // Assign deterministic ranks 1..4 (could be randomized later)
+            return unique.map((u, idx) => ({ ...u, rank: idx + 1 }));
+        };
+
+        // Try to load curated experimental data; if missing or incomplete, synthesize playable rounds
         try {
             const mod = await import('../data/experimental/relative_concepts.json');
             const payload = (mod && (mod as any).default) ? (mod as any).default : mod;
@@ -1324,20 +1398,113 @@ export const fetchConceptActivityData = async (
             const dim = getDimensionKey(activity);
             // Find rounds matching the requested dimension
             const matched = roundsPayload.filter((r: any) => String(r.dimension) === dim);
-            if (matched.length === 0) {
-                // If none matched, return an array of minimal placeholder rounds to avoid 'no content'
-                const fallback: any[] = [];
-                for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) fallback.push({ id: i, items: [], dimension: dim, activityType: activity });
-                return fallback;
+
+            // Prefer curated rounds. Use matched rounds first, then other curated rounds
+            // (different dimensions) to fill the requested number. Only synthesize
+            // from the general image pool as a last resort. This preserves the
+            // dedicated curated set (IDs 950-977) for Relative Comparison activities.
+            const rounds: any[] = [];
+
+            // Normalized helper to convert payload items to internal format
+            const convertItems = (arr: any[]) => arr.slice(0, 4).map((it: any, i: number) => ({ imageId: it.imageId || it.id || 0, labelKey: it.labelKey || it.word || `item_${i}`, rank: it.rank ?? i + 1 }));
+
+            // 1) Add matched rounds (same dimension)
+            for (let idx = 0; idx < Math.min(matched.length, NUM_ROUNDS_DYNAMIC); idx++) {
+                const r = matched[idx];
+                const items = (r.items && Array.isArray(r.items) && r.items.length >= 2)
+                    ? convertItems(r.items)
+                    : [];
+                if (items.length > 0) rounds.push({ id: r.id || `${dim}_${idx}`, items, dimension: r.dimension, activityType: activity });
             }
 
-            // Normalize to expected Round shape and limit to NUM_ROUNDS_DYNAMIC
-            const rounds = matched.slice(0, NUM_ROUNDS_DYNAMIC).map((r: any, idx: number) => ({ id: r.id || `${dim}_${idx}`, items: r.items || [], dimension: r.dimension, activityType: activity }));
+            // If we have curated matches for this exact dimension, DO NOT mix in
+            // curated rounds from other dimensions. Instead, create the requested
+            // number of rounds using only the matched curated items (rotate
+            // through matched rounds if there are multiple). This preserves the
+            // dedicated curated image sets (e.g. IDs 950-977) for their respective
+            // dimensions and prevents unrelated images appearing in the same
+            // activity.
+            if (matched.length > 0) {
+                const baseRounds = matched.map((r: any) => ({ id: r.id, items: (r.items || []).slice(0,4).map((it: any, i: number) => ({ imageId: it.imageId || it.id || 0, labelKey: it.labelKey || it.word || `item_${i}`, rank: it.rank ?? i + 1 })), dimension: r.dimension }));
+                for (let k = 0; k < NUM_ROUNDS_DYNAMIC; k++) {
+                    const src = baseRounds[k % baseRounds.length];
+                    // Use the exact curated items for every generated round
+                    rounds.push({ id: `${src.id || dim}_${k}`, items: src.items.map((it: any) => ({ ...it })), dimension: src.dimension, activityType: activity });
+                }
+                return rounds;
+            }
+
+            // If there were no curated matches for this dimension at all,
+            // fall back to sampling across the entire curated payload first
+            // (to reuse any available experimental assets), then synthesize.
+            const curatedItems = roundsPayload.flatMap((r: any) => (r.items || [])).map((it: any) => ({ imageId: it.imageId || it.id || 0, labelKey: it.labelKey || it.word || String(it.imageId || it.id), rank: it.rank }));
+            const uniqueCurated = Array.from(new Map<number, any>((curatedItems as any[]).map((ci: any) => [ci.imageId, ci])).values());
+            let cidx = 0;
+            while (rounds.length < NUM_ROUNDS_DYNAMIC && uniqueCurated.length >= 4) {
+                const slice = uniqueCurated.slice(cidx, cidx + 4).map((u: any, i: number) => ({ ...u, rank: u.rank ?? i + 1 }));
+                if (slice.length === 4) rounds.push({ id: `curated_fill_${rounds.length}`, items: slice, dimension: dim, activityType: activity });
+                cidx += 4;
+                if (cidx >= uniqueCurated.length) cidx = 0;
+            }
+
+            // Fill remaining slots by synthesizing from the general image pool
+            for (let k = rounds.length; k < NUM_ROUNDS_DYNAMIC; k++) {
+                rounds.push({ id: `synth_fill_${k}`, items: synthesizeItems(), dimension: dim, activityType: activity });
+            }
+
             return rounds;
         } catch (e) {
             console.warn('Could not load experimental relative comparison data', e);
             const fallback: any[] = [];
-            for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) fallback.push({ id: i, items: [], dimension: getDimensionKey(activity), activityType: activity });
+            const dim = getDimensionKey(activity);
+            for (let i = 0; i < NUM_ROUNDS_DYNAMIC; i++) {
+                // Inline synthesize logic (keep local to catch to avoid scope edge-cases)
+                const bannedIds = getBannedImageIds();
+                const candidates = imageData.filter(item => !bannedIds.has(item.id));
+                const normalize = (s?: string) => (s || '').toString().toLowerCase().trim();
+                const bucket: Record<string, any[]> = {};
+                for (const c of candidates) {
+                    const key = normalize(c.tags && (c.tags.category || '')) || 'uncategorized';
+                    if (!bucket[key]) bucket[key] = [];
+                    bucket[key].push(c);
+                }
+                let chosenGroup: any[] | null = null;
+                const keys = Object.keys(bucket).filter(k => bucket[k] && bucket[k].length > 0);
+                const shuffledKeys = shuffleArray(keys);
+                for (const k of shuffledKeys) {
+                    const uniqueByWord = Array.from(new Map(bucket[k].map(it => [it.word && it.word.toLowerCase() || String(it.id), it])).values());
+                    if (uniqueByWord.length >= 4) { chosenGroup = uniqueByWord; break; }
+                }
+                if (!chosenGroup && keys.length > 0) {
+                    const largestKey = keys.reduce((a, b) => (bucket[a].length > bucket[b].length ? a : b));
+                    chosenGroup = Array.from(new Map(bucket[largestKey].map(it => [it.word && it.word.toLowerCase() || String(it.id), it])).values());
+                }
+                let selected: any[] = [];
+                if (chosenGroup) selected = getRandomItems(chosenGroup, Math.min(8, chosenGroup.length));
+                else selected = getRandomItems(Array.from(new Map(candidates.map(it => [it.word && it.word.toLowerCase() || String(it.id), it])).values()), Math.min(8, candidates.length));
+
+                const unique: any[] = [];
+                const seen = new Set<string>();
+                for (const s of selected) {
+                    const key = (s.word || String(s.id)).toLowerCase();
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        const mainId = mainVisualMap[key];
+                        const imageId = mainId && !bannedIds.has(mainId) ? mainId : s.id;
+                        unique.push({ imageId: imageId, labelKey: s.word || String(s.id), rank: undefined });
+                    }
+                    if (unique.length >= 4) break;
+                }
+                if (unique.length < 4) {
+                    for (const c of candidates) {
+                        const key = (c.word || String(c.id)).toLowerCase();
+                        if (!seen.has(key)) { seen.add(key); unique.push({ imageId: c.id, labelKey: c.word || String(c.id), rank: undefined }); }
+                        if (unique.length >= 4) break;
+                    }
+                }
+                while (unique.length < 4) unique.push({ imageId: 0, labelKey: `placeholder_${unique.length}`, rank: undefined });
+                fallback.push({ id: `synth_${i}`, items: unique.map((u, idx) => ({ ...u, rank: idx + 1 })), dimension: dim, activityType: activity });
+            }
             return fallback;
         }
     }

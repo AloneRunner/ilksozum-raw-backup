@@ -59,7 +59,7 @@ const Card: React.FC<CardProps> = ({
             ay2: { bg: 'bg-indigo-100/90 backdrop-blur-sm border border-indigo-300/50', text: 'text-indigo-900', border: 'border-indigo-300/50' },
             zurafa: { bg: 'bg-cyan-100/90 backdrop-blur-sm border border-cyan-300/50', text: 'text-cyan-900', border: 'border-cyan-300/50' },
             geometri: { bg: 'bg-rose-100/90 backdrop-blur-sm border border-rose-300/50', text: 'text-rose-900', border: 'border-rose-300/50' },
-            deneme: { bg: 'bg-gradient-to-br from-purple-200/95 via-pink-200/90 to-red-200/85 backdrop-blur-sm border border-purple-400/60', text: 'text-purple-900 font-bold', border: 'border-purple-400/60' },
+            deneme: { bg: 'bg-gradient-to-br from-blue-900/90 via-cyan-800/80 to-teal-700/85 backdrop-blur-sm border border-cyan-400/52', text: 'text-cyan-100 font-bold', border: 'border-cyan-400/60' },
             deneme2: { bg: 'bg-slate-900/60 backdrop-blur-sm border border-sky-400/25', text: 'text-sky-100 text-glow-planet', border: 'border-sky-400/25' },
         };
         return themeColors[settings.theme] || { bg: 'bg-black/60 backdrop-blur-sm', text: 'text-white', border: '' };

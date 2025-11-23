@@ -1,0 +1,174 @@
+{
+  "activityFeedback": {
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "goodJob": "Good job!",
+    "tryAgain": "Try again",
+    "wellDone": "Well done",
+    "almost": "Almost",
+    "keepGoing": "Keep going",
+    "notQuite": "Not quite",
+    "excellent": "Excellent",
+    "nice": "Nice",
+    "oops": "Oops",
+    "causeEffect": {
+      "1": {
+        "correct": "Correct! When it rains, we open an umbrella.",
+        "wrong": "No, sunglasses are used in sunny weather."
+      },
+      "2": {
+        "correct": "Correct! Ice cream melts in the sun.",
+        "wrong": "No, ice cream doesn't freeze in snow; it's already cold."
+      },
+      "3": {
+        "correct": "Correct! A seed grows in soil and becomes a plant.",
+        "wrong": "No, a log comes from cutting trees, not from seeds."
+      },
+      "4": {
+        "correct": "Correct! Hands are cleaned by washing with soap.",
+        "wrong": "No, those are dirty hands; they need cleaning."
+      },
+      "5": {
+        "correct": "Correct! The egg breaks when dropped.",
+        "wrong": "No, chicks hatch from eggs through incubation, not by dropping."
+      },
+      "6": {
+        "correct": "Correct! Fire burns by burning wood.",
+        "wrong": "No, stones don't burn; you need wood for fire."
+      },
+      "7": {
+        "correct": "Correct! The vase breaks when hit with a hammer.",
+        "wrong": "No, vases hold water; they break when hit with a hammer."
+      },
+      "8": {
+        "correct": "Correct! We wear a beanie when it snows; it keeps us warm.",
+        "wrong": "No, shorts are worn in hot weather, not in winter."
+      },
+      "9": {
+        "correct": "Correct! The baby drinks milk when hungry.",
+        "wrong": "No, toys are for fun; milk is needed when hungry."
+      },
+      "10": {
+        "correct": "Correct! The shirt is smoothed by ironing it.",
+        "wrong": "No, scissors are for cutting; ironing is needed to smooth."
+      },
+      "11": {
+        "correct": "Correct! When night comes, we go to bed to sleep.",
+        "wrong": "No, balls are for daytime play; night is for sleeping."
+      },
+      "12": {
+        "correct": "Correct! Flowers grow and develop with water.",
+        "wrong": "No, scissors are for cutting; flowers need water to grow."
+      },
+      "13": {
+        "correct": "Correct! We learn new things by reading books.",
+        "wrong": "No, playing with balls is fun but reading books helps learning."
+      },
+      "14": {
+        "correct": "Correct! Balloons expand when inflated.",
+        "wrong": "No, stones are hard and solid; they cannot be inflated."
+      },
+      "15": {
+        "correct": "Correct! Dough becomes bread when baked.",
+        "wrong": "No, refrigerators are for cooling; you need an oven to bake."
+      },
+      "correct": "Great job!",
+      "wrong": "Try again."
+    },
+    "functionalMatching": {
+      "1": { "correct": "We hammer nails with a hammer." },
+      "2": { "correct": "We brush our teeth with toothpaste." },
+      "3": { "correct": "We wear shoes after socks." },
+      "4": { "correct": "We use the pillow on the bed." },
+      "5": { "correct": "We eat soup with a spoon." },
+      "6": { "correct": "We paint the picture with a brush." },
+      "7": { "correct": "We write on paper with a pen." },
+      "8": { "correct": "We open the door with a key." },
+      "9": { "correct": "We eat pasta with a fork." },
+      "10": { "correct": "We put money in a piggy bank." },
+      "11": { "correct": "We comb our hair with a comb." },
+      "12": { "correct": "We read the book on the table." },
+      "13": { "correct": "We cut paper with scissors." },
+      "14": { "correct": "We cut bread with a knife." },
+      "15": { "correct": "We wash our hands with soap." },
+      "correct": "Great job! Correct match!",
+      "wrong": "That's not correct."
+    },
+    "whatDoesntBelong": {
+      "1": { "correct": "Yes, {item} is different.", "wrong": "No, this is the same." },
+      "2": { "correct": "Yes, {item} is different.", "wrong": "No, this is the same." },
+      "3": { "correct": "Yes, {item} is different.", "wrong": "No, this is the same." },
+      "4": { "correct": "Yes, {item} is different.", "wrong": "No, this is the same." },
+      "5": { "correct": "Yes, {item} is a vehicle; the others are fruit.", "wrong": "No, {item} is a fruit." },
+      "6": { "correct": "Yes, {item} is clothing; the others are animals.", "wrong": "No, {item} is an animal." },
+      "7": { "correct": "Yes, {item} is clothing; the others are vehicles.", "wrong": "No, {item} is a vehicle." },
+      "8": { "correct": "Yes, {item} is a toy; the others are musical instruments.", "wrong": "No, {item} is a musical instrument." },
+      "9": { "correct": "Yes, {item} is a fruit; the others are vegetables.", "wrong": "No, {item} is a vegetable." },
+      "10": { "correct": "Yes, {item} is a natural object; the others are shapes.", "wrong": "No, {item} is a shape." },
+      "11": { "correct": "Yes, {item} is a child; the others are professions.", "wrong": "No, {item} is a profession." },
+      "12": { "correct": "Yes, {item} is an object; the others are furniture.", "wrong": "No, {item} is furniture." },
+      "13": { "correct": "Yes, {item} is a kitchen item; the others are bathroom items.", "wrong": "No, {item} is a bathroom item." },
+      "14": { "correct": "Yes, {item} is an object; the others are living things.", "wrong": "No, {item} is a living thing." },
+      "15": { "correct": "Yes, {item} is a tool; the others are cutlery.", "wrong": "No, {item} is cutlery." },
+      "16": { "correct": "Yes, {item} is food; the others are animals.", "wrong": "No, {item} is an animal." },
+      "17": { "correct": "Yes, {item} is a drink; the others are fruit.", "wrong": "No, {item} is a fruit." },
+      "18": { "correct": "Yes, {item} is a color; the others are toys.", "wrong": "No, {item} is a toy." },
+      "19": { "correct": "Yes, {item} is weather; the others are clothing.", "wrong": "No, {item} is clothing." },
+      "20": { "correct": "Yes, {item} is a building; the others are vehicles.", "wrong": "No, {item} is a vehicle." },
+      "correct": "Yes, {item} is different.",
+      "wrong": "No, this is the same."
+    },
+    "fiveWOneH": {
+      "q_who_to_when_sick": { "correct": "Yes! We go to the doctor when we are sick.", "wrong": "No, that's not where we go when we are sick." },
+      "q_who_to_when_fire": { "correct": "Correct! We call the firefighters in a fire.", "wrong": "No, in a fire we should call the firefighters." },
+      "q_who_uses_this": { "correct": "Yes! A teacher uses the blackboard.", "wrong": "No, it is usually used by a teacher." },
+      "q_who_brings_letter": { "correct": "Correct! The postman brings the letter.", "wrong": "No, the postman brings the letter." },
+      "q_what_brush_teeth_with": { "correct": "Yes! We brush our teeth with toothpaste.", "wrong": "No, we don't brush our teeth with that." },
+      "q_what_eat_with": { "correct": "Correct! We use a fork to eat.", "wrong": "No, we don't use that to eat." },
+      "q_where_doctor_works": { "correct": "Yes! A doctor works at a hospital.", "wrong": "No, a doctor works at a hospital." },
+      "q_where_is_swing": { "correct": "Correct! The swing is at the playground.", "wrong": "No, the swing is at the playground." },
+      "q_where_do_we_sleep": { "correct": "Yes! We sleep in a bed.", "wrong": "No, we don't sleep there." },
+      "q_where_fish_lives": { "correct": "Yes! Fish live in an aquarium.", "wrong": "No, fish don't live there." },
+      "q_when_see_owl": { "correct": "Correct! We see owls at night.", "wrong": "No, owls are usually seen at night." },
+      "q_when_use_umbrella": { "correct": "Yes! We use an umbrella when it rains.", "wrong": "No, we don't use an umbrella then." },
+      "q_when_wear_beanie": { "correct": "Correct! We wear a beanie when it snows.", "wrong": "No, we don't wear a beanie then." },
+      "q_why_icecream_melted": { "correct": "Yes! Ice cream melts because of the sun.", "wrong": "No, that's not why ice cream melts." },
+      "q_why_clothes_neat": { "correct": "Correct! Because they were ironed.", "wrong": "No, that doesn't make them neat." },
+      "q_how_go_to_school": { "correct": "Yes! We go to school by school bus.", "wrong": "No, we don't usually go that way." },
+      "q_how_open_door": { "correct": "Yes! We open the door with a key.", "wrong": "No, we don't open the door with that." },
+      "q_how_baby_feels": { "correct": "Correct! The baby feels sad.", "wrong": "No, the baby doesn't feel that way." },
+      "q_where_is_sleeping_child": { "correct": "Yes! We usually sleep in a bed.", "wrong": "No, we usually sleep in a bed." },
+      "q_why_child_wants_play": { "correct": "Correct! To have fun and play with friends.", "wrong": "No, usually to have fun with friends." },
+      "q_where_child_wants_to_go_outside": { "correct": "Yes! The child may want to go to the park.", "wrong": "No, usually the park is desired." },
+      "q_why_child_tired": { "correct": "Correct! Due to long play or little sleep.", "wrong": "No, usually because of long activity or little sleep." },
+      "q_where_child_wants_go_park": { "correct": "Yes! Wants to go to the park.", "wrong": "No, not to a different place." },
+      "q_how_child_prefers_drive": { "correct": "Correct! Wearing a seatbelt and with a parent.", "wrong": "No, it should be safely with an adult." },
+      "q_when_rhino_active": { "correct": "Correct! Depending on species, day or twilight.", "wrong": "No, usually not at night." },
+      "q_where_camels_live": { "correct": "Yes! In deserts and dry areas.", "wrong": "No, usually in deserts." },
+      "q_where_fish_live_915": { "correct": "Yes! They live in water.", "wrong": "No, they don't live out of water." },
+      "q_when_bears_hibernate": { "correct": "Correct! During winter.", "wrong": "No, in the winter season." },
+      "q_who_flies_plane": { "correct": "Yes! A pilot flies the plane.", "wrong": "No, they don't fly the plane." },
+      "q_who_cuts_hair": { "correct": "Correct! A barber cuts our hair.", "wrong": "No, they don't cut our hair." },
+      "q_who_provides_milk": { "correct": "Yes! A farmer provides milk.", "wrong": "No, it is usually provided by a farmer." },
+      "q_what_erase_text": { "correct": "Correct! We use an eraser to erase.", "wrong": "No, we don't erase with that." },
+      "q_what_measure_height": { "correct": "Yes! We use a ruler to measure height.", "wrong": "No, we don't measure height with that." },
+      "q_what_dry_after_bath": { "correct": "Correct! We dry ourselves with a towel after a bath.", "wrong": "No, we don't dry with that." },
+      "q_where_to_eat": { "correct": "Yes! We go to a restaurant to eat.", "wrong": "No, we don't go there to eat." },
+      "q_where_to_read_books": { "correct": "Correct! We can go to the library to read books.", "wrong": "No, that's not a good place to read books." },
+      "q_where_to_shop": { "correct": "Yes! We shop at the market.", "wrong": "No, we don't shop there." },
+      "q_when_go_to_bed": { "correct": "Correct! We go to bed at night.", "wrong": "No, we don't go to bed then." },
+      "q_when_go_to_beach": { "correct": "Yes! We go to the beach when it's sunny.", "wrong": "No, we don't go to the beach then." },
+      "q_when_make_snowman": { "correct": "Correct! We make a snowman when it snows.", "wrong": "No, we don't make a snowman then." },
+      "q_why_child_cold": { "correct": "Yes! Because it is cold.", "wrong": "No, that's not why they're cold." },
+      "q_why_hair_wet": { "correct": "Correct! It's wet because of a shower.", "wrong": "No, that's not why it's wet." },
+      "q_how_reach_high_shelf": { "correct": "Yes! We use a ladder to reach.", "wrong": "No, we can't reach with that." },
+      "q_how_travel_at_sea": { "correct": "Correct! We travel by ship at sea.", "wrong": "No, we don't usually travel by that at sea." },
+      "q_how_clean_room": { "correct": "Yes! We clean the room with a cleaning bucket and supplies.", "wrong": "No, we don't clean the room with that." },
+      "q_what_do_we_drink_water_with": { "correct": "Yes! We drink water with a glass.", "wrong": "No, we don't drink water with that." },
+      "q_where_do_we_store_books": { "correct": "Correct! We keep them on a bookshelf.", "wrong": "No, we keep books on a bookshelf." },
+      "q_when_use_sunscreen": { "correct": "Yes! When it's sunny.", "wrong": "No, we usually use it when it's sunny." },
+      "q_why_wash_hands": { "correct": "Correct! To be clean and protect from germs.", "wrong": "No, we wash hands to be clean." },
+      "q_how_dry_hands": { "correct": "Yes! We dry them with a towel.", "wrong": "No, we dry hands with a towel." }
+    }
+  }
+}

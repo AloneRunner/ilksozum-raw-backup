@@ -1,4 +1,235 @@
 {
+  "app": {
+    "name": "Autisme: Mots & Routines",
+    "description": "Cartes éducatives interactives enseignant les mots, concepts et sons pour les enfants autistes.",
+    "printPreview": "Aperçu avant impression",
+    "savePdf": "Enregistrer en PDF",
+    "print": "Imprimer",
+    "back": "Retour",
+    "developing": "En développement",
+    "pdfSavedInfo": "PDF enregistré. Consultez votre dossier Documents ou utilisez le menu Partager.",
+    "pdfSaveError": "Une erreur s'est produite lors de l'enregistrement du PDF. Veuillez réessayer.",
+    "pdfCreateError": "Une erreur s'est produite lors de la création du PDF. Veuillez réessayer.",
+    "pdfJobName": "Cartes Mes Premiers Mots",
+    "shareTitle": "PDF enregistré",
+    "shareText": "Le fichier PDF a été enregistré. Voulez-vous le partager ?",
+    "shareDialogTitle": "Partager le PDF",
+    "noContentForActivity": "Aucun contenu trouvé pour cette activité.",
+    "noMoreImagesForActivity": "Il n'y a plus d'images à afficher pour cette activité.",
+    "noActivitySelected": "Aucune activité sélectionnée.",
+    "activityLoadError": "Une erreur s'est produite lors du chargement de l'activité.",
+    "randomActivityRestarting": "Redémarrage de l'activité aléatoire en cours…",
+    "activityRestarting": "Redémarrage de l'activité…"
+  },
+  "choice": {
+    "readQuestion": "Lire la question",
+    "matchPrompt": "Lequel correspond à ceci ?",
+    "label": "Étiquette",
+    "hint": "Indice",
+    "showLabel": "Afficher les étiquettes",
+    "hideLabel": "Masquer les étiquettes",
+    "showHint": "Afficher l'indice",
+    "learnShapes": "Apprendre les formes",
+    "learnEmotions": "Apprendre les émotions",
+    "hideHint": "Masquer l'indice",
+    "banImageAria": "Ne plus afficher cette image",
+    "learnColors": "Apprendre les couleurs"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Activer la lecture automatique",
+    "autoSpeakOff": "Désactiver la lecture automatique"
+  },
+  "feedback": {
+    "correctPrefix": "Oui, c'est",
+    "wrongPrefix": "Non, ce n'est pas",
+    "rightPrefix": "Correct, c'est",
+    "sentence": {
+      "correct": "Oui, le {noun} est {adjective}.",
+      "wrong": "Non, le {noun} n'est pas {adjective}."
+    }
+  },
+  "settings": {
+    "language": "Langue",
+    "languageSubtitle": "Langue de l'interface et de la synthèse vocale",
+    "languageNote": "Les activités sur les lettres sont disponibles pour le français (Bêta). Le contenu peut être limité.",
+    "languageAutoNote": "Remarque : Certaines traductions ont été générées avec l'aide de l'IA et peuvent contenir des erreurs. Nous présentons nos excuses aux parents concernés — envoyez-nous vos retours pour que nous puissions corriger les traductions."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objets",
+      "subtitle": "Ensembles d'objets sélectionnés pour les langues non-turques",
+      "noCuratedSet": "Aucun jeu sélectionné pour cette catégorie pour le moment."
+    }
+  },
+  "menu": {
+    "hello": "Bonjour",
+    "appTitle": "Autisme: Mots & Routines",
+    "experimentalTag": "Expérimental",
+    "random": {
+      "title": "Mode aléatoire",
+      "subtitle": "Jouer un mélange d'activités sélectionnées"
+    },
+    "programMode": {
+      "title": "Mode Programme",
+      "subtitle": "Démarrer une session quotidienne guidée"
+    },
+    "parentTips": {
+      "title": "Conseils pour les parents",
+      "subtitle": "Utilisez l'application plus efficacement"
+    },
+    "letterSound": {
+      "title": "Lettres et sons",
+      "subtitle": "Apprenez les lettres et les sons, épeler et lire."
+    },
+    "objects": {
+      "title": "Découvrons les objets",
+      "subtitle": "Apprenez les animaux, les fruits et plus encore."
+    },
+    "concepts": {
+      "title": "Activités de concepts",
+      "subtitle": "Apprenez les couleurs, les formes et les concepts opposés."
+    },
+    "reasoning": {
+      "title": "Jeux de logique",
+      "subtitle": "Jouez à des jeux de mémoire, sudoku et logique."
+    },
+    "fineMotor": {
+      "title": "Motricité fine",
+      "subtitle": "Suivi de ligne, coloriage, et plus",
+      "developingNote": "En développement",
+      "backButton": "Retour au menu Motricité fine"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Motricité fine"
+      },
+      "fineMotor": {
+        "lineTracing": "Suivi de ligne",
+        "shapeColoring": "Coloriage de formes",
+        "rhythmFollowing": "Suivi du rythme"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Qui • Quoi • Où • Quand • Pourquoi • Comment",
+      "developingNote": "En développement",
+      "category": {
+        "who": "Qui ?",
+        "what": "Quoi ?",
+        "where": "Où ?",
+        "when": "Quand ?",
+        "why": "Pourquoi ?",
+        "how": "Comment ?",
+        "mixed": "Mélangé"
+      }
+    }
+    ,
+    "soundImitation": {
+      "title": "Cartes d'Imitation de Sons",
+      "subtitle": "Cartes d'imitation de sons pour les enfants non verbaux",
+      "badge": "Nouveau — Activité Expérimentale",
+      "imagesTitle": "Cartes Images",
+      "imagesDesc": "Afficher les cartes images ; appuyez pour agrandir et naviguer.",
+      "videosTitle": "Vidéos Courtes",
+      "videosTitleShort": "Vidéos Courtes (Expérimental)",
+      "videosDesc": "Vidéos courtes — expérimental. Les vidéos peuvent prendre de l'espace.",
+      "experimentalNoteTitle": "Note Expérimentale",
+      "experimentalNote": "La section vidéo est expérimentale et peut ne pas être permanente. Les vidéos peuvent être volumineuses et occuper de l'espace sur votre appareil ; nous ajusterons selon vos retours.",
+      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
+      "feedbackRequest": "Veuillez laisser un retour (positif ou négatif) dans les avis du store.",
+      "themeTextColors": {
+        "simple": "#ffffff",
+        "deneme": "#000000",
+        "balon": "#000000",
+        "gunes": "#000000",
+        "tilki": "#000000",
+        "ay": "#000000",
+        "geceorman": "#ffffff",
+        "yagmur": "#000000",
+        "kus": "#000000",
+        "tilki2": "#000000",
+        "kedi": "#000000",
+        "kar": "#ffffff",
+        "gunbatimi": "#000000",
+        "ay2": "#000000",
+        "zurafa": "#000000",
+        "geometri": "#000000",
+        "kozmik": "#ffffff",
+        "balloon": "#000000",
+        "sun": "#000000",
+        "fox": "#000000",
+        "moon": "#000000",
+        "nightForest": "#ffffff",
+        "rain": "#000000",
+        "birds": "#000000",
+        "prairieFox": "#000000",
+        "cat": "#000000",
+        "snow": "#ffffff",
+        "sunset": "#000000",
+        "crescent": "#000000",
+        "giraffe": "#000000",
+        "geometric": "#000000"
+      }
+    }
+  },
+  "common": {
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "tabs": {
+    "activities": "Activités",
+    "communication": "Cartes d'expression",
+    "achievements": "Rapports",
+    "settings": "Paramètres"
+  },
+  "consent": {
+    "title": "Consentement à la confidentialité",
+    "body": "Pour continuer à utiliser l'application, veuillez accepter notre Politique de confidentialité. Nous ne collectons pas de données personnelles ; votre progression et vos réglages restent sur votre appareil. Des publicités non personnalisées peuvent être affichées dans la version gratuite.",
+    "accept": "J'accepte",
+    "viewPolicy": "Lire la politique de confidentialité"
+  },
+  "themes": {
+    "simple": "Simple",
+    "deneme": "🎨 Essai",
+    "balon": "Ballon",
+    "gunes": "Soleil",
+    "tilki": "Renard",
+    "ay": "Lune",
+    "geceorman": "Forêt nocturne",
+    "yagmur": "Pluie",
+    "kus": "Oiseaux",
+    "tilki2": "Renard des prairies",
+    "kedi": "Chat",
+    "kar": "Neige",
+    "gunbatimi": "Coucher de soleil",
+    "ay2": "Croissant",
+    "zurafa": "Girafe",
+    "geometri": "Géométrique",
+    "balloon": "Ballon",
+    "sun": "Soleil",
+    "fox": "Renard",
+    "moon": "Lune",
+    "nightForest": "Forêt nocturne",
+    "rain": "Pluie",
+    "birds": "Oiseaux",
+    "prairieFox": "Renard des prairies",
+    "cat": "Chat",
+    "snow": "Neige",
+    "sunset": "Coucher de soleil",
+    "crescent": "Croissant",
+    "giraffe": "Girafe",
+    "geometric": "Géométrique"
+  },
+  "completion": {
+    "heading": "Félicitations !",
+    "msg": {
+      "low": "On réessaie ?",
+      "mid": "Tu te débrouilles très bien !",
+      "high": "Excellent travail !"
+    },
+    "restart": "Rejouer",
+    "home": "Menu principal"
+  },
   "achievements": {
     "title": "Réussites",
     "subtitle": "Gagnez un badge en réussissant parfaitement une activité 3 fois !",
@@ -202,6 +433,10 @@
       "title": "Personnaliser les activités",
       "text": "Utilisez la gestion des activités dans les paramètres pour vous concentrer sur des compétences spécifiques ou désactiver temporairement des activités que votre enfant n'est pas prêt à faire."
     },
+    "programMode": {
+      "title": "À propos du Mode Programme",
+      "text": "Le Mode Programme propose de courtes sessions quotidiennes conçues par des experts. Chaque session comprend un échauffement, du nouveau contenu et du renforcement — montrez l'exemple avec votre enfant et utilisez le Joker pour débloquer temporairement des activités si nécessaire."
+    },
     "randomMode": {
       "title": "Essayer le mode aléatoire",
       "text": "Propose un mélange aléatoire de tous les exercices activés de différentes catégories pour renforcer l'apprentissage de façon ludique."
@@ -209,8 +444,8 @@
     "extra": {
       "title": "Conseils supplémentaires",
       "practice": {
-        "title": "Mode entraînement (bientôt)",
-        "text": "Bientôt, vous pourrez lancer une 'session d'entraînement' basée sur les activités les plus difficiles pour votre enfant."
+        "title": "Mode Renforcement",
+        "text": "Démarrez des exercices ciblés sur les activités où votre enfant éprouve le plus de difficultés. Ce mode répète les tâches faibles sans faire progresser l'unité, pour offrir plus de pratique."
       }
     }
   },
@@ -218,9 +453,9 @@
     "menuTitle": "Mode Programme",
     "menuSubtitle": "Lancer une session quotidienne guidée",
     "title": "Mode Programme",
-  "subtitle": "Développez des compétences via 10 unités avec un plan guidé.",
-  "devWarningTitle": "Expérimental : Mode Programme",
-  "devWarningDesc": "Ce mode est encore en développement. La progression des unités peut parfois être inattendue. Merci de signaler tout problème ou retour.",
+    "subtitle": "Développez des compétences via 10 unités avec un plan guidé.",
+    "devWarningTitle": "Expérimental : Mode Programme",
+    "devWarningDesc": "Ce mode est encore en développement. La progression des unités peut parfois être inattendue. Merci de signaler tout problème ou retour.",
     "betaTag": "Expérimental",
     "forParents": "Note rapide pour les parents",
     "unitShort": "Unité",
@@ -229,17 +464,17 @@
     "unitProgress": "Progression des unités",
     "completed": "Terminé",
     "dailyLimitReached": "Limite quotidienne atteinte",
-  "dailyLimitMessage": "Vous pouvez progresser jusqu’à 3 unités par jour. Revenez demain !",
-  "dailyLimitNote": "Limite quotidienne d’unités (3) atteinte. Continuez aujourd’hui avec le renforcement.",
-  "dailyLimitRemaining": "Avancement quotidien : {used}/3",
-  "minutesAbbrev": "min",
+    "dailyLimitMessage": "Vous pouvez progresser jusqu’à 3 unités par jour. Revenez demain !",
+    "dailyLimitNote": "Limite quotidienne d’unités (3) atteinte. Continuez aujourd’hui avec le renforcement.",
+    "dailyLimitRemaining": "Avancement quotidien : {used}/3",
+    "minutesAbbrev": "min",
     "jokerActive": "Joker Actif",
     "todaySession": "Programme du jour",
     "alreadyDone": "Fait aujourd’hui",
     "warmup": "Échauffement",
     "newContent": "Nouveau contenu",
     "reinforcement": "Renforcement",
-  "noReinforcementToday": "Pas de renforcement aujourd'hui (aucune activité faible trouvée).",
+    "noReinforcementToday": "Pas de renforcement aujourd'hui (aucune activité faible trouvée).",
     "allComplete": "Félicitations !",
     "allCompleteDesc": "Toutes les activités sont terminées !",
     "noActivities": "Toutes les activités sont terminées !",
@@ -261,7 +496,7 @@
       "point2": "Pyramide de 10 unités : Bonjour le Monde (Unité 1) → Maîtrise (Unité 10).",
       "point3": "Chaque activité est évaluée avec pool large (15 tentatives, 80%) et pool étroit (2 parfait).",
       "point4": "Maximum 3 unités par jour. Mode libre évalué avec pondération de 50%.",
-      "point5": "Les parents peuvent débloquer temporairement avec 'Joker' (gratuit pour tous)."
+      "point5": "Les parents peuvent débloquer temporairement des activités avec le Joker ; ils peuvent aussi choisir « Ignorer pour la progression » afin que l'activité ne bloque pas la complétion de l'unité pendant la durée du Joker."
     },
     "sessionRules": {
       "title": "Règles du Mode Programme",
@@ -269,7 +504,7 @@
       "newContent": "Nouveau contenu : 2-3 activités débloquées",
       "reinforcement": "Renforcement : 1-2 activités presque maîtrisées",
       "dailyLimit": "Limite quotidienne : Jusqu’à 3 unités de progression",
-      "jokerInfo": "Joker : Déblocage temporaire (4/12/24/48/72 heures)",
+      "jokerInfo": "Joker : Les parents peuvent débloquer temporairement des activités. Choisissez 'Ignorer pour la progression' pour que l'activité ne compte pas pour la complétion de l'unité pendant la durée de l'override. Limites actives : 3 pour non‑premium, 15 pour premium.",
       "freeMode": "Mode libre : Évalué avec pondération de 50%"
     },
     "rules": {
@@ -277,16 +512,23 @@
       "activityWord": "activités",
       "warmupWord": "échauffement",
       "newWord": "nouveau contenu",
+      "count": "Activités par session : 8 activités (1 échauffement, 7 nouveau contenu, 0 renforcement)",
+      "activityWord": "activité",
+      "warmupWord": "échauffement",
+      "newWord": "nouveau contenu",
       "reinforcementWord": "renforcement",
-      "selection": "Logique de sélection :",
-  "selectionDesc": "Échauffement (1 maîtrisée) → Nouveau contenu (unité focus, priorité jamais tenté) → Renforcement (0–2 plus faibles des unités précédentes)",
-  "coverageFirst": "Priorité à la couverture :",
-  "coverageFirstDesc": "Si l’unité focus contient encore du contenu non tenté, Nouveau contenu +1 et Renforcement −1. Garantit un premier contact avec chaque compétence.",
+      "reinforcementProgress": "Renforcement et progression:",
+      "reinforcementProgressDesc": "Les sessions de renforcement comptent désormais comme des tentatives de programme ; ces tentatives contribuent au calcul de progression de l'unité. Les candidats au renforcement peuvent inclure des activités avec zéro succès, et les parents peuvent ajouter ou retirer manuellement des candidats.",
+      "reinforcementScope": "Portée du renforcement:",
+      "reinforcementScopeDesc": "Les candidats au renforcement peuvent être sélectionnés manuellement à partir d'activités dans toutes les unités débloquées ; le pourcentage de succès est la moyenne des 6 dernières tentatives. (Utilisez le bouton \"Effacer les sélections manuelles\" pour effacer les sélections manuelles.)",
+      "selectionDesc": "Échauffement (1 maîtrisée) → Nouveau contenu (unité focus, priorité jamais tenté) → Renforcement (0–2 plus faibles des unités précédentes)",
+      "coverageFirst": "Priorité à la couverture :",
+      "coverageFirstDesc": "Si l’unité focus contient encore du contenu non tenté, Nouveau contenu +1 et Renforcement −1. Garantit un premier contact avec chaque compétence.",
       "failure": "En cas d’échec :",
       "failureDesc": "L’activité se termine, le score est enregistré. Si non maîtrisée, elle réapparaît les jours suivants.",
-  "unlocking": "Condition de déverrouillage de l’unité :",
-  "unlockingDesc": "Chaque activité de l’unité doit être tentée au moins une fois et la réussite moyenne ≥ 80% (Libre + Programme combinés).",
-  "mastery": "Règles de maîtrise :",
+      "unlocking": "Condition de déverrouillage de l’unité :",
+      "unlockingDesc": "Chaque activité de l’unité doit être tentée au moins une fois et la réussite moyenne ≥ 80% (Libre + Programme combinés).",
+      "mastery": "Règles de maîtrise :",
       "widePool": "Pool large",
       "widePoolDesc": "(Couleurs, Formes, etc.) : 80% de réussite sur les 5 dernières tentatives",
       "narrowPool": "Pool étroit",
@@ -296,7 +538,7 @@
       "dailyPremium": "Premium :",
       "dailyPremiumDesc": "Pas de limite quotidienne; unités débloquées jouables librement.",
       "joker": "Joker :",
-      "jokerDesc": "Les parents peuvent déverrouiller temporairement une activité; les règles de maîtrise restent inchangées.",
+      "jokerDesc": "Les parents peuvent déverrouiller temporairement une activité verrouillée avec un succès inférieur à 80%. Si 'Ignorer pour la progression' est sélectionné, l'activité ne comptera pas pour la complétion de l'unité pendant la durée de l'override (elle est considérée comme couverte/parfaite pour l'affichage et les calculs). Limites actives : 3 non‑premium, 15 premium.",
       "progressDisplay": "% affiché :",
       "progressDisplayDesc": "Le pourcentage de l’unité reflète le succès combiné affiché dans le rapport parent (Libre + Programme).",
       "progressFormula": "Formule de progression initiale :",
@@ -423,8 +665,30 @@
     }
   },
   "developmentNotes": {
-    "title": "Mises à jour à venir",
+    "title": "Notes de Mise à Jour",
     "subtitle": "Notre application continue de grandir ! Merci pour votre patience.",
+    "thisUpdate": {
+      "title": "Dans cette mise à jour",
+      "items": [
+        "Correction d’un bug dans le Mode Programme qui remettait la progression de certains anciens utilisateurs à l’unité 1. Nous nous excusons pour ce désagrément — les anciens utilisateurs concernés bénéficient, en cadeau pour la Journée des Enseignants, d’un accès Premium gratuit jusqu’au 30 novembre 2025. De plus, les utilisateurs ayant déjà bénéficié du Premium ont reçu 1 mois supplémentaire de Premium."
+      ],
+      "_tempNotes": [
+        "NOTE : Ces éléments sont temporaires — ils seront retirés des fichiers i18n lors de la prochaine version."
+      ]
+    },
+    "programMode": {
+      "menuTitle": "Mode Programme",
+      "menuSubtitle": "Lancer une session quotidienne guidée",
+      "units": "Unités",
+      "unitsCount": "{count} Unités"
+    },
+    "thisUpdateAddendum": {
+      "smallVisuals": "Dans les paires de concepts Grand/Petit, les images des objets réellement petits ont été légèrement réduites pour ne pas perturber l'enfant."
+    },
+    "developerMessage": {
+      "short": "Note : Je teste et affine cette application avec mon fils de 6 ans autiste ; vos retours sont les bienvenus.",
+      "long": "Note : Je développe cette application en la testant avec mon fils de 6 ans autiste. Je prends également en compte les sujets abordés à l'école et les retours des enseignants. N'hésitez pas à envoyer vos retours si vous avez des suggestions ou des observations."
+    },
     "modes": {
       "title": "Améliorations des modes",
       "programMode": "Le mode programme sera amélioré",

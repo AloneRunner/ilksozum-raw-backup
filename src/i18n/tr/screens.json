@@ -1,4 +1,236 @@
 {
+  "app": {
+    "name": "İlk Sözüm: Otizm & Okul Öncesi",
+    "description": "Çocuklar için kelimeleri, kavramları ve sesleri öğreten interaktif eğitici kartlar.",
+    "printPreview": "Yazdırma Önizlemesi",
+    "savePdf": "PDF Kaydet",
+    "print": "Yazdır",
+    "back": "Geri dön",
+    "developing": "Geliştiriliyor",
+    "pdfSavedInfo": "PDF kaydedildi. Cihazınızın Belgeler klasörünü kontrol edin veya paylaşım menüsünü kullanın.",
+    "pdfSaveError": "PDF kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "pdfCreateError": "PDF oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.",
+    "pdfJobName": "İlk Sözüm: Otizm & Okul Öncesi",
+    "shareTitle": "PDF Kaydedildi",
+    "shareText": "PDF dosyası kaydedildi. Paylaşmak ister misiniz?",
+    "shareDialogTitle": "PDF Paylaş",
+    "noContentForActivity": "Bu etkinlik için içerik bulunamadı.",
+    "noMoreImagesForActivity": "Bu etkinlik için gösterilecek başka görsel kalmadı.",
+    "noActivitySelected": "Etkinlik seçimi bulunamadı.",
+    "activityLoadError": "Etkinlik yüklenirken bir hata oluştu.",
+    "randomActivityRestarting": "Mevcut rastgele etkinlik yeniden başlatılıyor...",
+    "activityRestarting": "Etkinlik yeniden başlatılıyor..."
+  },
+  "choice": {
+    "readQuestion": "Soruyu seslendir",
+    "matchPrompt": "Buna uygun olan hangisi?",
+    "label": "Etiket",
+    "hint": "İpucu",
+    "showLabel": "Etiketleri göster",
+    "hideLabel": "Etiketleri gizle",
+    "showHint": "İpucu göster",
+    "learnShapes": "Şekilleri öğren",
+    "learnEmotions": "Duyguları öğren",
+    "hideHint": "İpucunu gizle",
+    "banImageAria": "Bu görseli bir daha gösterme",
+    "learnColors": "Renkleri öğren"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Otomatik seslendirmeyi aç",
+    "autoSpeakOff": "Otomatik seslendirmeyi kapat"
+  },
+  "feedback": {
+    "correctPrefix": "Evet, bu",
+    "wrongPrefix": "Hayır, bu",
+    "rightPrefix": "Doğru, bu",
+    "sentence": {
+      "correct": "Evet, bu {adjective} {noun}.",
+      "wrong": "Hayır, bu {adjective} {noun} değil."
+    }
+  },
+  "settings": {
+    "language": "Dil",
+    "languageSubtitle": "Arayüz ve konuşma dili",
+    "languageNote": "Harf etkinlikleri şimdilik yalnızca Türkçe.",
+    "languageAutoNote": "Not: Bazı çeviriler yapay zeka yardımıyla oluşturuldu ve hatalar içerebilir. Yanlış görünen ifadeler için velilerden özür dileriz — geri bildiriminizle düzeltebiliriz."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Nesneler",
+      "subtitle": "Türkçe dışındaki diller için özenle hazırlanmış nesne setleri",
+      "noCuratedSet": "Bu kategori için henüz özel bir set yok."
+    }
+  },
+  "menu": {
+    "hello": "Merhaba",
+    "appTitle": "İlk Sözüm: Otizm & Okul Öncesi",
+    "experimentalTag": "Deneme",
+    "random": {
+      "title": "Rastgele Mod",
+      "subtitle": "Seçili etkinliklerden karışık oyna"
+    },
+    "programMode": {
+      "title": "Program Modu",
+      "subtitle": "Uzman planıyla günlük oturum başlat"
+    },
+    "parentTips": {
+      "title": "Ebeveynler İçin İpuçları",
+      "subtitle": "Uygulamayı daha verimli kullanın"
+    },
+    "letterSound": {
+      "title": "Harf ve Sesler",
+      "subtitle": "Harfleri ve sesleri öğren, hecele ve oku."
+    },
+    "objects": {
+      "title": "Nesneleri Tanıyalım",
+      "subtitle": "Hayvanları, meyveleri ve daha fazlasını öğren."
+    },
+    "concepts": {
+      "title": "Kavram Etkinlikleri",
+      "subtitle": "Renkleri, şekilleri ve zıt kavramları öğren."
+    },
+    "reasoning": {
+      "title": "Akıl Oyunları",
+      "subtitle": "Hafıza, sudoku ve mantık oyunları oyna."
+    },
+    "fineMotor": {
+      "title": "İnce Motor",
+      "subtitle": "Çizgi Takip, Boyama ve daha fazlası",
+      "developingNote": "Geliştiriliyor",
+      "backButton": "İnce Motor Menüsüne Dön"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "İnce Motor Beceriler"
+      },
+      "fineMotor": {
+        "lineTracing": "Çizgi Takip",
+        "shapeColoring": "Şekil Boyama",
+        "rhythmFollowing": "Ritim Takip"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5N1K",
+      "subtitle": "Kim • Ne • Nerede • Ne Zaman • Neden • Nasıl",
+      "developingNote": "Geliştiriliyor",
+      "category": {
+        "who": "Kim?",
+        "what": "Ne?",
+        "where": "Nerede?",
+        "when": "Ne Zaman?",
+        "why": "Neden?",
+        "how": "Nasıl?",
+        "mixed": "Karışık"
+      }
+    }
+    ,
+    "soundImitation": {
+      "title": "Ses Taklit Kartları",
+      "subtitle": "Konuşamayan çocuklar için ses taklit kartları",
+      "badge": "Yeni — Deneme Etkinliği",
+      "imagesTitle": "Görsel Kartlar",
+      "imagesDesc": "Resim kartlarını görüntüle; küçük resimlerden büyüterek gezin.",
+      "videosTitle": "Kısa Videolar",
+      "videosTitleShort": "Kısa Videolar (Deneme)",
+      "videosDesc": "Kısa videolar — deneme sürümü. Videolar yer kaplayabilir.",
+      "experimentalNoteTitle": "Deneme Notu / Experimental",
+      "experimentalNote": "Videolu versiyon şu an deneme amaçlıdır ve kalıcı olmayabilir. Videolar büyük olabilir ve cihazınızda yer kaplayabilir; sizden gelen geri bildirimlere göre bu bölüm şekillendirilecektir.",
+      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
+      "feedbackRequest": "Uygulama için iyi/kötü tüm eleştirilerinizi lütfen mağaza yorumlarına yazınız.",
+      "themeTextColors": {
+        "simple": "#ffffff",
+        "deneme": "#ffffff",
+        "balon": "#000000",
+        "gunes": "#000000",
+        "tilki": "#000000",
+        "ay": "#000000",
+        "geceorman": "#ffffff",
+        "yagmur": "#000000",
+        "kus": "#000000",
+        "tilki2": "#000000",
+        "kedi": "#000000",
+        "kar": "#ffffff",
+        "gunbatimi": "#000000",
+        "ay2": "#000000",
+        "zurafa": "#000000",
+        "geometri": "#000000",
+        "kozmik": "#ffffff",
+        "balloon": "#000000",
+        "sun": "#000000",
+        "fox": "#000000",
+        "moon": "#000000",
+        "nightForest": "#ffffff",
+        "rain": "#000000",
+        "birds": "#000000",
+        "prairieFox": "#000000",
+        "cat": "#000000",
+        "snow": "#ffffff",
+        "sunset": "#000000",
+        "crescent": "#000000",
+        "giraffe": "#000000",
+        "geometric": "#000000"
+      }
+    }
+  },
+  "common": {
+    "previous": "Önceki",
+    "next": "Sonraki"
+  },
+  "tabs": {
+    "activities": "Etkinlikler",
+    "communication": "İfade Kartları",
+    "achievements": "Raporlar",
+    "settings": "Ayarlar"
+  },
+  "consent": {
+    "title": "Gizlilik Sözleşmesi",
+    "body": "Uygulamayı kullanmaya devam etmek için Gizlilik Politikası'nı kabul etmeniz gerekir. Kişisel veriler toplamıyoruz; oyun ilerlemeniz ve ayarlarınız yalnızca cihazınızda saklanır. Ücretsiz sürümde kişiselleştirilmemiş reklamlar gösterilebilir.",
+    "accept": "Kabul Ediyorum",
+    "viewPolicy": "Gizlilik Politikası'nı Oku"
+  },
+  "themes": {
+    "simple": "Sade",
+    "deneme": "🎨 Deneme (Geliştiriliyor)",
+    "balon": "Balon",
+    "gunes": "Güneş",
+    "tilki": "Tilki",
+    "ay": "Ay",
+    "geceorman": "Gece Ormanı",
+    "yagmur": "Yağmur",
+    "kus": "Kuşlar",
+    "tilki2": "Çayır Tilkisi",
+    "kedi": "Kedi",
+    "kar": "Kar",
+    "gunbatimi": "Gün Batımı",
+    "ay2": "Hilal",
+    "zurafa": "Zürafa",
+    "geometri": "Geometrik",
+    "kozmik": "Kozmik Küreler (Geliştiriliyor)",
+    "balloon": "Balon",
+    "sun": "Güneş",
+    "fox": "Tilki",
+    "moon": "Ay",
+    "nightForest": "Gece Ormanı",
+    "rain": "Yağmur",
+    "birds": "Kuşlar",
+    "prairieFox": "Çayır Tilkisi",
+    "cat": "Kedi",
+    "snow": "Kar",
+    "sunset": "Gün Batımı",
+    "crescent": "Hilal",
+    "giraffe": "Zürafa",
+    "geometric": "Geometrik"
+  },
+  "completion": {
+    "heading": "Tebrikler!",
+    "msg": {
+      "low": "Tekrar denemeye ne dersin?",
+      "mid": "Çok iyi gidiyorsun!",
+      "high": "Harika iş çıkardın!"
+    },
+    "restart": "Tekrar Oyna",
+    "home": "Ana Menü"
+  },
   "achievements": {
     "title": "Başarımlar",
     "subtitle": "Bir etkinliği 3 kez hatasız tamamlayarak rozetini kazan!",
@@ -202,6 +434,10 @@
       "title": "Etkinlikleri Özelleştirin",
       "text": "Ayarlar'daki Etkinlik Yönetimi'ni kullanarak belirli becerilere odaklanın veya çocuğunuzun henüz hazır olmadığı etkinlikleri geçici olarak devre dışı bırakın."
     },
+    "programMode": {
+      "title": "Program Modu Hakkında",
+      "text": "Program Modu, uzman planlı kısa günlük oturumlar sunar. Her oturum ısınma, yeni içerik ve pekiştirmeyi içerir — desteklemek için çocuğunuzla birlikte model olun ve gerekiyorsa Joker Hakkı ile aktiviteyi geçici olarak açın."
+    },
     "randomMode": {
       "title": "Rastgele Modu Deneyin",
       "text": "Farklı kategorilerden tüm etkinleştirilmiş egzersizlerin karışık bir seçkisini sunar ve öğrenmeyi eğlenceli bir şekilde pekiştirir."
@@ -209,8 +445,8 @@
     "extra": {
       "title": "Ek İpuçları",
       "practice": {
-        "title": "Alıştırma Modu (Yakında)",
-        "text": "Yakında çocuğunuzun en çok zorlandığı etkinliklere göre bir 'Alıştırma Oturumu' başlatabileceksiniz."
+        "title": "Pekiştirme Modu",
+        "text": "Çocuğunuzun en çok zorlandığı etkinliklerde odaklanmış alıştırma başlatın. Bu mod etkinlikleri tekrar eder ancak ünite ilerlemesini ilerletmez; daha fazla pratik sağlar."
       }
     }
   },
@@ -261,7 +497,7 @@
       "point2": "10 üniteli bir yapı ile ilerler. Her ünite, belirli kavramları içerir.",
       "point3": "Ustalaşma durumuna göre içerikler dinamik olarak seçilir: ısınma, yeni içerik ve pekiştirme.",
       "point4": "Günde en fazla 3 ünite ilerleyebilirsiniz. Bu üst sınır, çok hızlı geçişi önler ve erken dönemde görünür ilerleme sağlar.",
-      "point5": "Joker Hakkı ile ebeveynler, geçici olarak kilidi açabilir."
+      "point5": "Ebeveynler Joker Hakkı ile etkinlikleri geçici olarak açabilir; ayrıca 'Bu etkinliği ünite ilerlemesinden sayma' seçeneğini işaretleyerek, override süresince etkinliğin ünite tamamlanmasını engellememesini sağlayabilirler."
     },
     "sessionRules": {
       "title": "Program Modu Kuralları",
@@ -269,14 +505,18 @@
       "newContent": "Yeni İçerik: Kilidi açılmış 2-3 yeni aktivite",
       "reinforcement": "Pekiştirme: Neredeyse ustalaştığınız 1-2 aktivite",
       "dailyLimit": "Günlük limit: En fazla 3 ünite ilerleyebilirsiniz",
-      "jokerInfo": "Joker Hakkı: Ebeveynler geçici olarak aktivite kilidini açabilir"
+      "jokerInfo": "Joker Hakkı: Ebeveynler etkinlikleri geçici olarak açabilir. 'Ünite ilerlemesinden sayma' seçeneği seçilirse, override süresince etkinlik ünite tamamlanmasında sayılmaz. Limitler: ücretsiz 3, premium 15."
     },
     "rules": {
-      "count": "Oturum başına etkinlik sayısı:",
+      "count": "Oturum başına etkinlik sayısı: 8 etkinlik(1 ısınma, 7 yeni içerik, 0 pekiştirme)",
       "activityWord": "etkinlik",
       "warmupWord": "ısınma",
       "newWord": "yeni içerik",
       "reinforcementWord": "pekiştirme",
+      "reinforcementProgress": "Pekiştirme ve ilerleme:",
+      "reinforcementProgressDesc": "Pekiştirme oturumları artık program denemesi olarak sayılır; bu denemeler ünitenin ilerleme hesabına katkı sağlar. Pekiştirme adayları sıfır başarı gösteren etkinlikleri de içerebilir ve ebeveynler manuel olarak aday ekleyip çıkarabilir.",
+      "reinforcementScope": "Pekiştirme kapsamı:",
+      "reinforcementScopeDesc": "Pekiştirme adayları tüm açılmış ünitelerdeki etkinliklerden manuel olarak seçilebilir; başarı yüzdesi son 6 denemenin ortalamasıdır. (Manuel seçimleri temizlemek için \"Manuel Seçimleri Temizle\" düğmesini kullanın.)",
       "selection": "Seçim mantığı:",
       "selectionDesc": "Isınma (1 ustalaşılmış) → Yeni içerik (odak ünite, hiç denenmemişe öncelik) → Pekiştirme (önceki ünitelerden 0–2 en zayıf)",
       "coverageFirst": "Kapsam-öncelikli:",
@@ -295,7 +535,7 @@
       "dailyPremium": "Premium:",
       "dailyPremiumDesc": "Günlük ilerleme üst sınırı yok; açılmış üniteler serbestçe oynanabilir.",
       "joker": "Joker Hakkı:",
-      "jokerDesc": "Ebeveynler kilitli bir etkinliği süreli olarak açabilir; bu, ustalaşma kurallarını atlamaz, sadece erişime izin verir.",
+      "jokerDesc": "Ebeveynler %80'den düşük başarı gösteren kilitli bir etkinliği geçici olarak açabilir. Eğer 'ünite ilerlemesinden sayma' seçildiyse, override süresince etkinlik ünite ilerlemesi için sayılmayacak (gösterim ve hesaplamalarda kapalı/mükemmel gibi değerlendirilir). Limitler: ücretsiz 3, premium 15.",
       "progressDisplay": "Gösterilen %:",
       "progressDisplayDesc": "Ünite yüzdesi, veli raporunda gösterilen harmanlanmış başarıyı (Serbest + Program toplamları) yansıtır.",
       "progressFormula": "Erken ilerleme formülü:",
@@ -422,8 +662,30 @@
     }
   },
   "developmentNotes": {
-    "title": "Gelecek Güncellemeler",
+    "title": "Güncelleme Bilgileri",
     "subtitle": "Uygulamamız büyümeye devam ediyor! Sabırlarınız için teşekkürler.",
+    "thisUpdate": {
+      "title": "Bu Güncellemede",
+      "items": [
+        "Program Modu'nda bazı eski kullanıcıların ilerlemelerinin 1. üniteye sıfırlanmasına neden olan hata giderildi. Bu aksaklık için özür dileriz — etkilenen eski kullanıcılara Öğretmenler Günü hediyesi olarak ücretsiz Premium üyeliği 30 Kasım 2025 tarihine kadar tanımladık. Ayrıca mevcut/eskiden Premium olan kullanıcılara ek 1 ay hediye edildi."
+      ],
+      "_tempNotes": [
+        "NOT: Aşağıdaki öğeler geçici notlardır — bir sonraki güncellemede i18n dosyalarından kaldırılacaktır."
+      ]
+    },
+    "programMode": {
+      "menuTitle": "Program Modu",
+      "menuSubtitle": "Uzman planıyla günlük oturum başlat",
+      "units": "Üniteler",
+      "unitsCount": "{count} Ünite"
+    },
+    "thisUpdateAddendum": {
+      "smallVisuals": "Büyük/Küçük kavram çiftlerinde, gerçekte küçük olan varlıkların görselleri çocuğun karışmaması için biraz daha küçültüldü."
+    },
+    "developerMessage": {
+      "short": "Not: Bu uygulamayı 6 yaşındaki otizmli oğlumla test ederek geliştiriyorum; geri bildiriminizi beklerim.",
+      "long": "Not: Bu uygulamayı 6 yaşındaki otizmli oğlumla test ederek geliştiriyorum. Okulda işlenen konuları ve öğretmen geri bildirimlerini de dikkate alıyorum. Öneri veya gözleminiz varsa lütfen geri bildirim gönderin."
+    },
     "modes": {
       "title": "Mod Geliştirmeleri",
       "programMode": "Program modu geliştirilecek",

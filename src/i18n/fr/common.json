@@ -1,15 +1,15 @@
 {
   "app": {
-    "name": "Autisme: Mots & Routines",
-    "description": "Cartes éducatives interactives enseignant les mots, concepts et sons pour les enfants autistes.",
+    "name": "Jeux pour Autisme : Maternelle",
+    "description": "Cartes éducatives interactives enseignant les mots, les concepts et les sons aux enfants autistes.",
     "printPreview": "Aperçu avant impression",
     "savePdf": "Enregistrer en PDF",
     "print": "Imprimer",
     "back": "Retour",
-    "developing": "En développement",
-    "pdfSavedInfo": "PDF enregistré. Consultez votre dossier Documents ou utilisez le menu Partager.",
-    "pdfSaveError": "Une erreur s'est produite lors de l'enregistrement du PDF. Veuillez réessayer.",
-    "pdfCreateError": "Une erreur s'est produite lors de la création du PDF. Veuillez réessayer.",
+    "developing": "En cours de développement",
+    "pdfSavedInfo": "PDF enregistré. Vérifiez votre dossier Documents ou utilisez le menu de partage.",
+    "pdfSaveError": "Une erreur est survenue lors de l'enregistrement du PDF. Veuillez réessayer.",
+    "pdfCreateError": "Une erreur est survenue lors de la création du PDF. Veuillez réessayer.",
     "pdfJobName": "Cartes Mes Premiers Mots",
     "shareTitle": "PDF enregistré",
     "shareText": "Le fichier PDF a été enregistré. Voulez-vous le partager ?",
@@ -17,12 +17,12 @@
     "noContentForActivity": "Aucun contenu trouvé pour cette activité.",
     "noMoreImagesForActivity": "Il n'y a plus d'images à afficher pour cette activité.",
     "noActivitySelected": "Aucune activité sélectionnée.",
-    "activityLoadError": "Une erreur s'est produite lors du chargement de l'activité.",
-    "randomActivityRestarting": "Redémarrage de l'activité aléatoire en cours…",
-    "activityRestarting": "Redémarrage de l'activité…"
+    "activityLoadError": "Une erreur est survenue lors du chargement de l'activité.",
+    "randomActivityRestarting": "Redémarrage de l'activité aléatoire en cours...",
+    "activityRestarting": "Redémarrage de l'activité..."
   },
   "choice": {
-    "readQuestion": "Lire la question",
+    "readQuestion": "Énoncer la question",
     "matchPrompt": "Lequel correspond à ceci ?",
     "label": "Étiquette",
     "hint": "Indice",
@@ -41,74 +41,78 @@
   },
   "feedback": {
     "correctPrefix": "Oui, c'est",
-    "wrongPrefix": "Non, ce n'est pas",
+    "wrongPrefix": "Non, c'est",
     "rightPrefix": "Correct, c'est",
     "sentence": {
-      "correct": "Oui, le {noun} est {adjective}.",
-      "wrong": "Non, le {noun} n'est pas {adjective}."
+      "correct": "Oui, ce {noun} est {adjective}.",
+      "wrong": "Non, ce {noun} n'est pas {adjective}."
     }
   },
   "settings": {
     "language": "Langue",
-    "languageSubtitle": "Langue de l'interface et de la synthèse vocale",
-    "languageNote": "Les activités sur les lettres sont disponibles pour le français (Bêta). Le contenu peut être limité.",
-    "languageAutoNote": "Remarque : Certaines traductions ont été générées avec l'aide de l'IA et peuvent contenir des erreurs. Nous présentons nos excuses aux parents concernés — envoyez-nous vos retours pour que nous puissions corriger les traductions."
+    "languageSubtitle": "Langue de l'interface et de la parole",
+    "languageNote": "Les activités sur les lettres sont disponibles pour le Français (Bêta). Des erreurs peuvent survenir.",
+    "languageAutoNote": "Note : Certaines traductions ont été générées par IA et peuvent contenir des erreurs. Nous nous excusons auprès des parents concernés — veuillez envoyer vos commentaires pour que nous puissions les corriger."
   },
   "categories": {
     "objectsIntl": {
       "title": "Objets",
-      "subtitle": "Ensembles d'objets sélectionnés pour les langues non-turques",
-      "noCuratedSet": "Aucun jeu sélectionné pour cette catégorie pour le moment."
+      "subtitle": "Ensembles d'objets sélectionnés pour les langues non turques",
+      "noCuratedSet": "Pas encore d'ensemble sélectionné pour cette catégorie."
     }
   },
   "menu": {
     "hello": "Bonjour",
-    "appTitle": "Autisme: Mots & Routines",
+    "appTitle": "Jeux pour Autisme : Maternelle",
     "experimentalTag": "Expérimental",
     "random": {
-      "title": "Mode aléatoire",
+      "title": "Mode Aléatoire",
       "subtitle": "Jouer un mélange d'activités sélectionnées"
     },
+    "programMode": {
+      "title": "Mode Programme",
+      "subtitle": "Démarrer une session quotidienne guidée"
+    },
     "parentTips": {
-      "title": "Conseils pour les parents",
-      "subtitle": "Utilisez l'application plus efficacement"
+      "title": "Conseils aux parents",
+      "subtitle": "Utiliser l'application plus efficacement"
     },
     "letterSound": {
-      "title": "Lettres et sons",
-      "subtitle": "Apprenez les lettres et les sons, épeler et lire."
+      "title": "Lettres et Sons",
+      "subtitle": "Apprendre les lettres et les sons, épeler et lire."
     },
     "objects": {
-      "title": "Découvrons les objets",
-      "subtitle": "Apprenez les animaux, les fruits et plus encore."
+      "title": "Découvrons les Objets",
+      "subtitle": "Apprendre les animaux, les fruits et plus encore."
     },
     "concepts": {
-      "title": "Activités de concepts",
-      "subtitle": "Apprenez les couleurs, les formes et les concepts opposés."
+      "title": "Activités sur les Concepts",
+      "subtitle": "Apprendre les couleurs, les formes et les contraires."
     },
     "reasoning": {
-      "title": "Jeux de logique",
-      "subtitle": "Jouez à des jeux de mémoire, sudoku et logique."
+      "title": "Jeux de Logique",
+      "subtitle": "Jouer à des jeux de mémoire, de sudoku et de logique."
     },
     "fineMotor": {
-      "title": "Motricité fine",
-      "subtitle": "Suivi de ligne, coloriage, et plus",
-      "developingNote": "En développement",
-      "backButton": "Retour au menu Motricité fine"
+      "title": "Motricité Fine",
+      "subtitle": "Traçage de lignes, Coloriage, et plus",
+      "developingNote": "En cours de développement",
+      "backButton": "Retour au menu Motricité Fine"
     },
     "achievements": {
       "categories": {
-        "fineMotor": "Motricité fine"
+        "fineMotor": "Motricité Fine"
       },
       "fineMotor": {
-        "lineTracing": "Suivi de ligne",
-        "shapeColoring": "Coloriage de formes",
-        "rhythmFollowing": "Suivi du rythme"
+        "lineTracing": "Traçage de Lignes",
+        "shapeColoring": "Coloriage de Formes",
+        "rhythmFollowing": "Suivi de Rythme"
       }
     },
     "fiveWOneH": {
-      "title": "5W1H",
+      "title": "QQOQCCP",
       "subtitle": "Qui • Quoi • Où • Quand • Pourquoi • Comment",
-      "developingNote": "En développement",
+      "developingNote": "En cours de développement",
       "category": {
         "who": "Qui ?",
         "what": "Quoi ?",
@@ -126,15 +130,15 @@
   },
   "tabs": {
     "activities": "Activités",
-    "communication": "Communication",
+    "communication": "Cartes d'expression",
     "achievements": "Rapports",
     "settings": "Paramètres"
   },
   "consent": {
     "title": "Consentement à la confidentialité",
-    "body": "Pour continuer à utiliser l'application, veuillez accepter notre Politique de confidentialité. Nous ne collectons pas de données personnelles ; votre progression et vos réglages restent sur votre appareil. Des publicités non personnalisées peuvent être affichées dans la version gratuite.",
+    "body": "Pour continuer à utiliser l'application, veuillez accepter notre Politique de confidentialité. Nous ne collectons pas de données personnelles ; vos progrès et paramètres restent sur votre appareil. Des publicités non personnalisées peuvent être affichées dans la version gratuite.",
     "accept": "J'accepte",
-    "viewPolicy": "Lire la politique de confidentialité"
+    "viewPolicy": "Lire la Politique de confidentialité"
   },
   "themes": {
     "simple": "Simple",
@@ -142,10 +146,10 @@
     "gunes": "Soleil",
     "tilki": "Renard",
     "ay": "Lune",
-    "geceorman": "Forêt nocturne",
+    "geceorman": "Forêt Nocturne",
     "yagmur": "Pluie",
     "kus": "Oiseaux",
-    "tilki2": "Renard des prairies",
+    "tilki2": "Renard des Prairies",
     "kedi": "Chat",
     "kar": "Neige",
     "gunbatimi": "Coucher de soleil",
@@ -156,10 +160,10 @@
     "sun": "Soleil",
     "fox": "Renard",
     "moon": "Lune",
-    "nightForest": "Forêt nocturne",
+    "nightForest": "Forêt Nocturne",
     "rain": "Pluie",
     "birds": "Oiseaux",
-    "prairieFox": "Renard des prairies",
+    "prairieFox": "Renard des Prairies",
     "cat": "Chat",
     "snow": "Neige",
     "sunset": "Coucher de soleil",
@@ -170,11 +174,11 @@
   "completion": {
     "heading": "Félicitations !",
     "msg": {
-      "low": "On réessaie ?",
+      "low": "Que dirais-tu d'essayer encore ?",
       "mid": "Tu te débrouilles très bien !",
-      "high": "Excellent travail !"
+      "high": "Super travail !"
     },
     "restart": "Rejouer",
-    "home": "Menu principal"
+    "home": "Menu Principal"
   }
 }

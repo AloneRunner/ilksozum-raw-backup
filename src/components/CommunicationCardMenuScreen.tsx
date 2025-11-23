@@ -3,6 +3,7 @@ import { CommunicationCategory } from "../types.ts";
 import { getCurrentLanguage, t } from "../i18n/index.ts";
 import ArrowLeftIcon from "./icons/ArrowLeftIcon.tsx";
 import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
+import UnderwaterBackdrop from './ui/UnderwaterBackdrop.tsx';
 import PanelStars from './ui/PanelStars.tsx';
 
 interface CommunicationCardMenuScreenProps {
@@ -205,12 +206,12 @@ const CategoryButton: React.FC<{ category: CommunicationCategory; onClick: () =>
   // Underwater variant: jellyfish-style buttons matching main menu
   if (isUnderwater) {
     const jellyfishColors = [
-      'from-pink-400 to-purple-500',
-      'from-cyan-400 to-blue-500',
-      'from-green-400 to-teal-500',
-      'from-purple-400 to-indigo-500',
-      'from-teal-400 to-cyan-500',
-      'from-blue-400 to-cyan-500',
+      'from-blue-600 to-cyan-500',
+      'from-cyan-600 to-teal-500',
+      'from-teal-600 to-blue-500',
+      'from-sky-600 to-cyan-400',
+      'from-indigo-600 to-blue-500',
+      'from-blue-500 to-cyan-400',
     ];
     // Use category index or hash for consistent color assignment
     const colorIndex = typeof category === 'object' && 'id' in category 
@@ -475,36 +476,7 @@ const CommunicationCardMenuScreen: React.FC<CommunicationCardMenuScreenProps> = 
           <CosmicBackdrop variant="light" showMeteors={false} />
         </>
       )}
-      {isUnderwater && (
-        <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden>
-          {/* Ocean gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
-          
-          {/* Animated bubbles */}
-          <div className="absolute inset-0">
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full bg-cyan-400/15 border border-cyan-300/20 animate-bounce"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: `${10 + Math.random() * 14}px`,
-                  height: `${10 + Math.random() * 14}px`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`,
-                }}
-              />
-            ))}
-          </div>
-          
-          {/* Light rays */}
-          <div className="absolute inset-0 opacity-15">
-            <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-300/40 via-transparent to-transparent transform rotate-12" />
-            <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-cyan-200/30 via-transparent to-transparent transform -rotate-6" />
-          </div>
-        </div>
-      )}
+      {isUnderwater && <UnderwaterBackdrop count={14} />}
       <div className={`w-full flex items-center mb-5 landscape:mb-3 relative ${headerWrapperClass}`}>
         <button
           onClick={onBack}

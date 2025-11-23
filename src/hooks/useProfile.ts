@@ -40,7 +40,72 @@ export const useProfile = ({ showToast }: UseProfileProps) => {
         
         if (currentProfile) {
             setActiveProfile(currentProfile);
-            const profileStats = getValueFromLocalStorage(`activityStats_profile_${currentProfile.id}`, {});
+            let profileStats = getValueFromLocalStorage(`activityStats_profile_${currentProfile.id}`, {});
+            // Migration: map any legacy/unknown keys to current activity IDs when possible
+            try {
+                const knownIds = new Set(ALL_SUB_ACHIEVEMENTS.map(sa => String(sa.id)));
+                const statsKeys = Object.keys(profileStats || {});
+                const unknownKeys = statsKeys.filter(k => !knownIds.has(k));
+                if (unknownKeys.length > 0) {
+                    // Build a name -> id map from known achievements and activity metadata
+                    const nameToId = new Map<string, string>();
+                    ALL_SUB_ACHIEVEMENTS.forEach(sa => {
+                        if (sa.name) nameToId.set(String(sa.name).toLowerCase(), String(sa.id));
+                    });
+
+                    // (Best-effort) activity metadata names are already present in ALL_SUB_ACHIEVEMENTS
+                    // so we skip dynamic import here to avoid async/await inside this effect.
+
+                    let migrated = false;
+                    const migratedStats: Record<string, any> = { ...(profileStats as any) };
+                    for (const uk of unknownKeys) {
+                        const lowered = uk.toLowerCase();
+                        let targetId: string | undefined = undefined;
+
+                        if (nameToId.has(lowered)) {
+                            targetId = nameToId.get(lowered);
+                        } else {
+                            // Try fuzzy match: check if any known name contains the unknown key or vice versa
+                            for (const [name, id] of nameToId.entries()) {
+                                if (name.includes(lowered) || lowered.includes(name)) {
+                                    targetId = id;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (targetId && targetId !== uk) {
+                            // Merge stats into targetId (prefer existing target values and sum attempts/score history)
+                            const src = (profileStats as any)[uk];
+                            const dest = migratedStats[targetId] || { attempts: 0, completions: 0, totalCorrect: 0, totalQuestions: 0, history: [] };
+                            // Merge numeric aggregates conservatively
+                            dest.attempts = (dest.attempts || 0) + (src.attempts || 0);
+                            dest.completions = (dest.completions || 0) + (src.completions || 0);
+                            dest.totalCorrect = (dest.totalCorrect || 0) + (src.totalCorrect || 0);
+                            dest.totalQuestions = (dest.totalQuestions || 0) + (src.totalQuestions || 0);
+                            // Merge histories and keep most recent 50
+                            const combinedHistory = ((dest.history || []) as any[]).concat((src.history || []) as any[]).slice(-50);
+                            dest.history = combinedHistory;
+                            migratedStats[targetId] = dest;
+                            // Remove legacy key
+                            delete migratedStats[uk];
+                            migrated = true;
+                        }
+                    }
+
+                    if (migrated) {
+                        // Backup original stats and replace with migrated stats
+                        try {
+                            window.localStorage.setItem(`activityStats_profile_${currentProfile.id}_backup_v1`, JSON.stringify(profileStats));
+                        } catch (e) {}
+                        profileStats = migratedStats;
+                        try { window.localStorage.setItem(`activityStats_profile_${currentProfile.id}`, JSON.stringify(profileStats)); } catch (e) {}
+                        try { showToast && showToast('Profil verileri otomatik olarak güncellendi (eski anahtarlar eşlendi).', 'info', 4000); } catch (e) {}
+                    }
+                }
+            } catch (e) {
+                console.warn('Profile stats migration failed (non-fatal):', e);
+            }
             let profileEnabledActivities = getValueFromLocalStorage(`enabledActivities_profile_${currentProfile.id}`, initializeEnabledActivities());
             const profileOverrides = getValueFromLocalStorage<ParentOverride[]>(`parentOverrides_profile_${currentProfile.id}`, []);
             // If stored value is an empty array (or falsy), treat as all activities enabled to avoid accidentally locking activities
@@ -124,16 +189,25 @@ export const useProfile = ({ showToast }: UseProfileProps) => {
     }, []);
 
     // Parent Override (Joker Hakkı) functions
-    const handleAddParentOverride = useCallback((activityId: string, durationHours: number = 24, reason?: string) => {
+    const handleAddParentOverride = useCallback((activityId: string, durationHours: number = 24, reason?: string, isPremium: boolean = false, ignoreForProgress: boolean = false) => {
+        // Limit active overrides by premium status: non-premium = 3, premium = 15
+        const now = Date.now();
+        const activeCount = parentOverrides.filter(o => o.expiresAt > now).length;
+        const limit = isPremium ? 15 : 3;
+        if (activeCount >= limit) {
+            showToast(isPremium ? `Premium için aktif joker limiti (${limit}) doldu.` : `Üzgünüz, aktif joker limiti (${limit}) doldu.`, 'info');
+            return;
+        }
+
         const expiresAt = Date.now() + (durationHours * 60 * 60 * 1000);
-        const newOverride: ParentOverride = { activityId, expiresAt, reason };
+        const newOverride: ParentOverride = { activityId, expiresAt, reason, ignoreForProgress };
         setParentOverrides(prev => {
             // Remove any existing override for this activity
             const filtered = prev.filter(o => o.activityId !== activityId);
             return [...filtered, newOverride];
         });
         showToast(`"${activityId}" geçici olarak açıldı (${durationHours} saat)`, 'info');
-    }, [showToast]);
+    }, [showToast, parentOverrides]);
 
     const handleRemoveParentOverride = useCallback((activityId: string) => {
         setParentOverrides(prev => prev.filter(o => o.activityId !== activityId));

@@ -25,6 +25,7 @@ interface LetterActivitiesMenuScreenProps {
 
 const LetterActivitiesMenuScreen: React.FC<LetterActivitiesMenuScreenProps> = ({ onSelectActivity, onBack, activityStats, theme, enabledActivities }) => {
   const isCosmic = theme === 'deneme2';
+  const isUnderwater = theme === 'deneme';
   const lang = getCurrentLanguage();
   const pack = getLetterActivityPack(lang);
   
@@ -166,14 +167,95 @@ const LetterActivitiesMenuScreen: React.FC<LetterActivitiesMenuScreenProps> = ({
     );
   };
 
+  // Render underwater (deneme) card — jellyfish style
+  const renderUnderwaterCard = (activity: typeof activities[0], stats: ActivityStats | undefined, isDisabled: boolean, idx: number) => {
+    const Icon = activity.icon;
+    const jellyfishColors = [
+      // Oceanic palette — prioritize blues, cyans and teals. Keep variety but avoid pinks.
+      'from-blue-600 to-cyan-500',
+      'from-cyan-600 to-teal-500',
+      'from-teal-600 to-blue-500',
+      'from-sky-600 to-cyan-400',
+      'from-indigo-600 to-blue-500',
+      'from-blue-700 to-teal-500',
+      'from-cyan-500 to-sky-400',
+      'from-teal-500 to-cyan-400',
+    ];
+    const color = jellyfishColors[idx % jellyfishColors.length];
+    return (
+      <button
+        key={activity.id}
+        onClick={() => !isDisabled && onSelectActivity(activity.id)}
+        disabled={isDisabled}
+        className={`relative flex flex-col items-center transition-all duration-300 ${isDisabled ? 'opacity-40 cursor-not-allowed' : 'hover:scale-110 cursor-pointer'}`}>
+        <div className={`w-32 h-24 sm:w-36 sm:h-28 rounded-t-full bg-gradient-to-b ${color} border-2 border-white/30 backdrop-blur-sm shadow-lg relative overflow-hidden ${!isDisabled && 'hover:shadow-2xl'}`}>
+          <div className="absolute top-1 left-3 w-4 h-4 bg-white/40 rounded-full blur-sm"></div>
+          <div className="absolute top-2 right-4 w-2 h-2 bg-white/30 rounded-full blur-sm"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-md" />
+          </div>
+        </div>
+
+        <div className="flex gap-0.5 justify-center -mt-1">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className={`w-0.5 h-8 bg-gradient-to-b ${color} opacity-60 rounded-full animate-tentacle`} style={{ height: `${32 + Math.random() * 12}px`, animationDelay: `${i * 0.15}s`, transformOrigin: 'top' }} />
+          ))}
+        </div>
+
+        <h3 className="text-sm font-bold text-white text-center mt-2 line-clamp-2 px-2 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">{activity.title}</h3>
+        <p className="text-xs text-white/90 text-center line-clamp-1 px-2 mb-2 drop-shadow-[0_0_6px_rgba(6,182,212,0.6)]">{activity.subtitle}</p>
+        {activity.hasSubCategories && stats && (
+          <div className="w-full px-2">
+            <ProgressIndicator
+              mode="aggregate"
+              attempts={stats.attempts}
+              completions={stats.completions}
+              totalCorrect={stats.totalCorrect}
+              totalQuestions={stats.totalQuestions}
+            />
+          </div>
+        )}
+      </button>
+    );
+  };
+
   return (
-    <div className={`relative flex flex-col items-center justify-start h-full max-w-2xl mx-auto p-4 sm-landscape:p-2 animate-fade-in ${isCosmic ? 'overflow-hidden' : 'overflow-y-auto'}`}>
+    <div className={`relative flex flex-col items-center justify-start h-full max-w-2xl mx-auto p-4 sm-landscape:p-2 animate-fade-in ${isCosmic || isUnderwater ? 'overflow-hidden' : 'overflow-y-auto'}`}>
       {isCosmic && (
         <CosmicBackdrop variant="light" showMeteors={false} />
       )}
+      {isUnderwater && (
+        <>
+          {/* Deep ocean gradient background */}
+          <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
+          
+          {/* Ocean bubbles animation */}
+          <div className="absolute inset-0 -z-18 opacity-40">
+            {Array.from({ length: 25 }, (_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-white/60 rounded-full animate-bubble"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  bottom: `-10px`,
+                  animationDelay: `${Math.random() * 8}s`,
+                  animationDuration: `${4 + Math.random() * 4}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Ocean floor sand */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 -z-15 bg-gradient-to-t from-amber-900/30 via-amber-800/20 to-transparent" />
+          
+          {/* Light rays from surface */}
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-300/60 via-cyan-400/30 to-transparent -z-16" />
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-blue-300/60 via-blue-400/30 to-transparent -z-16" />
+        </>
+      )}
       
       {/* Cosmic: Wrap in big panel */}
-      <div className={`relative w-full h-full flex flex-col ${isCosmic ? 'bg-slate-900/50 border border-sky-400/20 backdrop-blur-lg rounded-3xl shadow-xl p-4 sm-landscape:p-3 overflow-y-auto' : ''}`}>
+      <div className={`relative w-full h-full flex flex-col ${isCosmic || isUnderwater ? 'bg-gradient-to-b from-[#001122]/60 via-[#001a2e]/50 to-[#000814]/40 border border-cyan-400/20 backdrop-blur-lg rounded-3xl shadow-xl p-4 sm-landscape:p-3 overflow-y-auto' : ''}`}>
         {isCosmic && (
           <>
             <PanelStars count={58} className="rounded-3xl" />
@@ -211,6 +293,14 @@ const LetterActivitiesMenuScreen: React.FC<LetterActivitiesMenuScreenProps> = ({
                 const stats = activity.hasSubCategories ? getAggregateStats(activity.id) : activityStats[String(activity.id)];
                 const isDisabled = !enabledActivities.has(String(activity.id));
                 return renderCosmicCard(activity, stats, isDisabled);
+              })}
+            </div>
+          ) : isUnderwater ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm-landscape:gap-3">
+              {activities.map((activity, idx) => {
+                const stats = activity.hasSubCategories ? getAggregateStats(activity.id) : activityStats[String(activity.id)];
+                const isDisabled = !enabledActivities.has(String(activity.id));
+                return renderUnderwaterCard(activity, stats, isDisabled, idx);
               })}
             </div>
           ) : (

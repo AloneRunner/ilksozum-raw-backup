@@ -69,6 +69,10 @@
       "title": "Zufallsmodus",
       "subtitle": "Mischung aus ausgewählten Aktivitäten spielen"
     },
+    "programMode": {
+      "title": "Programmmodus",
+      "subtitle": "Starte eine geführte tägliche Sitzung"
+    },
     "parentTips": {
       "title": "Tipps für Eltern",
       "subtitle": "App effektiver nutzen"
@@ -106,7 +110,7 @@
       }
     },
     "fiveWOneH": {
-      "title": "5W1H",
+      "title": "W-Fragen",
       "subtitle": "Wer • Was • Wo • Wann • Warum • Wie",
       "developingNote": "In Entwicklung",
       "category": {
@@ -126,7 +130,7 @@
   },
   "tabs": {
     "activities": "Aktivitäten",
-    "communication": "Kommunikation",
+    "communication": "Ausdruckskarten",
     "achievements": "Berichte",
     "settings": "Einstellungen"
   },

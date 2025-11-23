@@ -46,15 +46,17 @@ export function getAllowedUnitCeiling(profileId: string, currentUnlockedUnits: S
     return snap.lastAdvancedUnit;
   }
   
-  // Otherwise, ceiling = initial unit (1) + number of advancements
-  // 0 advancements → ceiling = 1 (Unit 1 only)
-  // 1 advancement → ceiling = 2 (Units 1-2)
-  // 2 advancements → ceiling = 3 (Units 1-3)
-  const baseCeiling = 1 + (snap.advances || 0);
-  
-  // But don't exceed what's actually unlocked
+  // Otherwise, don't reduce access: keep already-unlocked units available.
+  // (Previously this computed a smaller 'baseCeiling' and returned the min,
+  // which could demote previously unlocked units.)
   let maxUnlocked = 1;
   currentUnlockedUnits.forEach(u => { if (u > maxUnlocked) maxUnlocked = u; });
-  
-  return Math.min(baseCeiling, maxUnlocked);
+
+  // Important: do not *reduce* access to units the child has already unlocked.
+  // Previously the function returned Math.min(baseCeiling, maxUnlocked) which could
+  // lower the allowed ceiling below the already-unlocked units when `baseCeiling` was small.
+  // That caused children who had reached higher units to be shown only Unit 1 again
+  // when `advances` for the day was 0. To avoid demoting progress we return the
+  // already-unlocked maximum unit here (unless a freeze due to 3 daily advances applies).
+  return Math.max(1, maxUnlocked);
 }

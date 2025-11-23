@@ -8,6 +8,7 @@ import { ActivityStats } from "../types.ts";
 import ProgressIndicator from "./ui/ProgressIndicator.tsx";
 import CosmicBackdrop from "./ui/CosmicBackdrop.tsx";
 import PanelStars from "./ui/PanelStars.tsx";
+import UnderwaterBackdrop from './ui/UnderwaterBackdrop.tsx';
 
 import {
   SIMPLE_THEME_COLORS,
@@ -44,6 +45,7 @@ const ObjectCategoriesMenuScreen: React.FC<ObjectCategoriesMenuScreenProps> = ({
   const lang = getCurrentLanguage();
   const categories = categoriesOverride || OBJECT_CATEGORIES;
   const gradientPalette = ["sky", "teal", "amber", "purple", "rose", "indigo", "emerald", "orange"];
+  const isUnderwater = theme === 'deneme';
 
   const localizedCategories = categories.map((category) => ({
     ...category,
@@ -152,6 +154,73 @@ const ObjectCategoriesMenuScreen: React.FC<ObjectCategoriesMenuScreenProps> = ({
           </div>
         </div>
       </>
+    );
+  }
+
+  // Underwater variant - deneme: jellyfish style categories
+  if (isUnderwater) {
+    const jellyfishRings = [
+      'from-blue-600 via-cyan-500 to-teal-500',
+      'from-cyan-600 via-blue-500 to-teal-400',
+      'from-teal-600 via-cyan-500 to-blue-500',
+      'from-indigo-600 via-blue-500 to-cyan-400',
+    ];
+
+    return (
+      <div className="relative flex h-full max-w-4xl landscape:max-w-6xl flex-col items-center justify-start animate-fade-in px-4 py-4 landscape:py-3 overflow-hidden">
+        <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
+        <UnderwaterBackdrop count={16} className="-z-18 opacity-40" />
+
+        <div className="relative z-10 w-full flex items-center mb-6 sm-landscape:mb-3">
+          <button
+            onClick={onBack}
+            className="absolute left-0 rounded-full p-2 bg-cyan-400/20 hover:bg-cyan-400/30 border border-cyan-300/40 backdrop-blur-sm transition-colors"
+            aria-label={t("app.back", "Go back")}
+            type="button"
+          >
+            <ArrowLeftIcon className="h-7 w-7 landscape:h-6 landscape:w-6 text-cyan-100 drop-shadow" />
+          </button>
+          <div className="flex-1 flex justify-center">
+            <div className="inline-block px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500/80 via-teal-400/80 to-cyan-500/80 border border-cyan-300/40 shadow-lg shadow-cyan-400/30 backdrop-blur-sm">
+              <h1 className="text-xl sm:text-2xl landscape:text-lg font-extrabold text-cyan-100 drop-shadow">{titleOverride || t("menu.objects.title", "Nesneleri Tanıyalım")}</h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full flex-grow overflow-y-auto pr-2 animate-fade-in">
+          <div className="grid grid-cols-2 gap-4 landscape:grid-cols-4 sm:gap-4">
+            {localizedCategories.map((category, idx) => {
+              const image = imageData.find((item) => item.id === category.imageId);
+              const stats = activityStats[category.id] || { attempts: 0, completions: 0, totalCorrect: 0, totalQuestions: 0 };
+              const isDisabled = Boolean((category as { disabled?: boolean }).disabled) || !enabledActivities.has(category.id);
+              const imageUrl = image?.imageUrl || "/images/placeholder.png";
+              const ring = jellyfishRings[idx % jellyfishRings.length];
+
+              return (
+                <div key={category.id} className="group relative">
+                  <button
+                    type="button"
+                    onClick={() => onSelectCategory(category.id)}
+                    disabled={isDisabled}
+                    className={`w-full min-h-[180px] landscape:min-h-[160px] flex flex-col items-center justify-start gap-2 rounded-2xl p-4 landscape:p-3 pt-4 landscape:pt-3 pb-12 landscape:pb-10 transition-all duration-200 ${isDisabled ? 'opacity-60' : 'hover:scale-105'} bg-gradient-to-b from-[#061a26]/60 to-[#001219]/40 border border-cyan-300/10 backdrop-blur-md`}
+                  >
+                    <div className={`relative flex items-center justify-center w-24 h-24 landscape:w-20 landscape:h-20 rounded-full bg-gradient-to-br ${ring} shadow-[0_12px_28px_rgba(6,182,212,0.16)]`}>
+                      <div className="absolute inset-0 rounded-full border border-white/10 opacity-60" />
+                      <div className="relative flex items-center justify-center w-[76%] h-[76%] rounded-full bg-black/20 border border-white/20 overflow-hidden">
+                        <img src={imageUrl} alt={String(category.title)} className="w-14 h-14 landscape:w-12 landscape:h-12 object-contain drop-shadow" />
+                      </div>
+                    </div>
+                    <div className="mt-2 landscape:mt-1 text-center text-base landscape:text-sm font-bold leading-tight text-cyan-100 drop-shadow-sm">{String(category.title)}</div>
+                    {stats.attempts > 0 && (
+                      <ProgressIndicator mode="aggregate" attempts={stats.attempts} completions={stats.completions} totalCorrect={stats.totalCorrect} totalQuestions={stats.totalQuestions} />
+                    )}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -319,7 +388,7 @@ const ObjectCategoriesMenuScreen: React.FC<ObjectCategoriesMenuScreenProps> = ({
       ay2: { gradient: 'from-indigo-100 to-violet-100', border: 'border-indigo-300', text: 'text-indigo-900', button: 'bg-indigo-200', buttonHover: 'hover:bg-indigo-300', titleBg: 'bg-white/70 border border-indigo-200/50 shadow-xl shadow-indigo-200/30 backdrop-blur-lg', titleText: 'text-indigo-800 drop-shadow-[0_4px_14px_rgba(255,255,255,0.6)]' },
       zurafa: { gradient: 'from-cyan-100 to-teal-100', border: 'border-cyan-300', text: 'text-cyan-900', button: 'bg-cyan-200', buttonHover: 'hover:bg-cyan-300', titleBg: 'bg-white/60 border border-cyan-200/50 shadow-xl shadow-cyan-200/30 backdrop-blur-lg', titleText: 'text-cyan-700 drop-shadow-[0_4px_14px_rgba(255,255,255,0.65)]' },
       geometri: { gradient: 'from-rose-100 to-pink-100', border: 'border-rose-300', text: 'text-rose-900', button: 'bg-rose-200', buttonHover: 'hover:bg-rose-300', titleBg: 'bg-white/70 border border-rose-200/50 shadow-xl shadow-rose-200/30 backdrop-blur-lg', titleText: 'text-rose-800 drop-shadow-[0_4px_14px_rgba(255,255,255,0.65)]' },
-      deneme: { gradient: 'from-purple-100 to-pink-100', border: 'border-purple-300', text: 'text-purple-900', button: 'bg-gradient-to-r from-purple-300 to-pink-400', buttonHover: 'hover:from-purple-400 hover:to-pink-500', titleBg: 'bg-gradient-to-br from-purple-100/85 via-pink-100/80 to-red-100/75 border border-purple-300/60 shadow-2xl shadow-purple-400/30 backdrop-blur-lg', titleText: 'text-purple-800 drop-shadow-[0_4px_16px_rgba(255,255,255,0.7)] font-extrabold' },
+      deneme: { gradient: 'from-cyan-400 to-blue-600', border: 'border-cyan-300', text: 'text-cyan-100', button: 'bg-gradient-to-r from-cyan-600 to-teal-500', buttonHover: 'hover:from-cyan-700 hover:to-teal-600', titleBg: 'bg-gradient-to-br from-cyan-700/85 via-blue-700/80 to-teal-700/75 border border-cyan-300/60 shadow-2xl shadow-cyan-500/30 backdrop-blur-lg', titleText: 'text-cyan-100 drop-shadow-[0_4px_16px_rgba(6,182,212,0.75)] font-extrabold' },
     };
     return themeColors[theme] || { gradient: 'from-white to-gray-50', border: 'border-gray-200', text: 'text-gray-900', button: 'bg-gray-100', buttonHover: 'hover:bg-gray-200', titleBg: 'bg-white/70', titleText: 'text-gray-800' };
   };

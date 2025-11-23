@@ -136,7 +136,8 @@ export const UNIT_DEFINITIONS: UnitDefinition[] = [
     unitName: 'Neden-Sonuç ve Sıralama',
     activities: [
       ActivityType.WhatDoesntBelong,
-      ActivityType.CauseEffect,
+      // CauseEffect was removed from Program/Reinforcement selection (migrated into 5W1H)
+      // (Previously: ActivityType.CauseEffect),
       ActivityType.SequencingStories,
       ActivityType.DragAndDropCounting,
       ActivityType.DragAndDropPositioning,

@@ -1,4 +1,235 @@
 {
+  "app": {
+    "name": "İlk Sözüm: Autizm və Məktəbəqədər",
+    "description": "Autizmli uşaqlar üçün sözləri, konsepsiyaları və səsləri öyrədən interaktiv təhsil kartları.",
+    "printPreview": "Çap önizləməsi",
+    "savePdf": "PDF-i yadda saxla",
+    "print": "Çap et",
+    "back": "Geri qayıt",
+    "developing": "Hazırlanır",
+    "pdfSavedInfo": "PDF saxlanıldı. Sənədlər qovluğunu yoxlayın və ya Paylaş menyusundan istifadə edin.",
+    "pdfSaveError": "PDF saxlanılarkən xəta baş verdi. Yenidən cəhd edin.",
+    "pdfCreateError": "PDF yaradılarkən xəta baş verdi. Yenidən cəhd edin.",
+    "pdfJobName": "İlk Sözlər Kartları",
+    "shareTitle": "PDF saxlanıldı",
+    "shareText": "PDF faylı saxlanıldı. Paylaşmaq istəyirsiniz?",
+    "shareDialogTitle": "PDF-i paylaş",
+    "noContentForActivity": "Bu fəaliyyət üçün məzmun tapılmadı.",
+    "noMoreImagesForActivity": "Bu fəaliyyət üçün göstəriləcək başqa şəkil qalmadı.",
+    "noActivitySelected": "Fəaliyyət seçilməyib.",
+    "activityLoadError": "Fəaliyyət yüklənərkən xəta baş verdi.",
+    "randomActivityRestarting": "Cari təsadüfi fəaliyyət yenidən başladılır...",
+    "activityRestarting": "Fəaliyyət yenidən başladılır..."
+  },
+  "choice": {
+    "readQuestion": "Sualı səsləndir",
+    "matchPrompt": "Hansısı buna uyğundur?",
+    "label": "Yarlıq",
+    "hint": "İşarə",
+    "showLabel": "Yarlıqları göstər",
+    "hideLabel": "Yarlıqları gizlət",
+    "showHint": "İşarəni göstər",
+    "learnShapes": "Formaları öyrən",
+    "learnEmotions": "Hissləri öyrən",
+    "hideHint": "İşarəni gizlət",
+    "banImageAria": "Bu şəkli bir daha göstərmə",
+    "learnColors": "Rəngləri öyrən"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Avtomatik səsləndirməni aç",
+    "autoSpeakOff": "Avtomatik səsləndirməni bağla"
+  },
+  "feedback": {
+    "correctPrefix": "Bəli, bu",
+    "wrongPrefix": "Xeyr, bu",
+    "rightPrefix": "Düzdür, bu",
+    "sentence": {
+      "correct": "Bəli, {noun} {adjective}dir.",
+      "wrong": "Xeyr, {noun} {adjective} deyil."
+    }
+  },
+  "settings": {
+    "language": "Dil",
+    "languageSubtitle": "İnterfeys və səs dili",
+    "languageNote": "Hərf fəaliyyətləri Azərbaycan dili üçün Beta mərhələsində açılıb. Səhvlər ola bilər.",
+    "languageAutoNote": "Qeyd: Bəzi tərcümələr süni intellektlə yaradılıb və səhvlər ola bilər. Təsirlənmiş valideynlərdən üzr istəyirik — tərcümələri düzəltmək üçün rəy göndərin."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Əşyalar",
+      "subtitle": "Türk dilindən başqa dillər üçün seçilmiş əşya dəstləri",
+      "noCuratedSet": "Bu kateqoriya üçün hələ seçilmiş dəst yoxdur."
+    }
+  },
+  "menu": {
+    "hello": "Salam",
+    "appTitle": "İlk Sözüm: Təhsil Kartları",
+    "experimentalTag": "Eksperimental",
+    "random": {
+      "title": "Təsadüfi Rejim",
+      "subtitle": "Seçilmiş fəaliyyətlərdən qarışıq oyna"
+    },
+    "programMode": {
+      "title": "Proqram Rejimi",
+      "subtitle": "Ekspert planı ilə gündəlik sessiya başladın"
+    },
+    "parentTips": {
+      "title": "Valideynlər üçün Məsləhətlər",
+      "subtitle": "Tətbiqdən daha səmərəli istifadə edin"
+    },
+    "letterSound": {
+      "title": "Hərflər və Səslər",
+      "subtitle": "Hərfləri və səsləri öyrən, hecala və oxu."
+    },
+    "objects": {
+      "title": "Əşyaları Öyrənək",
+      "subtitle": "Heyvanları, meyvələri və daha çoxunu öyrən."
+    },
+    "concepts": {
+      "title": "Anlayış Fəaliyyətləri",
+      "subtitle": "Rəngləri, formaları və əks anlayışları öyrən."
+    },
+    "reasoning": {
+      "title": "Məntiq Oyunları",
+      "subtitle": "Yaddaş, sudoku və məntiq oyunları oyna."
+    },
+    "fineMotor": {
+      "title": "İncə Motorika",
+      "subtitle": "Xətt İzləmə, Rəngləmə və daha çoxu",
+      "developingNote": "Hazırlanır",
+      "backButton": "İncə Motorika Menyusuna qayıt"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "İncə Motorika Bacarıqları"
+      },
+      "fineMotor": {
+        "lineTracing": "Xətt İzləmə",
+        "shapeColoring": "Forma Rəngləmə",
+        "rhythmFollowing": "Ritm İzləmə"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Kim • Nə • Harada • Nə vaxt • Niyə • Necə",
+      "developingNote": "Hazırlanır",
+      "category": {
+        "who": "Kim?",
+        "what": "Nə?",
+        "where": "Harada?",
+        "when": "Nə vaxt?",
+        "why": "Niyə?",
+        "how": "Necə?",
+        "mixed": "Qarışıq"
+      }
+    }
+    ,
+    "soundImitation": {
+      "title": "Səs Təqlid Kartları",
+      "subtitle": "Danışmayan uşaqlar üçün səs təqlid kartları",
+      "badge": "Yeni — Eksperimental Fəaliyyət",
+      "imagesTitle": "Şəkil Kartları",
+      "imagesDesc": "Şəkil kartlarını görüntüləyin; böyütmək üçün toxunun və sürüşdürərək gezin.",
+      "videosTitle": "Qısa Videolar",
+      "videosTitleShort": "Qısa Videolar (Eksperimental)",
+      "videosDesc": "Qısa videolar — eksperimental. Videolar yer tuta bilər.",
+      "experimentalNoteTitle": "Eksperimental Qeyd",
+      "experimentalNote": "Video bölməsi eksperimentaldır və daimi olmaya bilər. Videolar böyük ola bilər və cihazınızda yer tuta bilər; bu bölmə rəyinizə əsasən formalaşdırılacaq.",
+      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
+      "feedbackRequest": "Zəhmət olmasa tətbiq mağazası rəylərinə yaxşı və ya pis bütün fikirlərinizi yazın.",
+      "themeTextColors": {
+        "simple": "#000000",
+        "deneme": "#ffffff",
+        "balon": "#000000",
+        "gunes": "#000000",
+        "tilki": "#000000",
+        "ay": "#000000",
+        "geceorman": "#ffffff",
+        "yagmur": "#000000",
+        "kus": "#000000",
+        "tilki2": "#000000",
+        "kedi": "#000000",
+        "kar": "#ffffff",
+        "gunbatimi": "#000000",
+        "ay2": "#000000",
+        "zurafa": "#000000",
+        "geometri": "#000000",
+        "balloon": "#000000",
+        "sun": "#000000",
+        "fox": "#000000",
+        "moon": "#000000",
+        "nightForest": "#ffffff",
+        "rain": "#000000",
+        "birds": "#000000",
+        "prairieFox": "#000000",
+        "cat": "#000000",
+        "snow": "#ffffff",
+        "sunset": "#000000",
+        "crescent": "#000000",
+        "giraffe": "#000000",
+        "geometric": "#000000",
+        "kozmik": "#ffffff"
+      }
+    }
+  },
+  "common": {
+    "previous": "Əvvəlki",
+    "next": "Növbəti"
+  },
+  "tabs": {
+    "activities": "Fəaliyyətlər",
+    "communication": "İfadə Kartları",
+    "achievements": "Hesabatlar",
+    "settings": "Parametrlər"
+  },
+  "consent": {
+    "title": "Məxfilik Razılığı",
+    "body": "Tətbiqdən istifadə etməyə davam etmək üçün Məxfilik Siyasətimizi qəbul etməlisiniz. Şəxsi məlumatları toplamırıq; tərəqqiniz və parametrləriniz cihazınızda qalır. Pulsuz versiyada fərdiləşdirilməmiş reklamlar göstərilə bilər.",
+    "accept": "Qəbul edirəm",
+    "viewPolicy": "Məxfilik Siyasətini Oxu"
+  },
+  "themes": {
+    "simple": "Sadə",
+    "deneme": "🎨 Sınaq",
+    "balon": "Şar",
+    "gunes": "Günəş",
+    "tilki": "Tülkü",
+    "ay": "Ay",
+    "geceorman": "Gecə Meşəsi",
+    "yagmur": "Yağış",
+    "kus": "Quşlar",
+    "tilki2": "Çöl Tülküsü",
+    "kedi": "Pişik",
+    "kar": "Qar",
+    "gunbatimi": "Gün Batımı",
+    "ay2": "Aypara",
+    "zurafa": "Zürafə",
+    "geometri": "Həndəsi",
+    "balloon": "Şar",
+    "sun": "Günəş",
+    "fox": "Tülkü",
+    "moon": "Ay",
+    "nightForest": "Gecə Meşəsi",
+    "rain": "Yağış",
+    "birds": "Quşlar",
+    "prairieFox": "Çöl Tülküsü",
+    "cat": "Pişik",
+    "snow": "Qar",
+    "sunset": "Gün Batımı",
+    "crescent": "Aypara",
+    "giraffe": "Zürafə",
+    "geometric": "Həndəsi"
+  },
+  "completion": {
+    "heading": "Təbriklər!",
+    "msg": {
+      "low": "Yenidən cəhd etməyə nə deyirsən?",
+      "mid": "Çox yaxşı gedirsən!",
+      "high": "Əla iş gördün!"
+    },
+    "restart": "Yenidən Oyna",
+    "home": "Əsas Menyu"
+  },
   "achievements": {
     "title": "Nailiyyətlər",
     "subtitle": "Bir fəaliyyəti 3 dəfə səhvsiz tamamlayaraq nişan qazanın!",
@@ -202,6 +433,10 @@
       "title": "Fəaliyyətləri Fərdiləşdirin",
       "text": "Parametrlərdəki Fəaliyyət İdarəetməsindən istifadə edərək xüsusi bacarıqlara fokuslanın və ya övladınızın hələ hazır olmadığı fəaliyyətləri müvəqqəti olaraq deaktiv edin."
     },
+    "programMode": {
+      "title": "Proqram Rejimi Haqqında",
+      "text": "Proqram Rejimi qısa, mütəxəssis tərəfindən planlaşdırılmış gündəlik sessiyalar təqdim edir. Hər sessiya isinmə, yeni məzmun və möhkəmləndirmədən ibarətdir — övladınızla birlikdə model olun və lazım gələrsə fəaliyyətləri müvəqqəti açmaq üçün Joker Haqqından istifadə edin."
+    },
     "randomMode": {
       "title": "Təsadüfi Rejimi Yoxlayın",
       "text": "Fərqli kateqoriyalardan bütün aktivləşdirilmiş məşqlərin qarışıq bir seçimini təqdim edir və öyrənməni əyləncəli şəkildə möhkəmləndirir."
@@ -209,8 +444,8 @@
     "extra": {
       "title": "Əlavə Məsləhətlər",
       "practice": {
-        "title": "Məşq Rejimi (Tezliklə)",
-        "text": "Tezliklə övladınızın ən çox çətinlik çəkdiyi fəaliyyətlərə əsaslanan bir 'Məşq Sessiyası' başlada biləcəksiniz."
+        "title": "Möhkəmləndirmə Rejimi",
+        "text": "Övladınızın ən çox çətinlik çəkdiyi fəaliyyətlər üzrə fokuslanmış məşqlərə başlayın. Bu rejim zəif tapşırıqları təkrarlayır, lakin bölmə irəliləyişini irəli aparmır."
       }
     }
   },
@@ -261,7 +496,7 @@
       "point2": "10 bölmədən ibarət piramida şəklində quruluş: Salam Dünya (Bölmə 1) → Ustalıq (Bölmə 10).",
       "point3": "Hər fəaliyyət zəngin havuz (15 cəhd, 80%) və dar havuz (2 mükəmməl) sistemləri ilə qiymətləndirilir.",
       "point4": "Gündə maksimum 3 bölmə irəliləmə mümkündür. Sərbəst rejim %50 çəki ilə dəyərləndirilir.",
-      "point5": "Valideynlər 'Joker Haqqı' ilə müvəqqəti açma edə bilər (bütün istifadəçilər üçün pulsuz)."
+      "point5": "Valideynlər 'Joker Haqqı' ilə fəaliyyətləri müvəqqəti aça bilər; həmçinin 'İrəliləyiş üçün sayma' seçimini seçərək override müddətində həmin fəaliyyətin bölmə tamamlanmasını bloklamamasını təmin edə bilərlər."
     },
     "sessionRules": {
       "title": "Proqram Rejimi Qaydaları",
@@ -269,7 +504,7 @@
       "newContent": "Yeni məzmun: 2-3 açılmış fəaliyyət",
       "reinforcement": "Möhkəmləndirmə: 1-2 ustalaşdırılmağa yaxın fəaliyyət",
       "dailyLimit": "Gündəlik limit: Maksimum 3 bölmə irəliləmə",
-      "jokerInfo": "Joker Haqqı: Müvəqqəti açma (4/12/24/48/72 saat)",
+      "jokerInfo": "Joker Haqqı: Valideynlər fəaliyyətləri müvəqqəti aça bilərlər. 'İrəliləyiş üçün sayma' seçilsə, override müddətində həmin fəaliyyət bölmə tamamlama hesabına daxil edilməyəcək. Aktiv limitlər: ödənişsiz 3, premium 15.",
       "freeMode": "Sərbəst rejim: %50 çəki ilə dəyərləndirilir"
     },
     "rules": {
@@ -277,8 +512,15 @@
       "activityWord": "fəaliyyət",
       "warmupWord": "isinmə",
       "newWord": "yeni məzmun",
+      "count": "Sessiya başına fəaliyyət sayı: 8 fəaliyyət (1 isinmə, 7 yeni məzmun, 0 möhkəmləndirmə)",
+      "activityWord": "fəaliyyət",
+      "warmupWord": "isinmə",
+      "newWord": "yeni məzmun",
       "reinforcementWord": "möhkəmləndirmə",
-      "selection": "Seçim məntiqi:",
+      "reinforcementProgress": "Möhkəmləndirmə və irəliləyiş:",
+      "reinforcementProgressDesc": "Möhkəmləndirmə sessiyaları artıq proqram cəhdi kimi sayılır; bu cəhdlər bölmənin irəliləyiş hesabına töhfə verir. Möhkəmləndirmə namizədləri sıfır uğur göstərən fəaliyyətləri də əhatə edə bilər və valideynlər əl ilə namizəd əlavə edib çıxara bilər.",
+      "reinforcementScope": "Möhkəmləndirmə əhatəsi:",
+      "reinforcementScopeDesc": "Möhkəmləndirmə namizədləri bütün açılmış bölmələrdəki fəaliyyətlərdən əl ilə seçilə bilər; uğur faizi son 6 cəhdin ortalamasıdır. (Əl ilə seçimləri təmizləmək üçün \"Əl ilə Seçimləri Təmizlə\" düyməsini istifadə edin.)",
       "selectionDesc": "İsinmə (1 mənimsənilən) → Yeni məzmun (fokus bölmə, heç sınaqdan keçməyənə üstünlük) → Möhkəmləndirmə (əvvəlki bölmələrdən 0–2 ən zəif)",
       "coverageFirst": "Əhatə‑öncəlikli:",
       "coverageFirstDesc": "Fokus bölmədə hələ sınaqdan keçməyən məzmun varsa, Yeni məzmun +1 və Möhkəmləndirmə −1. Hər bacarıqla ilk təması təmin edir.",
@@ -296,7 +538,7 @@
       "dailyPremium": "Premium:",
       "dailyPremiumDesc": "Gündəlik irəliləyiş limiti yoxdur; açılmış bölmələr sərbəst oynanır.",
       "joker": "Joker:",
-      "jokerDesc": "Valideynlər kilidli fəaliyyəti müvəqqəti aça bilər; bu, ustalıq qaydalarını keçmir, yalnız giriş verir.",
+      "jokerDesc": "Valideynlər uğur faizi 80%-dən aşağı olan kilidli fəaliyyəti müvəqqəti aça bilərlər. 'İrəliləyiş üçün sayma' seçilərsə, override müddətində həmin fəaliyyət bölmə irəliləyişində sayılmayacaq (göstərilmə və hesablamalarda 100% kimi qəbul edilə bilər). Aktiv limitlər: ödənişsiz 3, premium 15.",
       "progressDisplay": "Göstərilən %:",
       "progressDisplayDesc": "Bölmə faizi valideyn hesabatındakı qarışıq uğuru (Sərbəst + Proqram cəmi) əks etdirir.",
       "progressFormula": "Erkən irəliləyiş formulu:",
@@ -423,38 +665,60 @@
     }
   },
   "developmentNotes": {
-    "title": "Gələcək Yeniləmələr",
-    "subtitle": "Tətbiqimiz böyüməyə davam edir! Səbrinizə görə təşəkkür edirik.",
+    "title": "Yeniləmə Qeydləri",
+    "subtitle": "Tətbiqimiz böyüməyə davam edir! Səbriniz üçün təşəkkür edirik.",
+    "thisUpdate": {
+      "title": "Bu Yeniləmədə",
+      "items": [
+        "Proqram rejimində bəzi mövcud istifadəçilərin irəliləyişini 1‑ci bölməyə sıfırlayan xəta düzəldildi. Bu narahatlığa görə üzr istəyirik — təsirlənən köhnə istifadəçilərə Müəllimlər Günü hədiyyəsi kimi Premium abunəliyi 30 noyabr 2025‑ə qədər verildi. Həmçinin artıq və ya əvvəllər Premium olan istifadəçilərə əlavə 1 ay Premium hədiyyə edildi."
+      ],
+      "_tempNotes": [
+        "QEYD: Aşağıdakı maddələr müvəqqəti qeydlərdir — növbəti yeniləmədə i18n fayllarından çıxarılacaq."
+      ]
+    },
+    "programMode": {
+      "menuTitle": "Proqram Rejimi",
+      "menuSubtitle": "Mütəxəssis planı ilə gündəlik sessiyaya başla",
+      "units": "Bölmələr",
+      "unitsCount": "{count} Bölmə"
+    },
+    "thisUpdateAddendum": {
+      "smallVisuals": "Böyük/Kiçik anlayış cütlərində, həqiqətən kiçik olan varlıqların görsəlləri uşağın çaşmaması üçün bir az daha kiçildildi."
+    },
+    "developerMessage": {
+      "short": "Qeyd: Bu tətbiqi 6 yaşlı otizmli oğlumla sınaqdan keçirərək inkişaf etdirirəm; rəylərinizi gözləyirəm.",
+      "long": "Qeyd: Bu tətbiqi 6 yaşlı otizmli oğlumla sınaqdan keçirərək inkişaf etdirirəm. Məktəbdə keçirilən mövzuları və müəllim rəylərini də nəzərə alıram. Təklif və ya müşahidələriniz varsa, zəhmət olmasa rəy göndərin."
+    },
     "modes": {
       "title": "Rejim Təkmilləşdirmələri",
       "programMode": "Proqram rejimi təkmilləşdiriləcək",
       "reinforcementMode": "Möhkəmləndirmə rejimi əlavə ediləcək",
-      "angerMode": "Zərif yönləndirmə rejimi: həddən artıq təkrar aşkarlandıqda geri bildirim tədricən və sakit şəkildə bir az daha qətiyyətli olacaq"
+      "angerMode": "Nəzakətli yönləndirmə rejimi: həddindən artıq təkrar aşkarlandıqda geribildirim tədricən və sakit şəkildə daha da güclənəcək"
     },
     "content": {
-      "title": "Məzmun və Fəaliyyət Genişlənmələri",
+      "title": "Məzmun və Fəaliyyət Genişləndirmələri",
       "newObjects": "Yeni obyektlər əlavə ediləcək",
-      "objectCategories": "Obyekt kateqoriyaları alt şöbələrə ayrılacaq",
-      "activityAudio": "Fəaliyyət səsləndirmələri daha izahlı olacaq",
+      "objectCategories": "Obyekt kateqoriyaları alt qruplara ayrılacaq",
+      "activityAudio": "Fəaliyyət səsləndirmələri daha izahlı hala gətiriləcək",
       "letterActivities": "Hərf fəaliyyətləri təkmilləşdiriləcək",
       "letterDrawing": "Hərf çəkmə məşqləri əlavə ediləcək",
-      "freeGames": "Asma adam kimi sərbəst oyunlar əlavə ediləcək",
-      "fineMotor": "İncə motor və düşüncə oyunları təkmilləşdiriləcək"
+      "freeGames": "Adam asmaca kimi sərbəst oyunlar əlavə ediləcək",
+      "fineMotor": "İncə motor və ağıl oyunları təkmilləşdiriləcək"
     },
     "languages": {
-      "title": "Dil Strukturu və Çoxdilli Dəstək",
-      "existingReview": "Mövcud xarici dillər yenidən işlənəcək",
+      "title": "Dil Quruluşu və Çoxdilli Dəstək",
+      "existingReview": "Mövcud xarici dillər nəzərdən keçiriləcək",
       "newLanguages": "Yeni dillər əlavə ediləcək",
-      "learningActivities": "Çoxdilli struktur xarici dil öyrənmə fəaliyyətlərinə çevriləcək"
+      "learningActivities": "Çoxdilli quruluş, xarici dil öyrənmə fəaliyyətlərinə çevriləcək"
     },
     "themes": {
-      "title": "Tema və Vizual Düzəlişlər",
+      "title": "Tema və Vizual Tənzimləmələr",
       "redesign": "Temalar yenidən dizayn ediləcək"
     },
     "reports": {
-      "title": "Hesabat və Rəy Sistemi",
+      "title": "Hesabat və Əlaqə Sistemi",
       "improvedReports": "Hesabat səviyyəsi təkmilləşdiriləcək",
-      "detailedFeedback": "Təkcə fəaliyyət uğuru deyil, həm də çətinlik çəkilən spesifik obyekt/konsept göstəriləcək"
+      "detailedFeedback": "Yalnız fəaliyyət uğuru deyil, fəaliyyət içindəki çətinlik çəkilən obyekt/anlayış da göstəriləcək"
     }
   }
 }

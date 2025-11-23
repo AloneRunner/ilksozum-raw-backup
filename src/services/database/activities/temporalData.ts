@@ -3,48 +3,48 @@ import { ConceptRound, ActivityType } from '../../../types.ts';
 export const beforeAfterData: ConceptRound[] = [
     // 1. Dondurma
     { id: 1, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before_person", activityType: ActivityType.BeforeAfter, options: [
-        { id: 63, word: "dondurma", imageUrl: "/images/63.png", isCorrect: true, audioKey: "dondurma", spokenText: "bütün dondurma" },
-        { id: 64, word: "dondurma", imageUrl: "/images/64.png", isCorrect: false, audioKey: "erimiş_dondurma", spokenText: "erimiş dondurma" }
+        { id: 63, word: "dondurma", imageUrl: "/images/63.png", isCorrect: true, audioKey: "dondurma" },
+        { id: 64, word: "dondurma", imageUrl: "/images/64.png", isCorrect: false, audioKey: "erimiş_dondurma" }
     ]},
     { id: 2, question: "Sonra hangisi olur?", questionAudioKey: "q_which_is_after", activityType: ActivityType.BeforeAfter, options: [
-        { id: 63, word: "dondurma", imageUrl: "/images/63.png", isCorrect: false, audioKey: "dondurma", spokenText: "bütün dondurma" },
-        { id: 64, word: "dondurma", imageUrl: "/images/64.png", isCorrect: true, audioKey: "erimiş_dondurma", spokenText: "erimiş dondurma" }
+        { id: 63, word: "dondurma", imageUrl: "/images/63.png", isCorrect: false, audioKey: "dondurma" },
+        { id: 64, word: "dondurma", imageUrl: "/images/64.png", isCorrect: true, audioKey: "erimiş_dondurma" }
     ]},
     // 2. Yumurta -> Civciv
     { id: 3, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before", activityType: ActivityType.BeforeAfter, options: [
-        { id: 77, word: "yumurta", imageUrl: "/images/77.png", isCorrect: true, audioKey: "kırık_yumurta", spokenText: "kırık yumurta" },
-        { id: 376, word: "civciv", imageUrl: "/images/376.png", isCorrect: false, audioKey: "civciv", spokenText: "civciv" }
+        { id: 77, word: "yumurta", imageUrl: "/images/77.png", isCorrect: true, audioKey: "kırık_yumurta" },
+        { id: 376, word: "civciv", imageUrl: "/images/376.png", isCorrect: false, audioKey: "civciv" }
     ]},
     { id: 4, question: "Sonra hangisi olur?", questionAudioKey: "q_which_is_after", activityType: ActivityType.BeforeAfter, options: [
-        { id: 77, word: "yumurta", imageUrl: "/images/77.png", isCorrect: false, audioKey: "kırık_yumurta", spokenText: "kırık yumurta" },
-        { id: 376, word: "civciv", imageUrl: "/images/376.png", isCorrect: true, audioKey: "civciv", spokenText: "civciv" }
+        { id: 77, word: "yumurta", imageUrl: "/images/77.png", isCorrect: false, audioKey: "kırık_yumurta" },
+        { id: 376, word: "civciv", imageUrl: "/images/376.png", isCorrect: true, audioKey: "civciv" }
     ]},
     // 3. Tohum -> Filiz
     { id: 5, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before", activityType: ActivityType.BeforeAfter, options: [
-        { id: 316, word: "tohum", imageUrl: "/images/316.png", isCorrect: true, audioKey: "tohum", spokenText: "tohum" },
-        { id: 317, word: "filiz", imageUrl: "/images/317.png", isCorrect: false, audioKey: "filiz", spokenText: "filiz" }
+        { id: 316, word: "tohum", imageUrl: "/images/316.png", isCorrect: true, audioKey: "tohum" },
+        { id: 317, word: "filiz", imageUrl: "/images/317.png", isCorrect: false, audioKey: "filiz" }
     ]},
     { id: 6, question: "Sonra hangisi olur?", questionAudioKey: "q_which_is_after", activityType: ActivityType.BeforeAfter, options: [
-        { id: 316, word: "tohum", imageUrl: "/images/316.png", isCorrect: false, audioKey: "tohum", spokenText: "tohum" },
-        { id: 317, word: "filiz", imageUrl: "/images/317.png", isCorrect: true, audioKey: "filiz", spokenText: "filiz" }
+        { id: 316, word: "tohum", imageUrl: "/images/316.png", isCorrect: false, audioKey: "tohum" },
+        { id: 317, word: "filiz", imageUrl: "/images/317.png", isCorrect: true, audioKey: "filiz" }
     ]},
     // 4. Hamur -> Ekmek
     { id: 7, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before", activityType: ActivityType.BeforeAfter, options: [
-        { id: 588, word: "hamur", imageUrl: "/images/588.png", isCorrect: true, audioKey: "hamur", spokenText: "hamur" },
-        { id: 112, word: "ekmek", imageUrl: "/images/112.png", isCorrect: false, audioKey: "ekmek", spokenText: "ekmek" }
+        { id: 588, word: "hamur", imageUrl: "/images/588.png", isCorrect: true, audioKey: "hamur" },
+        { id: 112, word: "ekmek", imageUrl: "/images/112.png", isCorrect: false, audioKey: "ekmek" }
     ]},
     { id: 8, question: "Sonra hangisi olur?", questionAudioKey: "q_which_is_after", activityType: ActivityType.BeforeAfter, options: [
-        { id: 588, word: "hamur", imageUrl: "/images/588.png", isCorrect: false, audioKey: "hamur", spokenText: "hamur" },
-        { id: 112, word: "ekmek", imageUrl: "/images/112.png", isCorrect: true, audioKey: "ekmek", spokenText: "ekmek" }
+        { id: 588, word: "hamur", imageUrl: "/images/588.png", isCorrect: false, audioKey: "hamur" },
+        { id: 112, word: "ekmek", imageUrl: "/images/112.png", isCorrect: true, audioKey: "ekmek" }
     ]},
     // 5. Dağınık Oda -> Toplu Oda - YENİ
     { id: 9, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before", activityType: ActivityType.BeforeAfter, options: [
-        { id: 229, word: "oda", imageUrl: "/images/229.png", isCorrect: true, audioKey: "dağınık_oda", spokenText: "dağınık oda" },
-        { id: 230, word: "oda", imageUrl: "/images/230.png", isCorrect: false, audioKey: "toplu_oda", spokenText: "toplu oda" }
+        { id: 229, word: "oda", imageUrl: "/images/229.png", isCorrect: true, audioKey: "dağınık_oda" },
+        { id: 230, word: "oda", imageUrl: "/images/230.png", isCorrect: false, audioKey: "toplu_oda" }
     ]},
     { id: 10, question: "Sonra hangisi olur?", questionAudioKey: "q_which_is_after", activityType: ActivityType.BeforeAfter, options: [
-        { id: 229, word: "oda", imageUrl: "/images/229.png", isCorrect: false, audioKey: "dağınık_oda", spokenText: "dağınık oda" },
-        { id: 230, word: "oda", imageUrl: "/images/230.png", isCorrect: true, audioKey: "toplu_oda", spokenText: "toplu oda" }
+        { id: 229, word: "oda", imageUrl: "/images/229.png", isCorrect: false, audioKey: "dağınık_oda" },
+        { id: 230, word: "oda", imageUrl: "/images/230.png", isCorrect: true, audioKey: "toplu_oda" }
     ]},
     // 6. Kirli El -> Temiz El - YENİ
     { id: 11, question: "Önce hangisi olur?", questionAudioKey: "q_which_is_before", activityType: ActivityType.BeforeAfter, options: [

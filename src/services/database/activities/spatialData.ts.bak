@@ -1,0 +1,424 @@
+import { ConceptRound, ActivityType, ImageMetadata } from '../../../types.ts';
+import { imageData } from '../imageData.ts';
+
+// Helper function to find image metadata by ID. Throws if not found.
+const findImage = (id: number): ImageMetadata => {
+    const image = imageData.find(img => img.id === id);
+    if (!image) {
+        // This is a developer error, so throwing is appropriate.
+        throw new Error(`[contentService] Image with ID ${id} not found in imageData.`);
+    }
+    return image;
+};
+
+// Helper to create a ConceptOption from ImageMetadata
+const createOption = (image: ImageMetadata, isCorrect: boolean, spokenText: string) => ({
+    id: image.id,
+    word: image.word,
+    imageUrl: image.imageUrl,
+    audioKey: image.audioKeys.default,
+    spokenText: spokenText,
+    isCorrect,
+});
+
+// Create pairs for the rounds based on user-provided image IDs
+const directionPairs = [
+    { leftId: 1, rightId: 28 },    // araba vs fil
+    { leftId: 26, rightId: 41 },   // ördek vs tavşan
+    { leftId: 106, rightId: 73 },  // tren vs kuş
+    { leftId: 42, rightId: 763 },  // kaplumbağa vs yunus (düzeltildi: kaplumbağa sola bakıyor)
+    { leftId: 145, rightId: 257 }, // çita vs ambulans
+    { leftId: 107, rightId: 377 }, // uçak vs tavuk
+    { leftId: 277, rightId: 59 },  // maymun vs ayakkabı
+    { leftId: 150, rightId: 92 },  // solucan vs uğur böceği
+    { leftId: 102, rightId: 445 }, // horoz vs tırtıl
+    { leftId: 256, rightId: 709 }, // itfaiye aracı vs atlet
+];
+
+
+// Generate the rounds based on the new structure
+export const leftRightData: ConceptRound[] = directionPairs.flatMap((pair, index) => {
+    const leftImage = findImage(pair.leftId);
+    const rightImage = findImage(pair.rightId);
+
+    const roundForLeft: ConceptRound = {
+        id: (index * 2) + 1,
+        question: "Sola bakan hangisi?",
+        questionAudioKey: "q_which_faces_left",
+        activityType: ActivityType.LeftRight,
+        options: [
+            createOption(leftImage, true, `sola bakan ${leftImage.word}`),
+            createOption(rightImage, false, `sağa bakan ${rightImage.word}`),
+        ]
+    };
+
+    const roundForRight: ConceptRound = {
+        id: (index * 2) + 2,
+        question: "Sağa bakan hangisi?",
+        questionAudioKey: "q_which_faces_right",
+        activityType: ActivityType.LeftRight,
+        options: [
+            createOption(leftImage, false, `sola bakan ${leftImage.word}`),
+            createOption(rightImage, true, `sağa bakan ${rightImage.word}`),
+        ]
+    };
+
+    return [roundForLeft, roundForRight];
+});
+
+
+export const onUnderData: ConceptRound[] = [
+    // 1. Top - Masa
+    { id: 1, question: "Masanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on_person", activityType: ActivityType.OnUnder, speech: { tr: { question: "Masanın üstünde olan hangisi?" }, en: { question: "Which ball is on the table?", correct: "Yes, this ball is on the table." }, nl: { question: "Welke bal ligt op de tafel?", correct: "Ja, deze bal ligt op de tafel." }, az: { question: "Hansı top masa üstündədir?", correct: "Bəli, bu top masa üstündədir." } }, options: [
+        { id: 20, word: "top", imageUrl: "/images/20.png", isCorrect: true, audioKey: "üstünde", spokenText: "masanın üstündeki top" },
+        { id: 21, word: "top", imageUrl: "/images/21.png", isCorrect: false, audioKey: "altında", spokenText: "masanın altındaki top" }
+    ]},
+    { id: 2, question: "Masanın altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { tr: { question: "Masanın altında olan hangisi?" }, en: { question: "Which ball is under the table?", correct: "Yes, this ball is under the table." }, nl: { question: "Welke bal ligt onder de tafel?", correct: "Ja, deze bal ligt onder de tafel." }, az: { question: "Hansı top masa altındadır?", correct: "Bəli, bu top masa altındadır." } }, options: [
+        { id: 20, word: "top", imageUrl: "/images/20.png", isCorrect: false, audioKey: "üstünde", spokenText: "masanın üstündeki top" },
+        { id: 21, word: "top", imageUrl: "/images/21.png", isCorrect: true, audioKey: "altında", spokenText: "masanın altındaki top" }
+    ]},
+    // 2. Kedi - Sandalye
+    { id: 3, question: "Sandalyenin üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { tr: { question: "Sandalyenin üstünde olan hangisi?" }, en: { question: "Which cat is on the chair?", correct: "Yes, this cat is on the chair." }, nl: { question: "Welke kat zit op de stoel?", correct: "Ja, deze kat zit op de stoel." }, az: { question: "Hansı pişik stulun üstündədir?", correct: "Bəli, bu pişik stulun üstündədir." } }, options: [
+        { id: 160, word: "kedi", imageUrl: "/images/160.png", isCorrect: true, audioKey: "üstünde", spokenText: "sandalyenin üstündeki kedi" },
+        { id: 91, word: "kedi", imageUrl: "/images/91.png", isCorrect: false, audioKey: "altında", spokenText: "sandalyenin altındaki kedi" }
+    ]},
+    { id: 4, question: "Sandalyenin altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { tr: { question: "Sandalyenin altında olan hangisi?" }, en: { question: "Which cat is under the chair?", correct: "Yes, this cat is under the chair." }, nl: { question: "Welke kat zit onder de stoel?", correct: "Ja, deze kat zit onder de stoel." }, az: { question: "Hansı pişik stulun altındadır?", correct: "Bəli, bu pişik stulun altındadır." } }, options: [
+        { id: 160, word: "kedi", imageUrl: "/images/160.png", isCorrect: false, audioKey: "üstünde", spokenText: "sandalyenin üstündeki kedi" },
+        { id: 91, word: "kedi", imageUrl: "/images/91.png", isCorrect: true, audioKey: "altında", spokenText: "sandalyenin altındaki kedi" }
+    ]},
+    // 3. Kiraz - Pasta (fixed: both options use 'kiraz' as the object, matching image, word, and spokenText)
+        { id: 5, question: "Pastanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { tr: { question: "Pastanın üstünde olan hangisi?" }, en: { question: "Which cherry is on the cake?", correct: "Yes, this cherry is on the cake." }, nl: { question: "Welke kers ligt op de taart?", correct: "Ja, deze kers ligt op de taart." }, az: { question: "Hansı albalı tortun üstündədir?", correct: "Bəli, bu albalı tortun üstündədir." } }, options: [
+            { id: 486, word: "kiraz", imageUrl: "/images/486.png", isCorrect: true, audioKey: "üstünde", spokenText: "pastanın üstündeki kiraz" },
+            { id: 183, word: "kiraz", imageUrl: "/images/183.png", isCorrect: false, audioKey: "altında", spokenText: "pastanın altındaki kiraz" }
+        ]},
+        { id: 6, question: "Pastanın altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { tr: { question: "Pastanın altında olan hangisi?" }, en: { question: "Which cherry is under the cake?", correct: "Yes, this cherry is under the cake." }, nl: { question: "Welke kers ligt onder de taart?", correct: "Ja, deze kers ligt onder de taart." }, az: { question: "Hansı albalı tortun altındadır?", correct: "Bəli, bu albalı tortun altındadır." } }, options: [
+            { id: 486, word: "kiraz", imageUrl: "/images/486.png", isCorrect: false, audioKey: "üstünde", spokenText: "pastanın üstündeki kiraz" },
+            { id: 183, word: "kiraz", imageUrl: "/images/183.png", isCorrect: true, audioKey: "altında", spokenText: "pastanın altındaki kiraz" }
+        ]},
+    // 4. Top - Merdiven
+    { id: 7, question: "Merdivenin üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { tr: { question: "Merdivenin üstünde olan hangisi?" }, en: { question: "Which ball is on the stairs?", correct: "Yes, this ball is on the stairs." }, nl: { question: "Welke bal ligt op de trap?", correct: "Ja, deze bal ligt op de trap." }, az: { question: "Hansı top pilləkənin üstündədir?", correct: "Bəli, bu top pilləkənin üstündədir." } }, options: [
+        { id: 172, word: "top", imageUrl: "/images/172.png", isCorrect: true, audioKey: "üstünde", spokenText: "merdivenin üstündeki top" },
+        { id: 173, word: "top", imageUrl: "/images/173.png", isCorrect: false, audioKey: "altında", spokenText: "merdivenin altındaki top" }
+    ]},
+    { id: 8, question: "Merdivenin altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { tr: { question: "Merdivenin altında olan hangisi?" }, en: { question: "Which ball is under the stairs?", correct: "Yes, this ball is under the stairs." }, nl: { question: "Welke bal ligt onder de trap?", correct: "Ja, deze bal ligt onder de trap." }, az: { question: "Hansı top pilləkənin altındadır?", correct: "Bəli, bu top pilləkənin altındadır." } }, options: [
+        { id: 172, word: "top", imageUrl: "/images/172.png", isCorrect: false, audioKey: "üstünde", spokenText: "merdivenin üstündeki top" },
+        { id: 173, word: "top", imageUrl: "/images/173.png", isCorrect: true, audioKey: "altında", spokenText: "merdivenin altındaki top" }
+    ]},
+    // 5. Yastık - Yatak
+    { id: 9, question: "Yatağın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { tr: { question: "Yatağın üstünde olan hangisi?" }, en: { question: "Which pillow is on the bed?", correct: "Yes, this pillow is on the bed." }, nl: { question: "Welk kussen ligt op het bed?", correct: "Ja, dit kussen ligt op het bed." }, az: { question: "Hansı yastıq çarpayının üstündədir?", correct: "Bəli, bu yastıq çarpayının üstündədir." } }, options: [
+        { id: 482, word: "yastık", imageUrl: "/images/482.png", isCorrect: true, audioKey: "üstünde", spokenText: "yatağın üstündeki yastık" },
+        { id: 478, word: "yastık", imageUrl: "/images/478.png", isCorrect: false, audioKey: "altında", spokenText: "yatağın altındaki yastık" }
+    ]},
+    { id: 10, question: "Yatağın altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { tr: { question: "Yatağın altında olan hangisi?" }, en: { question: "Which pillow is under the bed?", correct: "Yes, this pillow is under the bed." }, nl: { question: "Welk kussen ligt onder het bed?", correct: "Ja, dit kussen ligt onder het bed." }, az: { question: "Hansı yastıq çarpayının altındadır?", correct: "Bəli, bu yastıq çarpayının altındadır." } }, options: [
+        { id: 482, word: "yastık", imageUrl: "/images/482.png", isCorrect: false, audioKey: "üstünde", spokenText: "yatağın üstündeki yastık" },
+        { id: 478, word: "yastık", imageUrl: "/images/478.png", isCorrect: true, audioKey: "altında", spokenText: "yatağın altındaki yastık" }
+    ]},
+    // 6. Şapka - Kafa/Yatak
+    { id: 11, question: "Kafanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { tr: { question: "Kafanın üstünde olan hangisi?" }, en: { question: "Which hat is on the head?", correct: "Yes, this hat is on the head." }, nl: { question: "Welke hoed is op het hoofd?", correct: "Ja, deze hoed is op het hoofd." }, az: { question: "Hansı papaq başın üstündədir?", correct: "Bəli, bu papaq başın üstündədir." } }, options: [
+        { id: 499, word: "şapka", imageUrl: "/images/499.png", isCorrect: true, audioKey: "üstünde", spokenText: "kafanın üstündeki şapka" },
+        { id: 690, word: "şapka", imageUrl: "/images/690.png", isCorrect: false, audioKey: "altında", spokenText: "yatağın altındaki şapka" }
+    ]},
+    // 7. Kuş - Bulut
+    // NOTE: Make the question explicit (include the noun) and provide a per-round
+    // speech override so TTS reads the clearer sentence instead of the generic key.
+    { id: 13, question: "Hangi kuş bulutun üstünde?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { tr: { question: "Hangi kuş bulutun üstünde?" }, en: { question: "Which bird is above the cloud?", correct: "Yes, this bird is above the cloud." }, nl: { question: "Welke vogel is boven de wolk?", correct: "Ja, deze vogel is boven de wolk." }, az: { question: "Hansı quş buludun üstündədir?", correct: "Bəli, bu quş buludun üstündədir." } }, options: [
+        { id: 85, word: "kuş", imageUrl: "/images/85.png", isCorrect: true, audioKey: "üstünde", spokenText: "bulutun üstündeki kuş" },
+        { id: 86, word: "kuş", imageUrl: "/images/86.png", isCorrect: false, audioKey: "altında", spokenText: "bulutun altındaki kuş" }
+    ]},
+    { id: 14, question: "Hangi kuş bulutun altında?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { tr: { question: "Hangi kuş bulutun altında?" }, en: { question: "Which bird is below the cloud?", correct: "Yes, this bird is below the cloud." }, nl: { question: "Welke vogel is onder de wolk?", correct: "Ja, deze vogel is onder de wolk." }, az: { question: "Hansı quş buludun altındadır?", correct: "Bəli, bu quş buludun altındadır." } }, options: [
+        { id: 85, word: "kuş", imageUrl: "/images/85.png", isCorrect: false, audioKey: "üstünde", spokenText: "bulutun üstündeki kuş" },
+        { id: 86, word: "kuş", imageUrl: "/images/86.png", isCorrect: true, audioKey: "altında", spokenText: "bulutun altındaki kuş" }
+    ]},
+    // 8. Kitap - Masa
+    { id: 15, question: "Masanın üstünde olan hangisi?", questionAudioKey: "q_which_is_on", activityType: ActivityType.OnUnder, speech: { en: { question: "Which book is on the table?", correct: "Yes, this book is on the table." }, nl: { question: "Welk boek ligt op de tafel?", correct: "Ja, dit boek ligt op de tafel." }, az: { question: "Hansı kitab masa üstündədir?", correct: "Bəli, bu kitab masa üstindədir." }, de: { question: "Welches Buch liegt auf dem Tisch?", correct: "Ja, dieses Buch liegt auf dem Tisch." } }, options: [
+        { id: 472, word: "kitap", imageUrl: "/images/472.png", isCorrect: true, audioKey: "üstünde", spokenText: "masanın üstündeki kitap" },
+        { id: 473, word: "kitap", imageUrl: "/images/473.png", isCorrect: false, audioKey: "altında", spokenText: "masanın altındaki kitap" }
+    ]},
+    { id: 16, question: "Masanın altında olan hangisi?", questionAudioKey: "q_which_is_under", activityType: ActivityType.OnUnder, speech: { en: { question: "Which book is under the table?", correct: "Yes, this book is under the table." }, nl: { question: "Welk boek ligt onder de tafel?", correct: "Ja, dit boek ligt onder de tafel." }, az: { question: "Hansı kitab masa altındadır?", correct: "Bəli, bu kitab masa altındadır." }, de: { question: "Welches Buch liegt unter dem Tisch?", correct: "Ja, dieses Buch liegt unter dem Tisch." } }, options: [
+        { id: 472, word: "kitap", imageUrl: "/images/472.png", isCorrect: false, audioKey: "üstünde", spokenText: "masanın üstündeki kitap" },
+        { id: 473, word: "kitap", imageUrl: "/images/473.png", isCorrect: true, audioKey: "altında", spokenText: "masanın altındaki kitap" }
+    ]},
+];
+
+export const belowAboveData: ConceptRound[] = [
+    // 1. Uçak vs Gemi
+    { id: 1, question: "Yukarıda olan hangisi?", questionAudioKey: "q_which_is_above", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is above: the plane or the ship?", correct: "Yes, the plane is above." }, nl: { question: "Welke is boven: het vliegtuig of het schip?", correct: "Ja, het vliegtuig is boven." }, az: { question: "Hansı yuxarıdadır: təyyarə yoxsa gəmi?", correct: "Bəli, təyyarə yuxarıdadır." } }, options: [
+        { id: 615, word: "uçak", imageUrl: "/images/615.png", isCorrect: true, audioKey: "uçak", spokenText: "yukarıdaki uçak" },
+        { id: 622, word: "gemi", imageUrl: "/images/622.png", isCorrect: false, audioKey: "gemi", spokenText: "aşağıdaki gemi" }
+    ]},
+    { id: 2, question: "Aşağıda olan hangisi?", questionAudioKey: "q_which_is_below", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is below: the plane or the ship?", correct: "Yes, the ship is below." }, nl: { question: "Welke is onder: het vliegtuig of het schip?", correct: "Ja, het schip is onder." }, az: { question: "Hansı aşağıdadır: təyyarə yoxsa gəmi?", correct: "Bəli, gəmi aşağıdadır." } }, options: [
+        { id: 615, word: "uçak", imageUrl: "/images/615.png", isCorrect: false, audioKey: "uçak", spokenText: "yukarıdaki uçak" },
+        { id: 622, word: "gemi", imageUrl: "/images/622.png", isCorrect: true, audioKey: "gemi", spokenText: "aşağıdaki gemi" }
+    ]},
+    // 2. Güneş vs Ağaçlar
+    { id: 3, question: "Yukarıda olan hangisi?", questionAudioKey: "q_which_is_above", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is above: the sun or the trees?", correct: "Yes, the sun is above." }, nl: { question: "Welke is boven: de zon of de bomen?", correct: "Ja, de zon is boven." }, az: { question: "Hansı yuxarıdadır: günəş yoxsa ağaclar?", correct: "Bəli, günəş yuxarıdadır." } }, options: [
+        { id: 237, word: "güneş", imageUrl: "/images/237.png", isCorrect: true, audioKey: "güneş", spokenText: "yukarıdaki güneş" },
+        { id: 513, word: "ağaçlar", imageUrl: "/images/513.png", isCorrect: false, audioKey: "ağaçlar", spokenText: "aşağıdaki ağaçlar" }
+    ]},
+    { id: 4, question: "Aşağıda olan hangisi?", questionAudioKey: "q_which_is_below", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is below: the sun or the trees?", correct: "Yes, the trees are below." }, nl: { question: "Welke is onder: de zon of de bomen?", correct: "Ja, de bomen zijn onder." }, az: { question: "Hansı aşağıdadır: günəş yoxsa ağaclar?", correct: "Bəli, ağaclar aşağıdadır." } }, options: [
+        { id: 237, word: "güneş", imageUrl: "/images/237.png", isCorrect: false, audioKey: "güneş", spokenText: "yukarıdaki güneş" },
+        { id: 513, word: "ağaçlar", imageUrl: "/images/513.png", isCorrect: true, audioKey: "ağaçlar", spokenText: "aşağıdaki ağaçlar" }
+    ]},
+    // 3. Uçurtma vs Ağaç
+    { id: 5, question: "Yukarıda olan hangisi?", questionAudioKey: "q_which_is_above", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is above: the kite or the tree?", correct: "Yes, the kite is above." }, nl: { question: "Welke is boven: de vlieger of de boom?", correct: "Ja, de vlieger is boven." }, az: { question: "Hansı yuxarıdadır: uçurtma yoxsa ağac?", correct: "Bəli, uçurtma yuxarıdadır." } }, options: [
+        { id: 135, word: "uçurtma", imageUrl: "/images/135.png", isCorrect: true, audioKey: "uçurtma", spokenText: "yukarıdaki uçurtma" },
+        { id: 104, word: "ağaç", imageUrl: "/images/104.png", isCorrect: false, audioKey: "ağaç", spokenText: "aşağıdaki ağaç" }
+    ]},
+    { id: 6, question: "Aşağıda olan hangisi?", questionAudioKey: "q_which_is_below", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is below: the kite or the tree?", correct: "Yes, the tree is below." }, nl: { question: "Welke is onder: de vlieger of de boom?", correct: "Ja, de boom is onder." }, az: { question: "Hansı aşağıdadır: uçurtma yoxsa ağac?", correct: "Bəli, ağac aşağıdadır." } }, options: [
+        { id: 135, word: "uçurtma", imageUrl: "/images/135.png", isCorrect: false, audioKey: "uçurtma", spokenText: "yukarıdaki uçurtma" },
+        { id: 104, word: "ağaç", imageUrl: "/images/104.png", isCorrect: true, audioKey: "ağaç", spokenText: "aşağıdaki ağaç" }
+    ]},
+    // 4. Ay vs Ağaç
+    { id: 7, question: "Yukarıda olan hangisi?", questionAudioKey: "q_which_is_above", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is above: the moon or the tree?", correct: "Yes, the moon is above." }, nl: { question: "Welke is boven: de maan of de boom?", correct: "Ja, de maan is boven." }, az: { question: "Hansı yuxarıdadır: ay yoxsa ağac?", correct: "Bəli, ay yuxarıdadır." } }, options: [
+        { id: 238, word: "ay", imageUrl: "/images/238.png", isCorrect: true, audioKey: "ay", spokenText: "yukarıdaki ay" },
+        { id: 104, word: "ağaç", imageUrl: "/images/104.png", isCorrect: false, audioKey: "ağaç", spokenText: "aşağıdaki ağaç" }
+    ]},
+    { id: 8, question: "Aşağıda olan hangisi?", questionAudioKey: "q_which_is_below", activityType: ActivityType.BelowAbove, speech: { en: { question: "Which one is below: the moon or the tree?", correct: "Yes, the tree is below." }, nl: { question: "Welke is onder: de maan of de boom?", correct: "Ja, de boom is onder." }, az: { question: "Hansı aşağıdadır: ay yoxsa ağac?", correct: "Bəli, ağac aşağıdadır." } }, options: [
+        { id: 238, word: "ay", imageUrl: "/images/238.png", isCorrect: false, audioKey: "ay", spokenText: "yukarıdaki ay" },
+        { id: 104, word: "ağaç", imageUrl: "/images/104.png", isCorrect: true, audioKey: "ağaç", spokenText: "aşağıdaki ağaç" }
+    ]},
+];
+
+export const besideOppositeData: ConceptRound[] = [
+    // 1. Sandalyeler
+    { id: 1, question: "Yan yana olanlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 96, word: "sandalyeler", imageUrl: "/images/96.png", isCorrect: true, audioKey: "sandalyeler", spokenText: "yan yana duran sandalyeler" },
+        { id: 97, word: "sandalyeler", imageUrl: "/images/97.png", isCorrect: false, audioKey: "sandalyeler", spokenText: "karşılıklı duran sandalyeler" }
+    ]},
+    { id: 2, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 96, word: "sandalyeler", imageUrl: "/images/96.png", isCorrect: false, audioKey: "sandalyeler", spokenText: "yan yana duran sandalyeler" },
+        { id: 97, word: "sandalyeler", imageUrl: "/images/97.png", isCorrect: true, audioKey: "sandalyeler", spokenText: "karşılıklı duran sandalyeler" }
+    ]},
+    // 2. Çocuklar
+    { id: 3, question: "Yan yana duranlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 455, word: "çocuklar", imageUrl: "/images/455.png", isCorrect: true, audioKey: "çocuklar", spokenText: "yan yana duran çocuklar" },
+        { id: 454, word: "çocuklar", imageUrl: "/images/454.png", isCorrect: false, audioKey: "çocuklar", spokenText: "karşılıklı duran çocuklar" }
+    ]},
+    { id: 4, question: "Karşılıklı duranlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 455, word: "çocuklar", imageUrl: "/images/455.png", isCorrect: false, audioKey: "çocuklar", spokenText: "yan yana duran çocuklar" },
+        { id: 454, word: "çocuklar", imageUrl: "/images/454.png", isCorrect: true, audioKey: "çocuklar", spokenText: "karşılıklı duran çocuklar" }
+    ]},
+    // 3. Satranç Taşları
+    { id: 5, question: "Yan yana olanlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 511, word: "satranç taşları", imageUrl: "/images/511.png", isCorrect: true, audioKey: "satranç_taşları", spokenText: "yan yana duran taşlar" },
+        { id: 510, word: "satranç taşları", imageUrl: "/images/510.png", isCorrect: false, audioKey: "satranç_taşları", spokenText: "karşılıklı duran taşlar" }
+    ]},
+    { id: 6, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 511, word: "satranç taşları", imageUrl: "/images/511.png", isCorrect: false, audioKey: "satranç_taşları", spokenText: "yan yana duran taşlar" },
+        { id: 510, word: "satranç taşları", imageUrl: "/images/510.png", isCorrect: true, audioKey: "satranç_taşları", spokenText: "karşılıklı duran taşlar" }
+    ]},
+    // 4. Ağaçlar
+    { id: 7, question: "Yan yana olanlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 513, word: "ağaçlar", imageUrl: "/images/513.png", isCorrect: true, audioKey: "ağaçlar", spokenText: "yan yana duran ağaçlar" },
+        { id: 512, word: "ağaçlar", imageUrl: "/images/512.png", isCorrect: false, audioKey: "ağaçlar", spokenText: "karşılıklı duran ağaçlar" }
+    ]},
+    { id: 8, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 513, word: "ağaçlar", imageUrl: "/images/513.png", isCorrect: false, audioKey: "ağaçlar", spokenText: "yan yana duran ağaçlar" },
+        { id: 512, word: "ağaçlar", imageUrl: "/images/512.png", isCorrect: true, audioKey: "ağaçlar", spokenText: "karşılıklı duran ağaçlar" }
+    ]},
+    // 5. Evler
+    { id: 9, question: "Yan yana olanlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 515, word: "evler", imageUrl: "/images/515.png", isCorrect: true, audioKey: "evler", spokenText: "yan yana duran evler" },
+        { id: 514, word: "evler", imageUrl: "/images/514.png", isCorrect: false, audioKey: "evler", spokenText: "karşılıklı duran evler" }
+    ]},
+    { id: 10, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 515, word: "evler", imageUrl: "/images/515.png", isCorrect: false, audioKey: "evler", spokenText: "yan yana duran evler" },
+        { id: 514, word: "evler", imageUrl: "/images/514.png", isCorrect: true, audioKey: "evler", spokenText: "karşılıklı duran evler" }
+    ]},
+    // 6. Tuzluk ve Biberlik
+    { id: 11, question: "Yan yana olanlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 626, word: "tuzluk ve biberlik", imageUrl: "/images/626.png", isCorrect: true, audioKey: "tuzluk_ve_biberlik", spokenText: "yan yana duranlar" },
+        { id: 625, word: "tuzluk ve biberlik", imageUrl: "/images/625.png", isCorrect: false, audioKey: "tuzluk_ve_biberlik", spokenText: "karşılıklı duranlar" }
+    ]},
+    { id: 12, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 626, word: "tuzluk ve biberlik", imageUrl: "/images/626.png", isCorrect: false, audioKey: "tuzluk_ve_biberlik", spokenText: "yan yana duranlar" },
+        { id: 625, word: "tuzluk ve biberlik", imageUrl: "/images/625.png", isCorrect: true, audioKey: "tuzluk_ve_biberlik", spokenText: "karşılıklı duranlar" }
+    ]},
+    // 7. Kediler
+    { id: 13, question: "Yan yana duranlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 628, word: "kediler", imageUrl: "/images/628.png", isCorrect: true, audioKey: "kediler", spokenText: "yan yana duran kediler" },
+        { id: 627, word: "kediler", imageUrl: "/images/627.png", isCorrect: false, audioKey: "kediler", spokenText: "karşılıklı duran kediler" }
+    ]},
+    { id: 14, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 628, word: "kediler", imageUrl: "/images/628.png", isCorrect: false, audioKey: "kediler", spokenText: "yan yana duran kediler" },
+        { id: 627, word: "kediler", imageUrl: "/images/627.png", isCorrect: true, audioKey: "kediler", spokenText: "karşılıklı duran kediler" }
+    ]},
+    // 8. Futbolcular
+    { id: 15, question: "Yan yana olanlar hangisi?", questionAudioKey: "q_which_are_beside", activityType: ActivityType.BesideOpposite, options: [
+        { id: 630, word: "futbolcular", imageUrl: "/images/630.png", isCorrect: true, audioKey: "futbolcular", spokenText: "yan yana duran futbolcular" },
+        { id: 629, word: "futbolcular", imageUrl: "/images/629.png", isCorrect: false, audioKey: "futbolcular", spokenText: "karşılıklı duran futbolcular" }
+    ]},
+    { id: 16, question: "Karşılıklı olanlar hangisi?", questionAudioKey: "q_which_are_opposite", activityType: ActivityType.BesideOpposite, options: [
+        { id: 630, word: "futbolcular", imageUrl: "/images/630.png", isCorrect: false, audioKey: "futbolcular", spokenText: "yan yana duran futbolcular" },
+        { id: 629, word: "futbolcular", imageUrl: "/images/629.png", isCorrect: true, audioKey: "futbolcular", spokenText: "karşılıklı duran futbolcular" }
+    ]},
+];
+
+export const inFrontOfBehindData: ConceptRound[] = [
+    // 1. Köpek - Kulübe
+    { id: 1, question: "Kulübenin önündeki hangisi?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 48, word: "köpek", imageUrl: "/images/48.png", isCorrect: true, audioKey: "köpek", spokenText: "kulübenin önündeki köpek" },
+        { id: 49, word: "köpek", imageUrl: "/images/49.png", isCorrect: false, audioKey: "köpek", spokenText: "kulübenin arkasındaki köpek" }
+    ]},
+    { id: 2, question: "Kulübenin arkasındaki hangisi?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 48, word: "köpek", imageUrl: "/images/48.png", isCorrect: false, audioKey: "köpek", spokenText: "kulübenin önündeki köpek" },
+        { id: 49, word: "köpek", imageUrl: "/images/49.png", isCorrect: true, audioKey: "köpek", spokenText: "kulübenin arkasındaki köpek" }
+    ]},
+    // 2. Çocuk - Ağaç
+    { id: 3, question: "Ağacın önündeki hangisi?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 451, word: "çocuk", imageUrl: "/images/451.png", isCorrect: true, audioKey: "çocuk", spokenText: "ağacın önündeki çocuk" },
+        { id: 450, word: "çocuk", imageUrl: "/images/450.png", isCorrect: false, audioKey: "çocuk", spokenText: "ağacın arkasındaki çocuk" }
+    ]},
+    { id: 4, question: "Ağacın arkasındaki hangisi?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 451, word: "çocuk", imageUrl: "/images/451.png", isCorrect: false, audioKey: "çocuk", spokenText: "ağacın önündeki çocuk" },
+        { id: 450, word: "çocuk", imageUrl: "/images/450.png", isCorrect: true, audioKey: "çocuk", spokenText: "ağacın arkasındaki çocuk" }
+    ]},
+    // 3. Araba - Ev
+    { id: 5, question: "Evin önündeki hangisi?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 452, word: "araba", imageUrl: "/images/452.png", isCorrect: true, audioKey: "araba", spokenText: "evin önündeki araba" },
+        { id: 453, word: "araba", imageUrl: "/images/453.png", isCorrect: false, audioKey: "araba", spokenText: "evin arkasındaki araba" }
+    ]},
+    { id: 6, question: "Evin arkasındaki hangisi?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 452, word: "araba", imageUrl: "/images/452.png", isCorrect: false, audioKey: "araba", spokenText: "evin önündeki araba" },
+        { id: 453, word: "araba", imageUrl: "/images/453.png", isCorrect: true, audioKey: "araba", spokenText: "evin arkasındaki araba" }
+    ]},
+    // 4. Çocuk - Sandalye
+    { id: 7, question: "Sandalyenin önündeki hangisi?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 547, word: "çocuk", imageUrl: "/images/547.png", isCorrect: true, audioKey: "çocuk", spokenText: "sandalyenin önündeki çocuk" },
+        { id: 545, word: "çocuk", imageUrl: "/images/545.png", isCorrect: false, audioKey: "çocuk", spokenText: "sandalyenin arkasındaki çocuk" }
+    ]},
+    { id: 8, question: "Sandalyenin arkasındaki hangisi?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 547, word: "çocuk", imageUrl: "/images/547.png", isCorrect: false, audioKey: "çocuk", spokenText: "sandalyenin önündeki çocuk" },
+        { id: 545, word: "çocuk", imageUrl: "/images/545.png", isCorrect: true, audioKey: "çocuk", spokenText: "sandalyenin arkasındaki çocuk" }
+    ]},
+    // 5. Adam - Kapı
+    { id: 9, question: "Kapının önündeki hangisi?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 485, word: "adam", imageUrl: "/images/485.png", isCorrect: true, audioKey: "adam", spokenText: "kapının önündeki adam" },
+        { id: 484, word: "adam", imageUrl: "/images/484.png", isCorrect: false, audioKey: "adam", spokenText: "kapının arkasındaki adam" }
+    ]},
+    { id: 10, question: "Kapının arkasındaki hangisi?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+        { id: 485, word: "adam", imageUrl: "/images/485.png", isCorrect: false, audioKey: "adam", spokenText: "kapının önündeki adam" },
+        { id: 484, word: "adam", imageUrl: "/images/484.png", isCorrect: true, audioKey: "adam", spokenText: "kapının arkasındaki adam" }
+    ]},
+    // 6. Kalkan - Asker
+        // 6. Kalkan - Asker (clarified: ask about the shield explicitly)
+        { id: 11, question: "Hangi kalkan askerin arkasında?", questionAudioKey: "q_which_is_behind", activityType: ActivityType.InFrontOfBehind, options: [
+            { id: 717, word: "kalkan", imageUrl: "/images/717.png", isCorrect: true, audioKey: "kalkan", spokenText: "askerin arkasındaki kalkan" },
+            { id: 716, word: "kalkan", imageUrl: "/images/716.png", isCorrect: false, audioKey: "kalkan", spokenText: "askerin önündeki kalkan" }
+        ]},
+        { id: 12, question: "Hangi kalkan askerin önünde?", questionAudioKey: "q_which_is_in_front", activityType: ActivityType.InFrontOfBehind, options: [
+            { id: 717, word: "kalkan", imageUrl: "/images/717.png", isCorrect: false, audioKey: "kalkan", spokenText: "askerin arkasındaki kalkan" },
+            { id: 716, word: "kalkan", imageUrl: "/images/716.png", isCorrect: true, audioKey: "kalkan", spokenText: "askerin önündeki kalkan" }
+        ]},
+];
+
+export const insideOutsideData: ConceptRound[] = [
+    // 1. Köpek - Kulübe
+    { id: 1, question: "Kulübenin içindeki hangisi?", questionAudioKey: "q_which_is_inside", activityType: ActivityType.InsideOutside, options: [
+        { id: 46, word: "köpek", imageUrl: "/images/46.png", isCorrect: true, audioKey: "köpek", spokenText: "kulübenin içindeki köpek" },
+        { id: 47, word: "köpek", imageUrl: "/images/47.png", isCorrect: false, audioKey: "köpek", spokenText: "kulübenin dışındaki köpek" }
+    ]},
+    { id: 2, question: "Kulübenin dışındaki hangisi?", questionAudioKey: "q_which_is_outside", activityType: ActivityType.InsideOutside, options: [
+        { id: 46, word: "köpek", imageUrl: "/images/46.png", isCorrect: false, audioKey: "köpek", spokenText: "kulübenin içindeki köpek" },
+        { id: 47, word: "köpek", imageUrl: "/images/47.png", isCorrect: true, audioKey: "köpek", spokenText: "kulübenin dışındaki köpek" }
+    ]},
+    // 2. Öğrenciler - Otobüs
+    { id: 3, question: "Otobüsün içindeki hangisi?", questionAudioKey: "q_which_is_inside", activityType: ActivityType.InsideOutside, options: [
+        { id: 194, word: "okul otobüsü", imageUrl: "/images/194.png", isCorrect: true, audioKey: "okul_otobüsü", spokenText: "otobüsün içindeki öğrenciler" },
+        { id: 193, word: "öğrenciler", imageUrl: "/images/193.png", isCorrect: false, audioKey: "öğrenciler", spokenText: "otobüsün dışındaki öğrenciler" }
+    ]},
+    { id: 4, question: "Otobüsün dışındaki hangisi?", questionAudioKey: "q_which_is_outside", activityType: ActivityType.InsideOutside, options: [
+        { id: 194, word: "okul otobüsü", imageUrl: "/images/194.png", isCorrect: false, audioKey: "okul_otobüsü", spokenText: "otobüsün içindeki öğrenciler" },
+        { id: 193, word: "öğrenciler", imageUrl: "/images/193.png", isCorrect: true, audioKey: "öğrenciler", spokenText: "otobüsün dışındaki öğrenciler" }
+    ]},
+    // 3. Elmalar - Sepet
+    { id: 5, question: "Sepetin içindeki hangisi?", questionAudioKey: "q_which_is_inside", activityType: ActivityType.InsideOutside, options: [
+        { id: 474, word: "elmalar", imageUrl: "/images/474.png", isCorrect: true, audioKey: "elmalar", spokenText: "sepetin içindeki elmalar" },
+        { id: 475, word: "elmalar", imageUrl: "/images/475.png", isCorrect: false, audioKey: "elmalar", spokenText: "sepetin dışındaki elmalar" }
+    ]},
+    { id: 6, question: "Sepetin dışındaki hangisi?", questionAudioKey: "q_which_is_outside", activityType: ActivityType.InsideOutside, options: [
+        { id: 474, word: "elmalar", imageUrl: "/images/474.png", isCorrect: false, audioKey: "elmalar", spokenText: "sepetin içindeki elmalar" },
+        { id: 475, word: "elmalar", imageUrl: "/images/475.png", isCorrect: true, audioKey: "elmalar", spokenText: "sepetin dışındaki elmalar" }
+    ]},
+    // 4. Kalemler - Kalemlik
+    { id: 7, question: "Kalemliğin içindeki hangisi?", questionAudioKey: "q_which_is_inside", activityType: ActivityType.InsideOutside, options: [
+        { id: 543, word: "kalemlik", imageUrl: "/images/543.png", isCorrect: true, audioKey: "kalemlik", spokenText: "kalemliğin içindeki kalemler" },
+        { id: 544, word: "kalemlik", imageUrl: "/images/544.png", isCorrect: false, audioKey: "kalemlik", spokenText: "kalemliğin dışındaki kalemler" }
+    ]},
+    { id: 8, question: "Kalemliğin dışındaki hangisi?", questionAudioKey: "q_which_is_outside", activityType: ActivityType.InsideOutside, options: [
+        { id: 543, word: "kalemlik", imageUrl: "/images/543.png", isCorrect: false, audioKey: "kalemlik", spokenText: "kalemliğin içindeki kalemler" },
+        { id: 544, word: "kalemlik", imageUrl: "/images/544.png", isCorrect: true, audioKey: "kalemlik", spokenText: "kalemliğin dışındaki kalemler" }
+    ]},
+    // 5. İnsan - Çadır
+    { id: 9, question: "Çadırın içindeki hangisi?", questionAudioKey: "q_which_is_inside", activityType: ActivityType.InsideOutside, options: [
+        { id: 394, word: "insan", imageUrl: "/images/394.png", isCorrect: true, audioKey: "insan", spokenText: "çadırın içindeki insan" },
+        { id: 395, word: "insan", imageUrl: "/images/395.png", isCorrect: false, audioKey: "insan", spokenText: "çadırın dışındaki insan" }
+    ]},
+    { id: 10, question: "Çadırın dışındaki hangisi?", questionAudioKey: "q_which_is_outside", activityType: ActivityType.InsideOutside, options: [
+        { id: 394, word: "insan", imageUrl: "/images/394.png", isCorrect: false, audioKey: "insan", spokenText: "çadırın içindeki insan" },
+        { id: 395, word: "insan", imageUrl: "/images/395.png", isCorrect: true, audioKey: "insan", spokenText: "çadırın dışındaki insan" }
+    ]},
+];
+
+export const betweenData: ConceptRound[] = [
+    { id: 1, question: "Blokların arasında olan hangisi?", questionAudioKey: "q_which_is_between", activityType: ActivityType.Between, options: [
+        { id: 22, word: "top", imageUrl: "/images/22.png", isCorrect: true, audioKey: "top", spokenText: "blokların arasındaki top" },
+        { id: 632, word: "top", imageUrl: "/images/632.png", isCorrect: false, audioKey: "top", spokenText: "bloğun yanındaki top" }
+    ]},
+    { id: 2, question: "Binaların arasında olan hangisi?", questionAudioKey: "q_which_is_between", activityType: ActivityType.Between, options: [
+        { id: 456, word: "araba", imageUrl: "/images/456.png", isCorrect: true, audioKey: "araba", spokenText: "binaların arasındaki araba" },
+        { id: 457, word: "araba", imageUrl: "/images/457.png", isCorrect: false, audioKey: "araba", spokenText: "binanın yanındaki araba" }
+    ]},
+    { id: 3, question: "Annesiyle babasının arasında olan hangisi?", questionAudioKey: "q_which_is_between", activityType: ActivityType.Between, options: [
+        { id: 476, word: "çocuk", imageUrl: "/images/476.png", isCorrect: true, audioKey: "çocuk", spokenText: "arasındaki çocuk" },
+        { id: 477, word: "çocuk", imageUrl: "/images/477.png", isCorrect: false, audioKey: "çocuk", spokenText: "yanlarındaki çocuk" }
+    ]},
+    { id: 4, question: "Ekmeklerin arasında olan hangisi?", questionAudioKey: "q_which_is_between", activityType: ActivityType.Between, options: [
+        { id: 623, word: "sandviç", imageUrl: "/images/623.png", isCorrect: true, audioKey: "sandviç", spokenText: "ekmeklerin arasındaki peynir" },
+        { id: 624, word: "sandviç malzemeleri", imageUrl: "/images/624.png", isCorrect: false, audioKey: "sandviç_malzemeleri", spokenText: "ekmeklerin yanındaki peynir" }
+    ]},
+];
+
+export const nearFarData: ConceptRound[] = [
+    // 1. Ev
+    { id: 1, question: "Hangi ev daha yakın?", questionAudioKey: "q_which_is_near", activityType: ActivityType.NearFar, options: [
+        { id: 174, word: "ev", imageUrl: "/images/174.png", isCorrect: true, audioKey: "ev", spokenText: "yakın olan ev" },
+        { id: 175, word: "ev", imageUrl: "/images/175.png", isCorrect: false, audioKey: "ev", spokenText: "uzak olan ev" }
+    ]},
+    { id: 2, question: "Hangi ev daha uzak?", questionAudioKey: "q_which_is_far", activityType: ActivityType.NearFar, options: [
+        { id: 174, word: "ev", imageUrl: "/images/174.png", isCorrect: false, audioKey: "ev", spokenText: "yakın olan ev" },
+        { id: 175, word: "ev", imageUrl: "/images/175.png", isCorrect: true, audioKey: "ev", spokenText: "uzak olan ev" }
+    ]},
+    // 2. Uçak
+    { id: 3, question: "Hangi uçak daha yakın?", questionAudioKey: "q_which_is_near", activityType: ActivityType.NearFar, options: [
+        { id: 616, word: "uçak", imageUrl: "/images/616.png", isCorrect: true, audioKey: "uçak", spokenText: "yakın olan uçak" },
+        { id: 615, word: "uçak", imageUrl: "/images/615.png", isCorrect: false, audioKey: "uçak", spokenText: "uzak olan uçak" }
+    ]},
+    { id: 4, question: "Hangi uçak daha uzak?", questionAudioKey: "q_which_is_far", activityType: ActivityType.NearFar, options: [
+        { id: 616, word: "uçak", imageUrl: "/images/616.png", isCorrect: false, audioKey: "uçak", spokenText: "yakın olan uçak" },
+        { id: 615, word: "uçak", imageUrl: "/images/615.png", isCorrect: true, audioKey: "uçak", spokenText: "uzak olan uçak" }
+    ]},
+    // 3. Kuşlar
+    { id: 5, question: "Hangi kuşlar daha yakın?", questionAudioKey: "q_which_is_near", activityType: ActivityType.NearFar, options: [
+        { id: 617, word: "kuşlar", imageUrl: "/images/617.png", isCorrect: true, audioKey: "kuşlar", spokenText: "yakın olan kuşlar" },
+        { id: 618, word: "kuşlar", imageUrl: "/images/618.png", isCorrect: false, audioKey: "kuşlar", spokenText: "uzak olan kuşlar" }
+    ]},
+    { id: 6, question: "Hangi kuşlar daha uzak?", questionAudioKey: "q_which_is_far", activityType: ActivityType.NearFar, options: [
+        { id: 617, word: "kuşlar", imageUrl: "/images/617.png", isCorrect: false, audioKey: "kuşlar", spokenText: "yakın olan kuşlar" },
+        { id: 618, word: "kuşlar", imageUrl: "/images/618.png", isCorrect: true, audioKey: "kuşlar", spokenText: "uzak olan kuşlar" }
+    ]},
+    // 4. Ay
+    { id: 7, question: "Hangi ay daha yakın?", questionAudioKey: "q_which_is_near", activityType: ActivityType.NearFar, options: [
+        { id: 619, word: "ay", imageUrl: "/images/619.png", isCorrect: true, audioKey: "ay", spokenText: "yakın olan ay" },
+        { id: 620, word: "ay", imageUrl: "/images/620.png", isCorrect: false, audioKey: "ay", spokenText: "uzak olan ay" }
+    ]},
+    { id: 8, question: "Hangi ay daha uzak?", questionAudioKey: "q_which_is_far", activityType: ActivityType.NearFar, options: [
+        { id: 619, word: "ay", imageUrl: "/images/619.png", isCorrect: false, audioKey: "ay", spokenText: "yakın olan ay" },
+        { id: 620, "word": "ay", "imageUrl": "/images/620.png", "isCorrect": true, "audioKey": "ay", "spokenText": "uzak olan ay" }
+    ]},
+    // 5. Gemi
+    { id: 9, question: "Hangi gemi daha yakın?", questionAudioKey: "q_which_is_near", activityType: ActivityType.NearFar, options: [
+        { id: 621, word: "gemi", imageUrl: "/images/621.png", isCorrect: true, audioKey: "gemi", spokenText: "yakın olan gemi" },
+        { id: 622, word: "gemi", imageUrl: "/images/622.png", isCorrect: false, audioKey: "gemi", spokenText: "uzak olan gemi" }
+    ]},
+    { id: 10, question: "Hangi gemi daha al... (truncated backup)"}

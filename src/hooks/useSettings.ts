@@ -24,6 +24,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
     // Child-friendly and accessibility settings
     const [isChildModeEnabled, setIsChildModeEnabled] = useLocalStorage<boolean>('isChildModeEnabled_v1', false);
     const [isErrorlessModeEnabled, setIsErrorlessModeEnabled] = useLocalStorage<boolean>('isErrorlessModeEnabled_v1', false);
+    const [isUnderwaterMusicEnabled, setIsUnderwaterMusicEnabled] = useLocalStorage<boolean>('isUnderwaterMusicEnabled', false);
     const [theme, setTheme] = useLocalStorage<string>('theme_v2', 'simple');
     const [language, setLanguage] = useLocalStorage<Locale>('lang_v1', getCurrentLanguage());
     
@@ -50,14 +51,56 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         return (Date.now() - trialStartDate) < sevenDaysInMillis;
     }, [trialStartDate]);
 
-    // Special promotion: Give everyone premium until November 20, 2025 (regardless of first install date)
-    const promotionEndDate = new Date('2025-11-20T23:59:59');
-    const isPromotionActive = useMemo(() => {
-        const now = new Date();
-        return now < promotionEndDate;
+    // Special promotion (legacy users): Give premium to devices that already have
+    // existing progress (old users) until November 30, 2025. New users keep the
+    // normal 7-day trial.
+    const legacyPromotionEndDate = new Date('2025-11-30T23:59:59');
+
+    // Heuristic: consider the device a legacy user if any saved profile has
+    // non-empty activity stats. This avoids granting extended promo to brand
+    // new installs that already get the 7-day trial.
+    const isLegacyUser = useMemo(() => {
+        try {
+            const raw = window.localStorage.getItem('profiles_v1') || '[]';
+            const profilesList = JSON.parse(raw);
+            if (!Array.isArray(profilesList) || profilesList.length === 0) return false;
+            for (const p of profilesList) {
+                try {
+                    const statsRaw = window.localStorage.getItem(`activityStats_profile_${p.id}`) || '{}';
+                    const stats = JSON.parse(statsRaw || '{}');
+                    if (stats && Object.keys(stats).length > 0) return true;
+                } catch (e) {
+                    // ignore parse errors for a single profile and continue
+                }
+            }
+            return false;
+        } catch (e) {
+            return false;
+        }
     }, []);
 
+    const isPromotionActive = useMemo(() => {
+        const now = new Date();
+        return isLegacyUser && now < legacyPromotionEndDate;
+    }, [isLegacyUser]);
+
     const isPremium = hasPurchasedPremium || isTrialActive || isPromotionActive;
+
+    // Show a one-time toast for legacy promotion so legacy users know they received the gift.
+    useEffect(() => {
+        try {
+            if (isPromotionActive) {
+                const flagKey = 'legacy_promo_toast_shown_v1';
+                const shown = window.localStorage.getItem(flagKey);
+                if (!shown) {
+                    try { showToast && showToast('Hediye Premium verildi — 30.11.2025 tarihine kadar aktif.', 'info', 6000); } catch (e) {}
+                    window.localStorage.setItem(flagKey, 'true');
+                }
+            }
+        } catch (e) {
+            // ignore
+        }
+    }, [isPromotionActive, showToast]);
 
     // Paywall pricing (for showing prices in UI)
     const [paywallMonthly, setPaywallMonthly] = useState<string | undefined>(undefined);
@@ -95,6 +138,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
     const handleToggleBanButton = useCallback(() => setIsBanButtonEnabled(prev => !prev), [setIsBanButtonEnabled]);
     const handleToggleChildMode = useCallback(() => setIsChildModeEnabled(prev => !prev), [setIsChildModeEnabled]);
     const handleToggleErrorlessMode = useCallback(() => setIsErrorlessModeEnabled(prev => !prev), [setIsErrorlessModeEnabled]);
+    const handleToggleUnderwaterMusic = useCallback(() => setIsUnderwaterMusicEnabled(prev => !prev), [setIsUnderwaterMusicEnabled]);
 
     const handleToggleFastTransition = useCallback(() => {
         if (isPremium) setIsFastTransitionEnabled(prev => !prev);
@@ -267,7 +311,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
     return {
         isPremium,
         hasPurchasedPremium,
-        promotion: { isActive: isPromotionActive, endsAt: promotionEndDate.toISOString() },
+        promotion: { isActive: isPromotionActive, endsAt: legacyPromotionEndDate.toISOString() },
         paywall: { monthlyPrice: paywallMonthly, lifetimePrice: paywallLifetime, hasData: !!(paywallMonthly || paywallLifetime) },
         bannedImageIds,
         isMuted,
@@ -277,6 +321,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         isFastTransitionEnabled,
         isChildModeEnabled,
         isErrorlessModeEnabled,
+        isUnderwaterMusicEnabled,
         theme,
         language,
         handleToggleMute,
@@ -286,6 +331,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         handleToggleFastTransition,
         handleToggleChildMode,
         handleToggleErrorlessMode,
+        handleToggleUnderwaterMusic,
         onChangeTheme: handleChangeTheme,
         onChangeLanguage: handleChangeLanguage,
         handlePurchasePremium,

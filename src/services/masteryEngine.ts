@@ -7,10 +7,11 @@
 import { 
   ActivityType, 
   ActivityStats, 
+  AttemptRecord,
   MasteryPoolType, 
   PrerequisiteRule,
   ParentOverride 
-} from '../types';
+} from '../types.ts';
 import { ACTIVITY_METADATA_MAP, getActivityMetadata } from '../constants/activityMetadata';
 import { UNIT_DEFINITIONS, getUnitDefinition } from '../constants/unitDefinitions';
 
@@ -178,7 +179,8 @@ export function isActivityUnlocked(
 export function isUnitUnlocked(
   unitNumber: number,
   allStats: Record<string, ActivityStats>,
-  masteredObjectCategories: Set<string>
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[]
 ): boolean {
   const unitDef = getUnitDefinition(unitNumber);
   if (!unitDef) {
@@ -193,7 +195,7 @@ export function isUnitUnlocked(
 
   // Check if all prerequisite units are completed
   return unitDef.prerequisiteUnits.every((prereqUnitNum) => {
-    return isUnitComplete(prereqUnitNum, allStats, masteredObjectCategories);
+    return isUnitComplete(prereqUnitNum, allStats, masteredObjectCategories, parentOverrides);
   });
 }
 
@@ -204,7 +206,8 @@ export function isUnitUnlocked(
 export function isUnitComplete(
   unitNumber: number,
   allStats: Record<string, ActivityStats>,
-  masteredObjectCategories: Set<string>
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[]
 ): boolean {
   const unitDef = getUnitDefinition(unitNumber);
   if (!unitDef) {
@@ -212,12 +215,12 @@ export function isUnitComplete(
   }
 
   // New rule: must attempt every activity in the unit at least once
-  if (!hasUnitMinimumCoverage(unitNumber, allStats, masteredObjectCategories)) {
+  if (!hasUnitMinimumCoverage(unitNumber, allStats, masteredObjectCategories, parentOverrides)) {
     return false;
   }
 
   // Use display-oriented success (parents' report logic; ignores unattempted items)
-  const progressPercent = getUnitDisplaySuccessPercentage(unitNumber, allStats, masteredObjectCategories);
+  const progressPercent = getUnitDisplaySuccessPercentage(unitNumber, allStats, masteredObjectCategories, parentOverrides);
   const thresholdPercent = unitDef.completionThreshold * 100;
   
   return progressPercent >= thresholdPercent;
@@ -228,12 +231,13 @@ export function isUnitComplete(
  */
 export function getUnlockedUnits(
   allStats: Record<string, ActivityStats>,
-  masteredObjectCategories: Set<string>
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[]
 ): Set<number> {
   const unlockedUnits = new Set<number>();
 
   for (const unit of UNIT_DEFINITIONS) {
-    if (isUnitUnlocked(unit.unitNumber, allStats, masteredObjectCategories)) {
+    if (isUnitUnlocked(unit.unitNumber, allStats, masteredObjectCategories, parentOverrides)) {
       unlockedUnits.add(unit.unitNumber);
     }
   }
@@ -247,7 +251,8 @@ export function getUnlockedUnits(
 export function getUnitCompletionPercentage(
   unitNumber: number,
   allStats: Record<string, ActivityStats>,
-  masteredObjectCategories: Set<string>
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[]
 ): number {
   const unitDef = getUnitDefinition(unitNumber);
   if (!unitDef) {
@@ -262,6 +267,12 @@ export function getUnitCompletionPercentage(
     
     // Check if it's a regular activity
     const stats = allStats[activityId as string];
+    // If a parent override marks this activity as ignored for progress and is active, count it as covered
+    if (parentOverrides) {
+      const override = parentOverrides.find(o => o.activityId === activityId && o.expiresAt > Date.now() && o.ignoreForProgress);
+      if (override) return true;
+    }
+
     return isMasteryAchieved(activityId, stats);
   }).length;
 
@@ -278,6 +289,8 @@ export function getUnitEarlyProgressPercentage(
   unitNumber: number,
   allStats: Record<string, ActivityStats>,
   masteredObjectCategories: Set<string>
+  ,
+  parentOverrides?: ParentOverride[]
 ): number {
   const unitDef = getUnitDefinition(unitNumber);
   if (!unitDef) return 0;
@@ -291,7 +304,14 @@ export function getUnitEarlyProgressPercentage(
       cumulativeSuccess += 1;
       continue;
     }
-
+    // If a parent override marks this activity as ignored for progress and is active, treat as perfect
+    if (parentOverrides) {
+      const override = parentOverrides.find(o => o.activityId === activityId && o.expiresAt > Date.now() && o.ignoreForProgress);
+      if (override) {
+        cumulativeSuccess += 1;
+        continue;
+      }
+    }
     const statsKey = typeof activityId === 'string' ? activityId : String(activityId);
     const stats = allStats[statsKey];
     if (!stats) {
@@ -338,6 +358,8 @@ export function getUnitDisplaySuccessPercentage(
   unitNumber: number,
   allStats: Record<string, ActivityStats>,
   masteredObjectCategories: Set<string>
+  ,
+  parentOverrides?: ParentOverride[]
 ): number {
   const unitDef = getUnitDefinition(unitNumber);
   if (!unitDef) return 0;
@@ -350,6 +372,16 @@ export function getUnitDisplaySuccessPercentage(
       cumulative += 1;
       included += 1;
       continue;
+    }
+
+    // If a parent override marks this activity as ignored for progress and is active, treat as perfect
+    if (parentOverrides) {
+      const override = parentOverrides.find(o => o.activityId === activityId && o.expiresAt > Date.now() && o.ignoreForProgress);
+      if (override) {
+        cumulative += 1;
+        included += 1;
+        continue;
+      }
     }
 
     const key = typeof activityId === 'string' ? activityId : String(activityId);
@@ -382,6 +414,188 @@ export function getUnitDisplaySuccessPercentage(
 }
 
 /**
+ * Program-mode variant: compute unit display percentage using only the last
+ * `recentAttemptsWindow` attempts per activity (default 7). This makes program
+ * progression responsive to recent improvement while leaving reporting logic
+ * unchanged.
+ */
+export function getUnitDisplaySuccessPercentageForProgramMode(
+  unitNumber: number,
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[],
+  recentAttemptsWindow: number = 6
+): number {
+  const unitDef = getUnitDefinition(unitNumber);
+  if (!unitDef) return 0;
+
+  let included = 0;
+  let cumulative = 0;
+
+  for (const activityId of unitDef.activities) {
+    if (typeof activityId === 'string' && masteredObjectCategories.has(activityId)) {
+      cumulative += 1;
+      included += 1;
+      continue;
+    }
+
+    // If a parent override marks this activity as ignored for progress and is active, treat as perfect
+    if (parentOverrides) {
+      const override = parentOverrides.find(o => o.activityId === activityId && o.expiresAt > Date.now() && o.ignoreForProgress);
+      if (override) {
+        cumulative += 1;
+        included += 1;
+        continue;
+      }
+    }
+
+    const key = typeof activityId === 'string' ? activityId : String(activityId);
+    const stats = allStats[key];
+
+    // Prefer history (most recent attempts). If not available, fall back to aggregated totals.
+    let recentAttempts: AttemptRecord[] = [];
+    if (stats && Array.isArray(stats.history) && stats.history.length > 0) {
+      recentAttempts = stats.history.slice(-recentAttemptsWindow);
+    }
+
+    if (recentAttempts.length > 0) {
+      // Compute success as sum(score)/sum(total) across recent attempts
+      let correct = 0;
+      let total = 0;
+      for (const h of recentAttempts) {
+        if (h.total > 0) {
+          correct += h.score;
+          total += h.total;
+        }
+      }
+      if (total > 0) {
+        cumulative += Math.min(Math.max(correct / total, 0), 1);
+        included += 1;
+        continue;
+      }
+      // If recent attempts exist but totals are zero, fall through to aggregated fallback
+    }
+
+    // Aggregated fallback (legacy): use totalCorrect/totalQuestions if present
+    if (stats) {
+      let correct = stats.totalCorrect || 0;
+      let total = stats.totalQuestions || 0;
+      if (total > 0) {
+        cumulative += Math.min(Math.max(correct / total, 0), 1);
+        included += 1;
+        continue;
+      }
+
+      if (stats.attempts > 0) {
+        cumulative += 0.2;
+        included += 1;
+        continue;
+      }
+    }
+    // No data -> skip
+  }
+
+  if (included === 0) return 0;
+  return Math.round((cumulative / included) * 100);
+}
+
+export function isUnitCompleteForProgramMode(
+  unitNumber: number,
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[],
+  recentAttemptsWindow: number = 6
+): boolean {
+  const unitDef = getUnitDefinition(unitNumber);
+  if (!unitDef) {
+    return false;
+  }
+
+  // New rule: must attempt every activity in the unit at least once (uses program-mode coverage)
+  if (!hasUnitMinimumCoverage(unitNumber, allStats, masteredObjectCategories, parentOverrides)) {
+    return false;
+  }
+
+  const progressPercent = getUnitDisplaySuccessPercentageForProgramMode(unitNumber, allStats, masteredObjectCategories, parentOverrides, recentAttemptsWindow);
+  const thresholdPercent = unitDef.completionThreshold * 100;
+  return progressPercent >= thresholdPercent;
+}
+
+export function isUnitUnlockedForProgramMode(
+  unitNumber: number,
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[],
+  recentAttemptsWindow: number = 6
+): boolean {
+  const unitDef = getUnitDefinition(unitNumber);
+  if (!unitDef) {
+    console.warn(`No unit definition found for unit: ${unitNumber}`);
+    return false;
+  }
+
+  if (unitNumber === 1) return true;
+
+  return unitDef.prerequisiteUnits.every((prereqUnitNum) => {
+    return isUnitCompleteForProgramMode(prereqUnitNum, allStats, masteredObjectCategories, parentOverrides, recentAttemptsWindow);
+  });
+}
+
+export function getUnlockedUnitsForProgramMode(
+  allStats: Record<string, ActivityStats>,
+  masteredObjectCategories: Set<string>,
+  parentOverrides?: ParentOverride[],
+  recentAttemptsWindow: number = 6
+): Set<number> {
+  const unlockedUnits = new Set<number>();
+
+  for (const unit of UNIT_DEFINITIONS) {
+    if (isUnitUnlockedForProgramMode(unit.unitNumber, allStats, masteredObjectCategories, parentOverrides, recentAttemptsWindow)) {
+      unlockedUnits.add(unit.unitNumber);
+    }
+  }
+
+  return unlockedUnits;
+}
+
+/**
+ * Get an activity's recent success percentage for program mode (0-100).
+ * Uses only the last `recentAttemptsWindow` attempts when available,
+ * falling back to aggregated totals if not. This is used to show per-activity
+ * indicators in program-mode UI.
+ */
+export function getActivityProgramSuccessPercentage(
+  activityId: ActivityType | string,
+  allStats: Record<string, ActivityStats>,
+  recentAttemptsWindow: number = 6
+): number {
+  const key = typeof activityId === 'string' ? activityId : String(activityId);
+  const stats = allStats[key];
+  if (!stats) return 0;
+
+  // Prefer recent history
+  if (Array.isArray(stats.history) && stats.history.length > 0) {
+    const recent = stats.history.slice(-recentAttemptsWindow);
+    let correct = 0;
+    let total = 0;
+    for (const h of recent) {
+      if (h.total > 0) {
+        correct += h.score;
+        total += h.total;
+      }
+    }
+    if (total > 0) return Math.round((correct / total) * 100);
+  }
+
+  // Fallback to aggregated totals
+  const correct = stats.totalCorrect || 0;
+  const total = stats.totalQuestions || 0;
+  if (total > 0) return Math.round((correct / total) * 100);
+
+  return 0;
+}
+
+/**
  * Coverage rule: a unit has minimum coverage when each activity has been
  * attempted at least once (has any recorded questions/answers) or is already
  * mastered/marked via object categories.
@@ -390,6 +604,8 @@ export function hasUnitMinimumCoverage(
   unitNumber: number,
   allStats: Record<string, ActivityStats>,
   masteredObjectCategories: Set<string>
+  ,
+  parentOverrides?: ParentOverride[]
 ): boolean {
   const unitDef = getUnitDefinition(unitNumber);
   if (!unitDef) return false;
@@ -397,6 +613,11 @@ export function hasUnitMinimumCoverage(
   const hasAttempt = (id: ActivityType | string): boolean => {
     // Object categories can be counted via mastered set
     if (typeof id === 'string' && masteredObjectCategories.has(id)) return true;
+    // If a parent override marks this activity as ignored for progress and is active, count as attempted
+    if (parentOverrides) {
+      const override = parentOverrides.find(o => o.activityId === id && o.expiresAt > Date.now() && o.ignoreForProgress);
+      if (override) return true;
+    }
     const key = typeof id === 'string' ? id : String(id);
     const stats = allStats[key];
     if (!stats) return false;
@@ -417,7 +638,7 @@ export function getAvailableActivities(
   masteredObjectCategories: Set<string>,
   parentOverrides?: ParentOverride[]
 ): (ActivityType | string)[] {
-  const unlockedUnits = getUnlockedUnits(allStats, masteredObjectCategories);
+  const unlockedUnits = getUnlockedUnits(allStats, masteredObjectCategories, parentOverrides);
   const availableActivities: (ActivityType | string)[] = [];
 
   for (const activityId of Object.keys(ACTIVITY_METADATA_MAP)) {

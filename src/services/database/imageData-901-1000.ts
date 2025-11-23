@@ -650,7 +650,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/949.png",
     "audioKeys": { "default": "ağız" },
     "tags": {
-      "category": "vucut_bolumleri",
+      "category": "vucudun_bolumleri",
       "concept": ["vücut bölümleri"],
       "lifeform": "canlı",
       "syllables": ["a", "ğız"],
@@ -664,7 +664,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/978.png",
     "audioKeys": { "default": "kemer" },
     "tags": {
-      "category": "giyim_aksesuarlar",
+      "category": "giysiler_aksesuarlar",
       "concept": ["giysi aksesuarları", "kemer"],
       "lifeform": "cansız",
       "syllables": ["ke", "mer"],
@@ -678,7 +678,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/979.png",
     "audioKeys": { "default": "toka" },
     "tags": {
-      "category": "saç_aksesuarları",
+      "category": "giysiler_aksesuarlar",
       "concept": ["aksesuarlar"],
       "lifeform": "cansız",
       "syllables": ["to", "ka"],
@@ -706,7 +706,7 @@ export const imageData_901_1000: ImageMetadata[] = [
     "imageUrl": "/images/981.png",
     "audioKeys": { "default": "diş" },
     "tags": {
-      "category": "vucut_bolumleri",
+      "category": "vucudun_bolumleri",
       "concept": ["vücut bölümleri"],
       "lifeform": "canlı",
       "syllables": ["diş"],
@@ -725,6 +725,255 @@ export const imageData_901_1000: ImageMetadata[] = [
       "lifeform": "cansız",
       "syllables": ["su"],
       "letters": ["S","U"]
+    }
+  }
+  ,
+  {
+    "id": 983,
+    "word": "öpücük atan çocuk",
+    "imageUrl": "/images/983.png",
+    "audioKeys": { "default": "öpücük atan çocuk", "effect": "muck" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["öpücük", "duygular"],
+      "emotion": "sevgi dolu",
+      "lifeform": "canlı",
+      "syllables": ["ö", "pü", "cük", "a", "tan", "ço", "cuk"],
+      "letters": ["Ö", "P", "Ü", "C", "Ü", "K", "A", "T", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 984,
+    "word": "sus işareti yapan çocuk",
+    "imageUrl": "/images/984.png",
+    "audioKeys": { "default": "şşşş sus yapan çocuk", "effect": "şşşş" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["sessizlik", "uyarı"],
+      "emotion": "sakin",
+      "lifeform": "canlı",
+      "syllables": ["şşşş", "sus", "ya", "pan", "ço", "cuk"],
+      "letters": ["Ş", "Ş", "Ş", "Ş", "S", "U", "S", "Y", "A", "P", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 985,
+    "word": "saklambaç oynayan çocuk",
+    "imageUrl": "/images/985.png",
+    "audioKeys": { "default": "cce eee diye saklambaç oynayan çocuk", "effect": "cce eee" },
+    "tags": {
+      "category": "oyunlar",
+      "concept": ["saklambaç", "oyun"],
+      "emotion": "neşeli",
+      "lifeform": "canlı",
+      "syllables": ["cce", "eee", "sak", "lam", "baç", "oy", "na", "yan", "ço", "cuk"],
+      "letters": ["C", "C", "E", "E", "E", "S", "A", "K", "L", "A", "M", "B", "A", "Ç", "O", "Y", "N", "A", "Y", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 986,
+    "word": "alo diyen çocuk",
+    "imageUrl": "/images/986.png",
+    "audioKeys": { "default": "telefonda alo diyen çocuk", "effect": "alo" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["telefon", "konuşma"],
+      "emotion": "mutlu",
+      "lifeform": "canlı",
+      "syllables": ["te", "le", "fon", "da", "a", "lo", "di", "yen", "ço", "cuk"],
+      "letters": ["T", "E", "L", "E", "F", "O", "N", "D", "A", "A", "L", "O", "D", "İ", "Y", "E", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 987,
+    "word": "uyuyan bebek",
+    "imageUrl": "/images/987.png",
+    "audioKeys": { "default": "uyuyan bebek" },
+    "tags": {
+      "category": "bebekler",
+      "concept": ["uyku", "bebek"],
+      "emotion": "uykulu",
+      "lifeform": "canlı",
+      "syllables": ["u", "yu", "yan", "be", "bek"],
+      "letters": ["U", "Y", "U", "Y", "A", "N", "B", "E", "B", "E", "K"]
+    }
+  },
+  {
+    "id": 988,
+    "word": "kahkaha atan çocuk",
+    "imageUrl": "/images/988.png",
+    "audioKeys": { "default": "kahkaha atan çocuk", "effect": "ha ha ha" },
+    "tags": {
+      "category": "duygular",
+      "concept": ["kahkaha", "gülme"],
+      "emotion": "mutlu",
+      "lifeform": "canlı",
+      "syllables": ["kah", "ka", "ha", "a", "tan", "ço", "cuk"],
+      "letters": ["K", "A", "H", "K", "A", "H", "A", "A", "T", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 989,
+    "word": "şaşırmış çocuk",
+    "imageUrl": "/images/989.png",
+    "audioKeys": { "default": "şaşırmış çocuk" },
+    "tags": {
+      "category": "duygular",
+      "concept": ["şaşkınlık"],
+      "emotion": "şaşkın",
+      "lifeform": "canlı",
+      "syllables": ["şa", "şır", "mış", "ço", "cuk"],
+      "letters": ["Ş", "A", "Ş", "I", "R", "M", "I", "Ş", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 990,
+    "word": "hapşıran çocuk",
+    "imageUrl": "/images/990.png",
+    "audioKeys": { "default": "hapşıran çocuk", "effect": "hapşu" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["hapşırma"],
+      "emotion": "hasta",
+      "lifeform": "canlı",
+      "syllables": ["hap", "şı", "ran", "ço", "cuk"],
+      "letters": ["H", "A", "P", "Ş", "I", "R", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 991,
+    "word": "kötü koku yapan çocuk",
+    "imageUrl": "/images/991.png",
+    "audioKeys": { "default": "kötü koku duymuş püff yapan çocuk", "effect": "püff" },
+    "tags": {
+      "category": "duygular",
+      "concept": ["koku", "tepki"],
+      "emotion": "üzgün",
+      "lifeform": "canlı",
+      "syllables": ["kö", "tü", "ko", "ku", "duy", "muş", "püff", "ya", "pan", "ço", "cuk"],
+      "letters": ["K", "Ö", "T", "Ü", "K", "O", "K", "U", "D", "U", "Y", "M", "U", "Ş", "P", "Ü", "F", "F", "Y", "A", "P", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 992,
+    "word": "testere",
+    "imageUrl": "/images/992.png",
+    "audioKeys": { "default": "testere" },
+    "tags": {
+      "category": "aletler",
+      "concept": ["testere"],
+      "lifeform": "cansız",
+      "syllables": ["tes", "te", "re"],
+      "letters": ["T", "E", "S", "T", "E", "R", "E"]
+    }
+  },
+  {
+    "id": 993,
+    "word": "alkışlayan eller",
+    "imageUrl": "/images/993.png",
+    "audioKeys": { "default": "alkışlayan eller", "effect": "şak şak" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["alkış", "eller"],
+      "emotion": "mutlu",
+      "lifeform": "cansız",
+      "syllables": ["al", "kış", "la", "yan", "el", "ler"],
+      "letters": ["A", "L", "K", "I", "Ş", "L", "A", "Y", "A", "N", "E", "L", "L", "E", "R"]
+    }
+  },
+  {
+    "id": 994,
+    "word": "bağıran maymun",
+    "imageUrl": "/images/994.png",
+    "audioKeys": { "default": "bağıran maymun", "effect": "uu uu" },
+    "tags": {
+      "category": "hayvanlar",
+      "concept": ["maymun", "ses"],
+      "lifeform": "canlı",
+      "syllables": ["ba", "ğı", "ran", "may", "mun"],
+      "letters": ["B", "A", "Ğ", "I", "R", "A", "N", "M", "A", "Y", "M", "U", "N"]
+    }
+  },
+  {
+    "id": 995,
+    "word": "patlayan balon",
+    "imageUrl": "/images/995.png",
+    "audioKeys": { "default": "patlayan balon", "effect": "pat" },
+    "tags": {
+      "category": "oyuncaklar",
+      "concept": ["balon", "patlama"],
+      "lifeform": "cansız",
+      "syllables": ["pat", "la", "yan", "ba", "lon"],
+      "letters": ["P", "A", "T", "L", "A", "Y", "A", "N", "B", "A", "L", "O", "N"]
+    }
+  },
+  {
+    "id": 996,
+    "word": "gıdıklanan çocuk",
+    "imageUrl": "/images/996.png",
+    "audioKeys": { "default": "gıdıklanan çocuk", "effect": "gıdı gıdı" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["gıdıklama", "oyun"],
+      "emotion": "neşeli",
+      "lifeform": "canlı",
+      "syllables": ["gı", "dı", "kla", "nan", "ço", "cuk"],
+      "letters": ["G", "I", "D", "I", "K", "L", "A", "N", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 997,
+    "word": "ip atlayan çocuk",
+    "imageUrl": "/images/997.png",
+    "audioKeys": { "default": "ip atlayan çocuk" },
+    "tags": {
+      "category": "oyunlar",
+      "concept": ["ip atlama", "oyun"],
+      "emotion": "heyecanlı",
+      "lifeform": "canlı",
+      "syllables": ["ip", "at", "la", "yan", "ço", "cuk"],
+      "letters": ["İ", "P", "A", "T", "L", "A", "Y", "A", "N", "Ç", "O", "C", "U", "K"]
+    }
+  },
+  {
+    "id": 998,
+    "word": "matkap",
+    "imageUrl": "/images/998.png",
+    "audioKeys": { "default": "matkap" },
+    "tags": {
+      "category": "aletler",
+      "concept": ["matkap"],
+      "lifeform": "cansız",
+      "syllables": ["mat", "kap"],
+      "letters": ["M", "A", "T", "K", "A", "P"]
+    }
+  },
+  {
+    "id": 999,
+    "word": "gülen noel baba",
+    "imageUrl": "/images/999.png",
+    "audioKeys": { "default": "noel baba", "effect": "ho ho ho" },
+    "tags": {
+      "category": "kişiler",
+      "concept": ["noel baba", "gülme"],
+      "emotion": "neşeli",
+      "lifeform": "canlı",
+      "syllables": ["no", "el", "ba", "ba"],
+      "letters": ["N", "O", "E", "L", "B", "A", "B", "A"]
+    }
+  },
+  {
+    "id": 1000,
+    "word": "üfleyen çocuk",
+    "imageUrl": "/images/1000.png",
+    "audioKeys": { "default": "üfleyen çocuk", "effect": "umma" },
+    "tags": {
+      "category": "eylemler",
+      "concept": ["üfleme", "oyun"],
+      "emotion": "mutlu",
+      "lifeform": "canlı",
+      "syllables": ["üf", "le", "yen", "ço", "cuk"],
+      "letters": ["Ü", "F", "L", "E", "Y", "E", "N", "Ç", "O", "C", "U", "K"]
     }
   }
 ];

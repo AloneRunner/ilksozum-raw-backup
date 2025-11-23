@@ -69,6 +69,10 @@
       "title": "Təsadüfi Rejim",
       "subtitle": "Seçilmiş fəaliyyətlərdən qarışıq oyna"
     },
+    "programMode": {
+      "title": "Proqram Rejimi",
+      "subtitle": "Ekspert planı ilə gündəlik sessiya başladın"
+    },
     "parentTips": {
       "title": "Valideynlər üçün Məsləhətlər",
       "subtitle": "Tətbiqdən daha səmərəli istifadə edin"
@@ -126,7 +130,7 @@
   },
   "tabs": {
     "activities": "Fəaliyyətlər",
-    "communication": "Ünsiyyət",
+    "communication": "İfadə Kartları",
     "achievements": "Hesabatlar",
     "settings": "Parametrlər"
   },

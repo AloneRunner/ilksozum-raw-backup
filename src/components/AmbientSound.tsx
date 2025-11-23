@@ -2,44 +2,62 @@ import React, { useEffect, useRef } from 'react';
 
 interface AmbientSoundProps {
   theme: string;
+  isUnderwaterMusicEnabled: boolean;
+  isMuted: boolean;
   volume?: number;
 }
 
-const AmbientSound: React.FC<AmbientSoundProps> = ({ theme, volume = 0.1 }) => {
+const AmbientSound: React.FC<AmbientSoundProps> = ({ theme, isUnderwaterMusicEnabled, isMuted, volume = 0.5 }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Underwater tema için ambient ses
-    if (theme === 'deneme') {
-      // Okyanus derinlikleri ambient sesi
-      // Şimdilik basit bir çözüm olarak, sessiz ambient ses dosyası kullanacağız
-      // Gerçek uygulamada buraya okyanus sesi dosyası eklenebilir
+    const shouldPlay = theme === 'deneme' && isUnderwaterMusicEnabled && !isMuted;
+
+    if (shouldPlay) {
+      // Müzik çalmalı
+      if (audio.src !== window.location.origin + '/muzik/okyonus.mp3') {
+        audio.src = '/muzik/okyonus.mp3';
+        audio.load(); // Dosyayı yükle
+      }
       audio.volume = volume;
       audio.loop = true;
 
-      // Eğer ambient ses dosyası varsa çal
-      if (audio.src) {
+      // Kullanıcı etkileşimi sonrası çal
+      const playMusic = () => {
         audio.play().catch(() => {
           // Otomatik oynatma engellendi, kullanıcı etkileşimi bekle
         });
-      }
+      };
+
+      // İlk kullanıcı etkileşiminde çal
+      document.addEventListener('click', playMusic);
+      document.addEventListener('touchstart', playMusic);
+
+      // Hemen çalmayı dene (bazı tarayıcılarda çalışır)
+      setTimeout(() => {
+        audio.play().catch(() => {
+          // Otomatik oynatma engellendi, kullanıcı etkileşimi bekle
+        });
+      }, 1000);
+
+      return () => {
+        document.removeEventListener('click', playMusic);
+        document.removeEventListener('touchstart', playMusic);
+      };
     } else {
-      // Diğer temalarda sesi durdur
+      // Müzik durmalı
       audio.pause();
       audio.currentTime = 0;
     }
-  }, [theme, volume]);
+  }, [theme, isUnderwaterMusicEnabled, isMuted, volume]);
 
-  // Şimdilik ambient ses dosyası yok, sadece yapı kuruluyor
-  // Kullanıcı ambient ses dosyası ekleyince buraya eklenecek
   return (
     <audio
       ref={audioRef}
-      preload="none"
-      // src="/audio/underwater-ambient.mp3" // Gelecekte eklenecek
+      preload="auto"
     />
   );
 };

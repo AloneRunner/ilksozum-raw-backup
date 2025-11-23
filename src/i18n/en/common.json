@@ -69,6 +69,10 @@
       "title": "Random Mode",
       "subtitle": "Play a mix of selected activities"
     },
+    "programMode": {
+      "title": "Program Mode",
+      "subtitle": "Start a guided daily session"
+    },
     "parentTips": {
       "title": "Tips for Parents",
       "subtitle": "Use the app more effectively"
@@ -126,7 +130,7 @@
   },
   "tabs": {
     "activities": "Activities",
-    "communication": "Communication",
+    "communication": "Expression Cards",
     "achievements": "Reports",
     "settings": "Settings"
   },

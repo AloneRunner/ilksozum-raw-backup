@@ -13,6 +13,8 @@ import LockClosedIcon from './icons/LockClosedIcon.tsx';
 import { getColorClasses } from '../themes/colorManager.ts';
 import { THEMES, FREE_THEMES } from '../themes/themeManager.ts';
 import { useAppContext } from '../contexts/AppContext.ts';
+import { getUnlockedUnits } from '../services/masteryEngine.ts';
+import { getUnitDefinition } from '../constants/unitDefinitions.ts';
 import { t, getCurrentLanguage } from '../i18n/index.ts';
 import {
   SimpleThemeWrapper,
@@ -36,6 +38,8 @@ interface SettingsScreenProps {
   onToggleBanButton: () => void;
   isFastTransitionEnabled: boolean;
   onToggleFastTransition: () => void;
+  isUnderwaterMusicEnabled: boolean;
+  onToggleUnderwaterMusic: () => void;
   onSelectPrivacyPolicy: () => void;
   onManageBannedImages: () => void;
   isPremium: boolean;
@@ -53,7 +57,7 @@ interface SettingsScreenProps {
   onSelectAchievements: () => void;
   // Parent Override (Joker Hakkı)
   parentOverrides: ParentOverride[];
-  onAddParentOverride: (activityId: string, durationHours: number, reason?: string) => void;
+  onAddParentOverride: (activityId: string, durationHours: number, reason?: string, ignoreForProgress?: boolean) => void;
   onRemoveParentOverride: (activityId: string) => void;
 }
 
@@ -308,7 +312,7 @@ const ParentGateButton: React.FC<{ onConfirm: () => void; isThemed: boolean; lab
 
 const SettingsScreen: React.FC<SettingsScreenProps> = ({
   onBack, isMuted, onToggleMute, isAutoSpeakEnabled, onToggleAutoSpeak, isBanButtonEnabled, onToggleBanButton,
-  isFastTransitionEnabled, onToggleFastTransition,
+  isFastTransitionEnabled, onToggleFastTransition, isUnderwaterMusicEnabled, onToggleUnderwaterMusic,
   onSelectPrivacyPolicy, onManageBannedImages, isPremium, hasPurchasedPremium,
   onPurchaseMonthly, onPurchaseLifetime, onResetProgress, theme, onChangeTheme, activeProfile, onManageProfiles, onManageActivities, showPremiumToast,
   onSelectAchievements,
@@ -328,7 +332,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       localStorage.setItem('settingsScrollY', String(window.scrollY));
     };
   }, []);
-  const { settings } = useAppContext();
+  const { settings, profile } = useAppContext();
   const darkSettingsThemes = new Set(['geceorman', 'ay', 'yagmur', 'deneme2']);
   const isThemed = settings.theme !== 'simple';
   const isDarkSettings = darkSettingsThemes.has(settings.theme);
@@ -398,6 +402,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const [overrideActivityId, setOverrideActivityId] = useState<string>("");
   const [overrideHours, setOverrideHours] = useState<number>(24);
   const [overrideReason, setOverrideReason] = useState<string>("");
+  const [overrideIgnoreForProgress, setOverrideIgnoreForProgress] = useState<boolean>(false);
 
   const handleResetClick = () => {
   const confirmMsg = t('settingsEx.reset.confirm', `${activeProfile.name} için tüm ilerlemeyi sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.`).replace('{name}', activeProfile.name);
@@ -1078,6 +1083,11 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
           <SettingsRow title={t('settingsEx.fastMode.title', 'Hızlı Mod')} subtitle={t('settingsEx.fastMode.subtitle', 'Geçişleri hızlandırır')} isPremiumFeature={true} isPremiumUser={isPremium} onClick={!isPremium ? showPremiumToast : undefined} isThemed={isThemed} themeVariant={themeVariant}>
                         {isPremium ? <ToggleSwitch isEnabled={isFastTransitionEnabled} onToggle={onToggleFastTransition} themeVariant={themeVariant} /> : <LockClosedIcon className="w-7 h-7 text-slate-400"/>}
                     </SettingsRow>
+          {theme === 'deneme' && (
+            <SettingsRow title="Okyanus Müziği" subtitle="Okyanus Keşfi temasından arka plan müziği çal" isThemed={isThemed} themeVariant={themeVariant}>
+              <ToggleSwitch isEnabled={isUnderwaterMusicEnabled} onToggle={onToggleUnderwaterMusic} themeVariant={themeVariant} />
+            </SettingsRow>
+          )}
                 </div>
             </div>
              <div>
@@ -1231,14 +1241,9 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
               🎟️ Joker Hakkı
             </h2>
           </div>
-          <p className="text-sm text-slate-600 mb-2">
-            Joker Hakkı, kilitli bir etkinliği belirlediğiniz süre boyunca açar. Süre bitince otomatik kapanır ve normal kurallar tekrar geçerli olur.
-          </p>
-          <ul className="text-xs text-slate-600 mb-3 list-disc pl-5">
-            <li>Ustalaşma kurallarını atlamaz; sadece erişime izin verir.</li>
-            <li>İsterseniz bir not ekleyerek kullanım nedenini kaydedebilirsiniz.</li>
-            <li>Aktif jokerleri aşağıdan takip edebilir ve isterse kaldırabilirsiniz.</li>
-          </ul>
+              <p className="text-sm text-slate-600 mb-2">
+                Burada çocuğunuzun o an takıldığı (zayıf olduğu) etkinlikler listelenir. Sadece bu etkinliklere joker uygulanabilir.
+              </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
             <select
@@ -1246,12 +1251,44 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
               onChange={(e) => setOverrideActivityId(e.target.value)}
               className="w-full border rounded-lg px-3 py-2 text-sm"
             >
-              <option value="">Etkinlik seçin…</option>
-              {Object.keys(ACTIVITY_METADATA_MAP).map((id) => (
-                <option key={id} value={id}>
-                  {ACTIVITY_METADATA_MAP[id].activityName}
-                </option>
-              ))}
+              <option value="">Takıldığı etkinlikleri seçin…</option>
+              {(() => {
+                try {
+                  const stats = profile?.activityStats || {};
+                  const unlocked = getUnlockedUnits(stats, new Set<string>());
+                  const focusUnit = Math.max(...Array.from(unlocked.values()), 1);
+                  const unitDef = getUnitDefinition(focusUnit);
+                  const activities = unitDef?.activities || [];
+
+                  const successOf = (id: string) => {
+                    const st = stats[id];
+                    if (!st) return 0;
+                    let correct = st.totalCorrect || 0;
+                    let total = st.totalQuestions || 0;
+                    if (total === 0) {
+                      const hist = (st.history || []).filter(h => h.total > 0);
+                      for (const h of hist) { correct += h.score; total += h.total; }
+                    }
+                    return total > 0 ? correct / total : 0;
+                  };
+
+                  const stuck = activities.filter(a => {
+                    const id = String(a);
+                    const s = successOf(id);
+                    return s > 0 && s < 0.8; // zayıf / takılı
+                  });
+
+                  if (stuck.length === 0) return <option value="">(Şu an takıldığı etkinlik yok)</option>;
+
+                  return stuck.map(id => (
+                    <option key={id} value={id}>
+                      {ACTIVITY_METADATA_MAP[id]?.activityName || id}
+                    </option>
+                  ));
+                } catch (e) {
+                  return <option value="">(Etkinlik yüklenemedi)</option>;
+                }
+              })()}
             </select>
             <select
               value={overrideHours}
@@ -1269,14 +1306,21 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
               className="w-full border rounded-lg px-3 py-2 text-sm"
             />
           </div>
-          <button
-            type="button"
-            onClick={() => {
-              if (!overrideActivityId) return;
-              onAddParentOverride(overrideActivityId, overrideHours, overrideReason || undefined);
-              setOverrideActivityId("");
-              setOverrideReason("");
-            }}
+            <div className="flex items-center gap-2 mb-2">
+              <label className="text-sm flex items-center gap-2">
+                <input type="checkbox" checked={overrideIgnoreForProgress} onChange={(e) => setOverrideIgnoreForProgress(e.target.checked)} className="w-4 h-4" />
+                <span className="text-xs">Bu etkinliği ünite ilerlemesinden sayma (çocuğun takıldığı için atla)</span>
+              </label>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                if (!overrideActivityId) return;
+                onAddParentOverride(overrideActivityId, overrideHours, overrideReason || undefined, overrideIgnoreForProgress);
+                setOverrideActivityId("");
+                setOverrideReason("");
+                setOverrideIgnoreForProgress(false);
+              }}
             className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold disabled:opacity-50"
             disabled={!overrideActivityId}
           >

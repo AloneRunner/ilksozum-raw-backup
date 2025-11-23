@@ -1,4 +1,235 @@
 {
+  "app": {
+    "name": "Autism Games for Kids: ABA",
+    "description": "Interactive educational cards teaching words, concepts and sounds for children with autism.",
+    "printPreview": "Print Preview",
+    "savePdf": "Save PDF",
+    "print": "Print",
+    "back": "Go back",
+    "developing": "Under development",
+    "pdfSavedInfo": "PDF saved. Check your Documents folder or use the share menu.",
+    "pdfSaveError": "An error occurred while saving the PDF. Please try again.",
+    "pdfCreateError": "An error occurred while creating the PDF. Please try again.",
+    "pdfJobName": "My First Words Cards",
+    "shareTitle": "PDF Saved",
+    "shareText": "The PDF file was saved. Would you like to share it?",
+    "shareDialogTitle": "Share PDF",
+    "noContentForActivity": "No content found for this activity.",
+    "noMoreImagesForActivity": "There are no more images to show for this activity.",
+    "noActivitySelected": "No activity selected.",
+    "activityLoadError": "An error occurred while loading the activity.",
+    "randomActivityRestarting": "Restarting current random activity...",
+    "activityRestarting": "Restarting activity..."
+  },
+  "choice": {
+    "readQuestion": "Speak the question",
+    "matchPrompt": "Which one matches this?",
+    "label": "Label",
+    "hint": "Hint",
+    "showLabel": "Show labels",
+    "hideLabel": "Hide labels",
+    "showHint": "Show hint",
+    "learnShapes": "Learn shapes",
+    "learnEmotions": "Learn emotions",
+    "hideHint": "Hide hint",
+    "banImageAria": "Do not show this image again",
+    "learnColors": "Learn colors"
+  },
+  "accessibility": {
+    "autoSpeakOn": "Turn on auto speak",
+    "autoSpeakOff": "Turn off auto speak"
+  },
+  "feedback": {
+    "correctPrefix": "Yes, this is",
+    "wrongPrefix": "No, this is",
+    "rightPrefix": "Correct, this is",
+    "sentence": {
+      "correct": "Yes, this {noun} is {adjective}.",
+      "wrong": "No, this {noun} is not {adjective}."
+    }
+  },
+  "settings": {
+    "language": "Language",
+    "languageSubtitle": "Interface and speech language",
+    "languageNote": "Letter activities are currently only available in Turkish.",
+    "languageAutoNote": "Note: Some translations were generated with AI and may contain errors. We apologize to any parents affected — please send feedback so we can fix them."
+  },
+  "categories": {
+    "objectsIntl": {
+      "title": "Objects",
+      "subtitle": "Curated object sets for non-Turkish languages",
+      "noCuratedSet": "No curated set for this category yet."
+    }
+  },
+  "menu": {
+    "hello": "Hello",
+    "appTitle": "Autism Games for Kids: ABA",
+    "experimentalTag": "Experimental",
+    "random": {
+      "title": "Random Mode",
+      "subtitle": "Play a mix of selected activities"
+    },
+    "programMode": {
+      "title": "Program Mode",
+      "subtitle": "Start a guided daily session"
+    },
+    "parentTips": {
+      "title": "Tips for Parents",
+      "subtitle": "Use the app more effectively"
+    },
+    "letterSound": {
+      "title": "Letters and Sounds",
+      "subtitle": "Learn letters and sounds, spell and read."
+    },
+    "objects": {
+      "title": "Let's Learn Objects",
+      "subtitle": "Learn animals, fruits and more."
+    },
+    "concepts": {
+      "title": "Concept Activities",
+      "subtitle": "Learn colors, shapes and opposite concepts."
+    },
+    "reasoning": {
+      "title": "Reasoning Games",
+      "subtitle": "Play memory, sudoku and logic games."
+    },
+    "fineMotor": {
+      "title": "Fine Motor",
+      "subtitle": "Line Tracing, Coloring, and more",
+      "developingNote": "Under development",
+      "backButton": "Back to Fine Motor Menu"
+    },
+    "achievements": {
+      "categories": {
+        "fineMotor": "Fine Motor Skills"
+      },
+      "fineMotor": {
+        "lineTracing": "Line Tracing",
+        "shapeColoring": "Shape Coloring",
+        "rhythmFollowing": "Rhythm Following"
+      }
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Who • What • Where • When • Why • How",
+      "developingNote": "Under development",
+      "category": {
+        "who": "Who?",
+        "what": "What?",
+        "where": "Where?",
+        "when": "When?",
+        "why": "Why?",
+        "how": "How?",
+        "mixed": "Mixed"
+      }
+    }
+    ,
+    "soundImitation": {
+      "title": "Sound Imitation Cards",
+      "subtitle": "Sound imitation cards for nonverbal children",
+      "badge": "New — Experimental Activity",
+      "imagesTitle": "Image Cards",
+      "imagesDesc": "View image cards; tap to enlarge and swipe through.",
+      "videosTitle": "Short Videos",
+      "videosTitleShort": "Short Videos (Experimental)",
+      "videosDesc": "Short videos — experimental. Videos may take space.",
+      "experimentalNoteTitle": "Experimental Note / Trial",
+      "experimentalNote": "The video section is experimental and may not be permanent. Videos can be large and may take space on your device; we'll shape this section based on feedback.",
+      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
+      "feedbackRequest": "Please leave feedback (good or bad) in the app store reviews.",
+      "themeTextColors": {
+        "simple": "#ffffff",
+        "deneme": "#000000",
+        "balon": "#000000",
+        "gunes": "#000000",
+        "tilki": "#000000",
+        "ay": "#000000",
+        "geceorman": "#ffffff",
+        "yagmur": "#000000",
+        "kus": "#000000",
+        "tilki2": "#000000",
+        "kedi": "#000000",
+        "kar": "#ffffff",
+        "gunbatimi": "#000000",
+        "ay2": "#000000",
+        "zurafa": "#000000",
+        "geometri": "#000000",
+        "kozmik": "#ffffff",
+        "balloon": "#000000",
+        "sun": "#000000",
+        "fox": "#000000",
+        "moon": "#000000",
+        "nightForest": "#ffffff",
+        "rain": "#000000",
+        "birds": "#000000",
+        "prairieFox": "#000000",
+        "cat": "#000000",
+        "snow": "#ffffff",
+        "sunset": "#000000",
+        "crescent": "#000000",
+        "giraffe": "#000000",
+        "geometric": "#000000"
+      }
+    }
+  },
+  "common": {
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "tabs": {
+    "activities": "Activities",
+    "communication": "Expression Cards",
+    "achievements": "Reports",
+    "settings": "Settings"
+  },
+  "consent": {
+    "title": "Privacy Consent",
+    "body": "To continue using the app, please accept our Privacy Policy. We do not collect personal data; your progress and settings stay on your device. Non-personalized ads may be shown in the free version.",
+    "accept": "I Accept",
+    "viewPolicy": "Read Privacy Policy"
+  },
+  "themes": {
+    "simple": "Simple",
+    "deneme": "🎨 Test",
+    "balon": "Balloon",
+    "gunes": "Sun",
+    "tilki": "Fox",
+    "ay": "Moon",
+    "geceorman": "Night Forest",
+    "yagmur": "Rain",
+    "kus": "Birds",
+    "tilki2": "Prairie Fox",
+    "kedi": "Cat",
+    "kar": "Snow",
+    "gunbatimi": "Sunset",
+    "ay2": "Crescent",
+    "zurafa": "Giraffe",
+    "geometri": "Geometric",
+    "balloon": "Balloon",
+    "sun": "Sun",
+    "fox": "Fox",
+    "moon": "Moon",
+    "nightForest": "Night Forest",
+    "rain": "Rain",
+    "birds": "Birds",
+    "prairieFox": "Prairie Fox",
+    "cat": "Cat",
+    "snow": "Snow",
+    "sunset": "Sunset",
+    "crescent": "Crescent",
+    "giraffe": "Giraffe",
+    "geometric": "Geometric"
+  },
+  "completion": {
+    "heading": "Congratulations!",
+    "msg": {
+      "low": "How about trying again?",
+      "mid": "You're doing great!",
+      "high": "Awesome job!"
+    },
+    "restart": "Play Again",
+    "home": "Main Menu"
+  },
   "achievements": {
     "title": "Achievements",
     "subtitle": "Earn a badge by completing an activity perfectly 3 times!",
@@ -58,7 +289,6 @@
       "active": "Active Profile",
       "manage": "Manage"
     },
-    
     "achievements": {
       "title": "Achievements",
       "subtitle": "View badges",
@@ -140,11 +370,11 @@
     "currentUnit": "Current Unit",
     "unlockedUnits": "Unlocked Units",
     "progress": "Progress",
-    "completed": "You've completed all units! Amazing achievement!",
-    "advanced": "You're at an advanced level! Continuing with unit {unit}.",
-    "progressing": "You're progressing well! Working on unit {unit}.",
-    "beginning": "You're in the beginning stage. Continue with unit {unit}!",
-    "notStarted": "Plan not started yet. You'll see progress here once you start program mode.",
+    "completed": "You've completed all units! An amazing achievement!",
+    "advanced": "You are at an advanced level! Continuing with unit {unit}.",
+    "progressing": "You are progressing well! Working on unit {unit}.",
+    "beginning": "You are in the beginning stage. Continue with unit {unit}!",
+    "notStarted": "Plan has not been started yet. You will see the progress here once you start the program mode.",
     "paceHint": "You can advance up to 3 units per day. This is the recommended pace for solid learning."
   },
   "activityMgmt": {
@@ -203,6 +433,10 @@
       "title": "Customize Activities",
       "text": "Use Activity Management in Settings to focus on specific skills or temporarily disable activities your child is not ready for."
     },
+    "programMode": {
+      "title": "About Program Mode",
+      "text": "Program Mode provides short, expert-designed daily sessions. Each session includes warmup, new content and reinforcement — model answers with your child and use the Joker Pass to temporarily unlock activities if needed."
+    },
     "randomMode": {
       "title": "Try Random Mode",
       "text": "Presents a shuffled mix of all enabled exercises from different categories to reinforce learning in a fun way."
@@ -210,8 +444,8 @@
     "extra": {
       "title": "Extra Tips",
       "practice": {
-        "title": "Practice Mode (Soon)",
-        "text": "Soon you'll be able to start a 'Practice Session' based on the activities your child struggles with the most."
+        "title": "Reinforcement / Practice Mode",
+        "text": "Start focused practice on the activities your child struggles with most. This mode repeats weaker tasks without advancing unit progression, so your child gets extra practice."
       }
     }
   },
@@ -219,9 +453,9 @@
     "menuTitle": "Program Mode",
     "menuSubtitle": "Start a guided daily session",
     "title": "Program Mode",
-  "subtitle": "Develop skills through 10 units with expert planning",
-  "devWarningTitle": "Experimental: Program Mode",
-  "devWarningDesc": "This mode is still under development. Unit advancement may occasionally behave unexpectedly. Please share any issues or feedback.",
+    "subtitle": "Develop skills through 10 units with expert planning",
+    "devWarningTitle": "Experimental: Program Mode",
+    "devWarningDesc": "This mode is still under development. Unit advancement may occasionally behave unexpectedly. Please share any issues or feedback.",
     "betaTag": "Experimental",
     "forParents": "Short note for parents",
     "unitShort": "Unit",
@@ -234,13 +468,17 @@
     "dailyLimitNote": "Daily unit advancement limit (3) reached. Continue with reinforcement today.",
     "dailyLimitRemaining": "Daily advancement: {used}/3",
     "minutesAbbrev": "min",
-    "jokerActive": "Joker Pass Active",
     "todaySession": "Today's Program",
     "alreadyDone": "Done today",
     "warmup": "Warmup",
     "newContent": "New Content",
     "reinforcement": "Reinforcement",
     "noReinforcementToday": "No reinforcement today (no weak activities found).",
+    "tabs": {
+      "today": "Today",
+      "progress": "Progress",
+      "units": "Units"
+    },
     "allComplete": "Congratulations!",
     "allCompleteDesc": "All activities completed!",
     "noActivities": "All activities completed!",
@@ -248,21 +486,17 @@
     "unitDetails": "Unit Details",
     "unlockHint": "Unlocks when previous unit reaches 80%",
     "activityCountLabel": "{count} activities",
-    "tabs": {
-      "today": "Today",
-      "progress": "Progress",
-      "units": "Units"
-    },
+    "jokerActive": "Joker Pass Active",
     "progress": {
       "activity": "Activity {current}/{total}",
       "round": "Round {current}/{total}"
     },
     "explainer": {
-      "point1": "Provides a short, focused flow from concrete to abstract.",
-      "point2": "Progresses through 10 units. Each unit contains specific concepts.",
+      "point1": "Provides a short, focused flow from concrete to abstract for your child.",
+      "point2": "Progresses through a 10-unit structure. Each unit contains specific concepts.",
       "point3": "Content is dynamically selected based on mastery: warmup, new content, and reinforcement.",
       "point4": "You can advance up to 3 units per day. This upper cap prevents rushing while allowing visible progress early on.",
-      "point5": "Parents can temporarily unlock activities using the Joker Pass."
+      "point5": "Parents can temporarily unlock activities using the Joker Pass; they can also choose 'Ignore for progression' so the activity does not block unit completion while the pass is active."
     },
     "sessionRules": {
       "title": "Program Mode Rules",
@@ -270,18 +504,25 @@
       "newContent": "New Content: 2-3 newly unlocked activities",
       "reinforcement": "Reinforcement: 1-2 activities close to mastery",
       "dailyLimit": "Daily limit: Up to 3 unit advancements per day",
-      "jokerInfo": "Joker Pass: Parents can temporarily unlock activities"
+      "jokerInfo": "Joker Pass: Parents can temporarily unlock activities. Use 'Ignore for progression' to make the activity not count toward unit completion while the override is active. Active limits: 3 for non-premium, 15 for premium."
     },
     "rules": {
       "count": "Activities per session:",
       "activityWord": "activities",
       "warmupWord": "warmup",
       "newWord": "new content",
+      "count": "Activities per session: 8 activities (1 warmup, 7 new content, 0 reinforcement)",
+      "activityWord": "activity",
+      "warmupWord": "warmup",
+      "newWord": "new content",
       "reinforcementWord": "reinforcement",
-      "selection": "Selection logic:",
-  "selectionDesc": "Warmup (1 mastered) → New content (focus unit, prioritise never attempted) → Reinforcement (0–2 weakest from previous units)",
-  "coverageFirst": "Coverage-first:",
-  "coverageFirstDesc": "If the focus unit still has unattempted content, New Content +1 and Reinforcement -1. Ensures initial exposure to every skill.",
+      "reinforcementProgress": "Reinforcement and progress:",
+      "reinforcementProgressDesc": "Reinforcement sessions now count as program attempts; these attempts contribute to the unit's progress calculation. Reinforcement candidates can include activities with zero success, and parents can manually add or remove candidates.",
+      "reinforcementScope": "Reinforcement scope:",
+      "reinforcementScopeDesc": "Reinforcement candidates can be manually selected from activities in all unlocked units; success percentage is the average of the last 6 attempts. (Use the \"Clear Manual Selections\" button to clear manual selections.)",
+      "selectionDesc": "Warmup (1 mastered) → New content (focus unit, prioritise never attempted) → Reinforcement (0–2 weakest from previous units)",
+      "coverageFirst": "Coverage-first:",
+      "coverageFirstDesc": "If the focus unit still has unattempted content, New Content +1 and Reinforcement -1. Ensures initial exposure to every skill.",
       "failure": "On failure:",
       "failureDesc": "Activity completes, score is recorded. If not mastered, it returns in future days.",
       "unlocking": "Unit unlock condition:",
@@ -296,7 +537,7 @@
       "dailyPremium": "Premium:",
       "dailyPremiumDesc": "No daily advancement cap; unlocked units can be played freely.",
       "joker": "Joker Pass:",
-      "jokerDesc": "Parents can temporarily unlock a locked activity; this doesn't skip mastery rules, only grants access.",
+      "jokerDesc": "Parents can temporarily unlock a locked activity with success below 80%. If 'Ignore for progression' is selected when creating the override, the activity will not count towards unit completion for the duration of the override (it is treated as covered/perfect for display and calculations). Limits: 3 for non-premium, 15 for premium.",
       "progressDisplay": "Displayed %:",
       "progressDisplayDesc": "Unit percentage matches the blended success shown in the parent report (Free + Program totals).",
       "progressFormula": "Early progress formula:",
@@ -423,8 +664,30 @@
     }
   },
   "developmentNotes": {
-    "title": "Upcoming Updates",
+    "title": "Update Information",
     "subtitle": "Our app continues to grow! Thank you for your patience.",
+    "thisUpdate": {
+      "title": "In This Update",
+      "items": [
+        "Fixed a bug in Program Mode that caused some existing users' progress to reset to Unit 1. We apologize for the issue — as a Teacher's Day gift, affected legacy users have been granted free Premium access until November 30, 2025. Additionally, current or past Premium users have been given an extra 1 month of Premium."
+      ],
+      "_tempNotes": [
+        "NOTE: The following items are temporary notes — they will be removed from i18n files in the next update."
+      ]
+    },
+    "programMode": {
+      "menuTitle": "Program Mode",
+      "menuSubtitle": "Start a guided daily session",
+      "units": "Units",
+      "unitsCount": "{count} Units"
+    },
+    "thisUpdateAddendum": {
+      "smallVisuals": "In Big/Small concept pairs, images of genuinely small items were slightly reduced in size so they don't confuse the child."
+    },
+    "developerMessage": {
+      "short": "Note: I test and refine this app with my 6-year-old child who has autism; your feedback is welcome.",
+      "long": "Note: I am developing this app by testing it with my 6-year-old son with autism. I also consider topics covered at school and teacher feedback. Please send feedback if you have any suggestions or observations."
+    },
     "modes": {
       "title": "Mode Improvements",
       "programMode": "Program mode will be enhanced",

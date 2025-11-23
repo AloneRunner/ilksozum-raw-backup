@@ -397,7 +397,7 @@ export const imageData_101_200: ImageMetadata[] = [
     "imageUrl": "/images/127.png",
     "audioKeys": { "default": "çocuk", "concept": "korkmuş" },
     "tags": {
-      "category": "none",
+      "category": "duygular",
       "concept": ["duygular", "yaşlı-genç"],
       "emotion": "korkmuş",
       "age": "genç",

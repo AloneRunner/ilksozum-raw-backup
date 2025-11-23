@@ -15,6 +15,9 @@ export enum ScreenState {
   BannedImages,
   CommunicationMenu,
   CommunicationDetail,
+  SoundImitationMenu,
+  SoundImitationSadeceGorsel,
+  SoundImitationUfakVideolar,
   ObjectCategoriesMenu,
   LetterActivitiesMenu, 
   CommunicationSubCategory,
@@ -228,7 +231,7 @@ export interface ConceptOption {
     id: number;
     word: string; 
     audioKey: string; 
-    spokenText: string;
+  spokenText?: string;
     imageUrl: string;
     isCorrect: boolean;
 }
@@ -401,6 +404,10 @@ export interface ImageMetadata {
     causeEffectPair?: { id: string; role: 'cause' | 'effect' };
     sequence?: { group: string; order: number };
     count?: number;
+    /** Optional difficulty/level for activities like sound imitation; small integer (1..4). */
+    level?: number;
+    note?: string;
+    missingImage?: boolean;
   }
 }
 
@@ -504,4 +511,6 @@ export interface ParentOverride {
   activityId: ActivityType | string;
   expiresAt: number; // timestamp
   reason?: string;
+  /** If true, this override should exclude the activity from unit progression calculations (treated as covered/mastered for unlocking) */
+  ignoreForProgress?: boolean;
 }

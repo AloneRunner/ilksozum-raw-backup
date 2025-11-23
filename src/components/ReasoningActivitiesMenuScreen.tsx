@@ -99,14 +99,15 @@ const ReasoningActivitiesMenuScreen: React.FC<ReasoningActivitiesMenuScreenProps
     const Icon = activity.icon;
     
     const jellyfishColors = [
-      'from-pink-400 to-purple-500',      // Pembe-mor jellyfish
-      'from-cyan-400 to-blue-500',        // Mavi jellyfish  
-      'from-green-400 to-teal-500',       // Yeşil jellyfish
-      'from-purple-400 to-indigo-500',    // Mor jellyfish
-      'from-teal-400 to-cyan-500',        // Turkuaz jellyfish
-      'from-blue-400 to-cyan-500',        // Açık mavi jellyfish
-      'from-orange-400 to-pink-500',      // Turuncu-pembe jellyfish
-      'from-indigo-400 to-purple-500',    // İndigo-mor jellyfish
+      // Oceanic palette — prioritize blues, cyans and teals. Keep variety but avoid pinks.
+      'from-blue-600 to-cyan-500',
+      'from-cyan-600 to-teal-500',
+      'from-teal-600 to-blue-500',
+      'from-sky-600 to-cyan-400',
+      'from-indigo-600 to-blue-500',
+      'from-blue-700 to-teal-500',
+      'from-cyan-500 to-sky-400',
+      'from-teal-500 to-cyan-400',
     ];
     const color = jellyfishColors[idx % jellyfishColors.length];
 
@@ -120,14 +121,14 @@ const ReasoningActivitiesMenuScreen: React.FC<ReasoningActivitiesMenuScreenProps
         }`}
       >
         {/* Jellyfish body (dome) */}
-        <div className={`w-24 h-12 rounded-t-full bg-gradient-to-b ${color} border-2 border-white/30 backdrop-blur-sm shadow-lg relative overflow-hidden ${!isDisabled && 'hover:shadow-2xl'}`}>
+        <div className={`w-32 h-24 sm:w-36 sm:h-28 rounded-t-full bg-gradient-to-b ${color} border-2 border-white/30 backdrop-blur-sm shadow-lg relative overflow-hidden ${!isDisabled && 'hover:shadow-2xl'}`}>
           {/* Shine effect */}
           <div className="absolute top-1 left-3 w-4 h-4 bg-white/40 rounded-full blur-sm"></div>
           <div className="absolute top-2 right-4 w-2 h-2 bg-white/30 rounded-full blur-sm"></div>
           
           {/* Icon in center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <Icon className="w-8 h-8 text-white drop-shadow-md" />
+            <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-md" />
           </div>
         </div>
         
@@ -136,19 +137,19 @@ const ReasoningActivitiesMenuScreen: React.FC<ReasoningActivitiesMenuScreenProps
           {[...Array(8)].map((_, i) => (
             <div 
               key={i} 
-              className={`w-0.5 h-8 bg-gradient-to-b ${color} opacity-60 rounded-full`}
-              style={{ height: `${24 + Math.random() * 8}px` }}
+              className={`w-0.5 h-8 bg-gradient-to-b ${color} opacity-60 rounded-full animate-tentacle`}
+              style={{ height: `${32 + Math.random() * 12}px`, animationDelay: `${i * 0.15}s`, transformOrigin: 'top' }}
             />
           ))}
         </div>
         
         {/* Title */}
-        <h3 className="text-sm font-bold text-cyan-100 text-center mt-2 line-clamp-2 px-2">
+        <h3 className="text-sm font-bold text-white text-center mt-2 line-clamp-2 px-2 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">
           {activity.title}
         </h3>
         
         {/* Subtitle */}
-        <p className="text-xs text-cyan-200/70 text-center line-clamp-1 px-2 mb-2">
+        <p className="text-xs text-white/90 text-center line-clamp-1 px-2 mb-2 drop-shadow-[0_0_6px_rgba(6,182,212,0.6)]">
           {activity.subtitle}
         </p>
         
@@ -205,36 +206,31 @@ const ReasoningActivitiesMenuScreen: React.FC<ReasoningActivitiesMenuScreenProps
   if (isUnderwater) {
     return (
       <>
-        {/* Underwater backdrop */}
-        <div className="absolute inset-0 -z-20 overflow-hidden" aria-hidden>
-          {/* Ocean gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
-          
-          {/* Animated bubbles */}
-          <div className="absolute inset-0">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full bg-cyan-400/15 border border-cyan-300/20 animate-bounce"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: `${12 + Math.random() * 16}px`,
-                  height: `${12 + Math.random() * 16}px`,
-                  animationDelay: `${Math.random() * 4}s`,
-                  animationDuration: `${3 + Math.random() * 3}s`,
-                }}
-              />
-            ))}
-          </div>
-          
-          {/* Light rays */}
-          <div className="absolute inset-0 opacity-15">
-            <div className="absolute top-0 left-1/5 w-px h-full bg-gradient-to-b from-cyan-300/40 via-transparent to-transparent transform rotate-12" />
-            <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-cyan-200/30 via-transparent to-transparent transform -rotate-8" />
-            <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-teal-300/35 via-transparent to-transparent transform rotate-6" />
-          </div>
+        {/* Deep ocean gradient background */}
+        <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#001122] via-[#001a2e] to-[#000814]" />
+        
+        {/* Ocean bubbles animation */}
+        <div className="absolute inset-0 -z-18 opacity-40">
+          {Array.from({ length: 25 }, (_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/60 rounded-full animate-bubble"
+              style={{
+                left: `${Math.random() * 100}%`,
+                bottom: `-10px`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${4 + Math.random() * 4}s`,
+              }}
+            />
+          ))}
         </div>
+
+        {/* Ocean floor sand */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 -z-15 bg-gradient-to-t from-amber-900/30 via-amber-800/20 to-transparent" />
+        
+        {/* Light rays from surface */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-300/60 via-cyan-400/30 to-transparent -z-16" />
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-blue-300/60 via-blue-400/30 to-transparent -z-16" />
 
         <div className="relative z-10 flex flex-col items-center justify-start h-full max-w-2xl mx-auto p-4 sm-landscape:p-2 animate-fade-in overflow-hidden">
           {/* Decorative elements */}

@@ -1,0 +1,418 @@
+{
+  "activityFeedback": {
+    "correct": "Düzgün",
+    "incorrect": "Yanlış",
+    "goodJob": "Aferin",
+    "tryAgain": "Təkrar cəhd et",
+    "wellDone": "Yaxşı iş!",
+    "almost": "Demək olar",
+    "keepGoing": "Davam et",
+    "notQuite": "Hələ deyil",
+    "excellent": "Əla",
+    "nice": "Gözəl",
+    "oops": "Ups",
+    "causeEffect": {
+      "1": {
+        "correct": "Doğru! Yağış yağanda çətir açırıq.",
+        "wrong": "Xeyr, günəş eynəkləri günəşli havalarda istifadə olunur."
+      },
+      "2": {
+        "correct": "Doğru! Dondurma günəşdə əriyir.",
+        "wrong": "Xeyr, dondurma qarda donmaz, onsuz da soyuqdur."
+      },
+      "3": {
+        "correct": "Doğru! Toxum torpaqda böyüyərək bitki olur.",
+        "wrong": "Xeyr, kötük ağacların kəsilməsindən əldə edilir, toxumdan deyil."
+      },
+      "4": {
+        "correct": "Doğru! Əllər sabunla yuyularaq təmizlənir.",
+        "wrong": "Xeyr, onlar çirkli əllərdir. Təmizlənməlidirlər."
+      },
+      "5": {
+        "correct": "Doğru! Yumurta düşəndə sınır.",
+        "wrong": "Xeyr, cücələr yumurtadan düşərək deyil, inkubasiya ilə çıxır."
+      },
+      "6": {
+        "correct": "Doğru! Odun yandıraraq alov əldə edilir.",
+        "wrong": "Xeyr, daşlar yanmır, alov üçün odun lazımdır."
+      },
+      "7": {
+        "correct": "Doğru! Vaza çəkiclə vurulduqda sınır.",
+        "wrong": "Xeyr, vazalara su doldurulur, çəkiclə sındırılır."
+      },
+      "8": {
+        "correct": "Doğru! Qar yağanda papaq taxırıq, bizi isti saxlayır.",
+        "wrong": "Xeyr, şort isti havalarda geyinilir, qışda deyil."
+      },
+      "9": {
+        "correct": "Doğru! Körpə acanda süd içir.",
+        "wrong": "Xeyr, oyuncaqlar əyləncə üçündür, aclıq üçün süd lazımdır."
+      },
+      "10": {
+        "correct": "Doğru! Köynək ütülənərək düzəldilir.",
+        "wrong": "Xeyr, qayçı kəsmək üçündür, düzəltmək üçün ütü lazımdır."
+      },
+      "11": {
+        "correct": "Doğru! Gecə olanda yatmaq üçün yatağa gedirik.",
+        "wrong": "Xeyr, toplar gündüz oynamaq üçündür, gecə yatmaq üçündür."
+      },
+      "12": {
+        "correct": "Doğru! Çiçəklər su ilə böyüyür və inkişaf edir.",
+        "wrong": "Xeyr, qayçı kəsmək üçündür, çiçəklərin böyüməsi üçün suya ehtiyacı var."
+      },
+      "13": {
+        "correct": "Doğru! Kitab oxuyaraq yeni şeylər öyrənirik.",
+        "wrong": "Xeyr, topla oynamaq əyləncəlidir, amma öyrənmək üçün kitab oxumaq lazımdır."
+      },
+      "14": {
+        "correct": "Doğru! Şarlar şişirildikdə böyüyür.",
+        "wrong": "Xeyr, daşlar sərtdir və şişirilə bilməz."
+      },
+      "15": {
+        "correct": "Doğru! Xəmir bişirildikdə çörək olur.",
+        "wrong": "Xeyr, soyuducular soyutmaq üçündür, bişirmək üçün soba lazımdır."
+      },
+      "correct": "Əla iş!",
+      "wrong": "Yenidən cəhd et."
+    },
+    "functionalMatching": {
+      "1": {
+        "correct": "Mismarı çəkiclə vururuq."
+      },
+      "2": {
+        "correct": "Dişlərimizi diş pastası ilə fırçalayırıq."
+      },
+      "3": {
+        "correct": "Corabdan sonra ayaqqabı geyinirik."
+      },
+      "4": {
+        "correct": "Yastığı yataqda istifadə edirik."
+      },
+      "5": {
+        "correct": "Şorbanı qaşıqla yeyirik."
+      },
+      "6": {
+        "correct": "Şəkli fırça ilə boyayırıq."
+      },
+      "7": {
+        "correct": "Kağıza qələmlə yazırıq."
+      },
+      "8": {
+        "correct": "Qapını açarla açırıq."
+      },
+      "9": {
+        "correct": "Makaronu çəngəllə yeyirik."
+      },
+      "10": {
+        "correct": "Pulu pul qabına qoyuruq."
+      },
+      "11": {
+        "correct": "Saçımızı daraqla darayırıq."
+      },
+      "12": {
+        "correct": "Kitabı masanın üstündə oxuyuruq."
+      },
+      "13": {
+        "correct": "Kağızı qayçı ilə kəsirik."
+      },
+      "14": {
+        "correct": "Çörəyi bıçaqla kəsirik."
+      },
+      "15": {
+        "correct": "Əllərimizi sabunla yuyuruq."
+      },
+      "correct": "Əla iş! Düzgün uyğunlaşdırma!",
+      "wrong": "Bu düzgün deyil."
+    },
+    "whatDoesntBelong": {
+      "1": {
+        "correct": "Bəli, {item} fərqlidir.",
+        "wrong": "Xeyr, bu eynidir."
+      },
+      "2": {
+        "correct": "Bəli, {item} fərqlidir.",
+        "wrong": "Xeyr, bu eynidir."
+      },
+      "3": {
+        "correct": "Bəli, {item} fərqlidir.",
+        "wrong": "Xeyr, bu eynidir."
+      },
+      "4": {
+        "correct": "Bəli, {item} fərqlidir.",
+        "wrong": "Xeyr, bu eynidir."
+      },
+      "5": {
+        "correct": "Bəli, {item} bir nəqliyyat vasitəsidir; digərləri meyvədir.",
+        "wrong": "Xeyr, {item} bir meyvədir."
+      },
+      "6": {
+        "correct": "Bəli, {item} bir geyimdir; digərləri heyvandır.",
+        "wrong": "Xeyr, {item} bir heyvandır."
+      },
+      "7İ": {
+        "correct": "Bəli, {item} bir geyimdir; digərləri nəqliyyat vasitəsidir.",
+        "wrong": "Xeyr, {item} bir nəqliyyat vasitəsidir."
+      },
+      "8": {
+        "correct": "Bəli, {item} bir oyuncaqdır; digərləri musiqi alətidir.",
+        "wrong": "Xeyr, {item} bir musiqi alətidir."
+      },
+      "9": {
+        "correct": "Bəli, {item} bir meyvədir; digərləri tərəvəzdir.",
+        "wrong": "Xeyr, {item} bir tərəvəzdir."
+      },
+      "10": {
+        "correct": "Bəli, {item} bir təbii obyektdir; digərləri formadır.",
+        "wrong": "Xeyr, {item} bir formadır."
+      },
+      "11": {
+        "correct": "Bəli, {item} bir uşaqdır; digərləri peşədir.",
+        "wrong": "Xeyr, {item} bir peşədir."
+      },
+      "12": {
+        "correct": "Bəli, {item} bir əşyadır; digərləri mebeldir.",
+        "wrong": "Xeyr, {item} bir mebeldir."
+      },
+      "13": {
+        "correct": "Bəli, {item} bir mətbəx əşyasıdır; digərləri hamam əşyasıdır.",
+        "wrong": "Xeyr, {item} bir hamam əşyasıdır."
+      },
+      "14": {
+        "correct": "Bəli, {item} bir əşyadır; digərləri canlı varlıqdır.",
+        "wrong": "Xeyr, {item} bir canlı varlıqdır."
+      },
+      "15": {
+        "correct": "Bəli, {item} bir alətdir; digərləri çəngəl-bıçaq dəstidir.",
+        "wrong": "Xeyr, {item} çəngəl-bıçaq dəstinə aiddir."
+      },
+      "16": {
+        "correct": "Bəli, {item} bir yeməkdir; digərləri heyvandır.",
+        "wrong": "Xeyr, {item} bir heyvandır."
+      },
+      "17": {
+        "correct": "Bəli, {item} bir içkidir; digərləri meyvədir.",
+        "wrong": "Xeyr, {item} bir meyvədir."
+      },
+      "18": {
+        "correct": "Bəli, {item} bir rəngdir; digərləri oyuncaqdır.",
+        "wrong": "Xeyr, {item} bir oyuncaqdır."
+      },
+      "19": {
+        "correct": "Bəli, {item} bir hava vəziyyətidir; digərləri geyimdir.",
+        "wrong": "Xeyr, {item} bir geyimdir."
+      },
+      "20": {
+        "correct": "Bəli, {item} bir binadır; digərləri nəqliyyat vasitəsidir.",
+        "wrong": "Xeyr, {item} bir nəqliyyat vasitəsidir."
+      },
+      "correct": "Bəli, {item} fərqlidir.",
+      "wrong": "Xeyr, bu eynidir."
+    },
+    "fiveWOneH": {
+      "q_who_to_when_sick": {
+        "correct": "Bəli! Xəstələnəndə həkimə gedirik.",
+        "wrong": "Xeyr, xəstələnəndə ora getmirik."
+      },
+      "q_who_to_when_fire": {
+        "correct": "Doğru! Yanğın zamanı yanğınsöndürənlərə zəng edirik.",
+        "wrong": "Xeyr, yanğın zamanı yanğınsöndürənlərə zəng etməliyik."
+      },
+      "q_who_uses_this": {
+        "correct": "Bəli! Lövhədən müəllim istifadə edir.",
+        "wrong": "Xeyr, ondan adətən müəllim istifadə edir."
+      },
+      "q_who_brings_letter": {
+        "correct": "Doğru! Məktubu poçtalyon gətirir.",
+        "wrong": "Xeyr, məktubu poçtalyon gətirir."
+      },
+      "q_what_brush_teeth_with": {
+        "correct": "Bəli! Dişlərimizi diş pastası ilə fırçalayırıq.",
+        "wrong": "Xeyr, dişlərimizi onunla fırçalamırıq."
+      },
+      "q_what_eat_with": {
+        "correct": "Doğru! Yemək üçün çəngəl istifadə edirik.",
+        "wrong": "Xeyr, yemək üçün ondan istifadə etmirik."
+      },
+      "q_where_doctor_works": {
+        "correct": "Bəli! Həkim xəstəxanada işləyir.",
+        "wrong": "Xeyr, həkim xəstəxanada işləyir."
+      },
+      "q_where_is_swing": {
+        "correct": "Doğru! Yelləncək oyun meydançasındadır.",
+        "wrong": "Xeyr, yelləncək oyun meydançasındadır."
+      },
+      "q_where_do_we_sleep": {
+        "correct": "Bəli! Biz yataqda yatırıq.",
+        "wrong": "Xeyr, biz orada yatmırıq."
+      },
+      "q_where_fish_lives": {
+        "correct": "Bəli! Balıqlar akvariumda yaşayır.",
+        "wrong": "Xeyr, balıqlar orada yaşamır."
+      },
+      "q_when_see_owl": {
+        "correct": "Doğru! Bayquşları gecə görürük.",
+        "wrong": "Xeyr, bayquşlar adətən gecə görünür."
+      },
+      "q_when_use_umbrella": {
+        "correct": "Bəli! Yağış yağanda çətirdən istifadə edirik.",
+        "wrong": "Xeyr, o zaman çətirdən istifadə etmirik."
+      },
+      "q_when_wear_beanie": {
+        "correct": "Doğru! Qar yağanda papaq taxırıq.",
+        "wrong": "Xeyr, o zaman papaq taxmırıq."
+      },
+      "q_why_icecream_melted": {
+        "correct": "Bəli! Dondurma günəşə görə əriyir.",
+        "wrong": "Xeyr, dondurmanın əriməsinin səbəbi bu deyil."
+      },
+      "q_why_clothes_neat": {
+        "correct": "Doğru! Çünki onlar ütülənib.",
+        "wrong": "Xeyr, bu onları səliqəli etmir."
+      },
+      "q_how_go_to_school": {
+        "correct": "Bəli! Məktəbə məktəb avtobusu ilə gedirik.",
+        "wrong": "Xeyr, adətən o şəkildə getmirik."
+      },
+      "q_how_open_door": {
+        "correct": "Bəli! Qapını açarla açırıq.",
+        "wrong": "Xeyr, qapını onunla açmırıq."
+      },
+      "q_how_baby_feels": {
+        "correct": "Doğru! Körpə kədərli hiss edir.",
+        "wrong": "Xeyr, körpə elə hiss etmir."
+      },
+      "q_where_is_sleeping_child": {
+        "correct": "Bəli! Adətən yataqda yatırıq.",
+        "wrong": "Xeyr, adətən yataqda yatırıq."
+      },
+      "q_why_child_wants_play": {
+        "correct": "Doğru! Əylənmək və dostlarla oynamaq üçün.",
+        "wrong": "Xeyr, adətən dostlarla əylənmək üçün."
+      },
+      "q_where_child_wants_to_go_outside": {
+        "correct": "Bəli! Uşaq parka getmək istəyə bilər.",
+        "wrong": "Xeyr, adətən park arzu edilir."
+      },
+      "q_why_child_tired": {
+        "correct": "Doğru! Uzun müddət oynamaqdan və ya az yatmaqdan.",
+        "wrong": "Xeyr, adətən uzun fəaliyyətdən və ya az yuxudan."
+      },
+      "q_where_child_wants_go_park": {
+        "correct": "Bəli! Parka getmək istəyir.",
+        "wrong": "Xeyr, başqa yerə deyil."
+      },
+      "q_how_child_prefers_drive": {
+        "correct": "Doğru! Təhlükəsizlik kəmərini taxaraq və bir valideynlə.",
+        "wrong": "Xeyr, bir böyüklə təhlükəsiz şəkildə olmalıdır."
+      },
+      "q_when_rhino_active": {
+        "correct": "Doğru! Növündən asılı olaraq, gündüz və ya alaqaranlıqda.",
+        "wrong": "Xeyr, adətən gecə deyil."
+      },
+      "q_where_camels_live": {
+        "correct": "Bəli! Səhralarda və quru ərazilərdə.",
+        "wrong": "Xeyr, adətən səhralarda."
+      },
+      "q_where_fish_live_915": {
+        "correct": "Bəli! Onlar suda yaşayırlar.",
+        "wrong": "Xeyr, onlar sudan kənarda yaşamırlar."
+      },
+      "q_when_bears_hibernate": {
+        "correct": "Doğru! Qış ərzində.",
+        "wrong": "Xeyr, qış fəslində."
+      },
+      "q_who_flies_plane": {
+        "correct": "Bəli! Pilot təyyarəni idarə edir.",
+        "wrong": "Xeyr, onlar təyyarəni idarə etmir."
+      },
+      "q_who_cuts_hair": {
+        "correct": "Doğru! Bərbər saçımızı kəsir.",
+        "wrong": "Xeyr, onlar saçımızı kəsmir."
+      },
+      "q_who_provides_milk": {
+        "correct": "Bəli! Fermer süd təmin edir.",
+        "wrong": "Xeyr, adətən fermer tərəfindən təmin edilir."
+      },
+      "q_what_erase_text": {
+        "correct": "Doğru! Silmək üçün pozan istifadə edirik.",
+        "wrong": "Xeyr, onunla silmirik."
+      },
+      "q_what_measure_height": {
+        "correct": "Bəli! Boyu ölçmək üçün xətkeş istifadə edirik.",
+        "wrong": "Xeyr, boyu onunla ölçmürük."
+      },
+      "q_what_dry_after_bath": {
+        "correct": "Doğru! Hamamdan sonra dəsmalla qurulanırıq.",
+        "wrong": "Xeyr, onunla qurulanmırıq."
+      },
+      "q_where_to_eat": {
+        "correct": "Bəli! Yemək üçün restorana gedirik.",
+        "wrong": "Xeyr, yemək üçün ora getmirik."
+      },
+      "q_where_to_read_books": {
+        "correct": "Doğru! Kitab oxumaq üçün kitabxanaya gedə bilərik.",
+        "wrong": "Xeyr, bu kitab oxumaq üçün yaxşı yer deyil."
+      },
+      "q_where_to_shop": {
+        "correct": "Bəli! Marketdən alış-veriş edirik.",
+        "wrong": "Xeyr, orada alış-veriş etmirik."
+      },
+      "q_when_go_to_bed": {
+        "correct": "Doğru! Gecə yatağa gedirik.",
+        "wrong": "Xeyr, o zaman yatağa getmirik."
+      },
+      "q_when_go_to_beach": {
+        "correct": "Bəli! Hava günəşli olanda çimərliyə gedirik.",
+        "wrong": "Xeyr, o zaman çimərliyə getmirik."
+      },
+      "q_when_make_snowman": {
+        "correct": "Doğru! Qar yağanda qar adamı düzəldirik.",
+        "wrong": "Xeyr, o zaman qar adamı düzəltmirik."
+      },
+      "q_why_child_cold": {
+        "correct": "Bəli! Çünki hava soyuqdur.",
+        "wrong": "Xeyr, onların üşüməsinin səbəbi bu deyil."
+      },
+      "q_why_hair_wet": {
+        "correct": "Doğru! Duş qəbul etdiyi üçün yaşdır.",
+        "wrong": "Xeyr, yaş olmasının səbəbi bu deyil."
+      },
+      "q_how_reach_high_shelf": {
+        "correct": "Bəli! Yüksəyə çatmaq üçün nərdivandan istifadə edirik.",
+        "wrong": "Xeyr, onunla çata bilmərik."
+      },
+      "q_how_travel_at_sea": {
+        "correct": "Doğru! Dənizdə gəmi ilə səyahət edirik.",
+        "wrong": "Xeyr, adətən dənizdə onunla səyahət etmirik."
+      },
+      "q_how_clean_room": {
+        "correct": "Bəli! Otağı təmizlik vedrəsi və ləvazimatları ilə təmizləyirik.",
+        "wrong": "Xeyr, otağı onunla təmizləmirik."
+      },
+      "q_who_teaches_at_school": {
+        "correct": "Doğru! Müəllim dərs keçir.",
+        "wrong": "Xeyr, məktəbdə müəllim dərs keçir."
+      },
+      "q_what_do_we_drink_water_with": {
+        "correct": "Bəli! Suyu stəkanla içirik.",
+        "wrong": "Xeyr, suyu onunla içmirik."
+      },
+      "q_where_do_we_store_books": {
+        "correct": "Doğru! Onları kitab rəfində saxlayırıq.",
+        "wrong": "Xeyr, kitabları kitab rəfində saxlayırıq."
+      },
+      "q_when_use_sunscreen": {
+        "correct": "Bəli! Hava günəşli olanda.",
+        "wrong": "Xeyr, adətən hava günəşli olanda istifadə edirik."
+      },
+      "q_why_wash_hands": {
+        "correct": "Doğru! Təmiz olmaq və mikroblardan qorunmaq üçün.",
+        "wrong": "Xeyr, əllərimizi təmiz olmaq üçün yuyuruq."
+      },
+      "q_how_dry_hands": {
+        "correct": "Bəli! Onları dəsmalla qurulayırıq.",
+        "wrong": "Xeyr, əlləri dəsmalla qurulayırıq."
+      }
+    }
+  }
+}

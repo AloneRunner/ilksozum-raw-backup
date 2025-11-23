@@ -92,7 +92,7 @@ export default function App(): React.ReactNode {
     <AppContext.Provider value={appCore as IAppContext}>
       <div className={`relative w-screen h-screen transition-colors duration-500 ${background.type === 'gradient' ? background.value : ''} flex flex-col`}>
         {background.type === 'video' && <VideoBackground key={background.value} src={background.value} />}
-        <AmbientSound theme={settings.theme} />
+        <AmbientSound theme={settings.theme} isUnderwaterMusicEnabled={settings.isUnderwaterMusicEnabled} isMuted={settings.isMuted} />
         <Suspense fallback={<div className="flex items-center justify-center h-full"><Spinner /></div>}>
           <div className={`w-full flex-grow min-h-0 overflow-y-auto overflow-x-hidden ${!settings.isPremium ? 'pt-16' : ''} ${showNavBar ? 'pb-20 landscape:pb-0 landscape:pl-20' : ''}`}>
              <AppRouter />

@@ -1,19 +1,19 @@
 {
   "app": {
-    "name": "Autisme Spellen: Leren Lezen",
-    "description": "Interactieve educatieve kaarten voor het leren van woorden, concepten en geluiden voor kinderen met autisme.",
+    "name": "Spelletjes voor Autisme: Peuters",
+    "description": "Interactieve educatieve kaarten die woorden, concepten en geluiden leren aan kinderen met autisme.",
     "printPreview": "Afdrukvoorbeeld",
     "savePdf": "PDF opslaan",
     "print": "Afdrukken",
     "back": "Terug",
     "developing": "In ontwikkeling",
-    "pdfSavedInfo": "PDF opgeslagen. Kijk in je map Documenten of gebruik het deelmenu.",
+    "pdfSavedInfo": "PDF opgeslagen. Controleer je map Documenten of gebruik het deelmenu.",
     "pdfSaveError": "Er is een fout opgetreden bij het opslaan van de PDF. Probeer het opnieuw.",
     "pdfCreateError": "Er is een fout opgetreden bij het maken van de PDF. Probeer het opnieuw.",
-    "pdfJobName": "Mijn Eerste Woorden-kaarten",
-    "shareTitle": "PDF opgeslagen",
+    "pdfJobName": "Mijn Eerste Woorden Kaarten",
+    "shareTitle": "PDF Opgeslagen",
     "shareText": "Het PDF-bestand is opgeslagen. Wil je het delen?",
-    "shareDialogTitle": "PDF delen",
+    "shareDialogTitle": "Deel PDF",
     "noContentForActivity": "Geen inhoud gevonden voor deze activiteit.",
     "noMoreImagesForActivity": "Er zijn geen afbeeldingen meer om te tonen voor deze activiteit.",
     "noActivitySelected": "Geen activiteit geselecteerd.",
@@ -22,91 +22,95 @@
     "activityRestarting": "Activiteit opnieuw starten..."
   },
   "choice": {
-    "readQuestion": "Vraag voorlezen",
+    "readQuestion": "Spreek de vraag uit",
     "matchPrompt": "Welke past hierbij?",
     "label": "Label",
-    "hint": "Tip",
-    "showLabel": "Labels tonen",
-    "hideLabel": "Labels verbergen",
-    "showHint": "Tip tonen",
+    "hint": "Hint",
+    "showLabel": "Toon labels",
+    "hideLabel": "Verberg labels",
+    "showHint": "Toon hint",
     "learnShapes": "Vormen leren",
     "learnEmotions": "Emoties leren",
-    "hideHint": "Tip verbergen",
-    "banImageAria": "Deze afbeelding niet meer tonen",
+    "hideHint": "Verberg hint",
+    "banImageAria": "Toon deze afbeelding niet opnieuw",
     "learnColors": "Kleuren leren"
   },
   "accessibility": {
-    "autoSpeakOn": "Automatisch voorlezen inschakelen",
-    "autoSpeakOff": "Automatisch voorlezen uitschakelen"
+    "autoSpeakOn": "Automatisch spreken inschakelen",
+    "autoSpeakOff": "Automatisch spreken uitschakelen"
   },
   "feedback": {
     "correctPrefix": "Ja, dit is",
     "wrongPrefix": "Nee, dit is",
     "rightPrefix": "Correct, dit is",
     "sentence": {
-      "correct": "Ja, de {noun} is {adjective}.",
-      "wrong": "Nee, de {noun} is niet {adjective}."
+      "correct": "Ja, deze {noun} is {adjective}.",
+      "wrong": "Nee, deze {noun} is {adjective}."
     }
   },
   "settings": {
     "language": "Taal",
-    "languageSubtitle": "Taal van interface en spraak",
-    "languageNote": "Letteractiviteiten zijn beschikbaar voor Nederlands (Beta). De inhoud kan beperkt zijn.",
-    "languageAutoNote": "Opmerking: Sommige vertalingen zijn met AI gegenereerd en kunnen fouten bevatten. Onze excuses aan ouders voor eventuele onjuiste vertalingen — stuur feedback zodat we ze kunnen verbeteren."
+    "languageSubtitle": "Interface- en spraaktaal",
+    "languageNote": "Letteractiviteiten zijn beschikbaar voor Nederlands (Bèta). Fouten zijn mogelijk.",
+    "languageAutoNote": "Opmerking: Sommige vertalingen zijn gegenereerd met AI en kunnen fouten bevatten. Onze excuses aan getroffen ouders — stuur alstublieft feedback zodat we ze kunnen corrigeren."
   },
   "categories": {
     "objectsIntl": {
       "title": "Objecten",
-      "subtitle": "Geselecteerde objectensets voor niet-Turkse talen",
-      "noCuratedSet": "Nog geen samengestelde set voor deze categorie."
+      "subtitle": "Geselecteerde objectsets voor niet-Turkse talen",
+      "noCuratedSet": "Nog geen geselecteerde set voor deze categorie."
     }
   },
   "menu": {
     "hello": "Hallo",
-    "appTitle": "Autisme Spellen: Leren Lezen",
+    "appTitle": "Spelletjes voor Autisme: Peuters",
     "experimentalTag": "Experimenteel",
     "random": {
-      "title": "Willekeurige modus",
+      "title": "Willekeurige Modus",
       "subtitle": "Speel een mix van geselecteerde activiteiten"
     },
+    "programMode": {
+      "title": "Programma Modus",
+      "subtitle": "Start een begeleide dagelijkse sessie"
+    },
     "parentTips": {
-      "title": "Tips voor ouders",
+      "title": "Tips voor Ouders",
       "subtitle": "Gebruik de app effectiever"
     },
     "letterSound": {
-      "title": "Letters en klanken",
+      "title": "Letters en Klanken",
       "subtitle": "Leer letters en klanken, spellen en lezen."
     },
     "objects": {
-      "title": "Objecten leren",
+      "title": "Objecten Leren",
       "subtitle": "Leer dieren, fruit en meer."
     },
     "concepts": {
-      "title": "Conceptactiviteiten",
+      "title": "Concept Activiteiten",
       "subtitle": "Leer kleuren, vormen en tegenstellingen."
     },
     "reasoning": {
-      "title": "Logische spellen",
-      "subtitle": "Speel geheugen-, sudoku- en logicaspellen."
+      "title": "Denkspellen",
+      "subtitle": "Speel memory, sudoku en logicaspellen."
     },
     "fineMotor": {
-      "title": "Fijne motoriek",
-      "subtitle": "Lijn volgen, kleuren en meer",
+      "title": "Fijne Motoriek",
+      "subtitle": "Lijnen Volgen, Kleuren, en meer",
       "developingNote": "In ontwikkeling",
-      "backButton": "Terug naar het menu Fijne motoriek"
+      "backButton": "Terug naar Fijne Motoriek Menu"
     },
     "achievements": {
       "categories": {
-        "fineMotor": "Fijne motoriek"
+        "fineMotor": "Fijne Motoriek"
       },
       "fineMotor": {
-        "lineTracing": "Lijnvolgen",
-        "shapeColoring": "Vormen inkleuren",
-        "rhythmFollowing": "Ritme volgen"
+        "lineTracing": "Lijnen Volgen",
+        "shapeColoring": "Vormen Kleuren",
+        "rhythmFollowing": "Ritme Volgen"
       }
     },
     "fiveWOneH": {
-      "title": "5W1H",
+      "title": "Wie / Wat / Waar",
       "subtitle": "Wie • Wat • Waar • Wanneer • Waarom • Hoe",
       "developingNote": "In ontwikkeling",
       "category": {
@@ -126,15 +130,15 @@
   },
   "tabs": {
     "activities": "Activiteiten",
-    "communication": "Communicatie",
+    "communication": "Expressiekaarten",
     "achievements": "Rapporten",
     "settings": "Instellingen"
   },
   "consent": {
-    "title": "Toestemming voor privacy",
-    "body": "Om de app te blijven gebruiken, accepteer ons privacybeleid. We verzamelen geen persoonlijke gegevens; je voortgang en instellingen blijven op je apparaat. In de gratis versie kunnen niet-gepersonaliseerde advertenties worden getoond.",
-    "accept": "Ik accepteer",
-    "viewPolicy": "Privacybeleid lezen"
+    "title": "Privacytoestemming",
+    "body": "Om de app te blijven gebruiken, dient u ons Privacybeleid te accepteren. Wij verzamelen geen persoonlijke gegevens; uw voortgang en instellingen blijven op uw apparaat. In de gratis versie kunnen niet-gepersonaliseerde advertenties worden weergegeven.",
+    "accept": "Ik ga akkoord",
+    "viewPolicy": "Lees Privacybeleid"
   },
   "themes": {
     "simple": "Eenvoudig",

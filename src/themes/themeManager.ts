@@ -18,7 +18,8 @@ export const THEMES: Record<string, Theme> = {
     type: 'gradient',
     value: 'bg-gradient-to-br from-pink-100 via-purple-50 to-cyan-100',
   },
-  deneme: { name: '🎨 Deneme', previewClass: 'bg-gradient-to-br from-purple-400 via-pink-500 to-red-500', type: 'gradient', value: 'bg-gradient-to-br from-purple-400 via-pink-500 to-red-500' },
+    // Oceanic, undersea 'Deneme' theme — keep it distinct and readable
+    deneme: { name: '🎨 Okyanus Keşfi', previewClass: 'bg-gradient-to-br from-blue-700 via-cyan-600 to-teal-500', type: 'gradient', value: 'bg-gradient-to-br from-blue-700 via-cyan-600 to-teal-500' },
   gunes: { name: 'Güneş', previewClass: 'bg-yellow-300', type: 'video', value: '/videos/gunes.mp4', landscapeValue: '/videos/gunesyan.mp4' },
   tilki: { name: 'Tilki', previewClass: 'bg-green-400', type: 'video', value: '/videos/tilki.mp4' },
   ay: { name: 'Ay', previewClass: 'bg-indigo-400', type: 'video', value: '/videos/ay.mp4', landscapeValue: '/videos/ayyan.mp4' },
