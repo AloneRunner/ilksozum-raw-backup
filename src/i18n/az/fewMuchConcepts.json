@@ -1,0 +1,32 @@
+{
+  "fewMuchConcepts": {
+    "fewMuch": "Az / Çox",
+    "q_which_is_few": "Hansıdır az?",
+    "q_which_is_few_person": "Hansıdır az?",
+    "q_which_is_much": "Hansıdır çox?",
+    "yes_uzum_az": "Bəli, bu üzümlər azdır.",
+    "no_uzum_az": "Xeyr, bu üzümlər az deyil.",
+    "yes_uzum_cok": "Bəli, bu üzümlər çoxdur.",
+    "no_uzum_cok": "Xeyr, bu üzümlər çox deyil.",
+    "yes_kavanoz_az": "Bəli, bu bilyələr azdır.",
+    "no_kavanoz_az": "Xeyr, bu bilyələr az deyil.",
+    "yes_kavanoz_cok": "Bəli, bu bilyələr çoxdur.",
+    "no_kavanoz_cok": "Xeyr, bu bilyələr çox deyil.",
+    "yes_kitaplik_az": "Bəli, bu kitablar azdır.",
+    "no_kitaplik_az": "Xeyr, bu kitablar az deyil.",
+    "yes_kitaplik_cok": "Bəli, bu kitablar çoxdur.",
+    "no_kitaplik_cok": "Xeyr, bu kitablar çox deyil.",
+    "yes_para_az": "Bəli, bu pul azdır.",
+    "no_para_az": "Xeyr, bu pul az deyil.",
+    "yes_para_cok": "Bəli, bu pul çoxdur.",
+    "no_para_cok": "Xeyr, bu pul çox deyil.",
+    "yes_akvaryum_az": "Bəli, bu balıqlar azdır.",
+    "no_akvaryum_az": "Xeyr, bu balıqlar az deyil.",
+    "yes_akvaryum_cok": "Bəli, bu balıqlar çoxdur.",
+    "no_akvaryum_cok": "Xeyr, bu balıqlar çox deyil.",
+    "yes_kus_az": "Bəli, bu quşlar azdır.",
+    "no_kus_az": "Xeyr, bu quşlar az deyil.",
+    "yes_kuslar_cok": "Bəli, bu quşlar çoxdur.",
+    "no_kuslar_cok": "Xeyr, bu quşlar çox deyil."
+  }
+}

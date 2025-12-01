@@ -1,0 +1,20 @@
+{
+  "dugumCozuk": {
+    "questions": {
+      "q_which_is_knotted": "Welke is geknoopt?",
+      "q_which_is_untied": "Welke is losgeknoopt?",
+      "yes_ayakkabı_knotted": "Ja, ayakkabı is geknoopt.",
+      "no_ayakkabı_knotted": "Nee, ayakkabı is niet geknoopt.",
+      "yes_ayakkabı_untied": "Ja, ayakkabı is losgeknoopt.",
+      "no_ayakkabı_untied": "Nee, ayakkabı is niet losgeknoopt.",
+      "yes_hortum_knotted": "Ja, hortum is geknoopt.",
+      "no_hortum_knotted": "Nee, hortum is niet geknoopt.",
+      "yes_hortum_untied": "Ja, hortum is losgeknoopt.",
+      "no_hortum_untied": "Nee, hortum is niet losgeknoopt.",
+      "yes_kurdele_knotted": "Ja, kurdele is geknoopt.",
+      "no_kurdele_knotted": "Nee, kurdele is niet geknoopt.",
+      "yes_kurdele_untied": "Ja, kurdele is losgeknoopt.",
+      "no_kurdele_untied": "Nee, kurdele is niet losgeknoopt."
+    }
+  }
+}

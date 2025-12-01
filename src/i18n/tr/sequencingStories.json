@@ -1,0 +1,8 @@
+{
+  "sequencingStories": {
+    "q_order_events": {
+      "correct": "Evet! Doğru sıra bu.",
+      "wrong": "Hayır, doğru sıra değil. Tekrar dene."
+    }
+  }
+}

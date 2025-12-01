@@ -1,0 +1,36 @@
+{
+  "kirisikDuzgun": {
+    "questions": {
+      "q_which_is_wrinkled": "Welches ist zerknittert?",
+      "q_which_is_smooth": "Welches ist glatt?",
+      "yes_gömlek_wrinkled": "Ja, gömlek ist zerknittert.",
+      "no_gömlek_wrinkled": "Nein, gömlek ist nicht zerknittert.",
+      "yes_gömlek_smooth": "Ja, gömlek ist glatt.",
+      "no_gömlek_smooth": "Nein, gömlek ist nicht glatt.",
+      "yes_kağıt_wrinkled": "Ja, kağıt ist zerknittert.",
+      "no_kağıt_wrinkled": "Nein, kağıt ist nicht zerknittert.",
+      "yes_kağıt_smooth": "Ja, kağıt ist glatt.",
+      "no_kağıt_smooth": "Nein, kağıt ist nicht glatt.",
+      "yes_pantolon_wrinkled": "Ja, pantolon ist zerknittert.",
+      "no_pantolon_wrinkled": "Nein, pantolon ist nicht zerknittert.",
+      "yes_pantolon_smooth": "Ja, pantolon ist glatt.",
+      "no_pantolon_smooth": "Nein, pantolon ist nicht glatt.",
+      "yes_yatak_wrinkled": "Ja, yatak ist zerknittert.",
+      "no_yatak_wrinkled": "Nein, yatak ist nicht zerknittert.",
+      "yes_yatak_smooth": "Ja, yatak ist glatt.",
+      "no_yatak_smooth": "Nein, yatak ist nicht glatt.",
+      "yes_çamaşır_wrinkled": "Ja, çamaşır ist zerknittert.",
+      "no_çamaşır_wrinkled": "Nein, çamaşır ist nicht zerknittert.",
+      "yes_çamaşır_smooth": "Ja, çamaşır ist glatt.",
+      "no_çamaşır_smooth": "Nein, çamaşır ist nicht glatt.",
+      "yes_havlu_wrinkled": "Ja, havlu ist zerknittert.",
+      "no_havlu_wrinkled": "Nein, havlu ist nicht zerknittert.",
+      "yes_havlu_smooth": "Ja, havlu ist glatt.",
+      "no_havlu_smooth": "Nein, havlu ist nicht glatt.",
+      "yes_tişört_wrinkled": "Ja, tişört ist zerknittert.",
+      "no_tişört_wrinkled": "Nein, tişört ist nicht zerknittert.",
+      "yes_tişört_smooth": "Ja, tişört ist glatt.",
+      "no_tişört_smooth": "Nein, tişört ist nicht glatt."
+    }
+  }
+}

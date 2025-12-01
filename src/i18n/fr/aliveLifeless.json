@@ -1,0 +1,62 @@
+{
+  "aliveLifeless": {
+    "q_which_is_alive": "Lequel est vivant ?",
+    "q_which_is_alive_person": "Qui est vivant ?",
+    "q_which_is_lifeless": "Lequel est sans vie ?",
+
+    "yes_agac_canli": "Oui, l'arbre est vivant.",
+    "no_agac_canli": "Non, l'arbre est vivant.",
+    "yes_tas_cansiz": "Oui, la pierre est sans vie.",
+    "no_tas_cansiz": "Non, la pierre est sans vie.",
+
+    "yes_kedi_canli": "Oui, le chat est vivant.",
+    "no_kedi_canli": "Non, le chat est vivant.",
+    "yes_masa_cansiz": "Oui, la table est sans vie.",
+    "no_masa_cansiz": "Non, la table est sans vie.",
+
+    "yes_cicek_canli": "Oui, la fleur est vivante.",
+    "no_cicek_canli": "Non, la fleur est vivante.",
+    "yes_araba_cansiz": "Oui, la voiture est sans vie.",
+    "no_araba_cansiz": "Non, la voiture est sans vie.",
+
+    "yes_cocuk_canli": "Oui, l'enfant est vivant.",
+    "no_cocuk_canli": "Non, l'enfant est vivant.",
+    "yes_robot_cansiz": "Oui, le robot est sans vie.",
+    "no_robot_cansiz": "Non, le robot est sans vie.",
+
+    "yes_kelebek_canli": "Oui, le papillon est vivant.",
+    "no_kelebek_canli": "Non, le papillon est vivant.",
+    "yes_kitap_cansiz": "Oui, le livre est sans vie.",
+    "no_kitap_cansiz": "Non, le livre est sans vie.",
+
+    "yes_balik_canli": "Oui, le poisson est vivant.",
+    "no_balik_canli": "Non, le poisson est vivant.",
+    "yes_sandalye_cansiz": "Oui, la chaise est sans vie.",
+    "no_sandalye_cansiz": "Non, la chaise est sans vie.",
+
+    "yes_karinca_canli": "Oui, la fourmi est vivante.",
+    "no_karinca_canli": "Non, la fourmi est vivante.",
+    "yes_anahtar_cansiz": "Oui, la clé est sans vie.",
+    "no_anahtar_cansiz": "Non, la clé est sans vie.",
+
+    "yes_doktor_canli": "Oui, le docteur est vivant.",
+    "no_doktor_canli": "Non, le docteur est vivant.",
+    "yes_canta_cansiz": "Oui, le sac est sans vie.",
+    "no_canta_cansiz": "Non, le sac est sans vie.",
+
+    "yes_kurbaga_canli": "Oui, la grenouille est vivante.",
+    "no_kurbaga_canli": "Non, la grenouille est vivante.",
+    "yes_top_cansiz": "Oui, la balle est sans vie.",
+    "no_top_cansiz": "Non, la balle est sans vie.",
+
+    "yes_zebra_canli": "Oui, le zèbre est vivant.",
+    "no_zebra_canli": "Non, le zèbre est vivant.",
+    "yes_tuvalet_kagidi_cansiz": "Oui, le papier toilette est sans vie.",
+    "no_tuvalet_kagidi_cansiz": "Non, le papier toilette est sans vie.",
+
+    "yes_hamster_canli": "Oui, le hamster est vivant.",
+    "no_hamster_canli": "Non, le hamster est vivant.",
+    "yes_helikopter_cansiz": "Oui, l'hélicoptère est sans vie.",
+    "no_helikopter_cansiz": "Non, l'hélicoptère est sans vie."
+  }
+}

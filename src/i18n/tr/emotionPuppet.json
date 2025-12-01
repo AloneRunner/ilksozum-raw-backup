@@ -1,0 +1,16 @@
+{
+  "emotionPuppet": {
+    "emotions": {
+      "happy": "Mutlu",
+      "sad": "Üzgün",
+      "angry": "Kızgın",
+      "surprised": "Şaşkın"
+    },
+    "instructions": "Yüz parçalarını seçerek {emotion} bir yüz oluştur",
+    "selectEyes": "Gözleri seç",
+    "selectMouth": "Ağzı seç",
+    "selectEyebrows": "Kaşları seç",
+    "correct": "Harika! Doğru yüz ifadesini oluşturdun!",
+    "tryAgain": "Tekrar dene, farklı parçalar seç"
+  }
+}

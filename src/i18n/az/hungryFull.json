@@ -1,0 +1,32 @@
+{
+  "hungryFull": {
+    "questions": {
+      "q_which_is_hungry": "Hansı acıqdır?",
+      "q_which_is_satiated": "Hansı toxdur?",
+      "yes_kedi_hungry": "Bəli, kedi ac.",
+      "no_kedi_hungry": "Xeyr, kedi ac deyil.",
+      "yes_kedi_satiated": "Bəli, kedi tox.",
+      "no_kedi_satiated": "Xeyr, kedi tox deyil.",
+      "yes_sincap_hungry": "Bəli, sincap ac.",
+      "no_sincap_hungry": "Xeyr, sincap ac deyil.",
+      "yes_sincap_satiated": "Bəli, sincap tox.",
+      "no_sincap_satiated": "Xeyr, sincap tox deyil.",
+      "yes_bebek_hungry": "Bəli, bebek ac.",
+      "no_bebek_hungry": "Xeyr, bebek ac deyil.",
+      "yes_bebek_satiated": "Bəli, bebek tox.",
+      "no_bebek_satiated": "Xeyr, bebek tox deyil.",
+      "yes_canavar_hungry": "Bəli, canavar ac.",
+      "no_canavar_hungry": "Xeyr, canavar ac deyil.",
+      "yes_canavar_satiated": "Bəli, canavar tox.",
+      "no_canavar_satiated": "Xeyr, canavar tox deyil.",
+      "yes_maymun_hungry": "Bəli, maymun ac.",
+      "no_maymun_hungry": "Xeyr, maymun ac deyil.",
+      "yes_maymun_satiated": "Bəli, maymun tox.",
+      "no_maymun_satiated": "Xeyr, maymun tox deyil.",
+      "yes_kuş_hungry": "Bəli, kuş ac.",
+      "no_kuş_hungry": "Xeyr, kuş ac deyil.",
+      "yes_kuş_satiated": "Bəli, kuş tox.",
+      "no_kuş_satiated": "Xeyr, kuş tox deyil."
+    }
+  }
+}

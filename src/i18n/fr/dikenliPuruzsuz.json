@@ -1,0 +1,33 @@
+{
+  "dikenliPuruzsuz": {
+    "q_which_is_thorny": "Lequel est épineux?",
+    "q_which_is_thorny_person": "Lequel est épineux?",
+    "q_which_is_smooth": "Lequel est lisse?",
+    "yes_kaktüs": "Oui, le cactus est épineux.",
+    "no_elma": "Non, cette pomme est lisse.",
+    "yes_elma": "Oui, la pomme est lisse.",
+    "no_kaktüs": "Non, ce cactus est épineux.",
+    "yes_kirpi": "Oui, le hérisson est épineux.",
+    "no_yunus": "Non, ce dauphin est lisse.",
+    "yes_yunus": "Oui, le dauphin est lisse.",
+    "no_kirpi": "Non, ce hérisson est épineux.",
+    "yes_deniz_kestanesi": "Oui, l'oursin est épineux.",
+    "no_deniz_yıldızı": "Non, cette étoile de mer est lisse.",
+    "yes_deniz_yıldızı": "Oui, l'étoile de mer est lisse.",
+    "no_deniz_kestanesi": "Non, cet oursin est épineux.",
+    "yes_dikenli_tel": "Oui, le fil barbelé est épineux.",
+    "no_ip": "Non, cette corde est lisse.",
+    "yes_ip": "Oui, la corde est lisse.",
+    "no_dikenli_tel": "Non, ce fil est épineux.",
+    "yes_enginar": "Oui, l'artichaut est épineux.",
+    "no_patlıcan": "Non, cette aubergine est lisse.",
+    "yes_patlıcan": "Oui, l'aubergine est lisse.",
+    "no_enginar": "Non, cet artichaut est épineux.",
+    "yes_dikenli_dal": "Oui, la branche est épineuse.",
+    "no_dal": "Non, cette branche est lisse.",
+    "yes_dal": "Oui, la branche est lisse.",
+    "no_dikenli_dal": "Non, cette branche est épineuse.",
+    "yes_ananas": "Oui, l'ananas est épineux.",
+    "no_ananas": "Non, cet ananas est lisse."
+  }
+}

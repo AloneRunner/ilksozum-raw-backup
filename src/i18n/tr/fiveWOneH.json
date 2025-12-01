@@ -1,0 +1,440 @@
+{
+  "fiveWOneH": {
+    "q_who_to_when_sick": {
+      "correct": "Evet! Hastalanınca doktora gideriz.",
+      "wrong": "Hayır, hastalanınca oraya gitmeyiz."
+    },
+    "q_who_to_when_fire": {
+      "correct": "Doğru! Yangın çıkınca itfaiyeyi ararız.",
+      "wrong": "Hayır, yangında itfaiyeyi aramalıyız."
+    },
+    "q_who_teaches_at_school": {
+      "correct": "Doğru! Öğretmen ders anlatır.",
+      "wrong": "Hayır, okulda dersi öğretmen anlatır."
+    },
+    "q_who_brings_letter": {
+      "correct": "Doğru! Mektubu postacı getirir.",
+      "wrong": "Hayır, mektubu postacı getirir, o getirmez."
+    },
+    "q_who_flies_plane": {
+      "correct": "Evet! Uçağı pilot kullanır.",
+      "wrong": "Hayır, uçağı o kullanmaz."
+    },
+    "q_who_cuts_hair": {
+      "correct": "Doğru! Saçımızı berber keser.",
+      "wrong": "Hayır, saçımızı o kesmez."
+    },
+    "q_who_cooks_food": {
+      "correct": "Evet! Yemeği aşçı pişirir.",
+      "wrong": "Hayır, yemeği o pişirmez."
+    },
+    "q_who_provides_milk": {
+      "correct": "Evet! Sütü inek verir.",
+      "wrong": "Hayır, sütü genelde inek verir."
+    },
+    "q_who_makes_honey": {
+      "correct": "Evet! Balı arı yapar.",
+      "wrong": "Hayır, balı arı yapar."
+    },
+    "q_who_reads_bedtime_stories": {
+      "correct": "Evet! Annemiz bize masal anlatır.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_do_we_play_with": {
+      "correct": "Evet! Arkadaşımızla oyun oynarız.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_is_sad_about_broken_toy": {
+      "correct": "Evet! Oyuncağı kırılan çocuk üzgün olur.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_is_happy_to_see_food": {
+      "correct": "Evet! Acıkan bebek yemeğini görünce sevinir.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_is_playing_with_ball": {
+      "correct": "Evet! Bu çocuk topla oynuyor.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_is_driving_car": {
+      "correct": "Evet! Babası arabayı sürüyor.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_plows_field_and_grows_vegetables": {
+      "correct": "Evet! Çiftçi tarlayı sürer ve sebze yetiştirir.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_goes_to_space_in_rocket": {
+      "correct": "Evet! Astronot uzaya gider.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_wears_crown_and_lives_in_palace": {
+      "correct": "Evet! Kral sarayda yaşar ve taç takar.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_gives_first_aid": {
+      "correct": "Evet! Hemşire ilk yardım yapar.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_who_studies_and_learns_at_school": {
+      "correct": "Evet! Öğrenci okulda ders çalışır.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_what_brush_teeth_with": {
+      "correct": "Evet! Diş fırçasına macun süreriz.",
+      "wrong": "Hayır, fırçaya o sürülmez."
+    },
+    "q_what_use_for_soup": {
+      "correct": "Doğru! Çorbayı kaşıkla içeriz.",
+      "wrong": "Hayır, çorba için o kullanılmaz."
+    },
+    "q_what_erase_with": {
+      "correct": "Evet! Silgi ile sileriz.",
+      "wrong": "Hayır, onunla silmeyiz."
+    },
+    "q_what_dry_after_bath": {
+      "correct": "Doğru! Havluyla kurulanırız.",
+      "wrong": "Hayır, onunla kurulanmayız."
+    },
+    "q_what_chickens_give_us_for_breakfast": {
+      "correct": "Evet! Tavuklar yumurta verir.",
+      "wrong": "Hayır, onu vermezler."
+    },
+    "q_what_wash_hands_with": {
+      "correct": "Evet! Ellerimizi sabunla yıkarız.",
+      "wrong": "Hayır, onunla yıkamayız."
+    },
+    "q_what_use_to_paint": {
+      "correct": "Evet! Boya kalemleri kullanırız.",
+      "wrong": "Hayır, onu resim için kullanmayız."
+    },
+    "q_what_use_to_tie_hair": {
+      "correct": "Evet! Saç tokası kullanırız.",
+      "wrong": "Hayır, onu kullanmayız."
+    },
+    "q_what_put_under_head_when_sleeping": {
+      "correct": "Evet! Yastık koyarız.",
+      "wrong": "Hayır, onu koymayız."
+    },
+    "q_what_wear_on_feet_when_going_out": {
+      "correct": "Evet! Ayakkabı giyeriz.",
+      "wrong": "Hayır, onu giymeyiz."
+    },
+    "q_what_people_who_cant_see_far_wear": {
+      "correct": "Evet! Gözlük takarlar.",
+      "wrong": "Hayır, onu takmazlar."
+    },
+    "q_what_put_on_birthday_cake_and_blow": {
+      "correct": "Evet! Mum koyup üfleriz.",
+      "wrong": "Hayır, onu koymayız."
+    },
+    "q_what_squeeze_on_salad_for_sour_taste": {
+      "correct": "Evet! Limon sıkarız.",
+      "wrong": "Hayır, onu sıkmayız."
+    },
+    "q_what_use_to_hammer_nail_on_wall": {
+      "correct": "Evet! Çekiç kullanırız.",
+      "wrong": "Hayır, onu kullanmayız."
+    },
+    "q_what_burn_to_get_warm": {
+      "correct": "Evet! Odun yakarız.",
+      "wrong": "Hayır, onu yakmayız."
+    },
+    "q_what_put_stuff_in_when_going_to_school": {
+      "correct": "Evet! Okul çantasına koyarız.",
+      "wrong": "Hayır, ona koymayız."
+    },
+    "q_what_is_crispy_snack_made_of_potatoes": {
+      "correct": "Evet! Cips patatesten yapılır.",
+      "wrong": "Hayır, o değil."
+    },
+    "q_what_drink_water_with": {
+      "correct": "Evet! Suyu bardakla içeriz.",
+      "wrong": "Hayır, onunla içmeyiz."
+    },
+    "q_what_stick_on_letter_to_mail": {
+      "correct": "Evet! Pul yapıştırırız.",
+      "wrong": "Hayır, onu yapıştırmayız."
+    },
+    "q_what_babies_drink_milk_with": {
+      "correct": "Evet! Bebekler biberonla içer.",
+      "wrong": "Hayır, onunla içmezler."
+    },
+    "q_what_use_to_fix_messy_hair": {
+      "correct": "Evet! Tarak kullanırız.",
+      "wrong": "Hayır, onu kullanmayız."
+    },
+    "q_what_spread_on_bread_for_breakfast": {
+      "correct": "Evet! Tereyağı süreriz.",
+      "wrong": "Hayır, onu sürmeyiz."
+    },
+    "q_where_doctors_work": {
+      "correct": "Evet! Doktorlar hastanede çalışır.",
+      "wrong": "Hayır, orada çalışmazlar."
+    },
+    "q_where_go_to_swing": {
+      "correct": "Evet! Çocuk parkına gideriz.",
+      "wrong": "Hayır, oraya gitmeyiz."
+    },
+    "q_where_sleep_at_night": {
+      "correct": "Evet! Yatakta uyuruz.",
+      "wrong": "Hayır, orada uyumayız."
+    },
+    "q_where_fish_live": {
+      "correct": "Evet! Balıklar denizde yaşar.",
+      "wrong": "Hayır, orada yaşamazlar."
+    },
+    "q_where_teachers_teach": {
+      "correct": "Evet! Öğretmenler okulda ders anlatır.",
+      "wrong": "Hayır, orada anlatmazlar."
+    },
+    "q_where_planes_fly": {
+      "correct": "Evet! Uçaklar gökyüzünde uçar.",
+      "wrong": "Hayır, orada uçmazlar."
+    },
+    "q_where_ships_sail": {
+      "correct": "Evet! Gemiler denizde yüzer.",
+      "wrong": "Hayır, orada yüzmezler."
+    },
+    "q_where_cars_go": {
+      "correct": "Evet! Arabalar yolda gider.",
+      "wrong": "Hayır, orada gitmezler."
+    },
+    "q_where_eat_out_with_family": {
+      "correct": "Evet! Restorana gidebiliriz.",
+      "wrong": "Hayır, oraya gitmeyiz."
+    },
+    "q_where_buy_food_for_home": {
+      "correct": "Evet! Markete gideriz.",
+      "wrong": "Hayır, oraya gitmeyiz."
+    },
+    "q_where_is_place_with_lots_of_books": {
+      "correct": "Evet! Kütüphanedir.",
+      "wrong": "Hayır, orası değil."
+    },
+    "q_where_camels_usually_live": {
+      "correct": "Evet! Develer çölde yaşar.",
+      "wrong": "Hayır, orada yaşamazlar."
+    },
+    "q_where_bears_usually_live": {
+      "correct": "Evet! Ayılar ormanda yaşar.",
+      "wrong": "Hayır, orada yaşamazlar."
+    },
+    "q_where_put_clean_clothes": {
+      "correct": "Evet! Elbise dolabına koyarız.",
+      "wrong": "Hayır, oraya koymayız."
+    },
+    "q_where_go_to_sunbathe_and_swim_in_summer": {
+      "correct": "Evet! Plaja gideriz.",
+      "wrong": "Hayır, oraya gitmeyiz."
+    },
+    "q_where_birds_lay_eggs": {
+      "correct": "Evet! Kuş yuvasına koyarlar.",
+      "wrong": "Hayır, oraya koymazlar."
+    },
+    "q_where_cook_cooks": {
+      "correct": "Evet! Aşçı restoranda yemek pişirir.",
+      "wrong": "Hayır, orada pişirmez."
+    },
+    "q_where_set_up_tent_for_camping": {
+      "correct": "Evet! Ormanda kamp yaparız.",
+      "wrong": "Hayır, orada kamp yapmayız."
+    },
+    "q_when_use_umbrella": {
+      "correct": "Evet! Yağmurda şemsiye kullanırız.",
+      "wrong": "Hayır, o zaman kullanmayız."
+    },
+    "q_when_make_snowman": {
+      "correct": "Doğru! Kar yağınca yaparız.",
+      "wrong": "Hayır, o zaman yapmayız."
+    },
+    "q_when_see_owls": {
+      "correct": "Doğru! Baykuşu gece görürüz.",
+      "wrong": "Hayır, o zaman görmeyiz."
+    },
+    "q_when_see_stars_in_sky": {
+      "correct": "Evet! Gece görürüz.",
+      "wrong": "Hayır, o zaman görmeyiz."
+    },
+    "q_when_roosters_crow": {
+      "correct": "Evet! Sabah öterler.",
+      "wrong": "Hayır, o zaman ötmezler."
+    },
+    "q_when_wear_beanie_when_cold": {
+      "correct": "Doğru! Karlı havada takarız.",
+      "wrong": "Hayır, o zaman takmayız."
+    },
+    "q_when_usually_go_to_beach": {
+      "correct": "Evet! Güneşli havada gideriz.",
+      "wrong": "Hayır, o zaman gitmeyiz."
+    },
+    "q_when_blow_out_candles_on_cake": {
+      "correct": "Evet! Doğum günümüzde üfleriz.",
+      "wrong": "Hayır, o zaman üflemeyiz."
+    },
+    "q_when_eat": {
+      "correct": "Evet! Acıkınca yemek yeriz.",
+      "wrong": "Hayır, o zaman yemeyiz."
+    },
+    "q_when_sleep": {
+      "correct": "Evet! Yorulunca uyuruz.",
+      "wrong": "Hayır, o zaman uyumayız."
+    },
+    "q_when_bears_hibernate": {
+      "correct": "Doğru! Kışın uyurlar.",
+      "wrong": "Hayır, o zaman uyumazlar."
+    },
+    "q_when_usually_go_to_bed": {
+      "correct": "Evet! Gece yatarız.",
+      "wrong": "Hayır, o zaman yatmayız."
+    },
+    "q_when_see_sun_in_sky": {
+      "correct": "Evet! Gündüz görürüz.",
+      "wrong": "Hayır, o zaman görmeyiz."
+    },
+    "q_when_turn_on_light_in_room": {
+      "correct": "Evet! Karanlık olunca açarız.",
+      "wrong": "Hayır, o zaman açmayız."
+    },
+    "q_when_wear_gloves_when_hands_cold": {
+      "correct": "Evet! Karlı havada giyeriz.",
+      "wrong": "Hayır, o zaman giymeyiz."
+    },
+    "q_when_usually_wear_shorts": {
+      "correct": "Evet! Sıcak havada giyeriz.",
+      "wrong": "Hayır, o zaman giymeyiz."
+    },
+    "q_when_wash_hands": {
+      "correct": "Evet! Kirlenince yıkarız.",
+      "wrong": "Hayır, o zaman yıkamayız."
+    },
+    "q_why_ice_cream_melted": {
+      "correct": "Evet! Güneşten erimiş olabilir.",
+      "wrong": "Hayır, ondan erimemiştir."
+    },
+    "q_why_hair_is_wet": {
+      "correct": "Evet! Duş aldığı için ıslak.",
+      "wrong": "Hayır, ondan ıslak değil."
+    },
+    "q_why_child_is_cold": {
+      "correct": "Evet! Kar yağdığı için üşüyor.",
+      "wrong": "Hayır, ondan üşümüyor."
+    },
+    "q_why_child_is_crying": {
+      "correct": "Evet! Canı acıdığı için ağlıyor.",
+      "wrong": "Hayır, ondan ağlamıyor."
+    },
+    "q_why_child_holds_umbrella": {
+      "correct": "Evet! Yağmur yağdığı için.",
+      "wrong": "Hayır, ondan değil."
+    },
+    "q_why_wrinkled_clothes_became_smooth": {
+      "correct": "Evet! Ütülendiği için düzgün.",
+      "wrong": "Hayır, ondan değil."
+    },
+    "q_why_hands_get_dirty": {
+      "correct": "Evet! Oynayınca kirlenir.",
+      "wrong": "Hayır, ondan kirlenmez."
+    },
+    "q_why_child_is_tired": {
+      "correct": "Evet! Bisiklet sürdüğü için yorulmuş.",
+      "wrong": "Hayır, ondan yorulmamış."
+    },
+    "q_why_child_is_lying_down": {
+      "correct": "Evet! Ateşi olduğu için yatıyor.",
+      "wrong": "Hayır, ondan yatmıyor."
+    },
+    "q_why_vase_is_broken": {
+      "correct": "Evet! Top oynarken kırılmış.",
+      "wrong": "Hayır, ondan kırılmamış."
+    },
+    "q_why_room_is_bright": {
+      "correct": "Evet! Lamba yandığı için aydınlık.",
+      "wrong": "Hayır, ondan aydınlık değil."
+    },
+    "q_why_floor_is_wet": {
+      "correct": "Evet! Yağmurdan ıslanmış olabilir.",
+      "wrong": "Hayır, ondan ıslanmamış."
+    },
+    "q_why_room_is_dark": {
+      "correct": "Evet! Gece olduğu için karanlık.",
+      "wrong": "Hayır, ondan karanlık değil."
+    },
+    "q_why_child_is_happy": {
+      "correct": "Evet! Hediye aldığı için mutlu.",
+      "wrong": "Hayır, ondan mutlu değil."
+    },
+    "q_why_dirty_dishes_are_clean": {
+      "correct": "Evet! Makinede yıkandığı için temiz.",
+      "wrong": "Hayır, ondan temiz değil."
+    },
+    "q_why_some_people_wear_glasses": {
+      "correct": "Evet! Uzağı iyi göremedikleri için.",
+      "wrong": "Hayır, ondan değil."
+    },
+    "q_how_go_to_school": {
+      "correct": "Evet! Okul otobüsüyle gideriz.",
+      "wrong": "Hayır, öyle gitmeyiz."
+    },
+    "q_how_open_door": {
+      "correct": "Evet! Anahtarla açarız.",
+      "wrong": "Hayır, onunla açmayız."
+    },
+    "q_how_baby_feels": {
+      "correct": "Doğru! Bebek üzgün hissediyor.",
+      "wrong": "Hayır, bebek öyle hissetmiyor."
+    },
+    "q_how_child_feels": {
+      "correct": "Doğru! Çocuk mutlu hissediyor.",
+      "wrong": "Hayır, çocuk öyle hissetmiyor."
+    },
+    "q_how_reach_high_place": {
+      "correct": "Evet! Merdivenle ulaşırız.",
+      "wrong": "Hayır, onunla ulaşamayız."
+    },
+    "q_how_travel_at_sea": {
+      "correct": "Doğru! Denizde gemiyle gideriz.",
+      "wrong": "Hayır, onunla gitmeyiz."
+    },
+    "q_how_clean_room": {
+      "correct": "Evet! Temizlik malzemeleriyle temizleriz.",
+      "wrong": "Hayır, onunla temizlemeyiz."
+    },
+    "q_how_dry_hands_after_washing": {
+      "correct": "Evet! Havluyla kurularız.",
+      "wrong": "Hayır, onunla kurulanmayız."
+    },
+    "q_how_eat_pasta": {
+      "correct": "Evet! Çatalla yeriz.",
+      "wrong": "Hayır, onunla yemeyiz."
+    },
+    "q_how_comb_hair": {
+      "correct": "Evet! Tarakla tararız.",
+      "wrong": "Hayır, onunla taramayız."
+    },
+    "q_how_cut_paper": {
+      "correct": "Evet! Makasla keseriz.",
+      "wrong": "Hayır, onunla kesmeyiz."
+    },
+    "q_how_measure_height": {
+      "correct": "Evet! Cetvelle ölçeriz.",
+      "wrong": "Hayır, onunla ölçmeyiz."
+    },
+    "q_how_talk_to_someone_far_away": {
+      "correct": "Evet! Telefonla konuşuruz.",
+      "wrong": "Hayır, onunla konuşmayız."
+    },
+    "q_how_light_a_dark_room": {
+      "correct": "Evet! Lambayla aydınlatırız.",
+      "wrong": "Hayır, onunla aydınlatmayız."
+    },
+    "q_how_cook_food": {
+      "correct": "Evet! Fırında pişiririz.",
+      "wrong": "Hayır, onda pişirmeyiz."
+    },
+    "q_how_rabbit_moves": {
+      "correct": "Evet! Tavşan sıçrayarak hareket eder.",
+      "wrong": "Hayır, öyle hareket etmez."
+    }
+  }
+}

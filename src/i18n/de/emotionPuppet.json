@@ -1,0 +1,16 @@
+{
+  "emotionPuppet": {
+    "emotions": {
+      "happy": "Glücklich",
+      "sad": "Traurig",
+      "angry": "Wütend",
+      "surprised": "Überrascht"
+    },
+    "instructions": "Wähle Gesichtsteile, um ein {emotion} Gesicht zu erstellen",
+    "selectEyes": "Wähle Augen",
+    "selectMouth": "Wähle Mund",
+    "selectEyebrows": "Wähle Augenbrauen",
+    "correct": "Großartig! Du hast den richtigen Gesichtsausdruck erstellt!",
+    "tryAgain": "Versuch es nochmal, wähle andere Teile"
+  }
+}

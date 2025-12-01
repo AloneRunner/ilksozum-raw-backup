@@ -1,0 +1,60 @@
+{
+  "bitterSweet": {
+    "q_which_is_bitter": "Acı olan hangisi?",
+    "q_which_is_bitter_person": "Acı olan hangisi?",
+    "q_which_is_sweet": "Tatlı olan hangisi?",
+    "q_which_is_sour": "Ekşi olan hangisi?",
+
+    "yes_biber": "Evet, biber acı.",
+    "no_biber": "Hayır, biber acı.",
+    "yes_bal": "Evet, bal tatlı.",
+    "no_bal": "Hayır, bal tatlı.",
+
+    "yes_limon": "Evet, limon ekşi.",
+    "no_limon": "Hayır, limon ekşi.",
+    "yes_lolipop": "Evet, lolipop tatlı.",
+    "no_lolipop": "Hayır, lolipop tatlı.",
+
+    "yes_greyfurt": "Evet, greyfurt ekşi.",
+    "no_greyfurt": "Hayır, greyfurt ekşi.",
+    "yes_pasta": "Evet, pasta tatlı.",
+    "no_pasta": "Hayır, pasta tatlı.",
+
+    "yes_eksi_visne": "Evet, vişne ekşi.",
+    "no_eksi_visne": "Hayır, vişne ekşi.",
+    "yes_tatli_kiraz": "Evet, kiraz tatlı.",
+    "no_tatli_kiraz": "Hayır, kiraz tatlı.",
+
+    "yes_kahve": "Evet, kahve acı.",
+    "no_kahve": "Hayır, kahve acı.",
+    "yes_milkshake": "Evet, milkshake tatlı.",
+    "no_milkshake": "Hayır, milkshake tatlı.",
+
+    "yes_cikolata": "Evet, çikolata tatlı.",
+    "no_cikolata": "Hayır, çikolata tatlı.",
+
+    "yes_sirke": "Evet, sirke ekşi.",
+    "no_sirke": "Hayır, sirke ekşi.",
+    "yes_recel": "Evet, reçel tatlı.",
+    "no_recel": "Hayır, reçel tatlı.",
+
+    "yes_sogan": "Evet, soğan acı.",
+    "no_sogan": "Hayır, soğan acı.",
+    "yes_cilek": "Evet, çilek tatlı.",
+    "no_cilek": "Hayır, çilek tatlı.",
+
+    "yes_biskuvi": "Evet, bisküvi tatlı.",
+    "no_biskuvi": "Hayır, bisküvi tatlı.",
+
+    "yes_dondurma": "Evet, dondurma tatlı.",
+    "no_dondurma": "Hayır, dondurma tatlı.",
+
+    "yes_elma": "Evet, elma tatlı.",
+    "no_elma": "Hayır, elma tatlı.",
+
+    "yes_zencefil": "Evet, zencefil acı.",
+    "no_zencefil": "Hayır, zencefil acı.",
+    "yes_jelibon": "Evet, jelibon tatlı.",
+    "no_jelibon": "Hayır, jelibon tatlı."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "messyClean": {
+    "questions": {
+      "q_which_is_messy": "Welke is rommelig?",
+      "q_which_is_tidy": "Welke is netjes?",
+      "yes_oda_messy": "Ja, oda is rommelig.",
+      "no_oda_messy": "Nee, oda is niet rommelig.",
+      "yes_oda_tidy": "Ja, oda is netjes.",
+      "no_oda_tidy": "Nee, oda is niet netjes.",
+      "yes_kitaplık_messy": "Ja, kitaplık is rommelig.",
+      "no_kitaplık_messy": "Nee, kitaplık is niet rommelig.",
+      "yes_kitaplık_tidy": "Ja, kitaplık is netjes.",
+      "no_kitaplık_tidy": "Nee, kitaplık is niet netjes.",
+      "yes_kalemlik_messy": "Ja, kalemlik is rommelig.",
+      "no_kalemlik_messy": "Nee, kalemlik is niet rommelig.",
+      "yes_kalemlik_tidy": "Ja, kalemlik is netjes.",
+      "no_kalemlik_tidy": "Nee, kalemlik is niet netjes.",
+      "yes_yatak_messy": "Ja, yatak is rommelig.",
+      "no_yatak_messy": "Nee, yatak is niet rommelig.",
+      "yes_yatak_tidy": "Ja, yatak is netjes.",
+      "no_yatak_tidy": "Nee, yatak is niet netjes.",
+      "yes_dolap_messy": "Ja, dolap is rommelig.",
+      "no_dolap_messy": "Nee, dolap is niet rommelig.",
+      "yes_dolap_tidy": "Ja, dolap is netjes.",
+      "no_dolap_tidy": "Nee, dolap is niet netjes.",
+      "yes_masa_messy": "Ja, masa is rommelig.",
+      "no_masa_messy": "Nee, masa is niet rommelig.",
+      "yes_masa_tidy": "Ja, masa is netjes.",
+      "no_masa_tidy": "Nee, masa is niet netjes.",
+      "yes_saç_messy": "Ja, saç is rommelig.",
+      "no_saç_messy": "Nee, saç is niet rommelig.",
+      "yes_saç_tidy": "Ja, saç is netjes.",
+      "no_saç_tidy": "Nee, saç is niet netjes."
+    }
+  }
+}

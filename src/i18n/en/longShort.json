@@ -1,0 +1,56 @@
+{
+  "longShort": {
+    "q_which_is_long": "Which one is long?",
+    "q_which_is_short": "Which one is short?",
+    
+    "yes_zurafa_uzun": "Yes, the giraffe is long.",
+    "no_zurafa_uzun": "No, the giraffe is not long.",
+    "yes_fare_kisa": "Yes, the mouse is short.",
+    "no_fare_kisa": "No, the mouse is not short.",
+    
+    "yes_pantolon_uzun": "Yes, the pants are long.",
+    "no_pantolon_uzun": "No, the pants are not long.",
+    "yes_sort_kisa": "Yes, the shorts are short.",
+    "no_sort_kisa": "No, the shorts are not short.",
+    
+    "yes_havuc_uzun": "Yes, the carrot is long.",
+    "no_havuc_uzun": "No, the carrot is not long.",
+    "yes_havuc_kisa": "Yes, the carrot is short.",
+    "no_havuc_kisa": "No, the carrot is not short.",
+    
+    "yes_merdiven_uzun": "Yes, the ladder is long.",
+    "no_merdiven_uzun": "No, the ladder is not long.",
+    "yes_tabure_kisa": "Yes, the stool is short.",
+    "no_tabure_kisa": "No, the stool is not short.",
+    
+    "yes_tren_uzun": "Yes, the train is long.",
+    "no_tren_uzun": "No, the train is not long.",
+    "yes_araba_kisa": "Yes, the car is short.",
+    "no_araba_kisa": "No, the car is not short.",
+    
+    "yes_yilan_uzun": "Yes, the snake is long.",
+    "no_yilan_uzun": "No, the snake is not long.",
+    "yes_solucan_kisa": "Yes, the worm is short.",
+    "no_solucan_kisa": "No, the worm is not short.",
+    
+    "yes_sac_uzun": "Yes, the hair is long.",
+    "no_sac_uzun": "No, the hair is not long.",
+    "yes_sac_kisa": "Yes, the hair is short.",
+    "no_sac_kisa": "No, the hair is not short.",
+    
+    "yes_agac_uzun": "Yes, the tree is long.",
+    "no_agac_uzun": "No, the tree is not long.",
+    "yes_agac_kisa": "Yes, the tree is short.",
+    "no_agac_kisa": "No, the tree is not short.",
+    
+    "yes_cetvel_uzun": "Yes, the ruler is long.",
+    "no_cetvel_uzun": "No, the ruler is not long.",
+    "yes_silgi_kisa": "Yes, the eraser is short.",
+    "no_silgi_kisa": "No, the eraser is not short.",
+    
+    "yes_kalem_uzun": "Yes, the pencil is long.",
+    "no_kalem_uzun": "No, the pencil is not long.",
+    "yes_kalem_kisa": "Yes, the pencil is short.",
+    "no_kalem_kisa": "No, the pencil is not short."
+  }
+}

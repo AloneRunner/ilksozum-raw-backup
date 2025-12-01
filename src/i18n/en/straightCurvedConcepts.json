@@ -1,0 +1,55 @@
+﻿{
+  "straightCurvedConcepts": {
+    "flatCurved": "flat / Curved",
+    "q_which_is_flat": "Which one is flat?",
+    "q_which_is_curved": "Which one is curved?",
+
+    "yes_yol_duz": "Yes, the road is flat.",
+  "no_yol_duz": "No, the road is not flat.",
+  "yes_yol_egri": "Yes, the road is curved.",
+  "no_yol_egri": "No, the road is not curved.",
+
+  "yes_cetvel_duz": "Yes, the ruler is flat.",
+  "no_cetvel_duz": "No, the ruler is not flat.",
+  "yes_solucan_egri": "Yes, the worm is curved.",
+  "no_solucan_egri": "No, the worm is not curved.",
+
+  "yes_ok_duz": "Yes, the arrow is flat.",
+  "no_ok_duz": "No, the arrow is not flat.",
+  "yes_yay_egri": "Yes, the bow is curved.",
+  "no_yay_egri": "No, the bow is not curved.",
+
+  "yes_kalem_duz": "Yes, the pencil is flat.",
+  "no_kalem_duz": "No, the pencil is not flat.",
+  "yes_muz_egri": "Yes, the banana is curved.",
+  "no_muz_egri": "No, the banana is not curved.",
+
+  "yes_davul_cubugu_duz": "Yes, the drumstick is flat.",
+  "no_davul_cubugu_duz": "No, the drumstick is not flat.",
+  "yes_yilan_egri": "Yes, the snake is curved.",
+  "no_yilan_egri": "No, the snake is not curved.",
+
+  "yes_kitap_duz": "Yes, the book is flat.",
+  "no_kitap_duz": "No, the book is not flat.",
+  "yes_ay_egri": "Yes, the moon is curved.",
+  "no_ay_egri": "No, the moon is not curved.",
+
+  "yes_tugla_duz": "Yes, the brick is flat.",
+  "no_tugla_duz": "No, the brick is not flat.",
+  "yes_gokkusagi_egri": "Yes, the rainbow is curved.",
+  "no_gokkusagi_egri": "No, the rainbow is not curved.",
+
+  "yes_bicak_duz": "Yes, the knife is flat.",
+  "no_bicak_duz": "No, the knife is not flat.",
+  "yes_salatalik_egri": "Yes, the cucumber is curved.",
+  "no_salatalik_egri": "No, the cucumber is not curved.",
+
+  "yes_masa_duz": "Yes, the table is flat.",
+  "no_masa_duz": "No, the table is not flat.",
+  "yes_nehir_egri": "Yes, the river is curved.",
+  "no_nehir_egri": "No, the river is not curved.",
+
+  "yes_pirasa_duz": "Yes, the leek is flat.",
+  "no_pirasa_duz": "No, the leek is not flat."
+  }
+}

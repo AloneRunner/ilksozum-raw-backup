@@ -1,0 +1,53 @@
+﻿{
+  "flatCurved": "DÃ¼z / Æyri",
+  "q_which_is_flat": "HansÄ±dÄ±r dÃ¼z?",
+  "q_which_is_curved": "HansÄ±dÄ±r É™yri?",
+
+  "yes_yol_duz": "BÉ™li, yol dÃ¼zdÃ¼r.",
+  "no_yol_duz": "Xeyr, yol dÃ¼z deyil.",
+  "yes_yol_egri": "BÉ™li, yol É™yridir.",
+  "no_yol_egri": "Xeyr, yol É™yri deyil.",
+
+  "yes_cetvel_duz": "BÉ™li, xÉ™tkÉ™ÅŸ dÃ¼zdÃ¼r.",
+  "no_cetvel_duz": "Xeyr, xÉ™tkÉ™ÅŸ dÃ¼z deyil.",
+  "yes_solucan_egri": "BÉ™li, soxulcan É™yridir.",
+  "no_solucan_egri": "Xeyr, soxulcan É™yri deyil.",
+
+  "yes_ok_duz": "BÉ™li, ox dÃ¼zdÃ¼r.",
+  "no_ok_duz": "Xeyr, ox dÃ¼z deyil.",
+  "yes_yay_egri": "BÉ™li, yay É™yridir.",
+  "no_yay_egri": "Xeyr, yay É™yri deyil.",
+
+  "yes_kalem_duz": "BÉ™li, qalÉ™m dÃ¼zdÃ¼r.",
+  "no_kalem_duz": "Xeyr, qalÉ™m dÃ¼z deyil.",
+  "yes_muz_egri": "BÉ™li, banan É™yridir.",
+  "no_muz_egri": "Xeyr, banan É™yri deyil.",
+
+  "yes_davul_cubugu_duz": "BÉ™li, barÄ±ban Ã§ubuuu dÃ¼zdÃ¼r.",
+  "no_davul_cubugu_duz": "Xeyr, barÄ±ban Ã§ubuuu dÃ¼z deyil.",
+  "yes_yilan_egri": "BÉ™li, ilan É™yridir.",
+  "no_yilan_egri": "Xeyr, ilan É™yri deyil.",
+
+  "yes_kitap_duz": "BÉ™li, kitab dÃ¼zdÃ¼r.",
+  "no_kitap_duz": "Xeyr, kitab dÃ¼z deyil.",
+  "yes_ay_egri": "BÉ™li, ay É™yridir.",
+  "no_ay_egri": "Xeyr, ay É™yri deyil.",
+
+  "yes_tugla_duz": "BÉ™li, kÉ™rpic dÃ¼zdÃ¼r.",
+  "no_tugla_duz": "Xeyr, kÉ™rpic dÃ¼z deyil.",
+  "yes_gokkusagi_egri": "BÉ™li, gÃ¶y qÃ¶vsÃ¼ É™yridir.",
+  "no_gokkusagi_egri": "Xeyr, gÃ¶y qÃ¶vsÃ¼ É™yri deyil.",
+
+  "yes_bicak_duz": "BÉ™li, bÄ±Ã§aq dÃ¼zdÃ¼r.",
+  "no_bicak_duz": "Xeyr, bÄ±Ã§aq dÃ¼z deyil.",
+  "yes_salatalik_egri": "BÉ™li, xiyar É™yridir.",
+  "no_salatalik_egri": "Xeyr, xiyar É™yri deyil.",
+
+  "yes_masa_duz": "BÉ™li, masa dÃ¼zdÃ¼r.",
+  "no_masa_duz": "Xeyr, masa dÃ¼z deyil.",
+  "yes_nehir_egri": "BÉ™li, Ã§ay É™yridir.",
+  "no_nehir_egri": "Xeyr, Ã§ay É™yri deyil.",
+
+  "yes_pirasa_duz": "BÉ™li, kormÉ™mÉ™ÅŸi dÃ¼zdÃ¼r.",
+  "no_pirasa_duz": "Xeyr, kormÉ™mÉ™ÅŸi dÃ¼z deyil."
+}

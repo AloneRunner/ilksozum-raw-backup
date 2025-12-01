@@ -1,0 +1,31 @@
+{
+  "tazeBayatConcepts": {
+    "tazeBayat": "Taze / Bayat",
+    "q_which_is_fresh": "Taze olan hangisi?",
+    "q_which_is_stale": "Bayat olan hangisi?",
+    "yes_ekmek_taze": "Evet, ekmek taze.",
+    "no_ekmek_taze": "Hayır, ekmek taze değil.",
+    "yes_ekmek_bayat": "Evet, ekmek bayat.",
+    "no_ekmek_bayat": "Hayır, ekmek bayat değil.",
+    "yes_elma_taze": "Evet, elma taze.",
+    "no_elma_taze": "Hayır, elma taze değil.",
+    "yes_elma_bayat": "Evet, elma çürük.",
+    "no_elma_bayat": "Hayır, elma çürük değil.",
+    "yes_muz_taze": "Evet, muz taze.",
+    "no_muz_taze": "Hayır, muz taze değil.",
+    "yes_muz_bayat": "Evet, muz bayat.",
+    "no_muz_bayat": "Hayır, muz bayat değil.",
+    "yes_gul_taze": "Evet, gül taze.",
+    "no_gul_taze": "Hayır, gül taze değil.",
+    "yes_gul_solmus": "Evet, gül solmuş.",
+    "no_gul_solmus": "Hayır, gül solmuş değil.",
+    "yes_havuc_taze": "Evet, havuç taze.",
+    "no_havuc_taze": "Hayır, havuç taze değil.",
+    "yes_havuc_bayat": "Evet, havuç bayat.",
+    "no_havuc_bayat": "Hayır, havuç bayat değil.",
+    "yes_sut_taze": "Evet, süt taze.",
+    "no_sut_taze": "Hayır, süt taze değil.",
+    "yes_sut_bozuk": "Evet, süt bozuk.",
+    "no_sut_bozuk": "Hayır, süt bozuk değil."
+  }
+}

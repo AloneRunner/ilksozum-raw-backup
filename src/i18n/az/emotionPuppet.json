@@ -1,0 +1,16 @@
+{
+  "emotionPuppet": {
+    "emotions": {
+      "happy": "Xoşbəxt",
+      "sad": "Kədərli",
+      "angry": "Qəzəbli",
+      "surprised": "Təəccüblü"
+    },
+    "instructions": "{emotion} üz yaratmaq üçün üz hissələrini seçin",
+    "selectEyes": "Gözləri seçin",
+    "selectMouth": "Ağızı seçin",
+    "selectEyebrows": "Qaşları seçin",
+    "correct": "Əla! Düzgün üz ifadəsini yaratdınız!",
+    "tryAgain": "Yenidən cəhd edin, fərqli hissələr seçin"
+  }
+}

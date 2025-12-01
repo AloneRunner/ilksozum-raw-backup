@@ -1,0 +1,27 @@
+{
+  "halfQuarterWholeConcepts": {
+    "halfQuarterWhole": "Halb / Viertel / Ganz",
+    "q_which_is_whole": "Welches ist ganz?",
+    "q_which_is_half": "Welches ist halb?",
+    "q_which_is_quarter": "Welches ist ein Viertel?",
+    "q_which_is_slice": "Welches ist ein Stück?",
+    "yes_pizza_butun": "Ja, die Pizza ist ganz.",
+    "no_pizza_butun": "Nein, die Pizza ist nicht ganz.",
+    "yes_pizza_yarim": "Ja, die Pizza ist halb.",
+    "no_pizza_yarim": "Nein, die Pizza ist nicht halb.",
+    "yes_pizza_dilimi_ceyrek": "Ja, das ist eine Viertel-Pizza.",
+    "no_pizza_dilimi_ceyrek": "Nein, das ist keine Viertel-Pizza.",
+    "yes_portakal_butun": "Ja, die Orange ist ganz.",
+    "no_portakal_butun": "Nein, die Orange ist nicht ganz.",
+    "yes_portakal_yarim": "Ja, die Orange ist halb.",
+    "no_portakal_yarim": "Nein, die Orange ist nicht halb.",
+    "yes_simit_butun": "Ja, der Kringel ist ganz.",
+    "no_simit_butun": "Nein, der Kringel ist nicht ganz.",
+    "yes_simit_yarim": "Ja, der Kringel ist halb.",
+    "no_simit_yarim": "Nein, der Kringel ist nicht halb.",
+    "yes_pasta_butun": "Ja, der Kuchen ist ganz.",
+    "no_pasta_butun": "Nein, der Kuchen ist nicht ganz.",
+    "yes_pasta_dilimi": "Ja, das ist ein Kuchenstück.",
+    "no_pasta_dilimi": "Nein, das ist kein Kuchenstück."
+  }
+}

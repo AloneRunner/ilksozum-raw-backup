@@ -1,0 +1,71 @@
+{
+  "oldNew": {
+    "q_which_is_old": "Hansı köhnədir?",
+    "q_which_is_new": "Hansı yenidir?",
+
+    "yes_bisiklet_eski": "Bəli, velosiped köhnədir.",
+    "no_bisiklet_eski": "Xeyr, velosiped köhnədir.",
+    "yes_bisiklet_yeni": "Bəli, velosiped yenidir.",
+    "no_bisiklet_yeni": "Xeyr, velosiped yenidir.",
+
+    "yes_araba_eski": "Bəli, maşın köhnədir.",
+    "no_araba_eski": "Xeyr, maşın köhnədir.",
+    "yes_araba_yeni": "Bəli, maşın yenidir.",
+    "no_araba_yeni": "Xeyr, maşın yenidir.",
+
+    "yes_tren_eski": "Bəli, qatar köhnədir.",
+    "no_tren_eski": "Xeyr, qatar köhnədir.",
+    "yes_tren_yeni": "Bəli, qatar yenidir.",
+    "no_tren_yeni": "Xeyr, qatar yenidir.",
+
+    "yes_ayakkabi_eski": "Bəli, ayaqqabı köhnədir.",
+    "no_ayakkabi_eski": "Xeyr, ayaqqabı köhnədir.",
+    "yes_ayakkabi_yeni": "Bəli, ayaqqabı yenidir.",
+    "no_ayakkabi_yeni": "Xeyr, ayaqqabı yenidir.",
+
+    "yes_kale_eski": "Bəli, qala qədimdir.",
+    "no_kale_eski": "Xeyr, qala qədimdir.",
+    "yes_ev_yeni": "Bəli, ev yenidir.",
+    "no_ev_yeni": "Xeyr, ev yenidir.",
+
+    "yes_sandalye_eski": "Bəli, stul köhnədir.",
+    "no_sandalye_eski": "Xeyr, stul köhnədir.",
+    "yes_sandalye_yeni": "Bəli, stul yenidir.",
+    "no_sandalye_yeni": "Xeyr, stul yenidir.",
+
+    "yes_araba_kirik_eski": "Bəli, maşın köhnədir.",
+    "no_araba_kirik_eski": "Xeyr, maşın köhnədir.",
+    "yes_araba_saglam_yeni": "Bəli, maşın yenidir.",
+    "no_araba_saglam_yeni": "Xeyr, maşın yenidir.",
+
+    "yes_kitap_eski": "Bəli, kitab köhnədir.",
+    "no_kitap_eski": "Xeyr, kitab köhnədir.",
+    "yes_kitap_yeni": "Bəli, kitab yenidir.",
+    "no_kitap_yeni": "Xeyr, kitab yenidir.",
+
+    "yes_ampul_eski": "Bəli, lampa köhnədir.",
+    "no_ampul_eski": "Xeyr, lampa köhnədir.",
+    "yes_led_ampul_yeni": "Bəli, lampa yenidir.",
+    "no_led_ampul_yeni": "Xeyr, lampa yenidir.",
+
+    "yes_ev_eski": "Bəli, ev köhnədir.",
+    "no_ev_eski": "Xeyr, ev köhnədir.",
+    "yes_ev_yeni_modern": "Bəli, ev yenidir.",
+    "no_ev_yeni_modern": "Xeyr, ev yenidir.",
+
+    "yes_televizyon_kirik_eski": "Bəli, televizor köhnədir.",
+    "no_televizyon_kirik_eski": "Xeyr, televizor köhnədir.",
+    "yes_televizyon_yeni": "Bəli, televizor yenidir.",
+    "no_televizyon_yeni": "Xeyr, televizor yenidir.",
+
+    "yes_zarf_eski": "Bəli, məktub köhnə üsuldur.",
+    "no_zarf_eski": "Xeyr, məktub köhnədir.",
+    "yes_email_yeni": "Bəli, e-poçt yenidir.",
+    "no_email_yeni": "Xeyr, e-poçt yenidir.",
+
+    "yes_kirik_telefon": "Bəli, telefon köhnədir.",
+    "no_kirik_telefon": "Xeyr, telefon köhnədir.",
+    "yes_akilli_telefon": "Bəli, telefon yenidir.",
+    "no_akıllı_telefon": "Xeyr, telefon yenidir."
+  }
+}

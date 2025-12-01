@@ -1,0 +1,8 @@
+{
+  "sequencingStories": {
+    "q_order_events": {
+      "correct": "Oui ! C'est le bon ordre.",
+      "wrong": "Non, ce n'est pas le bon ordre. Réessaye."
+    }
+  }
+}

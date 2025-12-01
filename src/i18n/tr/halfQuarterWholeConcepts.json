@@ -1,0 +1,27 @@
+{
+  "halfQuarterWholeConcepts": {
+    "halfQuarterWhole": "Yarım / Çeyrek / Bütün",
+    "q_which_is_whole": "Bütün olan hangisi?",
+    "q_which_is_half": "Yarım olan hangisi?",
+    "q_which_is_quarter": "Çeyrek olan hangisi?",
+    "q_which_is_slice": "Dilim olan hangisi?",
+    "yes_pizza_butun": "Evet, pizza bütün.",
+    "no_pizza_butun": "Hayır, pizza bütün değil.",
+    "yes_pizza_yarim": "Evet, pizza yarım.",
+    "no_pizza_yarim": "Hayır, pizza yarım değil.",
+    "yes_pizza_dilimi_ceyrek": "Evet, bu çeyrek pizza.",
+    "no_pizza_dilimi_ceyrek": "Hayır, bu çeyrek pizza değil.",
+    "yes_portakal_butun": "Evet, portakal bütün.",
+    "no_portakal_butun": "Hayır, portakal bütün değil.",
+    "yes_portakal_yarim": "Evet, portakal yarım.",
+    "no_portakal_yarim": "Hayır, portakal yarım değil.",
+    "yes_simit_butun": "Evet, simit bütün.",
+    "no_simit_butun": "Hayır, simit bütün değil.",
+    "yes_simit_yarim": "Evet, simit yarım.",
+    "no_simit_yarim": "Hayır, simit yarım değil.",
+    "yes_pasta_butun": "Evet, pasta bütün.",
+    "no_pasta_butun": "Hayır, pasta bütün değil.",
+    "yes_pasta_dilimi": "Evet, bu pasta dilimi.",
+    "no_pasta_dilimi": "Hayır, bu pasta dilimi değil."
+  }
+}

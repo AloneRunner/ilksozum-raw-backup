@@ -1,0 +1,33 @@
+{
+  "dikenliPuruzsuz": {
+    "q_which_is_thorny": "Welches ist stachelig?",
+    "q_which_is_thorny_person": "Welches ist stachelig?",
+    "q_which_is_smooth": "Welches ist glatt?",
+    "yes_kaktüs": "Ja, der Kaktus ist stachelig.",
+    "no_elma": "Nein, dieser Apfel ist glatt.",
+    "yes_elma": "Ja, der Apfel ist glatt.",
+    "no_kaktüs": "Nein, dieser Kaktus ist stachelig.",
+    "yes_kirpi": "Ja, der Igel ist stachelig.",
+    "no_yunus": "Nein, dieser Delfin ist glatt.",
+    "yes_yunus": "Ja, der Delfin ist glatt.",
+    "no_kirpi": "Nein, dieser Igel ist stachelig.",
+    "yes_deniz_kestanesi": "Ja, der Seeigel ist stachelig.",
+    "no_deniz_yıldızı": "Nein, dieser Seestern ist glatt.",
+    "yes_deniz_yıldızı": "Ja, der Seestern ist glatt.",
+    "no_deniz_kestanesi": "Nein, dieser Seeigel ist stachelig.",
+    "yes_dikenli_tel": "Ja, der Stacheldraht ist stachelig.",
+    "no_ip": "Nein, dieses Seil ist glatt.",
+    "yes_ip": "Ja, das Seil ist glatt.",
+    "no_dikenli_tel": "Nein, dieser Draht ist stachelig.",
+    "yes_enginar": "Ja, die Artischocke ist stachelig.",
+    "no_patlıcan": "Nein, diese Aubergine ist glatt.",
+    "yes_patlıcan": "Ja, die Aubergine ist glatt.",
+    "no_enginar": "Nein, diese Artischocke ist stachelig.",
+    "yes_dikenli_dal": "Ja, der Zweig ist stachelig.",
+    "no_dal": "Nein, dieser Zweig ist glatt.",
+    "yes_dal": "Ja, der Zweig ist glatt.",
+    "no_dikenli_dal": "Nein, dieser Zweig ist stachelig.",
+    "yes_ananas": "Ja, die Ananas ist stachelig.",
+    "no_ananas": "Nein, diese Ananas ist glatt."
+  }
+}

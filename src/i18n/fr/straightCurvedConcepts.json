@@ -1,0 +1,53 @@
+﻿{
+  "flatCurved": "Droit / Courbe",
+  "q_which_is_flat": "Lequel est droit?",
+  "q_which_is_curved": "Lequel est courbe?",
+
+  "yes_yol_duz": "Oui, la route est droite.",
+  "no_yol_duz": "Non, la route n'est pas droite.",
+  "yes_yol_egri": "Oui, la route est courbe.",
+  "no_yol_egri": "Non, la route n'est pas courbe.",
+
+  "yes_cetvel_duz": "Oui, la rÃ¨gle est droite.",
+  "no_cetvel_duz": "Non, la rÃ¨gle n'est pas droite.",
+  "yes_solucan_egri": "Oui, le ver est courbe.",
+  "no_solucan_egri": "Non, le ver n'est pas courbe.",
+
+  "yes_ok_duz": "Oui, la flÃ¨che est droite.",
+  "no_ok_duz": "Non, la flÃ¨che n'est pas droite.",
+  "yes_yay_egri": "Oui, l'arc est courbe.",
+  "no_yay_egri": "Non, l'arc n'est pas courbe.",
+
+  "yes_kalem_duz": "Oui, le crayon est droit.",
+  "no_kalem_duz": "Non, le crayon n'est pas droit.",
+  "yes_muz_egri": "Oui, la banane est courbe.",
+  "no_muz_egri": "Non, la banane n'est pas courbe.",
+
+  "yes_davul_cubugu_duz": "Oui, la baguette est droite.",
+  "no_davul_cubugu_duz": "Non, la baguette n'est pas droite.",
+  "yes_yilan_egri": "Oui, le serpent est courbe.",
+  "no_yilan_egri": "Non, le serpent n'est pas courbe.",
+
+  "yes_kitap_duz": "Oui, le livre est droit.",
+  "no_kitap_duz": "Non, le livre n'est pas droit.",
+  "yes_ay_egri": "Oui, la lune est courbe.",
+  "no_ay_egri": "Non, la lune n'est pas courbe.",
+
+  "yes_tugla_duz": "Oui, la brique est droite.",
+  "no_tugla_duz": "Non, la brique n'est pas droite.",
+  "yes_gokkusagi_egri": "Oui, l'arc-en-ciel est courbe.",
+  "no_gokkusagi_egri": "Non, l'arc-en-ciel n'est pas courbe.",
+
+  "yes_bicak_duz": "Oui, le couteau est droit.",
+  "no_bicak_duz": "Non, le couteau n'est pas droit.",
+  "yes_salatalik_egri": "Oui, le concombre est courbe.",
+  "no_salatalik_egri": "Non, le concombre n'est pas courbe.",
+
+  "yes_masa_duz": "Oui, la table est droite.",
+  "no_masa_duz": "Non, la table n'est pas droite.",
+  "yes_nehir_egri": "Oui, la riviÃ¨re est courbe.",
+  "no_nehir_egri": "Non, la riviÃ¨re n'est pas courbe.",
+
+  "yes_pirasa_duz": "Oui, le poireau est droit.",
+  "no_pirasa_duz": "Non, le poireau n'est pas droit."
+}

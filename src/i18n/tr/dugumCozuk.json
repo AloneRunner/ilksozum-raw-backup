@@ -1,0 +1,20 @@
+{
+  "dugumCozuk": {
+    "questions": {
+      "q_which_is_knotted": "Düğüm olan hangisi?",
+      "q_which_is_untied": "Çözük olan hangisi?",
+      "yes_ayakkabı_knotted": "Evet, ayakkabı düğümlü.",
+      "no_ayakkabı_knotted": "Hayır, ayakkabı düğümlü değil.",
+      "yes_ayakkabı_untied": "Evet, ayakkabı çözük.",
+      "no_ayakkabı_untied": "Hayır, ayakkabı çözük değil.",
+      "yes_hortum_knotted": "Evet, hortum düğümlü.",
+      "no_hortum_knotted": "Hayır, hortum düğümlü değil.",
+      "yes_hortum_untied": "Evet, hortum çözük.",
+      "no_hortum_untied": "Hayır, hortum çözük değil.",
+      "yes_kurdele_knotted": "Evet, kurdele düğümlü.",
+      "no_kurdele_knotted": "Hayır, kurdele düğümlü değil.",
+      "yes_kurdele_untied": "Evet, kurdele çözük.",
+      "no_kurdele_untied": "Hayır, kurdele çözük değil."
+    }
+  }
+}

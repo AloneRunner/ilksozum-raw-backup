@@ -1,0 +1,12 @@
+{
+  "whatDoesntBelong": {
+    "q_which_is_different": {
+      "correct": "Evet, {item} farklı.",
+      "wrong": "Hayır, bu da aynı."
+    },
+    "q_which_is_different_person": {
+      "correct": "Evet, {item} bir {category1}; diğerleri {category2}.",
+      "wrong": "Hayır, {item} bir {category2}."
+    }
+  }
+}

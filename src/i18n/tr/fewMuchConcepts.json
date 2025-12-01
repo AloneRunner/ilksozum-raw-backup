@@ -1,0 +1,32 @@
+{
+  "fewMuchConcepts": {
+    "fewMuch": "Az / Çok",
+    "q_which_is_few": "Az olan hangisi?",
+    "q_which_is_few_person": "Az olan hangisi?",
+    "q_which_is_much": "Çok olan hangisi?",
+    "yes_uzum_az": "Evet, bu üzümler az.",
+    "no_uzum_az": "Hayır, bu üzümler az değil.",
+    "yes_uzum_cok": "Evet, bu üzümler çok.",
+    "no_uzum_cok": "Hayır, bu üzümler çok değil.",
+    "yes_kavanoz_az": "Evet, bu misketler az.",
+    "no_kavanoz_az": "Hayır, bu misketler az değil.",
+    "yes_kavanoz_cok": "Evet, bu misketler çok.",
+    "no_kavanoz_cok": "Hayır, bu misketler çok değil.",
+    "yes_kitaplik_az": "Evet, bu kitaplar az.",
+    "no_kitaplik_az": "Hayır, bu kitaplar az değil.",
+    "yes_kitaplik_cok": "Evet, bu kitaplar çok.",
+    "no_kitaplik_cok": "Hayır, bu kitaplar çok değil.",
+    "yes_para_az": "Evet, bu para az.",
+    "no_para_az": "Hayır, bu para az değil.",
+    "yes_para_cok": "Evet, bu para çok.",
+    "no_para_cok": "Hayır, bu para çok değil.",
+    "yes_akvaryum_az": "Evet, bu balıklar az.",
+    "no_akvaryum_az": "Hayır, bu balıklar az değil.",
+    "yes_akvaryum_cok": "Evet, bu balıklar çok.",
+    "no_akvaryum_cok": "Hayır, bu balıklar çok değil.",
+    "yes_kus_az": "Evet, bu kuşlar az.",
+    "no_kus_az": "Hayır, bu kuşlar az değil.",
+    "yes_kuslar_cok": "Evet, bu kuşlar çok.",
+    "no_kuslar_cok": "Hayır, bu kuşlar çok değil."
+  }
+}

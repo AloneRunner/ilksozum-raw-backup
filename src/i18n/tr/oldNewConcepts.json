@@ -1,0 +1,71 @@
+{
+  "oldNew": {
+    "q_which_is_old": "Eski olan hangisi?",
+    "q_which_is_new": "Yeni olan hangisi?",
+
+    "yes_bisiklet_eski": "Evet, bisiklet eski.",
+    "no_bisiklet_eski": "Hayır, bu bisiklet eski.",
+    "yes_bisiklet_yeni": "Evet, bisiklet yeni.",
+    "no_bisiklet_yeni": "Hayır, bu bisiklet yeni.",
+
+    "yes_araba_eski": "Evet, araba eski.",
+    "no_araba_eski": "Hayır, bu araba eski.",
+    "yes_araba_yeni": "Evet, araba yeni.",
+    "no_araba_yeni": "Hayır, bu araba yeni.",
+
+    "yes_tren_eski": "Evet, tren eski.",
+    "no_tren_eski": "Hayır, bu tren eski.",
+    "yes_tren_yeni": "Evet, tren yeni.",
+    "no_tren_yeni": "Hayır, bu tren yeni.",
+
+    "yes_ayakkabi_eski": "Evet, ayakkabı eski.",
+    "no_ayakkabi_eski": "Hayır, bu ayakkabı eski.",
+    "yes_ayakkabi_yeni": "Evet, ayakkabı yeni.",
+    "no_ayakkabi_yeni": "Hayır, bu ayakkabı yeni.",
+
+    "yes_kale_eski": "Evet, kale eski.",
+    "no_kale_eski": "Hayır, bu kale eski.",
+    "yes_ev_yeni": "Evet, ev yeni.",
+    "no_ev_yeni": "Hayır, bu ev yeni.",
+
+    "yes_sandalye_eski": "Evet, sandalye eski.",
+    "no_sandalye_eski": "Hayır, bu sandalye eski.",
+    "yes_sandalye_yeni": "Evet, sandalye yeni.",
+    "no_sandalye_yeni": "Hayır, bu sandalye yeni.",
+
+    "yes_araba_kirik_eski": "Evet, araba eski ve kırık.",
+    "no_araba_kirik_eski": "Hayır, bu araba eski.",
+    "yes_araba_saglam_yeni": "Evet, araba yeni ve sağlam.",
+    "no_araba_saglam_yeni": "Hayır, bu araba yeni.",
+
+    "yes_kitap_eski": "Evet, kitap eski.",
+    "no_kitap_eski": "Hayır, bu kitap eski.",
+    "yes_kitap_yeni": "Evet, kitap yeni.",
+    "no_kitap_yeni": "Hayır, bu kitap yeni.",
+
+    "yes_ampul_eski": "Evet, ampul eski model.",
+    "no_ampul_eski": "Hayır, bu ampul eski.",
+    "yes_led_ampul_yeni": "Evet, LED ampul yeni.",
+    "no_led_ampul_yeni": "Hayır, bu ampul yeni.",
+
+    "yes_ev_eski": "Evet, ev eski.",
+    "no_ev_eski": "Hayır, bu ev eski.",
+    "yes_ev_yeni_modern": "Evet, bu ev yeni ve modern.",
+    "no_ev_yeni_modern": "Hayır, bu ev yeni.",
+
+    "yes_televizyon_kirik_eski": "Evet, televizyon eski.",
+    "no_televizyon_kirik_eski": "Hayır, bu televizyon eski.",
+    "yes_televizyon_yeni": "Evet, televizyon yeni.",
+    "no_televizyon_yeni": "Hayır, bu televizyon yeni.",
+
+    "yes_zarf_eski": "Evet, mektup eski yöntem.",
+    "no_zarf_eski": "Hayır, mektup eskidir.",
+    "yes_email_yeni": "Evet, e-posta yenidir.",
+    "no_email_yeni": "Hayır, e-posta yenidir.",
+
+    "yes_kirik_telefon": "Evet, bu telefon eski.",
+    "no_kirik_telefon": "Hayır, bu telefon eski.",
+    "yes_akilli_telefon": "Evet, bu telefon yeni.",
+    "no_akilli_telefon": "Hayır, bu telefon yeni."
+  }
+}

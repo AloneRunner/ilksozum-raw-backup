@@ -1,0 +1,71 @@
+{
+  "oldNew": {
+    "q_which_is_old": "Welches ist alt?",
+    "q_which_is_new": "Welches ist neu?",
+
+    "yes_bisiklet_eski": "Ja, das Fahrrad ist alt.",
+    "no_bisiklet_eski": "Nein, das Fahrrad ist alt.",
+    "yes_bisiklet_yeni": "Ja, das Fahrrad ist neu.",
+    "no_bisiklet_yeni": "Nein, das Fahrrad ist neu.",
+
+    "yes_araba_eski": "Ja, das Auto ist alt.",
+    "no_araba_eski": "Nein, das Auto ist alt.",
+    "yes_araba_yeni": "Ja, das Auto ist neu.",
+    "no_araba_yeni": "Nein, das Auto ist neu.",
+
+    "yes_tren_eski": "Ja, der Zug ist alt.",
+    "no_tren_eski": "Nein, der Zug ist alt.",
+    "yes_tren_yeni": "Ja, der Zug ist neu.",
+    "no_tren_yeni": "Nein, der Zug ist neu.",
+
+    "yes_ayakkabi_eski": "Ja, der Schuh ist alt.",
+    "no_ayakkabi_eski": "Nein, der Schuh ist alt.",
+    "yes_ayakkabi_yeni": "Ja, der Schuh ist neu.",
+    "no_ayakkabi_yeni": "Nein, der Schuh ist neu.",
+
+    "yes_kale_eski": "Ja, die Burg ist alt.",
+    "no_kale_eski": "Nein, die Burg ist alt.",
+    "yes_ev_yeni": "Ja, das Haus ist neu.",
+    "no_ev_yeni": "Nein, das Haus ist neu.",
+
+    "yes_sandalye_eski": "Ja, der Stuhl ist alt.",
+    "no_sandalye_eski": "Nein, der Stuhl ist alt.",
+    "yes_sandalye_yeni": "Ja, der Stuhl ist neu.",
+    "no_sandalye_yeni": "Nein, der Stuhl ist neu.",
+
+    "yes_araba_kirik_eski": "Ja, das Auto ist alt.",
+    "no_araba_kirik_eski": "Nein, das Auto ist alt.",
+    "yes_araba_saglam_yeni": "Ja, das Auto ist neu.",
+    "no_araba_saglam_yeni": "Nein, das Auto ist neu.",
+
+    "yes_kitap_eski": "Ja, das Buch ist alt.",
+    "no_kitap_eski": "Nein, das Buch ist alt.",
+    "yes_kitap_yeni": "Ja, das Buch ist neu.",
+    "no_kitap_yeni": "Nein, das Buch ist neu.",
+
+    "yes_ampul_eski": "Ja, die Glühbirne ist alt.",
+    "no_ampul_eski": "Nein, die Glühbirne ist alt.",
+    "yes_led_ampul_yeni": "Ja, die LED-Birne ist neu.",
+    "no_led_ampul_yeni": "Nein, die Birne ist neu.",
+
+    "yes_ev_eski": "Ja, das Haus ist alt.",
+    "no_ev_eski": "Nein, das Haus ist alt.",
+    "yes_ev_yeni_modern": "Ja, das Haus ist neu.",
+    "no_ev_yeni_modern": "Nein, das Haus ist neu.",
+
+    "yes_televizyon_kirik_eski": "Ja, der Fernseher ist alt.",
+    "no_televizyon_kirik_eski": "Nein, der Fernseher ist alt.",
+    "yes_televizyon_yeni": "Ja, der Fernseher ist neu.",
+    "no_televizyon_yeni": "Nein, der Fernseher ist neu.",
+
+    "yes_zarf_eski": "Ja, der Brief ist altmodisch.",
+    "no_zarf_eski": "Nein, der Brief ist alt.",
+    "yes_email_yeni": "Ja, E-Mail ist neu.",
+    "no_email_yeni": "Nein, E-Mail ist neu.",
+
+    "yes_kirik_telefon": "Ja, das Telefon ist alt.",
+    "no_kirik_telefon": "Nein, das Telefon ist alt.",
+    "yes_akilli_telefon": "Ja, das Telefon ist neu.",
+    "no_akilli_telefon": "Nein, das Telefon ist neu."
+  }
+}

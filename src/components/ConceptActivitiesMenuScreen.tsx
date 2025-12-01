@@ -10,6 +10,7 @@ import MenuButton from "./ui/MenuButton.tsx";
 import WideNarrowIcon from "./icons/WideNarrowIcon.tsx";
 import TextureIcon from "./icons/TextureIcon.tsx";
 import ArrowsRightLeftIcon from "./icons/ArrowsRightLeftIcon.tsx";
+import OppositesIcon from "./icons/OppositesIcon.tsx";
 import { getCurrentLanguage, t } from "../i18n/index.ts";
 import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
 import PanelStars from './ui/PanelStars.tsx';
@@ -64,11 +65,6 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           subtitle: isTr ? "Yüz ifadelerini tanı" : t("concepts.subtitles.recognizeFaces", "Recognize facial expressions"),
         },
         {
-          type: ActivityType.ParlakMat,
-          title: isTr ? "Parlak / Mat" : t("concepts.activities.parlakMat", "Shiny / Matte"),
-          subtitle: isTr ? "Yansımaları öğren" : t("concepts.subtitles.learnReflections", "Learn reflections"),
-        },
-        {
           type: ActivityType.SeffafOpak,
           title: isTr ? "Şeffaf / Opak" : t("concepts.activities.seffafOpak", "Transparent / Opaque"),
           subtitle: isTr ? "Görünürlüğü öğren" : t("concepts.subtitles.understandTransparency", "Understand transparency"),
@@ -77,6 +73,16 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           type: ActivityType.StraightCurved,
           title: isTr ? "Düz / Eğri" : t("concepts.activities.straightCurved", "Straight / Curved"),
           subtitle: isTr ? "Çizgileri tanı" : t("concepts.subtitles.recognizeLines", "Recognize lines"),
+        },
+        {
+          type: ActivityType.NoisyQuiet,
+          title: isTr ? "Gürültülü / Sessiz" : t("concepts.activities.noisyQuiet", "Noisy / Quiet"),
+          subtitle: isTr ? "Sesleri ayırt et" : t("concepts.subtitles.distinguishSounds", "Distinguish sounds"),
+        },
+        {
+          type: ActivityType.ParlakMat,
+          title: isTr ? "Parlak / Mat" : t("concepts.activities.parlakMat", "Shiny / Matte"),
+          subtitle: isTr ? "Yansımaları öğren" : t("concepts.subtitles.learnReflections", "Learn reflections"),
         },
       ],
     },
@@ -105,24 +111,14 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           subtitle: isTr ? "Genişlikleri anla" : t("concepts.subtitles.understandWidth", "Understand width"),
         },
         {
-          type: ActivityType.HeavyLight,
-          title: isTr ? "Ağır / Hafif" : t("concepts.activities.heavyLight", "Heavy / Light"),
-          subtitle: isTr ? "Ağırlıkları karşılaştır" : t("concepts.subtitles.compareWeights", "Compare weights"),
-        },
-        {
           type: ActivityType.DerinSig,
           title: isTr ? "Derin / Sığ" : t("concepts.activities.derinSig", "Deep / Shallow"),
           subtitle: isTr ? "Derinlikleri ölç" : t("concepts.subtitles.measureDepths", "Measure depths"),
         },
-        {
-          type: ActivityType.KalabalikTenha,
-          title: isTr ? "Kalabalık / Tenha" : t("concepts.activities.kalabalikTenha", "Crowded / Empty"),
-          subtitle: isTr ? "Yoğunlukları anla" : t("concepts.subtitles.understandCrowding", "Understand crowding"),
-        },
       ],
     },
     {
-      name: isTr ? "Dokunsal" : t("concepts.tactile", "Tactile"),
+      name: isTr ? "Duyusal" : t("concepts.sensory", "Sensory"),
       icon: TextureIcon,
       activities: [
         {
@@ -141,9 +137,9 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           subtitle: isTr ? "Sivri yüzeyleri keşfet" : t("concepts.subtitles.discoverSpiky", "Discover spiky surfaces"),
         },
         {
-          type: ActivityType.TembelCaliskan,
-          title: isTr ? "Tembel / Çalışkan" : t("concepts.activities.tembelCaliskan", "Lazy / Hardworking"),
-          subtitle: isTr ? "Hareketi karşılaştır" : t("concepts.subtitles.compareActivity", "Compare activity levels"),
+          type: ActivityType.SivriKut,
+          title: isTr ? "Sivri / Küt" : t("concepts.activities.sivriKut", "Sharp / Blunt"),
+          subtitle: isTr ? "Uç şekillerini fark et" : t("concepts.subtitles.noticePoints", "Notice point shapes"),
         },
         {
           type: ActivityType.WetDry,
@@ -151,14 +147,19 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           subtitle: isTr ? "Hisleri tanı" : t("concepts.subtitles.recognizeMoisture", "Recognize moisture"),
         },
         {
+          type: ActivityType.HotCold,
+          title: isTr ? "Sıcak / Soğuk" : t("concepts.activities.hotCold", "Hot / Cold"),
+          subtitle: isTr ? "Sıcaklıkları hisset" : t("concepts.subtitles.feelTemperatures", "Feel temperatures"),
+        },
+        {
           type: ActivityType.BitterSweet,
           title: isTr ? "Acı / Tatlı" : t("concepts.activities.bitterSweet", "Bitter / Sweet"),
           subtitle: isTr ? "Tatları keşfet" : t("concepts.subtitles.discoverTastes", "Discover tastes"),
         },
         {
-          type: ActivityType.TazeBayat,
-          title: isTr ? "Taze / Bayat" : t("concepts.activities.tazeBayat", "Fresh / Stale"),
-          subtitle: isTr ? "Durumları fark et" : t("concepts.subtitles.noticeFreshness", "Notice freshness"),
+          type: ActivityType.KirisikDuzgun,
+          title: isTr ? "Kırışık / Düzgün" : t("concepts.activities.kirisikDuzgun", "Wrinkled / Smooth"),
+          subtitle: isTr ? "Yüzey durumlarını tanı" : t("concepts.subtitles.surfaceConditions", "Know surface conditions"),
         },
       ],
     },
@@ -185,6 +186,16 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           type: ActivityType.InsideOutside,
           title: isTr ? "İç / Dış" : t("concepts.activities.insideOutside", "Inside / Outside"),
           subtitle: isTr ? "Konum karşılaştır" : t("concepts.subtitles.comparePlacement", "Compare placement"),
+        },
+        {
+          type: ActivityType.BesideOpposite,
+          title: isTr ? "Yan yana / Karşı karşıya" : t("concepts.activities.besideOpposite", "Beside / Opposite"),
+          subtitle: isTr ? "Dizilişi fark et" : t("concepts.subtitles.noticeArrangement", "Notice arrangement"),
+        },
+        {
+          type: ActivityType.Between,
+          title: isTr ? "Arasında" : t("concepts.activities.between", "Between"),
+          subtitle: isTr ? "Ortadakini bul" : t("concepts.subtitles.findMiddle", "Find the middle"),
         },
         {
           type: ActivityType.LeftRight,
@@ -239,9 +250,19 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           subtitle: isTr ? "Miktarları kıyasla" : t("concepts.subtitles.compareAmounts", "Compare amounts"),
         },
         {
+          type: ActivityType.KalabalikTenha,
+          title: isTr ? "Kalabalık / Tenha" : t("concepts.activities.kalabalikTenha", "Crowded / Sparse"),
+          subtitle: isTr ? "Yoğunlukları anla" : t("concepts.subtitles.understandCrowding", "Understand crowding"),
+        },
+        {
           type: ActivityType.HalfQuarterWhole,
-          title: isTr ? "Yarım / Çeyrek" : t("concepts.activities.halfQuarterWhole", "Half / Quarter / Whole"),
+          title: isTr ? "Yarım / Çeyrek / Bütün" : t("concepts.activities.halfQuarterWhole", "Half / Quarter / Whole"),
           subtitle: isTr ? "Parçaları tanı" : t("concepts.subtitles.recognizeFractions", "Recognize fractions"),
+        },
+        {
+          type: ActivityType.OddEven,
+          title: isTr ? "Tek / Çift" : t("concepts.activities.oddEven", "Odd / Even"),
+          subtitle: isTr ? "Sayı türünü bul" : t("concepts.subtitles.findNumberType", "Find the number type"),
         },
         {
           type: ActivityType.FullEmpty,
@@ -249,9 +270,40 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           subtitle: isTr ? "Kapları karşılaştır" : t("concepts.subtitles.compareContainers", "Compare containers"),
         },
         {
-          type: ActivityType.OddEven,
-          title: isTr ? "Tek / Çift" : t("concepts.activities.oddEven", "Odd / Even"),
-          subtitle: isTr ? "Sayı türünü bul" : t("concepts.subtitles.findNumberType", "Find the number type"),
+          type: ActivityType.HeavyLight,
+          title: isTr ? "Ağır / Hafif" : t("concepts.activities.heavyLight", "Heavy / Light"),
+          subtitle: isTr ? "Ağırlıkları karşılaştır" : t("concepts.subtitles.compareWeights", "Compare weights"),
+        },
+      ],
+    },
+    {
+      name: isTr ? "Durum" : t("concepts.state", "State"),
+      icon: OppositesIcon,
+      activities: [
+        {
+          type: ActivityType.OpenClosed,
+          title: isTr ? "Açık / Kapalı" : t("concepts.activities.openClosed", "Open / Closed"),
+          subtitle: isTr ? "Açık ve kapalı durumları ayırt et" : t("concepts.subtitles.distinguishOpenClosed", "Distinguish open and closed states"),
+        },
+        {
+          type: ActivityType.BrokenIntact,
+          title: isTr ? "Kırık / Sağlam" : t("concepts.activities.brokenIntact", "Broken / Intact"),
+          subtitle: isTr ? "Durumları ayırt et" : t("concepts.subtitles.distinguishCondition", "Distinguish condition"),
+        },
+        {
+          type: ActivityType.TembelCaliskan,
+          title: isTr ? "Tembel / Çalışkan" : t("concepts.activities.tembelCaliskan", "Lazy / Hardworking"),
+          subtitle: isTr ? "Hareketi karşılaştır" : t("concepts.subtitles.compareActivity", "Compare activity levels"),
+        },
+        {
+          type: ActivityType.TazeBayat,
+          title: isTr ? "Taze / Bayat" : t("concepts.activities.tazeBayat", "Fresh / Stale"),
+          subtitle: isTr ? "Durumları fark et" : t("concepts.subtitles.noticeFreshness", "Notice freshness"),
+        },
+        {
+          type: ActivityType.DugumCozuk,
+          title: isTr ? "Düğümlü / Çözük" : t("concepts.activities.dugumCozuk", "Knotted / Untied"),
+          subtitle: isTr ? "Bağlantıları çöz" : t("concepts.subtitles.untangleConnections", "Untangle connections"),
         },
       ],
     },
@@ -278,11 +330,6 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           type: ActivityType.YoungOld,
           title: isTr ? "Genç / Yaşlı" : t("concepts.activities.youngOld", "Young / Old"),
           subtitle: isTr ? "Yaş farkını keşfet" : t("concepts.subtitles.discoverAge", "Discover age difference"),
-        },
-        {
-          type: ActivityType.BrokenIntact,
-          title: isTr ? "Kırık / Sağlam" : t("concepts.activities.brokenIntact", "Broken / Intact"),
-          subtitle: isTr ? "Durumları ayırt et" : t("concepts.subtitles.distinguishCondition", "Distinguish condition"),
         },
         {
           type: ActivityType.CleanDirty,

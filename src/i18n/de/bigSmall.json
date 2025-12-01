@@ -1,0 +1,83 @@
+{
+  "bigSmall": {
+    "q_big": "Welches ist groß?",
+    "q_small": "Welches ist klein?",
+
+    "yes_fil": "Ja, der Elefant ist groß.",
+    "no_fil": "Nein, der Elefant ist groß.",
+    "yes_fare": "Ja, die Maus ist klein.",
+    "no_fare": "Nein, die Maus ist klein.",
+
+    "yes_balina": "Ja, der Wal ist groß.",
+    "no_balina": "Nein, der Wal ist groß.",
+    "yes_karinca": "Ja, die Ameise ist klein.",
+    "no_karinca": "Nein, die Ameise ist klein.",
+
+    "yes_okul_otobusu": "Ja, der Schulbus ist groß.",
+    "no_okul_otobusu": "Nein, der Schulbus ist groß.",
+    "yes_bisiklet": "Ja, das Fahrrad ist klein.",
+    "no_bisiklet": "Nein, das Fahrrad ist klein.",
+
+    "yes_gemi": "Ja, das Schiff ist groß.",
+    "no_gemi": "Nein, das Schiff ist groß.",
+    "yes_sandal": "Ja, das Ruderboot ist klein.",
+    "no_sandal": "Nein, das Ruderboot ist klein.",
+
+    "yes_ev": "Ja, das Haus ist groß.",
+    "no_ev": "Nein, das Haus ist groß.",
+    "yes_kus_evi": "Ja, das Vogelhaus ist klein.",
+    "no_kus_evi": "Nein, das Vogelhaus ist klein.",
+
+    "yes_araba": "Ja, das Auto ist groß.",
+    "no_araba": "Nein, das Auto ist groß.",
+    "yes_araba_kucuk": "Ja, das Auto ist klein.",
+    "no_araba_kucuk": "Nein, das Auto ist klein.",
+
+    "yes_kamyon": "Ja, der Lastwagen ist groß.",
+    "no_kamyon": "Nein, der Lastwagen ist groß.",
+
+    "yes_gunes": "Ja, die Sonne ist groß.",
+    "no_gunes": "Nein, die Sonne ist groß.",
+    "yes_yildiz": "Ja, der Stern ist klein.",
+    "no_yildiz": "Nein, der Stern ist klein.",
+
+    "yes_agac": "Ja, der Baum ist groß.",
+    "no_agac": "Nein, der Baum ist groß.",
+    "yes_papatya": "Ja, das Gänseblümchen ist klein.",
+    "no_papatya": "Nein, das Gänseblümchen ist klein.",
+
+    "yes_gokdelen": "Ja, der Wolkenkratzer ist groß.",
+    "no_gokdelen": "Nein, der Wolkenkratzer ist groß.",
+
+    "yes_balik": "Ja, der Fisch ist klein.",
+    "no_balik": "Nein, der Fisch ist klein.",
+
+    "yes_pilates_topu": "Ja, der Gymnastikball ist groß.",
+    "no_pilates_topu": "Nein, der Gymnastikball ist groß.",
+    "yes_misket": "Ja, die Murmel ist klein.",
+    "no_misket": "Nein, die Murmel ist klein.",
+
+    "yes_karpuz": "Ja, die Wassermelone ist groß.",
+    "no_karpuz": "Nein, die Wassermelone ist groß.",
+    "yes_kiraz": "Ja, die Kirsche ist klein.",
+    "no_kiraz": "Nein, die Kirsche ist klein.",
+
+    "yes_ansiklopedi": "Ja, die Enzyklopädie ist groß.",
+    "no_ansiklopedi": "Nein, die Enzyklopädie ist groß.",
+    "yes_silgi": "Ja, der Radiergummi ist klein.",
+    "no_silgi": "Nein, der Radiergummi ist klein.",
+
+    "yes_traktor": "Ja, der Traktor ist groß.",
+    "no_traktor": "Nein, der Traktor ist groß.",
+
+    "yes_kanepe": "Ja, das Sofa ist groß.",
+    "no_kanepe": "Nein, das Sofa ist groß.",
+    "yes_koltuk": "Ja, der Sessel ist klein.",
+    "no_koltuk": "Nein, der Sessel ist klein.",
+
+    "yes_merdiven": "Ja, die Leiter ist groß.",
+    "no_merdiven": "Nein, die Leiter ist groß.",
+    "yes_tabure": "Ja, der Hocker ist klein.",
+    "no_tabure": "Nein, der Hocker ist klein."
+  }
+}

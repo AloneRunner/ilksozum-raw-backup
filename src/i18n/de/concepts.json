@@ -9,6 +9,7 @@
     "basic": "Grundlegend",
     "dimensional": "Dimensional",
     "tactile": "Taktil",
+    "sensory": "Sensorisch",
     "state": "Zustand",
     "quantity": "Menge",
     "location": "Ort",
@@ -35,6 +36,8 @@
       "sivriKut": "Spitz / Stumpf",
       "oldNew": "Alt / Neu",
       "youngOld": "Jung / Alt",
+      "q_which_is_old": "Welches ist alt?",
+      "q_which_is_new": "Welches ist neu?",
       "cleanDirty": "Sauber / Schmutzig",
       "wetDry": "Nass / Trocken",
       "openClosed": "Offen / Geschlossen",
@@ -87,6 +90,7 @@
       "learnReflections": "Über Reflexionen lernen",
       "understandTransparency": "Transparenz verstehen",
       "recognizeLines": "Linientypen erkennen",
+      "distinguishSounds": "Geräusche unterscheiden",
       "compareSizes": "Größen vergleichen",
       "tellLengths": "Den Längenunterschied erkennen",
       "learnThickness": "Dicken lernen",
@@ -120,7 +124,9 @@
       "understandBehaviors": "Verhaltensweisen verstehen",
       "feelTemperatures": "Unterschiedliche Temperaturen fühlen",
       "learnTastes": "Unterschiedliche Geschmäcker lernen",
-      "findCorrectOne": "Finde das Richtige"
+      "findCorrectOne": "Finde das Richtige",
+      "distinguishOpenClosed": "Offene und geschlossene Zustände unterscheiden",
+      "noticePoints": "Spitzen erkennen"
     }
   }
 }

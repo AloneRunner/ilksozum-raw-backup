@@ -1,0 +1,71 @@
+{
+  "oldNew": {
+    "q_which_is_old": "Lequel est vieux ?",
+    "q_which_is_new": "Lequel est neuf ?",
+
+    "yes_bisiklet_eski": "Oui, le vélo est vieux.",
+    "no_bisiklet_eski": "Non, le vélo est vieux.",
+    "yes_bisiklet_yeni": "Oui, le vélo est neuf.",
+    "no_bisiklet_yeni": "Non, le vélo est neuf.",
+
+    "yes_araba_eski": "Oui, la voiture est vieille.",
+    "no_araba_eski": "Non, la voiture est vieille.",
+    "yes_araba_yeni": "Oui, la voiture est neuve.",
+    "no_araba_yeni": "Non, la voiture est neuve.",
+
+    "yes_tren_eski": "Oui, le train est vieux.",
+    "no_tren_eski": "Non, le train est vieux.",
+    "yes_tren_yeni": "Oui, le train est neuf.",
+    "no_tren_yeni": "Non, le train est neuf.",
+
+    "yes_ayakkabi_eski": "Oui, la chaussure est vieille.",
+    "no_ayakkabi_eski": "Non, la chaussure est vieille.",
+    "yes_ayakkabi_yeni": "Oui, la chaussure est neuve.",
+    "no_ayakkabi_yeni": "Non, la chaussure est neuve.",
+
+    "yes_kale_eski": "Oui, le château est vieux.",
+    "no_kale_eski": "Non, le château est vieux.",
+    "yes_ev_yeni": "Oui, la maison est neuve.",
+    "no_ev_yeni": "Non, la maison est neuve.",
+
+    "yes_sandalye_eski": "Oui, la chaise est vieille.",
+    "no_sandalye_eski": "Non, la chaise est vieille.",
+    "yes_sandalye_yeni": "Oui, la chaise est neuve.",
+    "no_sandalye_yeni": "Non, la chaise est neuve.",
+
+    "yes_araba_kirik_eski": "Oui, la voiture est vieille.",
+    "no_araba_kirik_eski": "Non, la voiture est vieille.",
+    "yes_araba_saglam_yeni": "Oui, la voiture est neuve.",
+    "no_araba_saglam_yeni": "Non, la voiture est neuve.",
+
+    "yes_kitap_eski": "Oui, le livre est vieux.",
+    "no_kitap_eski": "Non, le livre est vieux.",
+    "yes_kitap_yeni": "Oui, le livre est neuf.",
+    "no_kitap_yeni": "Non, le livre est neuf.",
+
+    "yes_ampul_eski": "Oui, l'ampoule est ancienne.",
+    "no_ampul_eski": "Non, l'ampoule est ancienne.",
+    "yes_led_ampul_yeni": "Oui, l'ampoule LED est neuve.",
+    "no_led_ampul_yeni": "Non, l'ampoule est neuve.",
+
+    "yes_ev_eski": "Oui, la maison est vieille.",
+    "no_ev_eski": "Non, la maison est vieille.",
+    "yes_ev_yeni_modern": "Oui, la maison est neuve.",
+    "no_ev_yeni_modern": "Non, la maison est neuve.",
+
+    "yes_televizyon_kirik_eski": "Oui, la télévision est vieille.",
+    "no_televizyon_kirik_eski": "Non, la télévision est vieille.",
+    "yes_televizyon_yeni": "Oui, la télévision est neuve.",
+    "no_televizyon_yeni": "Non, la télévision est neuve.",
+
+    "yes_zarf_eski": "Oui, la lettre est ancienne.",
+    "no_zarf_eski": "Non, la lettre est ancienne.",
+    "yes_email_yeni": "Oui, l'email est nouveau.",
+    "no_email_yeni": "Non, l'email est nouveau.",
+
+    "yes_kirik_telefon": "Oui, le téléphone est vieux.",
+    "no_kirik_telefon": "Non, le téléphone est vieux.",
+    "yes_akilli_telefon": "Oui, le téléphone est neuf.",
+    "no_akilli_telefon": "Non, le téléphone est neuf."
+  }
+}

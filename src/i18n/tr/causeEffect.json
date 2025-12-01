@@ -1,0 +1,54 @@
+{
+  "causeEffect": {
+    "q_what_is_the_result": "Sonuçta ne olur?",
+    "q_what_is_the_cause": "Buna ne sebep olur?",
+    "q_what_is_needed_to_be_clean": "Temizlemek için ne lazım?",
+    "q_what_if_you_drop_this": "Bunu düşürürsen ne olur?",
+    "q_what_do_you_wear_when_this_happens": "Böyle olunca ne giyeriz?",
+
+    "yes_semsiye_acilir": "Evet, şemsiyeyi açarız.",
+    "no_gunes_gozlugu_takilir": "Hayır, güneş gözlüğü takmayız.",
+
+    "yes_gunes_eritir": "Evet, güneş eritir.",
+    "no_kar_yagar": "Hayır, kar yağmaz.",
+
+    "yes_bitki_buyur": "Evet, bitki büyür.",
+    "no_agac_kesilir": "Hayır, ağaç kesilmez.",
+
+    "yes_sabunla_yikanir": "Evet, sabunla yıkanır.",
+    "no_kirli_kalir": "Hayır, kirli kalır.",
+
+    "yes_yumurta_kirilir": "Evet, yumurta kırılır.",
+    "no_civciv_cikar": "Hayır, hemen civciv çıkmaz.",
+
+    "yes_odun_yanar": "Evet, odun yanar.",
+    "no_tas_yanmaz": "Hayır, taş yanmaz.",
+
+    "yes_vazo_kirilir": "Evet, vazo kırılır.",
+    "no_vazo_dolar": "Hayır, vazo dolmaz.",
+
+    "yes_bere_giyeriz": "Evet, bere giyeriz.",
+    "no_sort_giymeyiz": "Hayır, şort giymeyiz.",
+
+    "yes_bebek_sut_icer": "Evet, bebek süt içer.",
+    "no_bebek_oynar": "Hayır, oynamaz.",
+
+    "yes_utu_ile": "Evet, ütü ile düzelir.",
+    "no_makas_ile": "Hayır, makasla değil.",
+
+    "yes_uyuruz": "Evet, yatar uyuruz.",
+    "no_oynariz": "Hayır, oynamayız.",
+
+    "yes_su_ile": "Evet, su ile büyür.",
+    "no_keserek": "Hayır, keserek değil.",
+
+    "yes_ogreniriz": "Evet, yeni şeyler öğreniriz.",
+    "no_oyun_oynariz": "Hayır, oyun oynamayız.",
+
+    "yes_balon_siser": "Evet, balon şişer.",
+    "no_tas_olur": "Hayır, taş olmaz.",
+
+    "yes_ekmek_olur": "Evet, ekmek olur.",
+    "no_buzdolabi_olur": "Hayır, buzdolabı olmaz."
+  }
+}

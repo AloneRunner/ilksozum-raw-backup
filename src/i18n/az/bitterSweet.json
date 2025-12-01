@@ -1,0 +1,60 @@
+{
+  "bitterSweet": {
+    "q_which_is_bitter": "Hansı acıdır?",
+    "q_which_is_bitter_person": "Hansı acıdır?",
+    "q_which_is_sweet": "Hansı şirindir?",
+    "q_which_is_sour": "Hansı turşdur?",
+
+    "yes_biber": "Bəli, bibər acıdır.",
+    "no_biber": "Xeyr, bibər acıdır.",
+    "yes_bal": "Bəli, bal şirindir.",
+    "no_bal": "Xeyr, bal şirindir.",
+
+    "yes_limon": "Bəli, limon turşdur.",
+    "no_limon": "Xeyr, limon turşdur.",
+    "yes_lolipop": "Bəli, lolipop şirindir.",
+    "no_lolipop": "Xeyr, lolipop şirindir.",
+
+    "yes_greyfurt": "Bəli, qreypfrut turşdur.",
+    "no_greyfurt": "Xeyr, qreypfrut turşdur.",
+    "yes_pasta": "Bəli, tort şirindir.",
+    "no_pasta": "Xeyr, tort şirindir.",
+
+    "yes_eksi_visne": "Bəli, turş albalı turşdur.",
+    "no_eksi_visne": "Xeyr, turş albalı turşdur.",
+    "yes_tatli_kiraz": "Bəli, albalı şirindir.",
+    "no_tatli_kiraz": "Xeyr, albalı şirindir.",
+
+    "yes_kahve": "Bəli, qəhvə acıdır.",
+    "no_kahve": "Xeyr, qəhvə acıdır.",
+    "yes_milkshake": "Bəli, milkşeyk şirindir.",
+    "no_milkshake": "Xeyr, milkşeyk şirindir.",
+
+    "yes_cikolata": "Bəli, şokolad şirindir.",
+    "no_cikolata": "Xeyr, şokolad şirindir.",
+
+    "yes_sirke": "Bəli, sirkə turşdur.",
+    "no_sirke": "Xeyr, sirkə turşdur.",
+    "yes_recel": "Bəli, mürəbbə şirindir.",
+    "no_recel": "Xeyr, mürəbbə şirindir.",
+
+    "yes_sogan": "Bəli, soğan acıdır.",
+    "no_sogan": "Xeyr, soğan acıdır.",
+    "yes_cilek": "Bəli, çiyələk şirindir.",
+    "no_cilek": "Xeyr, çiyələk şirindir.",
+
+    "yes_biskuvi": "Bəli, biskvit şirindir.",
+    "no_biskuvi": "Xeyr, biskvit şirindir.",
+
+    "yes_dondurma": "Bəli, dondurma şirindir.",
+    "no_dondurma": "Xeyr, dondurma şirindir.",
+
+    "yes_elma": "Bəli, alma şirindir.",
+    "no_elma": "Xeyr, alma şirindir.",
+
+    "yes_zencefil": "Bəli, zəncəfil acıdır.",
+    "no_zencefil": "Xeyr, zəncəfil acıdır.",
+    "yes_jelibon": "Bəli, jelibon şirindir.",
+    "no_jelibon": "Xeyr, jelibon şirindir."
+  }
+}

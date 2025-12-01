@@ -1,0 +1,12 @@
+{
+  "whatDoesntBelong": {
+    "q_which_is_different": {
+      "correct": "Oui, {item} est différent.",
+      "wrong": "Non, c'est pareil."
+    },
+    "q_which_is_different_person": {
+      "correct": "Oui, {item} est un {category1} ; les autres sont {category2}.",
+      "wrong": "Non, {item} est un {category2}."
+    }
+  }
+}

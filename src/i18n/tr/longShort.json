@@ -1,0 +1,56 @@
+{
+  "longShort": {
+    "q_which_is_long": "Uzun olan hangisi?",
+    "q_which_is_short": "Kısa olan hangisi?",
+    
+    "yes_zurafa_uzun": "Evet, zürafa uzun.",
+    "no_zurafa_uzun": "Hayır, zürafa uzun değil.",
+    "yes_fare_kisa": "Evet, fare kısa.",
+    "no_fare_kisa": "Hayır, fare kısa değil.",
+    
+    "yes_pantolon_uzun": "Evet, pantolon uzun.",
+    "no_pantolon_uzun": "Hayır, pantolon uzun değil.",
+    "yes_sort_kisa": "Evet, şort kısa.",
+    "no_sort_kisa": "Hayır, şort kısa değil.",
+    
+    "yes_havuc_uzun": "Evet, havuç uzun.",
+    "no_havuc_uzun": "Hayır, havuç uzun değil.",
+    "yes_havuc_kisa": "Evet, havuç kısa.",
+    "no_havuc_kisa": "Hayır, havuç kısa değil.",
+    
+    "yes_merdiven_uzun": "Evet, merdiven uzun.",
+    "no_merdiven_uzun": "Hayır, merdiven uzun değil.",
+    "yes_tabure_kisa": "Evet, tabure kısa.",
+    "no_tabure_kisa": "Hayır, tabure kısa değil.",
+    
+    "yes_tren_uzun": "Evet, tren uzun.",
+    "no_tren_uzun": "Hayır, tren uzun değil.",
+    "yes_araba_kisa": "Evet, araba kısa.",
+    "no_araba_kisa": "Hayır, araba kısa değil.",
+    
+    "yes_yilan_uzun": "Evet, yılan uzun.",
+    "no_yilan_uzun": "Hayır, yılan uzun değil.",
+    "yes_solucan_kisa": "Evet, solucan kısa.",
+    "no_solucan_kisa": "Hayır, solucan kısa değil.",
+    
+    "yes_sac_uzun": "Evet, saç uzun.",
+    "no_sac_uzun": "Hayır, saç uzun değil.",
+    "yes_sac_kisa": "Evet, saç kısa.",
+    "no_sac_kisa": "Hayır, saç kısa değil.",
+    
+    "yes_agac_uzun": "Evet, ağaç uzun.",
+    "no_agac_uzun": "Hayır, ağaç uzun değil.",
+    "yes_agac_kisa": "Evet, ağaç kısa.",
+    "no_agac_kisa": "Hayır, ağaç kısa değil.",
+    
+    "yes_cetvel_uzun": "Evet, cetvel uzun.",
+    "no_cetvel_uzun": "Hayır, cetvel uzun değil.",
+    "yes_silgi_kisa": "Evet, silgi kısa.",
+    "no_silgi_kisa": "Hayır, silgi kısa değil.",
+    
+    "yes_kalem_uzun": "Evet, kalem uzun.",
+    "no_kalem_uzun": "Hayır, kalem uzun değil.",
+    "yes_kalem_kisa": "Evet, kalem kısa.",
+    "no_kalem_kisa": "Hayır, kalem kısa değil."
+  }
+}

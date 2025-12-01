@@ -1,0 +1,16 @@
+{
+  "emotionPuppet": {
+    "emotions": {
+      "happy": "Blij",
+      "sad": "Verdrietig",
+      "angry": "Boos",
+      "surprised": "Verrast"
+    },
+    "instructions": "Selecteer gezichtsdelen om een {emotion} gezicht te maken",
+    "selectEyes": "Selecteer ogen",
+    "selectMouth": "Selecteer mond",
+    "selectEyebrows": "Selecteer wenkbrauwen",
+    "correct": "Geweldig! Je hebt de juiste gezichtsuitdrukking gemaakt!",
+    "tryAgain": "Probeer opnieuw, selecteer andere delen"
+  }
+}

@@ -9,6 +9,7 @@
     "basic": "Temel",
     "dimensional": "Boyutsal",
     "tactile": "Dokunsal",
+    "sensory": "Duyusal",
     "state": "Durum",
     "quantity": "Miktar",
     "location": "Konum",
@@ -35,6 +36,8 @@
       "sivriKut": "Sivri / Küt",
       "oldNew": "Eski / Yeni",
       "youngOld": "Genç / Yaşlı",
+      "q_which_is_old": "Eski olan hangisi?",
+      "q_which_is_new": "Yeni olan hangisi?",
       "cleanDirty": "Temiz / Kirli",
       "wetDry": "Islak / Kuru",
       "openClosed": "Açık / Kapalı",
@@ -87,6 +90,7 @@
       "learnReflections": "Yansımaları öğren",
       "understandTransparency": "Şeffaflığı anla",
       "recognizeLines": "Çizgi türlerini tanı",
+      "distinguishSounds": "Sesleri ayırt et",
       "compareSizes": "Boyutları karşılaştır",
       "tellLengths": "Uzunluk farkını ayırt et",
       "learnThickness": "Kalınlıkları öğren",
@@ -120,7 +124,9 @@
       "understandBehaviors": "Davranışları anla",
       "feelTemperatures": "Farklı sıcaklıkları hisset",
       "learnTastes": "Farklı tatları öğren",
-      "findCorrectOne": "Doğru olanı bul"
+      "findCorrectOne": "Doğru olanı bul",
+      "distinguishOpenClosed": "Açık ve kapalı durumları ayırt et",
+      "noticePoints": "Uç şekillerini fark et"
     }
   }
 }

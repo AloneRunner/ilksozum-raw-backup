@@ -1,0 +1,32 @@
+{
+  "hungryFull": {
+    "questions": {
+      "q_which_is_hungry": "Welches ist hungrig?",
+      "q_which_is_satiated": "Welches ist satt?",
+      "yes_kedi_hungry": "Ja, kedi ist hungrig.",
+      "no_kedi_hungry": "Nein, kedi ist nicht hungrig.",
+      "yes_kedi_satiated": "Ja, kedi ist satt.",
+      "no_kedi_satiated": "Nein, kedi ist nicht satt.",
+      "yes_sincap_hungry": "Ja, sincap ist hungrig.",
+      "no_sincap_hungry": "Nein, sincap ist nicht hungrig.",
+      "yes_sincap_satiated": "Ja, sincap ist satt.",
+      "no_sincap_satiated": "Nein, sincap ist nicht satt.",
+      "yes_bebek_hungry": "Ja, bebek ist hungrig.",
+      "no_bebek_hungry": "Nein, bebek ist nicht hungrig.",
+      "yes_bebek_satiated": "Ja, bebek ist satt.",
+      "no_bebek_satiated": "Nein, bebek ist nicht satt.",
+      "yes_canavar_hungry": "Ja, canavar ist hungrig.",
+      "no_canavar_hungry": "Nein, canavar ist nicht hungrig.",
+      "yes_canavar_satiated": "Ja, canavar ist satt.",
+      "no_canavar_satiated": "Nein, canavar ist nicht satt.",
+      "yes_maymun_hungry": "Ja, maymun ist hungrig.",
+      "no_maymun_hungry": "Nein, maymun ist nicht hungrig.",
+      "yes_maymun_satiated": "Ja, maymun ist satt.",
+      "no_maymun_satiated": "Nein, maymun ist nicht satt.",
+      "yes_kuş_hungry": "Ja, kuş ist hungrig.",
+      "no_kuş_hungry": "Nein, kuş ist nicht hungrig.",
+      "yes_kuş_satiated": "Ja, kuş ist satt.",
+      "no_kuş_satiated": "Nein, kuş ist nicht satt."
+    }
+  }
+}

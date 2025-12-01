@@ -1,0 +1,36 @@
+{
+  "messyClean": {
+    "questions": {
+      "q_which_is_messy": "Welches ist unordentlich?",
+      "q_which_is_tidy": "Welches ist ordentlich?",
+      "yes_oda_messy": "Ja, oda ist unordentlich.",
+      "no_oda_messy": "Nein, oda ist nicht unordentlich.",
+      "yes_oda_tidy": "Ja, oda ist ordentlich.",
+      "no_oda_tidy": "Nein, oda ist nicht ordentlich.",
+      "yes_kitaplık_messy": "Ja, kitaplık ist unordentlich.",
+      "no_kitaplık_messy": "Nein, kitaplık ist nicht unordentlich.",
+      "yes_kitaplık_tidy": "Ja, kitaplık ist ordentlich.",
+      "no_kitaplık_tidy": "Nein, kitaplık ist nicht ordentlich.",
+      "yes_kalemlik_messy": "Ja, kalemlik ist unordentlich.",
+      "no_kalemlik_messy": "Nein, kalemlik ist nicht unordentlich.",
+      "yes_kalemlik_tidy": "Ja, kalemlik ist ordentlich.",
+      "no_kalemlik_tidy": "Nein, kalemlik ist nicht ordentlich.",
+      "yes_yatak_messy": "Ja, yatak ist unordentlich.",
+      "no_yatak_messy": "Nein, yatak ist nicht unordentlich.",
+      "yes_yatak_tidy": "Ja, yatak ist ordentlich.",
+      "no_yatak_tidy": "Nein, yatak ist nicht ordentlich.",
+      "yes_dolap_messy": "Ja, dolap ist unordentlich.",
+      "no_dolap_messy": "Nein, dolap ist nicht unordentlich.",
+      "yes_dolap_tidy": "Ja, dolap ist ordentlich.",
+      "no_dolap_tidy": "Nein, dolap ist nicht ordentlich.",
+      "yes_masa_messy": "Ja, masa ist unordentlich.",
+      "no_masa_messy": "Nein, masa ist nicht unordentlich.",
+      "yes_masa_tidy": "Ja, masa ist ordentlich.",
+      "no_masa_tidy": "Nein, masa ist nicht ordentlich.",
+      "yes_saç_messy": "Ja, saç ist unordentlich.",
+      "no_saç_messy": "Nein, saç ist nicht unordentlich.",
+      "yes_saç_tidy": "Ja, saç ist ordentlich.",
+      "no_saç_tidy": "Nein, saç ist nicht ordentlich."
+    }
+  }
+}

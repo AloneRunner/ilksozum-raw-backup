@@ -1,0 +1,83 @@
+{
+  "bigSmall": {
+    "q_big": "Büyük olan hangisi?",
+    "q_small": "Küçük olan hangisi?",
+
+    "yes_fil": "Evet, bu fil büyük.",
+    "no_fil": "Hayır, bu fil büyük.",
+    "yes_fare": "Evet, bu fare küçük.",
+    "no_fare": "Hayır, bu fare küçük.",
+
+    "yes_balina": "Evet, bu balina büyük.",
+    "no_balina": "Hayır, bu balina büyük.",
+    "yes_karinca": "Evet, bu karınca küçük.",
+    "no_karinca": "Hayır, bu karınca küçük.",
+
+    "yes_okul_otobusu": "Evet, bu okul otobüsü büyük.",
+    "no_okul_otobusu": "Hayır, bu okul otobüsü büyük.",
+    "yes_bisiklet": "Evet, bu bisiklet küçük.",
+    "no_bisiklet": "Hayır, bu bisiklet küçük.",
+
+    "yes_gemi": "Evet, bu gemi büyük.",
+    "no_gemi": "Hayır, bu gemi büyük.",
+    "yes_sandal": "Evet, bu sandal küçük.",
+    "no_sandal": "Hayır, bu sandal küçük.",
+
+    "yes_ev": "Evet, bu ev büyük.",
+    "no_ev": "Hayır, bu ev büyük.",
+    "yes_kus_evi": "Evet, bu kuş evi küçük.",
+    "no_kus_evi": "Hayır, bu kuş evi küçük.",
+
+    "yes_araba": "Evet, bu araba büyük.",
+    "no_araba": "Hayır, bu araba büyük.",
+    "yes_araba_kucuk": "Evet, bu araba küçük.",
+    "no_araba_kucuk": "Hayır, bu araba küçük.",
+
+    "yes_kamyon": "Evet, bu kamyon büyük.",
+    "no_kamyon": "Hayır, bu kamyon büyük.",
+
+    "yes_gunes": "Evet, bu güneş büyük.",
+    "no_gunes": "Hayır, bu güneş büyük.",
+    "yes_yildiz": "Evet, bu yıldız küçük.",
+    "no_yildiz": "Hayır, bu yıldız küçük.",
+
+    "yes_agac": "Evet, bu ağaç büyük.",
+    "no_agac": "Hayır, bu ağaç büyük.",
+    "yes_papatya": "Evet, bu papatya küçük.",
+    "no_papatya": "Hayır, bu papatya küçük.",
+
+    "yes_gokdelen": "Evet, bu gökdelen büyük.",
+    "no_gokdelen": "Hayır, bu gökdelen büyük.",
+
+    "yes_balik": "Evet, bu balık küçük.",
+    "no_balik": "Hayır, bu balık küçük.",
+
+    "yes_pilates_topu": "Evet, bu pilates topu büyük.",
+    "no_pilates_topu": "Hayır, bu pilates topu büyük.",
+    "yes_misket": "Evet, bu misket küçük.",
+    "no_misket": "Hayır, bu misket küçük.",
+
+    "yes_karpuz": "Evet, bu karpuz büyük.",
+    "no_karpuz": "Hayır, bu karpuz büyük.",
+    "yes_kiraz": "Evet, bu kiraz küçük.",
+    "no_kiraz": "Hayır, bu kiraz küçük.",
+
+    "yes_ansiklopedi": "Evet, bu ansiklopedi büyük.",
+    "no_ansiklopedi": "Hayır, bu ansiklopedi büyük.",
+    "yes_silgi": "Evet, bu silgi küçük.",
+    "no_silgi": "Hayır, bu silgi küçük.",
+
+    "yes_traktor": "Evet, bu traktör büyük.",
+    "no_traktor": "Hayır, bu traktör büyük.",
+
+    "yes_kanepe": "Evet, bu kanepe büyük.",
+    "no_kanepe": "Hayır, bu kanepe büyük.",
+    "yes_koltuk": "Evet, bu koltuk küçük.",
+    "no_koltuk": "Hayır, bu koltuk küçük.",
+
+    "yes_merdiven": "Evet, bu merdiven büyük.",
+    "no_merdiven": "Hayır, bu merdiven büyük.",
+    "yes_tabure": "Evet, bu tabure küçük.",
+    "no_tabure": "Hayır, bu tabure küçük."
+  }
+}

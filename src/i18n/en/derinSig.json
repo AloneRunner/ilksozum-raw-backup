@@ -1,0 +1,41 @@
+{
+  "derinSig": {
+    "q_which_is_deep": "Which one is deep?",
+    "q_which_is_shallow": "Which one is shallow?",
+    
+    "yes_deniz_derin": "Yes, the sea is deep.",
+    "no_deniz_derin": "No, the sea is not deep.",
+    "yes_gol_sig": "Yes, the lake is shallow.",
+    "no_gol_sig": "No, the lake is not shallow.",
+    
+    "yes_kuyu_derin": "Yes, the well is deep.",
+    "no_kuyu_derin": "No, the well is not deep.",
+    "yes_su_birikintisi_sig": "Yes, the puddle is shallow.",
+    "no_su_birikintisi_sig": "No, the puddle is not shallow.",
+    
+    "yes_kase_derin": "Yes, the bowl is deep.",
+    "no_kase_derin": "No, the bowl is not deep.",
+    "yes_tabak_sig": "Yes, the plate is shallow.",
+    "no_tabak_sig": "No, the plate is not shallow.",
+    
+    "yes_tencere_derin": "Yes, the pot is deep.",
+    "no_tencere_derin": "No, the pot is not deep.",
+    "yes_tava_sig": "Yes, the pan is shallow.",
+    "no_tava_sig": "No, the pan is not shallow.",
+    
+    "yes_kutu_derin": "Yes, the box is deep.",
+    "no_kutu_derin": "No, the box is not deep.",
+    "yes_kutu_sig": "Yes, the box is shallow.",
+    "no_kutu_sig": "No, the box is not shallow.",
+    
+    "yes_sepet_derin": "Yes, the basket is deep.",
+    "no_sepet_derin": "No, the basket is not deep.",
+    "yes_yemek_tepsisi_sig": "Yes, the tray is shallow.",
+    "no_yemek_tepsisi_sig": "No, the tray is not shallow.",
+    
+    "yes_cocuk_havuzu_sig": "Yes, the pool is shallow.",
+    "no_cocuk_havuzu_sig": "No, the pool is not shallow.",
+    "yes_cocuk_havuzu_derin": "Yes, the pool is deep.",
+    "no_cocuk_havuzu_derin": "No, the pool is not deep."
+  }
+}

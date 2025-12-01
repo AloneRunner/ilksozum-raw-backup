@@ -1,0 +1,62 @@
+{
+  "aliveLifeless": {
+    "q_which_is_alive": "Welke leeft?",
+    "q_which_is_alive_person": "Wie leeft?",
+    "q_which_is_lifeless": "Welke is levenloos?",
+
+    "yes_agac_canli": "Ja, de boom leeft.",
+    "no_agac_canli": "Nee, de boom leeft.",
+    "yes_tas_cansiz": "Ja, de steen is levenloos.",
+    "no_tas_cansiz": "Nee, de steen is levenloos.",
+
+    "yes_kedi_canli": "Ja, de kat leeft.",
+    "no_kedi_canli": "Nee, de kat leeft.",
+    "yes_masa_cansiz": "Ja, de tafel is levenloos.",
+    "no_masa_cansiz": "Nee, de tafel is levenloos.",
+
+    "yes_cicek_canli": "Ja, de bloem leeft.",
+    "no_cicek_canli": "Nee, de bloem leeft.",
+    "yes_araba_cansiz": "Ja, de auto is levenloos.",
+    "no_araba_cansiz": "Nee, de auto is levenloos.",
+
+    "yes_cocuk_canli": "Ja, het kind leeft.",
+    "no_cocuk_canli": "Nee, het kind leeft.",
+    "yes_robot_cansiz": "Ja, de robot is levenloos.",
+    "no_robot_cansiz": "Nee, de robot is levenloos.",
+
+    "yes_kelebek_canli": "Ja, de vlinder leeft.",
+    "no_kelebek_canli": "Nee, de vlinder leeft.",
+    "yes_kitap_cansiz": "Ja, het boek is levenloos.",
+    "no_kitap_cansiz": "Nee, het boek is levenloos.",
+
+    "yes_balik_canli": "Ja, de vis leeft.",
+    "no_balik_canli": "Nee, de vis leeft.",
+    "yes_sandalye_cansiz": "Ja, de stoel is levenloos.",
+    "no_sandalye_cansiz": "Nee, de stoel is levenloos.",
+
+    "yes_karinca_canli": "Ja, de mier leeft.",
+    "no_karinca_canli": "Nee, de mier leeft.",
+    "yes_anahtar_cansiz": "Ja, de sleutel is levenloos.",
+    "no_anahtar_cansiz": "Nee, de sleutel is levenloos.",
+
+    "yes_doktor_canli": "Ja, de dokter leeft.",
+    "no_doktor_canli": "Nee, de dokter leeft.",
+    "yes_canta_cansiz": "Ja, de tas is levenloos.",
+    "no_canta_cansiz": "Nee, de tas is levenloos.",
+
+    "yes_kurbaga_canli": "Ja, de kikker leeft.",
+    "no_kurbaga_canli": "Nee, de kikker leeft.",
+    "yes_top_cansiz": "Ja, de bal is levenloos.",
+    "no_top_cansiz": "Nee, de bal is levenloos.",
+
+    "yes_zebra_canli": "Ja, de zebra leeft.",
+    "no_zebra_canli": "Nee, de zebra leeft.",
+    "yes_tuvalet_kagidi_cansiz": "Ja, het wc-papier is levenloos.",
+    "no_tuvalet_kagidi_cansiz": "Nee, het wc-papier is levenloos.",
+
+    "yes_hamster_canli": "Ja, de hamster leeft.",
+    "no_hamster_canli": "Nee, de hamster leeft.",
+    "yes_helikopter_cansiz": "Ja, de helikopter is levenloos.",
+    "no_helikopter_cansiz": "Nee, de helikopter is levenloos."
+  }
+}

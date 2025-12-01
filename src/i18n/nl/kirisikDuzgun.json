@@ -1,0 +1,36 @@
+{
+  "kirisikDuzgun": {
+    "questions": {
+      "q_which_is_wrinkled": "Welke is gerimpeld?",
+      "q_which_is_smooth": "Welke is glad?",
+      "yes_gömlek_wrinkled": "Ja, gömlek is gerimpeld.",
+      "no_gömlek_wrinkled": "Nee, gömlek is niet gerimpeld.",
+      "yes_gömlek_smooth": "Ja, gömlek is glad.",
+      "no_gömlek_smooth": "Nee, gömlek is niet glad.",
+      "yes_kağıt_wrinkled": "Ja, kağıt is gerimpeld.",
+      "no_kağıt_wrinkled": "Nee, kağıt is niet gerimpeld.",
+      "yes_kağıt_smooth": "Ja, kağıt is glad.",
+      "no_kağıt_smooth": "Nee, kağıt is niet glad.",
+      "yes_pantolon_wrinkled": "Ja, pantolon is gerimpeld.",
+      "no_pantolon_wrinkled": "Nee, pantolon is niet gerimpeld.",
+      "yes_pantolon_smooth": "Ja, pantolon is glad.",
+      "no_pantolon_smooth": "Nee, pantolon is niet glad.",
+      "yes_yatak_wrinkled": "Ja, yatak is gerimpeld.",
+      "no_yatak_wrinkled": "Nee, yatak is niet gerimpeld.",
+      "yes_yatak_smooth": "Ja, yatak is glad.",
+      "no_yatak_smooth": "Nee, yatak is niet glad.",
+      "yes_çamaşır_wrinkled": "Ja, çamaşır is gerimpeld.",
+      "no_çamaşır_wrinkled": "Nee, çamaşır is niet gerimpeld.",
+      "yes_çamaşır_smooth": "Ja, çamaşır is glad.",
+      "no_çamaşır_smooth": "Nee, çamaşır is niet glad.",
+      "yes_havlu_wrinkled": "Ja, havlu is gerimpeld.",
+      "no_havlu_wrinkled": "Nee, havlu is niet gerimpeld.",
+      "yes_havlu_smooth": "Ja, havlu is glad.",
+      "no_havlu_smooth": "Nee, havlu is niet glad.",
+      "yes_tişört_wrinkled": "Ja, tişört is gerimpeld.",
+      "no_tişört_wrinkled": "Nee, tişört is niet gerimpeld.",
+      "yes_tişört_smooth": "Ja, tişört is glad.",
+      "no_tişört_smooth": "Nee, tişört is niet glad."
+    }
+  }
+}

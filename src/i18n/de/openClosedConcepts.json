@@ -1,0 +1,61 @@
+{
+  "openClosed": {
+    "q_which_is_open": "Welches ist offen?",
+    "q_which_is_closed": "Welches ist geschlossen?",
+
+    "yes_kutu_acik": "Ja, die Kiste ist offen.",
+    "no_kutu_acik": "Nein, die Kiste ist offen.",
+    "yes_kutu_kapali": "Ja, die Kiste ist geschlossen.",
+    "no_kutu_kapali": "Nein, die Kiste ist geschlossen.",
+
+    "yes_kitap_acik": "Ja, das Buch ist offen.",
+    "no_kitap_acik": "Nein, das Buch ist offen.",
+    "yes_kitap_kapali": "Ja, das Buch ist geschlossen.",
+    "no_kitap_kapali": "Nein, das Buch ist geschlossen.",
+
+    "yes_kapi_acik": "Ja, die Tür ist offen.",
+    "no_kapi_acik": "Nein, die Tür ist offen.",
+    "yes_kapi_kapali": "Ja, die Tür ist geschlossen.",
+    "no_kapi_kapali": "Nein, die Tür ist geschlossen.",
+
+    "yes_pencere_acik": "Ja, das Fenster ist offen.",
+    "no_pencere_acik": "Nein, das Fenster ist offen.",
+    "yes_pencere_kapali": "Ja, das Fenster ist geschlossen.",
+    "no_pencere_kapali": "Nein, das Fenster ist geschlossen.",
+
+    "yes_goz_acik": "Ja, das Auge ist offen.",
+    "no_goz_acik": "Nein, das Auge ist offen.",
+    "yes_goz_kapali": "Ja, das Auge ist geschlossen.",
+    "no_goz_kapali": "Nein, das Auge ist geschlossen.",
+
+    "yes_sandik_acik": "Ja, die Truhe ist offen.",
+    "no_sandik_acik": "Nein, die Truhe ist offen.",
+    "yes_sandik_kapali": "Ja, die Truhe ist geschlossen.",
+    "no_sandik_kapali": "Nein, die Truhe ist geschlossen.",
+
+    "yes_musluk_acik": "Ja, der Wasserhahn ist auf.",
+    "no_musluk_acik": "Nein, der Wasserhahn ist auf.",
+    "yes_musluk_kapali": "Ja, der Wasserhahn ist zu.",
+    "no_musluk_kapali": "Nein, der Wasserhahn ist zu.",
+
+    "yes_dolap_acik": "Ja, der Schrank ist offen.",
+    "no_dolap_acik": "Nein, der Schrank ist offen.",
+    "yes_dolap_kapali": "Ja, der Schrank ist geschlossen.",
+    "no_dolap_kapali": "Nein, der Schrank ist geschlossen.",
+
+    "yes_zarf_acik": "Ja, der Umschlag ist offen.",
+    "no_zarf_acik": "Nein, der Umschlag ist offen.",
+    "yes_zarf_kapali": "Ja, der Umschlag ist geschlossen.",
+    "no_zarf_kapali": "Nein, der Umschlag ist geschlossen.",
+
+    "yes_sise_acik": "Ja, die Flasche ist offen.",
+    "no_sise_acik": "Nein, die Flasche ist offen.",
+    "yes_sise_kapali": "Ja, die Flasche ist geschlossen.",
+    "no_sise_kapali": "Nein, die Flasche ist geschlossen.",
+
+    "yes_semsiye_acik": "Ja, der Regenschirm ist offen.",
+    "no_semsiye_acik": "Nein, der Regenschirm ist offen.",
+    "yes_semsiye_kapali": "Ja, der Regenschirm ist geschlossen.",
+    "no_semsiye_kapali": "Nein, der Regenschirm ist geschlossen."
+  }
+}

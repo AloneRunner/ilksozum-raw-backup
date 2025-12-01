@@ -9,6 +9,7 @@
     "basic": "Əsas",
     "dimensional": "Ölçülü",
     "tactile": "Toxunma",
+    "sensory": "Hiss",
     "state": "Vəziyyət",
     "quantity": "Miqdar",
     "location": "Məkan",
@@ -35,6 +36,8 @@
       "sivriKut": "İti / Küt",
       "oldNew": "Köhnə / Yeni",
       "youngOld": "Gənc / Yaşlı",
+      "q_which_is_old": "Hansıdır köhnə?",
+      "q_which_is_new": "Hansıdır yeni?",
       "cleanDirty": "Təmiz / Çirkli",
       "wetDry": "Yaş / Quru",
       "openClosed": "Açıq / Bağlı",
@@ -87,6 +90,7 @@
       "learnReflections": "Əksləri öyrən",
       "understandTransparency": "Şəffaflığı anla",
       "recognizeLines": "Xətt növlərini tanı",
+      "distinguishSounds": "Səsləri ayır et",
       "compareSizes": "Ölçüləri müqayisə et",
       "tellLengths": "Uzunluq fərqini ayırd et",
       "learnThickness": "Qalınlıqları öyrən",
@@ -118,9 +122,11 @@
       "untangleConnections": "Əlaqələri aç",
       "understandFullness": "Doluluq vəziyyətlərini anla",
       "understandBehaviors": "Davranışları anla",
-      "feelTemperatures": "Fərqli temperaturları hiss et",
-      "learnTastes": "Fərqli dadları öyrən",
-      "findCorrectOne": "Düzgün olanı tap"
+      "feelTemperatures": "Müxtəlif temperaturları hiss et",
+      "learnTastes": "Müxtəlif dadları öyrən",
+      "findCorrectOne": "Düzgün olanı tap",
+      "distinguishOpenClosed": "Açıq və bağlı vəziyyətləri ayırd edin",
+      "noticePoints": "Uc formalarını fərq edin"
     }
   }
 }

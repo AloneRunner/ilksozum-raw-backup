@@ -1,0 +1,33 @@
+{
+  "dikenliPuruzsuz": {
+    "q_which_is_thorny": "Hansı tikanlidir?",
+    "q_which_is_thorny_person": "Hansı tikanlidir?",
+    "q_which_is_smooth": "Hansı hamardır?",
+    "yes_kaktüs": "Bəli, kaktus tikanlıdır.",
+    "no_elma": "Xeyr, bu alma hamardır.",
+    "yes_elma": "Bəli, alma hamardır.",
+    "no_kaktüs": "Xeyr, bu kaktus tikanlıdır.",
+    "yes_kirpi": "Bəli, kirpi tikanlıdır.",
+    "no_yunus": "Xeyr, bu delfin hamardır.",
+    "yes_yunus": "Bəli, delfin hamardır.",
+    "no_kirpi": "Xeyr, bu kirpi tikanlıdır.",
+    "yes_deniz_kestanesi": "Bəli, dəniz kirpisi tikanlıdır.",
+    "no_deniz_yıldızı": "Xeyr, bu dəniz ulduzu hamardır.",
+    "yes_deniz_yıldızı": "Bəli, dəniz ulduzu hamardır.",
+    "no_deniz_kestanesi": "Xeyr, bu dəniz kirpisi tikanlıdır.",
+    "yes_dikenli_tel": "Bəli, tikanlı məftil tikanlıdır.",
+    "no_ip": "Xeyr, bu ip hamardır.",
+    "yes_ip": "Bəli, ip hamardır.",
+    "no_dikenli_tel": "Xeyr, bu məftil tikanlıdır.",
+    "yes_enginar": "Bəli, ənginar tikanlıdır.",
+    "no_patlıcan": "Xeyr, bu badımcan hamardır.",
+    "yes_patlıcan": "Bəli, badımcan hamardır.",
+    "no_enginar": "Xeyr, bu ənginar tikanlıdır.",
+    "yes_dikenli_dal": "Bəli, budaq tikanlıdır.",
+    "no_dal": "Xeyr, bu budaq hamardır.",
+    "yes_dal": "Bəli, budaq hamardır.",
+    "no_dikenli_dal": "Xeyr, bu budaq tikanlıdır.",
+    "yes_ananas": "Bəli, ananas tikanlıdır.",
+    "no_ananas": "Xeyr, bu ananas hamardır."
+  }
+}

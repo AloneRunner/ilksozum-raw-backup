@@ -70,6 +70,20 @@ export const speak = async (textToSpeak: string, overrideLang?: string): Promise
         return Promise.resolve();
     }
 
+    // Dev: log the exact text spoken so F12 shows live TTS output (useful for i18n checks)
+    try {
+        if (typeof window !== 'undefined') {
+            const host = window.location && window.location.hostname ? window.location.hostname : '';
+            const isLocal = host === 'localhost' || host === '127.0.0.1' || host.startsWith('192.168.') || window.location.protocol === 'file:';
+            if (isLocal) {
+                const displayLang = overrideLang || speechLang;
+                console.log('[TTS]', { text: textToSpeak, lang: displayLang, platform: Capacitor.getPlatform ? Capacitor.getPlatform() : (Capacitor.isNativePlatform() ? 'native' : 'web') });
+            }
+        }
+    } catch (e) {
+        // ignore logging errors
+    }
+
     await cancelSpeech();
     stopCurrentEffect();
 

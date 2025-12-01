@@ -1,0 +1,49 @@
+{
+  "functionalMatching": {
+    "q_what_hammer_nail_with": {
+      "correct": "Çiviyi çekiçle çakarız."
+    },
+    "q_what_brush_teeth_with": {
+      "correct": "Dişlerimizi diş macunu ile fırçalarız."
+    },
+    "q_what_after_socks": {
+      "correct": "Çoraptan sonra ayakkabı giyeriz."
+    },
+    "q_where_use_pillow": {
+      "correct": "Yastığı yatak üzerinde kullanırız."
+    },
+    "q_what_eat_soup_with": {
+      "correct": "Çorbayı kaşık ile içeriz."
+    },
+    "q_what_color_picture_with": {
+      "correct": "Resmi fırça ile boyarız."
+    },
+    "q_what_write_paper_with": {
+      "correct": "Kağıda kalem ile yazarız."
+    },
+    "q_what_open_door_with": {
+      "correct": "Kapıyı anahtar ile açarız."
+    },
+    "q_what_eat_pasta_with": {
+      "correct": "Makarnayı çatal ile yeriz."
+    },
+    "q_where_put_money": {
+      "correct": "Parayı kumbara içine koyarız."
+    },
+    "q_what_comb_hair_with": {
+      "correct": "Saçımızı tarak ile tararız."
+    },
+    "q_where_read_book": {
+      "correct": "Kitabı masa üzerinde okuruz."
+    },
+    "q_what_cut_paper_with": {
+      "correct": "Kağıdı makas ile keseriz."
+    },
+    "q_what_cut_bread_with": {
+      "correct": "Ekmeği bıçak ile keseriz."
+    },
+    "q_what_wash_hands_with": {
+      "correct": "Ellerimizi sabun ile yıkarız."
+    }
+  }
+}

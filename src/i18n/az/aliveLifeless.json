@@ -1,0 +1,62 @@
+{
+  "aliveLifeless": {
+    "q_which_is_alive": "Hansı canlıdır?",
+    "q_which_is_alive_person": "Kim canlıdır?",
+    "q_which_is_lifeless": "Hansı cansızdır?",
+
+    "yes_agac_canli": "Bəli, ağac canlıdır.",
+    "no_agac_canli": "Xeyr, ağac canlıdır.",
+    "yes_tas_cansiz": "Bəli, daş cansızdır.",
+    "no_tas_cansiz": "Xeyr, daş cansızdır.",
+
+    "yes_kedi_canli": "Bəli, pişik canlıdır.",
+    "no_kedi_canli": "Xeyr, pişik canlıdır.",
+    "yes_masa_cansiz": "Bəli, masa cansızdır.",
+    "no_masa_cansiz": "Xeyr, masa cansızdır.",
+
+    "yes_cicek_canli": "Bəli, gül canlıdır.",
+    "no_cicek_canli": "Xeyr, gül canlıdır.",
+    "yes_araba_cansiz": "Bəli, maşın cansızdır.",
+    "no_araba_cansiz": "Xeyr, maşın cansızdır.",
+
+    "yes_cocuk_canli": "Bəli, uşaq canlıdır.",
+    "no_cocuk_canli": "Xeyr, uşaq canlıdır.",
+    "yes_robot_cansiz": "Bəli, robot cansızdır.",
+    "no_robot_cansiz": "Xeyr, robot cansızdır.",
+
+    "yes_kelebek_canli": "Bəli, kəpənək canlıdır.",
+    "no_kelebek_canli": "Xeyr, kəpənək canlıdır.",
+    "yes_kitap_cansiz": "Bəli, kitab cansızdır.",
+    "no_kitap_cansiz": "Xeyr, kitab cansızdır.",
+
+    "yes_balik_canli": "Bəli, balıq canlıdır.",
+    "no_balik_canli": "Xeyr, balıq canlıdır.",
+    "yes_sandalye_cansiz": "Bəli, stul cansızdır.",
+    "no_sandalye_cansiz": "Xeyr, stul cansızdır.",
+
+    "yes_karinca_canli": "Bəli, qarışqa canlıdır.",
+    "no_karinca_canli": "Xeyr, qarışqa canlıdır.",
+    "yes_anahtar_cansiz": "Bəli, açar cansızdır.",
+    "no_anahtar_cansiz": "Xeyr, açar cansızdır.",
+
+    "yes_doktor_canli": "Bəli, həkim canlıdır.",
+    "no_doktor_canli": "Xeyr, həkim canlıdır.",
+    "yes_canta_cansiz": "Bəli, çanta cansızdır.",
+    "no_canta_cansiz": "Xeyr, çanta cansızdır.",
+
+    "yes_kurbaga_canli": "Bəli, qurbağa canlıdır.",
+    "no_kurbaga_canli": "Xeyr, qurbağa canlıdır.",
+    "yes_top_cansiz": "Bəli, top cansızdır.",
+    "no_top_cansiz": "Xeyr, top cansızdır.",
+
+    "yes_zebra_canli": "Bəli, zebra canlıdır.",
+    "no_zebra_canli": "Xeyr, zebra canlıdır.",
+    "yes_tuvalet_kagidi_cansiz": "Bəli, tualet kağızı cansızdır.",
+    "no_tuvalet_kagidi_cansiz": "Xeyr, tualet kağızı cansızdır.",
+
+    "yes_hamster_canli": "Bəli, hamster canlıdır.",
+    "no_hamster_canli": "Xeyr, hamster canlıdır.",
+    "yes_helikopter_cansiz": "Bəli, helikopter cansızdır.",
+    "no_helikopter_cansiz": "Xeyr, helikopter cansızdır."
+  }
+}

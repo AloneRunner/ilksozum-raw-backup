@@ -1,0 +1,83 @@
+{
+  "bigSmall": {
+    "q_big": "Welke is groot?",
+    "q_small": "Welke is klein?",
+
+    "yes_fil": "Ja, de olifant is groot.",
+    "no_fil": "Nee, de olifant is groot.",
+    "yes_fare": "Ja, de muis is klein.",
+    "no_fare": "Nee, de muis is klein.",
+
+    "yes_balina": "Ja, de walvis is groot.",
+    "no_balina": "Nee, de walvis is groot.",
+    "yes_karinca": "Ja, de mier is klein.",
+    "no_karinca": "Nee, de mier is klein.",
+
+    "yes_okul_otobusu": "Ja, de schoolbus is groot.",
+    "no_okul_otobusu": "Nee, de schoolbus is groot.",
+    "yes_bisiklet": "Ja, de fiets is klein.",
+    "no_bisiklet": "Nee, de fiets is klein.",
+
+    "yes_gemi": "Ja, het schip is groot.",
+    "no_gemi": "Nee, het schip is groot.",
+    "yes_sandal": "Ja, de roeiboot is klein.",
+    "no_sandal": "Nee, de roeiboot is klein.",
+
+    "yes_ev": "Ja, het huis is groot.",
+    "no_ev": "Nee, het huis is groot.",
+    "yes_kus_evi": "Ja, het vogelhuisje is klein.",
+    "no_kus_evi": "Nee, het vogelhuisje is klein.",
+
+    "yes_araba": "Ja, de auto is groot.",
+    "no_araba": "Nee, de auto is groot.",
+    "yes_araba_kucuk": "Ja, de auto is klein.",
+    "no_araba_kucuk": "Nee, de auto is klein.",
+
+    "yes_kamyon": "Ja, de vrachtwagen is groot.",
+    "no_kamyon": "Nee, de vrachtwagen is groot.",
+
+    "yes_gunes": "Ja, de zon is groot.",
+    "no_gunes": "Nee, de zon is groot.",
+    "yes_yildiz": "Ja, de ster is klein.",
+    "no_yildiz": "Nee, de ster is klein.",
+
+    "yes_agac": "Ja, de boom is groot.",
+    "no_agac": "Nee, de boom is groot.",
+    "yes_papatya": "Ja, het madeliefje is klein.",
+    "no_papatya": "Nee, het madeliefje is klein.",
+
+    "yes_gokdelen": "Ja, de wolkenkrabber is groot.",
+    "no_gokdelen": "Nee, de wolkenkrabber is groot.",
+
+    "yes_balik": "Ja, de vis is klein.",
+    "no_balik": "Nee, de vis is klein.",
+
+    "yes_pilates_topu": "Ja, de pilatesbal is groot.",
+    "no_pilates_topu": "Nee, de pilatesbal is groot.",
+    "yes_misket": "Ja, de knikker is klein.",
+    "no_misket": "Nee, de knikker is klein.",
+
+    "yes_karpuz": "Ja, de watermeloen is groot.",
+    "no_karpuz": "Nee, de watermeloen is groot.",
+    "yes_kiraz": "Ja, de kers is klein.",
+    "no_kiraz": "Nee, de kers is klein.",
+
+    "yes_ansiklopedi": "Ja, de encyclopedie is groot.",
+    "no_ansiklopedi": "Nee, de encyclopedie is groot.",
+    "yes_silgi": "Ja, de gum is klein.",
+    "no_silgi": "Nee, de gum is klein.",
+
+    "yes_traktor": "Ja, de tractor is groot.",
+    "no_traktor": "Nee, de tractor is groot.",
+
+    "yes_kanepe": "Ja, de bank is groot.",
+    "no_kanepe": "Nee, de bank is groot.",
+    "yes_koltuk": "Ja, de fauteuil is klein.",
+    "no_koltuk": "Nee, de fauteuil is klein.",
+
+    "yes_merdiven": "Ja, de ladder is groot.",
+    "no_merdiven": "Nee, de ladder is groot.",
+    "yes_tabure": "Ja, de kruk is klein.",
+    "no_tabure": "Nee, de kruk is klein."
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "bigSmall": {
+    "q_big": "Lequel est grand ?",
+    "q_small": "Lequel est petit ?",
+
+    "yes_fil": "Oui, l'éléphant est grand.",
+    "no_fil": "Non, l'éléphant est grand.",
+    "yes_fare": "Oui, la souris est petite.",
+    "no_fare": "Non, la souris est petite.",
+
+    "yes_balina": "Oui, la baleine est grande.",
+    "no_balina": "Non, la baleine est grande.",
+    "yes_karinca": "Oui, la fourmi est petite.",
+    "no_karinca": "Non, la fourmi est petite.",
+
+    "yes_okul_otobusu": "Oui, le bus scolaire est grand.",
+    "no_okul_otobusu": "Non, le bus scolaire est grand.",
+    "yes_bisiklet": "Oui, le vélo est petit.",
+    "no_bisiklet": "Non, le vélo est petit.",
+
+    "yes_gemi": "Oui, le navire est grand.",
+    "no_gemi": "Non, le navire est grand.",
+    "yes_sandal": "Oui, la barque est petite.",
+    "no_sandal": "Non, la barque est petite.",
+
+    "yes_ev": "Oui, la maison est grande.",
+    "no_ev": "Non, la maison est grande.",
+    "yes_kus_evi": "Oui, le nichoir est petit.",
+    "no_kus_evi": "Non, le nichoir est petit.",
+
+    "yes_araba": "Oui, la voiture est grande.",
+    "no_araba": "Non, la voiture est grande.",
+    "yes_araba_kucuk": "Oui, la voiture est petite.",
+    "no_araba_kucuk": "Non, la voiture est petite.",
+
+    "yes_kamyon": "Oui, le camion est grand.",
+    "no_kamyon": "Non, le camion est grand.",
+
+    "yes_gunes": "Oui, le soleil est grand.",
+    "no_gunes": "Non, le soleil est grand.",
+    "yes_yildiz": "Oui, l'étoile est petite.",
+    "no_yildiz": "Non, l'étoile est petite.",
+
+    "yes_agac": "Oui, l'arbre est grand.",
+    "no_agac": "Non, l'arbre est grand.",
+    "yes_papatya": "Oui, la marguerite est petite.",
+    "no_papatya": "Non, la marguerite est petite.",
+
+    "yes_gokdelen": "Oui, le gratte-ciel est grand.",
+    "no_gokdelen": "Non, le gratte-ciel est grand.",
+
+    "yes_balik": "Oui, le poisson est petit.",
+    "no_balik": "Non, le poisson est petit.",
+
+    "yes_pilates_topu": "Oui, le ballon de pilates est grand.",
+    "no_pilates_topu": "Non, le ballon de pilates est grand.",
+    "yes_misket": "Oui, la bille est petite.",
+    "no_misket": "Non, la bille est petite.",
+
+    "yes_karpuz": "Oui, la pastèque est grande.",
+    "no_karpuz": "Non, la pastèque est grande.",
+    "yes_kiraz": "Oui, la cerise est petite.",
+    "no_kiraz": "Non, la cerise est petite.",
+
+    "yes_ansiklopedi": "Oui, l'encyclopédie est grande.",
+    "no_ansiklopedi": "Non, l'encyclopédie est grande.",
+    "yes_silgi": "Oui, la gomme est petite.",
+    "no_silgi": "Non, la gomme est petite.",
+
+    "yes_traktor": "Oui, le tracteur est grand.",
+    "no_traktor": "Non, le tracteur est grand.",
+
+    "yes_kanepe": "Oui, le canapé est grand.",
+    "no_kanepe": "Non, le canapé est grand.",
+    "yes_koltuk": "Oui, le fauteuil est petit.",
+    "no_koltuk": "Non, le fauteuil est petit.",
+
+    "yes_merdiven": "Oui, l'échelle est grande.",
+    "no_merdiven": "Non, l'échelle est grande.",
+    "yes_tabure": "Oui, le tabouret est petit.",
+    "no_tabure": "Non, le tabouret est petit."
+  }
+}

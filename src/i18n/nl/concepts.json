@@ -9,6 +9,7 @@
     "basic": "Basis",
     "dimensional": "Dimensioneel",
     "tactile": "Tactiel",
+    "sensory": "Zintuiglijk",
     "state": "Toestand",
     "quantity": "Hoeveelheid",
     "location": "Locatie",
@@ -35,6 +36,8 @@
       "sivriKut": "Scherp / Stomp",
       "oldNew": "Oud / Nieuw",
       "youngOld": "Jong / Oud",
+      "q_which_is_old": "Welke is oud?",
+      "q_which_is_new": "Welke is nieuw?",
       "cleanDirty": "Schoon / Vies",
       "wetDry": "Nat / Droog",
       "openClosed": "Open / Gesloten",
@@ -87,6 +90,7 @@
       "learnReflections": "Leer over reflecties",
       "understandTransparency": "Begrijp transparantie",
       "recognizeLines": "Herken lijnsoorten",
+      "distinguishSounds": "Onderscheid geluiden",
       "compareSizes": "Vergelijk groottes",
       "tellLengths": "Zie het verschil in lengte",
       "learnThickness": "Leer over dikte",
@@ -120,7 +124,9 @@
       "understandBehaviors": "Begrijp gedragingen",
       "feelTemperatures": "Voel verschillende temperaturen",
       "learnTastes": "Leer verschillende smaken",
-      "findCorrectOne": "Vind de juiste"
+      "findCorrectOne": "Vind de juiste",
+      "distinguishOpenClosed": "Onderscheid open en gesloten toestanden",
+      "noticePoints": "Puntige vormen herkennen"
     }
   }
 }

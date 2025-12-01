@@ -1,0 +1,40 @@
+{
+  "kalabalikTenha": {
+    "questions": {
+      "q_which_is_crowded": "Hansı izdihamlıdır?",
+      "q_which_is_sparse": "Hansı boşdur?",
+      "yes_trafik_crowded": "Bəli, trafik izdihamlı.",
+      "no_trafik_crowded": "Xeyr, trafik izdihamlı deyil.",
+      "yes_trafik_sparse": "Bəli, trafik boş.",
+      "no_trafik_sparse": "Xeyr, trafik boş deyil.",
+      "yes_yol_crowded": "Bəli, yol izdihamlı.",
+      "no_yol_crowded": "Xeyr, yol izdihamlı deyil.",
+      "yes_yol_sparse": "Bəli, yol boş.",
+      "no_yol_sparse": "Xeyr, yol boş deyil.",
+      "yes_durak_crowded": "Bəli, durak izdihamlı.",
+      "no_durak_crowded": "Xeyr, durak izdihamlı deyil.",
+      "yes_durak_sparse": "Bəli, durak boş.",
+      "no_durak_sparse": "Xeyr, durak boş deyil.",
+      "yes_orman_crowded": "Bəli, orman izdihamlı.",
+      "no_orman_crowded": "Xeyr, orman izdihamlı deyil.",
+      "yes_orman_sparse": "Bəli, orman boş.",
+      "no_orman_sparse": "Xeyr, orman boş deyil.",
+      "yes_ağaç_crowded": "Bəli, ağaç izdihamlı.",
+      "no_ağaç_crowded": "Xeyr, ağaç izdihamlı deyil.",
+      "yes_ağaç_sparse": "Bəli, ağaç boş.",
+      "no_ağaç_sparse": "Xeyr, ağaç boş deyil.",
+      "yes_kuş_sürüsü_crowded": "Bəli, kuş sürüsü izdihamlı.",
+      "no_kuş_sürüsü_crowded": "Xeyr, kuş sürüsü izdihamlı deyil.",
+      "yes_kuş_sürüsü_sparse": "Bəli, kuş sürüsü boş.",
+      "no_kuş_sürüsü_sparse": "Xeyr, kuş sürüsü boş deyil.",
+      "yes_insan_grubu_crowded": "Bəli, insan grubu izdihamlı.",
+      "no_insan_grubu_crowded": "Xeyr, insan grubu izdihamlı deyil.",
+      "yes_insan_grubu_sparse": "Bəli, insan grubu boş.",
+      "no_insan_grubu_sparse": "Xeyr, insan grubu boş deyil.",
+      "yes_adam_crowded": "Bəli, adam izdihamlı.",
+      "no_adam_crowded": "Xeyr, adam izdihamlı deyil.",
+      "yes_adam_sparse": "Bəli, adam boş.",
+      "no_adam_sparse": "Xeyr, adam boş deyil."
+    }
+  }
+}

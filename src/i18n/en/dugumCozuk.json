@@ -1,0 +1,20 @@
+{
+  "dugumCozuk": {
+    "questions": {
+      "q_which_is_knotted": "Which one is knotted?",
+      "q_which_is_untied": "Which one is untied?",
+      "yes_ayakkabı_knotted": "Yes, the ayakkabı is knotted.",
+      "no_ayakkabı_knotted": "No, the ayakkabı is not knotted.",
+      "yes_ayakkabı_untied": "Yes, the ayakkabı is untied.",
+      "no_ayakkabı_untied": "No, the ayakkabı is not untied.",
+      "yes_hortum_knotted": "Yes, the hortum is knotted.",
+      "no_hortum_knotted": "No, the hortum is not knotted.",
+      "yes_hortum_untied": "Yes, the hortum is untied.",
+      "no_hortum_untied": "No, the hortum is not untied.",
+      "yes_kurdele_knotted": "Yes, the kurdele is knotted.",
+      "no_kurdele_knotted": "No, the kurdele is not knotted.",
+      "yes_kurdele_untied": "Yes, the kurdele is untied.",
+      "no_kurdele_untied": "No, the kurdele is not untied."
+    }
+  }
+}

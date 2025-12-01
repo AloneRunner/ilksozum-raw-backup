@@ -50,7 +50,26 @@ void __IMPORTED;
 export function translateLabel(text: string, lang: string): string {
 	if (!text) return text;
 	if (lang === 'tr') return text;
-	// Lightweight fallback: return original text for now.
+	
+	const target = (['en', 'de', 'fr', 'nl', 'az'] as const).includes(lang as any) ? (lang as TargetLang) : 'en';
+	const wordmaps: Record<TargetLang, any> = {
+		en: rawWordmapEN,
+		de: rawWordmapDE,
+		fr: rawWordmapFR,
+		nl: rawWordmapNL,
+		az: rawWordmapAZ,
+	};
+	const wordmap = wordmaps[target];
+	
+	// Search through all categories in the wordmap
+	for (const category of Object.values(wordmap)) {
+		if (typeof category === 'object' && category !== null) {
+			const translation = (category as Record<string, string>)[text.toLowerCase()];
+			if (translation) return translation;
+		}
+	}
+	
+	// Fallback: return original text if no translation found
 	return text;
 }
 

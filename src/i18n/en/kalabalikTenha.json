@@ -1,0 +1,40 @@
+{
+  "kalabalikTenha": {
+    "questions": {
+      "q_which_is_crowded": "Which one is crowded?",
+      "q_which_is_sparse": "Which one is deserted?",
+      "yes_trafik_crowded": "Yes, the trafik is crowded.",
+      "no_trafik_crowded": "No, the trafik is not crowded.",
+      "yes_trafik_sparse": "Yes, the trafik is deserted.",
+      "no_trafik_sparse": "No, the trafik is not deserted.",
+      "yes_yol_crowded": "Yes, the yol is crowded.",
+      "no_yol_crowded": "No, the yol is not crowded.",
+      "yes_yol_sparse": "Yes, the yol is deserted.",
+      "no_yol_sparse": "No, the yol is not deserted.",
+      "yes_durak_crowded": "Yes, the durak is crowded.",
+      "no_durak_crowded": "No, the durak is not crowded.",
+      "yes_durak_sparse": "Yes, the durak is deserted.",
+      "no_durak_sparse": "No, the durak is not deserted.",
+      "yes_orman_crowded": "Yes, the orman is crowded.",
+      "no_orman_crowded": "No, the orman is not crowded.",
+      "yes_orman_sparse": "Yes, the orman is deserted.",
+      "no_orman_sparse": "No, the orman is not deserted.",
+      "yes_ağaç_crowded": "Yes, the ağaç is crowded.",
+      "no_ağaç_crowded": "No, the ağaç is not crowded.",
+      "yes_ağaç_sparse": "Yes, the ağaç is deserted.",
+      "no_ağaç_sparse": "No, the ağaç is not deserted.",
+      "yes_kuş_sürüsü_crowded": "Yes, the kuş sürüsü is crowded.",
+      "no_kuş_sürüsü_crowded": "No, the kuş sürüsü is not crowded.",
+      "yes_kuş_sürüsü_sparse": "Yes, the kuş sürüsü is deserted.",
+      "no_kuş_sürüsü_sparse": "No, the kuş sürüsü is not deserted.",
+      "yes_insan_grubu_crowded": "Yes, the insan grubu is crowded.",
+      "no_insan_grubu_crowded": "No, the insan grubu is not crowded.",
+      "yes_insan_grubu_sparse": "Yes, the insan grubu is deserted.",
+      "no_insan_grubu_sparse": "No, the insan grubu is not deserted.",
+      "yes_adam_crowded": "Yes, the adam is crowded.",
+      "no_adam_crowded": "No, the adam is not crowded.",
+      "yes_adam_sparse": "Yes, the adam is deserted.",
+      "no_adam_sparse": "No, the adam is not deserted."
+    }
+  }
+}

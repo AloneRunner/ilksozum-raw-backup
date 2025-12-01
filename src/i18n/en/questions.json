@@ -1,4 +1,4 @@
-{
+﻿{
   "questions": {
     "didYouFind": "Tapdınız?",
     "howMany": "Neçə dənə var?",
@@ -274,7 +274,7 @@
     "q_which_is_sparse": "Which one is sparse?",
     "q_which_is_stale": "Which one is stale?",
     "q_which_is_stone_person": "Which one is the stone?",
-    "q_which_is_straight": "Which one is straight?",
+    "q_which_is_straight": "Which one is flat?",
     "q_which_is_strawberry_person": "Which one is the strawberry?",
     "q_which_is_sweet": "Which one is sweet?",
     "q_which_is_teacher_person": "Who is the teacher?",

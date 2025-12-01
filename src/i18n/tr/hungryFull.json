@@ -1,0 +1,32 @@
+{
+  "hungryFull": {
+    "questions": {
+      "q_which_is_hungry": "Aç olan hangisi?",
+      "q_which_is_satiated": "Tok olan hangisi?",
+      "yes_kedi_hungry": "Evet, kedi aç.",
+      "no_kedi_hungry": "Hayır, kedi aç değil.",
+      "yes_kedi_satiated": "Evet, kedi tok.",
+      "no_kedi_satiated": "Hayır, kedi tok değil.",
+      "yes_sincap_hungry": "Evet, sincap aç.",
+      "no_sincap_hungry": "Hayır, sincap aç değil.",
+      "yes_sincap_satiated": "Evet, sincap tok.",
+      "no_sincap_satiated": "Hayır, sincap tok değil.",
+      "yes_bebek_hungry": "Evet, bebek aç.",
+      "no_bebek_hungry": "Hayır, bebek aç değil.",
+      "yes_bebek_satiated": "Evet, bebek tok.",
+      "no_bebek_satiated": "Hayır, bebek tok değil.",
+      "yes_canavar_hungry": "Evet, canavar aç.",
+      "no_canavar_hungry": "Hayır, canavar aç değil.",
+      "yes_canavar_satiated": "Evet, canavar tok.",
+      "no_canavar_satiated": "Hayır, canavar tok değil.",
+      "yes_maymun_hungry": "Evet, maymun aç.",
+      "no_maymun_hungry": "Hayır, maymun aç değil.",
+      "yes_maymun_satiated": "Evet, maymun tok.",
+      "no_maymun_satiated": "Hayır, maymun tok değil.",
+      "yes_kuş_hungry": "Evet, kuş aç.",
+      "no_kuş_hungry": "Hayır, kuş aç değil.",
+      "yes_kuş_satiated": "Evet, kuş tok.",
+      "no_kuş_satiated": "Hayır, kuş tok değil."
+    }
+  }
+}

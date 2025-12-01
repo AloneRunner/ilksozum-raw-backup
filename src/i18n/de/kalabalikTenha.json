@@ -1,0 +1,40 @@
+{
+  "kalabalikTenha": {
+    "questions": {
+      "q_which_is_crowded": "Welches ist überfüllt?",
+      "q_which_is_sparse": "Welches ist verlassen?",
+      "yes_trafik_crowded": "Ja, trafik ist überfüllt.",
+      "no_trafik_crowded": "Nein, trafik ist nicht überfüllt.",
+      "yes_trafik_sparse": "Ja, trafik ist verlassen.",
+      "no_trafik_sparse": "Nein, trafik ist nicht verlassen.",
+      "yes_yol_crowded": "Ja, yol ist überfüllt.",
+      "no_yol_crowded": "Nein, yol ist nicht überfüllt.",
+      "yes_yol_sparse": "Ja, yol ist verlassen.",
+      "no_yol_sparse": "Nein, yol ist nicht verlassen.",
+      "yes_durak_crowded": "Ja, durak ist überfüllt.",
+      "no_durak_crowded": "Nein, durak ist nicht überfüllt.",
+      "yes_durak_sparse": "Ja, durak ist verlassen.",
+      "no_durak_sparse": "Nein, durak ist nicht verlassen.",
+      "yes_orman_crowded": "Ja, orman ist überfüllt.",
+      "no_orman_crowded": "Nein, orman ist nicht überfüllt.",
+      "yes_orman_sparse": "Ja, orman ist verlassen.",
+      "no_orman_sparse": "Nein, orman ist nicht verlassen.",
+      "yes_ağaç_crowded": "Ja, ağaç ist überfüllt.",
+      "no_ağaç_crowded": "Nein, ağaç ist nicht überfüllt.",
+      "yes_ağaç_sparse": "Ja, ağaç ist verlassen.",
+      "no_ağaç_sparse": "Nein, ağaç ist nicht verlassen.",
+      "yes_kuş_sürüsü_crowded": "Ja, kuş sürüsü ist überfüllt.",
+      "no_kuş_sürüsü_crowded": "Nein, kuş sürüsü ist nicht überfüllt.",
+      "yes_kuş_sürüsü_sparse": "Ja, kuş sürüsü ist verlassen.",
+      "no_kuş_sürüsü_sparse": "Nein, kuş sürüsü ist nicht verlassen.",
+      "yes_insan_grubu_crowded": "Ja, insan grubu ist überfüllt.",
+      "no_insan_grubu_crowded": "Nein, insan grubu ist nicht überfüllt.",
+      "yes_insan_grubu_sparse": "Ja, insan grubu ist verlassen.",
+      "no_insan_grubu_sparse": "Nein, insan grubu ist nicht verlassen.",
+      "yes_adam_crowded": "Ja, adam ist überfüllt.",
+      "no_adam_crowded": "Nein, adam ist nicht überfüllt.",
+      "yes_adam_sparse": "Ja, adam ist verlassen.",
+      "no_adam_sparse": "Nein, adam ist nicht verlassen."
+    }
+  }
+}

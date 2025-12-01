@@ -1,0 +1,53 @@
+﻿{
+  "flatCurved": "Recht / Gebogen",
+  "q_which_is_flat": "Welke is recht?",
+  "q_which_is_curved": "Welke is gebogen?",
+
+  "yes_yol_duz": "Ja, de weg is recht.",
+  "no_yol_duz": "Nee, de weg is niet recht.",
+  "yes_yol_egri": "Ja, de weg is gebogen.",
+  "no_yol_egri": "Nee, de weg is niet gebogen.",
+
+  "yes_cetvel_duz": "Ja, de liniaal is recht.",
+  "no_cetvel_duz": "Nee, de liniaal is niet recht.",
+  "yes_solucan_egri": "Ja, de worm is gebogen.",
+  "no_solucan_egri": "Nee, de worm is niet gebogen.",
+
+  "yes_ok_duz": "Ja, de pijl is recht.",
+  "no_ok_duz": "Nee, de pijl is niet recht.",
+  "yes_yay_egri": "Ja, de boog is gebogen.",
+  "no_yay_egri": "Nee, de boog is niet gebogen.",
+
+  "yes_kalem_duz": "Ja, het potlood is recht.",
+  "no_kalem_duz": "Nee, het potlood is niet recht.",
+  "yes_muz_egri": "Ja, de banaan is gebogen.",
+  "no_muz_egri": "Nee, de banaan is niet gebogen.",
+
+  "yes_davul_cubugu_duz": "Ja, de drumstok is recht.",
+  "no_davul_cubugu_duz": "Nee, de drumstok is niet recht.",
+  "yes_yilan_egri": "Ja, de slang is gebogen.",
+  "no_yilan_egri": "Nee, de slang is niet gebogen.",
+
+  "yes_kitap_duz": "Ja, het boek is recht.",
+  "no_kitap_duz": "Nee, het boek is niet recht.",
+  "yes_ay_egri": "Ja, de maan is gebogen.",
+  "no_ay_egri": "Nee, de maan is niet gebogen.",
+
+  "yes_tugla_duz": "Ja, de baksteen is recht.",
+  "no_tugla_duz": "Nee, de baksteen is niet recht.",
+  "yes_gokkusagi_egri": "Ja, de regenboog is gebogen.",
+  "no_gokkusagi_egri": "Nee, de regenboog is niet gebogen.",
+
+  "yes_bicak_duz": "Ja, het mes is recht.",
+  "no_bicak_duz": "Nee, het mes is niet recht.",
+  "yes_salatalik_egri": "Ja, de komkommer is gebogen.",
+  "no_salatalik_egri": "Nee, de komkommer is niet gebogen.",
+
+  "yes_masa_duz": "Ja, de tafel is recht.",
+  "no_masa_duz": "Nee, de tafel is niet recht.",
+  "yes_nehir_egri": "Ja, de rivier is gebogen.",
+  "no_nehir_egri": "Nee, de rivier is niet gebogen.",
+
+  "yes_pirasa_duz": "Ja, de prei is recht.",
+  "no_pirasa_duz": "Nee, de prei is niet recht."
+}

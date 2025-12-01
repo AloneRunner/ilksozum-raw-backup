@@ -1,0 +1,32 @@
+{
+  "fewMuchConcepts": {
+    "fewMuch": "Few / Much",
+    "q_which_is_few": "Which one has few?",
+    "q_which_is_few_person": "Which one has few?",
+    "q_which_is_much": "Which one has many?",
+    "yes_uzum_az": "Yes, these grapes are few.",
+    "no_uzum_az": "No, these grapes are not few.",
+    "yes_uzum_cok": "Yes, these grapes are many.",
+    "no_uzum_cok": "No, these grapes are not many.",
+    "yes_kavanoz_az": "Yes, these marbles are few.",
+    "no_kavanoz_az": "No, these marbles are not few.",
+    "yes_kavanoz_cok": "Yes, these marbles are many.",
+    "no_kavanoz_cok": "No, these marbles are not many.",
+    "yes_kitaplik_az": "Yes, these books are few.",
+    "no_kitaplik_az": "No, these books are not few.",
+    "yes_kitaplik_cok": "Yes, these books are many.",
+    "no_kitaplik_cok": "No, these books are not many.",
+    "yes_para_az": "Yes, this money is little.",
+    "no_para_az": "No, this money is not little.",
+    "yes_para_cok": "Yes, this money is a lot.",
+    "no_para_cok": "No, this money is not a lot.",
+    "yes_akvaryum_az": "Yes, these fish are few.",
+    "no_akvaryum_az": "No, these fish are not few.",
+    "yes_akvaryum_cok": "Yes, these fish are many.",
+    "no_akvaryum_cok": "No, these fish are not many.",
+    "yes_kus_az": "Yes, these birds are few.",
+    "no_kus_az": "No, these birds are not few.",
+    "yes_kuslar_cok": "Yes, these birds are many.",
+    "no_kuslar_cok": "No, these birds are not many."
+  }
+}

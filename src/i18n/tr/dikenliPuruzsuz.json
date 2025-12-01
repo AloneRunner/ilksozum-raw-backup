@@ -1,0 +1,33 @@
+{
+  "dikenliPuruzsuz": {
+    "q_which_is_thorny": "Dikenli olan hangisi?",
+    "q_which_is_thorny_person": "Dikenli olan hangisi?",
+    "q_which_is_smooth": "Pürüzsüz olan hangisi?",
+    "yes_kaktüs": "Evet, kaktüs dikenli.",
+    "no_elma": "Hayır, bu elma pürüzsüz.",
+    "yes_elma": "Evet, elma pürüzsüz.",
+    "no_kaktüs": "Hayır, bu kaktüs dikenli.",
+    "yes_kirpi": "Evet, kirpi dikenli.",
+    "no_yunus": "Hayır, bu yunus pürüzsüz.",
+    "yes_yunus": "Evet, yunus pürüzsüz.",
+    "no_kirpi": "Hayır, bu kirpi dikenli.",
+    "yes_deniz_kestanesi": "Evet, deniz kestanesi dikenli.",
+    "no_deniz_yıldızı": "Hayır, bu deniz yıldızı pürüzsüz.",
+    "yes_deniz_yıldızı": "Evet, deniz yıldızı pürüzsüz.",
+    "no_deniz_kestanesi": "Hayır, bu deniz kestanesi dikenli.",
+    "yes_dikenli_tel": "Evet, dikenli tel dikenli.",
+    "no_ip": "Hayır, bu ip pürüzsüz.",
+    "yes_ip": "Evet, ip pürüzsüz.",
+    "no_dikenli_tel": "Hayır, bu tel dikenli.",
+    "yes_enginar": "Evet, enginar dikenli.",
+    "no_patlıcan": "Hayır, bu patlıcan pürüzsüz.",
+    "yes_patlıcan": "Evet, patlıcan pürüzsüz.",
+    "no_enginar": "Hayır, bu enginar dikenli.",
+    "yes_dikenli_dal": "Evet, dal dikenli.",
+    "no_dal": "Hayır, bu dal pürüzsüz.",
+    "yes_dal": "Evet, dal pürüzsüz.",
+    "no_dikenli_dal": "Hayır, bu dal dikenli.",
+    "yes_ananas": "Evet, ananas dikenli.",
+    "no_ananas": "Hayır, bu ananas pürüzsüz."
+  }
+}

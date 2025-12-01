@@ -9,6 +9,7 @@
     "basic": "De base",
     "dimensional": "Dimensionnel",
     "tactile": "Tactile",
+    "sensory": "Sensoriel",
     "state": "État",
     "quantity": "Quantité",
     "location": "Emplacement",
@@ -35,6 +36,8 @@
       "sivriKut": "Pointu / Émoussé",
       "oldNew": "Vieux / Neuf",
       "youngOld": "Jeune / Âgé",
+      "q_which_is_old": "Lequel est vieux ?",
+      "q_which_is_new": "Lequel est neuf ?",
       "cleanDirty": "Propre / Sale",
       "wetDry": "Mouillé / Sec",
       "openClosed": "Ouvert / Fermé",
@@ -87,6 +90,7 @@
       "learnReflections": "Apprendre les reflets",
       "understandTransparency": "Comprendre la transparence",
       "recognizeLines": "Reconnaître les types de lignes",
+      "distinguishSounds": "Distinguer les sons",
       "compareSizes": "Comparer les tailles",
       "tellLengths": "Distinguer la différence de longueur",
       "learnThickness": "Apprendre l'épaisseur",
@@ -118,9 +122,11 @@
       "untangleConnections": "Démêler les connexions",
       "understandFullness": "Comprendre les états de plénitude",
       "understandBehaviors": "Comprendre les comportements",
-      "feelTemperatures": "Sentir différentes températures",
+      "feelTemperatures": "Ressentir différentes températures",
       "learnTastes": "Apprendre différents goûts",
-      "findCorrectOne": "Trouver le bon"
+      "findCorrectOne": "Trouvez le bon",
+      "distinguishOpenClosed": "Distinguer les états ouvert et fermé",
+      "noticePoints": "Remarquer les formes de pointes"
     }
   }
 }

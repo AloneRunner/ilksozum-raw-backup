@@ -1,0 +1,32 @@
+{
+  "fewMuchConcepts": {
+    "fewMuch": "Wenig / Viel",
+    "q_which_is_few": "Welches hat wenig?",
+    "q_which_is_few_person": "Welches hat wenig?",
+    "q_which_is_much": "Welches hat viel?",
+    "yes_uzum_az": "Ja, diese Trauben sind wenige.",
+    "no_uzum_az": "Nein, diese Trauben sind nicht wenige.",
+    "yes_uzum_cok": "Ja, diese Trauben sind viele.",
+    "no_uzum_cok": "Nein, diese Trauben sind nicht viele.",
+    "yes_kavanoz_az": "Ja, diese Murmeln sind wenige.",
+    "no_kavanoz_az": "Nein, diese Murmeln sind nicht wenige.",
+    "yes_kavanoz_cok": "Ja, diese Murmeln sind viele.",
+    "no_kavanoz_cok": "Nein, diese Murmeln sind nicht viele.",
+    "yes_kitaplik_az": "Ja, diese Bücher sind wenige.",
+    "no_kitaplik_az": "Nein, diese Bücher sind nicht wenige.",
+    "yes_kitaplik_cok": "Ja, diese Bücher sind viele.",
+    "no_kitaplik_cok": "Nein, diese Bücher sind nicht viele.",
+    "yes_para_az": "Ja, dieses Geld ist wenig.",
+    "no_para_az": "Nein, dieses Geld ist nicht wenig.",
+    "yes_para_cok": "Ja, dieses Geld ist viel.",
+    "no_para_cok": "Nein, dieses Geld ist nicht viel.",
+    "yes_akvaryum_az": "Ja, diese Fische sind wenige.",
+    "no_akvaryum_az": "Nein, diese Fische sind nicht wenige.",
+    "yes_akvaryum_cok": "Ja, diese Fische sind viele.",
+    "no_akvaryum_cok": "Nein, diese Fische sind nicht viele.",
+    "yes_kus_az": "Ja, diese Vögel sind wenige.",
+    "no_kus_az": "Nein, diese Vögel sind nicht wenige.",
+    "yes_kuslar_cok": "Ja, diese Vögel sind viele.",
+    "no_kuslar_cok": "Nein, diese Vögel sind nicht viele."
+  }
+}
