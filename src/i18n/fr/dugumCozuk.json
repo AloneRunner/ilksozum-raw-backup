@@ -1,20 +1,6 @@
 {
   "dugumCozuk": {
-    "questions": {
-      "q_which_is_knotted": "Lequel est noué?",
-      "q_which_is_untied": "Lequel est dénoué?",
-      "yes_ayakkabı_knotted": "Oui, ayakkabı est noué.",
-      "no_ayakkabı_knotted": "Non, ayakkabı n'est pas noué.",
-      "yes_ayakkabı_untied": "Oui, ayakkabı est dénoué.",
-      "no_ayakkabı_untied": "Non, ayakkabı n'est pas dénoué.",
-      "yes_hortum_knotted": "Oui, hortum est noué.",
-      "no_hortum_knotted": "Non, hortum n'est pas noué.",
-      "yes_hortum_untied": "Oui, hortum est dénoué.",
-      "no_hortum_untied": "Non, hortum n'est pas dénoué.",
-      "yes_kurdele_knotted": "Oui, kurdele est noué.",
-      "no_kurdele_knotted": "Non, kurdele n'est pas noué.",
-      "yes_kurdele_untied": "Oui, kurdele est dénoué.",
-      "no_kurdele_untied": "Non, kurdele n'est pas dénoué."
-    }
+    "q_which_is_knotted": "Lequel est noué ?",
+    "q_which_is_untied": "Lequel est dénoué ?"
   }
 }

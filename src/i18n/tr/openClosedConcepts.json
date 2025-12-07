@@ -1,61 +1,6 @@
 {
   "openClosed": {
     "q_which_is_open": "Açık olan hangisi?",
-    "q_which_is_closed": "Kapalı olan hangisi?",
-
-    "yes_kutu_acik": "Evet, kutu açık.",
-    "no_kutu_acik": "Hayır, bu kutu açık.",
-    "yes_kutu_kapali": "Evet, kutu kapalı.",
-    "no_kutu_kapali": "Hayır, bu kutu kapalı.",
-
-    "yes_kitap_acik": "Evet, kitap açık.",
-    "no_kitap_acik": "Hayır, bu kitap açık.",
-    "yes_kitap_kapali": "Evet, kitap kapalı.",
-    "no_kitap_kapali": "Hayır, bu kitap kapalı.",
-
-    "yes_kapi_acik": "Evet, kapı açık.",
-    "no_kapi_acik": "Hayır, bu kapı açık.",
-    "yes_kapi_kapali": "Evet, kapı kapalı.",
-    "no_kapi_kapali": "Hayır, bu kapı kapalı.",
-
-    "yes_pencere_acik": "Evet, pencere açık.",
-    "no_pencere_acik": "Hayır, bu pencere açık.",
-    "yes_pencere_kapali": "Evet, pencere kapalı.",
-    "no_pencere_kapali": "Hayır, bu pencere kapalı.",
-
-    "yes_goz_acik": "Evet, göz açık.",
-    "no_goz_acik": "Hayır, göz açık.",
-    "yes_goz_kapali": "Evet, göz kapalı.",
-    "no_goz_kapali": "Hayır, göz kapalı.",
-
-    "yes_sandik_acik": "Evet, sandık açık.",
-    "no_sandik_acik": "Hayır, bu sandık açık.",
-    "yes_sandik_kapali": "Evet, sandık kapalı.",
-    "no_sandik_kapali": "Hayır, bu sandık kapalı.",
-
-    "yes_musluk_acik": "Evet, musluk açık.",
-    "no_musluk_acik": "Hayır, bu musluk açık.",
-    "yes_musluk_kapali": "Evet, musluk kapalı.",
-    "no_musluk_kapali": "Hayır, bu musluk kapalı.",
-
-    "yes_dolap_acik": "Evet, dolap açık.",
-    "no_dolap_acik": "Hayır, bu dolap açık.",
-    "yes_dolap_kapali": "Evet, dolap kapalı.",
-    "no_dolap_kapali": "Hayır, bu dolap kapalı.",
-
-    "yes_zarf_acik": "Evet, zarf açık.",
-    "no_zarf_acik": "Hayır, bu zarf açık.",
-    "yes_zarf_kapali": "Evet, zarf kapalı.",
-    "no_zarf_kapali": "Hayır, bu zarf kapalı.",
-
-    "yes_sise_acik": "Evet, şişe açık.",
-    "no_sise_acik": "Hayır, bu şişe açık.",
-    "yes_sise_kapali": "Evet, şişe kapalı.",
-    "no_sise_kapali": "Hayır, bu şişe kapalı.",
-
-    "yes_semsiye_acik": "Evet, şemsiye açık.",
-    "no_semsiye_acik": "Hayır, bu şemsiye açık.",
-    "yes_semsiye_kapali": "Evet, şemsiye kapalı.",
-    "no_semsiye_kapali": "Hayır, bu şemsiye kapalı."
+    "q_which_is_closed": "Kapalı olan hangisi?"
   }
 }

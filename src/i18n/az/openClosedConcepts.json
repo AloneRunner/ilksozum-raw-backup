@@ -1,61 +1,6 @@
 {
   "openClosed": {
     "q_which_is_open": "Hansı açıqdır?",
-    "q_which_is_closed": "Hansı bağlıdır?",
-
-    "yes_kutu_acik": "Bəli, qutu açıqdır.",
-    "no_kutu_acik": "Xeyr, bu qutu açıqdır.",
-    "yes_kutu_kapali": "Bəli, qutu bağlıdır.",
-    "no_kutu_kapali": "Xeyr, bu qutu bağlıdır.",
-
-    "yes_kitap_acik": "Bəli, kitab açıqdır.",
-    "no_kitap_acik": "Xeyr, bu kitab açıqdır.",
-    "yes_kitap_kapali": "Bəli, kitab bağlıdır.",
-    "no_kitap_kapali": "Xeyr, bu kitab bağlıdır.",
-
-    "yes_kapi_acik": "Bəli, qapı açıqdır.",
-    "no_kapi_acik": "Xeyr, bu qapı açıqdır.",
-    "yes_kapi_kapali": "Bəli, qapı bağlıdır.",
-    "no_kapi_kapali": "Xeyr, bu qapı bağlıdır.",
-
-    "yes_pencere_acik": "Bəli, pəncərə açıqdır.",
-    "no_pencere_acik": "Xeyr, bu pəncərə açıqdır.",
-    "yes_pencere_kapali": "Bəli, pəncərə bağlıdır.",
-    "no_pencere_kapali": "Xeyr, bu pəncərə bağlıdır.",
-
-    "yes_goz_acik": "Bəli, göz açıqdır.",
-    "no_goz_acik": "Xeyr, göz açıqdır.",
-    "yes_goz_kapali": "Bəli, göz bağlıdır.",
-    "no_goz_kapali": "Xeyr, göz bağlıdır.",
-
-    "yes_sandik_acik": "Bəli, sandıq açıqdır.",
-    "no_sandik_acik": "Xeyr, bu sandıq açıqdır.",
-    "yes_sandik_kapali": "Bəli, sandıq bağlıdır.",
-    "no_sandik_kapali": "Xeyr, bu sandıq bağlıdır.",
-
-    "yes_musluk_acik": "Bəli, kran açıqdır.",
-    "no_musluk_acik": "Xeyr, bu kran açıqdır.",
-    "yes_musluk_kapali": "Bəli, kran bağlıdır.",
-    "no_musluk_kapali": "Xeyr, bu kran bağlıdır.",
-
-    "yes_dolap_acik": "Bəli, şkaf açıqdır.",
-    "no_dolap_acik": "Xeyr, bu şkaf açıqdır.",
-    "yes_dolap_kapali": "Bəli, şkaf bağlıdır.",
-    "no_dolap_kapali": "Xeyr, bu şkaf bağlıdır.",
-
-    "yes_zarf_acik": "Bəli, zərf açıqdır.",
-    "no_zarf_acik": "Xeyr, bu zərf açıqdır.",
-    "yes_zarf_kapali": "Bəli, zərf bağlıdır.",
-    "no_zarf_kapali": "Xeyr, bu zərf bağlıdır.",
-
-    "yes_sise_acik": "Bəli, şüşə açıqdır.",
-    "no_sise_acik": "Xeyr, bu şüşə açıqdır.",
-    "yes_sise_kapali": "Bəli, şüşə bağlıdır.",
-    "no_sise_kapali": "Xeyr, bu şüşə bağlıdır.",
-
-    "yes_semsiye_acik": "Bəli, çətir açıqdır.",
-    "no_semsiye_acik": "Xeyr, bu çətir açıqdır.",
-    "yes_semsiye_kapali": "Bəli, çətir bağlıdır.",
-    "no_semsiye_kapali": "Xeyr, bu çətir bağlıdır."
+    "q_which_is_closed": "Hansı bağlıdır?"
   }
 }

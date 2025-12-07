@@ -10,7 +10,7 @@
     },
     "grid": {
       "findAll": "Vind alle verborgen \"{letter}\" letters in het rooster.",
-      "findAll.short": "Vind alle {letter} letters",
+        "findAllShort": "Vind alle {letter} letters",
       "progress": "Gevonden"
     },
     "findSoundInImage": {

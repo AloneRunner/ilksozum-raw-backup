@@ -1,39 +1,6 @@
-{
-  "oddEvenConcepts": {
-    "oddEven": "Tək / Cüt",
-    "q_which_is_odd": "Hansıdır tək?",
-    "q_which_is_even": "Hansıdır cüt?",
-    "yes_corap_tek": "Bəli, bu corab təkdir.",
-    "no_corap_tek": "Xeyr, bu corab tək deyil.",
-    "yes_coraplar_cift": "Bəli, bu corablar cütdür.",
-    "no_coraplar_cift": "Xeyr, bu corablar cüt deyil.",
-    "yes_eldiven_tek": "Bəli, bu əlcək təkdir.",
-    "no_eldiven_tek": "Xeyr, bu əlcək tək deyil.",
-    "yes_eldivenler_cift": "Bəli, bu əlcəklər cütdür.",
-    "no_eldivenler_cift": "Xeyr, bu əlcəklər cüt deyil.",
-    "yes_kupe_tek": "Bəli, bu sırğa təkdir.",
-    "no_kupe_tek": "Xeyr, bu sırğa tək deyil.",
-    "yes_kupeler_cift": "Bəli, bu sırğalar cütdür.",
-    "no_kupeler_cift": "Xeyr, bu sırğalar cüt deyil.",
-    "yes_paten_tek": "Bəli, bu konki təkdir.",
-    "no_paten_tek": "Xeyr, bu konki tək deyil.",
-    "yes_patenler_cift": "Bəli, bu konkilər cütdür.",
-    "no_patenler_cift": "Xeyr, bu konkilər cüt deyil.",
-    "yes_kayak_tek": "Bəli, bu xizək təkdir.",
-    "no_kayak_tek": "Xeyr, bu xizək tək deyil.",
-    "yes_kayaklar_cift": "Bəli, bu xizəklər cütdür.",
-    "no_kayaklar_cift": "Xeyr, bu xizəklər cüt deyil.",
-    "yes_davul_cubugu_tek": "Bəli, bu çubuq təkdir.",
-    "no_davul_cubugu_tek": "Xeyr, bu çubuq tək deyil.",
-    "yes_davul_cubuklari_cift": "Bəli, bu çubuqlar cütdür.",
-    "no_davul_cubuklari_cift": "Xeyr, bu çubuqlar cüt deyil.",
-    "yes_goz_tek": "Bəli, bu göz təkdir.",
-    "no_goz_tek": "Xeyr, bu göz tək deyil.",
-    "yes_gozler_cift": "Bəli, bu gözlər cütdür.",
-    "no_gozler_cift": "Xeyr, bu gözlər cüt deyil.",
-    "yes_elma_tek": "Bəli, bu alma təkdir.",
-    "no_elma_tek": "Xeyr, bu alma tək deyil.",
-    "yes_elmalar_cift": "Bəli, bu almalar cütdür.",
-    "no_elmalar_cift": "Xeyr, bu almalar cüt deyil."
+﻿{
+  "oddEven": {
+    "q_which_is_odd": "Hansı təkdir?",
+    "q_which_is_even": "Hansı cütdür?"
   }
 }

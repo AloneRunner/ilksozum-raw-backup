@@ -1,36 +1,6 @@
 {
   "kirisikDuzgun": {
-    "questions": {
-      "q_which_is_wrinkled": "Lequel est froissé?",
-      "q_which_is_smooth": "Lequel est lisse?",
-      "yes_gömlek_wrinkled": "Oui, gömlek est froissé.",
-      "no_gömlek_wrinkled": "Non, gömlek n'est pas froissé.",
-      "yes_gömlek_smooth": "Oui, gömlek est lisse.",
-      "no_gömlek_smooth": "Non, gömlek n'est pas lisse.",
-      "yes_kağıt_wrinkled": "Oui, kağıt est froissé.",
-      "no_kağıt_wrinkled": "Non, kağıt n'est pas froissé.",
-      "yes_kağıt_smooth": "Oui, kağıt est lisse.",
-      "no_kağıt_smooth": "Non, kağıt n'est pas lisse.",
-      "yes_pantolon_wrinkled": "Oui, pantolon est froissé.",
-      "no_pantolon_wrinkled": "Non, pantolon n'est pas froissé.",
-      "yes_pantolon_smooth": "Oui, pantolon est lisse.",
-      "no_pantolon_smooth": "Non, pantolon n'est pas lisse.",
-      "yes_yatak_wrinkled": "Oui, yatak est froissé.",
-      "no_yatak_wrinkled": "Non, yatak n'est pas froissé.",
-      "yes_yatak_smooth": "Oui, yatak est lisse.",
-      "no_yatak_smooth": "Non, yatak n'est pas lisse.",
-      "yes_çamaşır_wrinkled": "Oui, çamaşır est froissé.",
-      "no_çamaşır_wrinkled": "Non, çamaşır n'est pas froissé.",
-      "yes_çamaşır_smooth": "Oui, çamaşır est lisse.",
-      "no_çamaşır_smooth": "Non, çamaşır n'est pas lisse.",
-      "yes_havlu_wrinkled": "Oui, havlu est froissé.",
-      "no_havlu_wrinkled": "Non, havlu n'est pas froissé.",
-      "yes_havlu_smooth": "Oui, havlu est lisse.",
-      "no_havlu_smooth": "Non, havlu n'est pas lisse.",
-      "yes_tişört_wrinkled": "Oui, tişört est froissé.",
-      "no_tişört_wrinkled": "Non, tişört n'est pas froissé.",
-      "yes_tişört_smooth": "Oui, tişört est lisse.",
-      "no_tişört_smooth": "Non, tişört n'est pas lisse."
-    }
+    "q_which_is_wrinkled": "Lequel est froissé ?",
+    "q_which_is_smooth": "Lequel est lisse ?"
   }
 }

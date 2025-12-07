@@ -122,6 +122,17 @@
         "how": "Hoe?",
         "mixed": "Gemengd"
       }
+    },
+    "soundImitation": {
+      "title": "Geluidsimitatiekaarten",
+      "subtitle": "Geluidsimitatiekaarten voor non-verbale kinderen",
+      "badge": "Nieuw — Experimentele Activiteit"
+    }
+  },
+  "experimental": {
+    "relativeComparison": {
+      "title": "Vergelijkingsconcepten",
+      "instruction": "Vergelijk de twee kaarten en beantwoord de vraag."
     }
   },
   "common": {
@@ -142,6 +153,7 @@
   },
   "themes": {
     "simple": "Eenvoudig",
+    "simple2": "Eenvoudig 2",
     "balon": "Ballon",
     "gunes": "Zon",
     "tilki": "Vos",
@@ -180,5 +192,9 @@
     },
     "restart": "Opnieuw spelen",
     "home": "Hoofdmenu"
-  }
+  },
+  "play": "Afspelen",
+  "pause": "Pauze",
+  "back": "Terug",
+  "lyrics": "Songteksten"
 }

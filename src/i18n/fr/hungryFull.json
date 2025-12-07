@@ -1,32 +1,6 @@
 {
   "hungryFull": {
-    "questions": {
-      "q_which_is_hungry": "Lequel est affamé?",
-      "q_which_is_satiated": "Lequel est rassasié?",
-      "yes_kedi_hungry": "Oui, kedi est affamé.",
-      "no_kedi_hungry": "Non, kedi n'est pas affamé.",
-      "yes_kedi_satiated": "Oui, kedi est rassasié.",
-      "no_kedi_satiated": "Non, kedi n'est pas rassasié.",
-      "yes_sincap_hungry": "Oui, sincap est affamé.",
-      "no_sincap_hungry": "Non, sincap n'est pas affamé.",
-      "yes_sincap_satiated": "Oui, sincap est rassasié.",
-      "no_sincap_satiated": "Non, sincap n'est pas rassasié.",
-      "yes_bebek_hungry": "Oui, bebek est affamé.",
-      "no_bebek_hungry": "Non, bebek n'est pas affamé.",
-      "yes_bebek_satiated": "Oui, bebek est rassasié.",
-      "no_bebek_satiated": "Non, bebek n'est pas rassasié.",
-      "yes_canavar_hungry": "Oui, canavar est affamé.",
-      "no_canavar_hungry": "Non, canavar n'est pas affamé.",
-      "yes_canavar_satiated": "Oui, canavar est rassasié.",
-      "no_canavar_satiated": "Non, canavar n'est pas rassasié.",
-      "yes_maymun_hungry": "Oui, maymun est affamé.",
-      "no_maymun_hungry": "Non, maymun n'est pas affamé.",
-      "yes_maymun_satiated": "Oui, maymun est rassasié.",
-      "no_maymun_satiated": "Non, maymun n'est pas rassasié.",
-      "yes_kuş_hungry": "Oui, kuş est affamé.",
-      "no_kuş_hungry": "Non, kuş n'est pas affamé.",
-      "yes_kuş_satiated": "Oui, kuş est rassasié.",
-      "no_kuş_satiated": "Non, kuş n'est pas rassasié."
-    }
+    "q_which_is_hungry_person": "Lequel a faim ?",
+    "q_which_is_satiated_person": "Lequel est rassasié ?"
   }
 }

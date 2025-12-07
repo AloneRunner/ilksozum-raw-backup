@@ -122,6 +122,17 @@
         "how": "Wie?",
         "mixed": "Gemischt"
       }
+    },
+    "soundImitation": {
+      "title": "Ton-Imitationskarten",
+      "subtitle": "Ton-Imitationskarten für nicht sprechende Kinder",
+      "badge": "Neu — Experimentelle Aktivität"
+    }
+  },
+  "experimental": {
+    "relativeComparison": {
+      "title": "Vergleichskonzepte",
+      "instruction": "Vergleichen Sie die beiden Karten und beantworten Sie die Frage."
     }
   },
   "common": {
@@ -180,5 +191,9 @@
     },
     "restart": "Nochmal spielen",
     "home": "Hauptmenü"
-  }
+  },
+  "play": "Abspielen",
+  "pause": "Pause",
+  "back": "Zurück",
+  "lyrics": "Liedtext"
 }

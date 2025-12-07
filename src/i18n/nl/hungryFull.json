@@ -1,32 +1,6 @@
 {
   "hungryFull": {
-    "questions": {
-      "q_which_is_hungry": "Welke is hongerig?",
-      "q_which_is_satiated": "Welke is verzadigd?",
-      "yes_kedi_hungry": "Ja, kedi is hongerig.",
-      "no_kedi_hungry": "Nee, kedi is niet hongerig.",
-      "yes_kedi_satiated": "Ja, kedi is verzadigd.",
-      "no_kedi_satiated": "Nee, kedi is niet verzadigd.",
-      "yes_sincap_hungry": "Ja, sincap is hongerig.",
-      "no_sincap_hungry": "Nee, sincap is niet hongerig.",
-      "yes_sincap_satiated": "Ja, sincap is verzadigd.",
-      "no_sincap_satiated": "Nee, sincap is niet verzadigd.",
-      "yes_bebek_hungry": "Ja, bebek is hongerig.",
-      "no_bebek_hungry": "Nee, bebek is niet hongerig.",
-      "yes_bebek_satiated": "Ja, bebek is verzadigd.",
-      "no_bebek_satiated": "Nee, bebek is niet verzadigd.",
-      "yes_canavar_hungry": "Ja, canavar is hongerig.",
-      "no_canavar_hungry": "Nee, canavar is niet hongerig.",
-      "yes_canavar_satiated": "Ja, canavar is verzadigd.",
-      "no_canavar_satiated": "Nee, canavar is niet verzadigd.",
-      "yes_maymun_hungry": "Ja, maymun is hongerig.",
-      "no_maymun_hungry": "Nee, maymun is niet hongerig.",
-      "yes_maymun_satiated": "Ja, maymun is verzadigd.",
-      "no_maymun_satiated": "Nee, maymun is niet verzadigd.",
-      "yes_kuş_hungry": "Ja, kuş is hongerig.",
-      "no_kuş_hungry": "Nee, kuş is niet hongerig.",
-      "yes_kuş_satiated": "Ja, kuş is verzadigd.",
-      "no_kuş_satiated": "Nee, kuş is niet verzadigd."
-    }
+    "q_which_is_hungry_person": "Wie heeft er honger?",
+    "q_which_is_satiated_person": "Wie is er vol?"
   }
 }

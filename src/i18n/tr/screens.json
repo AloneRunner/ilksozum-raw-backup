@@ -83,15 +83,18 @@
     },
     "objects": {
       "title": "Nesneleri Tanıyalım",
-      "subtitle": "Hayvanları, meyveleri ve daha fazlasını öğren."
+      "subtitle": "Hayvanları, meyveleri ve daha fazlasını öğren.",
+      "backButton": "Nesne Menüsüne Dön"
     },
     "concepts": {
       "title": "Kavram Etkinlikleri",
-      "subtitle": "Renkleri, şekilleri ve zıt kavramları öğren."
+      "subtitle": "Renkleri, şekilleri ve zıt kavramları öğren.",
+      "backButton": "Kavram Menüsüne Dön"
     },
     "reasoning": {
       "title": "Akıl Oyunları",
-      "subtitle": "Hafıza, sudoku ve mantık oyunları oyna."
+      "subtitle": "Hafıza, sudoku ve mantık oyunları oyna.",
+      "backButton": "Oyun Menüsüne Dön"
     },
     "fineMotor": {
       "title": "İnce Motor",
@@ -113,6 +116,7 @@
       "title": "5N1K",
       "subtitle": "Kim • Ne • Nerede • Ne Zaman • Neden • Nasıl",
       "developingNote": "Geliştiriliyor",
+      "backButton": "Ana Menüye Dön",
       "category": {
         "who": "Kim?",
         "what": "Ne?",
@@ -121,9 +125,9 @@
         "why": "Neden?",
         "how": "Nasıl?",
         "mixed": "Karışık"
-      }
-    }
-    ,
+      },
+      "instructions": "Bir gezegene dokunarak kategoriyi seç"
+    },
     "soundImitation": {
       "title": "Ses Taklit Kartları",
       "subtitle": "Konuşamayan çocuklar için ses taklit kartları",
@@ -133,9 +137,10 @@
       "videosTitle": "Kısa Videolar",
       "videosTitleShort": "Kısa Videolar (Deneme)",
       "videosDesc": "Kısa videolar — deneme sürümü. Videolar yer kaplayabilir.",
-      "experimentalNoteTitle": "Deneme Notu / Experimental",
+      "experimentalMusic": "Deneysel Müzik",
+      "lyrics": "Şarkı Sözleri",
+      "experimentalNoteTitle": "Deneme Notu",
       "experimentalNote": "Videolu versiyon şu an deneme amaçlıdır ve kalıcı olmayabilir. Videolar büyük olabilir ve cihazınızda yer kaplayabilir; sizden gelen geri bildirimlere göre bu bölüm şekillendirilecektir.",
-      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
       "feedbackRequest": "Uygulama için iyi/kötü tüm eleştirilerinizi lütfen mağaza yorumlarına yazınız.",
       "themeTextColors": {
         "simple": "#ffffff",
@@ -190,6 +195,7 @@
   },
   "themes": {
     "simple": "Sade",
+    "simple2": "Sade 2",
     "deneme": "🎨 Deneme (Geliştiriliyor)",
     "balon": "Balon",
     "gunes": "Güneş",
@@ -270,6 +276,82 @@
       "when": "5N1K - Ne Zaman?",
       "why": "5N1K - Neden?",
       "how": "5N1K - Nasıl?"
+    }
+  },
+  "reasoning": {
+    "title": "Akıl Oyunları",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Hangisi Farklı?",
+        "subtitle": "Gruba uymayanı bul"
+      },
+      "sequencingStories": {
+        "title": "Olay Sıralama",
+        "subtitle": "Hikayeyi doğru sıraya diz"
+      },
+      "patternCompletion": {
+        "title": "Örüntü Tamamlama",
+        "subtitle": "Sıradaki şekli tahmin et"
+      },
+      "sudoku": {
+        "title": "Görsel Sudoku",
+        "subtitle": "Eksik parçayı tamamla"
+      },
+      "memoryCards": {
+        "title": "Hafıza Kartları",
+        "subtitle": "Eşleşen kartları bul",
+        "instruction": "Kartların yerini aklında tut ve eşleşen çiftleri bul.",
+        "memorizeTitle": "Ezberle!",
+        "playTitle": "Eşleşeni Bul"
+      },
+      "dragAndDropCounting": {
+        "title": "Nesneleri Taşı",
+        "subtitle": "İstenen sayıda nesneyi taşı"
+      },
+      "dragAndDropPositioning": {
+        "title": "Nesneyi Yerleştir",
+        "subtitle": "Nesneyi doğru konuma yerleştir"
+      },
+      "hangman": {
+        "title": "Adam Asmaca",
+        "subtitle": "Kelimeyi tahmin et"
+      }
+    }
+  },
+  "games": {
+    "hangman": {
+      "speak": {
+        "win": "Tebrikler! Kelimeyi buldun!",
+        "wordWas": "Kelime"
+      },
+      "remainingLives": "Kalan Hak",
+      "category": "Kategori",
+      "pickLetter": "Harf seç",
+      "youWinTitle": "Tebrikler!",
+      "youWinDesc": "Kelimeyi buldun!",
+      "youLoseTitle": "Kaybettin",
+      "wordLabel": "Kelime",
+      "newGame": "Yeni Oyun"
+    },
+    "objectCollector": {
+      "title": "Nesne Toplama",
+      "subtitle": "Doğru nesneleri sepete topla",
+      "instructions": "← → ok tuşları veya fare/parmağınla sepeti hareket ettir",
+      "youWin": "Tebrikler!",
+      "gameOver": "Oyun Bitti",
+      "finalScore": "Skor",
+      "collectFruits": "Sadece meyveleri topla!",
+      "collectAnimals": "Sadece hayvanları topla!",
+      "collectVehicles": "Sadece araçları topla!",
+      "collectRed": "Sadece kırmızı olanları topla!",
+      "collectFood": "Sadece yiyecekleri topla!",
+      "collectSchoolItems": "Sadece okul eşyalarını topla!",
+      "collectToys": "Sadece oyuncakları topla!",
+      "collectLargeAnimals": "Sadece büyük hayvanları topla!"
+    },
+    "emotionPuppet": {
+      "title": "Duygu Kuklası",
+      "subtitle": "Yüz parçalarını birleştir"
     }
   },
   "settingsEx": {
@@ -667,7 +749,9 @@
     "thisUpdate": {
       "title": "Bu Güncellemede",
       "items": [
-        "Program Modu'nda bazı eski kullanıcıların ilerlemelerinin 1. üniteye sıfırlanmasına neden olan hata giderildi. Bu aksaklık için özür dileriz — etkilenen eski kullanıcılara Öğretmenler Günü hediyesi olarak ücretsiz Premium üyeliği 30 Kasım 2025 tarihine kadar tanımladık. Ayrıca mevcut/eskiden Premium olan kullanıcılara ek 1 ay hediye edildi."
+        "Tüm aktivite kodları çeviri sorunlarını gidermek için sıfırdan yeniden yazıldı. Şu ana kadar %70 tamamlandı ve kısa süre içinde tamamlanacak.",
+        "Nesneler kategorisi ve Kavram Aktiviteleri'ndeki çeviri sorunları düzeltildi. Renkler, şekiller ve duygular artık tüm dillerde doğru çalışıyor.",
+        "Not: Mevcut içeriklerde veri kaybı yaşanabilir. Tespit edilen sorunlar en kısa sürede düzeltilecektir."
       ],
       "_tempNotes": [
         "NOT: Aşağıdaki öğeler geçici notlardır — bir sonraki güncellemede i18n dosyalarından kaldırılacaktır."

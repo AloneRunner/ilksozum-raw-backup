@@ -1,36 +1,6 @@
 {
   "kirisikDuzgun": {
-    "questions": {
-      "q_which_is_wrinkled": "Which one is wrinkled?",
-      "q_which_is_smooth": "Which one is smooth?",
-      "yes_gömlek_wrinkled": "Yes, the gömlek is wrinkled.",
-      "no_gömlek_wrinkled": "No, the gömlek is not wrinkled.",
-      "yes_gömlek_smooth": "Yes, the gömlek is smooth.",
-      "no_gömlek_smooth": "No, the gömlek is not smooth.",
-      "yes_kağıt_wrinkled": "Yes, the kağıt is wrinkled.",
-      "no_kağıt_wrinkled": "No, the kağıt is not wrinkled.",
-      "yes_kağıt_smooth": "Yes, the kağıt is smooth.",
-      "no_kağıt_smooth": "No, the kağıt is not smooth.",
-      "yes_pantolon_wrinkled": "Yes, the pantolon is wrinkled.",
-      "no_pantolon_wrinkled": "No, the pantolon is not wrinkled.",
-      "yes_pantolon_smooth": "Yes, the pantolon is smooth.",
-      "no_pantolon_smooth": "No, the pantolon is not smooth.",
-      "yes_yatak_wrinkled": "Yes, the yatak is wrinkled.",
-      "no_yatak_wrinkled": "No, the yatak is not wrinkled.",
-      "yes_yatak_smooth": "Yes, the yatak is smooth.",
-      "no_yatak_smooth": "No, the yatak is not smooth.",
-      "yes_çamaşır_wrinkled": "Yes, the çamaşır is wrinkled.",
-      "no_çamaşır_wrinkled": "No, the çamaşır is not wrinkled.",
-      "yes_çamaşır_smooth": "Yes, the çamaşır is smooth.",
-      "no_çamaşır_smooth": "No, the çamaşır is not smooth.",
-      "yes_havlu_wrinkled": "Yes, the havlu is wrinkled.",
-      "no_havlu_wrinkled": "No, the havlu is not wrinkled.",
-      "yes_havlu_smooth": "Yes, the havlu is smooth.",
-      "no_havlu_smooth": "No, the havlu is not smooth.",
-      "yes_tişört_wrinkled": "Yes, the tişört is wrinkled.",
-      "no_tişört_wrinkled": "No, the tişört is not wrinkled.",
-      "yes_tişört_smooth": "Yes, the tişört is smooth.",
-      "no_tişört_smooth": "No, the tişört is not smooth."
-    }
+    "q_which_is_wrinkled": "Which one is wrinkled?",
+    "q_which_is_smooth": "Which one is smooth?"
   }
 }

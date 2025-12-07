@@ -1,40 +1,6 @@
 {
   "kalabalikTenha": {
-    "questions": {
-      "q_which_is_crowded": "Lequel est bondé?",
-      "q_which_is_sparse": "Lequel est désert?",
-      "yes_trafik_crowded": "Oui, trafik est bondé.",
-      "no_trafik_crowded": "Non, trafik n'est pas bondé.",
-      "yes_trafik_sparse": "Oui, trafik est désert.",
-      "no_trafik_sparse": "Non, trafik n'est pas désert.",
-      "yes_yol_crowded": "Oui, yol est bondé.",
-      "no_yol_crowded": "Non, yol n'est pas bondé.",
-      "yes_yol_sparse": "Oui, yol est désert.",
-      "no_yol_sparse": "Non, yol n'est pas désert.",
-      "yes_durak_crowded": "Oui, durak est bondé.",
-      "no_durak_crowded": "Non, durak n'est pas bondé.",
-      "yes_durak_sparse": "Oui, durak est désert.",
-      "no_durak_sparse": "Non, durak n'est pas désert.",
-      "yes_orman_crowded": "Oui, orman est bondé.",
-      "no_orman_crowded": "Non, orman n'est pas bondé.",
-      "yes_orman_sparse": "Oui, orman est désert.",
-      "no_orman_sparse": "Non, orman n'est pas désert.",
-      "yes_ağaç_crowded": "Oui, ağaç est bondé.",
-      "no_ağaç_crowded": "Non, ağaç n'est pas bondé.",
-      "yes_ağaç_sparse": "Oui, ağaç est désert.",
-      "no_ağaç_sparse": "Non, ağaç n'est pas désert.",
-      "yes_kuş_sürüsü_crowded": "Oui, kuş sürüsü est bondé.",
-      "no_kuş_sürüsü_crowded": "Non, kuş sürüsü n'est pas bondé.",
-      "yes_kuş_sürüsü_sparse": "Oui, kuş sürüsü est désert.",
-      "no_kuş_sürüsü_sparse": "Non, kuş sürüsü n'est pas désert.",
-      "yes_insan_grubu_crowded": "Oui, insan grubu est bondé.",
-      "no_insan_grubu_crowded": "Non, insan grubu n'est pas bondé.",
-      "yes_insan_grubu_sparse": "Oui, insan grubu est désert.",
-      "no_insan_grubu_sparse": "Non, insan grubu n'est pas désert.",
-      "yes_adam_crowded": "Oui, adam est bondé.",
-      "no_adam_crowded": "Non, adam n'est pas bondé.",
-      "yes_adam_sparse": "Oui, adam est désert.",
-      "no_adam_sparse": "Non, adam n'est pas désert."
-    }
+    "q_which_is_crowded": "Lequel est bondé ?",
+    "q_which_is_sparse": "Lequel est désert ?"
   }
 }

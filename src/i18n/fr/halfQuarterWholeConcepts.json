@@ -1,27 +1,8 @@
-{
-  "halfQuarterWholeConcepts": {
-    "halfQuarterWhole": "Moitié / Quart / Entier",
-    "q_which_is_whole": "Lequel est entier?",
-    "q_which_is_half": "Lequel est une moitié?",
-    "q_which_is_quarter": "Lequel est un quart?",
-    "q_which_is_slice": "Lequel est une part?",
-    "yes_pizza_butun": "Oui, la pizza est entière.",
-    "no_pizza_butun": "Non, la pizza n'est pas entière.",
-    "yes_pizza_yarim": "Oui, la pizza est une moitié.",
-    "no_pizza_yarim": "Non, la pizza n'est pas une moitié.",
-    "yes_pizza_dilimi_ceyrek": "Oui, c'est un quart de pizza.",
-    "no_pizza_dilimi_ceyrek": "Non, ce n'est pas un quart de pizza.",
-    "yes_portakal_butun": "Oui, l'orange est entière.",
-    "no_portakal_butun": "Non, l'orange n'est pas entière.",
-    "yes_portakal_yarim": "Oui, l'orange est une moitié.",
-    "no_portakal_yarim": "Non, l'orange n'est pas une moitié.",
-    "yes_simit_butun": "Oui, le bagel est entier.",
-    "no_simit_butun": "Non, le bagel n'est pas entier.",
-    "yes_simit_yarim": "Oui, le bagel est une moitié.",
-    "no_simit_yarim": "Non, le bagel n'est pas une moitié.",
-    "yes_pasta_butun": "Oui, le gâteau est entier.",
-    "no_pasta_butun": "Non, le gâteau n'est pas entier.",
-    "yes_pasta_dilimi": "Oui, c'est une part de gâteau.",
-    "no_pasta_dilimi": "Non, ce n'est pas une part de gâteau."
+﻿{
+  "halfQuarterWhole": {
+    "q_which_is_whole": "Lequel est entier ?",
+    "q_which_is_half": "Lequel est à moitié ?",
+    "q_which_is_quarter": "Lequel est un quart ?",
+    "q_which_is_slice": "Lequel est une tranche ?"
   }
 }

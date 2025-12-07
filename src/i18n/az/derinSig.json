@@ -1,34 +1,6 @@
 {
   "derinSig": {
     "q_which_is_deep": "Hansı dərindir?",
-    "q_which_is_shallow": "Hansı dayazdır?",
-    "yes_deniz_derin": "Bəli, dəniz dərindir.",
-    "no_deniz_derin": "Xeyr, bu dəniz dərin deyil.",
-    "yes_gol_sig": "Bəli, göl dayazdır.",
-    "no_gol_sig": "Xeyr, bu göl dayaz deyil.",
-    "yes_kuyu_derin": "Bəli, quyu dərindir.",
-    "no_kuyu_derin": "Xeyr, bu quyu dərin deyil.",
-    "yes_su_birikintisi_sig": "Bəli, gölməçə dayazdır.",
-    "no_su_birikintisi_sig": "Xeyr, bu gölməçə dayaz deyil.",
-    "yes_kase_derin": "Bəli, kasa dərindir.",
-    "no_kase_derin": "Xeyr, bu kasa dərin deyil.",
-    "yes_tabak_sig": "Bəli, boşqab dayazdır.",
-    "no_tabak_sig": "Xeyr, bu boşqab dayaz deyil.",
-    "yes_tencere_derin": "Bəli, qazan dərindir.",
-    "no_tencere_derin": "Xeyr, bu qazan dərin deyil.",
-    "yes_tava_sig": "Bəli, tava dayazdır.",
-    "no_tava_sig": "Xeyr, bu tava dayaz deyil.",
-    "yes_kutu_derin": "Bəli, qutu dərindir.",
-    "no_kutu_derin": "Xeyr, bu qutu dərin deyil.",
-    "yes_kutu_sig": "Bəli, qutu dayazdır.",
-    "no_kutu_sig": "Xeyr, bu qutu dayaz deyil.",
-    "yes_sepet_derin": "Bəli, səbət dərindir.",
-    "no_sepet_derin": "Xeyr, bu səbət dərin deyil.",
-    "yes_yemek_tepsisi_sig": "Bəli, nimçə dayazdır.",
-    "no_yemek_tepsisi_sig": "Xeyr, bu nimçə dayaz deyil.",
-    "yes_cocuk_havuzu_sig": "Bəli, hovuz dayazdır.",
-    "no_cocuk_havuzu_sig": "Xeyr, bu hovuz dayaz deyil.",
-    "yes_cocuk_havuzu_derin": "Bəli, hovuz dərindir.",
-    "no_cocuk_havuzu_derin": "Xeyr, bu hovuz dərin deyil."
+    "q_which_is_shallow": "Hansı dayazdır?"
   }
 }

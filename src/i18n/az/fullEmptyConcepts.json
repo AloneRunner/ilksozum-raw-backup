@@ -1,39 +1,6 @@
-{
-  "fullEmptyConcepts": {
-    "fullEmpty": "Dolu / Boş",
-    "q_which_is_full": "Hansıdır dolu?",
-    "q_which_is_empty": "Hansıdır boş?",
-    "yes_kutu_dolu": "Bəli, qutu doludur.",
-    "no_kutu_dolu": "Xeyr, qutu dolu deyil.",
-    "yes_kutu_bos": "Bəli, qutu boşdur.",
-    "no_kutu_bos": "Xeyr, qutu boş deyil.",
-    "yes_bardak_dolu": "Bəli, stəkan doludur.",
-    "no_bardak_dolu": "Xeyr, stəkan dolu deyil.",
-    "yes_bardak_bos": "Bəli, stəkan boşdur.",
-    "no_bardak_bos": "Xeyr, stəkan boş deyil.",
-    "yes_su_sisesi_dolu": "Bəli, şüşə doludur.",
-    "no_su_sisesi_dolu": "Xeyr, şüşə dolu deyil.",
-    "yes_su_sisesi_bos": "Bəli, şüşə boşdur.",
-    "no_su_sisesi_bos": "Xeyr, şüşə boş deyil.",
-    "yes_sepet_dolu": "Bəli, səbət doludur.",
-    "no_sepet_dolu": "Xeyr, səbət dolu deyil.",
-    "yes_sepet_bos": "Bəli, səbət boşdur.",
-    "no_sepet_bos": "Xeyr, səbət boş deyil.",
-    "yes_kase_dolu": "Bəli, qab doludur.",
-    "no_kase_dolu": "Xeyr, qab dolu deyil.",
-    "yes_kase_bos": "Bəli, qab boşdur.",
-    "no_kase_bos": "Xeyr, qab boş deyil.",
-    "yes_kumbara_dolu": "Bəli, qumbara doludur.",
-    "no_kumbara_dolu": "Xeyr, qumbara dolu deyil.",
-    "yes_kumbara_bos": "Bəli, qumbara boşdur.",
-    "no_kumbara_bos": "Xeyr, qumbara boş deyil.",
-    "yes_kavanoz_dolu": "Bəli, kavanoz doludur.",
-    "no_kavanoz_dolu": "Xeyr, kavanoz dolu deyil.",
-    "yes_kavanoz_bos": "Bəli, kavanoz boşdur.",
-    "no_kavanoz_bos": "Xeyr, kavanoz boş deyil.",
-    "yes_cop_kutusu_dolu": "Bəli, zibil qutusu doludur.",
-    "no_cop_kutusu_dolu": "Xeyr, zibil qutusu dolu deyil.",
-    "yes_cop_kutusu_bos": "Bəli, zibil qutusu boşdur.",
-    "no_cop_kutusu_bos": "Xeyr, zibil qutusu boş deyil."
+﻿{
+  "fullEmpty": {
+    "q_which_is_full": "Hansı doludur?",
+    "q_which_is_empty": "Hansı boşdur?"
   }
 }

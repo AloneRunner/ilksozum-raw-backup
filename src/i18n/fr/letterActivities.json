@@ -10,7 +10,7 @@
     },
     "grid": {
       "findAll": "Trouvez toutes les lettres \"{letter}\" cachées dans la grille.",
-      "findAll.short": "Trouvez toutes les lettres {letter}",
+      "findAllShort": "Trouvez toutes les lettres {letter}",
       "progress": "Trouvées"
     },
     "findSoundInImage": {

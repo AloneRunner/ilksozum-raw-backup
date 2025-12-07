@@ -3,58 +3,6 @@
     "q_which_is_bitter": "Welke is bitter?",
     "q_which_is_bitter_person": "Welke is bitter?",
     "q_which_is_sweet": "Welke is zoet?",
-    "q_which_is_sour": "Welke is zuur?",
-
-    "yes_biber": "Ja, de peper is bitter.",
-    "no_biber": "Nee, de peper is bitter.",
-    "yes_bal": "Ja, de honing is zoet.",
-    "no_bal": "Nee, de honing is zoet.",
-
-    "yes_limon": "Ja, de citroen is zuur.",
-    "no_limon": "Nee, de citroen is zuur.",
-    "yes_lolipop": "Ja, de lolly is zoet.",
-    "no_lolipop": "Nee, de lolly is zoet.",
-
-    "yes_greyfurt": "Ja, de grapefruit is zuur.",
-    "no_greyfurt": "Nee, de grapefruit is zuur.",
-    "yes_pasta": "Ja, de taart is zoet.",
-    "no_pasta": "Nee, de taart is zoet.",
-
-    "yes_eksi_visne": "Ja, de zure kers is zuur.",
-    "no_eksi_visne": "Nee, de zure kers is zuur.",
-    "yes_tatli_kiraz": "Ja, de kers is zoet.",
-    "no_tatli_kiraz": "Nee, de kers is zoet.",
-
-    "yes_kahve": "Ja, de koffie is bitter.",
-    "no_kahve": "Nee, de koffie is bitter.",
-    "yes_milkshake": "Ja, de milkshake is zoet.",
-    "no_milkshake": "Nee, de milkshake is zoet.",
-
-    "yes_cikolata": "Ja, de chocolade is zoet.",
-    "no_cikolata": "Nee, de chocolade is zoet.",
-
-    "yes_sirke": "Ja, de azijn is zuur.",
-    "no_sirke": "Nee, de azijn is zuur.",
-    "yes_recel": "Ja, de jam is zoet.",
-    "no_recel": "Nee, de jam is zoet.",
-
-    "yes_sogan": "Ja, de ui is bitter.",
-    "no_sogan": "Nee, de ui is bitter.",
-    "yes_cilek": "Ja, de aardbei is zoet.",
-    "no_cilek": "Nee, de aardbei is zoet.",
-
-    "yes_biskuvi": "Ja, de biscuit is zoet.",
-    "no_biskuvi": "Nee, de biscuit is zoet.",
-
-    "yes_dondurma": "Ja, het ijs is zoet.",
-    "no_dondurma": "Nee, het ijs is zoet.",
-
-    "yes_elma": "Ja, de appel is zoet.",
-    "no_elma": "Nee, de appel is zoet.",
-
-    "yes_zencefil": "Ja, de gember is bitter.",
-    "no_zencefil": "Nee, de gember is bitter.",
-    "yes_jelibon": "Ja, de gummysnoepje is zoet.",
-    "no_jelibon": "Nee, de gummysnoepje is zoet."
+    "q_which_is_sour": "Welke is zuur?"
   }
 }

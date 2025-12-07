@@ -1,31 +1,6 @@
 {
-  "tazeBayatConcepts": {
-    "tazeBayat": "Vers / Oud",
+  "tazeBayat": {
     "q_which_is_fresh": "Welke is vers?",
-    "q_which_is_stale": "Welke is oud?",
-    "yes_ekmek_taze": "Ja, het brood is vers.",
-    "no_ekmek_taze": "Nee, het brood is niet vers.",
-    "yes_ekmek_bayat": "Ja, het brood is oud.",
-    "no_ekmek_bayat": "Nee, het brood is niet oud.",
-    "yes_elma_taze": "Ja, de appel is vers.",
-    "no_elma_taze": "Nee, de appel is niet vers.",
-    "yes_elma_bayat": "Ja, de appel is rot.",
-    "no_elma_bayat": "Nee, de appel is niet rot.",
-    "yes_muz_taze": "Ja, de banaan is vers.",
-    "no_muz_taze": "Nee, de banaan is niet vers.",
-    "yes_muz_bayat": "Ja, de banaan is oud.",
-    "no_muz_bayat": "Nee, de banaan is niet oud.",
-    "yes_gul_taze": "Ja, de roos is vers.",
-    "no_gul_taze": "Nee, de roos is niet vers.",
-    "yes_gul_solmus": "Ja, de roos is verwelkt.",
-    "no_gul_solmus": "Nee, de roos is niet verwelkt.",
-    "yes_havuc_taze": "Ja, de wortel is vers.",
-    "no_havuc_taze": "Nee, de wortel is niet vers.",
-    "yes_havuc_bayat": "Ja, de wortel is oud.",
-    "no_havuc_bayat": "Nee, de wortel is niet oud.",
-    "yes_sut_taze": "Ja, de melk is vers.",
-    "no_sut_taze": "Nee, de melk is niet vers.",
-    "yes_sut_bozuk": "Ja, de melk is bedorven.",
-    "no_sut_bozuk": "Nee, de melk is niet bedorven."
+    "q_which_is_stale": "Welke is oud?"
   }
 }

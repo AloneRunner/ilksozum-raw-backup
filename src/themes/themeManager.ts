@@ -18,6 +18,12 @@ export const THEMES: Record<string, Theme> = {
     type: 'gradient',
     value: 'bg-gradient-to-br from-pink-100 via-purple-50 to-cyan-100',
   },
+  simple2: {
+    name: 'Sade 2',
+    previewClass: 'bg-gradient-to-br from-pink-100 via-purple-50 to-cyan-100',
+    type: 'gradient',
+    value: 'bg-gradient-to-br from-pink-100 via-purple-50 to-cyan-100',
+  },
     // Oceanic, undersea 'Deneme' theme — keep it distinct and readable
     deneme: { name: '🎨 Okyanus Keşfi', previewClass: 'bg-gradient-to-br from-blue-700 via-cyan-600 to-teal-500', type: 'gradient', value: 'bg-gradient-to-br from-blue-700 via-cyan-600 to-teal-500' },
   gunes: { name: 'Güneş', previewClass: 'bg-yellow-300', type: 'video', value: '/videos/gunes.mp4', landscapeValue: '/videos/gunesyan.mp4' },
@@ -33,11 +39,11 @@ export const THEMES: Record<string, Theme> = {
   ay2: { name: 'Hilal', previewClass: 'bg-indigo-500', type: 'video', value: '/videos/ay2.mp4', landscapeValue: '/videos/ayyan.mp4' },
   zurafa: { name: 'Zürafa', previewClass: 'bg-cyan-300', type: 'video', value: '/videos/zurafa2.mp4' },
     geometri: { name: 'Geometrik', previewClass: 'bg-rose-200', type: 'video', value: '/videos/geometri.mp4', landscapeValue: '/videos/geometriyan.mp4' },
-    deneme2: { name: '✨ Kozmik Küreler 2.0', previewClass: 'bg-gradient-to-br from-[#0b1224] via-[#0a1020] to-[#03020a]', type: 'gradient', value: 'bg-gradient-to-br from-[#0b1224] via-[#0a1020] to-[#03020a]' },
+    deneme2: { name: '🚀 Galaktik Oyun Parkı', previewClass: 'bg-gradient-to-br from-[#1a1b4b] via-[#0f0c29] to-[#000000]', type: 'gradient', value: 'bg-gradient-to-br from-[#1a1b4b] via-[#0f0c29] to-[#000000]' },
 };
 
 // Themes that should be available to all users (temporarily free or permanently free)
-export const FREE_THEMES = new Set<string>(['simple', 'deneme', 'tilki', 'yagmur', 'kedi', 'deneme2']);
+export const FREE_THEMES = new Set<string>(['simple', 'simple2', 'deneme', 'tilki', 'yagmur', 'kedi', 'deneme2']);
 
 export const getScreenBackground = (
     themeKey: string,

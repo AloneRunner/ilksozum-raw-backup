@@ -1,35 +1,6 @@
-{
-  "tersDuzConcepts": {
-    "tersDuz": "Auf dem Kopf / Aufrecht",
-    "q_which_is_upside_down": "Welches steht auf dem Kopf?",
-    "q_which_is_upright": "Welches ist aufrecht?",
-    "yes_terlik_duz": "Ja, der Hausschuh ist aufrecht.",
-    "no_terlik_duz": "Nein, der Hausschuh ist nicht aufrecht.",
-    "yes_terlik_ters": "Ja, der Hausschuh steht auf dem Kopf.",
-    "no_terlik_ters": "Nein, der Hausschuh steht nicht auf dem Kopf.",
-    "yes_kaplumbaga_duz": "Ja, die Schildkröte ist aufrecht.",
-    "no_kaplumbaga_duz": "Nein, die Schildkröte ist nicht aufrecht.",
-    "yes_kaplumbaga_ters": "Ja, die Schildkröte steht auf dem Kopf.",
-    "no_kaplumbaga_ters": "Nein, die Schildkröte steht nicht auf dem Kopf.",
-    "yes_saat_duz": "Ja, die Uhr ist aufrecht.",
-    "no_saat_duz": "Nein, die Uhr ist nicht aufrecht.",
-    "yes_saat_ters": "Ja, die Uhr steht auf dem Kopf.",
-    "no_saat_ters": "Nein, die Uhr steht nicht auf dem Kopf.",
-    "yes_ayakkabi_duz": "Ja, der Schuh ist aufrecht.",
-    "no_ayakkabi_duz": "Nein, der Schuh ist nicht aufrecht.",
-    "yes_ayakkabi_ters": "Ja, der Schuh steht auf dem Kopf.",
-    "no_ayakkabi_ters": "Nein, der Schuh steht nicht auf dem Kopf.",
-    "yes_sandalet_duz": "Ja, die Sandale ist aufrecht.",
-    "no_sandalet_duz": "Nein, die Sandale ist nicht aufrecht.",
-    "yes_sandalet_ters": "Ja, die Sandale steht auf dem Kopf.",
-    "no_sandalet_ters": "Nein, die Sandale steht nicht auf dem Kopf.",
-    "yes_semsiye_duz": "Ja, der Regenschirm ist aufrecht.",
-    "no_semsiye_duz": "Nein, der Regenschirm ist nicht aufrecht.",
-    "yes_semsiye_ters": "Ja, der Regenschirm steht auf dem Kopf.",
-    "no_semsiye_ters": "Nein, der Regenschirm steht nicht auf dem Kopf.",
-    "yes_kupa_duz": "Ja, die Tasse ist aufrecht.",
-    "no_kupa_duz": "Nein, die Tasse ist nicht aufrecht.",
-    "yes_fincan_ters": "Ja, die Tasse steht auf dem Kopf.",
-    "no_fincan_ters": "Nein, die Tasse steht nicht auf dem Kopf."
+﻿{
+  "tersDuz": {
+    "q_which_is_upright": "Welches steht richtig?",
+    "q_which_is_upsidedown": "Welches steht auf dem Kopf?"
   }
 }

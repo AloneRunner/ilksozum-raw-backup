@@ -110,20 +110,21 @@
       }
     },
     "fiveWOneH": {
-      "title": "5W1H",
-      "subtitle": "Kim • Nə • Harada • Nə vaxt • Niyə • Necə",
-      "developingNote": "Hazırlanır",
+      "title": "5N1K",
+      "subtitle": "Kim • Nə • Harada • Nə vaxt • Nə üçün • Necə",
+      "developingNote": "İnkişaf edərkən",
+      "backButton": "Əsas menyuya qayıt",
       "category": {
         "who": "Kim?",
         "what": "Nə?",
         "where": "Harada?",
         "when": "Nə vaxt?",
-        "why": "Niyə?",
+        "why": "Nə üçün?",
         "how": "Necə?",
         "mixed": "Qarışıq"
-      }
-    }
-    ,
+      },
+      "instructions": "Bir planeti seçərək kateqoriyanı aç"
+    },
     "soundImitation": {
       "title": "Səs Təqlid Kartları",
       "subtitle": "Danışmayan uşaqlar üçün səs təqlid kartları",
@@ -133,6 +134,8 @@
       "videosTitle": "Qısa Videolar",
       "videosTitleShort": "Qısa Videolar (Eksperimental)",
       "videosDesc": "Qısa videolar — eksperimental. Videolar yer tuta bilər.",
+      "experimentalMusic": "Eksperimental musiqi",
+      "lyrics": "Mahnı sözləri",
       "experimentalNoteTitle": "Eksperimental Qeyd",
       "experimentalNote": "Video bölməsi eksperimentaldır və daimi olmaya bilər. Videolar böyük ola bilər və cihazınızda yer tuta bilər; bu bölmə rəyinizə əsasən formalaşdırılacaq.",
       "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
@@ -177,6 +180,20 @@
     "next": "Növbəti"
   },
   "tabs": {
+    "hangman": {
+      "speak": {
+        "win": "Əla! Sözü tapdın!",
+        "wordWas": "Söz"
+      },
+      "remainingLives": "Qalan haqlar",
+      "category": "Kateqoriya",
+      "pickLetter": "Bir hərf seç",
+      "youWinTitle": "Təbriklər!",
+      "youWinDesc": "Sözü tapdın!",
+      "youLoseTitle": "Uduzdun",
+      "wordLabel": "Söz",
+      "newGame": "Yeni oyun"
+    },
     "activities": "Fəaliyyətlər",
     "communication": "İfadə Kartları",
     "achievements": "Hesabatlar",
@@ -363,7 +380,7 @@
     "recommendationFocusOn": "Övladınızın ən çox çətinlik çəkdiyi \"{activityName}\" fəaliyyəti üzərində fokuslanaraq başlaya bilərsiniz.",
     "recommendationModel": "Bu fəaliyyəti təkrar oynayarkən ona model ola bilər və doğru cavabları birlikdə tapa bilərsiniz.",
     "recommendationReinforce": "Övladınız \"{activityName}\" mövzusunda çox uğurludur! Bu sahədəki özünə inamını möhkəmləndirmək üçün oxşar fəaliyyətləri sınaya bilərsiniz.",
-    "recommendationGeneral": "Öyrənmə səyahətinə davam edin! Fərqli kateqoriyalardan fəaliyyətlər sınayaraq yeni bacarıqlar qazanmasına kömək edə bilərsiniz."
+    "recommendationGeneral": "Öyrənmə səyahətinə davam edin! Fərqli kateqoriyalardan fəaliyyətlar sınayaraq yeni bacarıqlar qazanmasına kömək edə bilərsiniz."
   },
   "programReport": {
     "title": "Proqram Rejimi Tərəqqisi",
@@ -508,10 +525,6 @@
       "freeMode": "Sərbəst rejim: %50 çəki ilə dəyərləndirilir"
     },
     "rules": {
-      "count": "Sessiya üzrə fəaliyyət sayı:",
-      "activityWord": "fəaliyyət",
-      "warmupWord": "isinmə",
-      "newWord": "yeni məzmun",
       "count": "Sessiya başına fəaliyyət sayı: 8 fəaliyyət (1 isinmə, 7 yeni məzmun, 0 möhkəmləndirmə)",
       "activityWord": "fəaliyyət",
       "warmupWord": "isinmə",
@@ -659,6 +672,68 @@
       "EmbeddedStory": "İç‑içə hekayə"
     },
     "planPreview": {
+  "reasoning": {
+    "title": "Məntiq oyunları",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Hansı uyğun deyil?",
+        "subtitle": "Qrupa uyğun olmayanı tap"
+      },
+      "sequencingStories": {
+        "title": "Hekayəni sırala",
+        "subtitle": "Hekayəni düzgün ardıcıllığa düz"
+      },
+      "patternCompletion": {
+        "title": "Naxışı tamamla",
+        "subtitle": "Növbəti fiquru təxmin et"
+      },
+      "sudoku": {
+        "title": "Şəkil Sudoku",
+        "subtitle": "Çatışmayan hissəni tamamla"
+      },
+      "memoryCards": {
+        "title": "Yaddaş kartları",
+        "subtitle": "Uyğun cütləri tap",
+        "instruction": "Mövqeləri yadda saxla və uyğun kart cütlərini tap.",
+        "memorizeTitle": "Yadda saxla!",
+        "playTitle": "Cüt tap"
+      },
+      "dragAndDropCounting": {
+        "title": "Əşyaları hərəkət etdir",
+        "subtitle": "İstənilən sayda əşyanı hərəkət etdir"
+      },
+      "dragAndDropPositioning": {
+        "title": "Əşyanı yerləşdir",
+        "subtitle": "Əşyanı düzgün yerə qoy"
+      },
+      "hangman": {
+        "title": "Adam asmaca",
+        "subtitle": "Sözü tap"
+      }
+    }
+  },
+  "games": {
+    "objectCollector": {
+      "title": "Əşya toplayıcı",
+      "subtitle": "Doğru əşyaları səbətə topla",
+      "instructions": "← → ox düymələri ilə və ya barmaq/siçanla səbəti hərəkət etdir",
+      "youWin": "Təbriklər!",
+      "gameOver": "Oyun bitdi",
+      "finalScore": "Xal",
+      "collectFruits": "Yalnız meyvələri topla!",
+      "collectAnimals": "Yalnız heyvanları topla!",
+      "collectVehicles": "Yalnız nəqliyyat vasitələrini topla!",
+      "collectRed": "Yalnız qırmızı olanları topla!",
+      "collectFood": "Yalnız yeməkləri topla!",
+      "collectSchoolItems": "Yalnız məktəb ləvazimatlarını topla!",
+      "collectToys": "Yalnız oyuncaqları topla!",
+      "collectLargeAnimals": "Yalnız böyük heyvanları topla!"
+    },
+    "emotionPuppet": {
+      "title": "Emosiya kuklası",
+      "subtitle": "Üz hissələrini birləşdir"
+    }
+  },
       "title": "Bugünkü Axın",
       "thisSession": "Bu sessiyada bu ardıcıllıqla:",
       "ifGood": "Yaxşı gedərsə, növbəti sessiya:"
@@ -670,7 +745,9 @@
     "thisUpdate": {
       "title": "Bu Yeniləmədə",
       "items": [
-        "Proqram rejimində bəzi mövcud istifadəçilərin irəliləyişini 1‑ci bölməyə sıfırlayan xəta düzəldildi. Bu narahatlığa görə üzr istəyirik — təsirlənən köhnə istifadəçilərə Müəllimlər Günü hədiyyəsi kimi Premium abunəliyi 30 noyabr 2025‑ə qədər verildi. Həmçinin artıq və ya əvvəllər Premium olan istifadəçilərə əlavə 1 ay Premium hədiyyə edildi."
+        "Tərcümə problemlərini həll etmək üçün bütün fəaliyyət kodları sıfırdan yenidən yazılıb. Hazırda 70% tamamlanıb və tezliklə tamən bitəcək.",
+        "Obyektlər kateqoriyası və Konsepsiya Fəaliyyətlərindəki tərcümə problemləri düzəldildi. Rənglər, formalar və emosiyalar indi bütün dillərdə düzgün işləyir.",
+        "Qeyd: Mövcud məzmunda məlumat itkisi baş verə bilər. Müəyyən edilmiş problemlər mümkün qədər tez həll ediləcək."
       ],
       "_tempNotes": [
         "QEYD: Aşağıdakı maddələr müvəqqəti qeydlərdir — növbəti yeniləmədə i18n fayllarından çıxarılacaq."

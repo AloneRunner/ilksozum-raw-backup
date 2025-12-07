@@ -1,31 +1,6 @@
 {
-  "tazeBayatConcepts": {
-    "tazeBayat": "Fresh / Stale",
+  "tazeBayat": {
     "q_which_is_fresh": "Which one is fresh?",
-    "q_which_is_stale": "Which one is stale?",
-    "yes_ekmek_taze": "Yes, the bread is fresh.",
-    "no_ekmek_taze": "No, the bread is not fresh.",
-    "yes_ekmek_bayat": "Yes, the bread is stale.",
-    "no_ekmek_bayat": "No, the bread is not stale.",
-    "yes_elma_taze": "Yes, the apple is fresh.",
-    "no_elma_taze": "No, the apple is not fresh.",
-    "yes_elma_bayat": "Yes, the apple is rotten.",
-    "no_elma_bayat": "No, the apple is not rotten.",
-    "yes_muz_taze": "Yes, the banana is fresh.",
-    "no_muz_taze": "No, the banana is not fresh.",
-    "yes_muz_bayat": "Yes, the banana is stale.",
-    "no_muz_bayat": "No, the banana is not stale.",
-    "yes_gul_taze": "Yes, the rose is fresh.",
-    "no_gul_taze": "No, the rose is not fresh.",
-    "yes_gul_solmus": "Yes, the rose is wilted.",
-    "no_gul_solmus": "No, the rose is not wilted.",
-    "yes_havuc_taze": "Yes, the carrot is fresh.",
-    "no_havuc_taze": "No, the carrot is not fresh.",
-    "yes_havuc_bayat": "Yes, the carrot is stale.",
-    "no_havuc_bayat": "No, the carrot is not stale.",
-    "yes_sut_taze": "Yes, the milk is fresh.",
-    "no_sut_taze": "No, the milk is not fresh.",
-    "yes_sut_bozuk": "Yes, the milk is spoiled.",
-    "no_sut_bozuk": "No, the milk is not spoiled."
+    "q_which_is_stale": "Which one is stale?"
   }
 }

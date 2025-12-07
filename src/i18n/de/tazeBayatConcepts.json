@@ -1,31 +1,6 @@
 {
-  "tazeBayatConcepts": {
-    "tazeBayat": "Frisch / Altbacken",
+  "tazeBayat": {
     "q_which_is_fresh": "Welches ist frisch?",
-    "q_which_is_stale": "Welches ist altbacken?",
-    "yes_ekmek_taze": "Ja, das Brot ist frisch.",
-    "no_ekmek_taze": "Nein, das Brot ist nicht frisch.",
-    "yes_ekmek_bayat": "Ja, das Brot ist altbacken.",
-    "no_ekmek_bayat": "Nein, das Brot ist nicht altbacken.",
-    "yes_elma_taze": "Ja, der Apfel ist frisch.",
-    "no_elma_taze": "Nein, der Apfel ist nicht frisch.",
-    "yes_elma_bayat": "Ja, der Apfel ist faul.",
-    "no_elma_bayat": "Nein, der Apfel ist nicht faul.",
-    "yes_muz_taze": "Ja, die Banane ist frisch.",
-    "no_muz_taze": "Nein, die Banane ist nicht frisch.",
-    "yes_muz_bayat": "Ja, die Banane ist altbacken.",
-    "no_muz_bayat": "Nein, die Banane ist nicht altbacken.",
-    "yes_gul_taze": "Ja, die Rose ist frisch.",
-    "no_gul_taze": "Nein, die Rose ist nicht frisch.",
-    "yes_gul_solmus": "Ja, die Rose ist verwelkt.",
-    "no_gul_solmus": "Nein, die Rose ist nicht verwelkt.",
-    "yes_havuc_taze": "Ja, die Karotte ist frisch.",
-    "no_havuc_taze": "Nein, die Karotte ist nicht frisch.",
-    "yes_havuc_bayat": "Ja, die Karotte ist altbacken.",
-    "no_havuc_bayat": "Nein, die Karotte ist nicht altbacken.",
-    "yes_sut_taze": "Ja, die Milch ist frisch.",
-    "no_sut_taze": "Nein, die Milch ist nicht frisch.",
-    "yes_sut_bozuk": "Ja, die Milch ist verdorben.",
-    "no_sut_bozuk": "Nein, die Milch ist nicht verdorben."
+    "q_which_is_stale": "Welches ist alt?"
   }
 }

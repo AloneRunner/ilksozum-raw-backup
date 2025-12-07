@@ -3,7 +3,8 @@ import { getCurrentLanguage } from "../i18n/index.ts";
 import { t } from "../i18n/index.ts";
 import MenuButton from "./ui/MenuButton.tsx";
 // import MenuOrb from "./ui/MenuOrb.tsx";
-import CosmicOrb from "./ui/CosmicOrb.tsx";
+// import CosmicOrb from "./ui/CosmicOrb.tsx";
+import GalacticPlanet, { PlanetType } from "./ui/GalacticPlanet.tsx";
 // import ShootingStars from "./ui/ShootingStars.tsx"; // sadeleştirildi
 import WanderingMeteors from "./ui/WanderingMeteors.tsx";
 import UFOFlyby from "./ui/UFOFlyby.tsx";
@@ -308,92 +309,102 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
 
   // Special cosmic layout for "deneme2" theme (independent)
   if (isDeneme2Theme) {
-    const paletteFor = (id: MainMenuCategory): any => {
+    const getPlanetProps = (id: MainMenuCategory): { color1: string; color2: string; color3?: string; ringColor?: string; type: PlanetType } => {
       switch (id) {
-        case 'programMode': return 'ember';     // yeşil
-        case 'letterSound': return 'galaxy';    // mavi
-        case 'objectCategories': return 'nova'; // turuncu
-        case 'fiveWOneH': return 'terra';       // yeşil
-        case 'conceptActivities': return 'quasar'; // camgöbeği
-        case 'reasoningActivities': return 'comet'; // mor
-        case 'fineMotor': return 'nebula';      // pembe
-        case 'relativeComparison': return 'star'; // kırmızı
-        default: return 'galaxy';
+        case 'programMode': return { color1: '#10b981', color2: '#059669', color3: '#047857', type: 'cratered' }; // Emerald
+        case 'letterSound': return { color1: '#3b82f6', color2: '#2563eb', ringColor: '#93c5fd', type: 'ringed' }; // Blue with ring
+        case 'objectCategories': return { color1: '#f59e0b', color2: '#d97706', color3: '#b45309', type: 'striped' }; // Orange striped
+        case 'fiveWOneH': return { color1: '#8b5cf6', color2: '#7c3aed', type: 'cratered' }; // Violet
+        case 'conceptActivities': return { color1: '#ec4899', color2: '#db2777', ringColor: '#fbcfe8', type: 'ringed' }; // Pink with ring
+        case 'reasoningActivities': return { color1: '#06b6d4', color2: '#0891b2', color3: '#155e75', type: 'striped' }; // Cyan striped
+        case 'fineMotor': return { color1: '#f43f5e', color2: '#e11d48', type: 'cratered' }; // Rose
+        case 'relativeComparison': return { color1: '#6366f1', color2: '#4f46e5', ringColor: '#c7d2fe', type: 'ringed' }; // Indigo with ring
+        default: return { color1: '#64748b', color2: '#475569', type: 'cratered' };
       }
     };
 
     return (
       <div className="relative flex flex-col items-center justify-start h-full w-full mx-auto p-4 sm-landscape:p-2 animate-fade-in overflow-hidden">
-  {/* Deep space gradient background - daha koyu ve derin */}
-  <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#0a0e27] via-[#050816] to-[#000000]" />
-  
-  {/* Twinkling stars background - optimize edilmiş, daha az yıldız */}
-  <div className="absolute inset-0 -z-18 opacity-60">
-    {Array.from({ length: 30 }, (_, i) => (
-      <div
-        key={i}
-        className="absolute w-[2px] h-[2px] bg-white rounded-full animate-twinkle"
-        style={{
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 3}s`,
-          opacity: Math.random() * 0.6 + 0.2,
-        }}
-      />
-    ))}
-  </div>
-  
-  {/* Grid pattern - uzay koordinat sistemi */}
-  <div className="absolute inset-0 -z-15 [background-image:radial-gradient(circle_at_center,_rgba(147,197,253,0.15)_1px,transparent_1px)] [background-size:30px_30px] opacity-30" />
-  
-  {/* Nebula glow effects - optimize edilmiş, blur azaltıldı */}
-  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/8 rounded-full blur-[80px] -z-17" />
-  <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-cyan-500/8 rounded-full blur-[70px] -z-17" />
+        {/* Deep space gradient background */}
+        <div className="absolute inset-0 -z-20 galactic-bg" />
+        
+        {/* Animated Stars */}
+        <div className="absolute inset-0 -z-18 opacity-80">
+          {Array.from({ length: 40 }, (_, i) => (
+            <div
+              key={i}
+              className="absolute w-[2px] h-[2px] bg-white rounded-full animate-twinkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                opacity: Math.random() * 0.7 + 0.3,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Floating Space Dust/Nebula */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px] -z-17 animate-float-y" />
+        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-cyan-600/10 rounded-full blur-[70px] -z-17 animate-float-y" style={{ animationDelay: '2s' }} />
 
-  {/* Vignette - kenarlarda kontrast ve derinlik */}
-  <div className="absolute inset-0 -z-14 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 75%, rgba(0,0,0,0.6) 100%)' }} />
-
-  {/* Solar core - optimize edilmiş */}
-  <div className="absolute left-1/2 top-24 -translate-x-1/2 w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 blur-[12px] opacity-80 -z-16" />
-  <div className="absolute left-1/2 top-24 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-yellow-100 via-amber-200 to-white/60 -z-15" />
-  
-  {/* Optimize edilmiş arka plan efektleri */}
-  <WanderingMeteors count={2} />
-  <UFOFlyby count={1} />
+        {/* Background Elements */}
+        <WanderingMeteors count={3} />
+        <UFOFlyby count={1} />
 
         <div className="relative w-full flex-grow overflow-y-auto pr-1 pb-24 z-10">
           <div className="px-2 sm:px-4">
-            <div className="text-center pt-6 mb-6">
-              <h1 className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 drop-shadow-[0_10px_30px_rgba(147,197,253,0.45)] font-[Poppins] tracking-wide">
-                ✨ Kozmik Keşif
+            <div className="text-center pt-6 mb-8">
+              <h1 className="text-3xl sm:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-sky-300 via-indigo-200 to-fuchsia-300 drop-shadow-[0_10px_30px_rgba(147,197,253,0.45)] font-[Poppins] tracking-wide animate-float-y">
+                🚀 Galaktik Oyun Parkı
               </h1>
               <p className="mt-2 text-sky-200/90 font-semibold text-sm drop-shadow-[0_2px_8px_rgba(15,23,42,0.55)]">
                 {t('menu.chooseActivity', 'Bir macera seç.')}
               </p>
             </div>
 
-            {/* Grid of CosmicOrbs (two columns, larger orbs) */}
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 justify-items-center items-start">
-            {/* Random Mode */}
-            <CosmicOrb icon={StarIcon} title={t('menu.random.title','Rastgele Mod')} onClick={onStartRandomMode} palette={'sun' as any} size="xl" showOrbit />
-            {/* Explicit Program Mode orb so it always appears */}
-            <CosmicOrb icon={AcademicCapIcon} title={t('programMode.menuTitle','Program Modu (Deneme)')} onClick={() => onSelectCategory('programMode')} palette={paletteFor('programMode')} size="xl" showOrbit />
-            {menuItems.filter(i => i.id !== 'programMode').map((item) => (
-              <div key={item.id} className="relative">
-                <CosmicOrb
-                  icon={item.icon}
-                  title={item.title}
-                  onClick={() => onSelectCategory(item.id)}
-                  palette={paletteFor(item.id)}
-                  size="xl"
-                  showOrbit
-                />
-                {item.id === 'soundImitation' && item.badge && (
-                  <span className="absolute -top-2 -right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow">{item.badge}</span>
-                )}
-              </div>
-            ))}
-            <CosmicOrb icon={PersonIcon} title={t('menu.parentTips.title','Ebeveyn İpuçları')} onClick={onSelectParentTips} palette={'galaxy' as any} size="xl" showOrbit />
+            {/* Grid of GalacticPlanets */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 justify-items-center items-start pb-10">
+              {/* Random Mode */}
+              <GalacticPlanet 
+                icon={StarIcon} 
+                title={t('menu.random.title','Rastgele Mod')} 
+                onClick={onStartRandomMode} 
+                color1="#fbbf24" color2="#d97706" type="ringed" ringColor="#fde68a"
+                size="xl" 
+              />
+              
+              {/* Program Mode */}
+              <GalacticPlanet 
+                icon={AcademicCapIcon} 
+                title={t('programMode.menuTitle','Program Modu (Deneme)')} 
+                onClick={() => onSelectCategory('programMode')} 
+                {...getPlanetProps('programMode')}
+                size="xl" 
+              />
+
+              {menuItems.filter(i => i.id !== 'programMode').map((item) => (
+                <div key={item.id} className="relative">
+                  <GalacticPlanet
+                    icon={item.icon}
+                    title={item.title}
+                    onClick={() => onSelectCategory(item.id)}
+                    {...getPlanetProps(item.id)}
+                    size="xl"
+                  />
+                  {item.id === 'soundImitation' && item.badge && (
+                    <span className="absolute -top-2 -right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow z-20">{item.badge}</span>
+                  )}
+                </div>
+              ))}
+              
+              <GalacticPlanet 
+                icon={PersonIcon} 
+                title={t('menu.parentTips.title','Ebeveyn İpuçları')} 
+                onClick={onSelectParentTips} 
+                color1="#64748b" color2="#475569" type="cratered"
+                size="xl" 
+              />
             </div>
             
             {/* Development Notes Card */}
@@ -676,7 +687,7 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
           </>
         )}
         <div
-          className={`relative grid grid-cols-1 sm:grid-cols-2 landscape:grid-cols-3 sm-landscape:grid-cols-3 gap-4 sm-landscape:gap-3 ${
+          className={`relative grid ${theme === 'simple2' ? 'grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 landscape:grid-cols-3 sm-landscape:grid-cols-3'} gap-4 sm-landscape:gap-3 ${
             gridPadding
           }`}
         >
@@ -731,20 +742,22 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
               )}
             </div>
           )}
-          <MenuButton
-            icon={PersonIcon}
-            title={t("menu.parentTips.title", "Ebeveynler \u0130\u00e7in \u0130pu\u00e7lar\u0131")}
-            subtitle={t(
-              "menu.parentTips.subtitle",
-              "Uygulamay\u0131 daha verimli kullan\u0131n"
-            )}
-            onClick={onSelectParentTips}
-            color="purple"
-            theme={theme}
-          />
+          <div className={`${theme === 'simple2' ? 'col-span-2' : ''}`}>
+            <MenuButton
+              icon={PersonIcon}
+              title={t("menu.parentTips.title", "Ebeveynler \u0130\u00e7in \u0130pu\u00e7lar\u0131")}
+              subtitle={t(
+                "menu.parentTips.subtitle",
+                "Uygulamay\u0131 daha verimli kullan\u0131n"
+              )}
+              onClick={onSelectParentTips}
+              color="purple"
+              theme={theme}
+            />
+          </div>
           
             {/* Development Notes Card - full width */}
-            <div className="col-span-1 sm:col-span-2 landscape:col-span-3">
+            <div className={`${theme === 'simple2' ? 'col-span-2' : 'col-span-1 sm:col-span-2 landscape:col-span-3'}`}>
               <DevelopmentNotesCard theme={theme} />
             </div>
           </div>

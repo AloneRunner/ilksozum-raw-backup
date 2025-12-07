@@ -3,6 +3,6 @@
 export * from './activities/basicConceptsData.ts';
 export * from './activities/qualities';
 export * from './activities/quantities';
-export * from './activities/spatialData.ts';
+export * from './activities/spatial';
 export * from './activities/temporalData.ts';
 export * from './activities/reasoningData.ts';

@@ -1,53 +1,6 @@
 ﻿{
-  "flatCurved": "Gerade / Gebogen",
-  "q_which_is_flat": "Welches ist gerade?",
-  "q_which_is_curved": "Welches ist gebogen?",
-
-  "yes_yol_duz": "Ja, die StraÃŸe ist gerade.",
-  "no_yol_duz": "Nein, die StraÃŸe ist nicht gerade.",
-  "yes_yol_egri": "Ja, die StraÃŸe ist gebogen.",
-  "no_yol_egri": "Nein, die StraÃŸe ist nicht gebogen.",
-
-  "yes_cetvel_duz": "Ja, das Lineal ist gerade.",
-  "no_cetvel_duz": "Nein, das Lineal ist nicht gerade.",
-  "yes_solucan_egri": "Ja, der Wurm ist gebogen.",
-  "no_solucan_egri": "Nein, der Wurm ist nicht gebogen.",
-
-  "yes_ok_duz": "Ja, der Pfeil ist gerade.",
-  "no_ok_duz": "Nein, der Pfeil ist nicht gerade.",
-  "yes_yay_egri": "Ja, der Bogen ist gebogen.",
-  "no_yay_egri": "Nein, der Bogen ist nicht gebogen.",
-
-  "yes_kalem_duz": "Ja, der Bleistift ist gerade.",
-  "no_kalem_duz": "Nein, der Bleistift ist nicht gerade.",
-  "yes_muz_egri": "Ja, die Banane ist gebogen.",
-  "no_muz_egri": "Nein, die Banane ist nicht gebogen.",
-
-  "yes_davul_cubugu_duz": "Ja, der Trommelstock ist gerade.",
-  "no_davul_cubugu_duz": "Nein, der Trommelstock ist nicht gerade.",
-  "yes_yilan_egri": "Ja, die Schlange ist gebogen.",
-  "no_yilan_egri": "Nein, die Schlange ist nicht gebogen.",
-
-  "yes_kitap_duz": "Ja, das Buch ist gerade.",
-  "no_kitap_duz": "Nein, das Buch ist nicht gerade.",
-  "yes_ay_egri": "Ja, der Mond ist gebogen.",
-  "no_ay_egri": "Nein, der Mond ist nicht gebogen.",
-
-  "yes_tugla_duz": "Ja, der Backstein ist gerade.",
-  "no_tugla_duz": "Nein, der Backstein ist nicht gerade.",
-  "yes_gokkusagi_egri": "Ja, der Regenbogen ist gebogen.",
-  "no_gokkusagi_egri": "Nein, der Regenbogen ist nicht gebogen.",
-
-  "yes_bicak_duz": "Ja, das Messer ist gerade.",
-  "no_bicak_duz": "Nein, das Messer ist nicht gerade.",
-  "yes_salatalik_egri": "Ja, die Gurke ist gebogen.",
-  "no_salatalik_egri": "Nein, die Gurke ist nicht gebogen.",
-
-  "yes_masa_duz": "Ja, der Tisch ist gerade.",
-  "no_masa_duz": "Nein, der Tisch ist nicht gerade.",
-  "yes_nehir_egri": "Ja, der Fluss ist gebogen.",
-  "no_nehir_egri": "Nein, der Fluss ist nicht gebogen.",
-
-  "yes_pirasa_duz": "Ja, der Lauch ist gerade.",
-  "no_pirasa_duz": "Nein, der Lauch ist nicht gerade."
+  "straightCurved": {
+    "q_which_is_straight": "Welches ist gerade?",
+    "q_which_is_curved": "Welches ist krumm?"
+  }
 }

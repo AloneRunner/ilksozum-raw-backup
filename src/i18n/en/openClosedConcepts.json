@@ -1,61 +1,6 @@
 {
   "openClosed": {
     "q_which_is_open": "Which one is open?",
-    "q_which_is_closed": "Which one is closed?",
-
-    "yes_kutu_acik": "Yes, the box is open.",
-    "no_kutu_acik": "No, the box is open.",
-    "yes_kutu_kapali": "Yes, the box is closed.",
-    "no_kutu_kapali": "No, the box is closed.",
-
-    "yes_kitap_acik": "Yes, the book is open.",
-    "no_kitap_acik": "No, the book is open.",
-    "yes_kitap_kapali": "Yes, the book is closed.",
-    "no_kitap_kapali": "No, the book is closed.",
-
-    "yes_kapi_acik": "Yes, the door is open.",
-    "no_kapi_acik": "No, the door is open.",
-    "yes_kapi_kapali": "Yes, the door is closed.",
-    "no_kapi_kapali": "No, the door is closed.",
-
-    "yes_pencere_acik": "Yes, the window is open.",
-    "no_pencere_acik": "No, the window is open.",
-    "yes_pencere_kapali": "Yes, the window is closed.",
-    "no_pencere_kapali": "No, the window is closed.",
-
-    "yes_goz_acik": "Yes, the eye is open.",
-    "no_goz_acik": "No, the eye is open.",
-    "yes_goz_kapali": "Yes, the eye is closed.",
-    "no_goz_kapali": "No, the eye is closed.",
-
-    "yes_sandik_acik": "Yes, the chest is open.",
-    "no_sandik_acik": "No, the chest is open.",
-    "yes_sandik_kapali": "Yes, the chest is closed.",
-    "no_sandik_kapali": "No, the chest is closed.",
-
-    "yes_musluk_acik": "Yes, the tap is on.",
-    "no_musluk_acik": "No, the tap is on.",
-    "yes_musluk_kapali": "Yes, the tap is off.",
-    "no_musluk_kapali": "No, the tap is off.",
-
-    "yes_dolap_acik": "Yes, the wardrobe is open.",
-    "no_dolap_acik": "No, the wardrobe is open.",
-    "yes_dolap_kapali": "Yes, the wardrobe is closed.",
-    "no_dolap_kapali": "No, the wardrobe is closed.",
-
-    "yes_zarf_acik": "Yes, the envelope is open.",
-    "no_zarf_acik": "No, the envelope is open.",
-    "yes_zarf_kapali": "Yes, the envelope is closed.",
-    "no_zarf_kapali": "No, the envelope is closed.",
-
-    "yes_sise_acik": "Yes, the bottle is open.",
-    "no_sise_acik": "No, the bottle is open.",
-    "yes_sise_kapali": "Yes, the bottle is closed.",
-    "no_sise_kapali": "No, the bottle is closed.",
-
-    "yes_semsiye_acik": "Yes, the umbrella is open.",
-    "no_semsiye_acik": "No, the umbrella is open.",
-    "yes_semsiye_kapali": "Yes, the umbrella is closed.",
-    "no_semsiye_kapali": "No, the umbrella is closed."
+    "q_which_is_closed": "Which one is closed?"
   }
 }

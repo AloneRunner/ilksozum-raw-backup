@@ -113,6 +113,7 @@
       "title": "5W1H",
       "subtitle": "Wer • Was • Wo • Wann • Warum • Wie",
       "developingNote": "In Entwicklung",
+      "backButton": "Zurück zum Hauptmenü",
       "category": {
         "who": "Wer?",
         "what": "Was?",
@@ -121,7 +122,8 @@
         "why": "Warum?",
         "how": "Wie?",
         "mixed": "Gemischt"
-      }
+      },
+      "instructions": "Tippe auf einen Planeten, um eine Kategorie zu wählen"
     }
     ,
     "soundImitation": {
@@ -133,6 +135,8 @@
       "videosTitle": "Kurze Videos",
       "videosTitleShort": "Kurze Videos (Experimentell)",
       "videosDesc": "Kurze Videos — experimentell. Videos können Speicherplatz benötigen.",
+      "experimentalMusic": "Experimentelle Musik",
+      "lyrics": "Liedtext",
       "experimentalNoteTitle": "Experimentelle Notiz",
       "experimentalNote": "Der Video-Bereich ist experimentell und möglicherweise nicht dauerhaft. Videos können groß sein und Speicher auf Ihrem Gerät belegen; wir richten diesen Bereich nach Ihrem Feedback aus.",
       "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
@@ -269,6 +273,82 @@
       "when": "5W1H - Wann?",
       "why": "5W1H - Warum?",
       "how": "5W1H - Wie?"
+    }
+  },
+  "reasoning": {
+    "title": "Logik- und Denkspiele",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Was passt nicht?",
+        "subtitle": "Finde, was nicht dazu gehört"
+      },
+      "sequencingStories": {
+        "title": "Geschichten ordnen",
+        "subtitle": "Bringe die Geschichte in die richtige Reihenfolge"
+      },
+      "patternCompletion": {
+        "title": "Muster vervollständigen",
+        "subtitle": "Sage die nächste Form voraus"
+      },
+      "sudoku": {
+        "title": "Bilder-Sudoku",
+        "subtitle": "Ergänze das fehlende Teil"
+      },
+      "memoryCards": {
+        "title": "Memory-Karten",
+        "subtitle": "Finde die passenden Paare",
+        "instruction": "Merke dir die Positionen und finde die passenden Paare.",
+        "memorizeTitle": "Einprägen!",
+        "playTitle": "Finde das Paar"
+      },
+      "dragAndDropCounting": {
+        "title": "Objekte bewegen",
+        "subtitle": "Bewege die gewünschte Anzahl an Gegenständen"
+      },
+      "dragAndDropPositioning": {
+        "title": "Objekt platzieren",
+        "subtitle": "Platziere das Objekt an der richtigen Stelle"
+      },
+      "hangman": {
+        "title": "Galgenmännchen",
+        "subtitle": "Errate das Wort"
+      }
+    }
+  },
+  "games": {
+    "hangman": {
+      "speak": {
+        "win": "Super! Du hast das Wort gefunden!",
+        "wordWas": "Das Wort war"
+      },
+      "remainingLives": "Verbleibende Leben",
+      "category": "Kategorie",
+      "pickLetter": "Buchstabe wählen",
+      "youWinTitle": "Toll gemacht!",
+      "youWinDesc": "Du hast das Wort gefunden!",
+      "youLoseTitle": "Du hast verloren",
+      "wordLabel": "Wort",
+      "newGame": "Neues Spiel"
+    },
+    "objectCollector": {
+      "title": "Objektsammler",
+      "subtitle": "Sammle die richtigen Objekte in den Korb",
+      "instructions": "Bewege den Korb mit den Pfeiltasten ← → oder ziehe ihn mit Finger/Maus",
+      "youWin": "Super gemacht!",
+      "gameOver": "Spiel vorbei",
+      "finalScore": "Punktzahl",
+      "collectFruits": "Sammle nur die Früchte!",
+      "collectAnimals": "Sammle nur die Tiere!",
+      "collectVehicles": "Sammle nur die Fahrzeuge!",
+      "collectRed": "Sammle nur die roten!",
+      "collectFood": "Sammle nur die Lebensmittel!",
+      "collectSchoolItems": "Sammle nur die Schulsachen!",
+      "collectToys": "Sammle nur das Spielzeug!",
+      "collectLargeAnimals": "Sammle nur die großen Tiere!"
+    },
+    "emotionPuppet": {
+      "title": "Gefühls-Puppe",
+      "subtitle": "Setze die Gesichtsteile zusammen"
     }
   },
   "settingsEx": {
@@ -507,10 +587,6 @@
       "jokerInfo": "Joker-Pass: Eltern können Aktivitäten vorübergehend freischalten. Wählen Sie 'Für Fortschritt ignorieren', damit die Aktivität während des Overrides nicht zur Einheits-Vervollständigung zählt. Aktive Limits: 3 für Nicht-Premium, 15 für Premium."
     },
     "rules": {
-      "count": "Aktivitäten pro Sitzung:",
-      "activityWord": "Aktivitäten",
-      "warmupWord": "Aufwärmen",
-      "newWord": "neuer Inhalt",
       "count": "Aktivitäten pro Sitzung: 8 Aktivitäten (1 Aufwärmen, 7 neuer Inhalt, 0 Festigung)",
       "activityWord": "Aktivität",
       "warmupWord": "Aufwärmen",
@@ -669,10 +745,12 @@
     "thisUpdate": {
       "title": "In diesem Update",
       "items": [
-        "Im Programm‑Modus wurde ein Fehler behoben, der bei einigen bestehenden Nutzern den Fortschritt auf Einheit 1 zurücksetzte. Wir entschuldigen uns für das Problem — betroffene Bestandsnutzer erhalten als Lehrertagsgeschenk kostenlosen Premium‑Zugang bis zum 30. November 2025. Zudem haben bestehende oder ehemalige Premium‑Nutzer einen zusätzlichen Monat Premium erhalten."
+        "Alle Aktivitätscodes wurden von Grund auf neu geschrieben, um Übersetzungsprobleme zu beheben. Bisher zu 70% abgeschlossen und wird bald vollständig fertiggestellt.",
+        "Übersetzungsprobleme in der Objektkategorie und Konzeptaktivitäten wurden behoben. Farben, Formen und Emotionen funktionieren jetzt korrekt in allen Sprachen.",
+        "Hinweis: Bei vorhandenen Inhalten kann es zu Datenverlusten kommen. Identifizierte Probleme werden schnellstmöglich behoben."
       ],
       "_tempNotes": [
-        "HINWEIS: Die folgenden Einträge sind temporäre Notizen — sie werden im nächsten Update aus den i18n-Dateien entfernt."
+        "HINWEIS: Die folgenden Punkte sind temporäre Notizen — sie werden im nächsten Update aus den i18n-Dateien entfernt."
       ]
     },
     "programMode": {

@@ -122,6 +122,17 @@
         "how": "Necə?",
         "mixed": "Qarışıq"
       }
+    },
+    "soundImitation": {
+      "title": "Səs Təqlidi Kartları",
+      "subtitle": "Danışmayan uşaqlar üçün səs təqlidi kartları",
+      "badge": "Yeni — Sınaq Fəaliyyəti"
+    }
+  },
+  "experimental": {
+    "relativeComparison": {
+      "title": "Müqayisəli Anlayışlar",
+      "instruction": "İki kartı müqayisə edin və suala cavab verin."
     }
   },
   "common": {
@@ -180,5 +191,9 @@
     },
     "restart": "Yenidən Oyna",
     "home": "Əsas Menyu"
-  }
+  },
+  "play": "Oynat",
+  "pause": "Fasilə",
+  "back": "Geri",
+  "lyrics": "Mahnı sözləri"
 }

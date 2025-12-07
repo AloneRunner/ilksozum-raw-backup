@@ -1,27 +1,8 @@
-{
-  "halfQuarterWholeConcepts": {
-    "halfQuarterWhole": "Yarım / Dörddəbir / Bütöv",
-    "q_which_is_whole": "Hansıdır bütöv?",
-    "q_which_is_half": "Hansıdır yarım?",
-    "q_which_is_quarter": "Hansıdır dörddəbir?",
-    "q_which_is_slice": "Hansıdır dilim?",
-    "yes_pizza_butun": "Bəli, pizza bütövdür.",
-    "no_pizza_butun": "Xeyr, pizza bütöv deyil.",
-    "yes_pizza_yarim": "Bəli, pizza yarımdır.",
-    "no_pizza_yarim": "Xeyr, pizza yarım deyil.",
-    "yes_pizza_dilimi_ceyrek": "Bəli, bu dörddəbir pizzadır.",
-    "no_pizza_dilimi_ceyrek": "Xeyr, bu dörddəbir pizza deyil.",
-    "yes_portakal_butun": "Bəli, portağal bütövdür.",
-    "no_portakal_butun": "Xeyr, portağal bütöv deyil.",
-    "yes_portakal_yarim": "Bəli, portağal yarımdır.",
-    "no_portakal_yarim": "Xeyr, portağal yarım deyil.",
-    "yes_simit_butun": "Bəli, simit bütövdür.",
-    "no_simit_butun": "Xeyr, simit bütöv deyil.",
-    "yes_simit_yarim": "Bəli, simit yarımdır.",
-    "no_simit_yarim": "Xeyr, simit yarım deyil.",
-    "yes_pasta_butun": "Bəli, tort bütövdür.",
-    "no_pasta_butun": "Xeyr, tort bütöv deyil.",
-    "yes_pasta_dilimi": "Bəli, bu tort dilimidir.",
-    "no_pasta_dilimi": "Xeyr, bu tort dilimi deyil."
+﻿{
+  "halfQuarterWhole": {
+    "q_which_is_whole": "Hansı bütövdür?",
+    "q_which_is_half": "Hansı yarımdır?",
+    "q_which_is_quarter": "Hansı dörddəbirdir?",
+    "q_which_is_slice": "Hansı dilimdir?"
   }
 }

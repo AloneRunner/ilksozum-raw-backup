@@ -1,32 +1,7 @@
-{
-  "fewMuchConcepts": {
-    "fewMuch": "Peu / Beaucoup",
-    "q_which_is_few": "Lequel en a peu?",
-    "q_which_is_few_person": "Lequel en a peu?",
-    "q_which_is_much": "Lequel en a beaucoup?",
-    "yes_uzum_az": "Oui, ces raisins sont peu nombreux.",
-    "no_uzum_az": "Non, ces raisins ne sont pas peu nombreux.",
-    "yes_uzum_cok": "Oui, ces raisins sont nombreux.",
-    "no_uzum_cok": "Non, ces raisins ne sont pas nombreux.",
-    "yes_kavanoz_az": "Oui, ces billes sont peu nombreuses.",
-    "no_kavanoz_az": "Non, ces billes ne sont pas peu nombreuses.",
-    "yes_kavanoz_cok": "Oui, ces billes sont nombreuses.",
-    "no_kavanoz_cok": "Non, ces billes ne sont pas nombreuses.",
-    "yes_kitaplik_az": "Oui, ces livres sont peu nombreux.",
-    "no_kitaplik_az": "Non, ces livres ne sont pas peu nombreux.",
-    "yes_kitaplik_cok": "Oui, ces livres sont nombreux.",
-    "no_kitaplik_cok": "Non, ces livres ne sont pas nombreux.",
-    "yes_para_az": "Oui, cet argent est peu.",
-    "no_para_az": "Non, cet argent n'est pas peu.",
-    "yes_para_cok": "Oui, cet argent est beaucoup.",
-    "no_para_cok": "Non, cet argent n'est pas beaucoup.",
-    "yes_akvaryum_az": "Oui, ces poissons sont peu nombreux.",
-    "no_akvaryum_az": "Non, ces poissons ne sont pas peu nombreux.",
-    "yes_akvaryum_cok": "Oui, ces poissons sont nombreux.",
-    "no_akvaryum_cok": "Non, ces poissons ne sont pas nombreux.",
-    "yes_kus_az": "Oui, ces oiseaux sont peu nombreux.",
-    "no_kus_az": "Non, ces oiseaux ne sont pas peu nombreux.",
-    "yes_kuslar_cok": "Oui, ces oiseaux sont nombreux.",
-    "no_kuslar_cok": "Non, ces oiseaux ne sont pas nombreux."
+﻿{
+  "fewMuch": {
+    "q_which_is_few": "Lequel est peu ?",
+    "q_which_is_few_person": "Lequel est peu ?",
+    "q_which_is_much": "Lequel est beaucoup ?"
   }
 }

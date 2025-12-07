@@ -1,31 +1,6 @@
 {
-  "tazeBayatConcepts": {
-    "tazeBayat": "Frais / Rassit",
-    "q_which_is_fresh": "Lequel est frais?",
-    "q_which_is_stale": "Lequel est rassit?",
-    "yes_ekmek_taze": "Oui, le pain est frais.",
-    "no_ekmek_taze": "Non, le pain n'est pas frais.",
-    "yes_ekmek_bayat": "Oui, le pain est rassit.",
-    "no_ekmek_bayat": "Non, le pain n'est pas rassit.",
-    "yes_elma_taze": "Oui, la pomme est fraîche.",
-    "no_elma_taze": "Non, la pomme n'est pas fraîche.",
-    "yes_elma_bayat": "Oui, la pomme est pourrie.",
-    "no_elma_bayat": "Non, la pomme n'est pas pourrie.",
-    "yes_muz_taze": "Oui, la banane est fraîche.",
-    "no_muz_taze": "Non, la banane n'est pas fraîche.",
-    "yes_muz_bayat": "Oui, la banane est rassie.",
-    "no_muz_bayat": "Non, la banane n'est pas rassie.",
-    "yes_gul_taze": "Oui, la rose est fraîche.",
-    "no_gul_taze": "Non, la rose n'est pas fraîche.",
-    "yes_gul_solmus": "Oui, la rose est fanée.",
-    "no_gul_solmus": "Non, la rose n'est pas fanée.",
-    "yes_havuc_taze": "Oui, la carotte est fraîche.",
-    "no_havuc_taze": "Non, la carotte n'est pas fraîche.",
-    "yes_havuc_bayat": "Oui, la carotte est rassie.",
-    "no_havuc_bayat": "Non, la carotte n'est pas rassie.",
-    "yes_sut_taze": "Oui, le lait est frais.",
-    "no_sut_taze": "Non, le lait n'est pas frais.",
-    "yes_sut_bozuk": "Oui, le lait est gâté.",
-    "no_sut_bozuk": "Non, le lait n'est pas gâté."
+  "tazeBayat": {
+    "q_which_is_fresh": "Lequel est frais ?",
+    "q_which_is_stale": "Lequel est rassis ?"
   }
 }

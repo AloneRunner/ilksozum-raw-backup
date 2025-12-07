@@ -2,61 +2,6 @@
   "aliveLifeless": {
     "q_which_is_alive": "Which one is alive?",
     "q_which_is_alive_person": "Who is alive?",
-    "q_which_is_lifeless": "Which one is non-living?",
-
-    "yes_agac_canli": "Yes, the tree is alive.",
-    "no_agac_canli": "No, the tree is alive.",
-    "yes_tas_cansiz": "Yes, the stone is non-living.",
-    "no_tas_cansiz": "No, the stone is non-living.",
-
-    "yes_kedi_canli": "Yes, the cat is alive.",
-    "no_kedi_canli": "No, the cat is alive.",
-    "yes_masa_cansiz": "Yes, the table is non-living.",
-    "no_masa_cansiz": "No, the table is non-living.",
-
-    "yes_cicek_canli": "Yes, the flower is alive.",
-    "no_cicek_canli": "No, the flower is alive.",
-    "yes_araba_cansiz": "Yes, the car is non-living.",
-    "no_araba_cansiz": "No, the car is non-living.",
-
-    "yes_cocuk_canli": "Yes, the child is alive.",
-    "no_cocuk_canli": "No, the child is alive.",
-    "yes_robot_cansiz": "Yes, the robot is non-living.",
-    "no_robot_cansiz": "No, the robot is non-living.",
-
-    "yes_kelebek_canli": "Yes, the butterfly is alive.",
-    "no_kelebek_canli": "No, the butterfly is alive.",
-    "yes_kitap_cansiz": "Yes, the book is non-living.",
-    "no_kitap_cansiz": "No, the book is non-living.",
-
-    "yes_balik_canli": "Yes, the fish is alive.",
-    "no_balik_canli": "No, the fish is alive.",
-    "yes_sandalye_cansiz": "Yes, the chair is non-living.",
-    "no_sandalye_cansiz": "No, the chair is non-living.",
-
-    "yes_karinca_canli": "Yes, the ant is alive.",
-    "no_karinca_canli": "No, the ant is alive.",
-    "yes_anahtar_cansiz": "Yes, the key is non-living.",
-    "no_anahtar_cansiz": "No, the key is non-living.",
-
-    "yes_doktor_canli": "Yes, the doctor is alive.",
-    "no_doktor_canli": "No, the doctor is alive.",
-    "yes_canta_cansiz": "Yes, the bag is non-living.",
-    "no_canta_cansiz": "No, the bag is non-living.",
-
-    "yes_kurbaga_canli": "Yes, the frog is alive.",
-    "no_kurbaga_canli": "No, the frog is alive.",
-    "yes_top_cansiz": "Yes, the ball is non-living.",
-    "no_top_cansiz": "No, the ball is non-living.",
-
-    "yes_zebra_canli": "Yes, the zebra is alive.",
-    "no_zebra_canli": "No, the zebra is alive.",
-    "yes_tuvalet_kagidi_cansiz": "Yes, the toilet paper is non-living.",
-    "no_tuvalet_kagidi_cansiz": "No, the toilet paper is non-living.",
-
-    "yes_hamster_canli": "Yes, the hamster is alive.",
-    "no_hamster_canli": "No, the hamster is alive.",
-    "yes_helikopter_cansiz": "Yes, the helicopter is non-living.",
-    "no_helikopter_cansiz": "No, the helicopter is non-living."
+    "q_which_is_lifeless": "Which one is non-living?"
   }
 }

@@ -1,27 +1,8 @@
-{
-  "halfQuarterWholeConcepts": {
-    "halfQuarterWhole": "Half / Kwart / Heel",
+﻿{
+  "halfQuarterWhole": {
     "q_which_is_whole": "Welke is heel?",
     "q_which_is_half": "Welke is half?",
     "q_which_is_quarter": "Welke is een kwart?",
-    "q_which_is_slice": "Welke is een plak?",
-    "yes_pizza_butun": "Ja, de pizza is heel.",
-    "no_pizza_butun": "Nee, de pizza is niet heel.",
-    "yes_pizza_yarim": "Ja, de pizza is half.",
-    "no_pizza_yarim": "Nee, de pizza is niet half.",
-    "yes_pizza_dilimi_ceyrek": "Ja, dit is een kwart pizza.",
-    "no_pizza_dilimi_ceyrek": "Nee, dit is geen kwart pizza.",
-    "yes_portakal_butun": "Ja, de sinaasappel is heel.",
-    "no_portakal_butun": "Nee, de sinaasappel is niet heel.",
-    "yes_portakal_yarim": "Ja, de sinaasappel is half.",
-    "no_portakal_yarim": "Nee, de sinaasappel is niet half.",
-    "yes_simit_butun": "Ja, de bagel is heel.",
-    "no_simit_butun": "Nee, de bagel is niet heel.",
-    "yes_simit_yarim": "Ja, de bagel is half.",
-    "no_simit_yarim": "Nee, de bagel is niet half.",
-    "yes_pasta_butun": "Ja, de taart is heel.",
-    "no_pasta_butun": "Nee, de taart is niet heel.",
-    "yes_pasta_dilimi": "Ja, dit is een plak taart.",
-    "no_pasta_dilimi": "Nee, dit is geen plak taart."
+    "q_which_is_slice": "Welke is een stuk?"
   }
 }

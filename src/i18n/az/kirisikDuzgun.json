@@ -1,36 +1,6 @@
 {
   "kirisikDuzgun": {
-    "questions": {
-      "q_which_is_wrinkled": "Hansı qırışmışdır?",
-      "q_which_is_smooth": "Hansı hamardır?",
-      "yes_gömlek_wrinkled": "Bəli, gömlek qırışmış.",
-      "no_gömlek_wrinkled": "Xeyr, gömlek qırışmış deyil.",
-      "yes_gömlek_smooth": "Bəli, gömlek hamar.",
-      "no_gömlek_smooth": "Xeyr, gömlek hamar deyil.",
-      "yes_kağıt_wrinkled": "Bəli, kağıt qırışmış.",
-      "no_kağıt_wrinkled": "Xeyr, kağıt qırışmış deyil.",
-      "yes_kağıt_smooth": "Bəli, kağıt hamar.",
-      "no_kağıt_smooth": "Xeyr, kağıt hamar deyil.",
-      "yes_pantolon_wrinkled": "Bəli, pantolon qırışmış.",
-      "no_pantolon_wrinkled": "Xeyr, pantolon qırışmış deyil.",
-      "yes_pantolon_smooth": "Bəli, pantolon hamar.",
-      "no_pantolon_smooth": "Xeyr, pantolon hamar deyil.",
-      "yes_yatak_wrinkled": "Bəli, yatak qırışmış.",
-      "no_yatak_wrinkled": "Xeyr, yatak qırışmış deyil.",
-      "yes_yatak_smooth": "Bəli, yatak hamar.",
-      "no_yatak_smooth": "Xeyr, yatak hamar deyil.",
-      "yes_çamaşır_wrinkled": "Bəli, çamaşır qırışmış.",
-      "no_çamaşır_wrinkled": "Xeyr, çamaşır qırışmış deyil.",
-      "yes_çamaşır_smooth": "Bəli, çamaşır hamar.",
-      "no_çamaşır_smooth": "Xeyr, çamaşır hamar deyil.",
-      "yes_havlu_wrinkled": "Bəli, havlu qırışmış.",
-      "no_havlu_wrinkled": "Xeyr, havlu qırışmış deyil.",
-      "yes_havlu_smooth": "Bəli, havlu hamar.",
-      "no_havlu_smooth": "Xeyr, havlu hamar deyil.",
-      "yes_tişört_wrinkled": "Bəli, tişört qırışmış.",
-      "no_tişört_wrinkled": "Xeyr, tişört qırışmış deyil.",
-      "yes_tişört_smooth": "Bəli, tişört hamar.",
-      "no_tişört_smooth": "Xeyr, tişört hamar deyil."
-    }
+    "q_which_is_wrinkled": "Hansı qırışıqdır?",
+    "q_which_is_smooth": "Hansı düzgündür?"
   }
 }

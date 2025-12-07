@@ -1,44 +1,7 @@
 {
   "noisyQuiet": {
-    "questions": {
-      "q_which_is_noisy": "Welke is luidruchtig?",
-      "q_which_is_quiet": "Welke is stil?",
-      "yes_aslan_noisy": "Ja, aslan is luidruchtig.",
-      "no_aslan_noisy": "Nee, aslan is niet luidruchtig.",
-      "yes_aslan_quiet": "Ja, aslan is stil.",
-      "no_aslan_quiet": "Nee, aslan is niet stil.",
-      "yes_davul_noisy": "Ja, davul is luidruchtig.",
-      "no_davul_noisy": "Nee, davul is niet luidruchtig.",
-      "yes_davul_quiet": "Ja, davul is stil.",
-      "no_davul_quiet": "Nee, davul is niet stil.",
-      "yes_yastık_noisy": "Ja, yastık is luidruchtig.",
-      "no_yastık_noisy": "Nee, yastık is niet luidruchtig.",
-      "yes_yastık_quiet": "Ja, yastık is stil.",
-      "no_yastık_quiet": "Nee, yastık is niet stil.",
-      "yes_şimşek_noisy": "Ja, şimşek is luidruchtig.",
-      "no_şimşek_noisy": "Nee, şimşek is niet luidruchtig.",
-      "yes_şimşek_quiet": "Ja, şimşek is stil.",
-      "no_şimşek_quiet": "Nee, şimşek is niet stil.",
-      "yes_tüy_noisy": "Ja, tüy is luidruchtig.",
-      "no_tüy_noisy": "Nee, tüy is niet luidruchtig.",
-      "yes_tüy_quiet": "Ja, tüy is stil.",
-      "no_tüy_quiet": "Nee, tüy is niet stil.",
-      "yes_traktör_noisy": "Ja, traktör is luidruchtig.",
-      "no_traktör_noisy": "Nee, traktör is niet luidruchtig.",
-      "yes_traktör_quiet": "Ja, traktör is stil.",
-      "no_traktör_quiet": "Nee, traktör is niet stil.",
-      "yes_kelebek_noisy": "Ja, kelebek is luidruchtig.",
-      "no_kelebek_noisy": "Nee, kelebek is niet luidruchtig.",
-      "yes_kelebek_quiet": "Ja, kelebek is stil.",
-      "no_kelebek_quiet": "Nee, kelebek is niet stil.",
-      "yes_tren_noisy": "Ja, tren is luidruchtig.",
-      "no_tren_noisy": "Nee, tren is niet luidruchtig.",
-      "yes_tren_quiet": "Ja, tren is stil.",
-      "no_tren_quiet": "Nee, tren is niet stil.",
-      "yes_yaprak_noisy": "Ja, yaprak is luidruchtig.",
-      "no_yaprak_noisy": "Nee, yaprak is niet luidruchtig.",
-      "yes_yaprak_quiet": "Ja, yaprak is stil.",
-      "no_yaprak_quiet": "Nee, yaprak is niet stil."
-    }
+    "q_which_is_noisy": "Welke is luidruchtig?",
+    "q_which_is_noisy_person": "Welke is luidruchtig?",
+    "q_which_is_quiet": "Welke is stil?"
   }
 }

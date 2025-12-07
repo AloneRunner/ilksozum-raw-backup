@@ -1,62 +1,7 @@
 {
   "aliveLifeless": {
-    "q_which_is_alive": "Welches ist lebendig?",
-    "q_which_is_alive_person": "Wer ist lebendig?",
-    "q_which_is_lifeless": "Welches ist leblos?",
-
-    "yes_agac_canli": "Ja, der Baum lebt.",
-    "no_agac_canli": "Nein, der Baum lebt.",
-    "yes_tas_cansiz": "Ja, der Stein ist leblos.",
-    "no_tas_cansiz": "Nein, der Stein ist leblos.",
-
-    "yes_kedi_canli": "Ja, die Katze lebt.",
-    "no_kedi_canli": "Nein, die Katze lebt.",
-    "yes_masa_cansiz": "Ja, der Tisch ist leblos.",
-    "no_masa_cansiz": "Nein, der Tisch ist leblos.",
-
-    "yes_cicek_canli": "Ja, die Blume lebt.",
-    "no_cicek_canli": "Nein, die Blume lebt.",
-    "yes_araba_cansiz": "Ja, das Auto ist leblos.",
-    "no_araba_cansiz": "Nein, das Auto ist leblos.",
-
-    "yes_cocuk_canli": "Ja, das Kind lebt.",
-    "no_cocuk_canli": "Nein, das Kind lebt.",
-    "yes_robot_cansiz": "Ja, der Roboter ist leblos.",
-    "no_robot_cansiz": "Nein, der Roboter ist leblos.",
-
-    "yes_kelebek_canli": "Ja, der Schmetterling lebt.",
-    "no_kelebek_canli": "Nein, der Schmetterling lebt.",
-    "yes_kitap_cansiz": "Ja, das Buch ist leblos.",
-    "no_kitap_cansiz": "Nein, das Buch ist leblos.",
-
-    "yes_balik_canli": "Ja, der Fisch lebt.",
-    "no_balik_canli": "Nein, der Fisch lebt.",
-    "yes_sandalye_cansiz": "Ja, der Stuhl ist leblos.",
-    "no_sandalye_cansiz": "Nein, der Stuhl ist leblos.",
-
-    "yes_karinca_canli": "Ja, die Ameise lebt.",
-    "no_karinca_canli": "Nein, die Ameise lebt.",
-    "yes_anahtar_cansiz": "Ja, der Schlüssel ist leblos.",
-    "no_anahtar_cansiz": "Nein, der Schlüssel ist leblos.",
-
-    "yes_doktor_canli": "Ja, der Arzt lebt.",
-    "no_doktor_canli": "Nein, der Arzt lebt.",
-    "yes_canta_cansiz": "Ja, die Tasche ist leblos.",
-    "no_canta_cansiz": "Nein, die Tasche ist leblos.",
-
-    "yes_kurbaga_canli": "Ja, der Frosch lebt.",
-    "no_kurbaga_canli": "Nein, der Frosch lebt.",
-    "yes_top_cansiz": "Ja, der Ball ist leblos.",
-    "no_top_cansiz": "Nein, der Ball ist leblos.",
-
-    "yes_zebra_canli": "Ja, das Zebra lebt.",
-    "no_zebra_canli": "Nein, das Zebra lebt.",
-    "yes_tuvalet_kagidi_cansiz": "Ja, das Toilettenpapier ist leblos.",
-    "no_tuvalet_kagidi_cansiz": "Nein, das Toilettenpapier ist leblos.",
-
-    "yes_hamster_canli": "Ja, der Hamster lebt.",
-    "no_hamster_canli": "Nein, der Hamster lebt.",
-    "yes_helikopter_cansiz": "Ja, der Hubschrauber ist leblos.",
-    "no_helikopter_cansiz": "Nein, der Hubschrauber ist leblos."
+    "q_which_is_alive": "Welches lebt?",
+    "q_which_is_alive_person": "Wer lebt?",
+    "q_which_is_lifeless": "Welches ist leblos?"
   }
 }

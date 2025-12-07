@@ -1,34 +1,6 @@
 {
   "derinSig": {
     "q_which_is_deep": "Welches ist tief?",
-    "q_which_is_shallow": "Welches ist flach?",
-    "yes_deniz_derin": "Ja, das Meer ist tief.",
-    "no_deniz_derin": "Nein, das Meer ist nicht tief.",
-    "yes_gol_sig": "Ja, der See ist flach.",
-    "no_gol_sig": "Nein, der See ist nicht flach.",
-    "yes_kuyu_derin": "Ja, der Brunnen ist tief.",
-    "no_kuyu_derin": "Nein, der Brunnen ist nicht tief.",
-    "yes_su_birikintisi_sig": "Ja, die Pfütze ist flach.",
-    "no_su_birikintisi_sig": "Nein, die Pfütze ist nicht flach.",
-    "yes_kase_derin": "Ja, die Schüssel ist tief.",
-    "no_kase_derin": "Nein, die Schüssel ist nicht tief.",
-    "yes_tabak_sig": "Ja, der Teller ist flach.",
-    "no_tabak_sig": "Nein, der Teller ist nicht flach.",
-    "yes_tencere_derin": "Ja, der Topf ist tief.",
-    "no_tencere_derin": "Nein, der Topf ist nicht tief.",
-    "yes_tava_sig": "Ja, die Pfanne ist flach.",
-    "no_tava_sig": "Nein, die Pfanne ist nicht flach.",
-    "yes_kutu_derin": "Ja, die Kiste ist tief.",
-    "no_kutu_derin": "Nein, die Kiste ist nicht tief.",
-    "yes_kutu_sig": "Ja, die Kiste ist flach.",
-    "no_kutu_sig": "Nein, die Kiste ist nicht flach.",
-    "yes_sepet_derin": "Ja, der Korb ist tief.",
-    "no_sepet_derin": "Nein, der Korb ist nicht tief.",
-    "yes_yemek_tepsisi_sig": "Ja, das Tablett ist flach.",
-    "no_yemek_tepsisi_sig": "Nein, das Tablett ist nicht flach.",
-    "yes_cocuk_havuzu_sig": "Ja, das Becken ist flach.",
-    "no_cocuk_havuzu_sig": "Nein, das Becken ist nicht flach.",
-    "yes_cocuk_havuzu_derin": "Ja, das Becken ist tief.",
-    "no_cocuk_havuzu_derin": "Nein, das Becken ist nicht tief."
+    "q_which_is_shallow": "Welches ist flach?"
   }
 }

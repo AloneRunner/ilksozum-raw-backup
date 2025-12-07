@@ -1,39 +1,6 @@
-{
-  "fullEmptyConcepts": {
-    "fullEmpty": "Plein / Vide",
-    "q_which_is_full": "Lequel est plein?",
-    "q_which_is_empty": "Lequel est vide?",
-    "yes_kutu_dolu": "Oui, la boîte est pleine.",
-    "no_kutu_dolu": "Non, la boîte n'est pas pleine.",
-    "yes_kutu_bos": "Oui, la boîte est vide.",
-    "no_kutu_bos": "Non, la boîte n'est pas vide.",
-    "yes_bardak_dolu": "Oui, le verre est plein.",
-    "no_bardak_dolu": "Non, le verre n'est pas plein.",
-    "yes_bardak_bos": "Oui, le verre est vide.",
-    "no_bardak_bos": "Non, le verre n'est pas vide.",
-    "yes_su_sisesi_dolu": "Oui, la bouteille est pleine.",
-    "no_su_sisesi_dolu": "Non, la bouteille n'est pas pleine.",
-    "yes_su_sisesi_bos": "Oui, la bouteille est vide.",
-    "no_su_sisesi_bos": "Non, la bouteille n'est pas vide.",
-    "yes_sepet_dolu": "Oui, le panier est plein.",
-    "no_sepet_dolu": "Non, le panier n'est pas plein.",
-    "yes_sepet_bos": "Oui, le panier est vide.",
-    "no_sepet_bos": "Non, le panier n'est pas vide.",
-    "yes_kase_dolu": "Oui, le bol est plein.",
-    "no_kase_dolu": "Non, le bol n'est pas plein.",
-    "yes_kase_bos": "Oui, le bol est vide.",
-    "no_kase_bos": "Non, le bol n'est pas vide.",
-    "yes_kumbara_dolu": "Oui, la tirelire est pleine.",
-    "no_kumbara_dolu": "Non, la tirelire n'est pas pleine.",
-    "yes_kumbara_bos": "Oui, la tirelire est vide.",
-    "no_kumbara_bos": "Non, la tirelire n'est pas vide.",
-    "yes_kavanoz_dolu": "Oui, le pot est plein.",
-    "no_kavanoz_dolu": "Non, le pot n'est pas plein.",
-    "yes_kavanoz_bos": "Oui, le pot est vide.",
-    "no_kavanoz_bos": "Non, le pot n'est pas vide.",
-    "yes_cop_kutusu_dolu": "Oui, la poubelle est pleine.",
-    "no_cop_kutusu_dolu": "Non, la poubelle n'est pas pleine.",
-    "yes_cop_kutusu_bos": "Oui, la poubelle est vide.",
-    "no_cop_kutusu_bos": "Non, la poubelle n'est pas vide."
+﻿{
+  "fullEmpty": {
+    "q_which_is_full": "Lequel est plein ?",
+    "q_which_is_empty": "Lequel est vide ?"
   }
 }

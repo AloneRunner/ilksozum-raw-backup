@@ -29,6 +29,32 @@ const getRandomItems = <T,>(arr: T[], n: number): T[] => {
     return shuffleArray(arr).slice(0, n);
 };
 
+// Helper to translate Turkish word to target language using wordmap
+const translateWord = (turkishWord: string, targetLang: string): string => {
+    if (targetLang === 'tr') return turkishWord;
+    
+    const wordmaps: Record<string, any> = {
+        'en': wordmapTrEn,
+        'de': wordmapTrDe,
+        'fr': wordmapTrFr,
+        'nl': wordmapTrNl,
+        'az': wordmapTrAz
+    };
+    
+    const wordmap = wordmaps[targetLang];
+    if (!wordmap) return turkishWord;
+    
+    // Search through all categories in wordmap
+    for (const category in wordmap) {
+        if (wordmap[category][turkishWord]) {
+            return wordmap[category][turkishWord];
+        }
+    }
+    
+    // Fallback to Turkish if no translation found
+    return turkishWord;
+};
+
 // A map to define the primary image ID for words with multiple visuals.
 const mainVisualMap: { [word: string]: number } = {
     // Ana Görsel Listesi - Tam Güncellenmiş
@@ -444,44 +470,6 @@ const mapLetterForSearch = (lang: string, letter: string): string => {
     return letter;
 };
 
-// Helper: translate Turkish word to target language using wordmaps
-const translateWord = (turkishWord: string, targetLang: string): string => {
-    if (targetLang === 'tr') return turkishWord;
-
-    let wordmap: any = {};
-    switch (targetLang) {
-        case 'en':
-            wordmap = wordmapTrEn;
-            break;
-        case 'de':
-            wordmap = wordmapTrDe;
-            break;
-        case 'fr':
-            wordmap = wordmapTrFr;
-            break;
-        case 'nl':
-            wordmap = wordmapTrNl;
-            break;
-        case 'az':
-            wordmap = wordmapTrAz;
-            break;
-        default:
-            return turkishWord;
-    }
-
-    // Wordmap structure: { "Renkler": {...}, "Nesneler ve Varlıklar": {...}, "Communication": {...}, ... }
-    // Search all categories for the Turkish word
-    for (const category of Object.values(wordmap) as Record<string, string>[]) {
-        if (category && typeof category === 'object') {
-            const translated = category[turkishWord];
-            if (translated) return translated;
-        }
-    }
-
-    // Fallback: return Turkish word if no translation found
-    return turkishWord;
-};
-
 export const fetchWordsForLetter = async (letter: string, count?: number): Promise<Word[]> => {
     const lang = getCurrentLanguage();
     const letterLocale = (lang === 'tr' ? 'tr-TR' : lang === 'de' ? 'de-DE' : lang === 'az' ? 'az-AZ' : 'en-US');
@@ -875,21 +863,65 @@ export const createObjectChoiceRounds = async (categoryId: string, count?: numbe
         const distractors = getRandomItems(distractorPool, 3);
         if (distractors.length < 3) continue;
 
+        // Translate words to target language
+        const translatedWord = translateWord(correctItem.word, lang);
+        const translatedDistractors = distractors.map(d => translateWord(d.word, lang));
+
         const options = shuffleArray([
             {
                 id: correctItem.id, word: correctItem.word, audioKey: correctItem.audioKeys.default,
-                spokenText: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true,
+                spokenText: translatedWord, imageUrl: correctItem.imageUrl, isCorrect: true,
             },
-            ...distractors.map(d => ({
+            ...distractors.map((d, idx) => ({
                 id: d.id, word: d.word, audioKey: d.audioKeys.default,
-                spokenText: d.word, imageUrl: d.imageUrl, isCorrect: false,
+                spokenText: translatedDistractors[idx], imageUrl: d.imageUrl, isCorrect: false,
             }))
         ]);
         
+        // Generate question text based on current language with translated word
+        const questionTemplates: Record<string, (word: string) => string> = {
+            tr: (word) => `${word} hangisi?`,
+            en: (word) => `Which one is the ${word}?`,
+            de: (word) => `Welches ist ${word}?`,
+            fr: (word) => `Lequel est ${word}?`,
+            nl: (word) => `Welke is ${word}?`,
+            az: (word) => `${word} hansıdır?`
+        };
+        
+        const questionTemplate = questionTemplates[lang] || questionTemplates.tr;
+        
         rounds.push({
-            id: correctItem.id, question: `${correctItem.word} hangisi?`,
-            questionAudioKey: 'question_which_is_it', options: options,
+            id: correctItem.id, 
+            question: questionTemplate(translatedWord),
+            questionAudioKey: 'question_which_is_it', 
+            options: options,
             activityType: ActivityType.ObjectRecognition,
+            speech: {
+                tr: {
+                    correct: `Evet, bu ${translateWord(correctItem.word, 'tr')}.`,
+                    wrong: `Hayır, bu ${translateWord(correctItem.word, 'tr')} değil.`
+                },
+                en: {
+                    correct: `Yes, this is the ${translateWord(correctItem.word, 'en')}.`,
+                    wrong: `No, this is not the ${translateWord(correctItem.word, 'en')}.`
+                },
+                de: {
+                    correct: `Ja, das ist ${translateWord(correctItem.word, 'de')}.`,
+                    wrong: `Nein, das ist nicht ${translateWord(correctItem.word, 'de')}.`
+                },
+                fr: {
+                    correct: `Oui, c'est ${translateWord(correctItem.word, 'fr')}.`,
+                    wrong: `Non, ce n'est pas ${translateWord(correctItem.word, 'fr')}.`
+                },
+                nl: {
+                    correct: `Ja, dit is ${translateWord(correctItem.word, 'nl')}.`,
+                    wrong: `Nee, dit is niet ${translateWord(correctItem.word, 'nl')}.`
+                },
+                az: {
+                    correct: `Bəli, bu ${translateWord(correctItem.word, 'az')}.`,
+                    wrong: `Xeyr, bu ${translateWord(correctItem.word, 'az')} deyil.`
+                }
+            }
         });
     }
     return rounds;
@@ -975,6 +1007,7 @@ const createYesNoRounds = (count: number = 8): Word[] => {
 };
 
 const createColorsRounds = (count: number = 8): ConceptRound[] => {
+    const lang = getCurrentLanguage();
     const bannedIds = getBannedImageIds();
     const availableItems = imageData.filter(item => !bannedIds.has(item.id) && item.tags.color);
     
@@ -999,17 +1032,64 @@ const createColorsRounds = (count: number = 8): ConceptRound[] => {
         const distractorItem = getRandomItems(distractorItems.filter(d => d.word !== correctItem?.word), 1)[0];
 
         if (correctItem && distractorItem) {
+            const translatedColor = translateWord(targetColor, lang);
+            
+            const questionTemplates: Record<string, (color: string) => string> = {
+                tr: (color) => `${color} olan hangisi?`,
+                en: (color) => `Which one is ${color}?`,
+                de: (color) => `Welches ist ${color}?`,
+                fr: (color) => `Lequel est ${color}?`,
+                nl: (color) => `Welke is ${color}?`,
+                az: (color) => `${color} hansıdır?`
+            };
+            
             const options: ConceptOption[] = shuffleArray([
-                { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: correctItem.word },
-                { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: distractorItem.word },
+                { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: translatedColor },
+                { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: translatedColor },
             ]);
-            rounds.push({ id: correctItem.id + i, question: `${targetColor} olan hangisi?`, questionAudioKey: "q_which_is_color", activityType: ActivityType.Colors, options });
+            
+            const questionTemplate = questionTemplates[lang] || questionTemplates.tr;
+            
+            rounds.push({ 
+                id: correctItem.id + i, 
+                question: questionTemplate(translatedColor), 
+                questionAudioKey: "q_which_is_color", 
+                activityType: ActivityType.Colors, 
+                options,
+                speech: {
+                    tr: {
+                        correct: `Evet, bu ${translateWord(targetColor, 'tr')}.`,
+                        wrong: `Hayır, bu ${translateWord(targetColor, 'tr')} değil.`
+                    },
+                    en: {
+                        correct: `Yes, this is ${translateWord(targetColor, 'en')}.`,
+                        wrong: `No, this is not ${translateWord(targetColor, 'en')}.`
+                    },
+                    de: {
+                        correct: `Ja, das ist ${translateWord(targetColor, 'de')}.`,
+                        wrong: `Nein, das ist nicht ${translateWord(targetColor, 'de')}.`
+                    },
+                    fr: {
+                        correct: `Oui, c'est ${translateWord(targetColor, 'fr')}.`,
+                        wrong: `Non, ce n'est pas ${translateWord(targetColor, 'fr')}.`
+                    },
+                    nl: {
+                        correct: `Ja, dit is ${translateWord(targetColor, 'nl')}.`,
+                        wrong: `Nee, dit is niet ${translateWord(targetColor, 'nl')}.`
+                    },
+                    az: {
+                        correct: `Bəli, bu ${translateWord(targetColor, 'az')}.`,
+                        wrong: `Xeyr, bu ${translateWord(targetColor, 'az')} deyil.`
+                    }
+                }
+            });
         }
     }
     return rounds;
 };
 
 const createShapesRounds = (count: number = 8): ConceptRound[] => {
+    const lang = getCurrentLanguage();
     const bannedIds = getBannedImageIds();
     const shapePool = imageData.filter(item => !bannedIds.has(item.id) && item.tags.shape);
 
@@ -1034,11 +1114,63 @@ const createShapesRounds = (count: number = 8): ConceptRound[] => {
         const distractorItem = getRandomItems(distractorItems.filter(d => d.word !== correctItem?.word), 1)[0];
         
         if (correctItem && distractorItem) {
+            const translatedShape = translateWord(targetShape, lang);
+            
+            // Helper to determine correct article for English
+            const getArticle = (shape: string) => {
+                const vowels = ['a', 'e', 'i', 'o', 'u'];
+                return vowels.includes(shape.charAt(0).toLowerCase()) ? 'an' : 'a';
+            };
+            
+            const questionTemplates: Record<string, (shape: string) => string> = {
+                tr: (shape) => `${shape} olan hangisi?`,
+                en: (shape) => `Which one is ${getArticle(shape)} ${shape}?`,
+                de: (shape) => `Welches ist ${shape}?`,
+                fr: (shape) => `Lequel est ${shape}?`,
+                nl: (shape) => `Welke is ${shape}?`,
+                az: (shape) => `${shape} hansıdır?`
+            };
+            
             const options: ConceptOption[] = shuffleArray([
-                { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: correctItem.word },
-                { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: distractorItem.word },
+                { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: translatedShape },
+                { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: translatedShape },
             ]);
-             rounds.push({ id: correctItem.id + rounds.length, question: `${targetShape} olan hangisi?`, questionAudioKey: "q_which_is_shape", activityType: ActivityType.Shapes, options });
+            
+            const questionTemplate = questionTemplates[lang] || questionTemplates.tr;
+            
+            rounds.push({ 
+                id: correctItem.id + rounds.length, 
+                question: questionTemplate(translatedShape), 
+                questionAudioKey: "q_which_is_shape", 
+                activityType: ActivityType.Shapes, 
+                options,
+                speech: {
+                    tr: {
+                        correct: `Evet, bu ${translateWord(targetShape, 'tr')}.`,
+                        wrong: `Hayır, bu ${translateWord(targetShape, 'tr')} değil.`
+                    },
+                    en: {
+                        correct: `Yes, this is ${getArticle(translateWord(targetShape, 'en'))} ${translateWord(targetShape, 'en')}.`,
+                        wrong: `No, this is not ${getArticle(translateWord(targetShape, 'en'))} ${translateWord(targetShape, 'en')}.`
+                    },
+                    de: {
+                        correct: `Ja, das ist ${translateWord(targetShape, 'de')}.`,
+                        wrong: `Nein, das ist nicht ${translateWord(targetShape, 'de')}.`
+                    },
+                    fr: {
+                        correct: `Oui, c'est ${translateWord(targetShape, 'fr')}.`,
+                        wrong: `Non, ce n'est pas ${translateWord(targetShape, 'fr')}.`
+                    },
+                    nl: {
+                        correct: `Ja, dit is ${translateWord(targetShape, 'nl')}.`,
+                        wrong: `Nee, dit is niet ${translateWord(targetShape, 'nl')}.`
+                    },
+                    az: {
+                        correct: `Bəli, bu ${translateWord(targetShape, 'az')}.`,
+                        wrong: `Xeyr, bu ${translateWord(targetShape, 'az')} deyil.`
+                    }
+                }
+            });
         }
     }
     return rounds;
@@ -1075,19 +1207,57 @@ const createEmotionsRounds = (count: number = 8): ConceptRound[] => {
             continue;
         }
 
+        const lang = getCurrentLanguage();
+        const translatedEmotion = translateWord(targetEmotion, lang);
+        
+        const questionTemplates: Record<string, (emotion: string) => string> = {
+            tr: (emotion) => `${emotion.charAt(0).toLocaleUpperCase('tr-TR') + emotion.slice(1)} olan hangisi?`,
+            en: (emotion) => `Which one is ${emotion}?`,
+            de: (emotion) => `Welches ist ${emotion}?`,
+            fr: (emotion) => `Lequel est ${emotion}?`,
+            nl: (emotion) => `Welke is ${emotion}?`,
+            az: (emotion) => `${emotion} hansıdır?`
+        };
+        
         const options: ConceptOption[] = shuffleArray([
-            { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: correctItem.word },
-            { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: distractorItem.word },
+            { id: correctItem.id, word: correctItem.word, imageUrl: correctItem.imageUrl, isCorrect: true, audioKey: correctItem.audioKeys.default, spokenText: translatedEmotion },
+            { id: distractorItem.id, word: distractorItem.word, imageUrl: distractorItem.imageUrl, isCorrect: false, audioKey: distractorItem.audioKeys.default, spokenText: translatedEmotion },
         ]);
 
-        const capitalizedEmotion = targetEmotion.charAt(0).toLocaleUpperCase('tr-TR') + targetEmotion.slice(1);
+        const questionTemplate = questionTemplates[lang] || questionTemplates.tr;
 
         rounds.push({ 
             id: correctItem.id + distractorItem.id + rounds.length,
-            question: `${capitalizedEmotion} olan hangisi?`, 
+            question: questionTemplate(translatedEmotion), 
             questionAudioKey: "q_which_is_emotion", 
             activityType: ActivityType.Emotions, 
-            options 
+            options,
+            speech: {
+                tr: {
+                    correct: `Evet, bu ${translateWord(targetEmotion, 'tr')}.`,
+                    wrong: `Hayır, bu ${translateWord(targetEmotion, 'tr')} değil.`
+                },
+                en: {
+                    correct: `Yes, this is ${translateWord(targetEmotion, 'en')}.`,
+                    wrong: `No, this is not ${translateWord(targetEmotion, 'en')}.`
+                },
+                de: {
+                    correct: `Ja, das ist ${translateWord(targetEmotion, 'de')}.`,
+                    wrong: `Nein, das ist nicht ${translateWord(targetEmotion, 'de')}.`
+                },
+                fr: {
+                    correct: `Oui, c'est ${translateWord(targetEmotion, 'fr')}.`,
+                    wrong: `Non, ce n'est pas ${translateWord(targetEmotion, 'fr')}.`
+                },
+                nl: {
+                    correct: `Ja, dit is ${translateWord(targetEmotion, 'nl')}.`,
+                    wrong: `Nee, dit is niet ${translateWord(targetEmotion, 'nl')}.`
+                },
+                az: {
+                    correct: `Bəli, bu ${translateWord(targetEmotion, 'az')}.`,
+                    wrong: `Xeyr, bu ${translateWord(targetEmotion, 'az')} deyil.`
+                }
+            }
         });
     }
 
@@ -1508,9 +1678,8 @@ export const fetchConceptActivityData = async (
             return fallback;
         }
     }
-    
-    
 
+    // For all other static activities (spatial, qualities, quantities, etc.)
     const rawData = staticActivityDataMap[activity];
     if (!rawData) return [];
 

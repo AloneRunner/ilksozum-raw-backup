@@ -1,44 +1,7 @@
-{
+﻿{
   "noisyQuiet": {
-    "questions": {
-      "q_which_is_noisy": "Welches ist laut?",
-      "q_which_is_quiet": "Welches ist leise?",
-      "yes_aslan_noisy": "Ja, aslan ist laut.",
-      "no_aslan_noisy": "Nein, aslan ist nicht laut.",
-      "yes_aslan_quiet": "Ja, aslan ist leise.",
-      "no_aslan_quiet": "Nein, aslan ist nicht leise.",
-      "yes_davul_noisy": "Ja, davul ist laut.",
-      "no_davul_noisy": "Nein, davul ist nicht laut.",
-      "yes_davul_quiet": "Ja, davul ist leise.",
-      "no_davul_quiet": "Nein, davul ist nicht leise.",
-      "yes_yastık_noisy": "Ja, yastık ist laut.",
-      "no_yastık_noisy": "Nein, yastık ist nicht laut.",
-      "yes_yastık_quiet": "Ja, yastık ist leise.",
-      "no_yastık_quiet": "Nein, yastık ist nicht leise.",
-      "yes_şimşek_noisy": "Ja, şimşek ist laut.",
-      "no_şimşek_noisy": "Nein, şimşek ist nicht laut.",
-      "yes_şimşek_quiet": "Ja, şimşek ist leise.",
-      "no_şimşek_quiet": "Nein, şimşek ist nicht leise.",
-      "yes_tüy_noisy": "Ja, tüy ist laut.",
-      "no_tüy_noisy": "Nein, tüy ist nicht laut.",
-      "yes_tüy_quiet": "Ja, tüy ist leise.",
-      "no_tüy_quiet": "Nein, tüy ist nicht leise.",
-      "yes_traktör_noisy": "Ja, traktör ist laut.",
-      "no_traktör_noisy": "Nein, traktör ist nicht laut.",
-      "yes_traktör_quiet": "Ja, traktör ist leise.",
-      "no_traktör_quiet": "Nein, traktör ist nicht leise.",
-      "yes_kelebek_noisy": "Ja, kelebek ist laut.",
-      "no_kelebek_noisy": "Nein, kelebek ist nicht laut.",
-      "yes_kelebek_quiet": "Ja, kelebek ist leise.",
-      "no_kelebek_quiet": "Nein, kelebek ist nicht leise.",
-      "yes_tren_noisy": "Ja, tren ist laut.",
-      "no_tren_noisy": "Nein, tren ist nicht laut.",
-      "yes_tren_quiet": "Ja, tren ist leise.",
-      "no_tren_quiet": "Nein, tren ist nicht leise.",
-      "yes_yaprak_noisy": "Ja, yaprak ist laut.",
-      "no_yaprak_noisy": "Nein, yaprak ist nicht laut.",
-      "yes_yaprak_quiet": "Ja, yaprak ist leise.",
-      "no_yaprak_quiet": "Nein, yaprak ist nicht leise."
-    }
+    "q_which_is_noisy": "Welches ist laut?",
+    "q_which_is_noisy_person": "Welches ist laut?",
+    "q_which_is_quiet": "Welches ist leise?"
   }
 }

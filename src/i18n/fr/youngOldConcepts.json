@@ -1,41 +1,6 @@
-{
-  "youngOldConcepts": {
-    "youngOld": "Jeune / Âgé",
-    "q_which_is_young": "Lequel est jeune ?",
-    "q_which_is_elderly": "Lequel est âgé ?",
-    "yes_horoz_yasli": "Oui, le coq est âgé.",
-    "no_horoz_yasli": "Non, le coq n'est pas âgé.",
-    "yes_civciv_genc": "Oui, le poussin est jeune.",
-    "no_civciv_genc": "Non, le poussin n'est pas jeune.",
-    "yes_nine_yasli": "Oui, la grand-mère est âgée.",
-    "no_nine_yasli": "Non, la grand-mère n'est pas âgée.",
-    "yes_bebek_genc": "Oui, le bébé est jeune.",
-    "no_bebek_genc": "Non, le bébé n'est pas jeune.",
-    "yes_dede_yasli": "Oui, le grand-père est âgé.",
-    "no_dede_yasli": "Non, le grand-père n'est pas âgé.",
-    "yes_cocuk_genc": "Oui, l'enfant est jeune.",
-    "no_cocuk_genc": "Non, l'enfant n'est pas jeune.",
-    "yes_agac_yasli": "Oui, l'arbre est âgé.",
-    "no_agac_yasli": "Non, l'arbre n'est pas âgé.",
-    "yes_filiz_genc": "Oui, la pousse est jeune.",
-    "no_filiz_genc": "Non, la pousse n'est pas jeune.",
-    "yes_aslan_yasli": "Oui, le lion est âgé.",
-    "no_aslan_yasli": "Non, le lion n'est pas âgé.",
-    "yes_aslan_genc": "Oui, le lion est jeune.",
-    "no_aslan_genc": "Non, le lion n'est pas jeune.",
-    "yes_kurbaga_yasli": "Oui, la grenouille est âgée.",
-    "no_kurbaga_yasli": "Non, la grenouille n'est pas âgée.",
-    "yes_iribas_genc": "Oui, le têtard est jeune.",
-    "no_iribas_genc": "Non, le têtard n'est pas jeune.",
-    "yes_koyun_yasli": "Oui, le mouton est âgé.",
-    "no_koyun_yasli": "Non, le mouton n'est pas âgé.",
-    "yes_kuzu_genc": "Oui, l'agneau est jeune.",
-    "no_kuzu_genc": "Non, l'agneau n'est pas jeune.",
-    "yes_kedi_yasli": "Oui, le chat est âgé.",
-    "no_kedi_yasli": "Non, le chat n'est pas âgé.",
-    "yes_kedi_genc": "Oui, le chat est jeune.",
-    "no_kedi_genc": "Non, le chat n'est pas jeune.",
-    "yes_baba_yasli": "Oui, le père est âgé.",
-    "no_baba_yasli": "Non, le père n'est pas âgé."
+﻿{
+  "youngOld": {
+    "q_which_is_old_person": "Qui est vieux ?",
+    "q_which_is_young_person": "Qui est jeune ?"
   }
 }

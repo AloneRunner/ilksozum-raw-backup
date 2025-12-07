@@ -1,40 +1,6 @@
 {
   "kalabalikTenha": {
-    "questions": {
-      "q_which_is_crowded": "Kalabalık olan hangisi?",
-      "q_which_is_sparse": "Tenha olan hangisi?",
-      "yes_trafik_crowded": "Evet, trafik kalabalık.",
-      "no_trafik_crowded": "Hayır, trafik kalabalık değil.",
-      "yes_trafik_sparse": "Evet, trafik tenha.",
-      "no_trafik_sparse": "Hayır, trafik tenha değil.",
-      "yes_yol_crowded": "Evet, yol kalabalık.",
-      "no_yol_crowded": "Hayır, yol kalabalık değil.",
-      "yes_yol_sparse": "Evet, yol tenha.",
-      "no_yol_sparse": "Hayır, yol tenha değil.",
-      "yes_durak_crowded": "Evet, durak kalabalık.",
-      "no_durak_crowded": "Hayır, durak kalabalık değil.",
-      "yes_durak_sparse": "Evet, durak tenha.",
-      "no_durak_sparse": "Hayır, durak tenha değil.",
-      "yes_orman_crowded": "Evet, orman kalabalık.",
-      "no_orman_crowded": "Hayır, orman kalabalık değil.",
-      "yes_orman_sparse": "Evet, orman tenha.",
-      "no_orman_sparse": "Hayır, orman tenha değil.",
-      "yes_ağaç_crowded": "Evet, ağaç kalabalık.",
-      "no_ağaç_crowded": "Hayır, ağaç kalabalık değil.",
-      "yes_ağaç_sparse": "Evet, ağaç tenha.",
-      "no_ağaç_sparse": "Hayır, ağaç tenha değil.",
-      "yes_kuş_sürüsü_crowded": "Evet, kuş sürüsü kalabalık.",
-      "no_kuş_sürüsü_crowded": "Hayır, kuş sürüsü kalabalık değil.",
-      "yes_kuş_sürüsü_sparse": "Evet, kuş sürüsü tenha.",
-      "no_kuş_sürüsü_sparse": "Hayır, kuş sürüsü tenha değil.",
-      "yes_insan_grubu_crowded": "Evet, insan grubu kalabalık.",
-      "no_insan_grubu_crowded": "Hayır, insan grubu kalabalık değil.",
-      "yes_insan_grubu_sparse": "Evet, insan grubu tenha.",
-      "no_insan_grubu_sparse": "Hayır, insan grubu tenha değil.",
-      "yes_adam_crowded": "Evet, adam kalabalık.",
-      "no_adam_crowded": "Hayır, adam kalabalık değil.",
-      "yes_adam_sparse": "Evet, adam tenha.",
-      "no_adam_sparse": "Hayır, adam tenha değil."
-    }
+    "q_which_is_crowded": "Kalabalık olan hangisi?",
+    "q_which_is_sparse": "Tenha olan hangisi?"
   }
 }

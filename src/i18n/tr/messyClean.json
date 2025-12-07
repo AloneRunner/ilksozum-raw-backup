@@ -1,36 +1,6 @@
 {
   "messyClean": {
-    "questions": {
-      "q_which_is_messy": "Dağınık olan hangisi?",
-      "q_which_is_tidy": "Toplu olan hangisi?",
-      "yes_oda_messy": "Evet, oda dağınık.",
-      "no_oda_messy": "Hayır, oda dağınık değil.",
-      "yes_oda_tidy": "Evet, oda toplu.",
-      "no_oda_tidy": "Hayır, oda toplu değil.",
-      "yes_kitaplık_messy": "Evet, kitaplık dağınık.",
-      "no_kitaplık_messy": "Hayır, kitaplık dağınık değil.",
-      "yes_kitaplık_tidy": "Evet, kitaplık toplu.",
-      "no_kitaplık_tidy": "Hayır, kitaplık toplu değil.",
-      "yes_kalemlik_messy": "Evet, kalemlik dağınık.",
-      "no_kalemlik_messy": "Hayır, kalemlik dağınık değil.",
-      "yes_kalemlik_tidy": "Evet, kalemlik toplu.",
-      "no_kalemlik_tidy": "Hayır, kalemlik toplu değil.",
-      "yes_yatak_messy": "Evet, yatak dağınık.",
-      "no_yatak_messy": "Hayır, yatak dağınık değil.",
-      "yes_yatak_tidy": "Evet, yatak toplu.",
-      "no_yatak_tidy": "Hayır, yatak toplu değil.",
-      "yes_dolap_messy": "Evet, dolap dağınık.",
-      "no_dolap_messy": "Hayır, dolap dağınık değil.",
-      "yes_dolap_tidy": "Evet, dolap toplu.",
-      "no_dolap_tidy": "Hayır, dolap toplu değil.",
-      "yes_masa_messy": "Evet, masa dağınık.",
-      "no_masa_messy": "Hayır, masa dağınık değil.",
-      "yes_masa_tidy": "Evet, masa toplu.",
-      "no_masa_tidy": "Hayır, masa toplu değil.",
-      "yes_saç_messy": "Evet, saç dağınık.",
-      "no_saç_messy": "Hayır, saç dağınık değil.",
-      "yes_saç_tidy": "Evet, saç toplu.",
-      "no_saç_tidy": "Hayır, saç toplu değil."
-    }
+    "q_which_is_messy": "Dağınık olan hangisi?",
+    "q_which_is_tidy": "Toplu olan hangisi?"
   }
 }

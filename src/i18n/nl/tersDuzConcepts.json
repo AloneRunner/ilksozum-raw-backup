@@ -1,35 +1,6 @@
-{
-  "tersDuzConcepts": {
-    "tersDuz": "Ondersteboven / Rechtop",
-    "q_which_is_upside_down": "Welke is ondersteboven?",
-    "q_which_is_upright": "Welke is rechtop?",
-    "yes_terlik_duz": "Ja, de pantoffel is rechtop.",
-    "no_terlik_duz": "Nee, de pantoffel is niet rechtop.",
-    "yes_terlik_ters": "Ja, de pantoffel is ondersteboven.",
-    "no_terlik_ters": "Nee, de pantoffel is niet ondersteboven.",
-    "yes_kaplumbaga_duz": "Ja, de schildpad is rechtop.",
-    "no_kaplumbaga_duz": "Nee, de schildpad is niet rechtop.",
-    "yes_kaplumbaga_ters": "Ja, de schildpad is ondersteboven.",
-    "no_kaplumbaga_ters": "Nee, de schildpad is niet ondersteboven.",
-    "yes_saat_duz": "Ja, de klok is rechtop.",
-    "no_saat_duz": "Nee, de klok is niet rechtop.",
-    "yes_saat_ters": "Ja, de klok is ondersteboven.",
-    "no_saat_ters": "Nee, de klok is niet ondersteboven.",
-    "yes_ayakkabi_duz": "Ja, de schoen is rechtop.",
-    "no_ayakkabi_duz": "Nee, de schoen is niet rechtop.",
-    "yes_ayakkabi_ters": "Ja, de schoen is ondersteboven.",
-    "no_ayakkabi_ters": "Nee, de schoen is niet ondersteboven.",
-    "yes_sandalet_duz": "Ja, de sandaal is rechtop.",
-    "no_sandalet_duz": "Nee, de sandaal is niet rechtop.",
-    "yes_sandalet_ters": "Ja, de sandaal is ondersteboven.",
-    "no_sandalet_ters": "Nee, de sandaal is niet ondersteboven.",
-    "yes_semsiye_duz": "Ja, de paraplu is rechtop.",
-    "no_semsiye_duz": "Nee, de paraplu is niet rechtop.",
-    "yes_semsiye_ters": "Ja, de paraplu is ondersteboven.",
-    "no_semsiye_ters": "Nee, de paraplu is niet ondersteboven.",
-    "yes_kupa_duz": "Ja, de beker is rechtop.",
-    "no_kupa_duz": "Nee, de beker is niet rechtop.",
-    "yes_fincan_ters": "Ja, de beker is ondersteboven.",
-    "no_fincan_ters": "Nee, de beker is niet ondersteboven."
+﻿{
+  "tersDuz": {
+    "q_which_is_upright": "Welke staat rechtop?",
+    "q_which_is_upsidedown": "Welke ligt ondersteboven?"
   }
 }

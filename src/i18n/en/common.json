@@ -41,7 +41,7 @@
   },
   "feedback": {
     "correctPrefix": "Yes, this is",
-    "wrongPrefix": "No, this is",
+    "wrongPrefix": "That's not it.",
     "rightPrefix": "Correct, this is",
     "sentence": {
       "correct": "Yes, this {noun} is {adjective}.",
@@ -122,6 +122,17 @@
         "how": "How?",
         "mixed": "Mixed"
       }
+    },
+    "soundImitation": {
+      "title": "Sound Imitation Cards",
+      "subtitle": "Sound imitation cards for nonverbal children",
+      "badge": "New — Experimental Activity"
+    }
+  },
+  "experimental": {
+    "relativeComparison": {
+      "title": "Comparative Concepts",
+      "instruction": "Compare the two cards and answer the question."
     }
   },
   "common": {
@@ -180,5 +191,9 @@
     },
     "restart": "Play Again",
     "home": "Main Menu"
-  }
+  },
+  "play": "Play",
+  "pause": "Pause",
+  "back": "Back",
+  "lyrics": "Lyrics"
 }

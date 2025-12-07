@@ -1,36 +1,6 @@
 {
   "messyClean": {
-    "questions": {
-      "q_which_is_messy": "Lequel est en désordre?",
-      "q_which_is_tidy": "Lequel est en ordre?",
-      "yes_oda_messy": "Oui, oda est en désordre.",
-      "no_oda_messy": "Non, oda n'est pas en désordre.",
-      "yes_oda_tidy": "Oui, oda est en ordre.",
-      "no_oda_tidy": "Non, oda n'est pas en ordre.",
-      "yes_kitaplık_messy": "Oui, kitaplık est en désordre.",
-      "no_kitaplık_messy": "Non, kitaplık n'est pas en désordre.",
-      "yes_kitaplık_tidy": "Oui, kitaplık est en ordre.",
-      "no_kitaplık_tidy": "Non, kitaplık n'est pas en ordre.",
-      "yes_kalemlik_messy": "Oui, kalemlik est en désordre.",
-      "no_kalemlik_messy": "Non, kalemlik n'est pas en désordre.",
-      "yes_kalemlik_tidy": "Oui, kalemlik est en ordre.",
-      "no_kalemlik_tidy": "Non, kalemlik n'est pas en ordre.",
-      "yes_yatak_messy": "Oui, yatak est en désordre.",
-      "no_yatak_messy": "Non, yatak n'est pas en désordre.",
-      "yes_yatak_tidy": "Oui, yatak est en ordre.",
-      "no_yatak_tidy": "Non, yatak n'est pas en ordre.",
-      "yes_dolap_messy": "Oui, dolap est en désordre.",
-      "no_dolap_messy": "Non, dolap n'est pas en désordre.",
-      "yes_dolap_tidy": "Oui, dolap est en ordre.",
-      "no_dolap_tidy": "Non, dolap n'est pas en ordre.",
-      "yes_masa_messy": "Oui, masa est en désordre.",
-      "no_masa_messy": "Non, masa n'est pas en désordre.",
-      "yes_masa_tidy": "Oui, masa est en ordre.",
-      "no_masa_tidy": "Non, masa n'est pas en ordre.",
-      "yes_saç_messy": "Oui, saç est en désordre.",
-      "no_saç_messy": "Non, saç n'est pas en désordre.",
-      "yes_saç_tidy": "Oui, saç est en ordre.",
-      "no_saç_tidy": "Non, saç n'est pas en ordre."
-    }
+    "q_which_is_messy": "Lequel est en désordre ?",
+    "q_which_is_tidy": "Lequel est rangé ?"
   }
 }

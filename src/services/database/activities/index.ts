@@ -3,7 +3,7 @@
 export * from './basicConceptsData';
 export * from './qualities';
 export * from './quantities';
-export * from './spatialData';
+export * from './spatial';
 export * from './temporalData';
 // Reasoning datasets (split by type)
 export * from './reasoning/whatDoesntBelongData.js';

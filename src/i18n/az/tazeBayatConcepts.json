@@ -1,31 +1,6 @@
 {
-  "tazeBayatConcepts": {
-    "tazeBayat": "Təzə / Köhnə",
-    "q_which_is_fresh": "Hansıdır təzə?",
-    "q_which_is_stale": "Hansıdır köhnə?",
-    "yes_ekmek_taze": "Bəli, çörək təzədir.",
-    "no_ekmek_taze": "Xeyr, çörək təzə deyil.",
-    "yes_ekmek_bayat": "Bəli, çörək bayatdır.",
-    "no_ekmek_bayat": "Xeyr, çörək bayat deyil.",
-    "yes_elma_taze": "Bəli, alma təzədir.",
-    "no_elma_taze": "Xeyr, alma təzə deyil.",
-    "yes_elma_bayat": "Bəli, alma çürümüşdür.",
-    "no_elma_bayat": "Xeyr, alma çürümüş deyil.",
-    "yes_muz_taze": "Bəli, banan təzədir.",
-    "no_muz_taze": "Xeyr, banan təzə deyil.",
-    "yes_muz_bayat": "Bəli, banan bayatdır.",
-    "no_muz_bayat": "Xeyr, banan bayat deyil.",
-    "yes_gul_taze": "Bəli, qırmızı gül təzədir.",
-    "no_gul_taze": "Xeyr, qırmızı gül təzə deyil.",
-    "yes_gul_solmus": "Bəli, qırmızı gül solmuşdur.",
-    "no_gul_solmus": "Xeyr, qırmızı gül solmuş deyil.",
-    "yes_havuc_taze": "Bəli, yerkökü təzədir.",
-    "no_havuc_taze": "Xeyr, yerkökü təzə deyil.",
-    "yes_havuc_bayat": "Bəli, yerkökü bayatdır.",
-    "no_havuc_bayat": "Xeyr, yerkökü bayat deyil.",
-    "yes_sut_taze": "Bəli, süd təzədir.",
-    "no_sut_taze": "Xeyr, süd təzə deyil.",
-    "yes_sut_bozuk": "Bəli, süd xarabdır.",
-    "no_sut_bozuk": "Xeyr, süd xarab deyil."
+  "tazeBayat": {
+    "q_which_is_fresh": "Hansı təzədir?",
+    "q_which_is_stale": "Hansı bayatdır?"
   }
 }

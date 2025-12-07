@@ -1,34 +1,6 @@
 {
   "derinSig": {
-    "q_which_is_deep": "Lequel est profond?",
-    "q_which_is_shallow": "Lequel est peu profond?",
-    "yes_deniz_derin": "Oui, la mer est profonde.",
-    "no_deniz_derin": "Non, la mer n'est pas profonde.",
-    "yes_gol_sig": "Oui, le lac est peu profond.",
-    "no_gol_sig": "Non, le lac n'est pas peu profond.",
-    "yes_kuyu_derin": "Oui, le puits est profond.",
-    "no_kuyu_derin": "Non, le puits n'est pas profond.",
-    "yes_su_birikintisi_sig": "Oui, la flaque est peu profonde.",
-    "no_su_birikintisi_sig": "Non, la flaque n'est pas peu profonde.",
-    "yes_kase_derin": "Oui, le bol est profond.",
-    "no_kase_derin": "Non, le bol n'est pas profond.",
-    "yes_tabak_sig": "Oui, l'assiette est peu profonde.",
-    "no_tabak_sig": "Non, l'assiette n'est pas peu profonde.",
-    "yes_tencere_derin": "Oui, la casserole est profonde.",
-    "no_tencere_derin": "Non, la casserole n'est pas profonde.",
-    "yes_tava_sig": "Oui, la poêle est peu profonde.",
-    "no_tava_sig": "Non, la poêle n'est pas peu profonde.",
-    "yes_kutu_derin": "Oui, la boîte est profonde.",
-    "no_kutu_derin": "Non, la boîte n'est pas profonde.",
-    "yes_kutu_sig": "Oui, la boîte est peu profonde.",
-    "no_kutu_sig": "Non, la boîte n'est pas peu profonde.",
-    "yes_sepet_derin": "Oui, le panier est profond.",
-    "no_sepet_derin": "Non, le panier n'est pas profond.",
-    "yes_yemek_tepsisi_sig": "Oui, le plateau est peu profond.",
-    "no_yemek_tepsisi_sig": "Non, le plateau n'est pas peu profond.",
-    "yes_cocuk_havuzu_sig": "Oui, la piscine est peu profonde.",
-    "no_cocuk_havuzu_sig": "Non, la piscine n'est pas peu profonde.",
-    "yes_cocuk_havuzu_derin": "Oui, la piscine est profonde.",
-    "no_cocuk_havuzu_derin": "Non, la piscine n'est pas profonde."
+    "q_which_is_deep": "Lequel est profond ?",
+    "q_which_is_shallow": "Lequel est peu profond ?"
   }
 }

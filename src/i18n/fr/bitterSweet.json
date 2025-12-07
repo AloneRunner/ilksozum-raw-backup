@@ -2,59 +2,7 @@
   "bitterSweet": {
     "q_which_is_bitter": "Lequel est amer ?",
     "q_which_is_bitter_person": "Lequel est amer ?",
-    "q_which_is_sweet": "Lequel est sucré ?",
-    "q_which_is_sour": "Lequel est acide ?",
-
-    "yes_biber": "Oui, le poivron est amer.",
-    "no_biber": "Non, le poivron est amer.",
-    "yes_bal": "Oui, le miel est sucré.",
-    "no_bal": "Non, le miel est sucré.",
-
-    "yes_limon": "Oui, le citron est acide.",
-    "no_limon": "Non, le citron est acide.",
-    "yes_lolipop": "Oui, la sucette est sucrée.",
-    "no_lolipop": "Non, la sucette est sucrée.",
-
-    "yes_greyfurt": "Oui, le pamplemousse est acide.",
-    "no_greyfurt": "Non, le pamplemousse est acide.",
-    "yes_pasta": "Oui, le gâteau est sucré.",
-    "no_pasta": "Non, le gâteau est sucré.",
-
-    "yes_eksi_visne": "Oui, la griotte est acide.",
-    "no_eksi_visne": "Non, la griotte est acide.",
-    "yes_tatli_kiraz": "Oui, la cerise est sucrée.",
-    "no_tatli_kiraz": "Non, la cerise est sucrée.",
-
-    "yes_kahve": "Oui, le café est amer.",
-    "no_kahve": "Non, le café est amer.",
-    "yes_milkshake": "Oui, le milkshake est sucré.",
-    "no_milkshake": "Non, le milkshake est sucré.",
-
-    "yes_cikolata": "Oui, le chocolat est sucré.",
-    "no_cikolata": "Non, le chocolat est sucré.",
-
-    "yes_sirke": "Oui, le vinaigre est acide.",
-    "no_sirke": "Non, le vinaigre est acide.",
-    "yes_recel": "Oui, la confiture est sucrée.",
-    "no_recel": "Non, la confiture est sucrée.",
-
-    "yes_sogan": "Oui, l'oignon est amer.",
-    "no_sogan": "Non, l'oignon est amer.",
-    "yes_cilek": "Oui, la fraise est sucrée.",
-    "no_cilek": "Non, la fraise est sucrée.",
-
-    "yes_biskuvi": "Oui, le biscuit est sucré.",
-    "no_biskuvi": "Non, le biscuit est sucré.",
-
-    "yes_dondurma": "Oui, la glace est sucrée.",
-    "no_dondurma": "Non, la glace est sucrée.",
-
-    "yes_elma": "Oui, la pomme est sucrée.",
-    "no_elma": "Non, la pomme est sucrée.",
-
-    "yes_zencefil": "Oui, le gingembre est amer.",
-    "no_zencefil": "Non, le gingembre est amer.",
-    "yes_jelibon": "Oui, le bonbon gélifié est sucré.",
-    "no_jelibon": "Non, le bonbon gélifié est sucré."
+    "q_which_is_sweet": "Lequel est sucré ?",  
+    "q_which_is_sour": "Lequel est acide ?"
   }
 }

@@ -10,7 +10,7 @@
     },
     "grid": {
       "findAll": "Cədvəldə gizlənmiş bütün \"{letter}\" hərflərini tap.",
-      "findAll.short": "Bütün {letter} hərflərini tap",
+        "findAllShort": "Bütün {letter} hərflərini tap",
       "progress": "Tapılan"
     },
     "findSoundInImage": {

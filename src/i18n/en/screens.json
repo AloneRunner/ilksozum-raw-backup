@@ -83,21 +83,40 @@
     },
     "objects": {
       "title": "Let's Learn Objects",
-      "subtitle": "Learn animals, fruits and more."
+      "subtitle": "Learn animals, fruits and more.",
+      "backButton": "Back to Objects Menu"
     },
     "concepts": {
       "title": "Concept Activities",
-      "subtitle": "Learn colors, shapes and opposite concepts."
+      "subtitle": "Learn colors, shapes and opposite concepts.",
+      "backButton": "Back to Concepts Menu"
     },
     "reasoning": {
       "title": "Reasoning Games",
-      "subtitle": "Play memory, sudoku and logic games."
+      "subtitle": "Play memory, sudoku and logic games.",
+      "backButton": "Back to Games Menu"
     },
     "fineMotor": {
       "title": "Fine Motor",
       "subtitle": "Line Tracing, Coloring, and more",
       "developingNote": "Under development",
       "backButton": "Back to Fine Motor Menu"
+    },
+    "fiveWOneH": {
+      "title": "5W1H",
+      "subtitle": "Who • What • Where • When • Why • How",
+      "developingNote": "Under development",
+      "backButton": "Back to Main Menu",
+      "category": {
+        "who": "Who?",
+        "what": "What?",
+        "where": "Where?",
+        "when": "When?",
+        "why": "Why?",
+        "how": "How?",
+        "mixed": "Mixed"
+      },
+      "instructions": "Tap a planet to pick a category"
     },
     "achievements": {
       "categories": {
@@ -109,21 +128,6 @@
         "rhythmFollowing": "Rhythm Following"
       }
     },
-    "fiveWOneH": {
-      "title": "5W1H",
-      "subtitle": "Who • What • Where • When • Why • How",
-      "developingNote": "Under development",
-      "category": {
-        "who": "Who?",
-        "what": "What?",
-        "where": "Where?",
-        "when": "When?",
-        "why": "Why?",
-        "how": "How?",
-        "mixed": "Mixed"
-      }
-    }
-    ,
     "soundImitation": {
       "title": "Sound Imitation Cards",
       "subtitle": "Sound imitation cards for nonverbal children",
@@ -133,9 +137,10 @@
       "videosTitle": "Short Videos",
       "videosTitleShort": "Short Videos (Experimental)",
       "videosDesc": "Short videos — experimental. Videos may take space.",
-      "experimentalNoteTitle": "Experimental Note / Trial",
-      "experimentalNote": "The video section is experimental and may not be permanent. Videos can be large and may take space on your device; we'll shape this section based on feedback.",
-      "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
+      "experimentalMusic": "Experimental Music",
+      "lyrics": "Lyrics",
+      "experimentalNoteTitle": "Experimental Note",
+      "experimentalNote": "The video section is experimental and may not be permanent. Videos can be large and may take space on your device; we will shape this section based on your feedback.",
       "feedbackRequest": "Please leave feedback (good or bad) in the app store reviews.",
       "themeTextColors": {
         "simple": "#ffffff",
@@ -190,6 +195,7 @@
   },
   "themes": {
     "simple": "Simple",
+    "simple2": "Simple 2",
     "deneme": "🎨 Test",
     "balon": "Balloon",
     "gunes": "Sun",
@@ -269,6 +275,82 @@
       "when": "5W1H - When?",
       "why": "5W1H - Why?",
       "how": "5W1H - How?"
+    }
+  },
+  "reasoning": {
+    "title": "Reasoning Games",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Odd One Out",
+        "subtitle": "Find what does not belong"
+      },
+      "sequencingStories": {
+        "title": "Story Sequencing",
+        "subtitle": "Put the story in order"
+      },
+      "patternCompletion": {
+        "title": "Pattern Completion",
+        "subtitle": "Predict the next shape"
+      },
+      "sudoku": {
+        "title": "Picture Sudoku",
+        "subtitle": "Complete the missing piece"
+      },
+      "memoryCards": {
+        "title": "Memory Cards",
+        "subtitle": "Find the matching pairs",
+        "instruction": "Remember the positions and find the matching pairs.",
+        "memorizeTitle": "Memorize!",
+        "playTitle": "Find the Match"
+      },
+      "dragAndDropCounting": {
+        "title": "Move Objects",
+        "subtitle": "Move the requested number of items"
+      },
+      "dragAndDropPositioning": {
+        "title": "Place the Object",
+        "subtitle": "Place the item in the right spot"
+      },
+      "hangman": {
+        "title": "Hangman",
+        "subtitle": "Guess the word"
+      }
+    }
+  },
+  "games": {
+    "hangman": {
+      "speak": {
+        "win": "Great job! You found the word!",
+        "wordWas": "The word was"
+      },
+      "remainingLives": "Lives left",
+      "category": "Category",
+      "pickLetter": "Pick a letter",
+      "youWinTitle": "Great job!",
+      "youWinDesc": "You found the word!",
+      "youLoseTitle": "You lost",
+      "wordLabel": "Word",
+      "newGame": "New Game"
+    },
+    "objectCollector": {
+      "title": "Object Collector",
+      "subtitle": "Collect the right objects in the basket",
+      "instructions": "Use ← → arrow keys or drag with your finger/mouse to move the basket",
+      "youWin": "Great job!",
+      "gameOver": "Game Over",
+      "finalScore": "Score",
+      "collectFruits": "Collect only the fruits!",
+      "collectAnimals": "Collect only the animals!",
+      "collectVehicles": "Collect only the vehicles!",
+      "collectRed": "Collect only the red ones!",
+      "collectFood": "Collect only the foods!",
+      "collectSchoolItems": "Collect only the school items!",
+      "collectToys": "Collect only the toys!",
+      "collectLargeAnimals": "Collect only the big animals!"
+    },
+    "emotionPuppet": {
+      "title": "Emotion Puppet",
+      "subtitle": "Combine face parts"
     }
   },
   "settingsEx": {
@@ -507,10 +589,6 @@
       "jokerInfo": "Joker Pass: Parents can temporarily unlock activities. Use 'Ignore for progression' to make the activity not count toward unit completion while the override is active. Active limits: 3 for non-premium, 15 for premium."
     },
     "rules": {
-      "count": "Activities per session:",
-      "activityWord": "activities",
-      "warmupWord": "warmup",
-      "newWord": "new content",
       "count": "Activities per session: 8 activities (1 warmup, 7 new content, 0 reinforcement)",
       "activityWord": "activity",
       "warmupWord": "warmup",
@@ -669,7 +747,9 @@
     "thisUpdate": {
       "title": "In This Update",
       "items": [
-        "Fixed a bug in Program Mode that caused some existing users' progress to reset to Unit 1. We apologize for the issue — as a Teacher's Day gift, affected legacy users have been granted free Premium access until November 30, 2025. Additionally, current or past Premium users have been given an extra 1 month of Premium."
+        "All activity codes have been rewritten from scratch to fix translation issues. 70% complete so far, and will be fully completed soon.",
+        "Translation issues in Objects category and Concept Activities have been fixed. Colors, shapes, and emotions now work correctly in all languages.",
+        "Note: Some data loss may occur in existing content. Identified issues will be fixed as soon as possible."
       ],
       "_tempNotes": [
         "NOTE: The following items are temporary notes — they will be removed from i18n files in the next update."

@@ -27,7 +27,10 @@ const SudokuScreen: React.FC<SudokuScreenProps> = ({ roundData, onAdvance, onBac
     const [mistakeMade, setMistakeMade] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const lang = getCurrentLanguage();
-    const question = translateQuestion(roundData.questionText, lang);
+    const localizedFromKey = roundData.questionAudioKey
+        ? t(`sudoku.${roundData.questionAudioKey}`, '')
+        : '';
+    const question = localizedFromKey || translateQuestion(roundData.questionText, lang);
     useAutoSpeak(question, isAutoSpeakEnabled, roundData.id);
 
     useEffect(() => {

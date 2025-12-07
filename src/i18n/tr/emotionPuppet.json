@@ -1,16 +1,42 @@
 {
   "emotionPuppet": {
+    "title": "Duygu Kuklası",
+    "instruction": "{emotion} bir yüz yap!",
+    "facePreview": "Yüz Önizleme",
+    "targetEmotion": "Hedef",
+    "selectEyebrows": "Kaşları seç",
+    "selectEyes": "Gözleri seç",
+    "selectMouth": "Ağzı seç",
+    "checkButton": "Kontrol Et",
+    "feedback": {
+      "correct": "Harika! {emotion} yüzü yaptın!",
+      "incorrect": "Tekrar dene!"
+    },
     "emotions": {
       "happy": "Mutlu",
       "sad": "Üzgün",
       "angry": "Kızgın",
       "surprised": "Şaşkın"
     },
-    "instructions": "Yüz parçalarını seçerek {emotion} bir yüz oluştur",
-    "selectEyes": "Gözleri seç",
-    "selectMouth": "Ağzı seç",
-    "selectEyebrows": "Kaşları seç",
-    "correct": "Harika! Doğru yüz ifadesini oluşturdun!",
-    "tryAgain": "Tekrar dene, farklı parçalar seç"
+    "parts": {
+      "eyes": {
+        "happy": "Neşeli Gözler",
+        "sad": "Üzgün Gözler",
+        "angry": "Kızgın Gözler",
+        "surprised": "Şaşkın Gözler"
+      },
+      "mouth": {
+        "happy": "Gülen Ağız",
+        "sad": "Üzgün Ağız",
+        "angry": "Kızgın Ağız",
+        "surprised": "Şaşkın Ağız"
+      },
+      "eyebrows": {
+        "happy": "Neşeli Kaşlar",
+        "sad": "Üzgün Kaşlar",
+        "angry": "Kızgın Kaşlar",
+        "surprised": "Şaşkın Kaşlar"
+      }
+    }
   }
 }

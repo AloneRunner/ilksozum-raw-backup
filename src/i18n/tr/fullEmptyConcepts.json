@@ -1,39 +1,6 @@
-{
-  "fullEmptyConcepts": {
-    "fullEmpty": "Dolu / Boş",
+﻿{
+  "fullEmpty": {
     "q_which_is_full": "Dolu olan hangisi?",
-    "q_which_is_empty": "Boş olan hangisi?",
-    "yes_kutu_dolu": "Evet, kutu dolu.",
-    "no_kutu_dolu": "Hayır, kutu dolu değil.",
-    "yes_kutu_bos": "Evet, kutu boş.",
-    "no_kutu_bos": "Hayır, kutu boş değil.",
-    "yes_bardak_dolu": "Evet, bardak dolu.",
-    "no_bardak_dolu": "Hayır, bardak dolu değil.",
-    "yes_bardak_bos": "Evet, bardak boş.",
-    "no_bardak_bos": "Hayır, bardak boş değil.",
-    "yes_su_sisesi_dolu": "Evet, şişe dolu.",
-    "no_su_sisesi_dolu": "Hayır, şişe dolu değil.",
-    "yes_su_sisesi_bos": "Evet, şişe boş.",
-    "no_su_sisesi_bos": "Hayır, şişe boş değil.",
-    "yes_sepet_dolu": "Evet, sepet dolu.",
-    "no_sepet_dolu": "Hayır, sepet dolu değil.",
-    "yes_sepet_bos": "Evet, sepet boş.",
-    "no_sepet_bos": "Hayır, sepet boş değil.",
-    "yes_kase_dolu": "Evet, kase dolu.",
-    "no_kase_dolu": "Hayır, kase dolu değil.",
-    "yes_kase_bos": "Evet, kase boş.",
-    "no_kase_bos": "Hayır, kase boş değil.",
-    "yes_kumbara_dolu": "Evet, kumbara dolu.",
-    "no_kumbara_dolu": "Hayır, kumbara dolu değil.",
-    "yes_kumbara_bos": "Evet, kumbara boş.",
-    "no_kumbara_bos": "Hayır, kumbara boş değil.",
-    "yes_kavanoz_dolu": "Evet, kavanoz dolu.",
-    "no_kavanoz_dolu": "Hayır, kavanoz dolu değil.",
-    "yes_kavanoz_bos": "Evet, kavanoz boş.",
-    "no_kavanoz_bos": "Hayır, kavanoz boş değil.",
-    "yes_cop_kutusu_dolu": "Evet, çöp kutusu dolu.",
-    "no_cop_kutusu_dolu": "Hayır, çöp kutusu dolu değil.",
-    "yes_cop_kutusu_bos": "Evet, çöp kutusu boş.",
-    "no_cop_kutusu_bos": "Hayır, çöp kutusu boş değil."
+    "q_which_is_empty": "Boş olan hangisi?"
   }
 }

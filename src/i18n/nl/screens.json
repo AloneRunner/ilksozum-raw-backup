@@ -113,6 +113,7 @@
       "title": "5W1H",
       "subtitle": "Wie • Wat • Waar • Wanneer • Waarom • Hoe",
       "developingNote": "In ontwikkeling",
+      "backButton": "Terug naar hoofdmenu",
       "category": {
         "who": "Wie?",
         "what": "Wat?",
@@ -121,7 +122,8 @@
         "why": "Waarom?",
         "how": "Hoe?",
         "mixed": "Gemengd"
-      }
+      },
+      "instructions": "Tik op een planeet om een categorie te kiezen"
     }
     ,
     "soundImitation": {
@@ -133,12 +135,15 @@
       "videosTitle": "Korte Video's",
       "videosTitleShort": "Korte Video's (Experimenteel)",
       "videosDesc": "Korte video's — experimenteel. Video's kunnen schijfruimte innemen.",
+      "experimentalMusic": "Experimentele muziek",
+      "lyrics": "Songteksten",
       "experimentalNoteTitle": "Experimentele Opmerking",
       "experimentalNote": "Het video-gedeelte is experimenteel en mogelijk niet permanent. Video's kunnen groot zijn en ruimte op uw apparaat innemen; we passen dit gedeelte aan op basis van feedback.",
       "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
       "feedbackRequest": "Laat alstublieft feedback (goed of slecht) achter in de app store-recensies.",
       "themeTextColors": {
         "simple": "#ffffff",
+        "simple2": "#ffffff",
         "deneme": "#000000",
         "balon": "#000000",
         "gunes": "#000000",
@@ -190,6 +195,7 @@
   },
   "themes": {
     "simple": "Eenvoudig",
+    "simple2": "Eenvoudig 2",
     "deneme": "🎨 Test",
     "balon": "Ballon",
     "gunes": "Zon",
@@ -508,10 +514,6 @@
       "freeMode": "Vrije modus: Beoordeeld met 50% weging"
     },
     "rules": {
-      "count": "Activiteiten per sessie:",
-      "activityWord": "activiteiten",
-      "warmupWord": "opwarming",
-      "newWord": "nieuwe inhoud",
       "count": "Activiteiten per sessie: 8 activiteiten (1 opwarming, 7 nieuwe inhoud, 0 versterking)",
       "activityWord": "activiteit",
       "warmupWord": "opwarming",
@@ -659,6 +661,82 @@
       "EmbeddedStory": "Ingebed verhaal"
     },
     "planPreview": {
+  "reasoning": {
+    "title": "Redeneerspellen",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Welke hoort niet?",
+        "subtitle": "Zoek wat er niet bij hoort"
+      },
+      "sequencingStories": {
+        "title": "Verhaalvolgorde",
+        "subtitle": "Zet het verhaal in de juiste volgorde"
+      },
+      "patternCompletion": {
+        "title": "Patroon aanvullen",
+        "subtitle": "Voorspel de volgende vorm"
+      },
+      "sudoku": {
+        "title": "Beeld-Sudoku",
+        "subtitle": "Vul het ontbrekende stukje in"
+      },
+      "memoryCards": {
+        "title": "Geheugenkaarten",
+        "subtitle": "Zoek de passende paren",
+        "instruction": "Onthoud de posities en vind de passende paren.",
+        "memorizeTitle": "Onthoud!",
+        "playTitle": "Vind het paar"
+      },
+      "dragAndDropCounting": {
+        "title": "Objecten verplaatsen",
+        "subtitle": "Verplaats het gevraagde aantal items"
+      },
+      "dragAndDropPositioning": {
+        "title": "Object plaatsen",
+        "subtitle": "Plaats het item op de juiste plek"
+      },
+      "hangman": {
+        "title": "Galgje",
+        "subtitle": "Raad het woord"
+      }
+    }
+  },
+  "games": {
+    "hangman": {
+      "speak": {
+        "win": "Goed gedaan! Je hebt het woord gevonden!",
+        "wordWas": "Het woord was"
+      },
+      "remainingLives": "Resterende levens",
+      "category": "Categorie",
+      "pickLetter": "Kies een letter",
+      "youWinTitle": "Goed gedaan!",
+      "youWinDesc": "Je hebt het woord gevonden!",
+      "youLoseTitle": "Je hebt verloren",
+      "wordLabel": "Woord",
+      "newGame": "Nieuw spel"
+    },
+    "objectCollector": {
+      "title": "Objectenverzamelaar",
+      "subtitle": "Verzamel de juiste objecten in de mand",
+      "instructions": "Beweeg de mand met de pijltjes ← → of sleep met je vinger/muis",
+      "youWin": "Goed gedaan!",
+      "gameOver": "Spel afgelopen",
+      "finalScore": "Score",
+      "collectFruits": "Verzamel alleen het fruit!",
+      "collectAnimals": "Verzamel alleen de dieren!",
+      "collectVehicles": "Verzamel alleen de voertuigen!",
+      "collectRed": "Verzamel alleen de rode objecten!",
+      "collectFood": "Verzamel alleen het eten!",
+      "collectSchoolItems": "Verzamel alleen de schoolspullen!",
+      "collectToys": "Verzamel alleen het speelgoed!",
+      "collectLargeAnimals": "Verzamel alleen de grote dieren!"
+    },
+    "emotionPuppet": {
+      "title": "Emotiepop",
+      "subtitle": "Combineer de gezichtsdelen"
+    }
+  },
       "title": "Verloop van vandaag",
       "thisSession": "In deze sessie, op volgorde:",
       "ifGood": "Als het goed gaat, volgende sessie:"
@@ -670,7 +748,9 @@
     "thisUpdate": {
       "title": "In deze update",
       "items": [
-        "Een bug in de Programmamodus is opgelost die bij sommige bestaande gebruikers de voortgang terugzette naar Eenheid 1. Onze excuses voor het ongemak — getroffen oude gebruikers krijgen als Lerarendag‑cadeau gratis Premium tot en met 30 november 2025. Bestaande of voormalige Premium‑gebruikers kregen bovendien 1 extra maand Premium cadeau."
+        "Alle activiteitscodes zijn vanaf nul herschreven om vertaalproblemen op te lossen. Tot nu toe 70% voltooid en wordt binnenkort volledig afgerond.",
+        "Vertaalproblemen in de categorie Objecten en Conceptactiviteiten zijn opgelost. Kleuren, vormen en emoties werken nu correct in alle talen.",
+        "Let op: Er kan gegevensverlies optreden in bestaande inhoud. Geïdentificeerde problemen worden zo snel mogelijk opgelost."
       ],
       "_tempNotes": [
         "OPMERKING: De volgende items zijn tijdelijke notities — ze worden in de volgende update uit de i18n-bestanden verwijderd."

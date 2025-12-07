@@ -1,61 +1,6 @@
 {
   "openClosed": {
     "q_which_is_open": "Welke is open?",
-    "q_which_is_closed": "Welke is gesloten?",
-
-    "yes_kutu_acik": "Ja, de doos is open.",
-    "no_kutu_acik": "Nee, de doos is open.",
-    "yes_kutu_kapali": "Ja, de doos is gesloten.",
-    "no_kutu_kapali": "Nee, de doos is gesloten.",
-
-    "yes_kitap_acik": "Ja, het boek is open.",
-    "no_kitap_acik": "Nee, het boek is open.",
-    "yes_kitap_kapali": "Ja, het boek is gesloten.",
-    "no_kitap_kapali": "Nee, het boek is gesloten.",
-
-    "yes_kapi_acik": "Ja, de deur is open.",
-    "no_kapi_acik": "Nee, de deur is open.",
-    "yes_kapi_kapali": "Ja, de deur is gesloten.",
-    "no_kapi_kapali": "Nee, de deur is gesloten.",
-
-    "yes_pencere_acik": "Ja, het raam is open.",
-    "no_pencere_acik": "Nee, het raam is open.",
-    "yes_pencere_kapali": "Ja, het raam is gesloten.",
-    "no_pencere_kapali": "Nee, het raam is gesloten.",
-
-    "yes_goz_acik": "Ja, het oog is open.",
-    "no_goz_acik": "Nee, het oog is open.",
-    "yes_goz_kapali": "Ja, het oog is gesloten.",
-    "no_goz_kapali": "Nee, het oog is gesloten.",
-
-    "yes_sandik_acik": "Ja, de kist is open.",
-    "no_sandik_acik": "Nee, de kist is open.",
-    "yes_sandik_kapali": "Ja, de kist is gesloten.",
-    "no_sandik_kapali": "Nee, de kist is gesloten.",
-
-    "yes_musluk_acik": "Ja, de kraan staat open.",
-    "no_musluk_acik": "Nee, de kraan staat open.",
-    "yes_musluk_kapali": "Ja, de kraan is dicht.",
-    "no_musluk_kapali": "Nee, de kraan is dicht.",
-
-    "yes_dolap_acik": "Ja, de kast is open.",
-    "no_dolap_acik": "Nee, de kast is open.",
-    "yes_dolap_kapali": "Ja, de kast is gesloten.",
-    "no_dolap_kapali": "Nee, de kast is gesloten.",
-
-    "yes_zarf_acik": "Ja, de envelop is open.",
-    "no_zarf_acik": "Nee, de envelop is open.",
-    "yes_zarf_kapali": "Ja, de envelop is gesloten.",
-    "no_zarf_kapali": "Nee, de envelop is gesloten.",
-
-    "yes_sise_acik": "Ja, de fles is open.",
-    "no_sise_acik": "Nee, de fles is open.",
-    "yes_sise_kapali": "Ja, de fles is gesloten.",
-    "no_sise_kapali": "Nee, de fles is gesloten.",
-
-    "yes_semsiye_acik": "Ja, de paraplu is open.",
-    "no_semsiye_acik": "Nee, de paraplu is open.",
-    "yes_semsiye_kapali": "Ja, de paraplu is gesloten.",
-    "no_semsiye_kapali": "Nee, de paraplu is gesloten."
+    "q_which_is_closed": "Welke is gesloten?"
   }
 }

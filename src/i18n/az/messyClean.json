@@ -1,36 +1,6 @@
-{
+﻿{
   "messyClean": {
-    "questions": {
-      "q_which_is_messy": "Hansı dağınıqdır?",
-      "q_which_is_tidy": "Hansı səliqəlidir?",
-      "yes_oda_messy": "Bəli, oda dağınıq.",
-      "no_oda_messy": "Xeyr, oda dağınıq deyil.",
-      "yes_oda_tidy": "Bəli, oda səliqəli.",
-      "no_oda_tidy": "Xeyr, oda səliqəli deyil.",
-      "yes_kitaplık_messy": "Bəli, kitaplık dağınıq.",
-      "no_kitaplık_messy": "Xeyr, kitaplık dağınıq deyil.",
-      "yes_kitaplık_tidy": "Bəli, kitaplık səliqəli.",
-      "no_kitaplık_tidy": "Xeyr, kitaplık səliqəli deyil.",
-      "yes_kalemlik_messy": "Bəli, kalemlik dağınıq.",
-      "no_kalemlik_messy": "Xeyr, kalemlik dağınıq deyil.",
-      "yes_kalemlik_tidy": "Bəli, kalemlik səliqəli.",
-      "no_kalemlik_tidy": "Xeyr, kalemlik səliqəli deyil.",
-      "yes_yatak_messy": "Bəli, yatak dağınıq.",
-      "no_yatak_messy": "Xeyr, yatak dağınıq deyil.",
-      "yes_yatak_tidy": "Bəli, yatak səliqəli.",
-      "no_yatak_tidy": "Xeyr, yatak səliqəli deyil.",
-      "yes_dolap_messy": "Bəli, dolap dağınıq.",
-      "no_dolap_messy": "Xeyr, dolap dağınıq deyil.",
-      "yes_dolap_tidy": "Bəli, dolap səliqəli.",
-      "no_dolap_tidy": "Xeyr, dolap səliqəli deyil.",
-      "yes_masa_messy": "Bəli, masa dağınıq.",
-      "no_masa_messy": "Xeyr, masa dağınıq deyil.",
-      "yes_masa_tidy": "Bəli, masa səliqəli.",
-      "no_masa_tidy": "Xeyr, masa səliqəli deyil.",
-      "yes_saç_messy": "Bəli, saç dağınıq.",
-      "no_saç_messy": "Xeyr, saç dağınıq deyil.",
-      "yes_saç_tidy": "Bəli, saç səliqəli.",
-      "no_saç_tidy": "Xeyr, saç səliqəli deyil."
-    }
+    "q_which_is_messy": "Hansı dağınıqdır?",
+    "q_which_is_tidy": "Hansı səliqəlidir?"
   }
 }

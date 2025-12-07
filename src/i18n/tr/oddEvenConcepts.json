@@ -1,39 +1,6 @@
-{
-  "oddEvenConcepts": {
-    "oddEven": "Tek / Çift",
+﻿{
+  "oddEven": {
     "q_which_is_odd": "Tek olan hangisi?",
-    "q_which_is_even": "Çift olan hangisi?",
-    "yes_corap_tek": "Evet, bu çorap tek.",
-    "no_corap_tek": "Hayır, bu çorap tek değil.",
-    "yes_coraplar_cift": "Evet, bu çoraplar çift.",
-    "no_coraplar_cift": "Hayır, bu çoraplar çift değil.",
-    "yes_eldiven_tek": "Evet, bu eldiven tek.",
-    "no_eldiven_tek": "Hayır, bu eldiven tek değil.",
-    "yes_eldivenler_cift": "Evet, bu eldivenler çift.",
-    "no_eldivenler_cift": "Hayır, bu eldivenler çift değil.",
-    "yes_kupe_tek": "Evet, bu küpe tek.",
-    "no_kupe_tek": "Hayır, bu küpe tek değil.",
-    "yes_kupeler_cift": "Evet, bu küpeler çift.",
-    "no_kupeler_cift": "Hayır, bu küpeler çift değil.",
-    "yes_paten_tek": "Evet, bu paten tek.",
-    "no_paten_tek": "Hayır, bu paten tek değil.",
-    "yes_patenler_cift": "Evet, bu patenler çift.",
-    "no_patenler_cift": "Hayır, bu patenler çift değil.",
-    "yes_kayak_tek": "Evet, bu kayak tek.",
-    "no_kayak_tek": "Hayır, bu kayak tek değil.",
-    "yes_kayaklar_cift": "Evet, bu kayaklar çift.",
-    "no_kayaklar_cift": "Hayır, bu kayaklar çift değil.",
-    "yes_davul_cubugu_tek": "Evet, bu çubuk tek.",
-    "no_davul_cubugu_tek": "Hayır, bu çubuk tek değil.",
-    "yes_davul_cubuklari_cift": "Evet, bu çubuklar çift.",
-    "no_davul_cubuklari_cift": "Hayır, bu çubuklar çift değil.",
-    "yes_goz_tek": "Evet, bu göz tek.",
-    "no_goz_tek": "Hayır, bu göz tek değil.",
-    "yes_gozler_cift": "Evet, bu gözler çift.",
-    "no_gozler_cift": "Hayır, bu gözler çift değil.",
-    "yes_elma_tek": "Evet, bu elma tek.",
-    "no_elma_tek": "Hayır, bu elma tek değil.",
-    "yes_elmalar_cift": "Evet, bu elmalar çift.",
-    "no_elmalar_cift": "Hayır, bu elmalar çift değil."
+    "q_which_is_even": "Çift olan hangisi?"
   }
 }

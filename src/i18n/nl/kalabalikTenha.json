@@ -1,40 +1,6 @@
 {
   "kalabalikTenha": {
-    "questions": {
-      "q_which_is_crowded": "Welke is druk?",
-      "q_which_is_sparse": "Welke is verlaten?",
-      "yes_trafik_crowded": "Ja, trafik is druk.",
-      "no_trafik_crowded": "Nee, trafik is niet druk.",
-      "yes_trafik_sparse": "Ja, trafik is verlaten.",
-      "no_trafik_sparse": "Nee, trafik is niet verlaten.",
-      "yes_yol_crowded": "Ja, yol is druk.",
-      "no_yol_crowded": "Nee, yol is niet druk.",
-      "yes_yol_sparse": "Ja, yol is verlaten.",
-      "no_yol_sparse": "Nee, yol is niet verlaten.",
-      "yes_durak_crowded": "Ja, durak is druk.",
-      "no_durak_crowded": "Nee, durak is niet druk.",
-      "yes_durak_sparse": "Ja, durak is verlaten.",
-      "no_durak_sparse": "Nee, durak is niet verlaten.",
-      "yes_orman_crowded": "Ja, orman is druk.",
-      "no_orman_crowded": "Nee, orman is niet druk.",
-      "yes_orman_sparse": "Ja, orman is verlaten.",
-      "no_orman_sparse": "Nee, orman is niet verlaten.",
-      "yes_ağaç_crowded": "Ja, ağaç is druk.",
-      "no_ağaç_crowded": "Nee, ağaç is niet druk.",
-      "yes_ağaç_sparse": "Ja, ağaç is verlaten.",
-      "no_ağaç_sparse": "Nee, ağaç is niet verlaten.",
-      "yes_kuş_sürüsü_crowded": "Ja, kuş sürüsü is druk.",
-      "no_kuş_sürüsü_crowded": "Nee, kuş sürüsü is niet druk.",
-      "yes_kuş_sürüsü_sparse": "Ja, kuş sürüsü is verlaten.",
-      "no_kuş_sürüsü_sparse": "Nee, kuş sürüsü is niet verlaten.",
-      "yes_insan_grubu_crowded": "Ja, insan grubu is druk.",
-      "no_insan_grubu_crowded": "Nee, insan grubu is niet druk.",
-      "yes_insan_grubu_sparse": "Ja, insan grubu is verlaten.",
-      "no_insan_grubu_sparse": "Nee, insan grubu is niet verlaten.",
-      "yes_adam_crowded": "Ja, adam is druk.",
-      "no_adam_crowded": "Nee, adam is niet druk.",
-      "yes_adam_sparse": "Ja, adam is verlaten.",
-      "no_adam_sparse": "Nee, adam is niet verlaten."
-    }
+    "q_which_is_crowded": "Welke is vol?",
+    "q_which_is_sparse": "Welke is leeg?"
   }
 }

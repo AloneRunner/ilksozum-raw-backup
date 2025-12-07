@@ -1,41 +1,6 @@
-{
-  "youngOldConcepts": {
-    "youngOld": "Genç / Yaşlı",
-    "q_which_is_young": "Genç olan hangisi?",
-    "q_which_is_old": "Yaşlı olan hangisi?",
-    "yes_horoz_yasli": "Evet, horoz yaşlı.",
-    "no_horoz_yasli": "Hayır, horoz yaşlı değil.",
-    "yes_civciv_genc": "Evet, civciv genç.",
-    "no_civciv_genc": "Hayır, civciv genç değil.",
-    "yes_nine_yasli": "Evet, nine yaşlı.",
-    "no_nine_yasli": "Hayır, nine yaşlı değil.",
-    "yes_bebek_genc": "Evet, bebek genç.",
-    "no_bebek_genc": "Hayır, bebek genç değil.",
-    "yes_dede_yasli": "Evet, dede yaşlı.",
-    "no_dede_yasli": "Hayır, dede yaşlı değil.",
-    "yes_cocuk_genc": "Evet, çocuk genç.",
-    "no_cocuk_genc": "Hayır, çocuk genç değil.",
-    "yes_agac_yasli": "Evet, ağaç yaşlı.",
-    "no_agac_yasli": "Hayır, ağaç yaşlı değil.",
-    "yes_filiz_genc": "Evet, filiz genç.",
-    "no_filiz_genc": "Hayır, filiz genç değil.",
-    "yes_aslan_yasli": "Evet, aslan yaşlı.",
-    "no_aslan_yasli": "Hayır, aslan yaşlı değil.",
-    "yes_aslan_genc": "Evet, aslan genç.",
-    "no_aslan_genc": "Hayır, aslan genç değil.",
-    "yes_kurbaga_yasli": "Evet, kurbağa yaşlı.",
-    "no_kurbaga_yasli": "Hayır, kurbağa yaşlı değil.",
-    "yes_iribas_genc": "Evet, iribaş genç.",
-    "no_iribas_genc": "Hayır, iribaş genç değil.",
-    "yes_koyun_yasli": "Evet, koyun yaşlı.",
-    "no_koyun_yasli": "Hayır, koyun yaşlı değil.",
-    "yes_kuzu_genc": "Evet, kuzu genç.",
-    "no_kuzu_genc": "Hayır, kuzu genç değil.",
-    "yes_kedi_yasli": "Evet, kedi yaşlı.",
-    "no_kedi_yasli": "Hayır, kedi yaşlı değil.",
-    "yes_kedi_genc": "Evet, kedi genç.",
-    "no_kedi_genc": "Hayır, kedi genç değil.",
-    "yes_baba_yasli": "Evet, baba yaşlı.",
-    "no_baba_yasli": "Hayır, baba yaşlı değil."
+﻿{
+  "youngOld": {
+    "q_which_is_old_person": "Yaşlı olan kim?",
+    "q_which_is_young_person": "Genç olan kim?"
   }
 }

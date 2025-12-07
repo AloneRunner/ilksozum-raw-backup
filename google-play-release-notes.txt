@@ -1,0 +1,23 @@
+<tr-TR>
+Tüm aktivite kodları çeviri sorunlarını gidermek için sıfırdan yeniden yazıldı. %70 tamamlandı, kısa sürede tamamlanacak. Nesneler ve Kavram Aktivitelerindeki çeviri sorunları düzeltildi. Renkler, şekiller ve duygular artık tüm dillerde doğru çalışıyor.
+</tr-TR>
+
+<az-AZ>
+Tərcümə problemlərini həll etmək üçün bütün fəaliyyət kodları sıfırdan yenidən yazılıb. 70% tamamlanıb və tezliklə tamamilə bitəcək. Obyektlər və Konsepsiya Fəaliyyətlərindəki tərcümə problemləri düzəldildi. Rənglər, formalar və emosiyalar indi bütün dillərdə düzgün işləyir.
+</az-AZ>
+
+<de-DE>
+Alle Aktivitätscodes wurden von Grund auf neu geschrieben, um Übersetzungsprobleme zu beheben. 70% abgeschlossen, wird bald vollständig fertiggestellt. Übersetzungsprobleme in Objekten und Konzeptaktivitäten wurden behoben. Farben, Formen und Emotionen funktionieren jetzt korrekt in allen Sprachen.
+</de-DE>
+
+<en-GB>
+All activity codes have been rewritten from scratch to fix translation issues. 70% complete, will be fully finished soon. Translation issues in Objects and Concept Activities have been fixed. Colors, shapes, and emotions now work correctly in all languages.
+</en-GB>
+
+<fr-FR>
+Tous les codes d'activité ont été réécrits à partir de zéro pour corriger les problèmes de traduction. 70% terminé, sera bientôt entièrement terminé. Les problèmes de traduction dans Objets et Activités Conceptuelles ont été corrigés. Les couleurs, formes et émotions fonctionnent maintenant correctement dans toutes les langues.
+</fr-FR>
+
+<nl-NL>
+Alle activiteitscodes zijn vanaf nul herschreven om vertaalproblemen op te lossen. 70% voltooid, wordt binnenkort volledig afgerond. Vertaalproblemen in Objecten en Conceptactiviteiten zijn opgelost. Kleuren, vormen en emoties werken nu correct in alle talen.
+</nl-NL>

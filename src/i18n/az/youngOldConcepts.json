@@ -1,43 +1,6 @@
-{
-  "youngOldConcepts": {
-    "youngOld": "Gənc / Yaşlı",
-    "q_which_is_young": "Hansıdır gənc?",
-    "q_which_is_elderly": "Hansıdır yaşlı?",
-    "yes_horoz_yasli": "Bəli, xoruz yaşlıdır.",
-    "no_horoz_yasli": "Xeyr, xoruz yaşlı deyil.",
-    "yes_civciv_genc": "Bəli, cücə gəncdir.",
-    "no_civciv_genc": "Xeyr, cücə gənc deyil.",
-    "yes_nine_yasli": "Bəli, nənə yaşlıdır.",
-    "no_nine_yasli": "Xeyr, nənə yaşlı deyil.",
-    "yes_bebek_genc": "Bəli, körpə gəncdir.",
-    "no_bebek_genc": "Xeyr, körpə gənc deyil.",
-    "yes_dede_yasli": "Bəli, baba yaşlıdır.",
-    "no_dede_yasli": "Xeyr, baba yaşlı deyil.",
-    "yes_cocuk_genc": "Bəli, uşaq gəncdir.",
-    "no_cocuk_genc": "Xeyr, uşaq gənc deyil.",
-    "yes_koca_kopek_yasli": "Bəli, köhnə it yaşlıdır.",
-    "no_koca_kopek_yasli": "Xeyr, köhnə it yaşlı deyil.",
-    "yes_yavru_kopek_genc": "Bəli, balaca it gəncdir.",
-    "no_yavru_kopek_genc": "Xeyr, balaca it gənc deyil.",
-    "yes_yetiskin_yasli": "Bəli, yetkin yaşlıdır.",
-    "no_yetiskin_yasli": "Xeyr, yetkin yaşlı deyil.",
-    "yes_cocuk2_genc": "Bəli, uşaq gəncdir.",
-    "no_cocuk2_genc": "Xeyr, uşaq gənc deyil.",
-    "yes_inek_yasli": "Bəli, inək yaşlıdır.",
-    "no_inek_yasli": "Xeyr, inək yaşlı deyil.",
-    "yes_buzagi_genc": "Bəli, buzov gəncdir.",
-    "no_buzagi_genc": "Xeyr, buzov gənc deyil.",
-    "yes_at_yasli": "Bəli, at yaşlıdır.",
-    "no_at_yasli": "Xeyr, at yaşlı deyil.",
-    "yes_tay_genc": "Bəli, at balası gəncdir.",
-    "no_tay_genc": "Xeyr, at balası gənc deyil.",
-    "yes_balik_yasli": "Bəli, balıq yaşlıdır.",
-    "no_balik_yasli": "Xeyr, balıq yaşlı deyil.",
-    "yes_balik_genc": "Bəli, balıq gəncdir.",
-    "no_balik_genc": "Xeyr, balıq gənc deyil.",
-    "yes_keci_yasli": "Bəli, keçi yaşlıdır.",
-    "no_keci_yasli": "Xeyr, keçi yaşlı deyil.",
-    "yes_oglak_genc": "Bəli, çəpiş gəncdir.",
-    "no_oglak_genc": "Xeyr, çəpiş gənc deyil."
+﻿{
+  "youngOld": {
+    "q_which_is_old_person": "Kim yaşlıdır?",
+    "q_which_is_young_person": "Kim gəncdir?"
   }
 }

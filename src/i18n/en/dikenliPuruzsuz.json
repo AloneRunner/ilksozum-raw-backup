@@ -2,32 +2,6 @@
   "dikenliPuruzsuz": {
     "q_which_is_thorny": "Which one is thorny?",
     "q_which_is_thorny_person": "Which one is thorny?",
-    "q_which_is_smooth": "Which one is smooth?",
-    "yes_kaktüs": "Yes, the cactus is thorny.",
-    "no_elma": "No, this apple is smooth.",
-    "yes_elma": "Yes, the apple is smooth.",
-    "no_kaktüs": "No, this cactus is thorny.",
-    "yes_kirpi": "Yes, the hedgehog is thorny.",
-    "no_yunus": "No, this dolphin is smooth.",
-    "yes_yunus": "Yes, the dolphin is smooth.",
-    "no_kirpi": "No, this hedgehog is thorny.",
-    "yes_deniz_kestanesi": "Yes, the sea urchin is thorny.",
-    "no_deniz_yıldızı": "No, this starfish is smooth.",
-    "yes_deniz_yıldızı": "Yes, the starfish is smooth.",
-    "no_deniz_kestanesi": "No, this sea urchin is thorny.",
-    "yes_dikenli_tel": "Yes, the barbed wire is thorny.",
-    "no_ip": "No, this rope is smooth.",
-    "yes_ip": "Yes, the rope is smooth.",
-    "no_dikenli_tel": "No, this wire is thorny.",
-    "yes_enginar": "Yes, the artichoke is thorny.",
-    "no_patlıcan": "No, this eggplant is smooth.",
-    "yes_patlıcan": "Yes, the eggplant is smooth.",
-    "no_enginar": "No, this artichoke is thorny.",
-    "yes_dikenli_dal": "Yes, the branch is thorny.",
-    "no_dal": "No, this branch is smooth.",
-    "yes_dal": "Yes, the branch is smooth.",
-    "no_dikenli_dal": "No, this branch is thorny.",
-    "yes_ananas": "Yes, the pineapple is thorny.",
-    "no_ananas": "No, this pineapple is smooth."
+    "q_which_is_smooth": "Which one is smooth?"
   }
 }

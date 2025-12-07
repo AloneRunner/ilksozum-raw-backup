@@ -122,6 +122,17 @@
         "how": "Nasıl?",
         "mixed": "Karışık"
       }
+    },
+    "soundImitation": {
+      "title": "Ses Taklit Kartları",
+      "subtitle": "Konuşamayan çocuklar için ses taklit kartları",
+      "badge": "Yeni — Deneme Etkinliği"
+    }
+  },
+  "experimental": {
+    "relativeComparison": {
+      "title": "Göreceli Karşılaştırma",
+      "instruction": "Açılan iki kartı karşılaştır ve soruyu cevapla."
     }
   },
   "common": {
@@ -180,5 +191,9 @@
     },
     "restart": "Yeniden Oyna",
     "home": "Ana Menü"
-  }
+  },
+  "play": "Oynat",
+  "pause": "Duraklat",
+  "back": "Geri",
+  "lyrics": "Şarkı Sözleri"
 }

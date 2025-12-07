@@ -1,20 +1,6 @@
 {
   "dugumCozuk": {
-    "questions": {
-      "q_which_is_knotted": "Welches ist verknotet?",
-      "q_which_is_untied": "Welches ist aufgeknotet?",
-      "yes_ayakkabı_knotted": "Ja, ayakkabı ist verknotet.",
-      "no_ayakkabı_knotted": "Nein, ayakkabı ist nicht verknotet.",
-      "yes_ayakkabı_untied": "Ja, ayakkabı ist aufgeknotet.",
-      "no_ayakkabı_untied": "Nein, ayakkabı ist nicht aufgeknotet.",
-      "yes_hortum_knotted": "Ja, hortum ist verknotet.",
-      "no_hortum_knotted": "Nein, hortum ist nicht verknotet.",
-      "yes_hortum_untied": "Ja, hortum ist aufgeknotet.",
-      "no_hortum_untied": "Nein, hortum ist nicht aufgeknotet.",
-      "yes_kurdele_knotted": "Ja, kurdele ist verknotet.",
-      "no_kurdele_knotted": "Nein, kurdele ist nicht verknotet.",
-      "yes_kurdele_untied": "Ja, kurdele ist aufgeknotet.",
-      "no_kurdele_untied": "Nein, kurdele ist nicht aufgeknotet."
-    }
+    "q_which_is_knotted": "Welches ist verknotet?",
+    "q_which_is_untied": "Welches ist offen?"
   }
 }

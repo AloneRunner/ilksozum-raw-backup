@@ -1,39 +1,6 @@
-{
-  "oddEvenConcepts": {
-    "oddEven": "Oneven / Paar",
-    "q_which_is_odd": "Welke is oneven?",
-    "q_which_is_even": "Welke is een paar?",
-    "yes_corap_tek": "Ja, deze sok is oneven.",
-    "no_corap_tek": "Nee, deze sok is niet oneven.",
-    "yes_coraplar_cift": "Ja, deze sokken zijn een paar.",
-    "no_coraplar_cift": "Nee, deze sokken zijn geen paar.",
-    "yes_eldiven_tek": "Ja, deze handschoen is oneven.",
-    "no_eldiven_tek": "Nee, deze handschoen is niet oneven.",
-    "yes_eldivenler_cift": "Ja, deze handschoenen zijn een paar.",
-    "no_eldivenler_cift": "Nee, deze handschoenen zijn geen paar.",
-    "yes_kupe_tek": "Ja, deze oorbel is oneven.",
-    "no_kupe_tek": "Nee, deze oorbel is niet oneven.",
-    "yes_kupeler_cift": "Ja, deze oorbellen zijn een paar.",
-    "no_kupeler_cift": "Nee, deze oorbellen zijn geen paar.",
-    "yes_paten_tek": "Ja, deze schaats is oneven.",
-    "no_paten_tek": "Nee, deze schaats is niet oneven.",
-    "yes_patenler_cift": "Ja, deze schaatsen zijn een paar.",
-    "no_patenler_cift": "Nee, deze schaatsen zijn geen paar.",
-    "yes_kayak_tek": "Ja, deze ski is oneven.",
-    "no_kayak_tek": "Nee, deze ski is niet oneven.",
-    "yes_kayaklar_cift": "Ja, deze ski's zijn een paar.",
-    "no_kayaklar_cift": "Nee, deze ski's zijn geen paar.",
-    "yes_davul_cubugu_tek": "Ja, deze drumstok is oneven.",
-    "no_davul_cubugu_tek": "Nee, deze drumstok is niet oneven.",
-    "yes_davul_cubuklari_cift": "Ja, deze drumstokken zijn een paar.",
-    "no_davul_cubuklari_cift": "Nee, deze drumstokken zijn geen paar.",
-    "yes_goz_tek": "Ja, dit oog is oneven.",
-    "no_goz_tek": "Nee, dit oog is niet oneven.",
-    "yes_gozler_cift": "Ja, deze ogen zijn een paar.",
-    "no_gozler_cift": "Nee, deze ogen zijn geen paar.",
-    "yes_elma_tek": "Ja, deze appel is oneven.",
-    "no_elma_tek": "Nee, deze appel is niet oneven.",
-    "yes_elmalar_cift": "Ja, deze appels zijn een paar.",
-    "no_elmalar_cift": "Nee, deze appels zijn geen paar."
+﻿{
+  "oddEven": {
+    "q_which_is_odd": "Welke is enkel?",
+    "q_which_is_even": "Welke is een paar?"
   }
 }

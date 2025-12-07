@@ -204,7 +204,7 @@ export const communicationCategories: CommunicationCategory[] = [
       { id: 'fiziksel', title: 'Fiziksel Haller', imageId: 783, cards: [
         createCardFromImage(783, 'Yorgun'), createCardFromImage(784, 'Hasta'), createCardFromImage(785, 'Uykulu'),
         createCardFromImage(786, 'Sıkılmış'), createCardFromImage(752, 'Aç'), createCardFromImage(774, 'Susamış'),
-        createCardFromImage(784, 'Acı çeken'),
+        createManualCard('aci_ceken', 'Acı çeken', 784),
       ]}
     ]
   },

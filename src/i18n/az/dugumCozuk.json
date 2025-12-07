@@ -1,20 +1,6 @@
 {
   "dugumCozuk": {
-    "questions": {
-      "q_which_is_knotted": "Hansı düyünlüdür?",
-      "q_which_is_untied": "Hansı açılmışdır?",
-      "yes_ayakkabı_knotted": "Bəli, ayakkabı düyünlü.",
-      "no_ayakkabı_knotted": "Xeyr, ayakkabı düyünlü deyil.",
-      "yes_ayakkabı_untied": "Bəli, ayakkabı açılmış.",
-      "no_ayakkabı_untied": "Xeyr, ayakkabı açılmış deyil.",
-      "yes_hortum_knotted": "Bəli, hortum düyünlü.",
-      "no_hortum_knotted": "Xeyr, hortum düyünlü deyil.",
-      "yes_hortum_untied": "Bəli, hortum açılmış.",
-      "no_hortum_untied": "Xeyr, hortum açılmış deyil.",
-      "yes_kurdele_knotted": "Bəli, kurdele düyünlü.",
-      "no_kurdele_knotted": "Xeyr, kurdele düyünlü deyil.",
-      "yes_kurdele_untied": "Bəli, kurdele açılmış.",
-      "no_kurdele_untied": "Xeyr, kurdele açılmış deyil."
-    }
+    "q_which_is_knotted": "Hansı düyünlüdür?",
+    "q_which_is_untied": "Hansı açıqdır?"
   }
 }

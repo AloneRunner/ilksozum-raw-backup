@@ -1,39 +1,6 @@
-{
-  "oddEvenConcepts": {
-    "oddEven": "Impair / Pair",
-    "q_which_is_odd": "Lequel est impair?",
-    "q_which_is_even": "Lequel est une paire?",
-    "yes_corap_tek": "Oui, cette chaussette est impaire.",
-    "no_corap_tek": "Non, cette chaussette n'est pas impaire.",
-    "yes_coraplar_cift": "Oui, ces chaussettes sont une paire.",
-    "no_coraplar_cift": "Non, ces chaussettes ne sont pas une paire.",
-    "yes_eldiven_tek": "Oui, ce gant est impair.",
-    "no_eldiven_tek": "Non, ce gant n'est pas impair.",
-    "yes_eldivenler_cift": "Oui, ces gants sont une paire.",
-    "no_eldivenler_cift": "Non, ces gants ne sont pas une paire.",
-    "yes_kupe_tek": "Oui, cette boucle d'oreille est impaire.",
-    "no_kupe_tek": "Non, cette boucle d'oreille n'est pas impaire.",
-    "yes_kupeler_cift": "Oui, ces boucles d'oreilles sont une paire.",
-    "no_kupeler_cift": "Non, ces boucles d'oreilles ne sont pas une paire.",
-    "yes_paten_tek": "Oui, ce patin est impair.",
-    "no_paten_tek": "Non, ce patin n'est pas impair.",
-    "yes_patenler_cift": "Oui, ces patins sont une paire.",
-    "no_patenler_cift": "Non, ces patins ne sont pas une paire.",
-    "yes_kayak_tek": "Oui, ce ski est impair.",
-    "no_kayak_tek": "Non, ce ski n'est pas impair.",
-    "yes_kayaklar_cift": "Oui, ces skis sont une paire.",
-    "no_kayaklar_cift": "Non, ces skis ne sont pas une paire.",
-    "yes_davul_cubugu_tek": "Oui, cette baguette est impaire.",
-    "no_davul_cubugu_tek": "Non, cette baguette n'est pas impaire.",
-    "yes_davul_cubuklari_cift": "Oui, ces baguettes sont une paire.",
-    "no_davul_cubuklari_cift": "Non, ces baguettes ne sont pas une paire.",
-    "yes_goz_tek": "Oui, cet œil est impair.",
-    "no_goz_tek": "Non, cet œil n'est pas impair.",
-    "yes_gozler_cift": "Oui, ces yeux sont une paire.",
-    "no_gozler_cift": "Non, ces yeux ne sont pas une paire.",
-    "yes_elma_tek": "Oui, cette pomme est impaire.",
-    "no_elma_tek": "Non, cette pomme n'est pas impaire.",
-    "yes_elmalar_cift": "Oui, ces pommes sont une paire.",
-    "no_elmalar_cift": "Non, ces pommes ne sont pas une paire."
+﻿{
+  "oddEven": {
+    "q_which_is_odd": "Lequel est seul ?",
+    "q_which_is_even": "Lequel est une paire ?"
   }
 }

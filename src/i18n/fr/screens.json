@@ -113,6 +113,7 @@
       "title": "5W1H",
       "subtitle": "Qui • Quoi • Où • Quand • Pourquoi • Comment",
       "developingNote": "En développement",
+      "backButton": "Retour au menu principal",
       "category": {
         "who": "Qui ?",
         "what": "Quoi ?",
@@ -121,9 +122,9 @@
         "why": "Pourquoi ?",
         "how": "Comment ?",
         "mixed": "Mélangé"
-      }
-    }
-    ,
+      },
+      "instructions": "Appuie sur une planète pour choisir une catégorie"
+    },
     "soundImitation": {
       "title": "Cartes d'Imitation de Sons",
       "subtitle": "Cartes d'imitation de sons pour les enfants non verbaux",
@@ -133,6 +134,8 @@
       "videosTitle": "Vidéos Courtes",
       "videosTitleShort": "Vidéos Courtes (Expérimental)",
       "videosDesc": "Vidéos courtes — expérimental. Les vidéos peuvent prendre de l'espace.",
+      "experimentalMusic": "Musique expérimentale",
+      "lyrics": "Paroles",
       "experimentalNoteTitle": "Note Expérimentale",
       "experimentalNote": "La section vidéo est expérimentale et peut ne pas être permanente. Les vidéos peuvent être volumineuses et occuper de l'espace sur votre appareil ; nous ajusterons selon vos retours.",
       "experimentalNoteEn": "The video section is experimental and may not be permanent. Videos can be large — we will decide based on your feedback.",
@@ -508,10 +511,6 @@
       "freeMode": "Mode libre : Évalué avec pondération de 50%"
     },
     "rules": {
-      "count": "Activités par session :",
-      "activityWord": "activités",
-      "warmupWord": "échauffement",
-      "newWord": "nouveau contenu",
       "count": "Activités par session : 8 activités (1 échauffement, 7 nouveau contenu, 0 renforcement)",
       "activityWord": "activité",
       "warmupWord": "échauffement",
@@ -659,6 +658,82 @@
       "EmbeddedStory": "Histoire intégrée"
     },
     "planPreview": {
+  "reasoning": {
+    "title": "Jeux de raisonnement",
+    "activities": {
+      "whatDoesntBelong": {
+        "title": "Quel est l'intrus ?",
+        "subtitle": "Trouve ce qui ne correspond pas"
+      },
+      "sequencingStories": {
+        "title": "Séquençage d'histoire",
+        "subtitle": "Remets l'histoire dans l'ordre"
+      },
+      "patternCompletion": {
+        "title": "Compléter le motif",
+        "subtitle": "Prédis la prochaine forme"
+      },
+      "sudoku": {
+        "title": "Sudoku d'images",
+        "subtitle": "Complète la pièce manquante"
+      },
+      "memoryCards": {
+        "title": "Cartes mémoire",
+        "subtitle": "Trouve les paires correspondantes",
+        "instruction": "Mémorise les positions et retrouve les paires correspondantes.",
+        "memorizeTitle": "Mémorise !",
+        "playTitle": "Trouve la paire"
+      },
+      "dragAndDropCounting": {
+        "title": "Déplacer les objets",
+        "subtitle": "Déplace le nombre demandé d'objets"
+      },
+      "dragAndDropPositioning": {
+        "title": "Placer l'objet",
+        "subtitle": "Place l'objet au bon endroit"
+      },
+      "hangman": {
+        "title": "Pendu",
+        "subtitle": "Devine le mot"
+      }
+    }
+  },
+  "games": {
+    "hangman": {
+      "speak": {
+        "win": "Super ! Tu as trouvé le mot !",
+        "wordWas": "Le mot était"
+      },
+      "remainingLives": "Vies restantes",
+      "category": "Catégorie",
+      "pickLetter": "Choisis une lettre",
+      "youWinTitle": "Bravo !",
+      "youWinDesc": "Tu as trouvé le mot !",
+      "youLoseTitle": "Tu as perdu",
+      "wordLabel": "Mot",
+      "newGame": "Nouvelle partie"
+    },
+    "objectCollector": {
+      "title": "Collecteur d'objets",
+      "subtitle": "Ramasse les bons objets dans le panier",
+      "instructions": "Déplace le panier avec les flèches ← → ou en le faisant glisser avec ton doigt/souris",
+      "youWin": "Bravo !",
+      "gameOver": "Fin de la partie",
+      "finalScore": "Score",
+      "collectFruits": "Ramasse seulement les fruits !",
+      "collectAnimals": "Ramasse seulement les animaux !",
+      "collectVehicles": "Ramasse seulement les véhicules !",
+      "collectRed": "Ramasse seulement les objets rouges !",
+      "collectFood": "Ramasse seulement la nourriture !",
+      "collectSchoolItems": "Ramasse seulement les affaires d'école !",
+      "collectToys": "Ramasse seulement les jouets !",
+      "collectLargeAnimals": "Ramasse seulement les grands animaux !"
+    },
+    "emotionPuppet": {
+      "title": "Marionnette des émotions",
+      "subtitle": "Assemble les parties du visage"
+    }
+  },
       "title": "Déroulé du jour",
       "thisSession": "Dans cette session, dans l'ordre :",
       "ifGood": "Si tout se passe bien, prochaine session :"
@@ -670,7 +745,9 @@
     "thisUpdate": {
       "title": "Dans cette mise à jour",
       "items": [
-        "Correction d’un bug dans le Mode Programme qui remettait la progression de certains anciens utilisateurs à l’unité 1. Nous nous excusons pour ce désagrément — les anciens utilisateurs concernés bénéficient, en cadeau pour la Journée des Enseignants, d’un accès Premium gratuit jusqu’au 30 novembre 2025. De plus, les utilisateurs ayant déjà bénéficié du Premium ont reçu 1 mois supplémentaire de Premium."
+        "Tous les codes d'activité ont été réécrits à partir de zéro pour corriger les problèmes de traduction. 70% terminé jusqu'à présent et sera bientôt entièrement terminé.",
+        "Les problèmes de traduction dans la catégorie Objets et les Activités Conceptuelles ont été corrigés. Les couleurs, formes et émotions fonctionnent maintenant correctement dans toutes les langues.",
+        "Note : Une perte de données peut survenir dans le contenu existant. Les problèmes identifiés seront corrigés dès que possible."
       ],
       "_tempNotes": [
         "NOTE : Ces éléments sont temporaires — ils seront retirés des fichiers i18n lors de la prochaine version."

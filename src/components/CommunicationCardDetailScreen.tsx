@@ -11,6 +11,7 @@ import { getCurrentLanguage, t } from '../i18n/index.ts';
 import { translateLabel } from '../utils/translate.ts';
 
 interface CommunicationCardDetailScreenProps {
+  subcategoryId: string;
   categoryTitle: string;
   categoryColor: string;
   cards: CommunicationCard[];
@@ -66,6 +67,7 @@ const DetailCard: React.FC<{ card: CommunicationCard; onClick: () => void; isInP
 
 
 const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps> = ({
+  subcategoryId,
   categoryTitle,
   categoryColor,
   cards,
@@ -106,8 +108,8 @@ const CommunicationCardDetailScreen: React.FC<CommunicationCardDetailScreenProps
                                 {(() => {
                                     const lang = getCurrentLanguage();
                                     if (lang === 'tr') return categoryTitle;
-                                    // Try category id mapping if available via t(); else translate label
-                                    return t(`communication.categories.${(cards[0] as any)?.categoryId || ''}`, categoryTitle);
+                                    // Try subcategory id mapping if available via t(); else translate label
+                                    return t(`communication.subcategories.${subcategoryId}`, translateLabel(categoryTitle, lang));
                                 })()}
                         </h1>
         </div>

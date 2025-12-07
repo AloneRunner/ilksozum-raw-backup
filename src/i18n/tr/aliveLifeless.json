@@ -2,61 +2,6 @@
   "aliveLifeless": {
     "q_which_is_alive": "Canlı olan hangisi?",
     "q_which_is_alive_person": "Canlı olan kim?",
-    "q_which_is_lifeless": "Cansız olan hangisi?",
-
-    "yes_agac_canli": "Evet, ağaç canlıdır.",
-    "no_agac_canli": "Hayır, ağaç canlıdır.",
-    "yes_tas_cansiz": "Evet, taş cansızdır.",
-    "no_tas_cansiz": "Hayır, taş cansızdır.",
-
-    "yes_kedi_canli": "Evet, kedi canlıdır.",
-    "no_kedi_canli": "Hayır, kedi canlıdır.",
-    "yes_masa_cansiz": "Evet, masa cansızdır.",
-    "no_masa_cansiz": "Hayır, masa cansızdır.",
-
-    "yes_cicek_canli": "Evet, çiçek canlıdır.",
-    "no_cicek_canli": "Hayır, çiçek canlıdır.",
-    "yes_araba_cansiz": "Evet, araba cansızdır.",
-    "no_araba_cansiz": "Hayır, araba cansızdır.",
-
-    "yes_cocuk_canli": "Evet, çocuk canlıdır.",
-    "no_cocuk_canli": "Hayır, çocuk canlıdır.",
-    "yes_robot_cansiz": "Evet, robot cansızdır.",
-    "no_robot_cansiz": "Hayır, robot cansızdır.",
-
-    "yes_kelebek_canli": "Evet, kelebek canlıdır.",
-    "no_kelebek_canli": "Hayır, kelebek canlıdır.",
-    "yes_kitap_cansiz": "Evet, kitap cansızdır.",
-    "no_kitap_cansiz": "Hayır, kitap cansızdır.",
-
-    "yes_balik_canli": "Evet, balık canlıdır.",
-    "no_balik_canli": "Hayır, balık canlıdır.",
-    "yes_sandalye_cansiz": "Evet, sandalye cansızdır.",
-    "no_sandalye_cansiz": "Hayır, sandalye cansızdır.",
-
-    "yes_karinca_canli": "Evet, karınca canlıdır.",
-    "no_karinca_canli": "Hayır, karınca canlıdır.",
-    "yes_anahtar_cansiz": "Evet, anahtar cansızdır.",
-    "no_anahtar_cansiz": "Hayır, anahtar cansızdır.",
-
-    "yes_doktor_canli": "Evet, doktor canlıdır.",
-    "no_doktor_canli": "Hayır, doktor canlıdır.",
-    "yes_canta_cansiz": "Evet, çanta cansızdır.",
-    "no_canta_cansiz": "Hayır, çanta cansızdır.",
-
-    "yes_kurbaga_canli": "Evet, kurbağa canlıdır.",
-    "no_kurbaga_canli": "Hayır, kurbağa canlıdır.",
-    "yes_top_cansiz": "Evet, top cansızdır.",
-    "no_top_cansiz": "Hayır, top cansızdır.",
-
-    "yes_zebra_canli": "Evet, zebra canlıdır.",
-    "no_zebra_canli": "Hayır, zebra canlıdır.",
-    "yes_tuvalet_kagidi_cansiz": "Evet, tuvalet kağıdı cansızdır.",
-    "no_tuvalet_kagidi_cansiz": "Hayır, tuvalet kağıdı cansızdır.",
-
-    "yes_hamster_canli": "Evet, hamster canlıdır.",
-    "no_hamster_canli": "Hayır, hamster canlıdır.",
-    "yes_helikopter_cansiz": "Evet, helikopter cansızdır.",
-    "no_helikopter_cansiz": "Hayır, helikopter cansızdır."
+    "q_which_is_lifeless": "Cansız olan hangisi?"
   }
 }

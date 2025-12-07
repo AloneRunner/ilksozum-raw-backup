@@ -1,35 +1,6 @@
-{
-  "tersDuzConcepts": {
-    "tersDuz": "Ters / Düz",
-    "q_which_is_upside_down": "Ters olan hangisi?",
+﻿{
+  "tersDuz": {
     "q_which_is_upright": "Düz olan hangisi?",
-    "yes_terlik_duz": "Evet, terlik düzgün.",
-    "no_terlik_duz": "Hayır, terlik düzgün değil.",
-    "yes_terlik_ters": "Evet, terlik ters.",
-    "no_terlik_ters": "Hayır, terlik ters değil.",
-    "yes_kaplumbaga_duz": "Evet, kaplumbağa düzgün.",
-    "no_kaplumbaga_duz": "Hayır, kaplumbağa düzgün değil.",
-    "yes_kaplumbaga_ters": "Evet, kaplumbağa ters.",
-    "no_kaplumbaga_ters": "Hayır, kaplumbağa ters değil.",
-    "yes_saat_duz": "Evet, saat düzgün.",
-    "no_saat_duz": "Hayır, saat düzgün değil.",
-    "yes_saat_ters": "Evet, saat ters.",
-    "no_saat_ters": "Hayır, saat ters değil.",
-    "yes_ayakkabi_duz": "Evet, ayakkabı düzgün.",
-    "no_ayakkabi_duz": "Hayır, ayakkabı düzgün değil.",
-    "yes_ayakkabi_ters": "Evet, ayakkabı ters.",
-    "no_ayakkabi_ters": "Hayır, ayakkabı ters değil.",
-    "yes_sandalet_duz": "Evet, sandalet düzgün.",
-    "no_sandalet_duz": "Hayır, sandalet düzgün değil.",
-    "yes_sandalet_ters": "Evet, sandalet ters.",
-    "no_sandalet_ters": "Hayır, sandalet ters değil.",
-    "yes_semsiye_duz": "Evet, şemsiye düzgün.",
-    "no_semsiye_duz": "Hayır, şemsiye düzgün değil.",
-    "yes_semsiye_ters": "Evet, şemsiye ters.",
-    "no_semsiye_ters": "Hayır, şemsiye ters değil.",
-    "yes_kupa_duz": "Evet, kupa düzgün.",
-    "no_kupa_duz": "Hayır, kupa düzgün değil.",
-    "yes_fincan_ters": "Evet, fincan ters.",
-    "no_fincan_ters": "Hayır, fincan ters değil."
+    "q_which_is_upsidedown": "Ters olan hangisi?"
   }
 }

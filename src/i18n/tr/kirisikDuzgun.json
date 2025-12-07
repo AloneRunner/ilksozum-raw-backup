@@ -1,36 +1,6 @@
 {
   "kirisikDuzgun": {
-    "questions": {
-      "q_which_is_wrinkled": "Kırışık olan hangisi?",
-      "q_which_is_smooth": "Düzgün olan hangisi?",
-      "yes_gömlek_wrinkled": "Evet, gömlek kırışık.",
-      "no_gömlek_wrinkled": "Hayır, gömlek kırışık değil.",
-      "yes_gömlek_smooth": "Evet, gömlek düzgün.",
-      "no_gömlek_smooth": "Hayır, gömlek düzgün değil.",
-      "yes_kağıt_wrinkled": "Evet, kağıt kırışık.",
-      "no_kağıt_wrinkled": "Hayır, kağıt kırışık değil.",
-      "yes_kağıt_smooth": "Evet, kağıt düzgün.",
-      "no_kağıt_smooth": "Hayır, kağıt düzgün değil.",
-      "yes_pantolon_wrinkled": "Evet, pantolon kırışık.",
-      "no_pantolon_wrinkled": "Hayır, pantolon kırışık değil.",
-      "yes_pantolon_smooth": "Evet, pantolon düzgün.",
-      "no_pantolon_smooth": "Hayır, pantolon düzgün değil.",
-      "yes_yatak_wrinkled": "Evet, yatak kırışık.",
-      "no_yatak_wrinkled": "Hayır, yatak kırışık değil.",
-      "yes_yatak_smooth": "Evet, yatak düzgün.",
-      "no_yatak_smooth": "Hayır, yatak düzgün değil.",
-      "yes_çamaşır_wrinkled": "Evet, çamaşır kırışık.",
-      "no_çamaşır_wrinkled": "Hayır, çamaşır kırışık değil.",
-      "yes_çamaşır_smooth": "Evet, çamaşır düzgün.",
-      "no_çamaşır_smooth": "Hayır, çamaşır düzgün değil.",
-      "yes_havlu_wrinkled": "Evet, havlu kırışık.",
-      "no_havlu_wrinkled": "Hayır, havlu kırışık değil.",
-      "yes_havlu_smooth": "Evet, havlu düzgün.",
-      "no_havlu_smooth": "Hayır, havlu düzgün değil.",
-      "yes_tişört_wrinkled": "Evet, tişört kırışık.",
-      "no_tişört_wrinkled": "Hayır, tişört kırışık değil.",
-      "yes_tişört_smooth": "Evet, tişört düzgün.",
-      "no_tişört_smooth": "Hayır, tişört düzgün değil."
-    }
+    "q_which_is_wrinkled": "Kırışık olan hangisi?",
+    "q_which_is_smooth": "Düzgün olan hangisi?"
   }
 }

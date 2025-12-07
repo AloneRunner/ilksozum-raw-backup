@@ -62,10 +62,16 @@ export function translateLabel(text: string, lang: string): string {
 	const wordmap = wordmaps[target];
 	
 	// Search through all categories in the wordmap
+	// Normalize both the search text and wordmap keys to Turkish lowercase for case-insensitive matching
+	const normalizedText = text.toLocaleLowerCase('tr-TR');
 	for (const category of Object.values(wordmap)) {
 		if (typeof category === 'object' && category !== null) {
-			const translation = (category as Record<string, string>)[text.toLowerCase()];
-			if (translation) return translation;
+			// Search through normalized keys
+			for (const [key, value] of Object.entries(category as Record<string, string>)) {
+				if (key.toLocaleLowerCase('tr-TR') === normalizedText) {
+					return value;
+				}
+			}
 		}
 	}
 	

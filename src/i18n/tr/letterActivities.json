@@ -10,7 +10,7 @@
     },
     "grid": {
       "findAll": "Tabloda gizlenen bütün \"{letter}\" harflerini bul.",
-      "findAll.short": "Tüm {letter} harflerini bul",
+      "findAllShort": "Tüm {letter} harflerini bul",
       "progress": "Bulunan"
     },
     "findSoundInImage": {

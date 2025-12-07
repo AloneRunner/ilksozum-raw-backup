@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { FiveWOneHCategory } from '../services/database/activities/reasoning/fiveWOneHBatch50';
-import { t } from '../i18n/index';
+import { getCurrentLanguage, t } from '../i18n/index';
 import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
 import PanelStars from './ui/PanelStars.tsx';
 import UnderwaterBackdrop from './ui/UnderwaterBackdrop.tsx';
@@ -13,8 +13,10 @@ interface FiveWOneHMenuScreenProps {
 }
 
 const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCategory, onBack, theme }) => {
+  const lang = getCurrentLanguage();
   const isCosmic = theme === 'deneme2';
   const isUnderwater = theme === 'deneme';
+  const localizedTitle = t('menu.fiveWOneH.title', '5N1K');
 
   // Responsive container sizing
   const BASE_SIZE = 850; // design reference
@@ -38,22 +40,22 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
   const scale = useMemo(() => containerSize / BASE_SIZE, [containerSize]);
 
   // Planet configuration for solar system (sizes in px, orbits in px relative to BASE_SIZE)
-  const planets = [
+  const planets = useMemo(() => [
     // Kim (Who): person silhouette
-    { category: 'Kim', label: t('fiveWOneH.category.who', 'Kim?'), emoji: '👤', color: 'from-gray-400 to-gray-600', sizePx: 44, orbit: 120 },
+    { category: 'Kim', label: t('menu.fiveWOneH.category.who', 'Kim?'), emoji: '👤', color: 'from-gray-400 to-gray-600', sizePx: 44, orbit: 120 },
     // Ne (What): box/object
-    { category: 'Ne', label: t('fiveWOneH.category.what', 'Ne?'), emoji: '📦', color: 'from-yellow-400 to-orange-500', sizePx: 50, orbit: 160 },
+    { category: 'Ne', label: t('menu.fiveWOneH.category.what', 'Ne?'), emoji: '📦', color: 'from-yellow-400 to-orange-500', sizePx: 50, orbit: 160 },
     // Nerede (Where): map pin / globe
-    { category: 'Nerede', label: t('fiveWOneH.category.where', 'Nerede?'), emoji: '📍', color: 'from-blue-400 to-blue-600', sizePx: 56, orbit: 200 },
+    { category: 'Nerede', label: t('menu.fiveWOneH.category.where', 'Nerede?'), emoji: '📍', color: 'from-blue-400 to-blue-600', sizePx: 56, orbit: 200 },
     // Ne Zaman (When): clock
-    { category: 'Ne Zaman', label: t('fiveWOneH.category.when', 'Ne Zaman?'), emoji: '⏰', color: 'from-red-400 to-red-600', sizePx: 48, orbit: 240 },
+    { category: 'Ne Zaman', label: t('menu.fiveWOneH.category.when', 'Ne Zaman?'), emoji: '⏰', color: 'from-red-400 to-red-600', sizePx: 48, orbit: 240 },
     // Neden (Why): light bulb
-    { category: 'Neden', label: t('fiveWOneH.category.why', 'Neden?'), emoji: '💡', color: 'from-orange-300 to-orange-500', sizePx: 64, orbit: 290 },
+    { category: 'Neden', label: t('menu.fiveWOneH.category.why', 'Neden?'), emoji: '💡', color: 'from-orange-300 to-orange-500', sizePx: 64, orbit: 290 },
     // Nasıl (How): tools/wrench
-    { category: 'Nasıl', label: t('fiveWOneH.category.how', 'Nasıl?'), emoji: '🛠️', color: 'from-yellow-300 to-yellow-500', sizePx: 58, orbit: 340 },
+    { category: 'Nasıl', label: t('menu.fiveWOneH.category.how', 'Nasıl?'), emoji: '🛠️', color: 'from-yellow-300 to-yellow-500', sizePx: 58, orbit: 340 },
     // Karışık (Mixed): shuffle/dice
-    { category: 'Karışık', label: t('fiveWOneH.category.mixed', 'Karışık'), emoji: '🔀', color: 'from-cyan-300 to-cyan-500', sizePx: 48, orbit: 385 },
-  ];
+    { category: 'Karışık', label: t('menu.fiveWOneH.category.mixed', 'Karışık'), emoji: '🔀', color: 'from-cyan-300 to-cyan-500', sizePx: 48, orbit: 385 },
+  ], [lang]);
 
   // Stable pseudo-random helpers to avoid overlap; different speed/phase/direction per category
   const hash = (s: string) => {
@@ -132,7 +134,7 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
             <div className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-yellow-500/80 via-orange-400/80 to-yellow-500/80 backdrop-blur-sm border border-yellow-300/40 shadow-lg shadow-yellow-400/30">
               <h1 className="text-3xl sm:text-4xl font-black text-white drop-shadow-lg">
-                5N1K
+                {localizedTitle}
               </h1>
             </div>
           </div>
@@ -153,16 +155,15 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
           {/* Legend + Instructions */}
           <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 w-[92%] max-w-[920px] flex flex-col items-center gap-2">
             <div className="flex flex-wrap items-center justify-center gap-3 bg-black/35 text-white/85 px-3 py-2 rounded-xl backdrop-blur-sm text-[11px] sm:text-xs">
-              <span className="flex items-center gap-1"><span>👤</span><span>Kim</span></span>
-              <span className="flex items-center gap-1"><span>📦</span><span>Ne</span></span>
-              <span className="flex items-center gap-1"><span>📍</span><span>Nerede</span></span>
-              <span className="flex items-center gap-1"><span>⏰</span><span>Ne Zaman</span></span>
-              <span className="flex items-center gap-1"><span>💡</span><span>Neden</span></span>
-              <span className="flex items-center gap-1"><span>🛠️</span><span>Nasıl</span></span>
-              <span className="flex items-center gap-1"><span>🔀</span><span>Karışık</span></span>
+              {planets.map((planet) => (
+                <span key={planet.category} className="flex items-center gap-1">
+                  <span>{planet.emoji}</span>
+                  <span>{planet.label}</span>
+                </span>
+              ))}
             </div>
             <p className="text-[11px] sm:text-xs text-white/70 text-center bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-              {t('fiveWOneH.instructions', 'Bir gezegene tıklayarak kategoriyi seç')}
+              {t('menu.fiveWOneH.instructions', 'Bir gezegene tıklayarak kategoriyi seç')}
             </p>
           </div>
         </div>
@@ -193,7 +194,7 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
 
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
             <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/80 to-teal-500/80 drop-shadow-lg border border-cyan-300/40">
-              <h1 className="text-3xl font-black text-cyan-100">5N1K</h1>
+              <h1 className="text-3xl font-black text-cyan-100">{localizedTitle}</h1>
             </div>
           </div>
 
@@ -226,12 +227,12 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
   };
 
   const categories: { id: FiveWOneHCategory; label: string; color: 'emerald' | 'amber' | 'sky' | 'indigo' | 'rose' | 'teal' }[] = [
-    { id: 'Kim', label: t('fiveWOneH.category.who', 'Kim?'), color: 'emerald' },
-    { id: 'Ne', label: t('fiveWOneH.category.what', 'Ne?'), color: 'amber' },
-    { id: 'Nerede', label: t('fiveWOneH.category.where', 'Nerede?'), color: 'sky' },
-    { id: 'Ne Zaman', label: t('fiveWOneH.category.when', 'Ne Zaman?'), color: 'indigo' },
-    { id: 'Neden', label: t('fiveWOneH.category.why', 'Neden?'), color: 'rose' },
-    { id: 'Nasıl', label: t('fiveWOneH.category.how', 'Nasıl?'), color: 'teal' },
+    { id: 'Kim', label: t('menu.fiveWOneH.category.who', 'Kim?'), color: 'emerald' },
+    { id: 'Ne', label: t('menu.fiveWOneH.category.what', 'Ne?'), color: 'amber' },
+    { id: 'Nerede', label: t('menu.fiveWOneH.category.where', 'Nerede?'), color: 'sky' },
+    { id: 'Ne Zaman', label: t('menu.fiveWOneH.category.when', 'Ne Zaman?'), color: 'indigo' },
+    { id: 'Neden', label: t('menu.fiveWOneH.category.why', 'Neden?'), color: 'rose' },
+    { id: 'Nasıl', label: t('menu.fiveWOneH.category.how', 'Nasıl?'), color: 'teal' },
   ];
 
   return (
@@ -240,7 +241,7 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
         <button onClick={onBack} className="absolute left-0 p-2 rounded-full bg-black/10 hover:bg-black/20 transition-colors" aria-label={t('app.back', 'Geri Dön')}>
           <span className="text-lg font-bold">←</span>
         </button>
-        <h1 className="flex-1 text-center text-3xl font-black text-emerald-700">5N1K</h1>
+        <h1 className="flex-1 text-center text-3xl font-black text-emerald-700">{localizedTitle}</h1>
       </div>
       <div className="w-full flex-grow overflow-y-auto">
         <div className="grid grid-cols-2 gap-4">
@@ -257,7 +258,7 @@ const FiveWOneHMenuScreen: React.FC<FiveWOneHMenuScreenProps> = ({ onSelectCateg
             className="rounded-2xl px-4 py-6 font-bold text-lg shadow-md bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors"
             onClick={() => onSelectCategory('Karışık')}
           >
-            {t('fiveWOneH.category.mixed', 'Karışık')}
+            {t('menu.fiveWOneH.category.mixed', 'Karışık')}
           </button>
         </div>
       </div>

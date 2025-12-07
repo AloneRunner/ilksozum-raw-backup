@@ -10,7 +10,7 @@
     },
     "grid": {
       "findAll": "Find all hidden \"{letter}\" letters in the grid.",
-      "findAll.short": "Find all {letter} letters",
+      "findAllShort": "Find all {letter} letters",
       "progress": "Found"
     },
     "findSoundInImage": {

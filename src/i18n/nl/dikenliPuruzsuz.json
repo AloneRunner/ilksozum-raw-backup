@@ -2,32 +2,6 @@
   "dikenliPuruzsuz": {
     "q_which_is_thorny": "Welke is stekelig?",
     "q_which_is_thorny_person": "Welke is stekelig?",
-    "q_which_is_smooth": "Welke is glad?",
-    "yes_kaktüs": "Ja, de cactus is stekelig.",
-    "no_elma": "Nee, deze appel is glad.",
-    "yes_elma": "Ja, de appel is glad.",
-    "no_kaktüs": "Nee, deze cactus is stekelig.",
-    "yes_kirpi": "Ja, de egel is stekelig.",
-    "no_yunus": "Nee, deze dolfijn is glad.",
-    "yes_yunus": "Ja, de dolfijn is glad.",
-    "no_kirpi": "Nee, deze egel is stekelig.",
-    "yes_deniz_kestanesi": "Ja, de zee-egel is stekelig.",
-    "no_deniz_yıldızı": "Nee, deze zeester is glad.",
-    "yes_deniz_yıldızı": "Ja, de zeester is glad.",
-    "no_deniz_kestanesi": "Nee, deze zee-egel is stekelig.",
-    "yes_dikenli_tel": "Ja, het prikkeldraad is stekelig.",
-    "no_ip": "Nee, dit touw is glad.",
-    "yes_ip": "Ja, het touw is glad.",
-    "no_dikenli_tel": "Nee, deze draad is stekelig.",
-    "yes_enginar": "Ja, de artisjok is stekelig.",
-    "no_patlıcan": "Nee, deze aubergine is glad.",
-    "yes_patlıcan": "Ja, de aubergine is glad.",
-    "no_enginar": "Nee, deze artisjok is stekelig.",
-    "yes_dikenli_dal": "Ja, de tak is stekelig.",
-    "no_dal": "Nee, deze tak is glad.",
-    "yes_dal": "Ja, de tak is glad.",
-    "no_dikenli_dal": "Nee, deze tak is stekelig.",
-    "yes_ananas": "Ja, de ananas is stekelig.",
-    "no_ananas": "Nee, deze ananas is glad."
+    "q_which_is_smooth": "Welke is glad?"
   }
 }

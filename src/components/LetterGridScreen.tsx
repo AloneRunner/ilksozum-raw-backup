@@ -138,7 +138,7 @@ const LetterGridScreen: React.FC<LetterGridScreenProps> = ({ letter, onAdvance, 
                         <ArrowLeftIcon className="w-8 h-8 text-sky-700" />
                     </button>
                     <h1 className="text-2xl sm:text-3xl font-black text-sky-800">
-                        {t('letters.grid.findAll.short', 'Tüm {letter} harflerini bul').replace('{letter}', `"${upperCaseLetter}"`)}
+                        {t('letters.grid.findAllShort', 'Tüm {letter} harflerini bul').replace('{letter}', `"${upperCaseLetter}"`)}
                     </h1>
                      <div className="text-3xl sm:text-4xl font-bold text-white bg-sky-500 px-6 py-3 rounded-full shadow-lg">
                         {foundLetters.length}/{totalTargets}

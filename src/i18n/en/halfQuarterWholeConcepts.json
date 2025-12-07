@@ -1,27 +1,8 @@
-{
-  "halfQuarterWholeConcepts": {
-    "halfQuarterWhole": "Half / Quarter / Whole",
+﻿{
+  "halfQuarterWhole": {
     "q_which_is_whole": "Which one is whole?",
     "q_which_is_half": "Which one is half?",
-    "q_which_is_quarter": "Which one is a quarter?",
-    "q_which_is_slice": "Which one is a slice?",
-    "yes_pizza_butun": "Yes, the pizza is whole.",
-    "no_pizza_butun": "No, the pizza is not whole.",
-    "yes_pizza_yarim": "Yes, the pizza is half.",
-    "no_pizza_yarim": "No, the pizza is not half.",
-    "yes_pizza_dilimi_ceyrek": "Yes, this is a quarter pizza.",
-    "no_pizza_dilimi_ceyrek": "No, this is not a quarter pizza.",
-    "yes_portakal_butun": "Yes, the orange is whole.",
-    "no_portakal_butun": "No, the orange is not whole.",
-    "yes_portakal_yarim": "Yes, the orange is half.",
-    "no_portakal_yarim": "No, the orange is not half.",
-    "yes_simit_butun": "Yes, the bagel is whole.",
-    "no_simit_butun": "No, the bagel is not whole.",
-    "yes_simit_yarim": "Yes, the bagel is half.",
-    "no_simit_yarim": "No, the bagel is not half.",
-    "yes_pasta_butun": "Yes, the cake is whole.",
-    "no_pasta_butun": "No, the cake is not whole.",
-    "yes_pasta_dilimi": "Yes, this is a cake slice.",
-    "no_pasta_dilimi": "No, this is not a cake slice."
+    "q_which_is_quarter": "Which one is quarter?",
+    "q_which_is_slice": "Which one is a slice?"
   }
 }

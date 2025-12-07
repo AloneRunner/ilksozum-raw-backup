@@ -122,6 +122,17 @@
         "how": "Comment ?",
         "mixed": "Mélangé"
       }
+    },
+    "soundImitation": {
+      "title": "Cartes d'Imitation Sonore",
+      "subtitle": "Cartes d'imitation sonore pour enfants non verbaux",
+      "badge": "Nouveau — Activité Expérimentale"
+    }
+  },
+  "experimental": {
+    "relativeComparison": {
+      "title": "Concepts Comparatifs",
+      "instruction": "Comparez les deux cartes et répondez à la question."
     }
   },
   "common": {
@@ -180,5 +191,9 @@
     },
     "restart": "Rejouer",
     "home": "Menu Principal"
-  }
+  },
+  "play": "Jouer",
+  "pause": "Pause",
+  "back": "Retour",
+  "lyrics": "Paroles"
 }

@@ -86,6 +86,13 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
 
     const isPremium = hasPurchasedPremium || isTrialActive || isPromotionActive;
 
+    // Auto-disable fast mode when premium expires
+    useEffect(() => {
+        if (!isPremium && isFastTransitionEnabled) {
+            setIsFastTransitionEnabled(false);
+        }
+    }, [isPremium, isFastTransitionEnabled, setIsFastTransitionEnabled]);
+
     // Show a one-time toast for legacy promotion so legacy users know they received the gift.
     useEffect(() => {
         try {

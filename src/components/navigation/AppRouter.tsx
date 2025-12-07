@@ -75,15 +75,15 @@ export const AppRouter = () => {
     };
 
     const getActivityUiConfigLocal = (activityType: ActivityType | null): { backScreen: ScreenState; backButtonText: string } => {
-        if (activityType === null) return { backScreen: ScreenState.MainMenu, backButtonText: 'Etkinlik Menüsüne Dön' };
-        if (activityType === ActivityType.FiveWOneH) return { backScreen: ScreenState.MainMenu, backButtonText: 'Ana Menüye Dön' };
-        if (activityType === ActivityType.Syllabification) return { backScreen: ScreenState.GroupSelection, backButtonText: 'Grup Seçimine Dön' };
-        if (LETTER_SOUND_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.LetterSelection, backButtonText: 'Harf Seçimine Dön' };
-        if (CONCEPT_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ConceptActivitiesMenu, backButtonText: 'Kavram Menüsüne Dön' };
-        if (REASONING_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ReasoningActivitiesMenu, backButtonText: 'Oyun Menüsüne Dön' };
-        if (OBJECT_RECOGNITION_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ObjectCategoriesMenu, backButtonText: 'Nesne Menüsüne Dön' };
+        if (activityType === null) return { backScreen: ScreenState.MainMenu, backButtonText: t('app.back', 'Etkinlik Menüsüne Dön') };
+        if (activityType === ActivityType.FiveWOneH) return { backScreen: ScreenState.MainMenu, backButtonText: t('menu.fiveWOneH.backButton', 'Ana Menüye Dön') };
+        if (activityType === ActivityType.Syllabification) return { backScreen: ScreenState.GroupSelection, backButtonText: t('letterActivities.backToGroupSelection', 'Grup Seçimine Dön') };
+        if (LETTER_SOUND_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.LetterSelection, backButtonText: t('letterActivities.backToLetterSelection', 'Harf Seçimine Dön') };
+        if (CONCEPT_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ConceptActivitiesMenu, backButtonText: t('menu.concepts.backButton', 'Kavram Menüsüne Dön') };
+        if (REASONING_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ReasoningActivitiesMenu, backButtonText: t('menu.reasoning.backButton', 'Oyun Menüsüne Dön') };
+        if (OBJECT_RECOGNITION_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ObjectCategoriesMenu, backButtonText: t('menu.objects.backButton', 'Nesne Menüsüne Dön') };
     if (activityType === ActivityType.LineTracing || activityType === ActivityType.ShapeColoring || activityType === ActivityType.RhythmFollowing) return { backScreen: ScreenState.FineMotorMenu, backButtonText: t('menu.fineMotor.backButton', 'İnce Motor Menüsüne Dön') };
-        return { backScreen: ScreenState.MainMenu, backButtonText: 'Etkinlik Menüsüne Dön' };
+        return { backScreen: ScreenState.MainMenu, backButtonText: t('app.back', 'Etkinlik Menüsüne Dön') };
     };
 
     useEffect(() => {
@@ -484,7 +484,7 @@ export const AppRouter = () => {
             ctx.print.setCategoryForPrintSelection({ id: String(catId), title: String(resolved?.title || ''), color: String(color) });
             setPreviousScreen(screenState);
             setScreenState(ScreenState.PrintSelectionDetail);
-        }} isPremium={ctx.settings.isPremium} />;
+        }} isPremium={ctx.settings.isPremium} key={ctx.settings.language} />;
 
         case ScreenState.ObjectCategoriesIntlMenu: {
             // Only show a subset that has curated EN datasets for now, in a fixed logical order
@@ -579,7 +579,8 @@ export const AppRouter = () => {
                     setPreviousScreen(screenState);
                     setScreenState(ScreenState.PrintSelectionDetail);
                 }} 
-                isPremium={ctx.settings.isPremium} 
+                isPremium={ctx.settings.isPremium}
+                key={ctx.settings.language}
             />
         }
 
@@ -753,7 +754,7 @@ export const AppRouter = () => {
             setScreenState(ScreenState.CommunicationDetail);
         }} onBack={() => setScreenState(ScreenState.CommunicationMenu)} />;
 
-        case ScreenState.CommunicationDetail: return <CommunicationCardDetailScreen categoryTitle={ctx.communication.selectedCommSubCategory?.title || ctx.communication.selectedCommCategory!.title} categoryColor={ctx.communication.selectedCommCategory!.color} cards={ctx.communication.selectedCommSubCategory?.cards || ctx.communication.selectedCommCategory!.cards!} onBack={() => ctx.communication.selectedCommCategory?.subCategories ? setScreenState(ScreenState.CommunicationSubCategory) : setScreenState(ScreenState.CommunicationMenu)} sentence={ctx.communication.sentence} onCardClick={ctx.communication.handleCardClick} onSpeakSentence={ctx.communication.handleSpeakSentence} onClearSentence={ctx.communication.handleClearSentence} isPremium={ctx.settings.isPremium} printPool={ctx.print.printPool} onTogglePrintPool={ctx.print.handleTogglePrintPool} />;
+        case ScreenState.CommunicationDetail: return <CommunicationCardDetailScreen subcategoryId={ctx.communication.selectedCommSubCategory?.id || ''} categoryTitle={ctx.communication.selectedCommSubCategory?.title || ctx.communication.selectedCommCategory!.title} categoryColor={ctx.communication.selectedCommCategory!.color} cards={ctx.communication.selectedCommSubCategory?.cards || ctx.communication.selectedCommCategory!.cards!} onBack={() => ctx.communication.selectedCommCategory?.subCategories ? setScreenState(ScreenState.CommunicationSubCategory) : setScreenState(ScreenState.CommunicationMenu)} sentence={ctx.communication.sentence} onCardClick={ctx.communication.handleCardClick} onSpeakSentence={ctx.communication.handleSpeakSentence} onClearSentence={ctx.communication.handleClearSentence} isPremium={ctx.settings.isPremium} printPool={ctx.print.printPool} onTogglePrintPool={ctx.print.handleTogglePrintPool} />;
         
         
 

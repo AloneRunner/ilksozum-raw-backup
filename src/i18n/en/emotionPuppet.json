@@ -1,16 +1,42 @@
 {
   "emotionPuppet": {
+    "title": "Emotion Puppet",
+    "instruction": "Make a {emotion} face!",
+    "facePreview": "Face Preview",
+    "targetEmotion": "Target",
+    "selectEyebrows": "Choose eyebrows",
+    "selectEyes": "Choose eyes",
+    "selectMouth": "Choose mouth",
+    "checkButton": "Check",
+    "feedback": {
+      "correct": "Great job! You made a {emotion} face!",
+      "incorrect": "Try again!"
+    },
     "emotions": {
       "happy": "Happy",
       "sad": "Sad",
       "angry": "Angry",
       "surprised": "Surprised"
     },
-    "instructions": "Select face parts to create a {emotion} face",
-    "selectEyes": "Select eyes",
-    "selectMouth": "Select mouth",
-    "selectEyebrows": "Select eyebrows",
-    "correct": "Great! You created the correct facial expression!",
-    "tryAgain": "Try again, select different parts"
+    "parts": {
+      "eyes": {
+        "happy": "Happy Eyes",
+        "sad": "Sad Eyes",
+        "angry": "Angry Eyes",
+        "surprised": "Surprised Eyes"
+      },
+      "mouth": {
+        "happy": "Smiling Mouth",
+        "sad": "Frowning Mouth",
+        "angry": "Straight Mouth",
+        "surprised": "Round Mouth"
+      },
+      "eyebrows": {
+        "happy": "Happy Eyebrows",
+        "sad": "Droopy Eyebrows",
+        "angry": "Angry Eyebrows",
+        "surprised": "Raised Eyebrows"
+      }
+    }
   }
 }

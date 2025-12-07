@@ -10,7 +10,7 @@
     },
     "grid": {
       "findAll": "Finde alle versteckten \"{letter}\" im Raster.",
-      "findAll.short": "Alle {letter} finden",
+      "findAllShort": "Alle {letter} finden",
       "progress": "Gefunden"
     },
     "findSoundInImage": {

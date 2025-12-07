@@ -1,32 +1,7 @@
-{
-  "fewMuchConcepts": {
-    "fewMuch": "Weinig / Veel",
-    "q_which_is_few": "Welke heeft er weinig?",
-    "q_which_is_few_person": "Welke heeft er weinig?",
-    "q_which_is_much": "Welke heeft er veel?",
-    "yes_uzum_az": "Ja, deze druiven zijn weinig.",
-    "no_uzum_az": "Nee, deze druiven zijn niet weinig.",
-    "yes_uzum_cok": "Ja, deze druiven zijn veel.",
-    "no_uzum_cok": "Nee, deze druiven zijn niet veel.",
-    "yes_kavanoz_az": "Ja, deze knikkers zijn weinig.",
-    "no_kavanoz_az": "Nee, deze knikkers zijn niet weinig.",
-    "yes_kavanoz_cok": "Ja, deze knikkers zijn veel.",
-    "no_kavanoz_cok": "Nee, deze knikkers zijn niet veel.",
-    "yes_kitaplik_az": "Ja, deze boeken zijn weinig.",
-    "no_kitaplik_az": "Nee, deze boeken zijn niet weinig.",
-    "yes_kitaplik_cok": "Ja, deze boeken zijn veel.",
-    "no_kitaplik_cok": "Nee, deze boeken zijn niet veel.",
-    "yes_para_az": "Ja, dit geld is weinig.",
-    "no_para_az": "Nee, dit geld is niet weinig.",
-    "yes_para_cok": "Ja, dit geld is veel.",
-    "no_para_cok": "Nee, dit geld is niet veel.",
-    "yes_akvaryum_az": "Ja, deze vissen zijn weinig.",
-    "no_akvaryum_az": "Nee, deze vissen zijn niet weinig.",
-    "yes_akvaryum_cok": "Ja, deze vissen zijn veel.",
-    "no_akvaryum_cok": "Nee, deze vissen zijn niet veel.",
-    "yes_kus_az": "Ja, deze vogels zijn weinig.",
-    "no_kus_az": "Nee, deze vogels zijn niet weinig.",
-    "yes_kuslar_cok": "Ja, deze vogels zijn veel.",
-    "no_kuslar_cok": "Nee, deze vogels zijn niet veel."
+﻿{
+  "fewMuch": {
+    "q_which_is_few": "Welke is weinig?",
+    "q_which_is_few_person": "Welke is weinig?",
+    "q_which_is_much": "Welke is veel?"
   }
 }

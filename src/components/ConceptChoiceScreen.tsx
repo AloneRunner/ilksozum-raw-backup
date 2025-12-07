@@ -34,8 +34,8 @@ const getCategoryById = (id: number): string | null => {
 };
 
 // Helper function to get localized concept word for TTS
-const getLocalizedConcept = (turkishWord: string): string => {
-    const currentLang = getCurrentLanguage();
+const getLocalizedConcept = (turkishWord: string, lang?: ReturnType<typeof getCurrentLanguage>): string => {
+    const currentLang = lang ?? getCurrentLanguage();
     return currentLang === 'tr' ? turkishWord : translateLabel(turkishWord, currentLang);
 };
 
@@ -288,6 +288,24 @@ const QUESTION_TEXTS: Record<'tr' | 'en', Record<string, string>> = {
 function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof getCurrentLanguage>): string {
     const key = roundData.questionAudioKey;
     if (!key) return roundData.question;
+    
+    // For quantities activities, use their specific namespace (fewMuch, fullEmpty, etc.) instead of generic 'questions'
+    const quantityNamespaceMap: Record<ActivityType, string | null> = {
+        [ActivityType.FewMuch]: 'fewMuch',
+        [ActivityType.FullEmpty]: 'fullEmpty',
+        [ActivityType.HalfQuarterWhole]: 'halfQuarterWhole',
+        [ActivityType.OddEven]: 'oddEven',
+    } as any;
+    
+    const quantityNs = quantityNamespaceMap[roundData.activityType];
+    if (quantityNs) {
+        const quantityKey = `${quantityNs}.${key}`;
+        const quantityQuestion = lookupLocale(quantityKey, lang);
+        if (quantityQuestion) return quantityQuestion;
+        // Fallback to Turkish if translation missing
+        if (lang === 'tr') return roundData.question;
+    }
+    
     // Prefer static spatial i18n keys when available: questions.sp_<prefix>_<id>_question
     const spatialPrefixForType = (type: ActivityType): string | null => {
         switch (type) {
@@ -343,15 +361,13 @@ function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof g
     if (translatedQuestion) {
         // Special handling for dynamic questions with placeholders
         if (key === 'q_which_is_color' || key === 'q_which_is_shape' || key === 'q_which_is_emotion') {
-            const extractTargetFromQuestion = (q?: string) => {
-                if (!q) return '';
-                const normalized = q.trim();
-                const suffix = ' olan hangisi?';
-                return normalized.endsWith(suffix) ? normalized.slice(0, -suffix.length).trim() : normalized;
-            };
-            const targetTr = extractTargetFromQuestion(roundData.question);
-            const targetLocalized = translateLabel(targetTr, lang);
-            return translatedQuestion.replace('{color}', targetLocalized).replace('{shape}', targetLocalized);
+            // Extract the target from the correct option instead of trying to parse roundData.question
+            // which may already be localized from contentService
+            const correct = roundData.options?.find(o => o.isCorrect);
+            const targetLocalized = correct?.spokenText || (correct ? translateLabel(correct.word, lang) : '');
+            if (targetLocalized) {
+                return translatedQuestion.replace('{color}', targetLocalized).replace('{shape}', targetLocalized).replace('{emotion}', targetLocalized);
+            }
         }
         return translatedQuestion;
     }
@@ -373,12 +389,32 @@ function getLocalizedQuestion(roundData: ConceptRound, lang: ReturnType<typeof g
     // Defensive dedupe: sometimes question text already contains the templated prefix
     const dedupe = (q: string) => {
         if (!q) return q;
-        if (String(lang) === 'tr') {
+        const langStr = String(lang);
+        if (langStr === 'tr') {
             // remove duplicated 'hangisi' occurrences like 'Hangisi hangisi?'
             return q.replace(/(hangisi\s+){2,}/i, 'hangisi ').trim();
         }
         // English: collapse repeated leading 'Which one is' occurrences
-        return q.replace(/^(Which one is\s+)+/i, 'Which one is ').trim();
+        if (langStr === 'en') {
+            return q.replace(/^(Which one is\s+)+/i, 'Which one is ').trim();
+        }
+        // German: collapse repeated 'Welches ist' occurrences
+        if (langStr === 'de') {
+            return q.replace(/^(Welches ist\s+)+/i, 'Welches ist ').replace(/^(Welches ist ein\(e\)\s+)+/i, 'Welches ist ein(e) ').trim();
+        }
+        // French: collapse repeated 'Lequel est' occurrences
+        if (langStr === 'fr') {
+            return q.replace(/^(Lequel est\s+)+/i, 'Lequel est ').replace(/^(Lequel est un\(e\)\s+)+/i, 'Lequel est un(e) ').trim();
+        }
+        // Dutch: collapse repeated 'Welke is' occurrences
+        if (langStr === 'nl') {
+            return q.replace(/^(Welke is\s+)+/i, 'Welke is ').trim();
+        }
+        // Azerbaijani: collapse repeated 'hansıdır' occurrences
+        if (langStr === 'az') {
+            return q.replace(/(hansıdır\s+){2,}/i, 'hansıdır ').trim();
+        }
+        return q;
     };
     return dedupe(roundData.question);
 }
@@ -706,6 +742,17 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
 
     const baseButtonClasses = "p-3 sm:p-4 rounded-full text-white shadow-lg transition-transform transform hover:scale-110 disabled:opacity-50";
 
+    const lang = getCurrentLanguage();
+    const locale = getSpeechLocale(lang);
+    const localizeConcept = (word: string) => getLocalizedConcept(word, lang);
+    const speakConcept = (word: string) => speak(localizeConcept(word));
+    const formatConcept = (word: string) => {
+        const localized = localizeConcept(word);
+        if (!localized) return '';
+        const [first, ...rest] = localized;
+        return `${first?.toLocaleUpperCase(locale || 'en-US') ?? ''}${rest.join('')}`;
+    };
+
     // Reset all states when activity type changes
     useEffect(() => {
         setScale(1); setLength(10); setThickness(6); setWidth(12); setIsHard(false);
@@ -761,10 +808,9 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                 return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-3 sm:grid-cols-5 gap-2"> {emotions.map(({ spoken, color, svg }) => { const label = getCurrentLanguage() === 'tr' ? spoken : translateLabel(spoken, getCurrentLanguage()); const say = getCurrentLanguage() === 'tr' ? spoken : label; return ( <button key={spoken} onClick={() => speak(say)} className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8 aspect-square rounded-full shadow-md p-1 transition transform hover:scale-110" style={{ backgroundColor: color }} aria-label={label}> {svg} </button> ); })} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 sm-landscape:gap-1 mt-4 sm-landscape:mt-0"> <p className="text-sm font-medium text-slate-600">{t('choice.learnEmotions')}</p> </div> </div> );
             }
             case ActivityType.BigSmall: {
-                const bigText = getCurrentLanguage() === 'tr' ? 'büyük' : translateLabel('büyük', getCurrentLanguage());
-                const smallText = getCurrentLanguage() === 'tr' ? 'küçük' : translateLabel('küçük', getCurrentLanguage());
-                const changeSizeText = getCurrentLanguage() === 'tr' ? 'Boyutu Değiştir' : t('concepts.changeSize') || 'Change Size';
-                
+                const changeSizeText = lang === 'tr' ? 'Boyutu Değiştir' : t('concepts.changeSize') || 'Change Size';
+                const bigLabel = formatConcept('büyük');
+                const smallLabel = formatConcept('küçük');
                 return (
                     <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8">
                         <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl">
@@ -772,13 +818,13 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                         </div>
                         <div className="flex flex-col justify-center items-center gap-4 mt-4 sm-landscape:mt-0 sm-landscape:gap-2">
                             <p className="font-semibold text-lg sm-landscape:text-base text-slate-700 mb-2 sm-landscape:mb-1">{changeSizeText}</p>
-                            <button onClick={() => { setScale(s => Math.min(2, s + 0.25)); speak(bigText); }} className={`${baseButtonClasses} bg-green-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale >= 2}>
+                            <button onClick={() => { setScale(s => Math.min(2, s + 0.25)); speakConcept('büyük'); }} className={`${baseButtonClasses} bg-green-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale >= 2}>
                                 <PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" />
-                                <span className="text-xl font-bold sm-landscape:text-lg">{bigText.charAt(0).toUpperCase() + bigText.slice(1)}</span>
+                                <span className="text-xl font-bold sm-landscape:text-lg">{bigLabel}</span>
                             </button>
-                            <button onClick={() => { setScale(s => Math.max(0.5, s - 0.25)); speak(smallText); }} className={`${baseButtonClasses} bg-red-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale <= 0.5}>
+                            <button onClick={() => { setScale(s => Math.max(0.5, s - 0.25)); speakConcept('küçük'); }} className={`${baseButtonClasses} bg-red-500 flex items-center gap-2 w-40 sm-landscape:w-32 sm-landscape:text-base`} disabled={scale <= 0.5}>
                                 <MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" />
-                                <span className="text-xl font-bold sm-landscape:text-lg">{smallText.charAt(0).toUpperCase() + smallText.slice(1)}</span>
+                                <span className="text-xl font-bold sm-landscape:text-lg">{smallLabel}</span>
                             </button>
                         </div>
                     </div>
@@ -806,11 +852,26 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                 const heavyText = getLocalizedConcept('ağır');
                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="relative w-24 h-24"> <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-4 bg-lime-800/30 rounded-full" style={{ transform: `translateX(-50%) scale(${1 + weight/2}, ${0.5 + weight/4})`, opacity: weight * 0.8 }} /> <div className="absolute inset-0 bg-amber-600 border-4 border-amber-800 rounded-lg transition-transform duration-300" style={{ transform: `translateY(${translateY}px)` }}></div> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setWeight(w => Math.max(0.2, w - 0.2)); speak(lightText); }} className={`${baseButtonClasses} bg-red-500`} disabled={weight <= 0.2}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setWeight(w => Math.min(1.0, w + 0.2)); speak(heavyText); }} className={`${baseButtonClasses} bg-green-500`} disabled={weight >= 1.0}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             }
-            case ActivityType.DerinSig:
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-32 h-32 bg-sky-200 border-4 border-sky-400 overflow-hidden rounded-lg"> <div className="absolute bottom-0 left-0 right-0 bg-blue-500 transition-all duration-300" style={{ height: `${depth}%` }} /> </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setDepth(d => Math.min(90, d + 15)); speak('derin'); }} className={`${baseButtonClasses} bg-green-500 text-sm sm-landscape:w-32`} disabled={depth >= 90}>Derinleştir</button> <button onClick={() => { setDepth(d => Math.max(10, d - 15)); speak('sığ'); }} className={`${baseButtonClasses} bg-red-500 text-sm sm-landscape:w-32`} disabled={depth <= 10}>Sığlaştır</button> </div> </div> );
+            case ActivityType.DerinSig: {
+                const deepLabel = formatConcept('derin');
+                const shallowLabel = formatConcept('sığ');
+                return (
+                    <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8">
+                        <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl">
+                            <div className="relative w-32 h-32 bg-sky-200 border-4 border-sky-400 overflow-hidden rounded-lg">
+                                <div className="absolute bottom-0 left-0 right-0 bg-blue-500 transition-all duration-300" style={{ height: `${depth}%` }} />
+                            </div>
+                        </div>
+                        <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0">
+                            <button onClick={() => { setDepth(d => Math.min(90, d + 15)); speakConcept('derin'); }} className={`${baseButtonClasses} bg-green-500 text-sm sm-landscape:w-32`} disabled={depth >= 90}>{deepLabel}</button>
+                            <button onClick={() => { setDepth(d => Math.max(10, d - 15)); speakConcept('sığ'); }} className={`${baseButtonClasses} bg-red-500 text-sm sm-landscape:w-32`} disabled={depth <= 10}>{shallowLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
             case ActivityType.KalabalikTenha:
-                 const addPerson = () => { if (people.length < MAX_PEOPLE) { const wasCrowded = people.length > 3; const newCount = people.length + 1; setPeople(p => [...p, { id: Date.now(), x: Math.random() * 80 + 10, y: Math.random() * 40 + 50 }]); if(newCount > 3 && !wasCrowded) speak('kalabalık'); }};
-                 const removePerson = () => { if (people.length > 0) { const wasCrowded = people.length > 3; const newCount = people.length - 1; setPeople(p => p.slice(0, -1)); if(newCount <= 3 && wasCrowded) speak('tenha'); }};
+                 const addPerson = () => { if (people.length < MAX_PEOPLE) { const wasCrowded = people.length > 3; const newCount = people.length + 1; setPeople(p => [...p, { id: Date.now(), x: Math.random() * 80 + 10, y: Math.random() * 40 + 50 }]); if(newCount > 3 && !wasCrowded) speakConcept('kalabalık'); }};
+                 const removePerson = () => { if (people.length > 0) { const wasCrowded = people.length > 3; const newCount = people.length - 1; setPeople(p => p.slice(0, -1)); if(newCount <= 3 && wasCrowded) speakConcept('tenha'); }};
                  return ( <div className="w-full text-center"> <div className="h-40 flex items-end justify-center rounded-lg bg-slate-300/50 relative overflow-hidden"> {people.map(p => ( <PersonIcon key={p.id} className="absolute w-12 h-12 text-blue-600 transition-all animate-pop-in" style={{ left: `${p.x}%`, top: `${p.y}%`, transform: 'translate(-50%, -50%)' }} /> ))} </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={removePerson} className={`${baseButtonClasses} bg-red-500`} disabled={people.length === 0}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={addPerson} className={`${baseButtonClasses} bg-green-500`} disabled={people.length >= MAX_PEOPLE}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             case ActivityType.HardSoft: {
                 const softText = getLocalizedConcept('yumuşak');
@@ -818,74 +879,384 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                 return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-24 h-24 bg-lime-500 transition-all duration-300" style={{ borderRadius: isHard ? '8px' : '50%', transform: isHard ? 'scale(1)' : 'scale(1.1, 0.9)' }}></div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsHard(false); speak(softText); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setIsHard(true); speak(hardText); }} className={`${baseButtonClasses} bg-green-500 sm-landscape:w-32`}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
             }
             case ActivityType.RoughSmooth:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className={`w-24 h-24 rounded-full transition-all duration-300 ${isRough ? 'bg-lime-700' : 'bg-lime-500'}`} style={{ backgroundImage: isRough ? 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)' : 'none', backgroundSize: '5px 5px' }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsRough(false); speak('pürüzsüz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsRough(true); speak('pürüzlü'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className={`w-24 h-24 rounded-full transition-all duration-300 ${isRough ? 'bg-lime-700' : 'bg-lime-500'}`} style={{ backgroundImage: isRough ? 'radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)' : 'none', backgroundSize: '5px 5px' }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsRough(false); speakConcept('pürüzsüz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsRough(true); speakConcept('pürüzlü'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             case ActivityType.DikenliPuruzsuz:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-24 h-24"> <circle cx="50" cy="50" r="20" fill="#84cc16" /> {[...Array(12)].map((_, i) => ( <line key={i} x1="50" y1="50" x2="50" y2="20" stroke="#4d7c0f" strokeWidth="4" strokeLinecap="round" className="transition-transform duration-300" style={{ transformOrigin: '50px 50px', transform: `rotate(${i * 30}deg) scaleY(${isThorny ? 1.5 : 0})` }} /> ))} </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsThorny(false); speak('pürüzsüz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsThorny(true); speak('dikenli'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-24 h-24"> <circle cx="50" cy="50" r="20" fill="#84cc16" /> {[...Array(12)].map((_, i) => ( <line key={i} x1="50" y1="50" x2="50" y2="20" stroke="#4d7c0f" strokeWidth="4" strokeLinecap="round" className="transition-transform duration-300" style={{ transformOrigin: '50px 50px', transform: `rotate(${i * 30}deg) scaleY(${isThorny ? 1.5 : 0})` }} /> ))} </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsThorny(false); speakConcept('pürüzsüz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsThorny(true); speakConcept('dikenli'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             case ActivityType.KirisikDuzgun:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg className="w-28 h-24"> <filter id={`wrinkle-filter-${uniqueId}`}> <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="3" result="turbulence" /> <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="8" xChannelSelector="R" yChannelSelector="G" /> </filter> <rect width="100%" height="100%" fill="#84cc16" className="transition-all duration-300" style={{ filter: isWrinkled ? `url(#wrinkle-filter-${uniqueId})` : 'none' }} /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsWrinkled(false); speak('düzgün'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsWrinkled(true); speak('kırışık'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg className="w-28 h-24"> <filter id={`wrinkle-filter-${uniqueId}`}> <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="3" result="turbulence" /> <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="8" xChannelSelector="R" yChannelSelector="G" /> </filter> <rect width="100%" height="100%" fill="#84cc16" className="transition-all duration-300" style={{ filter: isWrinkled ? `url(#wrinkle-filter-${uniqueId})` : 'none' }} /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsWrinkled(false); speakConcept('düzgün'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsWrinkled(true); speakConcept('kırışık'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             case ActivityType.SivriKut:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="w-8 h-24 bg-lime-500 transition-all duration-300" style={{ clipPath: isSharp ? 'polygon(50% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsSharp(false); speak('küt'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsSharp(true); speak('sivri'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="w-8 h-24 bg-lime-500 transition-all duration-300" style={{ clipPath: isSharp ? 'polygon(50% 0, 100% 100%, 0 100%)' : 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsSharp(false); speakConcept('küt'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsSharp(true); speakConcept('sivri'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
             case ActivityType.StraightCurved:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg width="128" height="32" viewBox="0 0 128 32"> <path d={isCurved ? "M 0 16 Q 32 0, 64 16 T 128 16" : "M 0 16 L 128 16"} stroke="#84cc16" fill="transparent" strokeWidth="8" strokeLinecap="round" className="transition-all duration-300" /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsCurved(false); speak('düz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsCurved(true); speak('eğri'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
-            case ActivityType.OldNew:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-28 h-28"> <path d="M77.2,42.8c-7.9-8.4-19.1-8.8-27.5-1c-2.3,2.1-4,4.6-5,7.3c-1-2.7-2.7-5.2-5-7.3c-8.4-7.8-19.6-7.4-27.5,1 C-5.7,53.2-4,72.3,7.5,81.8c2.4,2,5.1,3.6,8.1,4.7c3.4,1.3,7,1.8,10.6,1.4c3.6-0.3,7-1.5,10-3.3c3-1.8,5.7-4.3,7.9-7.2 c2.2,2.9,4.9,5.3,7.9,7.2c3,1.8,6.4,3,10,3.3c3.6,0.3,7.2-0.1,10.6-1.4c3-1.1,5.7-2.7,8.1-4.7C104,72.3,105.7,53.2,77.2,42.8z" className={`transition-colors duration-300 ${isNew ? 'fill-red-600' : 'fill-amber-800'}`}/> <path d="M63.8,4.2c-2.6-2.1-6.1-2.6-9.1-1.2c-3,1.4-5,4.3-5.2,7.6c-0.1,2,0.5,3.9,1.5,5.5c-0.3-3-0.1-6.1,0.8-9 c1.2-3.6,3.6-6.6,6.7-8.1C59.8,3.9,61.4,3.8,62.9,4c-0.2,0-0.3,0-0.5,0.1C62.1,4.1,62.8,4.2,63.8,4.2z" className={`transition-colors duration-300 ${isNew ? 'fill-[#4d7c0f]' : 'fill-[#654321]'}`}/> <path d="M 20 50 A 15 15, 0, 0, 0, 35 35" className={`transition-opacity duration-300 ${isNew ? 'opacity-0' : 'opacity-100'}`} fill="#654321" /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsNew(false); speak('eski'); }} className={`${baseButtonClasses} bg-amber-600 text-sm px-4`}>Eski</button> <button onClick={() => { setIsNew(true); speak('yeni'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4`}>Yeni</button> </div> </div> );
-            case ActivityType.YoungOld:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-28 h-28"> <circle cx="50" cy="50" r="45" fill="#facc15" stroke="#ca8a04" strokeWidth="4" /> <circle cx="35" cy="40" r="5" fill="black" /> <circle cx="65" cy="40" r="5" fill="black" /> <path d="M30 65 Q 50 80 70 65" stroke="black" strokeWidth="4" fill="none" strokeLinecap="round"/> <path d="M25 30 Q 30 25 35 30" stroke="#ca8a04" strokeWidth="2" fill="none" strokeLinecap="round" className={`transition-opacity duration-300 ${isYoung ? 'opacity-0' : 'opacity-100'}`} /> <path d="M65 30 Q 70 25 75 30" stroke="#ca8a04" strokeWidth="2" fill="none" strokeLinecap="round" className={`transition-opacity duration-300 ${isYoung ? 'opacity-0' : 'opacity-100'}`} /> <path d="M20 50 Q 15 55 20 60" stroke="#ca8a04" strokeWidth="2" fill="none" strokeLinecap="round" className={`transition-opacity duration-300 ${isYoung ? 'opacity-0' : 'opacity-100'}`} /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsYoung(false); speak('yaşlı'); }} className={`${baseButtonClasses} bg-slate-500 text-sm px-4`}>Yaşlı</button> <button onClick={() => { setIsYoung(true); speak('genç'); }} className={`${baseButtonClasses} bg-pink-400 text-sm px-4`}>Genç</button> </div> </div> );
-            case ActivityType.CleanDirty:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="relative w-28 h-28"> <svg viewBox="0 0 24 24" className="w-full h-full text-slate-200" fill="currentColor"><path d="M12 2L9 5h6L12 2zm2 17.5V14h-4v5.5c0 .83.67 1.5 1.5 1.5h1c.83 0 1.5-.67 1.5-1.5zM12 22c-1.1 0-2-.9-2-2v-6h4v6c0 1.1-.9 2-2 2zm8-17H4v17.5c0 1.93 1.57 3.5 3.5 3.5h7c1.93 0 3.5-1.57 3.5-3.5V5z"/></svg> <svg viewBox="0 0 24 24" className={`absolute top-1/2 left-1/4 w-10 h-10 text-amber-800 transition-opacity duration-300 ${isClean ? 'opacity-0' : 'opacity-100'}`} fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.41 14.59L12 13.17l-3.41 3.42-1.41-1.41L10.59 12 7.17 8.59l1.41-1.41L12 10.83l3.41-3.42 1.41 1.41L13.41 12l3.42 3.41-1.42 1.18z"/></svg> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsClean(false); speak('kirli'); }} className={`${baseButtonClasses} bg-amber-700 text-sm px-4`}>Kirlet</button> <button onClick={() => { setIsClean(true); speak('temiz'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4`}>Temizle</button> </div> </div> );
-            case ActivityType.WetDry:
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className={`relative w-28 h-28 rounded-lg transition-colors duration-300 ${isWet ? 'bg-sky-400' : 'bg-orange-300'}`}> {isWet && <span className="absolute bottom-2 left-2 text-xl">💧</span>} </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsWet(true); speak('ıslak'); }} className={`${baseButtonClasses} bg-blue-500 text-sm px-4 sm-landscape:w-32`}>Isla</button> <button onClick={() => { setIsWet(false); speak('kuru'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-4 sm-landscape:w-32`}>Kurut</button> </div> </div> );
-            case ActivityType.OpenClosed:
-                 return ( <div className="w-full text-center"> <div className="h-40 flex items-center justify-center" style={{ perspective: '800px' }}> <div className="relative w-28 h-40 bg-amber-800 rounded-lg p-2"> <div className={`w-full h-full bg-amber-600 rounded-md transition-transform duration-500`} style={{ transformOrigin: 'left', transform: isOpen ? 'rotateY(-110deg)' : 'rotateY(0deg)' }}> <div className="absolute top-1/2 -translate-y-1/2 right-2 w-3 h-3 bg-yellow-400 rounded-full"></div> </div> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsOpen(false); speak('kapalı'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Kapat</button> <button onClick={() => { setIsOpen(true); speak('açık'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Aç</button> </div> </div> );
-            case ActivityType.AliveLifeless:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-28 h-28"> <path d="M 50 100 V 50" stroke={isAlive ? '#166534' : '#78716c'} strokeWidth="10" strokeLinecap="round" /> <circle cx="50" cy="30" r="25" fill={isAlive ? '#fde047' : '#a8a29e'} className="transition-all duration-300" style={{ transformOrigin: '50px 50px', transform: isAlive ? 'rotate(0deg)' : 'rotate(-25deg)'}} /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsAlive(false); speak('cansız'); }} className={`${baseButtonClasses} bg-slate-500 text-sm px-4`}>Soldur</button> <button onClick={() => { setIsAlive(true); speak('canlı'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Canlandır</button> </div> </div> );
-            case ActivityType.BrokenIntact:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-24 h-24"> <g className="transition-transform duration-300" style={{ transform: isIntact ? 'scale(1)' : 'scale(1.1)', opacity: isIntact ? 1 : 0.8 }}> <circle cx="50" cy="50" r="45" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="4" className={`transition-opacity duration-300 ${isIntact ? 'opacity-100' : 'opacity-0'}`} /> <g className={`transition-opacity duration-300 ${!isIntact ? 'opacity-100' : 'opacity-0'}`}> <path d="M 50 5 A 45 45 0 0 1 85 25" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translateX(-5px)'}} /> <path d="M 85 25 A 45 45 0 0 1 75 65" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translate(5px, 5px)'}}/> <path d="M 75 65 A 45 45 0 0 1 25 75" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translate(-5px, 8px)'}}/> <path d="M 25 75 A 45 45 0 0 1 50 5" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translate(3px, -8px)'}}/> </g> </g> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsIntact(false); speak('kırık'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Kır</button> <button onClick={() => { setIsIntact(true); speak('sağlam'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Onar</button> </div> </div> );
-            case ActivityType.MessyClean:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="w-32 h-32 bg-amber-200 rounded-lg relative"> {[...Array(5)].map((_, i) => <div key={i} className="absolute w-8 h-8 bg-sky-500 rounded-md transition-all duration-500" style={{ top: isTidy ? '50%' : `${20 + (i*40)%60}%`, left: isTidy ? '50%' : `${20 + (i%3)*30}%`, transform: `translate(-50%,-50%) rotate(${isTidy ? `${i*15}deg` : `${i*72}deg`})` }}/>)} </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsTidy(false); speak('dağınık'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Dağıt</button> <button onClick={() => { setIsTidy(true); speak('toplu'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Topla</button> </div> </div> );
-            case ActivityType.TazeBayat:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <AppleIcon className={`w-24 h-24 transition-colors duration-300 ${isFresh ? 'text-red-600' : 'text-yellow-800'}`}/> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsFresh(false); speak('bayat'); }} className={`${baseButtonClasses} bg-yellow-700 text-sm px-4`}>Bayatlat</button> <button onClick={() => { setIsFresh(true); speak('taze'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Tazele</button> </div> </div> );
-            case ActivityType.DugumCozuk:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg width="128" height="64" viewBox="0 0 128 64"> <path d={isKnotted ? "M24 40 C 4 24, 60 8, 80 32 C 100 56, 124 24, 104 40 C 84 56, 52 56, 24 40 Z" : "M20 32 C 40 48, 88 16, 108 32" } stroke="#a16207" fill="transparent" strokeWidth="8" strokeLinecap="round" className="transition-all duration-500" /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsKnotted(true); speak('düğüm'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Düğümle</button> <button onClick={() => { setIsKnotted(false); speak('çözük'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Çöz</button> </div> </div> );
-            case ActivityType.HungryFull:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-28 h-28"> <circle cx="50" cy="50" r="45" fill={isFull ? '#a3e635' : '#fef08a'} stroke={isFull ? '#65a30d' : '#facc15'} strokeWidth="4" className="transition-colors duration-300"/> <circle cx="35" cy="40" r="5" fill="black" /> <circle cx="65" cy="40" r="5" fill="black" /> <path d={isFull ? "M30 65 Q 50 80 70 65" : "M30 70 Q 50 60 70 70"} stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" className="transition-all duration-300"/> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsFull(false); speak('aç'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Acık</button> <button onClick={() => { setIsFull(true); speak('tok'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Doyur</button> </div> </div> );
-            case ActivityType.TembelCaliskan:
-                return ( <div className="w-full text-center"> <div className={`h-32 flex items-center justify-center relative bg-sky-100 rounded-lg overflow-hidden`}> <div className={`w-12 h-12 bg-yellow-400 rounded-full absolute ${isWorking ? 'animate-move-fast' : 'animate-move-slow'}`}></div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsWorking(false); speak('tembel'); }} className={`${baseButtonClasses} bg-orange-400 text-sm px-4`}>Tembel</button> <button onClick={() => { setIsWorking(true); speak('çalışkan'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4`}>Çalışkan</button> </div> </div> );
-            case ActivityType.BitterSweet:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg viewBox="0 0 100 100" className="w-28 h-28"> <circle cx="50" cy="50" r="45" fill={taste === 'sweet' ? '#fde047' : '#a3e635'} stroke={taste === 'sweet' ? '#f59e0b' : '#65a30d'} strokeWidth="4" className="transition-colors duration-300"/> <circle cx="35" cy="40" r="5" fill="black" /> <circle cx="65" cy="40" r="5" fill="black" /> <path d={taste === 'sweet' ? "M30 65 Q 50 80 70 65" : "M30 75 Q 50 60 70 75"} stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" className="transition-all duration-300"/> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setTaste('bitter'); speak('acı'); }} className={`${baseButtonClasses} bg-green-600 text-sm px-4`}>Acı</button> <button onClick={() => { setTaste('sweet'); speak('tatlı'); }} className={`${baseButtonClasses} bg-pink-400 text-sm px-4`}>Tatlı</button> </div> </div> );
-            case ActivityType.TersDuz:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="w-24 h-24 transition-transform duration-500" style={{ transform: isRightSideUp ? 'rotate(0deg)' : 'rotate(180deg)' }}><HouseIconSimple className="w-full h-full" /></div> </div> <div className="flex justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsRightSideUp(prev => !prev); speak(isRightSideUp ? 'ters' : 'düz'); }} className={`${baseButtonClasses} bg-purple-500 text-sm px-4 sm-landscape:w-32`}>{isRightSideUp ? 'Düz' : 'Ters'}</button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <svg width="128" height="32" viewBox="0 0 128 32"> <path d={isCurved ? "M 0 16 Q 32 0, 64 16 T 128 16" : "M 0 16 L 128 16"} stroke="#84cc16" fill="transparent" strokeWidth="8" strokeLinecap="round" className="transition-all duration-300" /> </svg> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsCurved(false); speakConcept('düz'); }} className={`${baseButtonClasses} bg-red-500`}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setIsCurved(true); speakConcept('eğri'); }} className={`${baseButtonClasses} bg-green-500`}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
+            case ActivityType.OldNew: {
+                const oldLabel = formatConcept('eski');
+                const newLabel = formatConcept('yeni');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" className="w-28 h-28">
+                                <path d="M77.2,42.8c-7.9-8.4-19.1-8.8-27.5-1c-2.3,2.1-4,4.6-5,7.3c-1-2.7-2.7-5.2-5-7.3c-8.4-7.8-19.6-7.4-27.5,1 C-5.7,53.2-4,72.3,7.5,81.8c2.4,2,5.1,3.6,8.1,4.7c3.4,1.3,7,1.8,10.6,1.4c3.6-0.3,7-1.5,10-3.3c3-1.8,5.7-4.3,7.9-7.2 c2.2,2.9,4.9,5.3,7.9,7.2c3,1.8,6.4,3,10,3.3c3.6,0.3,7.2-0.1,10.6-1.4c3-1.1,5.7-2.7,8.1-4.7C104,72.3,105.7,53.2,77.2,42.8z" className={`transition-colors duration-300 ${isNew ? 'fill-red-600' : 'fill-amber-800'}`}/>
+                                <path d="M63.8,4.2c-2.6-2.1-6.1-2.6-9.1-1.2c-3,1.4-5,4.3-5.2,7.6c-0.1,2,0.5,3.9,1.5,5.5c-0.3-3-0.1-6.1,0.8-9 c1.2-3.6,3.6-6.6,6.7-8.1C59.8,3.9,61.4,3.8,62.9,4c-0.2,0-0.3,0-0.5,0.1C62.1,4.1,62.8,4.2,63.8,4.2z" className={`transition-colors duration-300 ${isNew ? 'fill-[#4d7c0f]' : 'fill-[#654321]'}`}/>
+                                <path d="M 20 50 A 15 15, 0, 0, 0, 35 35" className={`transition-opacity duration-300 ${isNew ? 'opacity-0' : 'opacity-100'}`} fill="#654321" />
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsNew(false); speakConcept('eski'); }} className={`${baseButtonClasses} bg-amber-600 text-sm px-4`}>{oldLabel}</button>
+                            <button onClick={() => { setIsNew(true); speakConcept('yeni'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4`}>{newLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.YoungOld: {
+                const oldLabel = formatConcept('yaşlı');
+                const youngLabel = formatConcept('genç');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" className="w-28 h-28">
+                                <circle cx="50" cy="50" r="45" fill="#facc15" stroke="#ca8a04" strokeWidth="4" />
+                                <circle cx="35" cy="40" r="5" fill="black" />
+                                <circle cx="65" cy="40" r="5" fill="black" />
+                                <path d="M30 65 Q 50 80 70 65" stroke="black" strokeWidth="4" fill="none" strokeLinecap="round"/>
+                                <path d="M25 30 Q 30 25 35 30" stroke="#ca8a04" strokeWidth="2" fill="none" strokeLinecap="round" className={`transition-opacity duration-300 ${isYoung ? 'opacity-0' : 'opacity-100'}`} />
+                                <path d="M65 30 Q 70 25 75 30" stroke="#ca8a04" strokeWidth="2" fill="none" strokeLinecap="round" className={`transition-opacity duration-300 ${isYoung ? 'opacity-0' : 'opacity-100'}`} />
+                                <path d="M20 50 Q 15 55 20 60" stroke="#ca8a04" strokeWidth="2" fill="none" strokeLinecap="round" className={`transition-opacity duration-300 ${isYoung ? 'opacity-0' : 'opacity-100'}`} />
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsYoung(false); speakConcept('yaşlı'); }} className={`${baseButtonClasses} bg-slate-500 text-sm px-4`}>{oldLabel}</button>
+                            <button onClick={() => { setIsYoung(true); speakConcept('genç'); }} className={`${baseButtonClasses} bg-pink-400 text-sm px-4`}>{youngLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.CleanDirty: {
+                const dirtyLabel = formatConcept('kirli');
+                const cleanLabel = formatConcept('temiz');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <div className="relative w-28 h-28">
+                                <svg viewBox="0 0 24 24" className="w-full h-full text-slate-200" fill="currentColor"><path d="M12 2L9 5h6L12 2zm2 17.5V14h-4v5.5c0 .83.67 1.5 1.5 1.5h1c.83 0 1.5-.67 1.5-1.5zM12 22c-1.1 0-2-.9-2-2v-6h4v6c0 1.1-.9 2-2 2zm8-17H4v17.5c0 1.93 1.57 3.5 3.5 3.5h7c1.93 0 3.5-1.57 3.5-3.5V5z"/></svg>
+                                <svg viewBox="0 0 24 24" className={`absolute top-1/2 left-1/4 w-10 h-10 text-amber-800 transition-opacity duration-300 ${isClean ? 'opacity-0' : 'opacity-100'}`} fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.41 14.59L12 13.17l-3.41 3.42-1.41-1.41L10.59 12 7.17 8.59l1.41-1.41L12 10.83l3.41-3.42 1.41 1.41L13.41 12l3.42 3.41-1.42 1.18z"/></svg>
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsClean(false); speakConcept('kirli'); }} className={`${baseButtonClasses} bg-amber-700 text-sm px-4`}>{dirtyLabel}</button>
+                            <button onClick={() => { setIsClean(true); speakConcept('temiz'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4`}>{cleanLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.WetDry: {
+                const wetLabel = formatConcept('ıslak');
+                const dryLabel = formatConcept('kuru');
+                return (
+                    <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8">
+                        <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl">
+                            <div className={`relative w-28 h-28 rounded-lg transition-colors duration-300 ${isWet ? 'bg-sky-400' : 'bg-orange-300'}`}>
+                                {isWet && <span className="absolute bottom-2 left-2 text-xl">💧</span>}
+                            </div>
+                        </div>
+                        <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0">
+                            <button onClick={() => { setIsWet(true); speakConcept('ıslak'); }} className={`${baseButtonClasses} bg-blue-500 text-sm px-4 sm-landscape:w-32`}>{wetLabel}</button>
+                            <button onClick={() => { setIsWet(false); speakConcept('kuru'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-4 sm-landscape:w-32`}>{dryLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.OpenClosed: {
+                const closedLabel = formatConcept('kapalı');
+                const openLabel = formatConcept('açık');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-40 flex items-center justify-center" style={{ perspective: '800px' }}>
+                            <div className="relative w-28 h-40 bg-amber-800 rounded-lg p-2">
+                                <div className={`w-full h-full bg-amber-600 rounded-md transition-transform duration-500`} style={{ transformOrigin: 'left', transform: isOpen ? 'rotateY(-110deg)' : 'rotateY(0deg)' }}>
+                                    <div className="absolute top-1/2 -translate-y-1/2 right-2 w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsOpen(false); speakConcept('kapalı'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{closedLabel}</button>
+                            <button onClick={() => { setIsOpen(true); speakConcept('açık'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{openLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.AliveLifeless: {
+                const lifelessLabel = formatConcept('cansız');
+                const aliveLabel = formatConcept('canlı');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" className="w-28 h-28">
+                                <path d="M 50 100 V 50" stroke={isAlive ? '#166534' : '#78716c'} strokeWidth="10" strokeLinecap="round" />
+                                <circle cx="50" cy="30" r="25" fill={isAlive ? '#fde047' : '#a8a29e'} className="transition-all duration-300" style={{ transformOrigin: '50px 50px', transform: isAlive ? 'rotate(0deg)' : 'rotate(-25deg)'}} />
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsAlive(false); speakConcept('cansız'); }} className={`${baseButtonClasses} bg-slate-500 text-sm px-4`}>{lifelessLabel}</button>
+                            <button onClick={() => { setIsAlive(true); speakConcept('canlı'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{aliveLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.BrokenIntact: {
+                const brokenLabel = formatConcept('kırık');
+                const intactLabel = formatConcept('sağlam');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" className="w-24 h-24">
+                                <g className="transition-transform duration-300" style={{ transform: isIntact ? 'scale(1)' : 'scale(1.1)', opacity: isIntact ? 1 : 0.8 }}>
+                                    <circle cx="50" cy="50" r="45" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="4" className={`transition-opacity duration-300 ${isIntact ? 'opacity-100' : 'opacity-0'}`} />
+                                    <g className={`transition-opacity duration-300 ${!isIntact ? 'opacity-100' : 'opacity-0'}`}>
+                                        <path d="M 50 5 A 45 45 0 0 1 85 25" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translateX(-5px)'}} />
+                                        <path d="M 85 25 A 45 45 0 0 1 75 65" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translate(5px, 5px)'}}/>
+                                        <path d="M 75 65 A 45 45 0 0 1 25 75" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translate(-5px, 8px)'}}/>
+                                        <path d="M 25 75 A 45 45 0 0 1 50 5" fill="none" stroke="#94a3b8" strokeWidth="4" style={{ transformOrigin: 'center', transform: 'translate(3px, -8px)'}}/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsIntact(false); speakConcept('kırık'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{brokenLabel}</button>
+                            <button onClick={() => { setIsIntact(true); speakConcept('sağlam'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{intactLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.MessyClean: {
+                const messyLabel = formatConcept('dağınık');
+                const tidyLabel = formatConcept('toplu');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <div className="w-32 h-32 bg-amber-200 rounded-lg relative">
+                                {[...Array(5)].map((_, i) => (
+                                    <div
+                                        key={i}
+                                        className="absolute w-8 h-8 bg-sky-500 rounded-md transition-all duration-500"
+                                        style={{
+                                            top: isTidy ? '50%' : `${20 + (i*40)%60}%`,
+                                            left: isTidy ? '50%' : `${20 + (i%3)*30}%`,
+                                            transform: `translate(-50%,-50%) rotate(${isTidy ? `${i*15}deg` : `${i*72}deg`})`
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsTidy(false); speakConcept('dağınık'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{messyLabel}</button>
+                            <button onClick={() => { setIsTidy(true); speakConcept('toplu'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{tidyLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.TazeBayat: {
+                const staleLabel = formatConcept('bayat');
+                const freshLabel = formatConcept('taze');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <AppleIcon className={`w-24 h-24 transition-colors duration-300 ${isFresh ? 'text-red-600' : 'text-yellow-800'}`}/>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsFresh(false); speakConcept('bayat'); }} className={`${baseButtonClasses} bg-yellow-700 text-sm px-4`}>{staleLabel}</button>
+                            <button onClick={() => { setIsFresh(true); speakConcept('taze'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{freshLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.DugumCozuk: {
+                const knotLabel = formatConcept('düğüm');
+                const untiedLabel = formatConcept('çözük');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg width="128" height="64" viewBox="0 0 128 64">
+                                <path d={isKnotted ? "M24 40 C 4 24, 60 8, 80 32 C 100 56, 124 24, 104 40 C 84 56, 52 56, 24 40 Z" : "M20 32 C 40 48, 88 16, 108 32" } stroke="#a16207" fill="transparent" strokeWidth="8" strokeLinecap="round" className="transition-all duration-500" />
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsKnotted(true); speakConcept('düğüm'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{knotLabel}</button>
+                            <button onClick={() => { setIsKnotted(false); speakConcept('çözük'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{untiedLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.HungryFull: {
+                const hungryLabel = formatConcept('aç');
+                const fullLabel = formatConcept('tok');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" className="w-28 h-28">
+                                <circle cx="50" cy="50" r="45" fill={isFull ? '#a3e635' : '#fef08a'} stroke={isFull ? '#65a30d' : '#facc15'} strokeWidth="4" className="transition-colors duration-300"/>
+                                <circle cx="35" cy="40" r="5" fill="black" />
+                                <circle cx="65" cy="40" r="5" fill="black" />
+                                <path d={isFull ? "M30 65 Q 50 80 70 65" : "M30 70 Q 50 60 70 70"} stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" className="transition-all duration-300"/>
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsFull(false); speakConcept('aç'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{hungryLabel}</button>
+                            <button onClick={() => { setIsFull(true); speakConcept('tok'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{fullLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.TembelCaliskan: {
+                const lazyLabel = formatConcept('tembel');
+                const diligentLabel = formatConcept('çalışkan');
+                return (
+                    <div className="w-full text-center">
+                        <div className={`h-32 flex items-center justify-center relative bg-sky-100 rounded-lg overflow-hidden`}>
+                            <div className={`w-12 h-12 bg-yellow-400 rounded-full absolute ${isWorking ? 'animate-move-fast' : 'animate-move-slow'}`}></div>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsWorking(false); speakConcept('tembel'); }} className={`${baseButtonClasses} bg-orange-400 text-sm px-4`}>{lazyLabel}</button>
+                            <button onClick={() => { setIsWorking(true); speakConcept('çalışkan'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4`}>{diligentLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.BitterSweet: {
+                const bitterLabel = formatConcept('acı');
+                const sweetLabel = formatConcept('tatlı');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <svg viewBox="0 0 100 100" className="w-28 h-28">
+                                <circle cx="50" cy="50" r="45" fill={taste === 'sweet' ? '#fde047' : '#a3e635'} stroke={taste === 'sweet' ? '#f59e0b' : '#65a30d'} strokeWidth="4" className="transition-colors duration-300"/>
+                                <circle cx="35" cy="40" r="5" fill="black" />
+                                <circle cx="65" cy="40" r="5" fill="black" />
+                                <path d={taste === 'sweet' ? "M30 65 Q 50 80 70 65" : "M30 75 Q 50 60 70 75"} stroke="black" strokeWidth="4" fill="none" strokeLinecap="round" className="transition-all duration-300"/>
+                            </svg>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setTaste('bitter'); speakConcept('acı'); }} className={`${baseButtonClasses} bg-green-600 text-sm px-4`}>{bitterLabel}</button>
+                            <button onClick={() => { setTaste('sweet'); speakConcept('tatlı'); }} className={`${baseButtonClasses} bg-pink-400 text-sm px-4`}>{sweetLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.TersDuz: {
+                const uprightLabel = formatConcept('düz');
+                const upsideDownLabel = formatConcept('ters');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <div className="w-24 h-24 transition-transform duration-500" style={{ transform: isRightSideUp ? 'rotate(0deg)' : 'rotate(180deg)' }}><HouseIconSimple className="w-full h-full" /></div>
+                        </div>
+                        <div className="flex justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0">
+                            <button onClick={() => { setIsRightSideUp(prev => !prev); speakConcept(isRightSideUp ? 'ters' : 'düz'); }} className={`${baseButtonClasses} bg-purple-500 text-sm px-4 sm-landscape:w-32`}>
+                                {isRightSideUp ? uprightLabel : upsideDownLabel}
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
             case ActivityType.FewMuch:
-                 const addApple = () => { if (itemCount < MAX_ITEMS) { const wasFew = itemCount <= MUCH_THRESHOLD; const newCount = itemCount + 1; setItemCount(newCount); if(newCount > MUCH_THRESHOLD && wasFew) speak('çok'); }};
-                 const removeApple = () => { if (itemCount > 0) { const wasMany = itemCount > MUCH_THRESHOLD; const newCount = itemCount - 1; setItemCount(newCount); if(newCount <= MUCH_THRESHOLD && wasMany) speak('az'); }};
+                 const addApple = () => { if (itemCount < MAX_ITEMS) { const wasFew = itemCount <= MUCH_THRESHOLD; const newCount = itemCount + 1; setItemCount(newCount); if(newCount > MUCH_THRESHOLD && wasFew) speakConcept('çok'); }};
+                 const removeApple = () => { if (itemCount > 0) { const wasMany = itemCount > MUCH_THRESHOLD; const newCount = itemCount - 1; setItemCount(newCount); if(newCount <= MUCH_THRESHOLD && wasMany) speakConcept('az'); }};
                  return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="grid grid-cols-4 gap-1">{[...Array(itemCount)].map((_, i) => <AppleIcon key={i} className="w-8 h-8 text-red-600 animate-pop-in"/>)}</div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={removeApple} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`} disabled={itemCount === 0}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={addApple} className={`${baseButtonClasses} bg-green-500 sm-landscape:w-32`} disabled={itemCount >= MAX_ITEMS}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
-            case ActivityType.HalfQuarterWhole:
+            case ActivityType.HalfQuarterWhole: {
                 const getPizzaClipPath = () => {
                     if (fraction === 'half') return 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
                     if (fraction === 'quarter') return 'polygon(50% 0, 100% 0, 100% 50%, 50% 50%)';
                     return 'none';
                 };
-                return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="w-24 h-24 bg-yellow-400 rounded-full border-4 border-amber-600 transition-all duration-300" style={{ clipPath: getPizzaClipPath() }} /> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setFraction('whole'); speak('bütün'); }} className={`${baseButtonClasses} bg-blue-500 text-xs px-2 py-1 sm-landscape:w-20`}>Bütün</button> <button onClick={() => { setFraction('half'); speak('yarım'); }} className={`${baseButtonClasses} bg-green-500 text-xs px-2 py-1 sm-landscape:w-20`}>Yarım</button> <button onClick={() => { setFraction('quarter'); speak('çeyrek'); }} className={`${baseButtonClasses} bg-red-500 text-xs px-2 py-1 sm-landscape:w-20`}>Çeyrek</button> </div> </div> );
-            case ActivityType.FullEmpty:
-                 return ( <div className="w-full text-center"> <div className="h-40 flex items-center justify-center"> <div className="relative w-24 h-32 bg-slate-200/50 border-4 border-slate-300 rounded-t-2xl rounded-b-lg"> <div className="absolute bottom-0 left-0 right-0 bg-blue-400 transition-all duration-300 rounded-b-md" style={{ height: `${fillLevel}%`}}></div> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setFillLevel(l => Math.max(0, l-25)); speak('boşalt'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Boşalt</button> <button onClick={() => { setFillLevel(l => Math.min(100, l+25)); speak('doldur'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Doldur</button> </div> </div> );
-            case ActivityType.OddEven:
+                const wholeLabel = formatConcept('bütün');
+                const halfLabel = formatConcept('yarım');
+                const quarterLabel = formatConcept('çeyrek');
+                return (
+                    <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8">
+                        <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl">
+                            <div className="w-24 h-24 bg-yellow-400 rounded-full border-4 border-amber-600 transition-all duration-300" style={{ clipPath: getPizzaClipPath() }} />
+                        </div>
+                        <div className="flex flex-col sm-landscape:flex-row justify-center gap-2 mt-4 sm-landscape:mt-0">
+                            <button onClick={() => { setFraction('whole'); speakConcept('bütün'); }} className={`${baseButtonClasses} bg-blue-500 text-xs px-2 py-1 sm-landscape:w-20`}>{wholeLabel}</button>
+                            <button onClick={() => { setFraction('half'); speakConcept('yarım'); }} className={`${baseButtonClasses} bg-green-500 text-xs px-2 py-1 sm-landscape:w-20`}>{halfLabel}</button>
+                            <button onClick={() => { setFraction('quarter'); speakConcept('çeyrek'); }} className={`${baseButtonClasses} bg-red-500 text-xs px-2 py-1 sm-landscape:w-20`}>{quarterLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.FullEmpty: {
+                const emptyLabel = formatConcept('boş');
+                const fullLabel = formatConcept('dolu');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-40 flex items-center justify-center">
+                            <div className="relative w-24 h-32 bg-slate-200/50 border-4 border-slate-300 rounded-t-2xl rounded-b-lg">
+                                <div className="absolute bottom-0 left-0 right-0 bg-blue-400 transition-all duration-300 rounded-b-md" style={{ height: `${fillLevel}%`}}></div>
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setFillLevel(l => Math.max(0, l-25)); speakConcept('boş'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{emptyLabel}</button>
+                            <button onClick={() => { setFillLevel(l => Math.min(100, l+25)); speakConcept('dolu'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{fullLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.OddEven: {
                 const isEven = oddEvenCount % 2 === 0;
-                return ( <div className="w-full text-center"> <div className="h-24 flex items-center justify-center rounded-lg bg-slate-300/50 p-2 relative"> <div className="grid grid-cols-5 gap-1">{[...Array(oddEvenCount)].map((_, i) => <AppleIcon key={i} className="w-6 h-6 text-red-600 animate-pop-in"/>)}</div> </div> <p className="font-bold text-2xl mt-2">{isEven ? 'Çift' : 'Tek'}</p> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setOddEvenCount(c => Math.max(1, c - 1)); speak(isEven ? 'tek' : 'çift'); }} className={`${baseButtonClasses} bg-red-500`} disabled={oddEvenCount <= 1}><MinusCircleIcon className="w-10 h-10" /></button> <button onClick={() => { setOddEvenCount(c => Math.min(10, c + 1)); speak(isEven ? 'tek' : 'çift'); }} className={`${baseButtonClasses} bg-green-500`} disabled={oddEvenCount >= 10}><PlusCircleIcon className="w-10 h-10" /></button> </div> </div> );
-            case ActivityType.OnUnder:
-                return ( <div className="w-full text-center"> <div className="h-32 flex flex-col items-center justify-center relative"> <div className="w-16 h-16 bg-red-500 rounded-full transition-all duration-300 absolute" style={{ bottom: position === 'on' ? '6rem' : '0rem' }} /> <div className="w-32 h-12 bg-amber-600 rounded-md absolute bottom-8" /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setPosition('under'); speak('altında'); }} className={`${baseButtonClasses} bg-blue-500 text-sm px-4`}>Altına</button> <button onClick={() => { setPosition('on'); speak('üstünde'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Üstüne</button> </div> </div> );
-            case ActivityType.BelowAbove:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center relative"> <div className="absolute w-20 h-12 bg-sky-300 rounded-full" /> <div className="w-12 h-12 bg-yellow-400 rounded-full transition-transform duration-300 absolute" style={{ transform: `translateY(${positionAbove === 'above' ? '-3rem' : '3rem'})` }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setPositionAbove('below'); speak('aşağıda'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Aşağı</button> <button onClick={() => { setPositionAbove('above'); speak('yukarıda'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Yukarı</button> </div> </div> );
-            case ActivityType.BesideOpposite:
-                 return (
+                const evenLabel = formatConcept('çift');
+                const oddLabel = formatConcept('tek');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-24 flex items-center justify-center rounded-lg bg-slate-300/50 p-2 relative">
+                            <div className="grid grid-cols-5 gap-1">{[...Array(oddEvenCount)].map((_, i) => <AppleIcon key={i} className="w-6 h-6 text-red-600 animate-pop-in"/>)}</div>
+                        </div>
+                        <p className="font-bold text-2xl mt-2">{isEven ? evenLabel : oddLabel}</p>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setOddEvenCount(c => Math.max(1, c - 1)); speakConcept(isEven ? 'tek' : 'çift'); }} className={`${baseButtonClasses} bg-red-500`} disabled={oddEvenCount <= 1}><MinusCircleIcon className="w-10 h-10" /></button>
+                            <button onClick={() => { setOddEvenCount(c => Math.min(10, c + 1)); speakConcept(isEven ? 'tek' : 'çift'); }} className={`${baseButtonClasses} bg-green-500`} disabled={oddEvenCount >= 10}><PlusCircleIcon className="w-10 h-10" /></button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.OnUnder: {
+                const underLabel = formatConcept('altında');
+                const onLabel = formatConcept('üstünde');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex flex-col items-center justify-center relative">
+                            <div className="w-16 h-16 bg-red-500 rounded-full transition-all duration-300 absolute" style={{ bottom: position === 'on' ? '6rem' : '0rem' }} />
+                            <div className="w-32 h-12 bg-amber-600 rounded-md absolute bottom-8" />
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setPosition('under'); speakConcept('altında'); }} className={`${baseButtonClasses} bg-blue-500 text-sm px-4`}>{underLabel}</button>
+                            <button onClick={() => { setPosition('on'); speakConcept('üstünde'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{onLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.BelowAbove: {
+                const belowLabel = formatConcept('aşağıda');
+                const aboveLabel = formatConcept('yukarıda');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center relative">
+                            <div className="absolute w-20 h-12 bg-sky-300 rounded-full" />
+                            <div className="w-12 h-12 bg-yellow-400 rounded-full transition-transform duration-300 absolute" style={{ transform: `translateY(${positionAbove === 'above' ? '-3rem' : '3rem'})` }} />
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setPositionAbove('below'); speakConcept('aşağıda'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{belowLabel}</button>
+                            <button onClick={() => { setPositionAbove('above'); speakConcept('yukarıda'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{aboveLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.BesideOpposite: {
+                const oppositeLabel = formatConcept('karşısında');
+                const besideLabel = formatConcept('yanında');
+                return (
                     <div className="w-full text-center">
                         <div className="h-32 flex items-center justify-center relative w-64 mx-auto bg-slate-200/50 rounded-lg">
-                            {/* The dividing line */}
                             <div className="absolute top-4 bottom-4 left-1/2 -translate-x-1/2 w-1 bg-slate-400 rounded-full" />
-
-                            {/* Blue Person (Fixed) */}
                             <PersonIcon className="w-16 h-16 text-blue-600 absolute left-4 top-1/2 -translate-y-1/2" />
-                            
-                            {/* Green Person (Movable) */}
                             <PersonIcon 
                                 className="w-16 h-16 text-green-600 absolute top-1/2 -translate-y-1/2 transition-all duration-500" 
                                 style={{ 
@@ -895,23 +1266,82 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                             />
                         </div>
                         <div className="flex justify-center gap-4 mt-2">
-                            <button onClick={() => { setArrangement('opposite'); speak('karşısında'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-2`}>Karşılıklı</button>
-                            <button onClick={() => { setArrangement('beside'); speak('yanında'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-2`}>Yan Yana</button>
+                            <button onClick={() => { setArrangement('opposite'); speakConcept('karşısında'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-2`}>{oppositeLabel}</button>
+                            <button onClick={() => { setArrangement('beside'); speakConcept('yanında'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-2`}>{besideLabel}</button>
                         </div>
                     </div>
                 );
-            case ActivityType.InFrontOfBehind:
-                 return ( <div className="w-full text-center" style={{ perspective: '300px' }}> <div className="h-32 flex items-center justify-center relative"> <div className="absolute w-24 h-24 bg-red-500 rounded-full transition-all duration-300" style={{ zIndex: isInFront ? 20 : 10, transform: `scale(${isInFront ? 1 : 0.85})`, filter: `blur(${isInFront ? 0 : '1px'})`, opacity: isInFront ? 1 : 0.9 }} /> <div className="absolute w-32 h-20 bg-amber-600 rounded-md" style={{ zIndex: 15 }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsInFront(false); speak('arkasında'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Arkaya</button> <button onClick={() => { setIsInFront(true); speak('önünde'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Öne</button> </div> </div> );
-            case ActivityType.InsideOutside:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className="relative w-32 h-24 bg-amber-800 rounded-lg border-b-8 border-amber-600"> <div className="absolute w-12 h-12 bg-red-500 rounded-full transition-all duration-300" style={{ left: isInside ? '50%' : '-4rem', top: '50%', transform: 'translate(-50%, -50%)' }} /> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsInside(false); speak('dışında'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Dışarı</button> <button onClick={() => { setIsInside(true); speak('içinde'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>İçeri</button> </div> </div> );
-            case ActivityType.Between:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center relative w-48 mx-auto"> <div className="w-12 h-24 bg-green-700 rounded-md absolute left-0" /> <div className="w-12 h-24 bg-green-700 rounded-md absolute right-0" /> <div className="absolute w-12 h-12 bg-red-500 rounded-full transition-all duration-300" style={{ left: isBetween ? '50%' : '-4rem', transform: 'translateX(-50%)' }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsBetween(false); speak('yanında'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-4`}>Yana</button> <button onClick={() => { setIsBetween(true); speak('arasında'); }} className={`${baseButtonClasses} bg-blue-500 text-sm px-4`}>Araya</button> </div> </div> );
-            case ActivityType.LeftRight:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center relative w-64 mx-auto"> <div className="w-20 h-20 bg-amber-700 rounded-lg absolute left-1/2 -translate-x-1/2" /> <div className="w-12 h-12 bg-red-500 rounded-full absolute transition-all duration-300" style={{ left: leftRightPos === 'left' ? '0' : 'auto', right: leftRightPos === 'right' ? '0' : 'auto' }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setLeftRightPos('left'); speak('solunda'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Sol</button> <button onClick={() => { setLeftRightPos('right'); speak('sağında'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Sağ</button> </div> </div> );
+            }
+            case ActivityType.InFrontOfBehind: {
+                const behindLabel = formatConcept('arkasında');
+                const frontLabel = formatConcept('önünde');
+                return (
+                    <div className="w-full text-center" style={{ perspective: '300px' }}>
+                        <div className="h-32 flex items-center justify-center relative">
+                            <div className="absolute w-24 h-24 bg-red-500 rounded-full transition-all duration-300" style={{ zIndex: isInFront ? 20 : 10, transform: `scale(${isInFront ? 1 : 0.85})`, filter: `blur(${isInFront ? 0 : '1px'})`, opacity: isInFront ? 1 : 0.9 }} />
+                            <div className="absolute w-32 h-20 bg-amber-600 rounded-md" style={{ zIndex: 15 }} />
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsInFront(false); speakConcept('arkasında'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{behindLabel}</button>
+                            <button onClick={() => { setIsInFront(true); speakConcept('önünde'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{frontLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.InsideOutside: {
+                const outsideLabel = formatConcept('dışında');
+                const insideLabel = formatConcept('içinde');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center">
+                            <div className="relative w-32 h-24 bg-amber-800 rounded-lg border-b-8 border-amber-600">
+                                <div className="absolute w-12 h-12 bg-red-500 rounded-full transition-all duration-300" style={{ left: isInside ? '50%' : '-4rem', top: '50%', transform: 'translate(-50%, -50%)' }} />
+                            </div>
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsInside(false); speakConcept('dışında'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{outsideLabel}</button>
+                            <button onClick={() => { setIsInside(true); speakConcept('içinde'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{insideLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.Between: {
+                const besideLabel = formatConcept('yanında');
+                const betweenLabel = formatConcept('arasında');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center relative w-48 mx-auto">
+                            <div className="w-12 h-24 bg-green-700 rounded-md absolute left-0" />
+                            <div className="w-12 h-24 bg-green-700 rounded-md absolute right-0" />
+                            <div className="absolute w-12 h-12 bg-red-500 rounded-full transition-all duration-300" style={{ left: isBetween ? '50%' : '-4rem', transform: 'translateX(-50%)' }} />
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setIsBetween(false); speakConcept('yanında'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-4`}>{besideLabel}</button>
+                            <button onClick={() => { setIsBetween(true); speakConcept('arasında'); }} className={`${baseButtonClasses} bg-blue-500 text-sm px-4`}>{betweenLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
+            case ActivityType.LeftRight: {
+                const leftLabel = formatConcept('solunda');
+                const rightLabel = formatConcept('sağında');
+                return (
+                    <div className="w-full text-center">
+                        <div className="h-32 flex items-center justify-center relative w-64 mx-auto">
+                            <div className="w-20 h-20 bg-amber-700 rounded-lg absolute left-1/2 -translate-x-1/2" />
+                            <div className="w-12 h-12 bg-red-500 rounded-full absolute transition-all duration-300" style={{ left: leftRightPos === 'left' ? '0' : 'auto', right: leftRightPos === 'right' ? '0' : 'auto' }} />
+                        </div>
+                        <div className="flex justify-center gap-8 mt-2">
+                            <button onClick={() => { setLeftRightPos('left'); speakConcept('solunda'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>{leftLabel}</button>
+                            <button onClick={() => { setLeftRightPos('right'); speakConcept('sağında'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>{rightLabel}</button>
+                        </div>
+                    </div>
+                );
+            }
             case ActivityType.NearFar:
-                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center relative w-64 mx-auto"> <div className="w-20 h-20 bg-amber-700 rounded-lg absolute left-0" /> <div className="w-12 h-12 bg-red-500 rounded-full absolute transition-all duration-300" style={{ transform: `scale(${isNear ? 1 : 0.6})`, left: isNear ? '8rem' : '12rem' }} /> </div> <div className="flex justify-center gap-4 mt-2"> <button onClick={() => { setIsNear(false); speak('uzak'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-2`}>Uzaklaştır</button> <button onClick={() => { setIsNear(true); speak('yakın'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-2`}>Yakınlaştır</button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center relative w-64 mx-auto"> <div className="w-20 h-20 bg-amber-700 rounded-lg absolute left-0" /> <div className="w-12 h-12 bg-red-500 rounded-full absolute transition-all duration-300" style={{ transform: `scale(${isNear ? 1 : 0.6})`, left: isNear ? '8rem' : '12rem' }} /> </div> <div className="flex justify-center gap-4 mt-2"> <button onClick={() => { setIsNear(false); speakConcept('uzak'); }} className={`${baseButtonClasses} bg-orange-500 text-sm px-2`}>Uzaklaştır</button> <button onClick={() => { setIsNear(true); speakConcept('yakın'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-2`}>Yakınlaştır</button> </div> </div> );
             case ActivityType.HighLow:
-                 return ( <div className="w-full text-center"> <div className="h-40 flex items-center justify-center relative w-full"> <div className="w-16 h-16 bg-blue-500 rounded-full absolute transition-all duration-300" style={{ bottom: highLowPos === 'high' ? '8rem' : '1rem' }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setHighLowPos('low'); speak('alçak'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Alçalt</button> <button onClick={() => { setHighLowPos('high'); speak('yüksek'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Yükselt</button> </div> </div> );
+                 return ( <div className="w-full text-center"> <div className="h-40 flex items-center justify-center relative w-full"> <div className="w-16 h-16 bg-blue-500 rounded-full absolute transition-all duration-300" style={{ bottom: highLowPos === 'high' ? '8rem' : '1rem' }} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setHighLowPos('low'); speakConcept('alçak'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Alçalt</button> <button onClick={() => { setHighLowPos('high'); speakConcept('yüksek'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Yükselt</button> </div> </div> );
             case ActivityType.BeforeAfter:
                  return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-32 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-28 h-28"> { isAfter ? <AppleCoreIcon className="w-full h-full text-red-600 animate-pop-in"/> : <AppleIcon className="w-full h-full text-red-600 animate-pop-in"/> } </div> </div> <div className="flex justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsAfter(prev => !prev); speak(isAfter ? 'önce' : 'sonra'); }} className={`${baseButtonClasses} bg-sky-500 text-sm px-4 sm-landscape:w-32`}>{isAfter ? 'Önce' : 'Sonra'}</button> </div> </div> );
             case ActivityType.DayNight: {
@@ -930,9 +1360,9 @@ const InteractiveConceptHelper: React.FC<{ activityType: ActivityType }> = ({ ac
                 return ( <div className="w-full text-center flex flex-col sm-landscape:flex-row sm-landscape:items-center sm-landscape:justify-center sm-landscape:gap-8"> <div className="h-40 sm-landscape:h-48 flex items-center justify-center p-4 bg-slate-200/50 rounded-2xl"> <div className="relative w-32 h-32"> <div className={`w-full h-full transition-opacity duration-300 ${isHot ? 'opacity-100' : 'opacity-0'}`}> <SunIcon className="w-full h-full text-red-500" /> </div> <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${!isHot ? 'opacity-100' : 'opacity-0'}`}> <SnowflakeIcon className="w-full h-full text-blue-400" /> </div> </div> </div> <div className="flex flex-col sm-landscape:flex-row justify-center gap-4 sm-landscape:gap-2 mt-4 sm-landscape:mt-0"> <button onClick={() => { setIsHot(false); speak(coldText); }} className={`${baseButtonClasses} bg-blue-500 sm-landscape:w-32`}><MinusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> <button onClick={() => { setIsHot(true); speak(hotText); }} className={`${baseButtonClasses} bg-red-500 sm-landscape:w-32`}><PlusCircleIcon className="w-10 h-10 sm-landscape:w-8 sm-landscape:h-8" /></button> </div> </div> );
             }
             case ActivityType.ParlakMat:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className={`relative w-24 h-24 bg-lime-500 rounded-full overflow-hidden`}> <div className={`absolute -top-4 -left-4 w-16 h-16 bg-white/50 rounded-full transition-opacity duration-300 ${isShiny ? 'opacity-100' : 'opacity-0'}`} style={{ filter: 'blur(10px)', transform: 'rotate(-45deg)' }}/> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsShiny(false); speak('mat'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Mat</button> <button onClick={() => { setIsShiny(true); speak('parlak'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Parlak</button> </div> </div> );
+                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center"> <div className={`relative w-24 h-24 bg-lime-500 rounded-full overflow-hidden`}> <div className={`absolute -top-4 -left-4 w-16 h-16 bg-white/50 rounded-full transition-opacity duration-300 ${isShiny ? 'opacity-100' : 'opacity-0'}`} style={{ filter: 'blur(10px)', transform: 'rotate(-45deg)' }}/> </div> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsShiny(false); speakConcept('mat'); }} className={`${baseButtonClasses} bg-red-500 text-sm px-4`}>Mat</button> <button onClick={() => { setIsShiny(true); speakConcept('parlak'); }} className={`${baseButtonClasses} bg-green-500 text-sm px-4`}>Parlak</button> </div> </div> );
             case ActivityType.SeffafOpak:
-                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center bg-repeat rounded-lg" style={{ backgroundImage: 'linear-gradient(45deg, #cbd5e1 25%, #e2e8f0 25%, #e2e8f0 50%, #cbd5e1 50%, #cbd5e1 75%, #e2e8f0 75%, #e2e8f0 100%)', backgroundSize: '28px 28px' }}> <div className={`w-24 h-24 bg-lime-500 transition-opacity duration-300 rounded-full ${isTransparent ? 'opacity-30' : 'opacity-100'}`} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsTransparent(true); speak('şeffaf'); }} className={`${baseButtonClasses} bg-sky-400 text-sm px-4`}>Şeffaf</button> <button onClick={() => { setIsTransparent(false); speak('opak'); }} className={`${baseButtonClasses} bg-slate-500 text-sm px-4`}>Opak</button> </div> </div> );
+                return ( <div className="w-full text-center"> <div className="h-32 flex items-center justify-center bg-repeat rounded-lg" style={{ backgroundImage: 'linear-gradient(45deg, #cbd5e1 25%, #e2e8f0 25%, #e2e8f0 50%, #cbd5e1 50%, #cbd5e1 75%, #e2e8f0 75%, #e2e8f0 100%)', backgroundSize: '28px 28px' }}> <div className={`w-24 h-24 bg-lime-500 transition-opacity duration-300 rounded-full ${isTransparent ? 'opacity-30' : 'opacity-100'}`} /> </div> <div className="flex justify-center gap-8 mt-2"> <button onClick={() => { setIsTransparent(true); speakConcept('şeffaf'); }} className={`${baseButtonClasses} bg-sky-400 text-sm px-4`}>Şeffaf</button> <button onClick={() => { setIsTransparent(false); speakConcept('opak'); }} className={`${baseButtonClasses} bg-slate-500 text-sm px-4`}>Opak</button> </div> </div> );
             case ActivityType.Senses:
                 return null; // As per user feedback, this helper is not useful.
             default:
@@ -1191,6 +1621,10 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
             case ActivityType.WetDry: return 'wetDryConcepts';
             case ActivityType.WideNarrow: return 'wideNarrowConcepts';
             case ActivityType.YoungOld: return 'youngOldConcepts';
+            case ActivityType.FewMuch: return 'fewMuch';
+            case ActivityType.HalfQuarterWhole: return 'halfQuarterWhole';
+            case ActivityType.FullEmpty: return 'fullEmpty';
+            case ActivityType.OddEven: return 'oddEven';
             case ActivityType.Colors: return 'colors';
             case ActivityType.Shapes: return 'shapes';
             case ActivityType.Emotions: return 'emotions';
@@ -1242,19 +1676,6 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
 
         if (isOptionCorrect) {
             setIsCorrect(true);
-            // Prefer static bigSmall keys when available to avoid mixed-language composition
-            if (roundData.activityType === ActivityType.BigSmall) {
-                const opt = roundData.options.find(o => o.id === optionId);
-                const rawKey = opt?.audioKey || opt?.word || spokenText;
-                const norm = normalizeI18nKey(rawKey as string);
-                const i18nKey = `bigSmall.yes_${norm}`;
-                const msg = t(i18nKey);
-                if (msg && msg !== i18nKey) {
-                    await speak(msg, getSpeechLocale(currentLang));
-                    setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
-                    return;
-                }
-            }
             if (isFastTransitionEnabled) {
                 await playEffect('correct');
             } else {
@@ -1284,6 +1705,35 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                         await speak(msg, getSpeechLocale(currentLang));
                         setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
                         return;
+                    }
+                    // Quality concepts (AliveLifeless, BigSmall, etc.): use per-round speech override from data files
+                    const qualityActivities = [
+                        ActivityType.AliveLifeless, ActivityType.BigSmall, ActivityType.LongShort,
+                        ActivityType.ThinThick, ActivityType.WideNarrow, ActivityType.OldNew,
+                        ActivityType.YoungOld, ActivityType.HardSoft, ActivityType.CleanDirty,
+                        ActivityType.WetDry, ActivityType.OpenClosed, ActivityType.StraightCurved,
+                        ActivityType.BitterSweet, ActivityType.HeavyLight, ActivityType.HotCold,
+                        ActivityType.RoughSmooth, ActivityType.BrokenIntact, ActivityType.MessyClean,
+                        ActivityType.TazeBayat, ActivityType.KirisikDuzgun, ActivityType.SivriKut,
+                        ActivityType.ParlakMat, ActivityType.TembelCaliskan, ActivityType.SeffafOpak,
+                        ActivityType.DikenliPuruzsuz, ActivityType.DugumCozuk, ActivityType.HungryFull,
+                        ActivityType.DerinSig, ActivityType.KalabalikTenha, ActivityType.TersDuz,
+                        ActivityType.NoisyQuiet,
+                        // Quantities
+                        ActivityType.FewMuch, ActivityType.FullEmpty, ActivityType.HalfQuarterWhole, ActivityType.OddEven,
+                        // Spatial
+                        ActivityType.OnUnder, ActivityType.BelowAbove, ActivityType.BesideOpposite, ActivityType.InFrontOfBehind,
+                        ActivityType.InsideOutside, ActivityType.Between, ActivityType.LeftRight, ActivityType.NearFar, ActivityType.HighLow,
+                        // Dynamic activities
+                        ActivityType.ObjectRecognition, ActivityType.Colors, ActivityType.Shapes, ActivityType.Emotions
+                    ];
+                    if (qualityActivities.includes(roundData.activityType)) {
+                        const speechOverride = (getSpeechBlock()?.correct) as string | undefined;
+                        if (speechOverride) {
+                            await speak(speechOverride, getSpeechLocale(currentLang));
+                            setTimeout(() => onAdvance(!mistakeMade), isFastTransitionEnabled ? 400 : 1200);
+                            return;
+                        }
                     }
                 // Prefer static spatial i18n answer keys when available
                 const spatialPrefixForType_local = (type: ActivityType): string | null => {
@@ -1486,22 +1936,6 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
             if (isFastTransitionEnabled) {
                 await playEffect('incorrect');
             } else {
-                // Prefer static bigSmall keys for wrong answers when available
-                if (roundData.activityType === ActivityType.BigSmall) {
-                    const opt = roundData.options.find(o => o.id === optionId);
-                    const rawKey = opt?.audioKey || opt?.word || spokenText;
-                    const norm = normalizeI18nKey(rawKey as string);
-                    const i18nKey = `bigSmall.no_${norm}`;
-                    const msg = t(i18nKey);
-                    if (msg && msg !== i18nKey) {
-                        await speak(msg, getSpeechLocale(currentLang));
-                        setTimeout(() => {
-                            setIsWrong(null);
-                            setSelectedId(null);
-                        }, 800);
-                        return;
-                    }
-                }
                 // Cause & Effect: prefer per-round i18n feedback if available
                 if (roundData.activityType === ActivityType.CauseEffect) {
                     const fbKey = `activityFeedback.causeEffect.${roundData.id}.wrong`;
@@ -1534,6 +1968,38 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                         setSelectedId(null);
                     }, 800);
                     return;
+                }
+                // Quality concepts (AliveLifeless, BigSmall, etc.): use per-round speech override from data files
+                const qualityActivities = [
+                    ActivityType.AliveLifeless, ActivityType.BigSmall, ActivityType.LongShort,
+                    ActivityType.ThinThick, ActivityType.WideNarrow, ActivityType.OldNew,
+                    ActivityType.YoungOld, ActivityType.HardSoft, ActivityType.CleanDirty,
+                    ActivityType.WetDry, ActivityType.OpenClosed, ActivityType.StraightCurved,
+                    ActivityType.BitterSweet, ActivityType.HeavyLight, ActivityType.HotCold,
+                    ActivityType.RoughSmooth, ActivityType.BrokenIntact, ActivityType.MessyClean,
+                    ActivityType.TazeBayat, ActivityType.KirisikDuzgun, ActivityType.SivriKut,
+                    ActivityType.ParlakMat, ActivityType.TembelCaliskan, ActivityType.SeffafOpak,
+                    ActivityType.DikenliPuruzsuz, ActivityType.DugumCozuk, ActivityType.HungryFull,
+                    ActivityType.DerinSig, ActivityType.KalabalikTenha, ActivityType.TersDuz,
+                    ActivityType.NoisyQuiet,
+                    // Quantities
+                    ActivityType.FewMuch, ActivityType.FullEmpty, ActivityType.HalfQuarterWhole, ActivityType.OddEven,
+                    // Spatial
+                    ActivityType.OnUnder, ActivityType.BelowAbove, ActivityType.BesideOpposite, ActivityType.InFrontOfBehind,
+                    ActivityType.InsideOutside, ActivityType.Between, ActivityType.LeftRight, ActivityType.NearFar, ActivityType.HighLow,
+                    // Dynamic activities
+                    ActivityType.ObjectRecognition, ActivityType.Colors, ActivityType.Shapes, ActivityType.Emotions
+                ];
+                if (qualityActivities.includes(roundData.activityType)) {
+                    const speechOverride = (getSpeechBlock()?.wrong) as string | undefined;
+                    if (speechOverride) {
+                        await speak(speechOverride, getSpeechLocale(currentLang));
+                        setTimeout(() => {
+                            setIsWrong(null);
+                            setSelectedId(null);
+                        }, 800);
+                        return;
+                    }
                 }
                 // Yanlış cevap için kategori bazlı açıklama
                 if (roundData.activityType === ActivityType.WhatDoesntBelong) {
@@ -1655,18 +2121,17 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                             let optMsgG: string | undefined;
                             
                             // For wrong answers in concept activities, we need the OPPOSITE concept
-                            const conceptTrTokenG = getConceptFromQuestionKey(roundData, 'tr' as any);
-                            const conceptNormTrG = normalizeI18nKey(conceptTrTokenG as string);
+                            // For i18n key generation, all concept logic should be done in Turkish, which is the canonical language for keys.
+                            const trOpposites = getOppositesMap('tr');
+                            const conceptTrTokenG = getConceptFromQuestionKey(roundData, 'tr' as any) || '';
+                            const oppositeConceptTr = trOpposites[conceptTrTokenG.toLocaleLowerCase('tr-TR')];
                             
-                            // For oppositeConcepts lookup, we need the concept in CURRENT language
+                            const conceptNormTrG = normalizeI18nKey(conceptTrTokenG);
+                            const oppositeConceptNormTrG = oppositeConceptTr ? normalizeI18nKey(oppositeConceptTr) : null;
+                            
+                            // For logging purposes only, get the current language's concepts
                             const conceptInCurrentLang = getConceptFromQuestionKey(roundData, currentLang);
                             const questionConceptG = (conceptInCurrentLang || '').toLocaleLowerCase(getSpeechLocale(currentLang)).trim();
-                            const oppositeConceptInCurrentLang = oppositeConcepts[questionConceptG];
-                            
-                            // Now get the TURKISH normalized version of the opposite concept for i18n key
-                            const oppositeConceptNormTrG = oppositeConceptInCurrentLang 
-                                ? normalizeI18nKey(translateLabel(oppositeConceptInCurrentLang, 'tr'))
-                                : null;
                             
                             for (const ns of nsListG) {
                                 // For wrong answer: Try no_<item>_<OPPOSITE_concept> first!
@@ -1674,7 +2139,7 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                                 const noKeyWithQuestionConcept = conceptNormTrG ? `${ns}.no_${normGlobal}_${conceptNormTrG}` : null;
                                 const yesKeyWithOppositeConcept = oppositeConceptNormTrG ? `${ns}.yes_${normGlobal}_${oppositeConceptNormTrG}` : null;
                                 
-                                console.log('[i18n-WRONG-DEBUG] Question concept:', questionConceptG, '→ Opposite:', oppositeConceptInCurrentLang, '→ Norm TR:', oppositeConceptNormTrG);
+                                console.log('[i18n-WRONG-DEBUG] Question concept:', questionConceptG, '→ Opposite Concept TR:', oppositeConceptTr, '→ Norm Opp TR:', oppositeConceptNormTrG);
                                 console.log('[i18n-WRONG-DEBUG] Trying keys:', {noKeyWithOppositeConcept, noKeyWithQuestionConcept, yesKeyWithOppositeConcept});
                                 
                                 // Priority: no_item_opposite_concept > no_item_question_concept > yes_item_opposite_concept
@@ -1699,40 +2164,39 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
                                 if (plainG) { optMsgG = plainG; break; }
                             }
                             if (optMsgG) {
+                                // If a message is found, it's assumed to be a full sentence.
+                                // We just need to handle the case where a "yes" message is used for "no" feedback.
                                 const negativeREG = /^\s*(Hayır,|Hayır\.|No,|No\.|Nee,|Nein,|Non,)\s*/i;
+                                const positiveREG = /^\s*(Evet,|Evet\.|Yes,|Yes\.|Ja,|Oui,)\s*/i;
+
                                 if (negativeREG.test(optMsgG)) {
                                     await speak(optMsgG, getSpeechLocale(currentLang));
-                                } else {
-                                    const coreG = optMsgG.trim();
-                                    const coreNoDetG = stripLeadingDeterminer(coreG, currentLang);
+                                } else if (positiveREG.test(optMsgG)) {
+                                    // Found a 'yes' message. Prepend 'no' and strip 'yes'.
+                                    const coreG = optMsgG.replace(positiveREG, '').trim();
                                     const wrongPrefixG = t('feedback.wrongPrefix');
-                                    const finalG = `${wrongPrefixG} ${coreNoDetG}`.replace(/\s+/g, ' ').trim();
+                                    const finalG = `${wrongPrefixG} ${coreG}`.replace(/\s+/g, ' ').trim();
+                                    await speak(finalG, getSpeechLocale(currentLang));
+                                } else {
+                                    // Message has no prefix, assume we should add one.
+                                    const wrongPrefixG = t('feedback.wrongPrefix');
+                                    const finalG = `${wrongPrefixG} ${optMsgG}`.replace(/\s+/g, ' ').trim();
                                     await speak(finalG, getSpeechLocale(currentLang));
                                 }
-                                setTimeout(() => {
-                                    setIsWrong(null);
-                                    setSelectedId(null);
-                                }, 800);
-                                return;
+                            } else {
+                                // No specific i18n key found. Speak a generic "wrong" message.
+                                await speak(t('feedback.wrongPrefix', 'Wrong.'), getSpeechLocale(currentLang));
                             }
-                        }
-                    }
-                    // Diğer etkinlikler için mevcut mantık
-                    const oppositeConcept = oppositeConcepts[questionConcept];
-                    const wrongPrefix = t('feedback.wrongPrefix');
-                    const rawBaseOriginalWrong = spokenText;
-                    const localizedBaseWrong = currentLang === 'tr' ? rawBaseOriginalWrong : translateLabel(rawBaseOriginalWrong, currentLang);
-                    const base = stripLeadingDeterminer(localizedBaseWrong, currentLang);
-                    let speech = buildSpeechWithPrefix(wrongPrefix, base);
 
-                    if (shouldAppend(base, oppositeConcept)) {
-                        if (currentLang === 'tr') {
-                            speech = mergeWithConceptTR(speech, base, oppositeConcept);
-                        } else {
-                            speech += ` ${oppositeConcept}`;
+                            setTimeout(() => {
+                                setIsWrong(null);
+                                setSelectedId(null);
+                            }, 800);
+                            return; // Exit after handling
                         }
                     }
-                    await speak(`${speech}.`, getSpeechLocale(currentLang));
+                    // If we reach here, it means the lookup failed completely. Speak generic "wrong".
+                    await speak(t('feedback.wrongPrefix', 'Wrong.'), getSpeechLocale(currentLang));
                 }
             }
             setTimeout(() => {
@@ -2085,5 +2549,6 @@ const ConceptChoiceScreen: React.FC<ConceptChoiceScreenProps> = ({
 };
 
 export default React.memo(ConceptChoiceScreen);
+
 
 

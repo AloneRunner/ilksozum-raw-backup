@@ -1,35 +1,6 @@
-{
-  "tersDuzConcepts": {
-    "tersDuz": "À l'envers / À l'endroit",
-    "q_which_is_upside_down": "Lequel est à l'envers?",
-    "q_which_is_upright": "Lequel est à l'endroit?",
-    "yes_terlik_duz": "Oui, la pantoufle est à l'endroit.",
-    "no_terlik_duz": "Non, la pantoufle n'est pas à l'endroit.",
-    "yes_terlik_ters": "Oui, la pantoufle est à l'envers.",
-    "no_terlik_ters": "Non, la pantoufle n'est pas à l'envers.",
-    "yes_kaplumbaga_duz": "Oui, la tortue est à l'endroit.",
-    "no_kaplumbaga_duz": "Non, la tortue n'est pas à l'endroit.",
-    "yes_kaplumbaga_ters": "Oui, la tortue est à l'envers.",
-    "no_kaplumbaga_ters": "Non, la tortue n'est pas à l'envers.",
-    "yes_saat_duz": "Oui, l'horloge est à l'endroit.",
-    "no_saat_duz": "Non, l'horloge n'est pas à l'endroit.",
-    "yes_saat_ters": "Oui, l'horloge est à l'envers.",
-    "no_saat_ters": "Non, l'horloge n'est pas à l'envers.",
-    "yes_ayakkabi_duz": "Oui, la chaussure est à l'endroit.",
-    "no_ayakkabi_duz": "Non, la chaussure n'est pas à l'endroit.",
-    "yes_ayakkabi_ters": "Oui, la chaussure est à l'envers.",
-    "no_ayakkabi_ters": "Non, la chaussure n'est pas à l'envers.",
-    "yes_sandalet_duz": "Oui, la sandale est à l'endroit.",
-    "no_sandalet_duz": "Non, la sandale n'est pas à l'endroit.",
-    "yes_sandalet_ters": "Oui, la sandale est à l'envers.",
-    "no_sandalet_ters": "Non, la sandale n'est pas à l'envers.",
-    "yes_semsiye_duz": "Oui, le parapluie est à l'endroit.",
-    "no_semsiye_duz": "Non, le parapluie n'est pas à l'endroit.",
-    "yes_semsiye_ters": "Oui, le parapluie est à l'envers.",
-    "no_semsiye_ters": "Non, le parapluie n'est pas à l'envers.",
-    "yes_kupa_duz": "Oui, la tasse est à l'endroit.",
-    "no_kupa_duz": "Non, la tasse n'est pas à l'endroit.",
-    "yes_fincan_ters": "Oui, la tasse est à l'envers.",
-    "no_fincan_ters": "Non, la tasse n'est pas à l'envers."
+﻿{
+  "tersDuz": {
+    "q_which_is_upright": "Lequel est à l\u0027endroit ?",
+    "q_which_is_upsidedown": "Lequel est à l\u0027envers ?"
   }
 }
