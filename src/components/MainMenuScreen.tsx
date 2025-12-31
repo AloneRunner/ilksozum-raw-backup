@@ -268,10 +268,11 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
       id: "fineMotor" as const,
       icon: EyeIcon,
       title: t("menu.fineMotor.title", lang === "tr" ? "\u0130nce Motor" : "Fine Motor"),
-      subtitle: `${t(
+      subtitle: t(
         "menu.fineMotor.subtitle",
         lang === "tr" ? "\u00c7izgi Takip, Boyama ve daha fazlas\u0131" : "Line Tracing, Coloring, and more"
-      )} — ${t('menu.fineMotor.developingNote', 'Geliştiriliyor')}`,
+      ),
+      badge: t('menu.fineMotor.badge', 'Geliştirme Aşamasında'),
       color: "rose" as const,
     },
     // Relative comparison activity
@@ -287,7 +288,6 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
       icon: SpeakerIcon,
       title: t('menu.soundImitation.title', 'Ses Taklit Kartları'),
       subtitle: t('menu.soundImitation.subtitle', 'Konuşamayan çocuklar için ses taklit kartları'),
-      badge: t('menu.soundImitation.badge', 'Yeni — Deneme Etkinliği'),
       color: 'sky' as const,
     },
   ];
@@ -392,7 +392,7 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                     {...getPlanetProps(item.id)}
                     size="xl"
                   />
-                  {item.id === 'soundImitation' && item.badge && (
+                  {item.id === 'fineMotor' && item.badge && (
                     <span className="absolute -top-2 -right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow z-20">{item.badge}</span>
                   )}
                 </div>
@@ -586,7 +586,7 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                     </div>
                     {/* Invisible overlay for better click area */}
                     <div className="absolute inset-0 -m-4 rounded-2xl hover:bg-cyan-400/10 transition-colors duration-200" />
-                    {item.id === 'soundImitation' && item.badge && (
+                    {item.id === 'fineMotor' && item.badge && (
                       <span className="absolute -top-2 -right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow">{item.badge}</span>
                     )}
                   </div>
@@ -729,7 +729,7 @@ const MainMenuScreen: React.FC<MainMenuScreenProps> = ({
                 color={item.color}
                 theme={theme}
               />
-              {item.id === 'soundImitation' && item.badge && (
+              {item.id === 'fineMotor' && item.badge && (
                 <span className="absolute top-2 right-2 inline-flex items-center px-2 py-0.5 text-xs bg-amber-500 text-white rounded-full shadow">{item.badge}</span>
               )}
             </div>

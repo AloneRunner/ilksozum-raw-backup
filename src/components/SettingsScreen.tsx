@@ -59,6 +59,12 @@ interface SettingsScreenProps {
   parentOverrides: ParentOverride[];
   onAddParentOverride: (activityId: string, durationHours: number, reason?: string, ignoreForProgress?: boolean) => void;
   onRemoveParentOverride: (activityId: string) => void;
+  isSpamGuardEnabled: boolean;
+  onToggleSpamGuard: () => void;
+  spamGuardRoundThreshold: number;
+  onChangeSpamGuardThreshold: (value: number) => void;
+  hasRatedPlayStore: boolean;
+  onPlayStoreRating: () => void;
 }
 
 const ToggleSwitch: React.FC<{ isEnabled: boolean; onToggle: () => void; themeVariant?: ThemeVariant }> = ({ isEnabled, onToggle, themeVariant }) => {
@@ -320,6 +326,12 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   parentOverrides,
   onAddParentOverride,
   onRemoveParentOverride,
+  isSpamGuardEnabled,
+  onToggleSpamGuard,
+  spamGuardRoundThreshold,
+  onChangeSpamGuardThreshold,
+  hasRatedPlayStore,
+  onPlayStoreRating,
 }) => {
   // Scroll pozisyonunu localStorage ile koru
   useEffect(() => {
@@ -352,6 +364,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const isGunesTheme = settings.theme === 'gunes';
   const isDenemeTheme = settings.theme === 'deneme';
   const isSimpleTheme = settings.theme === 'simple';
+  const spamGuardThresholdOptions = [6, 8, 10, 12];
   const themeVariant: ThemeVariant | undefined = isCatTheme
     ? 'cat'
     : isHilalTheme
@@ -1079,6 +1092,23 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
           <SettingsRow title={t('settingsEx.autoSpeak.title', 'Otomatik Seslendirme')} subtitle={t('settingsEx.autoSpeak.subtitle', 'Sorular otomatik okunur')} isThemed={isThemed} themeVariant={themeVariant}>
                         <ToggleSwitch isEnabled={isAutoSpeakEnabled} onToggle={onToggleAutoSpeak} themeVariant={themeVariant} />
                     </SettingsRow>
+          <SettingsRow title={t('settingsEx.spamGuard.title', 'Spam Koruması')} subtitle={t('settingsEx.spamGuard.subtitle', 'Çok hızlı dokunuşları durdurur')} isThemed={isThemed} themeVariant={themeVariant}>
+                        <ToggleSwitch isEnabled={isSpamGuardEnabled} onToggle={onToggleSpamGuard} themeVariant={themeVariant} />
+                    </SettingsRow>
+          {isSpamGuardEnabled && (
+            <SettingsRow title={t('settingsEx.spamGuard.thresholdTitle', 'Uyarı Eşiği')} subtitle={t('settingsEx.spamGuard.thresholdSubtitle', 'Kaç hızlı dokunuş sonrası ara verilsin?')} isThemed={isThemed} themeVariant={themeVariant}>
+                        <select
+                          value={spamGuardRoundThreshold}
+                          onChange={(e) => onChangeSpamGuardThreshold(Number(e.target.value))}
+                          className={`px-3 py-2 rounded-lg border bg-white text-slate-800 ${isThemed ? 'border-white/30' : 'border-slate-300'}`}
+                          aria-label={t('settingsEx.spamGuard.thresholdTitle', 'Uyarı Eşiği')}
+                        >
+                          {spamGuardThresholdOptions.map(option => (
+                            <option key={option} value={option}>{t('settingsEx.spamGuard.thresholdOption', '{count} dokunuş').replace('{count}', String(option))}</option>
+                          ))}
+                        </select>
+                    </SettingsRow>
+          )}
   {/* Çocuk Modu ve Hatasız Öğrenme kaldırıldı */}
           <SettingsRow title={t('settingsEx.fastMode.title', 'Hızlı Mod')} subtitle={t('settingsEx.fastMode.subtitle', 'Geçişleri hızlandırır')} isPremiumFeature={true} isPremiumUser={isPremium} onClick={!isPremium ? showPremiumToast : undefined} isThemed={isThemed} themeVariant={themeVariant}>
                         {isPremium ? <ToggleSwitch isEnabled={isFastTransitionEnabled} onToggle={onToggleFastTransition} themeVariant={themeVariant} /> : <LockClosedIcon className="w-7 h-7 text-slate-400"/>}
@@ -1099,6 +1129,17 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
           <SettingsRow title={t('settingsEx.manageBanned.title', 'Yasaklı Görselleri Yönet')} subtitle={t('settingsEx.manageBanned.subtitle', 'Yasakladıklarınızı düzenleyin')} isThemed={isThemed} themeVariant={themeVariant}>
                         <button onClick={onManageBannedImages} className={manageBannedButtonClass}>
                             <RestoreIcon className={manageBannedIconClass}/>
+                        </button>
+                    </SettingsRow>
+          <SettingsRow title={t('settingsEx.playStoreRate.title', "Play Store'da Değerlendir")} subtitle={hasRatedPlayStore ? t('settingsEx.playStoreRate.claimed', 'Teşekkürler! Ödülünüz alındı ✓') : t('settingsEx.playStoreRate.subtitle', '7 gün premium kazan!')} isThemed={isThemed} themeVariant={themeVariant}>
+                        <button 
+                          onClick={onPlayStoreRating}
+                          className={manageBannedButtonClass}
+                          aria-label={t('settingsEx.playStoreRate.aria', 'Play Store sayfasını aç')}
+                          disabled={hasRatedPlayStore}
+                          style={{ opacity: hasRatedPlayStore ? 0.5 : 1 }}
+                        >
+                            <StarIcon className={manageBannedIconClass}/>
                         </button>
                     </SettingsRow>
                 </div>

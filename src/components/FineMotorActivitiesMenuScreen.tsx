@@ -3,6 +3,7 @@ import ArrowLeftIcon from './icons/ArrowLeftIcon.tsx';
 import HandIcon from './icons/HandIcon.tsx';
 import ShapesIcon from './icons/ShapesIcon.tsx';
 import MusicNote from './icons/SpeakerIcon.tsx';
+import ColorsIcon from './icons/ColorsIcon.tsx';
 import MenuButton from './ui/MenuButton.tsx';
 import ProgressIndicator from './ui/ProgressIndicator.tsx';
 import { ActivityType, ActivityStats } from '../types.ts';
@@ -21,10 +22,13 @@ interface FineMotorActivitiesMenuScreenProps {
 const FineMotorActivitiesMenuScreen: React.FC<FineMotorActivitiesMenuScreenProps> = ({ onSelectActivity, onBack, activityStats, theme, enabledActivities }) => {
   const lang = getCurrentLanguage();
   const isTr = lang === 'tr';
+  const devNote = t('fineMotor.developingNote', isTr ? 'Bu etkinlikler geliştirme aşamasında.' : 'These activities are being improved.');
   const items = [
     { type: ActivityType.LineTracing, icon: HandIcon, title: isTr ? 'Çizgi Takip' : t('fineMotor.activities.lineTracing.title', 'Line Tracing'), subtitle: t('lineTracing.instruction', isTr ? 'Parmağınla çizgiyi takip et.' : 'Follow the line with your finger.'), color: 'rose' as const },
-  { type: ActivityType.ShapeColoring, icon: ShapesIcon, title: isTr ? 'Şekil Boyama' : t('fineMotor.activities.coloring.title', 'Shape Coloring'), subtitle: isTr ? 'Şekilleri renklendir' : t('fineMotor.activities.coloring.subtitle', 'Color the shapes'), color: 'amber' as const },
-  { type: ActivityType.RhythmFollowing, icon: MusicNote, title: isTr ? 'Ritim Takip' : t('fineMotor.activities.rhythm.title', 'Rhythm Following'), subtitle: isTr ? 'Ritmi takip et' : t('fineMotor.activities.rhythm.subtitle', 'Follow the rhythm'), color: 'purple' as const },
+    { type: ActivityType.LetterTracing, icon: HandIcon, title: isTr ? 'Harf Çizgisi' : t('fineMotor.activities.letterTracing.title', 'Letter Tracing'), subtitle: isTr ? 'Harflerin üzerinden git' : t('letterTracing.instruction', 'Trace the letter carefully.'), color: 'pink' as const },
+    { type: ActivityType.ShapeColoring, icon: ShapesIcon, title: isTr ? 'Şekil Boyama' : t('fineMotor.activities.coloring.title', 'Shape Coloring'), subtitle: isTr ? 'Şekilleri renklendir' : t('fineMotor.activities.coloring.subtitle', 'Color the shapes'), color: 'amber' as const },
+    { type: ActivityType.ConstrainedColoring, icon: ColorsIcon, title: isTr ? 'Kısıtlı Boyama' : t('fineMotor.activities.constrainedColoring.title', 'Guided Coloring'), subtitle: isTr ? 'Her bölge doğru renkle' : t('constrainedColoring.instruction', 'Use the allowed colors for each region'), color: 'lime' as const },
+    { type: ActivityType.RhythmFollowing, icon: MusicNote, title: isTr ? 'Ritim Takip' : t('fineMotor.activities.rhythm.title', 'Rhythm Following'), subtitle: isTr ? 'Ritmi takip et' : t('fineMotor.activities.rhythm.subtitle', 'Follow the rhythm'), color: 'purple' as const },
   ];
   const isCosmic = theme === 'deneme2';
   const isUnderwater = theme === 'deneme';
@@ -90,6 +94,12 @@ const FineMotorActivitiesMenuScreen: React.FC<FineMotorActivitiesMenuScreenProps
                 </h1>
               </div>
             </div>
+          </div>
+
+          <div className="relative z-10 w-full mb-3 text-center">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-cyan-300/40 text-xs text-cyan-100 shadow-sm">
+              ✨ {devNote}
+            </span>
           </div>
 
           <div className="relative z-10 w-full flex-grow overflow-y-auto pr-2 animate-fade-in">
@@ -174,6 +184,12 @@ const FineMotorActivitiesMenuScreen: React.FC<FineMotorActivitiesMenuScreenProps
             <div className="flex-1 flex justify-center"><div className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-cyan-600/80 via-sky-500/80 to-indigo-600/80 backdrop-blur-sm border border-cyan-300/40 shadow-lg"><h1 className="text-3xl sm:text-4xl font-black text-cyan-100">{t('menu.fineMotor.title', 'İnce Motor Beceriler')}</h1></div></div>
           </div>
 
+          <div className="relative z-10 w-full mb-3 text-center">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/30 border border-cyan-200/30 text-xs text-cyan-50 shadow-sm">
+              ✨ {devNote}
+            </span>
+          </div>
+
           <div className="relative z-10 w-full flex-grow overflow-y-auto pr-2 animate-fade-in">
             <div className="grid grid-cols-2 landscape:grid-cols-3 sm-landscape:grid-cols-3 gap-6 sm-landscape:gap-4">
               {items.map((activity, idx) => depict(activity, idx))}
@@ -200,6 +216,11 @@ const FineMotorActivitiesMenuScreen: React.FC<FineMotorActivitiesMenuScreenProps
       </div>
 
       <div className="w-full flex-grow overflow-y-auto pr-2 animate-fade-in">
+        <div className="w-full mb-3 flex justify-center">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-xs text-rose-800">
+            ✨ {devNote}
+          </span>
+        </div>
          <div className="grid grid-cols-1 sm:grid-cols-2 landscape:grid-cols-3 sm-landscape:grid-cols-3 gap-4 sm-landscape:gap-3">
             {items.map((activity) => {
                 const stats = activityStats[String(activity.type)] || { attempts: 0, completions: 0, totalCorrect: 0, totalQuestions: 0 };

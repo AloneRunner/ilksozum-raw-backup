@@ -44,6 +44,8 @@ const DragAndDropPositioningScreen = lazy(() => import('../DragAndDropPositionin
 const LineTracingScreen = lazy(() => import('../LineTracingScreen.tsx'));
 const ShapeColoringScreen = lazy(() => import('../ShapeColoringScreen.tsx'));
 const RhythmFollowingScreen = lazy(() => import('../RhythmFollowingScreen.tsx'));
+const LetterTracingScreen = lazy(() => import('../LetterTracingScreen.tsx'));
+const ConstrainedColoringScreen = lazy(() => import('../ConstrainedColoringScreen.tsx'));
 const CommunicationSubCategoryScreen = lazy(() => import('../CommunicationSubCategoryScreen.tsx'));
 const ParentTipsScreen = lazy(() => import('../ParentTipsScreen.tsx'));
 const ActivityManagementScreen = lazy(() => import('../ActivityManagementScreen.tsx'));
@@ -82,7 +84,13 @@ export const AppRouter = () => {
         if (CONCEPT_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ConceptActivitiesMenu, backButtonText: t('menu.concepts.backButton', 'Kavram Menüsüne Dön') };
         if (REASONING_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ReasoningActivitiesMenu, backButtonText: t('menu.reasoning.backButton', 'Oyun Menüsüne Dön') };
         if (OBJECT_RECOGNITION_ACTIVITIES.includes(activityType)) return { backScreen: ScreenState.ObjectCategoriesMenu, backButtonText: t('menu.objects.backButton', 'Nesne Menüsüne Dön') };
-    if (activityType === ActivityType.LineTracing || activityType === ActivityType.ShapeColoring || activityType === ActivityType.RhythmFollowing) return { backScreen: ScreenState.FineMotorMenu, backButtonText: t('menu.fineMotor.backButton', 'İnce Motor Menüsüne Dön') };
+    if (
+        activityType === ActivityType.LineTracing ||
+        activityType === ActivityType.ShapeColoring ||
+        activityType === ActivityType.RhythmFollowing ||
+        activityType === ActivityType.LetterTracing ||
+        activityType === ActivityType.ConstrainedColoring
+    ) return { backScreen: ScreenState.FineMotorMenu, backButtonText: t('menu.fineMotor.backButton', 'İnce Motor Menüsüne Dön') };
         return { backScreen: ScreenState.MainMenu, backButtonText: t('app.back', 'Etkinlik Menüsüne Dön') };
     };
 
@@ -292,6 +300,16 @@ export const AppRouter = () => {
                     {renderProgramModeOverlay()}
                     <RhythmFollowingScreen {...commonProps} onBack={onBackToFineMotor} />
                 </>;
+            case ActivityType.LetterTracing:
+                return <>
+                    {renderProgramModeOverlay()}
+                    <LetterTracingScreen {...commonProps} onBack={onBackToFineMotor} />
+                </>;
+            case ActivityType.ConstrainedColoring:
+                return <>
+                    {renderProgramModeOverlay()}
+                    <ConstrainedColoringScreen {...commonProps} onBack={onBackToFineMotor} />
+                </>;
             
             case ActivityType.RelativeBigSmall:
             case ActivityType.RelativeWideNarrow:
@@ -327,7 +345,7 @@ export const AppRouter = () => {
                                 : () => setScreenState(ctx.previousScreen === ScreenState.ObjectCategoriesIntlMenu ? ScreenState.ObjectCategoriesIntlMenu : ScreenState.ObjectCategoriesMenu);
                     return <>
                         {renderProgramModeOverlay()}
-                        <ConceptChoiceScreen roundData={currentData} themeColor={themeColor} {...commonProps} onBack={onBackDefault} onBanImage={(id) => ctx.settings.handleBanImage(id, ctx.activity.setActivityData)} isBanButtonEnabled={ctx.settings.isBanButtonEnabled} isWordLabelVisible={ctx.settings.isWordLabelVisible} onToggleWordLabel={ctx.settings.handleToggleWordLabel} isFastTransitionEnabled={ctx.settings.isFastTransitionEnabled} />
+                        <ConceptChoiceScreen roundData={currentData} themeColor={themeColor} {...commonProps} onBack={onBackDefault} onBanImage={(id) => ctx.settings.handleBanImage(id, ctx.activity.setActivityData)} isBanButtonEnabled={ctx.settings.isBanButtonEnabled} isWordLabelVisible={ctx.settings.isWordLabelVisible} onToggleWordLabel={ctx.settings.handleToggleWordLabel} isFastTransitionEnabled={ctx.settings.isFastTransitionEnabled} isSpamGuardEnabled={ctx.settings.isSpamGuardEnabled} spamGuardRoundThreshold={ctx.settings.spamGuardRoundThreshold} activeProfileName={ctx.profile.activeProfile?.name} />
                     </>;
                 }
         }
@@ -706,7 +724,7 @@ export const AppRouter = () => {
         }} activityType={ctx.activity.activityType} />;
         
         // Other Screens
-        case ScreenState.Settings: return <SettingsScreen onBack={() => setScreenState(ScreenState.MainMenu)} isMuted={ctx.settings.isMuted} onToggleMute={ctx.settings.handleToggleMute} isAutoSpeakEnabled={ctx.settings.isAutoSpeakEnabled} onToggleAutoSpeak={ctx.settings.handleToggleAutoSpeak} isBanButtonEnabled={ctx.settings.isBanButtonEnabled} onToggleBanButton={ctx.settings.handleToggleBanButton} isFastTransitionEnabled={ctx.settings.isFastTransitionEnabled} onToggleFastTransition={ctx.settings.handleToggleFastTransition} isUnderwaterMusicEnabled={ctx.settings.isUnderwaterMusicEnabled} onToggleUnderwaterMusic={ctx.settings.handleToggleUnderwaterMusic} 
+        case ScreenState.Settings: return <SettingsScreen onBack={() => setScreenState(ScreenState.MainMenu)} isMuted={ctx.settings.isMuted} onToggleMute={ctx.settings.handleToggleMute} isAutoSpeakEnabled={ctx.settings.isAutoSpeakEnabled} onToggleAutoSpeak={ctx.settings.handleToggleAutoSpeak} isBanButtonEnabled={ctx.settings.isBanButtonEnabled} onToggleBanButton={ctx.settings.handleToggleBanButton} isFastTransitionEnabled={ctx.settings.isFastTransitionEnabled} onToggleFastTransition={ctx.settings.handleToggleFastTransition} isUnderwaterMusicEnabled={ctx.settings.isUnderwaterMusicEnabled} onToggleUnderwaterMusic={ctx.settings.handleToggleUnderwaterMusic} isSpamGuardEnabled={ctx.settings.isSpamGuardEnabled} onToggleSpamGuard={ctx.settings.handleToggleSpamGuard} spamGuardRoundThreshold={ctx.settings.spamGuardRoundThreshold} onChangeSpamGuardThreshold={ctx.settings.onChangeSpamGuardThreshold} hasRatedPlayStore={ctx.settings.hasRatedPlayStore} onPlayStoreRating={ctx.settings.handlePlayStoreRating}
             onSelectPrivacyPolicy={() => setScreenState(ScreenState.PrivacyPolicy)} onManageBannedImages={()=>setScreenState(ScreenState.BannedImages)} isPremium={ctx.settings.isPremium} hasPurchasedPremium={ctx.settings.hasPurchasedPremium} onPurchaseMonthly={async () => {
             const success = await ctx.settings.handlePurchaseMonthly();
             if (success) setScreenState(ScreenState.Settings);

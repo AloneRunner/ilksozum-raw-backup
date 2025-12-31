@@ -147,6 +147,8 @@ const ParentReportScreen: React.FC<ParentReportScreenProps> = ({ activityStats, 
     if (activityType === ActivityType.LineTracing) return t('activities.fineMotor.lineTracing', 'Çizgi Takip');
     if (activityType === ActivityType.ShapeColoring) return t('activities.fineMotor.shapeColoring', 'Şekil Boyama');
     if (activityType === ActivityType.RhythmFollowing) return t('activities.fineMotor.rhythmFollowing', 'Ritim Takip');
+    if (activityType === ActivityType.LetterTracing) return t('activities.fineMotor.letterTracing', 'Harf Çizgi Takibi');
+    if (activityType === ActivityType.ConstrainedColoring) return t('activities.fineMotor.constrainedColoring', 'Kısıtlı Boyama');
         
         // If it's a string id matching an object category, translate by id
         if (typeof activityType === 'string') {

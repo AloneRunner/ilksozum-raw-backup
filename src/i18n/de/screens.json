@@ -745,9 +745,9 @@
     "thisUpdate": {
       "title": "In diesem Update",
       "items": [
-        "Alle Aktivitätscodes wurden von Grund auf neu geschrieben, um Übersetzungsprobleme zu beheben. Bisher zu 70% abgeschlossen und wird bald vollständig fertiggestellt.",
-        "Übersetzungsprobleme in der Objektkategorie und Konzeptaktivitäten wurden behoben. Farben, Formen und Emotionen funktionieren jetzt korrekt in allen Sprachen.",
-        "Hinweis: Bei vorhandenen Inhalten kann es zu Datenverlusten kommen. Identifizierte Probleme werden schnellstmöglich behoben."
+        "Neue Aktivität: Wie viele? - Handgesten mit Tiergruppen durch Zählen zuordnen (zu finden in Konzeptlernen → Menge)",
+        "Sanfter Hinweismodus: Wenn Ihr Kind dieselbe Aktivität zu schnell wiederholt, erscheint ein ruhiger und sanfter Feedback-Bildschirm. Er erinnert daran, sich auf den Bildschirm zu konzentrieren und zu atmen (in Einstellungen umschaltbar)",
+        "Play Store-Bewertung: Bewerten Sie unsere App und erhalten Sie 1 Woche Premium-Zugang! (über Einstellungsmenü erreichbar)"
       ],
       "_tempNotes": [
         "HINWEIS: Die folgenden Punkte sind temporäre Notizen — sie werden im nächsten Update aus den i18n-Dateien entfernt."
@@ -766,13 +766,8 @@
       "short": "Hinweis: Ich teste und verfeinere diese App mit meinem 6-jährigen autistischen Kind; Ihr Feedback ist willkommen.",
       "long": "Hinweis: Ich entwickle diese App, indem ich sie mit meinem 6-jährigen Sohn mit Autismus teste. Ich berücksichtige auch im Unterricht behandelte Themen und das Feedback der Lehrer. Bitte senden Sie Feedback, wenn Sie Vorschläge oder Beobachtungen haben."
     },
-    "modes": {
-      "title": "Modus-Verbesserungen",
-      "programMode": "Programmmodus wird erweitert",
-      "reinforcementMode": "Wiederholungsmodus wird hinzugefügt",
-      "angerMode": "Sanfter Hinweis-Modus: Bei sehr häufiger Wiederholung wird die Rückmeldung schrittweise und ruhig etwas bestimmter"
-    },
     "content": {
+      "note": "Das angestrebte Kernfunktionsset wurde abgeschlossen. Der Fokus liegt nun auf der Verbesserung und Bereicherung vorhandener Inhalte.",
       "title": "Inhalts- und Aktivitätserweiterungen",
       "newObjects": "Neue Objekte werden hinzugefügt",
       "objectCategories": "Objektkategorien werden in Unterkategorien unterteilt",

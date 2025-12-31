@@ -55,15 +55,6 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
                 ))}
               </ul>
             </div>
-            <Section
-              icon="🎮"
-              title={t('developmentNotes.modes.title', 'Mod Geliştirmeleri')}
-              items={[
-                t('developmentNotes.modes.programMode', 'Program modu geliştirilecek'),
-                t('developmentNotes.modes.reinforcementMode', 'Pekiştirme modu eklenecek'),
-                t('developmentNotes.modes.angerMode', 'Kızma modu eklenecek')
-              ]}
-            />
             
             <Section
               icon="📚"
@@ -155,16 +146,6 @@ const DevelopmentNotesCard: React.FC<DevelopmentNotesCardProps> = ({ theme }) =>
               ))}
             </ul>
           </div>
-          <Section
-            icon="🎮"
-            title={t('developmentNotes.modes.title', 'Mod Geliştirmeleri')}
-            items={[
-              t('developmentNotes.modes.programMode', 'Program modu geliştirilecek'),
-              t('developmentNotes.modes.reinforcementMode', 'Pekiştirme modu eklenecek'),
-              t('developmentNotes.modes.angerMode', 'Kızma modu eklenecek')
-            ]}
-            textClass={textClass}
-          />
           
           <Section
             icon="📚"

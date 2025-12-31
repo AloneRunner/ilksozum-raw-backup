@@ -56,6 +56,7 @@ export const CONCEPT_ACTIVITIES = [
     ActivityType.HalfQuarterWhole,
     ActivityType.FullEmpty,
     ActivityType.OddEven,
+    ActivityType.CountMatch,
     ActivityType.OnUnder, 
     ActivityType.BelowAbove, 
     ActivityType.BesideOpposite, 
@@ -295,6 +296,7 @@ export const ALL_SUB_ACHIEVEMENTS: SubAchievement[] = [
   { id: ActivityType.HalfQuarterWhole, name: "Bütün / Yarım / Çeyrek", category: ActivityCategory.Concept },
   { id: ActivityType.FullEmpty, name: "Dolu / Boş", category: ActivityCategory.Concept },
   { id: ActivityType.OddEven, name: "Tek / Çift", category: ActivityCategory.Concept },
+  { id: ActivityType.CountMatch, name: "Kaç Tane Var?", category: ActivityCategory.Concept },
   { id: ActivityType.OnUnder, name: "Üstünde / Altında", category: ActivityCategory.Concept },
   { id: ActivityType.BelowAbove, name: "Aşağıda / Yukarıda", category: ActivityCategory.Concept },
   { id: ActivityType.BesideOpposite, name: "Yanında / Karşısında", category: ActivityCategory.Concept },
@@ -326,6 +328,8 @@ export const ALL_SUB_ACHIEVEMENTS: SubAchievement[] = [
   { id: ActivityType.LineTracing, name: "Çizgi Takip", category: ActivityCategory.FineMotor },
   { id: ActivityType.ShapeColoring, name: "Şekil Boyama", category: ActivityCategory.FineMotor },
   { id: ActivityType.RhythmFollowing, name: "Ritim Takip", category: ActivityCategory.FineMotor },
+  { id: ActivityType.LetterTracing, name: "Harf Çizgi Takibi", category: ActivityCategory.FineMotor },
+  { id: ActivityType.ConstrainedColoring, name: "Kısıtlı Boyama", category: ActivityCategory.FineMotor },
   // Relative Comparison activities
   { id: ActivityType.RelativeBigSmall, name: "Büyük / Küçük", category: ActivityCategory.RelativeComparison },
   { id: ActivityType.RelativeWideNarrow, name: "Geniş / Dar", category: ActivityCategory.RelativeComparison },
@@ -354,6 +358,7 @@ export const ACTIVITY_DEPENDENCIES: Partial<Record<ActivityType, ActivityType>> 
 
     // More complex quantity concepts depend on simpler ones
     [ActivityType.HalfQuarterWhole]: ActivityType.FullEmpty,
+    [ActivityType.CountMatch]: ActivityType.FewMuch,
 
     // More complex spatial concepts
     [ActivityType.Between]: ActivityType.OnUnder,

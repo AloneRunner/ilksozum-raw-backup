@@ -40,6 +40,13 @@ export const ACTIVITY_METADATA_MAP: Record<string, ActivityMetadata> = {
     prerequisite: null,
     masteryRule: { poolType: MasteryPoolType.WIDE, masteryThreshold: 0.8, recentAttemptsWindow: 5 }
   },
+  [ActivityType.LetterTracing]: {
+    activityId: ActivityType.LetterTracing,
+    activityName: 'Harf Çizgi Takibi',
+    unitNumber: 1,
+    prerequisite: null,
+    masteryRule: { poolType: MasteryPoolType.WIDE, masteryThreshold: 0.8, recentAttemptsWindow: 5 }
+  },
   'hayvanlar': {
     activityId: 'hayvanlar',
     activityName: 'Hayvanlar',
@@ -96,6 +103,13 @@ export const ACTIVITY_METADATA_MAP: Record<string, ActivityMetadata> = {
   [ActivityType.ShapeColoring]: {
     activityId: ActivityType.ShapeColoring,
     activityName: 'Şekil Boyama',
+    unitNumber: 2,
+    prerequisite: ActivityType.Shapes,
+    masteryRule: { poolType: MasteryPoolType.WIDE, masteryThreshold: 0.8, recentAttemptsWindow: 5 }
+  },
+  [ActivityType.ConstrainedColoring]: {
+    activityId: ActivityType.ConstrainedColoring,
+    activityName: 'Kısıtlı Boyama',
     unitNumber: 2,
     prerequisite: ActivityType.Shapes,
     masteryRule: { poolType: MasteryPoolType.WIDE, masteryThreshold: 0.8, recentAttemptsWindow: 5 }
@@ -204,6 +218,13 @@ export const ACTIVITY_METADATA_MAP: Record<string, ActivityMetadata> = {
     activityName: 'Az / Çok',
     unitNumber: 4,
     prerequisite: ActivityType.FullEmpty,
+    masteryRule: { poolType: MasteryPoolType.WIDE, masteryThreshold: 0.8, recentAttemptsWindow: 5 }
+  },
+  [ActivityType.CountMatch]: {
+    activityId: ActivityType.CountMatch,
+    activityName: 'Kaç Tane Var?',
+    unitNumber: 4,
+    prerequisite: ActivityType.FewMuch,
     masteryRule: { poolType: MasteryPoolType.WIDE, masteryThreshold: 0.8, recentAttemptsWindow: 5 }
   },
   [ActivityType.OpenClosed]: {

@@ -747,9 +747,9 @@
     "thisUpdate": {
       "title": "In This Update",
       "items": [
-        "All activity codes have been rewritten from scratch to fix translation issues. 70% complete so far, and will be fully completed soon.",
-        "Translation issues in Objects category and Concept Activities have been fixed. Colors, shapes, and emotions now work correctly in all languages.",
-        "Note: Some data loss may occur in existing content. Identified issues will be fixed as soon as possible."
+        "New Activity: How Many? - Match hand gestures with animal groups by counting (found in Concept Learning → Quantity section)",
+        "Gentle Guidance Mode: When your child repeats the same activity too quickly, a calm and gentle feedback screen appears. It reminds them to focus on the screen and take a breath (can be toggled in Settings)",
+        "Play Store Review: Rate our app and get 1 week of premium access! (accessible from Settings menu)"
       ],
       "_tempNotes": [
         "NOTE: The following items are temporary notes — they will be removed from i18n files in the next update."
@@ -768,13 +768,8 @@
       "short": "Note: I test and refine this app with my 6-year-old child who has autism; your feedback is welcome.",
       "long": "Note: I am developing this app by testing it with my 6-year-old son with autism. I also consider topics covered at school and teacher feedback. Please send feedback if you have any suggestions or observations."
     },
-    "modes": {
-      "title": "Mode Improvements",
-      "programMode": "Program mode will be enhanced",
-      "reinforcementMode": "Reinforcement mode will be added",
-      "angerMode": "Gentle guidance mode: when excessive repetition is detected, feedback will gradually and calmly become firmer"
-    },
     "content": {
+      "note": "The targeted core feature set has been completed. The focus will now be on improving and enriching existing content.",
       "title": "Content and Activity Expansions",
       "newObjects": "New objects will be added",
       "objectCategories": "Object categories will be divided into subcategories",

@@ -48,6 +48,14 @@
       "wrong": "Nee, deze {noun} is {adjective}."
     }
   },
+  "spamGuard": {
+    "friendName": "vriendje",
+    "overlayTitle": "Lieve pauze",
+    "overlayMessage": "{name}, kijk je naar het scherm? Is je aandacht hier? Je tikt heel snel – laten we rustig samen ademhalen.",
+    "overlayFallback": "We ademen rustig in en gaan zo verder.",
+    "speechMessage": "{name}, wil je je ogen op het scherm houden? Is je aandacht hier bij mij? We ademen samen en proberen het zo opnieuw.",
+    "timer": "{seconds}s"
+  },
   "settings": {
     "language": "Taal",
     "languageSubtitle": "Interface- en spraaktaal",
@@ -96,6 +104,7 @@
     "fineMotor": {
       "title": "Fijne Motoriek",
       "subtitle": "Lijnen Volgen, Kleuren, en meer",
+      "badge": "In Ontwikkeling",
       "developingNote": "In ontwikkeling",
       "backButton": "Terug naar Fijne Motoriek Menu"
     },

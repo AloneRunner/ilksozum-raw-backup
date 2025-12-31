@@ -48,6 +48,14 @@
       "wrong": "No, this {noun} is {adjective}."
     }
   },
+  "spamGuard": {
+    "friendName": "buddy",
+    "overlayTitle": "Let’s Pause Kindly",
+    "overlayMessage": "{name}, are you looking at the screen? Is your focus here? Those taps were very fast — let’s take a tiny breath together.",
+    "overlayFallback": "Let’s take a mindful breath together and continue in a moment.",
+    "speechMessage": "{name}, can you keep your eyes on the screen for me? Are you looking right here? We’ll take a calm breath and try again soon.",
+    "timer": "{seconds}s"
+  },
   "settings": {
     "language": "Language",
     "languageSubtitle": "Interface and speech language",
@@ -96,7 +104,8 @@
     "fineMotor": {
       "title": "Fine Motor",
       "subtitle": "Line Tracing, Coloring, and more",
-      "developingNote": "Under development",
+      "badge": "Under Development",
+      "developingNote": "These activities are continuously being improved",
       "backButton": "Back to Fine Motor Menu"
     },
     "achievements": {
@@ -106,7 +115,9 @@
       "fineMotor": {
         "lineTracing": "Line Tracing",
         "shapeColoring": "Shape Coloring",
-        "rhythmFollowing": "Rhythm Following"
+        "rhythmFollowing": "Rhythm Following",
+        "letterTracing": "Letter Tracing",
+        "constrainedColoring": "Guided Coloring"
       }
     },
     "fiveWOneH": {
@@ -140,7 +151,44 @@
     "next": "Next"
   },
   "tabs": {
-    "activities": "Activities",
+    "activities": {
+      "label": "Activities",
+      "fineMotor": {
+        "lineTracing": "Line Tracing",
+        "shapeColoring": "Shape Coloring",
+        "rhythmFollowing": "Rhythm Following",
+        "letterTracing": "Letter Tracing",
+        "constrainedColoring": "Guided Coloring"
+      }
+    },
+    "fineMotor": {
+      "activities": {
+        "letterTracing": { "title": "Letter Tracing" },
+        "constrainedColoring": { "title": "Guided Coloring" }
+      },
+      "developingNote": "These activities are being improved."
+    },
+    "constrainedColoring": {
+      "tip1": "Pick the right color for each region!",
+      "tip2": "Wrong colors won't paint.",
+      "instruction": "Use the correct colors: sun yellow, clouds white, grass green...",
+      "hintHouse": "House body is orange/pink, roof is red shades.",
+      "good": "Great, correct color!",
+      "wrongColor": "This color doesn't fit this region.",
+      "selected": "Selected color"
+    },
+    "letterTracing": {
+      "instruction": "Trace the letter and stay on the line!",
+      "instructionSimple": "Trace over the letter with your finger!",
+      "currentLetter": "Letter",
+      "selectLetter": "Select Letter",
+      "uppercase": "UPPERCASE",
+      "lowercase": "lowercase",
+      "clear": "Clear",
+      "continue": "Continue",
+      "drawing": "Drawing... Keep going!",
+      "start": "Touch the letter to start"
+    },
     "communication": "Expression Cards",
     "achievements": "Reports",
     "settings": "Settings"

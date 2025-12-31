@@ -748,9 +748,9 @@
     "thisUpdate": {
       "title": "In deze update",
       "items": [
-        "Alle activiteitscodes zijn vanaf nul herschreven om vertaalproblemen op te lossen. Tot nu toe 70% voltooid en wordt binnenkort volledig afgerond.",
-        "Vertaalproblemen in de categorie Objecten en Conceptactiviteiten zijn opgelost. Kleuren, vormen en emoties werken nu correct in alle talen.",
-        "Let op: Er kan gegevensverlies optreden in bestaande inhoud. Geïdentificeerde problemen worden zo snel mogelijk opgelost."
+        "Nieuwe activiteit: Hoeveel? - Match handgebaren met dierengroepen door te tellen (te vinden in Conceptueel Leren → Hoeveelheid)",
+        "Zachte begeleidingsmodus: Wanneer je kind dezelfde activiteit te snel herhaalt, verschijnt een kalm en zacht feedbackscherm. Het herinnert eraan om op het scherm te focussen en adem te halen (kan worden in-/uitgeschakeld in Instellingen)",
+        "Play Store-beoordeling: Beoordeel onze app en krijg 1 week premium toegang! (toegankelijk via het menu Instellingen)"
       ],
       "_tempNotes": [
         "OPMERKING: De volgende items zijn tijdelijke notities — ze worden in de volgende update uit de i18n-bestanden verwijderd."
@@ -769,13 +769,8 @@
       "short": "Opmerking: ik test en verfijn deze app met mijn 6-jarige kind met autisme; je feedback is welkom.",
       "long": "Opmerking: ik ontwikkel deze app door deze te testen met mijn 6-jarige zoon met autisme. Ik houd ook rekening met onderwerpen die op school worden behandeld en feedback van leraren. Stuur feedback als je suggesties of observaties hebt."
     },
-    "modes": {
-      "title": "Modusverbeteringen",
-      "programMode": "Programmamodus wordt uitgebreid",
-      "reinforcementMode": "Versterkingsmodus wordt toegevoegd",
-      "angerMode": "Zachte begeleidingsmodus: wanneer overmatige herhaling wordt gedetecteerd, wordt de feedback geleidelijk en kalm wat steviger"
-    },
     "content": {
+      "note": "De beoogde kernfuncties zijn voltooid. De focus zal nu liggen op het verbeteren en verrijken van bestaande inhoud.",
       "title": "Inhoud- en activiteitsuitbreidingen",
       "newObjects": "Nieuwe objecten worden toegevoegd",
       "objectCategories": "Objectcategorieën worden onderverdeeld in subcategorieën",

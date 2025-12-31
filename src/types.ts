@@ -70,6 +70,8 @@ export enum ActivityType {
   LineTracing,      // Çizgi Takip Etkinliği
   ShapeColoring,    // Şekil Boyama
   RhythmFollowing,  // Ritim Takip
+  LetterTracing,    // Harf Çizgi Takibi
+  ConstrainedColoring, // Kısıtlı Boyama
 
   OldNew,
   HardSoft,
@@ -102,7 +104,8 @@ export enum ActivityType {
   FewMuch,
   HalfQuarterWhole,
   FullEmpty,
-  OddEven, 
+  OddEven,
+  CountMatch,
 
   // === Kavram Etkinlikleri > Konum Kavramları ===
   OnUnder,

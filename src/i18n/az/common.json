@@ -48,6 +48,14 @@
       "wrong": "Xeyr, {noun} {adjective} deyil."
     }
   },
+  "spamGuard": {
+    "friendName": "dostum",
+    "overlayTitle": "Nazik fasilə",
+    "overlayMessage": "{name}, ekrana baxırsan? Diqqətin buradadır? Çox sürətli toxunursan, gəlin birlikdə dərin nəfəs alaq.",
+    "overlayFallback": "Birlikdə sakitləşib sonra davam edəcəyik.",
+    "speechMessage": "{name}, gözlərin ekranda qalsın, olar? Diqqətin buradadır? Birlikdə nəfəs alaq və az sonra yenidən cəhd edək.",
+    "timer": "{seconds} san"
+  },
   "settings": {
     "language": "Dil",
     "languageSubtitle": "İnterfeys və səs dili",
@@ -96,6 +104,7 @@
     "fineMotor": {
       "title": "İncə Motorika",
       "subtitle": "Xətt İzləmə, Rəngləmə və daha çoxu",
+      "badge": "İnkişaf Mərhələsində",
       "developingNote": "Hazırlanır",
       "backButton": "İncə Motorika Menyusuna qayıt"
     },

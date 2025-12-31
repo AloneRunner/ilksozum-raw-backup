@@ -745,9 +745,9 @@
     "thisUpdate": {
       "title": "Bu Yeniləmədə",
       "items": [
-        "Tərcümə problemlərini həll etmək üçün bütün fəaliyyət kodları sıfırdan yenidən yazılıb. Hazırda 70% tamamlanıb və tezliklə tamən bitəcək.",
-        "Obyektlər kateqoriyası və Konsepsiya Fəaliyyətlərindəki tərcümə problemləri düzəldildi. Rənglər, formalar və emosiyalar indi bütün dillərdə düzgün işləyir.",
-        "Qeyd: Mövcud məzmunda məlumat itkisi baş verə bilər. Müəyyən edilmiş problemlər mümkün qədər tez həll ediləcək."
+        "Yeni Fəaliyyət: Neçə Dənə Var? - Əl jestlərini heyvan qrupları ilə sayma yolu ilə uyğunlaşdırın (Konsepsiya Öyrənmə → Miqdar bölməsində)",
+        "Nəzakətli Yönləndirmə Rejimi: Uşağınız eyni fəaliyyəti çox sürətlə təkrarladıqda, sakit və nəzakətli bir geribildirim ekranı görünür. Ekrana diqqət yetirməyi və nəfəs almağı xatırladır (Ayarlardan açıla/bağlana bilər)",
+        "Play Store Dəyərləndirməsi: Tətbiqimizi qiymətləndirin və 1 həftə premium giriş əldə edin! (Ayarlar menyusundan əlçatandır)"
       ],
       "_tempNotes": [
         "QEYD: Aşağıdakı maddələr müvəqqəti qeydlərdir — növbəti yeniləmədə i18n fayllarından çıxarılacaq."
@@ -766,13 +766,8 @@
       "short": "Qeyd: Bu tətbiqi 6 yaşlı otizmli oğlumla sınaqdan keçirərək inkişaf etdirirəm; rəylərinizi gözləyirəm.",
       "long": "Qeyd: Bu tətbiqi 6 yaşlı otizmli oğlumla sınaqdan keçirərək inkişaf etdirirəm. Məktəbdə keçirilən mövzuları və müəllim rəylərini də nəzərə alıram. Təklif və ya müşahidələriniz varsa, zəhmət olmasa rəy göndərin."
     },
-    "modes": {
-      "title": "Rejim Təkmilləşdirmələri",
-      "programMode": "Proqram rejimi təkmilləşdiriləcək",
-      "reinforcementMode": "Möhkəmləndirmə rejimi əlavə ediləcək",
-      "angerMode": "Nəzakətli yönləndirmə rejimi: həddindən artıq təkrar aşkarlandıqda geribildirim tədricən və sakit şəkildə daha da güclənəcək"
-    },
     "content": {
+      "note": "Hədəflənən əsas funksiyalar dəsti tamamlanmışdır. İndi diqqət mövcud məzmunun təkmilləşdirilməsi və zənginləşdirilməsinə yönələcək.",
       "title": "Məzmun və Fəaliyyət Genişləndirmələri",
       "newObjects": "Yeni obyektlər əlavə ediləcək",
       "objectCategories": "Obyekt kateqoriyaları alt qruplara ayrılacaq",

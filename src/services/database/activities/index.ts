@@ -1,6 +1,6 @@
 // This file acts as a barrel, exporting all activity data from one place.
 
-export * from './basicConceptsData';
+export * from './sensesData';
 export * from './qualities';
 export * from './quantities';
 export * from './spatial';

@@ -48,6 +48,14 @@
       "wrong": "Non, ce {noun} n'est pas {adjective}."
     }
   },
+  "spamGuard": {
+    "friendName": "mon ami",
+    "overlayTitle": "Petite pause en douceur",
+    "overlayMessage": "{name}, regardes-tu l’écran ? Ton attention est-elle ici ? Tes tapotements sont très rapides — prenons une petite respiration ensemble.",
+    "overlayFallback": "Restons concentrés une seconde, puis nous continuerons.",
+    "speechMessage": "{name}, peux-tu garder les yeux sur l’écran pour moi ? Ton attention est-elle ici ? On respire calmement et on réessaie dans un instant.",
+    "timer": "{seconds}s"
+  },
   "settings": {
     "language": "Langue",
     "languageSubtitle": "Langue de l'interface et de la parole",
@@ -96,6 +104,7 @@
     "fineMotor": {
       "title": "Motricité Fine",
       "subtitle": "Traçage de lignes, Coloriage, et plus",
+      "badge": "En Développement",
       "developingNote": "En cours de développement",
       "backButton": "Retour au menu Motricité Fine"
     },

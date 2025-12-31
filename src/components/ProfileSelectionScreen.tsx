@@ -1,6 +1,9 @@
 
 import React, { useState } from 'react';
 import { Profile } from '../types';
+import RobotAvatarIcon from './icons/avatars/RobotAvatarIcon.tsx';
+import CatAvatarIcon from './icons/avatars/CatAvatarIcon.tsx';
+import DogAvatarIcon from './icons/avatars/DogAvatarIcon.tsx';
 import BearIcon from './icons/avatars/BearIcon.tsx';
 import BunnyIcon from './icons/avatars/BunnyIcon.tsx';
 import CatIcon from './icons/avatars/CatIcon.tsx';
@@ -17,24 +20,27 @@ interface ProfileSelectionScreenProps {
   onBack: () => void;
 }
 
-const avatars: { [key: string]: React.FC<{ className?: string }> } = {
+const avatars: { [key: string]: React.FC<any> } = {
+  robot: RobotAvatarIcon,
+  cat: CatAvatarIcon,
+  dog: DogAvatarIcon,
   bear: BearIcon,
   bunny: BunnyIcon,
-  cat: CatIcon,
-  dog: DogIcon,
+  kitty: CatIcon,
+  doggy: DogIcon,
   fox: FoxIcon,
   panda: PandaIcon,
 };
 
 export const getAvatar = (avatarKey: string) => {
-    return avatars[avatarKey] || DogIcon; // Default to DogIcon if not found
+    return avatars[avatarKey] || RobotAvatarIcon; // Default to RobotAvatarIcon if not found
 };
 
 
 const ProfileSelectionScreen: React.FC<ProfileSelectionScreenProps> = ({ profiles, onSelectProfile, onCreateProfile, onBack }) => {
     const [isCreating, setIsCreating] = useState(false);
     const [newName, setNewName] = useState('');
-    const [selectedAvatar, setSelectedAvatar] = useState('dog');
+    const [selectedAvatar, setSelectedAvatar] = useState('robot');
     const { settings } = useAppContext();
     const isThemed = settings.theme !== 'simple';
 
@@ -42,7 +48,7 @@ const ProfileSelectionScreen: React.FC<ProfileSelectionScreenProps> = ({ profile
         if (newName.trim()) {
             onCreateProfile(newName.trim(), selectedAvatar);
             setNewName('');
-            setSelectedAvatar('dog');
+            setSelectedAvatar('robot');
             setIsCreating(false);
         }
     };

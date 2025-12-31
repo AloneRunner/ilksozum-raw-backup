@@ -48,6 +48,14 @@
       "wrong": "Nein, das {noun} ist {adjective}."
     }
   },
+  "spamGuard": {
+    "friendName": "Freund",
+    "overlayTitle": "Kurze, liebevolle Pause",
+    "overlayMessage": "{name}, schaust du auf den Bildschirm? Ist deine Aufmerksamkeit hier? Du tippst sehr schnell – lass uns kurz gemeinsam durchatmen.",
+    "overlayFallback": "Wir atmen einmal ruhig durch und machen gleich weiter.",
+    "speechMessage": "{name}, bleibst du bitte mit den Augen hier? Schaust du auf den Bildschirm? Wir beruhigen uns kurz und versuchen es gleich erneut.",
+    "timer": "{seconds}s"
+  },
   "settings": {
     "language": "Sprache",
     "languageSubtitle": "Sprache der Oberfläche und Sprachausgabe",
@@ -96,6 +104,7 @@
     "fineMotor": {
       "title": "Feinmotorik",
       "subtitle": "Linien nachzeichnen, Malen und mehr",
+      "badge": "In Entwicklung",
       "developingNote": "In Entwicklung",
       "backButton": "Zurück zum Feinmotorik-Menü"
     },

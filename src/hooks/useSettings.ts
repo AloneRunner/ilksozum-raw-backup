@@ -21,6 +21,10 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
     const [isWordLabelVisible, setIsWordLabelVisible] = useLocalStorage<boolean>('isWordLabelVisible', false);
     const [isBanButtonEnabled, setIsBanButtonEnabled] = useLocalStorage<boolean>('isBanButtonEnabled', false);
     const [isFastTransitionEnabled, setIsFastTransitionEnabled] = useLocalStorage<boolean>('isFastTransitionEnabled', false);
+    const [isSpamGuardEnabled, setIsSpamGuardEnabled] = useLocalStorage<boolean>('isSpamGuardEnabled_v1', true);
+    const [spamGuardRoundThreshold, setSpamGuardRoundThreshold] = useLocalStorage<number>('spamGuardRoundThreshold_v1', 8);
+    const [hasRatedPlayStore, setHasRatedPlayStore] = useLocalStorage<boolean>('hasRatedPlayStore_v1', false);
+    const [ratingRewardDate, setRatingRewardDate] = useLocalStorage<number | null>('ratingRewardDate_v1', null);
     // Child-friendly and accessibility settings
     const [isChildModeEnabled, setIsChildModeEnabled] = useLocalStorage<boolean>('isChildModeEnabled_v1', false);
     const [isErrorlessModeEnabled, setIsErrorlessModeEnabled] = useLocalStorage<boolean>('isErrorlessModeEnabled_v1', false);
@@ -42,6 +46,13 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
     useEffect(() => {
         setCurrentLanguage(language);
     }, [language]);
+
+    const isRatingRewardActive = useMemo(() => {
+        if (!ratingRewardDate) return false;
+        const elapsed = Date.now() - ratingRewardDate;
+        const sevenDays = 7 * 24 * 60 * 60 * 1000;
+        return elapsed < sevenDays;
+    }, [ratingRewardDate]);
 
     const isTrialActive = useMemo(() => {
         if (!trialStartDate) {
@@ -84,7 +95,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         return isLegacyUser && now < legacyPromotionEndDate;
     }, [isLegacyUser]);
 
-    const isPremium = hasPurchasedPremium || isTrialActive || isPromotionActive;
+    const isPremium = hasPurchasedPremium || isTrialActive || isPromotionActive || isRatingRewardActive;
 
     // Auto-disable fast mode when premium expires
     useEffect(() => {
@@ -146,6 +157,7 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
     const handleToggleChildMode = useCallback(() => setIsChildModeEnabled(prev => !prev), [setIsChildModeEnabled]);
     const handleToggleErrorlessMode = useCallback(() => setIsErrorlessModeEnabled(prev => !prev), [setIsErrorlessModeEnabled]);
     const handleToggleUnderwaterMusic = useCallback(() => setIsUnderwaterMusicEnabled(prev => !prev), [setIsUnderwaterMusicEnabled]);
+    const handleToggleSpamGuard = useCallback(() => setIsSpamGuardEnabled(prev => !prev), [setIsSpamGuardEnabled]);
 
     const handleToggleFastTransition = useCallback(() => {
         if (isPremium) setIsFastTransitionEnabled(prev => !prev);
@@ -165,6 +177,10 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         setLanguage(newLang);
         setCurrentLanguage(newLang);
     }, [setLanguage]);
+
+    const handleChangeSpamGuardThreshold = useCallback((value: number) => {
+        setSpamGuardRoundThreshold(value);
+    }, [setSpamGuardRoundThreshold]);
     
     const handlePurchasePremium = useCallback(async (): Promise<boolean> => {
         try {
@@ -315,6 +331,21 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         }
     }, [setHasPurchasedPremium, showToast]);
 
+    const handlePlayStoreRating = useCallback(() => {
+        if (hasRatedPlayStore) {
+            showToast('Ödülü zaten aldınız. Teşekkürler!', 'info');
+            return;
+        }
+        // Grant 7-day premium reward
+        setRatingRewardDate(Date.now());
+        setHasRatedPlayStore(true);
+        showToast('Teşekkürler! 7 günlük premium erişim kazandınız! ✨', 'info', 5000);
+        
+        // Open Play Store
+        const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.omer.sesogrenme.cocuklarim';
+        window.open(playStoreUrl, '_blank');
+    }, [hasRatedPlayStore, setRatingRewardDate, setHasRatedPlayStore, showToast]);
+
     return {
         isPremium,
         hasPurchasedPremium,
@@ -326,6 +357,10 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         isWordLabelVisible,
         isBanButtonEnabled,
         isFastTransitionEnabled,
+        isSpamGuardEnabled,
+        spamGuardRoundThreshold,
+        hasRatedPlayStore,
+        isRatingRewardActive,
         isChildModeEnabled,
         isErrorlessModeEnabled,
         isUnderwaterMusicEnabled,
@@ -336,11 +371,13 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         handleToggleWordLabel,
         handleToggleBanButton,
         handleToggleFastTransition,
+        handleToggleSpamGuard,
         handleToggleChildMode,
         handleToggleErrorlessMode,
         handleToggleUnderwaterMusic,
         onChangeTheme: handleChangeTheme,
         onChangeLanguage: handleChangeLanguage,
+        onChangeSpamGuardThreshold: handleChangeSpamGuardThreshold,
         handlePurchasePremium,
         handlePurchaseMonthly: async (): Promise<boolean> => {
             if (paywallMonthlyPkgId) {
@@ -373,5 +410,6 @@ export const useSettings = ({ showToast, showPremiumToast }: UseSettingsProps) =
         handleBanImage,
         handleUnbanImage,
         handleRestorePurchases,
+        handlePlayStoreRating,
     };
 };

@@ -37,8 +37,7 @@ const DetailCard: React.FC<{ card: CommunicationCard; onClick: () => void; isInP
                 className="relative w-full h-full aspect-square flex flex-col items-center justify-end text-center bg-white p-2 sm:p-2 rounded-2xl shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300 overflow-hidden group"
             >
                 <img src={image?.imageUrl || '/images/placeholder.png'} alt={displayText} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <h2 className="relative text-sm sm:text-base font-bold text-white z-10">{displayText}</h2>
+                <h2 className="relative text-sm sm:text-base font-bold text-slate-700 z-10">{displayText}</h2>
                  {isPrintMode && isInPrintPool && (
                     <div className="absolute inset-0 bg-sky-500/70 flex items-center justify-center rounded-2xl animate-pop-in">
                         <CheckCircleIcon className="w-1/2 h-1/2 text-white"/>

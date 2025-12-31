@@ -73,12 +73,12 @@ const Card: React.FC<CardProps> = ({
             : 'bg-white/70 backdrop-blur-md border border-white/50';
 
         const simpleCardClasses = [
-            'relative w-full rounded-2xl shadow-lg overflow-hidden transition-all duration-300 ease-in-out group',
+            'relative w-full rounded-2xl overflow-hidden transition-all duration-300 ease-in-out group',
             baseContainer,
             className,
-            isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 hover:shadow-xl cursor-pointer',
-            isSelected ? 'ring-4 ring-amber-400 shadow-amber-300/50' : '',
-            isCorrect ? 'ring-4 ring-green-500 shadow-green-400/50' : '',
+            isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 cursor-pointer',
+            isSelected ? 'ring-4 ring-amber-400' : '',
+            isCorrect ? 'ring-4 ring-green-500' : '',
         ]
             .filter(Boolean)
             .join(' ');
@@ -124,12 +124,12 @@ const Card: React.FC<CardProps> = ({
         );
     }
 
-    const flippableBaseClasses = 'relative w-full aspect-square rounded-2xl shadow-lg transition-all duration-300 ease-in-out cursor-pointer group';
+    const flippableBaseClasses = 'relative w-full aspect-square rounded-2xl transition-all duration-300 ease-in-out cursor-pointer group';
     const dynamicClasses = [
         className,
-        isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105 hover:shadow-xl',
-        isSelected && !isCorrect ? 'ring-4 ring-amber-400 shadow-amber-300/50' : '',
-        isCorrect ? 'ring-4 ring-green-500 shadow-green-400/50' : '',
+        isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105',
+        isSelected && !isCorrect ? 'ring-4 ring-amber-400' : '',
+        isCorrect ? 'ring-4 ring-green-500' : '',
     ]
         .filter(Boolean)
         .join(' ');

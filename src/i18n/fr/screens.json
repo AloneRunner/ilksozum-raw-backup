@@ -745,9 +745,9 @@
     "thisUpdate": {
       "title": "Dans cette mise à jour",
       "items": [
-        "Tous les codes d'activité ont été réécrits à partir de zéro pour corriger les problèmes de traduction. 70% terminé jusqu'à présent et sera bientôt entièrement terminé.",
-        "Les problèmes de traduction dans la catégorie Objets et les Activités Conceptuelles ont été corrigés. Les couleurs, formes et émotions fonctionnent maintenant correctement dans toutes les langues.",
-        "Note : Une perte de données peut survenir dans le contenu existant. Les problèmes identifiés seront corrigés dès que possible."
+        "Nouvelle activité : Combien ? - Associez les gestes des mains avec des groupes d'animaux en comptant (dans Apprentissage Conceptuel → Quantité)",
+        "Mode d'accompagnement doux : Lorsque votre enfant répète la même activité trop rapidement, un écran de retour calme et doux apparaît. Il rappelle de se concentrer sur l'écran et de respirer (peut être activé/désactivé dans Paramètres)",
+        "Évaluation Play Store : Évaluez notre application et obtenez 1 semaine d'accès premium ! (accessible depuis le menu Paramètres)"
       ],
       "_tempNotes": [
         "NOTE : Ces éléments sont temporaires — ils seront retirés des fichiers i18n lors de la prochaine version."
@@ -766,13 +766,8 @@
       "short": "Note : Je teste et affine cette application avec mon fils de 6 ans autiste ; vos retours sont les bienvenus.",
       "long": "Note : Je développe cette application en la testant avec mon fils de 6 ans autiste. Je prends également en compte les sujets abordés à l'école et les retours des enseignants. N'hésitez pas à envoyer vos retours si vous avez des suggestions ou des observations."
     },
-    "modes": {
-      "title": "Améliorations des modes",
-      "programMode": "Le mode programme sera amélioré",
-      "reinforcementMode": "Le mode renforcement sera ajouté",
-      "angerMode": "Mode d'accompagnement doux : en cas de répétitions excessives, le retour devient progressivement plus ferme tout en restant calme"
-    },
     "content": {
+      "note": "L'ensemble des fonctionnalités de base visées a été complété. L'accent sera désormais mis sur l'amélioration et l'enrichissement du contenu existant.",
       "title": "Extensions de contenu et d'activités",
       "newObjects": "De nouveaux objets seront ajoutés",
       "objectCategories": "Les catégories d'objets seront divisées en sous-catégories",

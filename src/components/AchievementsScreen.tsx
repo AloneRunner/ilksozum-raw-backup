@@ -103,6 +103,8 @@ const getActivityName = (activityType: ActivityType | string): string => {
     if (activityType === ActivityType.LineTracing) return t('activities.fineMotor.lineTracing', 'Çizgi Takip');
     if (activityType === ActivityType.ShapeColoring) return t('activities.fineMotor.shapeColoring', 'Şekil Boyama');
     if (activityType === ActivityType.RhythmFollowing) return t('activities.fineMotor.rhythmFollowing', 'Ritim Takip');
+    if (activityType === ActivityType.LetterTracing) return t('activities.fineMotor.letterTracing', 'Harf Çizgi Takibi');
+    if (activityType === ActivityType.ConstrainedColoring) return t('activities.fineMotor.constrainedColoring', 'Kısıtlı Boyama');
 
     // 5N1K subcategories (string ids)
     if (String(activityType) === 'FiveWOneH_Who') return t('activities.fiveWOneH.who', '5N1K - Kim?');

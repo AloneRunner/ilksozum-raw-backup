@@ -11,6 +11,7 @@ import WideNarrowIcon from "./icons/WideNarrowIcon.tsx";
 import TextureIcon from "./icons/TextureIcon.tsx";
 import ArrowsRightLeftIcon from "./icons/ArrowsRightLeftIcon.tsx";
 import OppositesIcon from "./icons/OppositesIcon.tsx";
+import SensesIcon from "./icons/SensesIcon.tsx";
 import { getCurrentLanguage, t } from "../i18n/index.ts";
 import CosmicBackdrop from './ui/CosmicBackdrop.tsx';
 import PanelStars from './ui/PanelStars.tsx';
@@ -274,6 +275,11 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           title: isTr ? "Ağır / Hafif" : t("concepts.activities.heavyLight", "Heavy / Light"),
           subtitle: isTr ? "Ağırlıkları karşılaştır" : t("concepts.subtitles.compareWeights", "Compare weights"),
         },
+        {
+          type: ActivityType.CountMatch,
+          title: isTr ? "Kaç Tane Var?" : t("concepts.activities.countMatch", "How Many?"),
+          subtitle: isTr ? "Sayıları eşleştir" : t("concepts.subtitles.matchCounts", "Match the counts"),
+        },
       ],
     },
     {
@@ -304,6 +310,17 @@ const buildTabs = (lang: ReturnType<typeof getCurrentLanguage>): ConceptTab[] =>
           type: ActivityType.DugumCozuk,
           title: isTr ? "Düğümlü / Çözük" : t("concepts.activities.dugumCozuk", "Knotted / Untied"),
           subtitle: isTr ? "Bağlantıları çöz" : t("concepts.subtitles.untangleConnections", "Untangle connections"),
+        },
+      ],
+    },
+    {
+      name: isTr ? "Duyularımız" : t("concepts.senses", "Our Senses"),
+      icon: SensesIcon,
+      activities: [
+        {
+          type: ActivityType.Senses,
+          title: isTr ? "Duyularımız" : t("concepts.activities.senses", "Our Senses"),
+          subtitle: isTr ? "Duyularımızı keşfet" : t("concepts.subtitles.exploreSenses", "Explore our senses"),
         },
       ],
     },
@@ -375,14 +392,14 @@ const TabButton: React.FC<{
     return (
       <button
         onClick={onClick}
-        className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+        className={`flex-shrink-0 w-28 sm-landscape:w-24 flex items-center justify-center flex-col gap-1 px-2 py-2 rounded-full transition-all duration-300 ${
           isActive 
             ? 'bg-gradient-to-r from-sky-400 to-indigo-400 text-slate-900 shadow-[0_0_20px_rgba(56,189,248,0.6)] scale-105' 
             : 'bg-slate-800/50 text-sky-200/80 border border-sky-400/20 hover:bg-slate-700/60 hover:border-sky-400/40 hover:scale-105'
         }`}
       >
         <Icon className="h-5 w-5 sm-landscape:h-4 sm-landscape:w-4" />
-        <span className="text-sm font-bold sm-landscape:text-xs whitespace-nowrap">{name}</span>
+        <span className="text-xs font-bold sm-landscape:text-[10px] whitespace-normal text-center line-clamp-2 leading-tight">{name}</span>
       </button>
     );
   }
@@ -391,14 +408,14 @@ const TabButton: React.FC<{
     return (
       <button
         onClick={onClick}
-        className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+        className={`flex-shrink-0 w-28 sm-landscape:w-24 flex items-center justify-center flex-col gap-1 px-2 py-2 rounded-full transition-all duration-300 ${
           isActive 
             ? 'bg-gradient-to-r from-cyan-400 to-teal-400 text-slate-900 shadow-[0_0_20px_rgba(6,182,212,0.6)] scale-105' 
             : 'bg-slate-800/30 text-cyan-200/80 border border-cyan-400/20 hover:bg-slate-700/40 hover:border-cyan-400/40 hover:scale-105'
         }`}
       >
         <Icon className="h-5 w-5 sm-landscape:h-4 sm-landscape:w-4" />
-        <span className="text-sm font-bold sm-landscape:text-xs whitespace-nowrap">{name}</span>
+        <span className="text-xs font-bold sm-landscape:text-[10px] whitespace-normal text-center line-clamp-2 leading-tight">{name}</span>
       </button>
     );
   }
@@ -410,12 +427,12 @@ const TabButton: React.FC<{
   return (
     <button
       onClick={onClick}
-      className={`flex-1 flex flex-col items-center justify-center p-2 sm-landscape:p-1 rounded-t-lg transition-colors duration-200 ${
+      className={`flex-shrink-0 w-24 sm-landscape:w-20 flex flex-col items-center justify-center p-2 sm-landscape:p-1 rounded-t-lg transition-colors duration-200 ${
         isActive ? activeClass : inactiveClass
       }`}
     >
       <Icon className="mb-1 h-6 w-6 sm-landscape:mb-0.5 sm-landscape:h-5 sm-landscape:w-5" />
-      <span className={`text-xs font-bold sm-landscape:text-[11px] ${textShadow}`}>{name}</span>
+      <span className={`text-xs font-bold sm-landscape:text-[11px] leading-tight text-center ${textShadow}`}>{name}</span>
     </button>
   );
 };
@@ -667,22 +684,24 @@ const ConceptActivitiesMenuScreen: React.FC<ConceptActivitiesMenuScreenProps> = 
         </div>
 
         <div
-          className={`relative z-10 mb-4 flex w-full gap-2 overflow-x-auto rounded-t-xl pb-1 sm-landscape:mb-2 ${
+          className={`relative z-10 mb-4 w-full overflow-x-auto rounded-t-xl pb-1 sm-landscape:mb-2 h-14 sm-landscape:h-12 flex-shrink-0 ${
             isCosmic ? '' : isUnderwater ? 'bg-gradient-to-r from-cyan-900/20 to-teal-900/20' : isSimpleTheme ? "bg-purple-100/50" : "bg-black/20"
           }`}
         >
-          {tabs.map((tab) => (
-            <TabButton
-              key={tab.name}
-              name={tab.name}
-              icon={tab.icon}
-              isActive={activeCategory === tab.name}
-              onClick={() => onSelectCategory(tab.name)}
-              isThemed={isCosmic || isUnderwater || !isSimpleTheme}
-              isCosmic={isCosmic}
-              isUnderwater={isUnderwater}
-            />
-          ))}
+          <div className="flex gap-2 items-center h-full w-max min-w-full">
+            {tabs.map((tab) => (
+              <TabButton
+                key={tab.name}
+                name={tab.name}
+                icon={tab.icon}
+                isActive={activeCategory === tab.name}
+                onClick={() => onSelectCategory(tab.name)}
+                isThemed={isCosmic || isUnderwater || !isSimpleTheme}
+                isCosmic={isCosmic}
+                isUnderwater={isUnderwater}
+              />
+            ))}
+          </div>
         </div>
 
         <div key={activeTabData.name} className="relative z-10 flex-grow overflow-y-auto animate-fade-in">

@@ -48,6 +48,14 @@
       "wrong": "Hayır, bu {noun} {adjective} değil."
     }
   },
+  "spamGuard": {
+    "friendName": "arkadaşım",
+    "overlayTitle": "Nazikçe Bekleyelim",
+    "overlayMessage": "{name}, ekrana bakıyor musun? Dikkatin burada mı? Çok hızlı dokunuyorsun, birlikte minik bir nefes alalım.",
+    "overlayFallback": "Ekrana odaklanıp nefes aldıktan sonra devam edeceğiz.",
+    "speechMessage": "{name}, ekranda kalalım olur mu? Ekrana bakıyor musun, dikkatin burada mı? Birlikte sakinleşip az sonra tekrar deneyeceğiz.",
+    "timer": "{seconds} sn"
+  },
   "settings": {
     "language": "Dil",
     "languageSubtitle": "Arayüz ve konuşma dili",
@@ -96,7 +104,8 @@
     "fineMotor": {
       "title": "İnce Motor",
       "subtitle": "Çizgi Takibi, Boyama ve daha fazlası",
-      "developingNote": "Geliştirme Aşamasında",
+      "badge": "Geliştirme Aşamasında",
+      "developingNote": "Bu etkinlikler geliştirilmeye devam ediyor",
       "backButton": "İnce Motor Menüsüne Geri Dön"
     },
     "achievements": {
@@ -106,7 +115,9 @@
       "fineMotor": {
         "lineTracing": "Çizgi Takibi",
         "shapeColoring": "Şekil Boyama",
-        "rhythmFollowing": "Ritim Takibi"
+        "rhythmFollowing": "Ritim Takibi",
+        "letterTracing": "Harf Çizgi Takibi",
+        "constrainedColoring": "Kısıtlı Boyama"
       }
     },
     "fiveWOneH": {
@@ -125,8 +136,7 @@
     },
     "soundImitation": {
       "title": "Ses Taklit Kartları",
-      "subtitle": "Konuşamayan çocuklar için ses taklit kartları",
-      "badge": "Yeni — Deneme Etkinliği"
+      "subtitle": "Konuşamayan çocuklar için ses taklit kartları"
     }
   },
   "experimental": {
@@ -140,7 +150,44 @@
     "next": "Sonraki"
   },
   "tabs": {
-    "activities": "Aktiviteler",
+    "activities": {
+      "label": "Aktiviteler",
+      "fineMotor": {
+        "lineTracing": "Çizgi Takip",
+        "shapeColoring": "Şekil Boyama",
+        "rhythmFollowing": "Ritim Takip",
+        "letterTracing": "Harf Çizgi Takibi",
+        "constrainedColoring": "Kısıtlı Boyama"
+      }
+    },
+    "fineMotor": {
+      "activities": {
+        "letterTracing": { "title": "Harf Çizgisi" },
+        "constrainedColoring": { "title": "Kısıtlı Boyama" }
+      },
+      "developingNote": "Bu etkinlikler geliştirme aşamasında."
+    },
+    "constrainedColoring": {
+      "tip1": "Her bölge için doğru rengi seç!",
+      "tip2": "Yanlış renkler boyamaz.",
+      "instruction": "Doğru renklerle boya: güneş sarı, bulut beyaz, çimler yeşil...",
+      "hintHouse": "Ev gövdesi turuncu/pembe, çatı kırmızı tonları.",
+      "good": "Harika, doğru renk!",
+      "wrongColor": "Bu bölge için uygun renk değil.",
+      "selected": "Seçili renk"
+    },
+    "letterTracing": {
+      "instruction": "Parmağınla harfi takip et ve çizgiden ayrılma!",
+      "instructionSimple": "Harfin üzerinden parmağınla geç!",
+      "currentLetter": "Harf",
+      "selectLetter": "Harf Seç",
+      "uppercase": "BÜYÜK HARF",
+      "lowercase": "küçük harf",
+      "clear": "Temizle",
+      "continue": "Devam Et",
+      "drawing": "Çiziyorsun... Devam et!",
+      "start": "Harfe dokunarak başla"
+    },
     "communication": "İfade Kartları",
     "achievements": "Raporlar",
     "settings": "Ayarlar"

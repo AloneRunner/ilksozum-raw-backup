@@ -358,7 +358,7 @@
     "title": "Ayarlar",
     "premium": {
       "title": "Premium Özellikler",
-      "desc": "Reklamları kaldırın, temalı arayüzü (canlı arka planlar) açın, veli gelişim raporlarını görüntüleyin ve gelişimimizi destekleyin.",
+      "desc": "Tüm eğitim içeriği ücretsizdir ve herkese açıktır. Premium, sadece küçük konfor özellikleri ekler (reklamları kaldırma, temalar, hızlı geçiş) ve uygulamayı geliştiren baba için küçük bir hediyedir. Çocuğunuzun eğitimini hiçbir şekilde etkilemez.",
       "cta": "Premium'a Geç & Destek Ol",
       "mathQuestion": "Ebeveyn Onayı:\n\nDevam etmek için bu soruyu cevaplayın:\n\n{num1} + {num2} = ?",
       "wrongAnswer": "Yanlış cevap. Lütfen tekrar deneyin.",
@@ -749,9 +749,9 @@
     "thisUpdate": {
       "title": "Bu Güncellemede",
       "items": [
-        "Tüm aktivite kodları çeviri sorunlarını gidermek için sıfırdan yeniden yazıldı. Şu ana kadar %70 tamamlandı ve kısa süre içinde tamamlanacak.",
-        "Nesneler kategorisi ve Kavram Aktiviteleri'ndeki çeviri sorunları düzeltildi. Renkler, şekiller ve duygular artık tüm dillerde doğru çalışıyor.",
-        "Not: Mevcut içeriklerde veri kaybı yaşanabilir. Tespit edilen sorunlar en kısa sürede düzeltilecektir."
+        "Yeni Etkinlik: Kaç Tane Var? - Parmakları ve hayvan gruplarını sayarak eşleştirme etkinliği eklendi (Kavram Öğrenme → Miktar bölümünde)",
+        "Nazik Uyarı Modu: Çocuğunuz aynı etkinliği çok hızlı tekrarladığında, sakin ve nazik bir geri bildirim ekranı devreye girer. Ekrana odaklanmasını ve nefes almasını hatırlatır (Ayarlar'dan açılıp kapatılabilir)",
+        "Play Store Değerlendirmesi: Uygulamamızı değerlendirdiğinizde 1 hafta premium erişim kazanırsınız! (Ayarlar menüsünden ulaşabilirsiniz)"
       ],
       "_tempNotes": [
         "NOT: Aşağıdaki öğeler geçici notlardır — bir sonraki güncellemede i18n dosyalarından kaldırılacaktır."
@@ -770,13 +770,8 @@
       "short": "Not: Bu uygulamayı 6 yaşındaki otizmli oğlumla test ederek geliştiriyorum; geri bildiriminizi beklerim.",
       "long": "Not: Bu uygulamayı 6 yaşındaki otizmli oğlumla test ederek geliştiriyorum. Okulda işlenen konuları ve öğretmen geri bildirimlerini de dikkate alıyorum. Öneri veya gözleminiz varsa lütfen geri bildirim gönderin."
     },
-    "modes": {
-      "title": "Mod Geliştirmeleri",
-      "programMode": "Program modu geliştirilecek",
-      "reinforcementMode": "Pekiştirme modu eklenecek",
-      "angerMode": "Nazik uyarı modu: aşırı tekrar algılandığında geri bildirim kademeli ve sakin şekilde güçlenecek"
-    },
     "content": {
+      "note": "Hedeflenen temel özellik seti tamamlanmıştır. Artık odak, mevcut içeriklerin geliştirilmesi ve zenginleştirilmesi üzerine olacaktır.",
       "title": "İçerik ve Etkinlik Genişletmeleri",
       "newObjects": "Yeni nesneler eklenecek",
       "objectCategories": "Nesne kategorileri alt dallara ayrılacak",

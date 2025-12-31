@@ -5,7 +5,7 @@ import { imageData } from './database/imageData.ts';
 import { 
     sensesData,
     bigSmallData, longShortData, thinThickData, wideNarrowData, oldNewData, youngOldData, hardSoftData, cleanDirtyData, wetDryData, openClosedData, straightCurvedData, aliveLifelessData, bitterSweetData, heavyLightData, hotColdData, roughSmoothData, brokenIntactData, messyCleanData, tazeBayatData, kirisikDuzgunData, sivriKutData, parlakMatData, tembelCaliskanData, seffafOpakData, dikenliPuruzsuzData, dugumCozukData, hungryFullData, derinSigData, kalabalikTenhaData, tersDuzData,
-    fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData,
+    fewMuchData, halfQuarterWholeData, fullEmptyData, oddEvenData, countMatchData,
     onUnderData, belowAboveData, besideOppositeData, inFrontOfBehindData, insideOutsideData, betweenData, leftRightData, nearFarData, highLowData,
     beforeAfterData, dayNightData, fastSlowData,
     whatDoesntBelongData, fiveWOneHData, sequencingStoryData, patternCompletionData, sudokuData, memoryCardPool, dragAndDropCountingData, dragAndDropPositioningData
@@ -441,7 +441,13 @@ export const getActivityUiConfig = (activityType: ActivityType | null): {
             backButtonText: "Nesne Menüsüne Dön",
         };
     }
-    if (activityType === ActivityType.LineTracing || activityType === ActivityType.ShapeColoring || activityType === ActivityType.RhythmFollowing) {
+    if (
+        activityType === ActivityType.LineTracing ||
+        activityType === ActivityType.ShapeColoring ||
+        activityType === ActivityType.RhythmFollowing ||
+        activityType === ActivityType.LetterTracing ||
+        activityType === ActivityType.ConstrainedColoring
+    ) {
         return {
             backScreen: ScreenState.FineMotorMenu,
             backButtonText: t('menu.fineMotor.backButton', 'İnce Motor Menüsüne Dön'),
@@ -1301,6 +1307,7 @@ const staticActivityDataMap: { [key in ActivityType]?: any[] } = {
     [ActivityType.HalfQuarterWhole]: halfQuarterWholeData,
     [ActivityType.FullEmpty]: fullEmptyData,
     [ActivityType.OddEven]: oddEvenData,
+    [ActivityType.CountMatch]: countMatchData,
     [ActivityType.OnUnder]: onUnderData,
     [ActivityType.BelowAbove]: belowAboveData,
     [ActivityType.BesideOpposite]: besideOppositeData,
@@ -1462,7 +1469,13 @@ export const fetchConceptActivityData = async (
     // Provide placeholder rounds for fine motor activities which are UI-driven and
     // don't require prebuilt question payloads. This prevents "no content" messages
     // when launching LineTracing / ShapeColoring / RhythmFollowing from the menu.
-    if (activity === ActivityType.LineTracing || activity === ActivityType.ShapeColoring || activity === ActivityType.RhythmFollowing) {
+    if (
+        activity === ActivityType.LineTracing ||
+        activity === ActivityType.ShapeColoring ||
+        activity === ActivityType.RhythmFollowing ||
+        activity === ActivityType.LetterTracing ||
+        activity === ActivityType.ConstrainedColoring
+    ) {
         const rounds: any[] = [];
         // LineTracing: 6 çizgi tipi var, ShapeColoring: 6 şekil var
         const numRounds = count || (activity === ActivityType.LineTracing ? 6 : 4);
